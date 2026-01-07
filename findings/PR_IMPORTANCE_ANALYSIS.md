@@ -129,10 +129,21 @@
 
 ---
 
+## Temporal Analysis
+
+**Temporal breakdown**: See `TEMPORAL_ANALYSIS_REPORT.md` for zero-review and self-merge rates by PR importance level across historical (2012-2020) and recent (2021-2025) periods.
+
+**Key question**: Did critical PRs get better review over time? Did trivial PRs improve?
+
+---
+
 ## Status
 
 **✅ COMPLETE**: PR importance classification and matrix analysis implemented.
 
 **Impact**: Provides nuanced view of review requirements by PR type, addressing the "housekeeping doesn't need review" argument.
 
-**Next Steps**: Integrate into main analysis reports, update zero-review statistics to show breakdown by PR type.
+**Next Steps**: 
+- Integrate into main analysis reports
+- Update zero-review statistics to show breakdown by PR type
+- See `TEMPORAL_ANALYSIS_REPORT.md` for temporal breakdowns

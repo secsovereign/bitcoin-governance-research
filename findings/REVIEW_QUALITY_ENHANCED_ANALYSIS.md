@@ -180,9 +180,9 @@ Enhanced analysis reveals significant improvements in review quality over time, 
 
 ## Data Files
 
-- **Enhanced Analysis**: `findings/review_quality_enhanced.json`
-- **Original Analysis**: `findings/review_quality_analysis.json`
-- **Original Report**: `findings/REVIEW_QUALITY_ANALYSIS.md`
+- **Enhanced Analysis**: `data/review_quality_enhanced.json`
+- **Original Analysis**: `data/review_quality_analysis.json`
+- **Original Analysis**: See `REVIEW_QUALITY_ENHANCED_ANALYSIS.md` (this document includes both original and enhanced analysis)
 
 ---
 

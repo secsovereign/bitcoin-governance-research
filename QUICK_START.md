@@ -3,7 +3,6 @@
 ## 1. Initial Setup (5 minutes)
 
 ```bash
-cd commons-research
 ./setup.sh
 source venv/bin/activate
 ```
@@ -11,7 +10,6 @@ source venv/bin/activate
 This will:
 - Create virtual environment
 - Install dependencies
-- Create .env file template
 - Set up directory structure
 
 ## 2. Configure (Optional, 2 minutes)
@@ -82,7 +80,7 @@ python scripts/data_collection/github_collector.py
 source venv/bin/activate
 
 # Reinstall dependencies
-pip install -r requirements.txt
+pip install -e .
 ```
 
 ### GitHub API Errors
@@ -105,5 +103,5 @@ After data collection:
 3. Run analysis scripts
 4. Generate reports
 
-See [VALIDATION_PLAN.md](VALIDATION_PLAN.md) for detailed workflow.
+See [DATA_SOURCING_AND_REPRODUCIBILITY.md](../DATA_SOURCING_AND_REPRODUCIBILITY.md) for detailed data sourcing information.
 

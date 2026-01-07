@@ -195,6 +195,15 @@
 
 **Finding**: Self-merged PRs have slightly higher zero-review rate, but both groups show wide variation.
 
+### Time-to-Merge (Speed Hack)
+
+**All-time aggregate**:
+- Self-merged PRs: 15.3 days average
+- Other-merged PRs: 31.2 days average
+- **Speed ratio**: 2.04x faster
+
+**Temporal analysis**: See `TEMPORAL_ANALYSIS_REPORT.md` for breakdown by historical vs recent period.
+
 ---
 
 ## 7. Key Statistics
@@ -241,5 +250,5 @@
 ## Data Files
 
 - **Analysis script**: `scripts/analysis/merge_pattern_analysis.py`
-- **Results JSON**: `findings/merge_pattern_analysis.json`
-- **This report**: `findings/MERGE_PATTERN_BREAKDOWN.md`
+- **Results JSON**: `data/merge_pattern_analysis.json`
+- **This report**: `MERGE_PATTERN_BREAKDOWN.md`

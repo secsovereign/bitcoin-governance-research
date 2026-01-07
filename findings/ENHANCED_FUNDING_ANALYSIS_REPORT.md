@@ -131,5 +131,5 @@
 ## Files
 
 - **Analysis script**: `scripts/analysis/enhanced_funding_analysis.py`
-- **Results**: `findings/enhanced_funding_analysis.json`
-- **This report**: `findings/ENHANCED_FUNDING_ANALYSIS_REPORT.md`
+- **Results**: `data/enhanced_funding_analysis.json`
+- **This report**: `ENHANCED_FUNDING_ANALYSIS_REPORT.md`

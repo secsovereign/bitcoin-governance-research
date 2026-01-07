@@ -40,6 +40,8 @@ The **Gini coefficient** is a measure of inequality, ranging from 0 to 1:
 
 **Interpretation**: Contribution is highly concentrated. A small number of authors account for the majority of PRs, with minimal change over time.
 
+**Temporal analysis**: See `TEMPORAL_ANALYSIS_REPORT.md` for detailed power concentration metrics by period, including merge authority concentration (who merges PRs) in addition to authorship concentration.
+
 ---
 
 ### Review Concentration (Review Inequality)

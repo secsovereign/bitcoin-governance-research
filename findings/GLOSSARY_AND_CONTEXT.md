@@ -294,8 +294,8 @@
 1. **`EXECUTIVE_SUMMARY.md`**: Start here - 37-line overview
 2. **`GLOSSARY_AND_CONTEXT.md`**: This document - terminology explained
 3. **`GINI_COEFFICIENT_EXPLANATION.md`**: Gini coefficient explained
-4. **`REVIEW_QUALITY_WEIGHTING.md`**: Quality weighting methodology
-5. **`COMPLETE_ANALYSIS_WITH_CORRECTED_DATA.md`**: Full metrics
+4. **`RESEARCH_METHODOLOGY.md`**: Complete methodology including quality weighting
+5. **`EXECUTIVE_SUMMARY.md`**: Full metrics and findings
 
 ### Understanding the Numbers
 

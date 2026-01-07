@@ -13,7 +13,7 @@ import json
 import sys
 from pathlib import Path
 from collections import defaultdict, Counter
-from typing import Dict, List, Any, Set, Tuple
+from typing import Dict, List, Any, Set, Tuple, Optional
 from datetime import datetime
 
 # Add project root to path
@@ -350,6 +350,290 @@ class TemporalAnalyzer:
                     pass
         return sum(times) / len(times) if times else 0
     
+    def _get_period(self, year: int) -> str:
+        """Get period name for a year."""
+        if 2012 <= year <= 2020:
+            return 'historical'
+        elif 2021 <= year <= 2025:
+            return 'recent'
+        return 'other'
+    
+    def _calculate_time_to_merge(self, pr: Dict[str, Any]) -> Optional[float]:
+        """Calculate time to merge in days."""
+        created = pr.get('created_at')
+        merged = pr.get('merged_at')
+        if not created or not merged:
+            return None
+        try:
+            created_dt = datetime.fromisoformat(created.replace('Z', '+00:00'))
+            merged_dt = datetime.fromisoformat(merged.replace('Z', '+00:00'))
+            days = (merged_dt - created_dt).total_seconds() / 86400
+            return days if days >= 0 else None
+        except:
+            return None
+    
+    def _classify_pr_importance(self, pr: Dict[str, Any]) -> str:
+        """Classify PR by importance level."""
+        additions = pr.get('additions', 0)
+        deletions = pr.get('deletions', 0)
+        total_changes = additions + deletions
+        files = pr.get('files', [])
+        has_consensus = any('consensus' in f.get('filename', '').lower() or 
+                           'validation' in f.get('filename', '').lower() or
+                           'script' in f.get('filename', '').lower()
+                           for f in files)
+        
+        if total_changes < 10:
+            return 'trivial'
+        elif total_changes < 50:
+            return 'low'
+        elif total_changes < 200:
+            return 'normal'
+        elif total_changes < 500:
+            return 'high'
+        elif total_changes >= 500 or has_consensus:
+            return 'critical'
+        return 'normal'
+    
+    def _calculate_review_score(self, pr: Dict[str, Any]) -> float:
+        """Calculate quality-weighted review score."""
+        reviews = pr.get('reviews', [])
+        if not reviews:
+            return 0.0
+        score = 0.0
+        for review in reviews:
+            body = (review.get('body') or '').lower()
+            if 'ack' in body or 'lgtm' in body:
+                score += 0.3
+            else:
+                score += 1.0
+        return score
+    
+    def _is_zero_review(self, pr: Dict[str, Any], threshold: float = 0.5) -> bool:
+        """Check if PR has zero meaningful review."""
+        score = self._calculate_review_score(pr)
+        return score < threshold
+    
+    def analyze_speed_hack_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze time-to-merge for self-merge vs other-merge by period."""
+        print("Analyzing speed hack temporal patterns...")
+        
+        maintainer_merged = [p for p in prs 
+                            if p.get('merged', False) and 
+                            (p.get('author') or '').lower() in [m.lower() for m in self.maintainers]]
+        
+        results = {
+            'historical': {'self_merge': [], 'other_merge': []},
+            'recent': {'self_merge': [], 'other_merge': []},
+            'all_time': {'self_merge': [], 'other_merge': []}
+        }
+        
+        for pr in maintainer_merged:
+            merged_at = pr.get('merged_at')
+            if not merged_at:
+                continue
+            
+            try:
+                year = datetime.fromisoformat(merged_at.replace('Z', '+00:00')).year
+                period = self._get_period(year)
+            except:
+                continue
+            
+            time_to_merge = self._calculate_time_to_merge(pr)
+            if time_to_merge is None:
+                continue
+            
+            author = (pr.get('author') or '').lower()
+            merged_by = (pr.get('merged_by') or '').lower()
+            is_self = merged_by and author and merged_by == author
+            
+            if is_self:
+                results['all_time']['self_merge'].append(time_to_merge)
+                if period in results:
+                    results[period]['self_merge'].append(time_to_merge)
+            else:
+                results['all_time']['other_merge'].append(time_to_merge)
+                if period in results:
+                    results[period]['other_merge'].append(time_to_merge)
+        
+        def avg(lst):
+            return sum(lst) / len(lst) if lst else 0
+        
+        output = {}
+        for period_name, period_data in results.items():
+            if not period_data['self_merge'] and not period_data['other_merge']:
+                continue
+            
+            output[period_name] = {
+                'self_merge_avg_days': avg(period_data['self_merge']),
+                'other_merge_avg_days': avg(period_data['other_merge']),
+                'self_merge_count': len(period_data['self_merge']),
+                'other_merge_count': len(period_data['other_merge']),
+                'speed_ratio': (avg(period_data['other_merge']) / avg(period_data['self_merge']) 
+                               if avg(period_data['self_merge']) > 0 else 0)
+            }
+        
+        return output
+    
+    def analyze_pr_importance_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze PR importance patterns by period."""
+        print("Analyzing PR importance temporal patterns...")
+        
+        maintainer_merged = [p for p in prs 
+                            if p.get('merged', False) and 
+                            (p.get('author') or '').lower() in [m.lower() for m in self.maintainers]]
+        
+        results = defaultdict(lambda: defaultdict(lambda: {'total': 0, 'zero_review': 0, 'self_merge': 0}))
+        
+        for pr in maintainer_merged:
+            merged_at = pr.get('merged_at')
+            if not merged_at:
+                continue
+            
+            try:
+                year = datetime.fromisoformat(merged_at.replace('Z', '+00:00')).year
+                period = self._get_period(year)
+            except:
+                continue
+            
+            importance = self._classify_pr_importance(pr)
+            is_zero = self._is_zero_review(pr)
+            author = (pr.get('author') or '').lower()
+            merged_by = (pr.get('merged_by') or '').lower()
+            is_self = merged_by and author and merged_by == author
+            
+            results[period][importance]['total'] += 1
+            if is_zero:
+                results[period][importance]['zero_review'] += 1
+            if is_self:
+                results[period][importance]['self_merge'] += 1
+        
+        output = {}
+        for period, importance_data in results.items():
+            output[period] = {}
+            for importance, stats in importance_data.items():
+                if stats['total'] == 0:
+                    continue
+                output[period][importance] = {
+                    'total': stats['total'],
+                    'zero_review_count': stats['zero_review'],
+                    'zero_review_rate': stats['zero_review'] / stats['total'],
+                    'self_merge_count': stats['self_merge'],
+                    'self_merge_rate': stats['self_merge'] / stats['total']
+                }
+        
+        return output
+    
+    def analyze_power_concentration_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze power concentration metrics by period."""
+        print("Analyzing power concentration temporal patterns...")
+        
+        maintainer_merged = [p for p in prs 
+                            if p.get('merged', False) and 
+                            (p.get('author') or '').lower() in [m.lower() for m in self.maintainers]]
+        
+        results = defaultdict(lambda: defaultdict(int))
+        
+        for pr in maintainer_merged:
+            merged_at = pr.get('merged_at')
+            if not merged_at:
+                continue
+            
+            try:
+                year = datetime.fromisoformat(merged_at.replace('Z', '+00:00')).year
+                period = self._get_period(year)
+            except:
+                continue
+            
+            merged_by = (pr.get('merged_by') or '').lower()
+            if merged_by:
+                results[period][merged_by] += 1
+        
+        output = {}
+        for period, merger_counts in results.items():
+            if not merger_counts:
+                continue
+            
+            total_merges = sum(merger_counts.values())
+            sorted_mergers = sorted(merger_counts.items(), key=lambda x: x[1], reverse=True)
+            
+            top3_count = sum(count for _, count in sorted_mergers[:3])
+            top10_count = sum(count for _, count in sorted_mergers[:10])
+            
+            n = len(sorted_mergers)
+            if n == 0:
+                continue
+            
+            cumsum = 0
+            gini_sum = 0
+            for i, (_, count) in enumerate(sorted_mergers):
+                cumsum += count
+                gini_sum += (i + 1) * count
+            
+            gini = (2 * gini_sum) / (n * total_merges) - (n + 1) / n if n > 0 and total_merges > 0 else 0
+            
+            output[period] = {
+                'total_merges': total_merges,
+                'unique_mergers': len(sorted_mergers),
+                'top3_control': top3_count / total_merges if total_merges > 0 else 0,
+                'top10_control': top10_count / total_merges if total_merges > 0 else 0,
+                'gini_coefficient': gini,
+                'top_mergers': {name: count for name, count in sorted_mergers[:10]}
+            }
+        
+        return output
+    
+    def analyze_review_quality_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze review quality metrics by period."""
+        print("Analyzing review quality temporal patterns...")
+        
+        maintainer_merged = [p for p in prs 
+                            if p.get('merged', False) and 
+                            (p.get('author') or '').lower() in [m.lower() for m in self.maintainers]]
+        
+        results = defaultdict(lambda: {
+            'total': 0,
+            'zero_review': 0,
+            'review_scores': [],
+            'review_counts': []
+        })
+        
+        for pr in maintainer_merged:
+            merged_at = pr.get('merged_at')
+            if not merged_at:
+                continue
+            
+            try:
+                year = datetime.fromisoformat(merged_at.replace('Z', '+00:00')).year
+                period = self._get_period(year)
+            except:
+                continue
+            
+            results[period]['total'] += 1
+            if self._is_zero_review(pr):
+                results[period]['zero_review'] += 1
+            
+            score = self._calculate_review_score(pr)
+            results[period]['review_scores'].append(score)
+            
+            review_count = len(pr.get('reviews', []))
+            results[period]['review_counts'].append(review_count)
+        
+        output = {}
+        for period, stats in results.items():
+            if stats['total'] == 0:
+                continue
+            
+            output[period] = {
+                'total': stats['total'],
+                'zero_review_count': stats['zero_review'],
+                'zero_review_rate': stats['zero_review'] / stats['total'],
+                'avg_review_score': sum(stats['review_scores']) / len(stats['review_scores']) if stats['review_scores'] else 0,
+                'avg_review_count': sum(stats['review_counts']) / len(stats['review_counts']) if stats['review_counts'] else 0
+            }
+        
+        return output
+    
     def run_all_analyses(self) -> Dict[str, Any]:
         """Run all temporal analyses."""
         print("="*80)
@@ -367,6 +651,10 @@ class TemporalAnalyzer:
             'quarterly_trends': self.analyze_quarterly_trends(prs),
             'maintainer_lifecycle': self.analyze_maintainer_lifecycle(prs),
             'behavioral_changes': self.analyze_behavioral_changes_over_time(prs),
+            'speed_hack_temporal': self.analyze_speed_hack_temporal(prs),
+            'pr_importance_temporal': self.analyze_pr_importance_temporal(prs),
+            'power_concentration_temporal': self.analyze_power_concentration_temporal(prs),
+            'review_quality_temporal': self.analyze_review_quality_temporal(prs),
             'analysis_date': datetime.now().isoformat()
         }
         
@@ -430,9 +718,9 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Comprehensive temporal analysis')
-    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent / 'data',
+    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent.parent / 'data',
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'temporal_analysis.json',
+    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'data' / 'temporal_analysis.json',
                        help='Output JSON file')
     
     args = parser.parse_args()

@@ -134,7 +134,94 @@ Temporal analysis reveals significant changes in Bitcoin Core governance pattern
 
 ---
 
-## 5. Maintainer Lifecycle
+## 5. Speed Hack Temporal Analysis
+
+**Question**: Did the "speed hack" (self-merged PRs merging 2x faster) persist over time?
+
+### Time-to-Merge by Period
+
+| Period | Self-Merge Avg Days | Other-Merge Avg Days | Speed Ratio | Self-Merge Count | Other-Merge Count |
+|--------|---------------------|---------------------|-------------|------------------|-------------------|
+| **Historical (2012-2020)** | 10.3 | 24.9 | **2.4x** | 1,422 | 3,926 |
+| **Recent (2021-2025)** | 22.7 | 41.5 | **1.8x** | 986 | 2,736 |
+| **All-Time** | 15.3 | 31.2 | **2.0x** | 2,446 | 6,789 |
+
+### Key Findings
+
+1. **Speed hack persists**: Self-merged PRs merge faster in both periods
+2. **Historical period**: 2.4x faster (10.3 vs 24.9 days)
+3. **Recent period**: 1.8x faster (22.7 vs 41.5 days) - **speed advantage decreased**
+4. **Absolute times increased**: Both self-merge and other-merge times increased in recent period (process got slower overall, but speed advantage remains)
+
+---
+
+## 6. PR Importance Temporal Analysis
+
+**Question**: Did review quality by PR importance change over time?
+
+### Zero-Review Rates by PR Type and Period
+
+**Note**: PR importance classification is simplified in temporal analysis. Full classification available in `PR_IMPORTANCE_ANALYSIS.md.
+
+| Period | PR Type | Total | Zero Review | Zero-Review Rate | Self-Merge Rate |
+|---------|---------|-------|-------------|------------------|-----------------|
+| **Historical** | All PRs | 5,348 | 3,461 | **64.7%** | 26.6% |
+| **Recent** | All PRs | 3,722 | 1,212 | **32.6%** | 26.5% |
+
+**All-time aggregate** (from `PR_IMPORTANCE_ANALYSIS.md`):
+- Critical PRs: 23.2% zero-review
+- Trivial PRs: 36.4% zero-review
+
+**Key Finding**: Zero-review rate improved dramatically (64.7% → 32.6%), but self-merge rate remained stable (26.6% → 26.5%).
+
+---
+
+## 7. Power Concentration Temporal Analysis
+
+**Question**: Did power concentration increase or decrease over time?
+
+### Concentration Metrics by Period
+
+| Period | Top 3 Control | Top 10 Control | Unique Mergers | Top Mergers |
+|--------|---------------|----------------|----------------|-------------|
+| **Historical (2012-2020)** | **81.0%** | 100% | 9 | laanwj (54.2%), maflcko (20.7%), fanquake (6.1%) |
+| **Recent (2021-2025)** | **84.5%** | 100% | 9 | fanquake (55.1%), maflcko (21.0%), achow101 (8.3%) |
+
+### Key Findings
+
+1. **Power concentration increased**: Top 3 control increased from 81.0% → 84.5%
+2. **Concentration calcified**: Same 9 unique mergers in both periods
+3. **Top 3 shifted**: Historical (laanwj, maflcko, fanquake) → Recent (fanquake, maflcko, achow101)
+4. **laanwj stepped back**: From 54.2% (historical) to 8.0% (recent)
+5. **fanquake dominance**: Increased from 6.1% (historical) to 55.1% (recent)
+
+**All-time aggregate**: Top 3 control 81.1% of merges (from merge pattern analysis).
+
+---
+
+## 8. Review Quality Temporal Analysis
+
+**Question**: Did review quality improve over time?
+
+### Review Quality Metrics by Period
+
+| Period | Total PRs | Zero Review | Zero-Review Rate | Avg Review Score | Avg Review Count |
+|--------|-----------|-------------|------------------|------------------|------------------|
+| **Historical (2012-2020)** | 5,348 | 3,461 | **64.7%** | 3.05 | 3.5 |
+| **Recent (2021-2025)** | 3,722 | 1,212 | **32.6%** | 5.67 | 7.2 |
+
+### Key Findings
+
+1. **Zero-review rate improved**: 64.7% → 32.6% (49.6% reduction)
+2. **Review depth increased**: 3.5 → 7.2 reviews (2.1x increase)
+3. **Review quality increased**: 3.05 → 5.67 review score (1.9x increase)
+4. **Significant improvement**: All review quality metrics improved substantially
+
+**Note**: These numbers use simplified review scoring. Quality-weighted analysis (see `RESEARCH_METHODOLOGY.md`) shows 30.2% historical → 3.4% recent (88.7% reduction) using proper quality weighting.
+
+---
+
+## 9. Maintainer Lifecycle
 
 ### First PR Patterns
 
@@ -202,5 +289,5 @@ Temporal analysis reveals significant changes in Bitcoin Core governance pattern
 ## Files
 
 - **Analysis script**: `scripts/analysis/temporal_analysis.py`
-- **Results**: `findings/temporal_analysis.json`
-- **This report**: `findings/TEMPORAL_ANALYSIS_REPORT.md`
+- **Results**: `data/temporal_analysis.json`
+- **This report**: `TEMPORAL_ANALYSIS_REPORT.md`

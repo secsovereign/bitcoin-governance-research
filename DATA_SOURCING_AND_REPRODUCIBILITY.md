@@ -1,6 +1,6 @@
 # Data Sourcing and Reproducibility
 
-**Date**: 2025-12-14  
+**Date**: 2026-01-07  
 **Purpose**: Document data sources and enable reproducibility
 
 ---

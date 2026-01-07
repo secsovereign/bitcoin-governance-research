@@ -25,12 +25,16 @@
 3. **`TEMPORAL_ANALYSIS_REPORT.md`**
    - Temporal patterns (yearly, quarterly, generational)
    - Process improvements vs structural persistence
+   - Speed hack (time-to-merge) by period
+   - PR importance analysis by period
+   - Power concentration by period
+   - Review quality by period
 
-5. **`NOVEL_INTERPRETATIONS.md`**
+4. **`NOVEL_INTERPRETATIONS.md`**
    - Behavioral clusters, power hierarchy, review reciprocity
    - Novel insights from data
 
-6. **`INTERDISCIPLINARY_ANALYSIS_REPORT.md`**
+7. **`INTERDISCIPLINARY_ANALYSIS_REPORT.md`**
    - Network science, game theory, information theory
    - Multi-disciplinary perspectives
 

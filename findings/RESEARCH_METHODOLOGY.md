@@ -202,9 +202,9 @@ This document provides a comprehensive, incremental analysis of the research met
 - Generates governance insights report
 
 **Output**: 
-- `findings/SATOSHI_GOVERNANCE_ANALYSIS.md` (detailed technical analysis)
-- `findings/SATOSHI_GOVERNANCE_INSIGHTS.md` (summary and implications)
-- `data/satoshi_archive/governance_analysis.json` (structured data)
+- `SATOSHI_GOVERNANCE_ANALYSIS.md` (detailed technical analysis)
+- `SATOSHI_GOVERNANCE_INSIGHTS.md` (summary and implications)
+- Satoshi analysis data (see `SATOSHI_GOVERNANCE_ANALYSIS.md` for data structure)
 
 **Purpose in Research**: Provides historical baseline for evaluating Bitcoin Core governance against Satoshi's original principles and governance approach.
 
@@ -318,9 +318,9 @@ This document provides a comprehensive, incremental analysis of the research met
 - Generates governance insights report
 
 **Output**: 
-- `findings/SATOSHI_GOVERNANCE_ANALYSIS.md` (detailed technical analysis)
-- `findings/SATOSHI_GOVERNANCE_INSIGHTS.md` (summary and implications)
-- `data/satoshi_archive/governance_analysis.json` (structured data)
+- `SATOSHI_GOVERNANCE_ANALYSIS.md` (detailed technical analysis)
+- `SATOSHI_GOVERNANCE_INSIGHTS.md` (summary and implications)
+- Satoshi analysis data (see `SATOSHI_GOVERNANCE_ANALYSIS.md` for data structure)
 
 **Purpose in Research**: Provides historical baseline for evaluating Bitcoin Core governance against Satoshi's original principles and governance approach.
 
@@ -736,7 +736,7 @@ def calculate_gini(values: List[float]) -> float:
 
 ### 5.4 External Research Comparison
 
-**Document**: `findings/EXTERNAL_RESEARCH_COMPARISON.md`
+**Document**: `EXTERNAL_RESEARCH_COMPARISON.md`
 
 **Purpose**: Ensure we haven't missed critical perspectives from external research
 
@@ -886,8 +886,8 @@ def calculate_gini(values: List[float]) -> float:
 
 **All methodology documented**:
 - This document (comprehensive methodology)
-- `REVIEW_COUNTING_METHODOLOGY.md` (review counting details)
-- `DATA_SOURCING_AND_REPRODUCIBILITY.md` (data sources)
+- Review counting details (see section 4.1 in this document)
+- `../DATA_SOURCING_AND_REPRODUCIBILITY.md` (data sources - in root directory)
 - Individual analysis scripts (docstrings, comments)
 
 **Result**: ✅ Fully reproducible research

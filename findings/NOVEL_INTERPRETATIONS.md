@@ -226,5 +226,5 @@ Maintainers cluster into distinct behavioral patterns:
 ## Files
 
 - **Analysis script**: `scripts/analysis/novel_interpretations.py`
-- **Results**: `findings/novel_interpretations.json`
-- **This document**: `findings/NOVEL_INTERPRETATIONS.md`
+- **Results**: `data/novel_interpretations.json`
+- **This document**: `NOVEL_INTERPRETATIONS.md`

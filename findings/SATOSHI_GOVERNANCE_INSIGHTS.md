@@ -314,7 +314,7 @@ This analysis provides historical context for evaluating Bitcoin Core's current 
 ## References
 
 - Full analysis: `SATOSHI_GOVERNANCE_ANALYSIS.md`
-- Structured data: `data/satoshi_archive/governance_analysis.json`
+- Full analysis: `SATOSHI_GOVERNANCE_ANALYSIS.md` (contains structured data)
 - Source archive: `data/satoshi_archive/nakamoto-archive/`
 - Collector script: `scripts/data_collection/satoshi_archive_collector.py`
 - Analysis script: `scripts/analysis/analyze_satoshi_governance.py`

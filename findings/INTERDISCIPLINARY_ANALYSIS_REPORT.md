@@ -203,6 +203,5 @@ Applying multiple disciplinary frameworks reveals Bitcoin Core governance as a c
 ## Files
 
 - **Analysis script**: `scripts/analysis/interdisciplinary_analysis.py`
-- **Results**: `findings/interdisciplinary_analysis.json`
-- **Opportunities**: `findings/INTERDISCIPLINARY_ANALYSIS_OPPORTUNITIES.md`
-- **This report**: `findings/INTERDISCIPLINARY_ANALYSIS_REPORT.md`
+- **Results**: `data/interdisciplinary_analysis.json`
+- **This report**: `INTERDISCIPLINARY_ANALYSIS_REPORT.md`
