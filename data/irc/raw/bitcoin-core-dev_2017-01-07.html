@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-01-07
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-01-07' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:25 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2016-12-07">&lt;</a><span class='header'>   January 2017   </span><a href="/bitcoin-core-dev/2017-02-07">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2017-01-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-01-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-01-06">6</a>  <a class="current" href="/bitcoin-core-dev/2017-01-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-01-09">9</a> <a class="" href="/bitcoin-core-dev/2017-01-10">10</a> <a class="" href="/bitcoin-core-dev/2017-01-11">11</a> <a class="" href="/bitcoin-core-dev/2017-01-12">12</a> <a class="" href="/bitcoin-core-dev/2017-01-13">13</a> <a class="" href="/bitcoin-core-dev/2017-01-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-15">15</a> <a class="" href="/bitcoin-core-dev/2017-01-16">16</a> <a class="" href="/bitcoin-core-dev/2017-01-17">17</a> <a class="" href="/bitcoin-core-dev/2017-01-18">18</a> <a class="" href="/bitcoin-core-dev/2017-01-19">19</a> <a class="" href="/bitcoin-core-dev/2017-01-20">20</a> <a class="" href="/bitcoin-core-dev/2017-01-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-22">22</a> <a class="" href="/bitcoin-core-dev/2017-01-23">23</a> <a class="" href="/bitcoin-core-dev/2017-01-24">24</a> <a class="" href="/bitcoin-core-dev/2017-01-25">25</a> <a class="" href="/bitcoin-core-dev/2017-01-26">26</a> <a class="" href="/bitcoin-core-dev/2017-01-27">27</a> <a class="" href="/bitcoin-core-dev/2017-01-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-29">29</a> <a class="" href="/bitcoin-core-dev/2017-01-30">30</a> <a class="" href="/bitcoin-core-dev/2017-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1483754940' id='521754'>
+<a class='timestamp' href='#521754'><time timestamp='2017-01-07T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+morcos: actually the parallel signature checking gains are better than expected. So consider (all reindex chainstate, dbcache2000)   no-scriptchecks par=4 10680.346728 seconds,  all scriptchecks par=4 24453.715550 , all scriptchecks part=default (24 core, 48 thread host): 12182.296543  ... so if you compute (par4-none)/(parN-none) = 9.17 ... impressive trick considering MAX_SCRIPTCHECK_THREADS i
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483754940' id='521755'>
+<a class='timestamp' href='#521755'><time timestamp='2017-01-07T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+s 16.  ... my numbers may not be totally compariable because I had a rebase between the par4 and parN cases, that I didn&#x27;t <u>_think_</u> would impact performance.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483754940' id='521756'>
+<a class='timestamp' href='#521756'><time timestamp='2017-01-07T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Good test hygine is hard when doing tests that take 7 hours.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483755120' id='521757'>
+<a class='timestamp' href='#521757'><time timestamp='2017-01-07T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+jonasschnelli: Do you have any numbers on how long it takes to sync headers with your pull req? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483755660' id='521758'>
+<a class='timestamp' href='#521758'><time timestamp='2017-01-07T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-3'> warren</span>&gt;
+jonasschnelli: hmm, I&#x27;m excited to use your SPV mode in conjunction with BIP150 (authenticated connection to my own full nodes)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483755780' id='521759'>
+<a class='timestamp' href='#521759'><time timestamp='2017-01-07T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+warren: just need 5 more regular contributors to get all the outstanding things done.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758240' id='521760'>
+<a class='timestamp' href='#521760'><time timestamp='2017-01-07T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+gmaxwell: i don&#x27;t think thats a fair calculation though since during the none part the script checking threads are running
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758240' id='521761'>
+<a class='timestamp' href='#521761'><time timestamp='2017-01-07T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+or at least N-1 of them 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758360' id='521762'>
+<a class='timestamp' href='#521762'><time timestamp='2017-01-07T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+morcos: I agree someone is wrong, but I don&#x27;t follow your explination.  None is effectively fScriptChecks = false. The threads may be running but they&#x27;re not doing anything.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758420' id='521763'>
+<a class='timestamp' href='#521763'><time timestamp='2017-01-07T03:07:00Z'>03:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+all is fScriptChecks wedged true. (no checkpoints). 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758480' id='521764'>
+<a class='timestamp' href='#521764'><time timestamp='2017-01-07T03:08:00Z'>03:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yes but during the all time so take the par=default case..  you have 15 script check threads running for 10k seconds and then 16 running for another 2k seconds, so its not fair to say it only took them 2k seconds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758540' id='521765'>
+<a class='timestamp' href='#521765'><time timestamp='2017-01-07T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+duh right. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758540' id='521766'>
+<a class='timestamp' href='#521766'><time timestamp='2017-01-07T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+okay, it&#x27;s been a long day.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758600' id='521767'>
+<a class='timestamp' href='#521767'><time timestamp='2017-01-07T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+all this flurry of trying to fix concurrency problems showed up when it turned out that it could actually be faster to NOT have signatures cached because of the contention on the sigcache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758600' id='521768'>
+<a class='timestamp' href='#521768'><time timestamp='2017-01-07T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+thats certainly been fixed with the cuckoocache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758600' id='521769'>
+<a class='timestamp' href='#521769'><time timestamp='2017-01-07T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well for IBD it still might be. :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758660' id='521770'>
+<a class='timestamp' href='#521770'><time timestamp='2017-01-07T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but it is still the case that when sigs are cached, its harder to see the benefits of more parallelism, b/c then the contention on the checkqueue is greater
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758720' id='521771'>
+<a class='timestamp' href='#521771'><time timestamp='2017-01-07T03:12:00Z'>03:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I wish our design made it easier to get multiple blocks in the scriptchecking pipeline at once.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758780' id='521772'>
+<a class='timestamp' href='#521772'><time timestamp='2017-01-07T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I suspect that improvement wouldn&#x27;t be that much any more
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758780' id='521773'>
+<a class='timestamp' href='#521773'><time timestamp='2017-01-07T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+with full blocks, there isn&#x27;t much time where you have idle cores with nothing to do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758780' id='521774'>
+<a class='timestamp' href='#521774'><time timestamp='2017-01-07T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it makes a much bigger difference with the old small blocks though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758840' id='521775'>
+<a class='timestamp' href='#521775'><time timestamp='2017-01-07T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i do think if i had your computer i&#x27;d change MAX_SCRIPTCHECK_THREADS though!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758840' id='521776'>
+<a class='timestamp' href='#521776'><time timestamp='2017-01-07T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yes. well, also, I&#x27;m usually using 48 or 56 thread hosts. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758840' id='521777'>
+<a class='timestamp' href='#521777'><time timestamp='2017-01-07T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well it used to make it <u>_slower_</u> I&#x27;m trying now with it at 48.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758900' id='521778'>
+<a class='timestamp' href='#521778'><time timestamp='2017-01-07T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it&#x27;s at height 250k at hte moment and not making it much past 700% cpu according to top... but thats still early.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758960' id='521779'>
+<a class='timestamp' href='#521779'><time timestamp='2017-01-07T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it&#x27;s worse than video games.  you&#x27;re still going to be doing that at 3am
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483758960' id='521780'>
+<a class='timestamp' href='#521780'><time timestamp='2017-01-07T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+have a good night!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483759020' id='521781'>
+<a class='timestamp' href='#521781'><time timestamp='2017-01-07T03:17:00Z'>03:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+hah     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483759080' id='521782'>
+<a class='timestamp' href='#521782'><time timestamp='2017-01-07T03:18:00Z'>03:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&quot;I thought mine-craft was a graphical program?&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483761000' id='521783'>
+<a class='timestamp' href='#521783'><time timestamp='2017-01-07T03:50:00Z'>03:50</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+How is CScript serialized? It doesn&#x27;t seem to use ADD_SERIALIZE_METHODS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483761240' id='521784'>
+<a class='timestamp' href='#521784'><time timestamp='2017-01-07T03:54:00Z'>03:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Chris_Stewart_5: it&#x27;s just a vector of uint8s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483761840' id='521785'>
+<a class='timestamp' href='#521785'><time timestamp='2017-01-07T04:04:00Z'>04:04</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+luke-jr: Which is why we things like this? static_cast&lt;const CScriptBase&amp;&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483762140' id='521786'>
+<a class='timestamp' href='#521786'><time timestamp='2017-01-07T04:09:00Z'>04:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes CScript is just a subclass of std::vector&lt;char&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483763760' id='521787'>
+<a class='timestamp' href='#521787'><time timestamp='2017-01-07T04:36:00Z'>04:36</time></a>
+&lt;<span class='nick nick-3'> warren</span>&gt;
+<a href="https://0bin.net/paste/iJSqUPkqv-zAG-ZN#vKw4haQ8j5fbQZK7NAkYO" class="link" target="_blank">https://0bin.net/paste/iJSqUPkqv-zAG-ZN#vKw4haQ8j5fbQZK7NAkYO</a>+nXugLmLPZP73uJghKj6nl  This is an example of a double-spent transaction, previously confirmed in the local wallet but now invalid.  I think years ago this output would continue to show the blockhash of the block that it was previously confirmed (but no longer the longest chain)?  Any idea when this changed?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483774920' id='521788'>
+<a class='timestamp' href='#521788'><time timestamp='2017-01-07T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+hello. I&#x27;m having a problem getting bitcoind to run as a different user (other than logged in user) using init conf. It always fails because it tries to create a .bitcoin dir. If I create a /.bitcoin dir with ownership of user it works. But I don&#x27;t want a root  .bitcoin dir. The running user has no home dir. The bitcoin.conf is provided on cmd and datadir is in conf so works fine. No need to create an empty .bitcoin dir at a
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775040' id='521789'>
+<a class='timestamp' href='#521789'><time timestamp='2017-01-07T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+eg. &quot;sudo -u btc bitcoind -conf=/etc/bitcoin/bitcoin.conf&quot; works only if an extraneous .bitcoin dir exists even when not used
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775280' id='521790'>
+<a class='timestamp' href='#521790'><time timestamp='2017-01-07T07:48:00Z'>07:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you need to set the datadir path, not conf.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775280' id='521791'>
+<a class='timestamp' href='#521791'><time timestamp='2017-01-07T07:48:00Z'>07:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you can just &lt;sudo...&gt; bitcoind -datadir=/etc/bitcoin/ 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775340' id='521792'>
+<a class='timestamp' href='#521792'><time timestamp='2017-01-07T07:49:00Z'>07:49</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+I do set that in the conf file and it works. But only when an empty .bitcoin is &quot;hanging around&quot;. The .bitcoin remains empty even when daemon is full functionaing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775400' id='521793'>
+<a class='timestamp' href='#521793'><time timestamp='2017-01-07T07:50:00Z'>07:50</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+I have other settings I need in the bitcoin.conf as well so provide that instead of datadir alone.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775400' id='521794'>
+<a class='timestamp' href='#521794'><time timestamp='2017-01-07T07:50:00Z'>07:50</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+It seems to test the exitence of .bitcoin even when using another datadir path.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775460' id='521795'>
+<a class='timestamp' href='#521795'><time timestamp='2017-01-07T07:51:00Z'>07:51</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+The issue is it is run as btc user by start-stop-daemon but that process chdirs to root first.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775520' id='521796'>
+<a class='timestamp' href='#521796'><time timestamp='2017-01-07T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+So if I create an empty /.bitcoin dir it starts fine. But when that is not present it cannot start.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775520' id='521797'>
+<a class='timestamp' href='#521797'><time timestamp='2017-01-07T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+&lt;*highlight&gt;&lt;Chris_Stewart_5:#bitcoin-core-dev&gt; jonasschnelli: Do you have any numbers on how long it takes to sync headers with your pull req? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775580' id='521798'>
+<a class='timestamp' href='#521798'><time timestamp='2017-01-07T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+2-3min
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775580' id='521799'>
+<a class='timestamp' href='#521799'><time timestamp='2017-01-07T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+If I tell start-stop-daemon to chdir to a writeable dir I thought it would create a .bitcoin dir there but for some reason it doesn&#x27;t.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775580' id='521800'>
+<a class='timestamp' href='#521800'><time timestamp='2017-01-07T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Headers-Sync does not run in parallel (from different peers)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775580' id='521801'>
+<a class='timestamp' href='#521801'><time timestamp='2017-01-07T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+So.. if you have download them from a slow peer, it may take longer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775820' id='521802'>
+<a class='timestamp' href='#521802'><time timestamp='2017-01-07T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sqltest: don&#x27;t use the config file to set it, thats too late.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775820' id='521803'>
+<a class='timestamp' href='#521803'><time timestamp='2017-01-07T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+hm. well, that might be a bug then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775820' id='521804'>
+<a class='timestamp' href='#521804'><time timestamp='2017-01-07T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-8'> jcorgan</span>&gt;
+sqltest: i can confirm i&#x27;ve seen exactly the same behavior as you describe.  i don&#x27;t know if it is a feature or a bug, but nowadays i run bincoind inside a container so i map $HOME/.bitcoin inside the container to wherever i want outside the container  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775820' id='521805'>
+<a class='timestamp' href='#521805'><time timestamp='2017-01-07T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+though I don&#x27;t think so.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775880' id='521806'>
+<a class='timestamp' href='#521806'><time timestamp='2017-01-07T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-2'> * gmaxwell</span>&gt;
+straces.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775940' id='521807'>
+<a class='timestamp' href='#521807'><time timestamp='2017-01-07T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+with datadir set on the commandline I don&#x27;t see any access to $HOME/.bitcoin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775940' id='521808'>
+<a class='timestamp' href='#521808'><time timestamp='2017-01-07T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+with master, I don&#x27;t have a 0.13.2 binary handy to test at the moment.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483775940' id='521809'>
+<a class='timestamp' href='#521809'><time timestamp='2017-01-07T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-8'> jcorgan</span>&gt;
+i did trace through the code (though this was back in the 0.8 or 0.9 days, so it&#x27;s probably all changed)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776000' id='521810'>
+<a class='timestamp' href='#521810'><time timestamp='2017-01-07T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-8'> jcorgan</span>&gt;
+and it did seem that bitcoind was checking for $HOME/.bitcoin/bitcoin.conf before parsing the cmdline for -conf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776060' id='521811'>
+<a class='timestamp' href='#521811'><time timestamp='2017-01-07T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+so I guess i need to set datadir and conf on command line unless I decide to move bitcoin.conf to datadir. I have a bunch of confs for daemons and wanted to keep them all in /etc/bitcoin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776060' id='521812'>
+<a class='timestamp' href='#521812'><time timestamp='2017-01-07T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-8'> jcorgan</span>&gt;
+that&#x27;s not an unreasonable way of doing things
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776120' id='521813'>
+<a class='timestamp' href='#521813'><time timestamp='2017-01-07T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+well, thanks. I guess I&#x27;ll have to work around that. The docs seems to say you can set conf on cmdline but that&#x27;s incorrect unless datadir also provided.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776120' id='521814'>
+<a class='timestamp' href='#521814'><time timestamp='2017-01-07T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sqltest: yes. you can&#x27;t even put a datadir in the config of many of the altcoins.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776240' id='521815'>
+<a class='timestamp' href='#521815'><time timestamp='2017-01-07T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you can set a conf on the commandline. but what you&#x27;re trying to do is override the conf and datadir at the same time and there is some interaction there it seems.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776300' id='521816'>
+<a class='timestamp' href='#521816'><time timestamp='2017-01-07T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+Ok. I added datadir so both are provided to start-start-daemon exec args and it works ok like that. I&#x27;m creating an install script for my sqlchain daemon and this will work ok. Just need extra arg.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483776360' id='521817'>
+<a class='timestamp' href='#521817'><time timestamp='2017-01-07T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-2'> sqltest</span>&gt;
+Thanks for help.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483801020' id='521818'>
+<a class='timestamp' href='#521818'><time timestamp='2017-01-07T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+jonasschnelli: Wow, faster than I expected. Very nice. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483801320' id='521819'>
+<a class='timestamp' href='#521819'><time timestamp='2017-01-07T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+also, it isn&#x27;t possible to run in parallel is it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483801740' id='521820'>
+<a class='timestamp' href='#521820'><time timestamp='2017-01-07T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+not really without hacks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483807740' id='521821'>
+<a class='timestamp' href='#521821'><time timestamp='2017-01-07T16:49:00Z'>16:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #9486: Make peer=%d log prints consistent (master...2017-01-peer-log-consistency) <a href="https://github.com/bitcoin/bitcoin/pull/9486" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9486</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483811400' id='521822'>
+<a class='timestamp' href='#521822'><time timestamp='2017-01-07T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] droark opened pull request #9487: Remove stray semicolon (Fix empty body warning) (master...9319Fix) <a href="https://github.com/bitcoin/bitcoin/pull/9487" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9487</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483812540' id='521823'>
+<a class='timestamp' href='#521823'><time timestamp='2017-01-07T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-16'> DrHendrik</span>&gt;
+Are the last 2 thursday meet-ups skipped because of holidays? or just not updated @ <a href="https://bitcoincore.org/en/meetings/" class="link" target="_blank">https://bitcoincore.org/en/meetings/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483812540' id='521824'>
+<a class='timestamp' href='#521824'><time timestamp='2017-01-07T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+DrHendrik: last thursday there was a meeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483812540' id='521825'>
+<a class='timestamp' href='#521825'><time timestamp='2017-01-07T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-16'> DrHendrik</span>&gt;
+ok     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483812540' id='521826'>
+<a class='timestamp' href='#521826'><time timestamp='2017-01-07T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i think it just has not yet been websiteiified
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483812600' id='521827'>
+<a class='timestamp' href='#521827'><time timestamp='2017-01-07T18:10:00Z'>18:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: it would be nice if this was merged soon, addnode is currently broken in master: <a href="https://github.com/bitcoin/bitcoin/pull/9487" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9487</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483812720' id='521828'>
+<a class='timestamp' href='#521828'><time timestamp='2017-01-07T18:12:00Z'>18:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;d really like us to stop using unbraced ifs. This is the kind of error that results from them, it was my screwup for sure, but getting things right is hard enough without a coding style that includes a predictable source of bugs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483813620' id='521829'>
+<a class='timestamp' href='#521829'><time timestamp='2017-01-07T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/46b249e578e8...25720fc394e2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/46b249e578e8...25720fc394e2</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483813620' id='521830'>
+<a class='timestamp' href='#521830'><time timestamp='2017-01-07T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cc05896 Douglas Roark: Remove stray semicolon (Fix empty body warning)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483813620' id='521831'>
+<a class='timestamp' href='#521831'><time timestamp='2017-01-07T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 25720fc MarcoFalke: Merge #9487: Remove stray semicolon (Fix empty body warning)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483813680' id='521832'>
+<a class='timestamp' href='#521832'><time timestamp='2017-01-07T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #9487: Remove stray semicolon (Fix empty body warning) (master...9319Fix) <a href="https://github.com/bitcoin/bitcoin/pull/9487" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9487</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483815600' id='521833'>
+<a class='timestamp' href='#521833'><time timestamp='2017-01-07T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: not sure if I mentioned, but I also came to that opinion following consideration of your arguments for it some months ago (always using braced blocks)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483815600' id='521834'>
+<a class='timestamp' href='#521834'><time timestamp='2017-01-07T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and as such have been using/adding them where appropriate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483820760' id='521835'>
+<a class='timestamp' href='#521835'><time timestamp='2017-01-07T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: yea, I see you&#x27;ve been using it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483820760' id='521836'>
+<a class='timestamp' href='#521836'><time timestamp='2017-01-07T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;ve been inconsistent in my use in Bitcoin Core, I&#x27;ve slipped some in but worry about getting nagged about the coding style.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483822440' id='521837'>
+<a class='timestamp' href='#521837'><time timestamp='2017-01-07T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, unbraced if&#x27;s are just wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483822500' id='521838'>
+<a class='timestamp' href='#521838'><time timestamp='2017-01-07T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Unfortunately, I don&#x27;t think any of the autoformaters or linter tools can enforce them.  (they certantly can&#x27;t enforce my preferred style: unbraced only if the whole statement is one line and there is no else.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483824600' id='521839'>
+<a class='timestamp' href='#521839'><time timestamp='2017-01-07T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+If I am trying to use the &#x27;deserializing constructor&#x27; for CTransaction, what am I suppose to be passing in as &#x27;deserialize_type&#x27;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483824600' id='521840'>
+<a class='timestamp' href='#521840'><time timestamp='2017-01-07T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/blob/master/src/primitives/transaction.h#L346" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/primitives/transaction.h#L346</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483828200' id='521841'>
+<a class='timestamp' href='#521841'><time timestamp='2017-01-07T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-9'> max4307</span>&gt;
+ how to reset the password forgot it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483828560' id='521842'>
+<a class='timestamp' href='#521842'><time timestamp='2017-01-07T22:36:00Z'>22:36</time></a>
+&lt;<span class='nick nick-1'> kadoban</span>&gt;
+max4307: Password to what? Alse this probably belongs in #bitcoin, at a guess.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483828620' id='521843'>
+<a class='timestamp' href='#521843'><time timestamp='2017-01-07T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-9'> max4307</span>&gt;
+the purse has created a password and forgot, you can&#x27;t work Sneem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483828800' id='521844'>
+<a class='timestamp' href='#521844'><time timestamp='2017-01-07T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-9'> max4307</span>&gt;
+encrypted wallet and forgot my password now how to work the ck
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829640' id='521845'>
+<a class='timestamp' href='#521845'><time timestamp='2017-01-07T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-14'> adam3us</span>&gt;
+phantomcircuit unbraced if&#x27;s are very wrong.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829640' id='521846'>
+<a class='timestamp' href='#521846'><time timestamp='2017-01-07T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-14'> adam3us</span>&gt;
+very awesome security defects in other crypto applications have been created by them and poor formatting.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829700' id='521847'>
+<a class='timestamp' href='#521847'><time timestamp='2017-01-07T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, unfortunately, in some parts of the codebase they&#x27;re still common
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829700' id='521848'>
+<a class='timestamp' href='#521848'><time timestamp='2017-01-07T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and people tend to (and have been advised to) mimick the style of the code surrounging what is being touched
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829880' id='521849'>
+<a class='timestamp' href='#521849'><time timestamp='2017-01-07T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-9'> max4307</span>&gt;
+encrypted wallet and forgot password bitcoincore?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829940' id='521850'>
+<a class='timestamp' href='#521850'><time timestamp='2017-01-07T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+max4307: this channel is not for support
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483829940' id='521851'>
+<a class='timestamp' href='#521851'><time timestamp='2017-01-07T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+max4307: perhaps try the forums or stackexchange, or #bitcoin (but beware of scammers)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483830060' id='521852'>
+<a class='timestamp' href='#521852'><time timestamp='2017-01-07T23:01:00Z'>23:01</time></a>
+&lt;<span class='nick nick-9'> max4307</span>&gt;
+And channel support don&#x27;t know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832280' id='521853'>
+<a class='timestamp' href='#521853'><time timestamp='2017-01-07T23:38:00Z'>23:38</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+BlueMatt: we are de facto including wallet/rpcwallet.h in the build already (and forever afaik) with --disable-wallet; how else would you suggest I do that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832400' id='521854'>
+<a class='timestamp' href='#521854'><time timestamp='2017-01-07T23:40:00Z'>23:40</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh? where from?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832460' id='521855'>
+<a class='timestamp' href='#521855'><time timestamp='2017-01-07T23:41:00Z'>23:41</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+note: I&#x27;m ok with a little duplication of the headers with comments noting &quot;this should go away - do not use in new code, yada yada&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832460' id='521856'>
+<a class='timestamp' href='#521856'><time timestamp='2017-01-07T23:41:00Z'>23:41</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Makefile.am
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832580' id='521857'>
+<a class='timestamp' href='#521857'><time timestamp='2017-01-07T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+you mean via BITCOIN_CORE_H?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832580' id='521858'>
+<a class='timestamp' href='#521858'><time timestamp='2017-01-07T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832580' id='521859'>
+<a class='timestamp' href='#521859'><time timestamp='2017-01-07T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+afaiu that just informs autotools that if this header changes it may need to recompile some files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832580' id='521860'>
+<a class='timestamp' href='#521860'><time timestamp='2017-01-07T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+it doesnt actually compile/include/etc it in any way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832700' id='521861'>
+<a class='timestamp' href='#521861'><time timestamp='2017-01-07T23:45:00Z'>23:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it figures out dependencies automatically. although admittedly, I do not know what that reference actually does do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483832760' id='521862'>
+<a class='timestamp' href='#521862'><time timestamp='2017-01-07T23:46:00Z'>23:46</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+in any case, so basically you want me to duplicate the header in src/rpc/?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483833300' id='521863'>
+<a class='timestamp' href='#521863'><time timestamp='2017-01-07T23:55:00Z'>23:55</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+that would be my preference
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483833540' id='521864'>
+<a class='timestamp' href='#521864'><time timestamp='2017-01-07T23:59:00Z'>23:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: hm. I thought we had written style mandates that prohibited braces on single line statements. But looking, I can&#x27;t find that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1483833540' id='521865'>
+<a class='timestamp' href='#521865'><time timestamp='2017-01-07T23:59:00Z'>23:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: so I&#x27;ve been thinking that I was being naughty every time I added one. 
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-09-23
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-09-23' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-08-23">&lt;</a><span class='header'>  September 2017  </span><a href="/bitcoin-core-dev/2017-10-23">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2017-09-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-09-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-09-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-09-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-09-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-09-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-09-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-09-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-09-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-09-10">10</a> <a class="" href="/bitcoin-core-dev/2017-09-11">11</a> <a class="" href="/bitcoin-core-dev/2017-09-12">12</a> <a class="" href="/bitcoin-core-dev/2017-09-13">13</a> <a class="" href="/bitcoin-core-dev/2017-09-14">14</a> <a class="" href="/bitcoin-core-dev/2017-09-15">15</a> <a class="" href="/bitcoin-core-dev/2017-09-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-09-17">17</a> <a class="" href="/bitcoin-core-dev/2017-09-18">18</a> <a class="" href="/bitcoin-core-dev/2017-09-19">19</a> <a class="" href="/bitcoin-core-dev/2017-09-20">20</a> <a class="" href="/bitcoin-core-dev/2017-09-21">21</a> <a class="" href="/bitcoin-core-dev/2017-09-22">22</a> <a class="current" href="/bitcoin-core-dev/2017-09-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-09-24">24</a> <a class="" href="/bitcoin-core-dev/2017-09-25">25</a> <a class="" href="/bitcoin-core-dev/2017-09-26">26</a> <a class="" href="/bitcoin-core-dev/2017-09-27">27</a> <a class="" href="/bitcoin-core-dev/2017-09-28">28</a> <a class="" href="/bitcoin-core-dev/2017-09-29">29</a> <a class="" href="/bitcoin-core-dev/2017-09-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1506127140' id='572210'>
+<a class='timestamp' href='#572210'><time timestamp='2017-09-23T00:39:00Z'>00:39</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+To my local 0.15.0, I added a command line option to specify the max upload timeframe to try and more evenly spread out the data spent serving old blocks. The 24 hour default results in overly spikey network traffic.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506134580' id='572211'>
+<a class='timestamp' href='#572211'><time timestamp='2017-09-23T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: re #11167, is it a problem that you can send to BIP173 addresses when IsWitness is diabled? &quot;addwitnessaddress&quot; rejects while sendtoaddress doesn&#x27;t... I guess since it&#x27;s active on mainnet this doesn&#x27;t matter anymore?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506134580' id='572212'>
+<a class='timestamp' href='#572212'><time timestamp='2017-09-23T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11167" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11167</a> | Full BIP173 (Bech32) support by sipa · Pull Request #11167 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506135060' id='572213'>
+<a class='timestamp' href='#572213'><time timestamp='2017-09-23T02:51:00Z'>02:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506135120' id='572214'>
+<a class='timestamp' href='#572214'><time timestamp='2017-09-23T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it was there to prevent creating a segwit address (which could be stolen from) before it activated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506135120' id='572215'>
+<a class='timestamp' href='#572215'><time timestamp='2017-09-23T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it&#x27;s complicated by the fact that many tests in regtest operate in a state where it is not active yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136860' id='572216'>
+<a class='timestamp' href='#572216'><time timestamp='2017-09-23T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+whee! 0.15.0.1 successfully compiled and running on my phone.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136920' id='572217'>
+<a class='timestamp' href='#572217'><time timestamp='2017-09-23T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+esotericnonsense: ... why?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136920' id='572218'>
+<a class='timestamp' href='#572218'><time timestamp='2017-09-23T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+achow101: because i can!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136920' id='572219'>
+<a class='timestamp' href='#572219'><time timestamp='2017-09-23T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+bitcoind or bitcoin-qt?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136920' id='572220'>
+<a class='timestamp' href='#572220'><time timestamp='2017-09-23T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+bitcoind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136920' id='572221'>
+<a class='timestamp' href='#572221'><time timestamp='2017-09-23T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+i don&#x27;t think it&#x27;s ever going to sync
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506136980' id='572222'>
+<a class='timestamp' href='#572222'><time timestamp='2017-09-23T03:23:00Z'>03:23</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+esotericnonsense: I think it has a higher probability of syncing than my bitcoin 0.1.0 node does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137040' id='572223'>
+<a class='timestamp' href='#572223'><time timestamp='2017-09-23T03:24:00Z'>03:24</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+even the 2009 blocks are slow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137040' id='572224'>
+<a class='timestamp' href='#572224'><time timestamp='2017-09-23T03:24:00Z'>03:24</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+how slow?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137040' id='572225'>
+<a class='timestamp' href='#572225'><time timestamp='2017-09-23T03:24:00Z'>03:24</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+the log is truncated, hang on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137100' id='572226'>
+<a class='timestamp' href='#572226'><time timestamp='2017-09-23T03:25:00Z'>03:25</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+1m15s from 2010-01-01 to 2010-04-01 (height 32490 -&gt; 48298)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137160' id='572227'>
+<a class='timestamp' href='#572227'><time timestamp='2017-09-23T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+you in for a week at this rate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137220' id='572228'>
+<a class='timestamp' href='#572228'><time timestamp='2017-09-23T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+esotericnonsense: started at 21:27:28 utc, currently at 1661
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137220' id='572229'>
+<a class='timestamp' href='#572229'><time timestamp='2017-09-23T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+unfortunately the actually-possibly-useful thing that it could be used for won&#x27;t work; it would be fun to use it as a trusted node in schildbach&#x27;s wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137220' id='572230'>
+<a class='timestamp' href='#572230'><time timestamp='2017-09-23T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+granted it has crashed multiple times and the vm it is in has also crashed a few times
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137220' id='572231'>
+<a class='timestamp' href='#572231'><time timestamp='2017-09-23T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+but i am going to guess that they&#x27;d clash on the ports and neither side can be configured
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137220' id='572232'>
+<a class='timestamp' href='#572232'><time timestamp='2017-09-23T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+(also if it&#x27;s pruned it won&#x27;t connect either)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137220' id='572233'>
+<a class='timestamp' href='#572233'><time timestamp='2017-09-23T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+achow101: lol.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137280' id='572234'>
+<a class='timestamp' href='#572234'><time timestamp='2017-09-23T03:28:00Z'>03:28</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I don&#x27;t think it&#x27;s ever going to get anywhere near being in sync
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137340' id='572235'>
+<a class='timestamp' href='#572235'><time timestamp='2017-09-23T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+are there any issues with copying datadirs across architectures? endianness? other stuff?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137340' id='572236'>
+<a class='timestamp' href='#572236'><time timestamp='2017-09-23T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+shouldn&#x27;t be
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506137340' id='572237'>
+<a class='timestamp' href='#572237'><time timestamp='2017-09-23T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+(I could produce a pruned datadir on my main box and chuck that over)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506138180' id='572238'>
+<a class='timestamp' href='#572238'><time timestamp='2017-09-23T03:43:00Z'>03:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: i think it should be totally possible to sync
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506138240' id='572239'>
+<a class='timestamp' href='#572239'><time timestamp='2017-09-23T03:44:00Z'>03:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i got abcore to sync with 0.13 on my oneplus one (woth 3 GB ram)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506138240' id='572240'>
+<a class='timestamp' href='#572240'><time timestamp='2017-09-23T03:44:00Z'>03:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+on my nexus 5x now i haven&#x27;t tried, as it only has 2 GB ram, but with 0.15 i think it should be possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506138480' id='572241'>
+<a class='timestamp' href='#572241'><time timestamp='2017-09-23T03:48:00Z'>03:48</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sipa: I was talking about my 0.1.0 node
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506138540' id='572242'>
+<a class='timestamp' href='#572242'><time timestamp='2017-09-23T03:49:00Z'>03:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, i missed that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506141420' id='572243'>
+<a class='timestamp' href='#572243'><time timestamp='2017-09-23T04:37:00Z'>04:37</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jonasschnelli: <a href="https://github.com/bitcoin/bips/pull/592" class="link" target="_blank">https://github.com/bitcoin/bips/pull/592</a> fix readme?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506146820' id='572244'>
+<a class='timestamp' href='#572244'><time timestamp='2017-09-23T06:07:00Z'>06:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa opened pull request #11389: Support having SegWit always active in regtest (master...201709_itsalwayssegwitinregtestia) <a href="https://github.com/bitcoin/bitcoin/pull/11389" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11389</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506147060' id='572245'>
+<a class='timestamp' href='#572245'><time timestamp='2017-09-23T06:11:00Z'>06:11</time></a>
+&lt;<span class='nick nick-14'> arubi</span>&gt;
+heh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506152400' id='572246'>
+<a class='timestamp' href='#572246'><time timestamp='2017-09-23T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/aeed345c9bad...10a20bf7700e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/aeed345c9bad...10a20bf7700e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506152400' id='572247'>
+<a class='timestamp' href='#572247'><time timestamp='2017-09-23T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 723aa1b Wladimir J. van der Laan: qt: Backup former GUI settings on `-resetguisettings`...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506152400' id='572248'>
+<a class='timestamp' href='#572248'><time timestamp='2017-09-23T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 10a20bf Wladimir J. van der Laan: Merge #11338: qt: Backup former GUI settings on `-resetguisettings`...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506152460' id='572249'>
+<a class='timestamp' href='#572249'><time timestamp='2017-09-23T07:41:00Z'>07:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #11338: qt: Backup former GUI settings on `-resetguisettings` (master...2017_10_backup_resetguisettings) <a href="https://github.com/bitcoin/bitcoin/pull/11338" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11338</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506179160' id='572250'>
+<a class='timestamp' href='#572250'><time timestamp='2017-09-23T15:06:00Z'>15:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+luke-jr: Oh. Yes. Will do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506182640' id='572251'>
+<a class='timestamp' href='#572251'><time timestamp='2017-09-23T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+sipa: what was your point about bip124 and CLTV, CSV?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506182760' id='572252'>
+<a class='timestamp' href='#572252'><time timestamp='2017-09-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+it seems to me that nLocktime and nSequence are &quot;out of scope&quot; anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506182820' id='572253'>
+<a class='timestamp' href='#572253'><time timestamp='2017-09-23T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+by that I mean the derived address does not depend on them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506182940' id='572254'>
+<a class='timestamp' href='#572254'><time timestamp='2017-09-23T16:09:00Z'>16:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ThomasV: CLTV and CSV are script opcodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506182940' id='572255'>
+<a class='timestamp' href='#572255'><time timestamp='2017-09-23T16:09:00Z'>16:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+CLTV sets a requirement on the nLockTime field of the spending transaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183180' id='572256'>
+<a class='timestamp' href='#572256'><time timestamp='2017-09-23T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+sipa: so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183180' id='572257'>
+<a class='timestamp' href='#572257'><time timestamp='2017-09-23T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so they&#x27;re not out of scope
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183240' id='572258'>
+<a class='timestamp' href='#572258'><time timestamp='2017-09-23T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+they&#x27;re things that influence the address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183240' id='572259'>
+<a class='timestamp' href='#572259'><time timestamp='2017-09-23T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+maybe we don&#x27;t agree on the scope then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183240' id='572260'>
+<a class='timestamp' href='#572260'><time timestamp='2017-09-23T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+how?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183240' id='572261'>
+<a class='timestamp' href='#572261'><time timestamp='2017-09-23T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think you misunderstand me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183240' id='572262'>
+<a class='timestamp' href='#572262'><time timestamp='2017-09-23T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i wasn&#x27;t talking about nLockTime and nSequence
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183300' id='572263'>
+<a class='timestamp' href='#572263'><time timestamp='2017-09-23T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+no, you were talking about the parameter in the script
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183300' id='572264'>
+<a class='timestamp' href='#572264'><time timestamp='2017-09-23T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m talking about having scriptPubKeys with the CLTV or CSV instruction in them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183300' id='572265'>
+<a class='timestamp' href='#572265'><time timestamp='2017-09-23T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183300' id='572266'>
+<a class='timestamp' href='#572266'><time timestamp='2017-09-23T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+but how would that interfer with bip124?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183360' id='572267'>
+<a class='timestamp' href='#572267'><time timestamp='2017-09-23T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i have no idea, i have never looked at bip124
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183360' id='572268'>
+<a class='timestamp' href='#572268'><time timestamp='2017-09-23T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+or, to put it differently, what do you expect bip124 to achieve there?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183360' id='572269'>
+<a class='timestamp' href='#572269'><time timestamp='2017-09-23T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i brought CLTV up as an example of something where there is more to backup than just a key
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183420' id='572270'>
+<a class='timestamp' href='#572270'><time timestamp='2017-09-23T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+oh but we agree that there is more to backup :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183420' id='572271'>
+<a class='timestamp' href='#572271'><time timestamp='2017-09-23T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+I thought you were saying that bip124 would be broken by these opcodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183420' id='572272'>
+<a class='timestamp' href='#572272'><time timestamp='2017-09-23T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sorry if i gave that impression
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183420' id='572273'>
+<a class='timestamp' href='#572273'><time timestamp='2017-09-23T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i don&#x27;t know bip124
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183480' id='572274'>
+<a class='timestamp' href='#572274'><time timestamp='2017-09-23T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+sipa: BIP124 is not really specified, but it is trivial to read
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183540' id='572275'>
+<a class='timestamp' href='#572275'><time timestamp='2017-09-23T16:19:00Z'>16:19</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+it just says &quot;lets define a template for scripts&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183540' id='572276'>
+<a class='timestamp' href='#572276'><time timestamp='2017-09-23T16:19:00Z'>16:19</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+where pubkeys are variables
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183840' id='572277'>
+<a class='timestamp' href='#572277'><time timestamp='2017-09-23T16:24:00Z'>16:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506183960' id='572278'>
+<a class='timestamp' href='#572278'><time timestamp='2017-09-23T16:26:00Z'>16:26</time></a>
+&lt;<span class='nick nick-14'> ThomasV</span>&gt;
+the scriptpubkey type (non-segwit, segwint-in-p2sh or native-segwit) is something orthogonal, though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506204720' id='572279'>
+<a class='timestamp' href='#572279'><time timestamp='2017-09-23T22:12:00Z'>22:12</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+achow101: on both aarch64 and armv7l it works properly by just copying datadir over from amd64 (i don&#x27;t have the patience to wait). <a href="https://esotericnonsense.com/img/bitcoind-motog.jpg" class="link" target="_blank">https://esotericnonsense.com/img/bitcoind-motog.jpg</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506204720' id='572280'>
+<a class='timestamp' href='#572280'><time timestamp='2017-09-23T22:12:00Z'>22:12</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+still have no use for it. :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1506209640' id='572281'>
+<a class='timestamp' href='#572281'><time timestamp='2017-09-23T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #11390: [docs] document scripted-diff (master...document_scripted_diff) <a href="https://github.com/bitcoin/bitcoin/pull/11390" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11390</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

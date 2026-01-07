@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bitcoin-governance-analysis"
+version = "1.0.0"
+description = "Quantitative analysis of Bitcoin development governance through public communications"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Bitcoin Commons", email = "info@btcdecoded.org"}
+]
+keywords = ["bitcoin", "governance", "analysis", "research"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+]
+nlp = [
+    "transformers>=4.35.0",
+    "sentence-transformers>=2.2.2",
+    "spacy>=3.7.0",
+]
+network = [
+    "python-igraph>=0.11.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+

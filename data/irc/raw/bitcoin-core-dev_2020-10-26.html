@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-10-26
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-10-26' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:17 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-09-26">&lt;</a><span class='header'>   October 2020   </span><a href="/bitcoin-core-dev/2020-11-26">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2020-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2020-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2020-10-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2020-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2020-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2020-10-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-10-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-10-09">9</a> <a class="" href="/bitcoin-core-dev/2020-10-10">10</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-10-11">11</a> <a class="" href="/bitcoin-core-dev/2020-10-12">12</a> <a class="" href="/bitcoin-core-dev/2020-10-13">13</a> <a class="" href="/bitcoin-core-dev/2020-10-14">14</a> <a class="" href="/bitcoin-core-dev/2020-10-15">15</a> <a class="" href="/bitcoin-core-dev/2020-10-16">16</a> <a class="" href="/bitcoin-core-dev/2020-10-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-10-18">18</a> <a class="" href="/bitcoin-core-dev/2020-10-19">19</a> <a class="" href="/bitcoin-core-dev/2020-10-20">20</a> <a class="" href="/bitcoin-core-dev/2020-10-21">21</a> <a class="" href="/bitcoin-core-dev/2020-10-22">22</a> <a class="" href="/bitcoin-core-dev/2020-10-23">23</a> <a class="" href="/bitcoin-core-dev/2020-10-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-10-25">25</a> <a class="current" href="/bitcoin-core-dev/2020-10-26">26</a> <a class="" href="/bitcoin-core-dev/2020-10-27">27</a> <a class="" href="/bitcoin-core-dev/2020-10-28">28</a> <a class="" href="/bitcoin-core-dev/2020-10-29">29</a> <a class="" href="/bitcoin-core-dev/2020-10-30">30</a> <a class="" href="/bitcoin-core-dev/2020-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1603675140' id='410194'>
+<a class='timestamp' href='#410194'><time timestamp='2020-10-26T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+FYI, I tried to do a &quot;verifychain 4 0&quot; from the qt console and it failed with an assertion at the 50% point (after about 1h15m)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603675140' id='410195'>
+<a class='timestamp' href='#410195'><time timestamp='2020-10-26T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+bitcoin-qt: validation.cpp:1977: bool CChainState::ConnectBlock(const CBlock&amp;, BlockValidationState&amp;, CBlockIndex*, CCoinsViewCache&amp;, const CChainParams&amp;, bool): Assertion `hashPrevBlock == view.GetBestBlock()&#x27; failed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603681260' id='410196'>
+<a class='timestamp' href='#410196'><time timestamp='2020-10-26T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus / sipa: can you block Iixixi &amp; haggleburt1972 if you haven&#x27;t already
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603683360' id='410197'>
+<a class='timestamp' href='#410197'><time timestamp='2020-10-26T03:36:00Z'>03:36</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+fanquake: btw/fyi #19683 isn&#x27;t a poem, it&#x27;s alternate lyrics for <a href="https://www.youtube.com/watch?v=NAEppFUWLfc" class="link" target="_blank">https://www.youtube.com/watch?v=NAEppFUWLfc</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603683360' id='410198'>
+<a class='timestamp' href='#410198'><time timestamp='2020-10-26T03:36:00Z'>03:36</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19683" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19683</a> | depends: Pin clang search paths for darwin host by dongcarl · Pull Request #19683 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603694580' id='410199'>
+<a class='timestamp' href='#410199'><time timestamp='2020-10-26T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+aj: tune
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603696560' id='410200'>
+<a class='timestamp' href='#410200'><time timestamp='2020-10-26T07:16:00Z'>07:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] instagibbs closed pull request #18723: Expand on contracting carve-out rule test (master...onemore_again) <a href="https://github.com/bitcoin/bitcoin/pull/18723" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18723</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603697280' id='410201'>
+<a class='timestamp' href='#410201'><time timestamp='2020-10-26T07:28:00Z'>07:28</time></a>
+&lt;<span class='nick nick-8'> AdulrunaRedviva</span>&gt;
+hi all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603699020' id='410202'>
+<a class='timestamp' href='#410202'><time timestamp='2020-10-26T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fanquake: done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603699200' id='410203'>
+<a class='timestamp' href='#410203'><time timestamp='2020-10-26T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fanquake: there&#x27;s lots of similar user names, iixixiv, iixixii, hope they&#x27;re not part of the same series somehow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603701480' id='410204'>
+<a class='timestamp' href='#410204'><time timestamp='2020-10-26T08:38:00Z'>08:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #20242: fuzz: Properly initialize PrecomputedTransactionData (master...2010-fuzzInit) <a href="https://github.com/bitcoin/bitcoin/pull/20242" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20242</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603704360' id='410205'>
+<a class='timestamp' href='#410205'><time timestamp='2020-10-26T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus: thanks. Hopefully not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603708200' id='410206'>
+<a class='timestamp' href='#410206'><time timestamp='2020-10-26T10:30:00Z'>10:30</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+luke-jr: <a href="https://github.com/bitcoin/bitcoin/pull/20234#issuecomment-716045914" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20234#issuecomment-716045914</a> what do you mean in particular? I think all is in the PR description, but apparently not, since you ask...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603714200' id='410207'>
+<a class='timestamp' href='#410207'><time timestamp='2020-10-26T12:10:00Z'>12:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #20243: rpc, wallet: Expose wallet id in getwalletinfo RPC output (master...201026-wid) <a href="https://github.com/bitcoin/bitcoin/pull/20243" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20243</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603714560' id='410208'>
+<a class='timestamp' href='#410208'><time timestamp='2020-10-26T12:16:00Z'>12:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MewTww opened pull request #20244: Create BITCOIN (master...patch-2) <a href="https://github.com/bitcoin/bitcoin/pull/20244" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20244</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603714620' id='410209'>
+<a class='timestamp' href='#410209'><time timestamp='2020-10-26T12:17:00Z'>12:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #20244: Create BITCOIN (master...patch-2) <a href="https://github.com/bitcoin/bitcoin/pull/20244" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20244</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603718880' id='410210'>
+<a class='timestamp' href='#410210'><time timestamp='2020-10-26T13:28:00Z'>13:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+vasild: I guess I mean with that change, -bind=… would result in the Tor-is-classified-as-non-Tor bugs coming back
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603718940' id='410211'>
+<a class='timestamp' href='#410211'><time timestamp='2020-10-26T13:29:00Z'>13:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #20245: test: Run script_assets_test even if built --with-libs=no (master...2010-testAssetTestlibconsensus) <a href="https://github.com/bitcoin/bitcoin/pull/20245" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20245</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603719480' id='410212'>
+<a class='timestamp' href='#410212'><time timestamp='2020-10-26T13:38:00Z'>13:38</time></a>
+&lt;<span class='nick nick-8'> AdulrunaRedviva</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603719540' id='410213'>
+<a class='timestamp' href='#410213'><time timestamp='2020-10-26T13:39:00Z'>13:39</time></a>
+&lt;<span class='nick nick-8'> AdulrunaRedviva</span>&gt;
+￼
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603719960' id='410214'>
+<a class='timestamp' href='#410214'><time timestamp='2020-10-26T13:46:00Z'>13:46</time></a>
+&lt;<span class='nick nick-8'> AdulrunaRedviva</span>&gt;
+How do I select the installed wallets to trade? (sample getbalance)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720620' id='410215'>
+<a class='timestamp' href='#410215'><time timestamp='2020-10-26T13:57:00Z'>13:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+AdulrunaRedviva: it&#x27;s unclear to me what you mean, I suppose you are using multiwallet but what are yo trying to do? to select a wallet for RPC getbalance in bitcoin-cli you can pass -rpcwallet=&lt;walletname&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720620' id='410216'>
+<a class='timestamp' href='#410216'><time timestamp='2020-10-26T13:57:00Z'>13:57</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+AdulrunaRedviva: #Bitcoin for user questions, but rephrase it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720680' id='410217'>
+<a class='timestamp' href='#410217'><time timestamp='2020-10-26T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(also note getbalance is broken in Core for the last several releases, but maybe not in a way you care about)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720680' id='410218'>
+<a class='timestamp' href='#410218'><time timestamp='2020-10-26T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ossifrage: strange, anything in debug.log?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720740' id='410219'>
+<a class='timestamp' href='#410219'><time timestamp='2020-10-26T13:59:00Z'>13:59</time></a>
+&lt;<span class='nick nick-8'> AdulrunaRedviva</span>&gt;
+each user needs to make transactions for their wallet. How do I specify which wallet it is for when sending commands via rpc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720740' id='410220'>
+<a class='timestamp' href='#410220'><time timestamp='2020-10-26T13:59:00Z'>13:59</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+AdulrunaRedviva: again, #bitcoin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720800' id='410221'>
+<a class='timestamp' href='#410221'><time timestamp='2020-10-26T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-8'> AdulrunaRedviva</span>&gt;
+okey.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720800' id='410222'>
+<a class='timestamp' href='#410222'><time timestamp='2020-10-26T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ossifrage: what it crashes on is a sanity check that the previous block of the block to be validated matches the current head block, I have no idea how you could end up in a state where that&#x27;s not the case at that point in the code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720920' id='410223'>
+<a class='timestamp' href='#410223'><time timestamp='2020-10-26T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s too bad this is only reproducible after 1h15m
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720920' id='410224'>
+<a class='timestamp' href='#410224'><time timestamp='2020-10-26T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t think many people use verifychain to verify the entire chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603720920' id='410225'>
+<a class='timestamp' href='#410225'><time timestamp='2020-10-26T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm, it looks like the /wallet/walletname endpoint isn&#x27;t actually documented? :o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721040' id='410226'>
+<a class='timestamp' href='#410226'><time timestamp='2020-10-26T14:04:00Z'>14:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+documented where?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721040' id='410227'>
+<a class='timestamp' href='#410227'><time timestamp='2020-10-26T14:04:00Z'>14:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+doc/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721100' id='410228'>
+<a class='timestamp' href='#410228'><time timestamp='2020-10-26T14:05:00Z'>14:05</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+JSON-RPC-interface.md might be a good place
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721160' id='410229'>
+<a class='timestamp' href='#410229'><time timestamp='2020-10-26T14:06:00Z'>14:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes it would
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721280' id='410230'>
+<a class='timestamp' href='#410230'><time timestamp='2020-10-26T14:08:00Z'>14:08</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+luke-jr: but now we have -bind=addr=onion to resolve those
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721280' id='410231'>
+<a class='timestamp' href='#410231'><time timestamp='2020-10-26T14:08:00Z'>14:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+vasild: I&#x27;m talking about the case where that is&#x27;nt specified
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721340' id='410232'>
+<a class='timestamp' href='#410232'><time timestamp='2020-10-26T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I wonder if Tor has a way to ask it, if a given source port is from Tor :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721400' id='410233'>
+<a class='timestamp' href='#410233'><time timestamp='2020-10-26T14:10:00Z'>14:10</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+luke-jr: <a href="https://lists.torproject.org/pipermail/tor-onions/2020-September/thread.html" class="link" target="_blank">https://lists.torproject.org/pipermail/tor-onions/2020-September/thread.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721520' id='410234'>
+<a class='timestamp' href='#410234'><time timestamp='2020-10-26T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I suppose the ideal for this would be to have Tor send us sockets over the control socket
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721520' id='410235'>
+<a class='timestamp' href='#410235'><time timestamp='2020-10-26T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+not sure if Windows supports sending sockets tho
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721520' id='410236'>
+<a class='timestamp' href='#410236'><time timestamp='2020-10-26T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+in #20234 maybe we can/should issue a warning if -bind= is given without -bind=...=onion and -listenonion=1 - something like &quot;please specify -bind=...=onion in order to distinguish incoming tor connections&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721520' id='410237'>
+<a class='timestamp' href='#410237'><time timestamp='2020-10-26T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20234" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20234</a> | net: dont extra bind for Tor if binds are restricted by vasild · Pull Request #20234 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721580' id='410238'>
+<a class='timestamp' href='#410238'><time timestamp='2020-10-26T14:13:00Z'>14:13</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+luke-jr: what does it mean to &quot;send a socket&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721700' id='410239'>
+<a class='timestamp' href='#410239'><time timestamp='2020-10-26T14:15:00Z'>14:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+vasild: Linux allows you to take a fd, and send it in a socket, such that the receiver now has the fd and can use it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721760' id='410240'>
+<a class='timestamp' href='#410240'><time timestamp='2020-10-26T14:16:00Z'>14:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+vasild: look up SCM_RIGHTS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603721880' id='410241'>
+<a class='timestamp' href='#410241'><time timestamp='2020-10-26T14:18:00Z'>14:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+<a href="https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/" class="link" target="_blank">https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/</a> suggests in 2017 it wasn&#x27;t supported by Windows
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603722180' id='410242'>
+<a class='timestamp' href='#410242'><time timestamp='2020-10-26T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+<a href="https://www.man7.org/linux/man-pages/man7/unix.7.html" class="link" target="_blank">https://www.man7.org/linux/man-pages/man7/unix.7.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603722180' id='410243'>
+<a class='timestamp' href='#410243'><time timestamp='2020-10-26T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+I wasn&#x27;t aware of that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603722180' id='410244'>
+<a class='timestamp' href='#410244'><time timestamp='2020-10-26T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+tor# grep -r SCM_RIGHTS .
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603722180' id='410245'>
+<a class='timestamp' href='#410245'><time timestamp='2020-10-26T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+(nothing)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603722300' id='410246'>
+<a class='timestamp' href='#410246'><time timestamp='2020-10-26T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+[14:18:37] &lt;luke-jr&gt; <a href="https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/" class="link" target="_blank">https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/</a> suggests in 2017 it wasn&#x27;t supported by Windows
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603722360' id='410247'>
+<a class='timestamp' href='#410247'><time timestamp='2020-10-26T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603729980' id='410248'>
+<a class='timestamp' href='#410248'><time timestamp='2020-10-26T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #20247: fuzz: Check for addrv1 compatibility before using addrv1 serializer. Fuzz addrv2 address serialization. (master...fuzzers-netaddr-post-addrv2) <a href="https://github.com/bitcoin/bitcoin/pull/20247" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20247</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603732020' id='410249'>
+<a class='timestamp' href='#410249'><time timestamp='2020-10-26T17:07:00Z'>17:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] dgpv opened pull request #20248: Fix test: length of R check in test/key_tests.cpp:key_signature_tests (master...fix-test-key-signature-low-r) <a href="https://github.com/bitcoin/bitcoin/pull/20248" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20248</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733160' id='410250'>
+<a class='timestamp' href='#410250'><time timestamp='2020-10-26T17:26:00Z'>17:26</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+For those interested, I got back the result of instrumenting the compilation of &quot;all of nixpkgs&quot; with GCC 9.  There are a handful of new packages miscompiled, again about half of them are test cases.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733160' id='410251'>
+<a class='timestamp' href='#410251'><time timestamp='2020-10-26T17:26:00Z'>17:26</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+Strangely BitcoinABC&#x27;s CNetAddr:IsRoutable() gets miscompiled, but not Bitcoin&#x27;s.  I have no explaination.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733220' id='410252'>
+<a class='timestamp' href='#410252'><time timestamp='2020-10-26T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+O.o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733220' id='410253'>
+<a class='timestamp' href='#410253'><time timestamp='2020-10-26T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+roconnor: I think what everyone wants to know most, anything at all potentially security sensitive?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733220' id='410254'>
+<a class='timestamp' href='#410254'><time timestamp='2020-10-26T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(&quot;yes&quot; or &quot;no&quot; is fine, I understand if you don&#x27;t want to give details)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733220' id='410255'>
+<a class='timestamp' href='#410255'><time timestamp='2020-10-26T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+wumpus: Not that I have been able to tell.  I still need to sort through the context of everything.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733220' id='410256'>
+<a class='timestamp' href='#410256'><time timestamp='2020-10-26T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+okay :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733220' id='410257'>
+<a class='timestamp' href='#410257'><time timestamp='2020-10-26T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+There is a miscompiled crypto library in dolphin-emu.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733280' id='410258'>
+<a class='timestamp' href='#410258'><time timestamp='2020-10-26T17:28:00Z'>17:28</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+So maybe don&#x27;t do you encryption on a gaming emulator.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733280' id='410259'>
+<a class='timestamp' href='#410259'><time timestamp='2020-10-26T17:28:00Z'>17:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733280' id='410260'>
+<a class='timestamp' href='#410260'><time timestamp='2020-10-26T17:28:00Z'>17:28</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+mariadb-galera has some miscompilation in it gcache code. ... not sure how serious that is.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733400' id='410261'>
+<a class='timestamp' href='#410261'><time timestamp='2020-10-26T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+oh an there is miscompilation in wireshark&#x27;s packet-adwin-config.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733460' id='410262'>
+<a class='timestamp' href='#410262'><time timestamp='2020-10-26T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+I&#x27;m not familiar with what ADwin is.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733520' id='410263'>
+<a class='timestamp' href='#410263'><time timestamp='2020-10-26T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Wireshark has a history of vulnerabilities, so hopefully everyone is careful already :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733580' id='410264'>
+<a class='timestamp' href='#410264'><time timestamp='2020-10-26T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks for looking into it, very interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733580' id='410265'>
+<a class='timestamp' href='#410265'><time timestamp='2020-10-26T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+roconnor: uhm, stable releases of gcc sometime miss-compile well-formed C++ programs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733640' id='410266'>
+<a class='timestamp' href='#410266'><time timestamp='2020-10-26T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+queip: welcome to last month? XD
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733640' id='410267'>
+<a class='timestamp' href='#410267'><time timestamp='2020-10-26T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+<a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95189" class="link" target="_blank">https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95189</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733640' id='410268'>
+<a class='timestamp' href='#410268'><time timestamp='2020-10-26T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+that&#x27;s quite shocking, thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603733700' id='410269'>
+<a class='timestamp' href='#410269'><time timestamp='2020-10-26T17:35:00Z'>17:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+compiler bugs happen quite often, though usually in more obscure circumstances, the surprise here was that it&#x27;s so low-level, memcmp is used pretty much everywhere
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735320' id='410270'>
+<a class='timestamp' href='#410270'><time timestamp='2020-10-26T18:02:00Z'>18:02</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+wumpus, the debug log was just printing the progress report, it had made it to 50%
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735440' id='410271'>
+<a class='timestamp' href='#410271'><time timestamp='2020-10-26T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I recently moved my block data several times, finally ending on a SSD and I wanted to do a sanity check that everything is happy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735440' id='410272'>
+<a class='timestamp' href='#410272'><time timestamp='2020-10-26T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Which is why I did a verifychain over all blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735500' id='410273'>
+<a class='timestamp' href='#410273'><time timestamp='2020-10-26T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ossifrage: you&#x27;re better off doing a reindex-chainstate in that case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735560' id='410274'>
+<a class='timestamp' href='#410274'><time timestamp='2020-10-26T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+checklevel=4 means rolling back to the point you specify, and then reconstructing everything after
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735560' id='410275'>
+<a class='timestamp' href='#410275'><time timestamp='2020-10-26T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you&#x27;re going to do that all the way back to genesis, just starting from scratch and only doing the forward part is going to be faster
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735560' id='410276'>
+<a class='timestamp' href='#410276'><time timestamp='2020-10-26T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+by 50% you mean it did 50% of the blocks?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735620' id='410277'>
+<a class='timestamp' href='#410277'><time timestamp='2020-10-26T18:07:00Z'>18:07</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+50% is just what the command reported in the log, no clue what that translates to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735680' id='410278'>
+<a class='timestamp' href='#410278'><time timestamp='2020-10-26T18:08:00Z'>18:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, 50% means it just made it all the way back to genesis in the rewind phase
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735680' id='410279'>
+<a class='timestamp' href='#410279'><time timestamp='2020-10-26T18:08:00Z'>18:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that makes sense... it probably hit an edge case trying to rewind the genesis block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735740' id='410280'>
+<a class='timestamp' href='#410280'><time timestamp='2020-10-26T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell thought the assert might have happened on the genesis block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735740' id='410281'>
+<a class='timestamp' href='#410281'><time timestamp='2020-10-26T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, exactly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735800' id='410282'>
+<a class='timestamp' href='#410282'><time timestamp='2020-10-26T18:10:00Z'>18:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+queip: also unresolved: <a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90348" class="link" target="_blank">https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90348</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603735860' id='410283'>
+<a class='timestamp' href='#410283'><time timestamp='2020-10-26T18:11:00Z'>18:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+miscompilation in all GCC releases since 7.something
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603742760' id='410284'>
+<a class='timestamp' href='#410284'><time timestamp='2020-10-26T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jonatack (IIRC) is right, the explicit fee modes are a mess :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603752960' id='410285'>
+<a class='timestamp' href='#410285'><time timestamp='2020-10-26T22:56:00Z'>22:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: thoughts on &lt;major&gt;.&lt;softforks&gt;.&lt;bugfixes&gt;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603755120' id='410286'>
+<a class='timestamp' href='#410286'><time timestamp='2020-10-26T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr opened pull request #20250: Bugfix: RPC/Wallet: Make BTC/kB and sat/B fee modes work sanely (master...rpcwallet_explicit_fixups) <a href="https://github.com/bitcoin/bitcoin/pull/20250" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20250</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603755180' id='410287'>
+<a class='timestamp' href='#410287'><time timestamp='2020-10-26T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jonatack: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603755780' id='410288'>
+<a class='timestamp' href='#410288'><time timestamp='2020-10-26T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: not sure i like using consensus rules in the versioning scheme
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603755840' id='410289'>
+<a class='timestamp' href='#410289'><time timestamp='2020-10-26T23:44:00Z'>23:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that may make sense for libconsensus if that ever has separate versioned releases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603756020' id='410290'>
+<a class='timestamp' href='#410290'><time timestamp='2020-10-26T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr opened pull request #20251: Move major version to first version integer as specified by SemVer (master...semver2) <a href="https://github.com/bitcoin/bitcoin/pull/20251" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20251</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603756080' id='410291'>
+<a class='timestamp' href='#410291'><time timestamp='2020-10-26T23:48:00Z'>23:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: the code has consensus rules, though. This way, it&#x27;s not only less confusing, but extra-clear to users what they&#x27;re getting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603756200' id='410292'>
+<a class='timestamp' href='#410292'><time timestamp='2020-10-26T23:50:00Z'>23:50</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+to be clear, it isn&#x27;t the consensus rules we&#x27;d be versioning, but Core&#x27;s compatibility with them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1603756200' id='410293'>
+<a class='timestamp' href='#410293'><time timestamp='2020-10-26T23:50:00Z'>23:50</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+actual consensus rules versioning would look something very different: <a href="https://en.bitcoin.it/wiki/Consensus_versions" class="link" target="_blank">https://en.bitcoin.it/wiki/Consensus_versions</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-08-01
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-08-01' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-07-01">&lt;</a><span class='header'>   August 2018    </span><a href="/bitcoin-core-dev/2018-09-01">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="current" href="/bitcoin-core-dev/2018-08-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-08-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-08-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-08-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-08-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-08-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-08-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-08-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-08-09">9</a> <a class="" href="/bitcoin-core-dev/2018-08-10">10</a> <a class="" href="/bitcoin-core-dev/2018-08-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-12">12</a> <a class="" href="/bitcoin-core-dev/2018-08-13">13</a> <a class="" href="/bitcoin-core-dev/2018-08-14">14</a> <a class="" href="/bitcoin-core-dev/2018-08-15">15</a> <a class="" href="/bitcoin-core-dev/2018-08-16">16</a> <a class="" href="/bitcoin-core-dev/2018-08-17">17</a> <a class="" href="/bitcoin-core-dev/2018-08-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-19">19</a> <a class="" href="/bitcoin-core-dev/2018-08-20">20</a> <a class="" href="/bitcoin-core-dev/2018-08-21">21</a> <a class="" href="/bitcoin-core-dev/2018-08-22">22</a> <a class="" href="/bitcoin-core-dev/2018-08-23">23</a> <a class="" href="/bitcoin-core-dev/2018-08-24">24</a> <a class="" href="/bitcoin-core-dev/2018-08-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-26">26</a> <a class="" href="/bitcoin-core-dev/2018-08-27">27</a> <a class="" href="/bitcoin-core-dev/2018-08-28">28</a> <a class="" href="/bitcoin-core-dev/2018-08-29">29</a> <a class="" href="/bitcoin-core-dev/2018-08-30">30</a> <a class="" href="/bitcoin-core-dev/2018-08-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1533082080' id='623018'>
+<a class='timestamp' href='#623018'><time timestamp='2018-08-01T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: the fd_set 1024 limit stuff shouldn&#x27;t cause that kind of problem, ldb shouldnt use almost any fds on 64 bit and should use a low-ish count on 32 bit, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082080' id='623019'>
+<a class='timestamp' href='#623019'><time timestamp='2018-08-01T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I thought that&#x27;s where we landed (as mmap doesnt need to use an fd)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082080' id='623020'>
+<a class='timestamp' href='#623020'><time timestamp='2018-08-01T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ossifrage: are you on a 32-bit system?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082080' id='623021'>
+<a class='timestamp' href='#623021'><time timestamp='2018-08-01T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+fwiw I think I have a branch with a rdwr lock implemented somewhere, though I never ended up using it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082260' id='623022'>
+<a class='timestamp' href='#623022'><time timestamp='2018-08-01T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+can you implement a shared lock without support from underlying primitives?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082260' id='623023'>
+<a class='timestamp' href='#623023'><time timestamp='2018-08-01T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+seems yes, after short googling
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082260' id='623024'>
+<a class='timestamp' href='#623024'><time timestamp='2018-08-01T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: sure? with atomics and condvars, ofc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082380' id='623025'>
+<a class='timestamp' href='#623025'><time timestamp='2018-08-01T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082380' id='623026'>
+<a class='timestamp' href='#623026'><time timestamp='2018-08-01T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+with just locks and condition variables you can implement any synchronization primitive, i believe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082380' id='623027'>
+<a class='timestamp' href='#623027'><time timestamp='2018-08-01T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-4'> * sipa</span>&gt;
+forgot
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082440' id='623028'>
+<a class='timestamp' href='#623028'><time timestamp='2018-08-01T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well, or s/atomics//
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533082620' id='623029'>
+<a class='timestamp' href='#623029'><time timestamp='2018-08-01T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+my old commit, no idea if its right but... <a href="https://github.com/TheBlueMatt/bitcoin/commit/8c5dc5e0ae19120fc79a6e4f7a56d60bbbacf348" class="link" target="_blank">https://github.com/TheBlueMatt/bitcoin/commit/8c5dc5e0ae19120fc79a6e4f7a56d60bbbacf348</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084060' id='623030'>
+<a class='timestamp' href='#623030'><time timestamp='2018-08-01T00:41:00Z'>00:41</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+sipa, no x86_64
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084060' id='623031'>
+<a class='timestamp' href='#623031'><time timestamp='2018-08-01T00:41:00Z'>00:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ossifrage: what OS?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084120' id='623032'>
+<a class='timestamp' href='#623032'><time timestamp='2018-08-01T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+linux 4.16.5-300
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084180' id='623033'>
+<a class='timestamp' href='#623033'><time timestamp='2018-08-01T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: why did you say above that ldb was using lots of FDs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084180' id='623034'>
+<a class='timestamp' href='#623034'><time timestamp='2018-08-01T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+That was from the output of lsof and some counting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084240' id='623035'>
+<a class='timestamp' href='#623035'><time timestamp='2018-08-01T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+that seems...surprising, given its supposed to do mmap and then close the fd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084240' id='623036'>
+<a class='timestamp' href='#623036'><time timestamp='2018-08-01T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i have a number of chainstate files open by bitcoind as well - most are mmaped, but not all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084240' id='623037'>
+<a class='timestamp' href='#623037'><time timestamp='2018-08-01T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+so it may still show up in lsof but not use an fd?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084240' id='623038'>
+<a class='timestamp' href='#623038'><time timestamp='2018-08-01T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I was counting file descriptors not maps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084300' id='623039'>
+<a class='timestamp' href='#623039'><time timestamp='2018-08-01T00:45:00Z'>00:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i have 30 chainstate files open with an FD, and 999 with mmap
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084300' id='623040'>
+<a class='timestamp' href='#623040'><time timestamp='2018-08-01T00:45:00Z'>00:45</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+The node has been up for &gt;30 days if that makes any difference
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084300' id='623041'>
+<a class='timestamp' href='#623041'><time timestamp='2018-08-01T00:45:00Z'>00:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+come on, why can&#x27;t we just take the not-many-line-change to use poll?  I know libevent future ra ra ra... but we have held off this simple fix for years. :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623042'>
+<a class='timestamp' href='#623042'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: we totally should
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623043'>
+<a class='timestamp' href='#623043'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I&#x27;m willing to test :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623044'>
+<a class='timestamp' href='#623044'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+its super trivial to write
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623045'>
+<a class='timestamp' href='#623045'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+would take me longer to dig it up than someone rewrite it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623046'>
+<a class='timestamp' href='#623046'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I could dig up an old copy, but I know that phantomcircuit and BlueMatt run nodes with it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623047'>
+<a class='timestamp' href='#623047'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i&#x27;ve also basically never encountered anyone actually seeing the &quot;FD above 1024&quot; error resulting in actually closed connections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084360' id='623048'>
+<a class='timestamp' href='#623048'><time timestamp='2018-08-01T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so i wonder what is special about ossifrage&#x27;s setup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084420' id='623049'>
+<a class='timestamp' href='#623049'><time timestamp='2018-08-01T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or maybe just nobody ever paid attention to it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084420' id='623050'>
+<a class='timestamp' href='#623050'><time timestamp='2018-08-01T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+more fragmentation of databases?  You do see a bunch of files open.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084420' id='623051'>
+<a class='timestamp' href='#623051'><time timestamp='2018-08-01T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It also can be caused by RPC connections using up FDs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084420' id='623052'>
+<a class='timestamp' href='#623052'><time timestamp='2018-08-01T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I dont bother running mine with it anymore, and regularly have 500+ connections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084420' id='623053'>
+<a class='timestamp' href='#623053'><time timestamp='2018-08-01T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+at least that&#x27;s usually when one asshat makes 100 connections, but usually that asshat is me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084420' id='623054'>
+<a class='timestamp' href='#623054'><time timestamp='2018-08-01T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+having hundreds of files would certainly explain fd&lt;1024 shortage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084480' id='623055'>
+<a class='timestamp' href='#623055'><time timestamp='2018-08-01T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+and I have a ton of scripts that poll rpc regularly, but not constant, sooo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084480' id='623056'>
+<a class='timestamp' href='#623056'><time timestamp='2018-08-01T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I have txindex and sadly my bitcoin data is on a btrfs filesystem (a mistake I won&#x27;t make again)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084480' id='623057'>
+<a class='timestamp' href='#623057'><time timestamp='2018-08-01T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+both of those are also true on my seednodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084480' id='623058'>
+<a class='timestamp' href='#623058'><time timestamp='2018-08-01T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think we have had other complaints about fd shortage... but I think we were chalking them up to rpc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084480' id='623059'>
+<a class='timestamp' href='#623059'><time timestamp='2018-08-01T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I <b>*know*</b> there are issues with rpc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084480' id='623060'>
+<a class='timestamp' href='#623060'><time timestamp='2018-08-01T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+The only reason I noticed a problem was I was dropping a ton of connection due to select()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084540' id='623061'>
+<a class='timestamp' href='#623061'><time timestamp='2018-08-01T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: and the problem remained after restarting the node?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084540' id='623062'>
+<a class='timestamp' href='#623062'><time timestamp='2018-08-01T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, I haven&#x27;t restarted the node
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084540' id='623063'>
+<a class='timestamp' href='#623063'><time timestamp='2018-08-01T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I wonder if this is a high uptime + txindex + only guy in that config who is watching the logs  problem?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084600' id='623064'>
+<a class='timestamp' href='#623064'><time timestamp='2018-08-01T00:50:00Z'>00:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it would be nice to better understand why leveldb is leaving the files open... but ... switching to poll eliminates all these problems.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084600' id='623065'>
+<a class='timestamp' href='#623065'><time timestamp='2018-08-01T00:50:00Z'>00:50</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+both txindex and chainstate are gobbling up file descriptors (let me count the maps)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084660' id='623066'>
+<a class='timestamp' href='#623066'><time timestamp='2018-08-01T00:51:00Z'>00:51</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+ossifrage: are you sure its using an fd, or just mmap, cause mmap <b>*shouldnt*</b> at least for ldb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084660' id='623067'>
+<a class='timestamp' href='#623067'><time timestamp='2018-08-01T00:51:00Z'>00:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: i confirm that lsof shows both fd-ful opened files and mmapped ones 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623068'>
+<a class='timestamp' href='#623068'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+that...sucks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623069'>
+<a class='timestamp' href='#623069'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+685 maps of chainstate/*.ldb and 268 maps of txindex (odd)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623070'>
+<a class='timestamp' href='#623070'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+example of an fd one:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623071'>
+<a class='timestamp' href='#623071'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bitcoind 11155   pw  mem       REG              252,1    2173885 783231 /home/pw/.bitcoin/chainstate/864555.ldb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623072'>
+<a class='timestamp' href='#623072'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and another:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623073'>
+<a class='timestamp' href='#623073'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bitcoind 11155   pw   40r      REG              252,1    2173957 779300 /home/pw/.bitcoin/chainstate/864998.ldb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623074'>
+<a class='timestamp' href='#623074'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(sorry, swapped them; the first is mmap&#x27;ed, the other is with fd)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623075'>
+<a class='timestamp' href='#623075'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+the 40r is a fd map and the mem line is a mmapped one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084720' id='623076'>
+<a class='timestamp' href='#623076'><time timestamp='2018-08-01T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+(fd open not fd map)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623077'>
+<a class='timestamp' href='#623077'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+hmm, I wonder if ldb has tunables for that shit?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623078'>
+<a class='timestamp' href='#623078'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though i only have 30 open files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623079'>
+<a class='timestamp' href='#623079'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+with fd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623080'>
+<a class='timestamp' href='#623080'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+There is a tunable to use 1024 fds, but is that per database?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623081'>
+<a class='timestamp' href='#623081'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/0fb9c87815d1...e83d82a85c53" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/0fb9c87815d1...e83d82a85c53</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623082'>
+<a class='timestamp' href='#623082'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9994d01 Jesse Cohen: Add Unit Test for SingleThreadedSchedulerClient...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623083'>
+<a class='timestamp' href='#623083'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b296b42 Jesse Cohen: Update documentation for SingleThreadedSchedulerClient() to specify the memory model
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623084'>
+<a class='timestamp' href='#623084'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cbeaa91 Jesse Cohen: Update ValidationInterface() documentation to explicitly specify threading and memory model
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623085'>
+<a class='timestamp' href='#623085'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ossifrage: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084780' id='623086'>
+<a class='timestamp' href='#623086'><time timestamp='2018-08-01T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+MarcoFalke: wat
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084840' id='623087'>
+<a class='timestamp' href='#623087'><time timestamp='2018-08-01T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #13247: Add tests to SingleThreadedSchedulerClient() and document the memory model (master...scheduler-tests) <a href="https://github.com/bitcoin/bitcoin/pull/13247" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13247</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084840' id='623088'>
+<a class='timestamp' href='#623088'><time timestamp='2018-08-01T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh, it did get rewritten to be r-a, nvm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084900' id='623089'>
+<a class='timestamp' href='#623089'><time timestamp='2018-08-01T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+no, it wasnt
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084900' id='623090'>
+<a class='timestamp' href='#623090'><time timestamp='2018-08-01T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/compare/0fb9c87815d1...e83d82a85c53#diff-ff632a82ae2fed5941a9dae2c725ad9bR113" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/0fb9c87815d1...e83d82a85c53#diff-ff632a82ae2fed5941a9dae2c725ad9bR113</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084900' id='623091'>
+<a class='timestamp' href='#623091'><time timestamp='2018-08-01T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+MarcoFalke: plz2fix comment broken ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084900' id='623092'>
+<a class='timestamp' href='#623092'><time timestamp='2018-08-01T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: also even if the issue didn&#x27;t exist on x86_64 (though it seems it does), we&#x27;d still have it on 32 bit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084900' id='623093'>
+<a class='timestamp' href='#623093'><time timestamp='2018-08-01T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how do i find the uptime of by bitcoind?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084960' id='623094'>
+<a class='timestamp' href='#623094'><time timestamp='2018-08-01T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+there is a starttime in node info or something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084960' id='623095'>
+<a class='timestamp' href='#623095'><time timestamp='2018-08-01T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+uptime?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084960' id='623096'>
+<a class='timestamp' href='#623096'><time timestamp='2018-08-01T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Oh, in my case it was bitcoin-qt not bitcoind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084960' id='623097'>
+<a class='timestamp' href='#623097'><time timestamp='2018-08-01T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+rpc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084960' id='623098'>
+<a class='timestamp' href='#623098'><time timestamp='2018-08-01T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, i tried getnodeinfo and getuptime
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533084960' id='623099'>
+<a class='timestamp' href='#623099'><time timestamp='2018-08-01T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+seems it&#x27;s just &#x27;uptime&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085020' id='623100'>
+<a class='timestamp' href='#623100'><time timestamp='2018-08-01T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+10 days, apparently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085020' id='623101'>
+<a class='timestamp' href='#623101'><time timestamp='2018-08-01T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+32 days, currently with ~160 connections (which seems to be the most I can get, and I think it has been shrinking as more fds are used)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085080' id='623102'>
+<a class='timestamp' href='#623102'><time timestamp='2018-08-01T00:58:00Z'>00:58</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I was going to build a new version, is it useful to reduce the max fd open count for leveldb?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085140' id='623103'>
+<a class='timestamp' href='#623103'><time timestamp='2018-08-01T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it may impact performance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085140' id='623104'>
+<a class='timestamp' href='#623104'><time timestamp='2018-08-01T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: on 32-bit systems we limit the max open files to 64
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085260' id='623105'>
+<a class='timestamp' href='#623105'><time timestamp='2018-08-01T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I&#x27;ve mmapped &gt;10k pgm files on this box at one point, not sure why leveldb wouldn&#x27;t just mmap all of the ldb files?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085380' id='623106'>
+<a class='timestamp' href='#623106'><time timestamp='2018-08-01T01:03:00Z'>01:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: oh you&#x27;ve increased your max connections over default.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085380' id='623107'>
+<a class='timestamp' href='#623107'><time timestamp='2018-08-01T01:03:00Z'>01:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so that might be one reason you&#x27;re seeing this and we are not getting other reports.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085560' id='623108'>
+<a class='timestamp' href='#623108'><time timestamp='2018-08-01T01:06:00Z'>01:06</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, yeah I have a gbit connection, figured I might as well get the most out of the blood money I pay verizon
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085620' id='623109'>
+<a class='timestamp' href='#623109'><time timestamp='2018-08-01T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+But if leveldb where to use 1024 fds, there would be nothing left for sockets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085620' id='623110'>
+<a class='timestamp' href='#623110'><time timestamp='2018-08-01T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+interesting to me that you&#x27;re actually ending up with that many peers.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085620' id='623111'>
+<a class='timestamp' href='#623111'><time timestamp='2018-08-01T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, it takes a while, but the connection count slowly increases over time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085680' id='623112'>
+<a class='timestamp' href='#623112'><time timestamp='2018-08-01T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Before I had a UPS on my ONT, I&#x27;d change IPs ever power failure and then it would take a long time before the connection count would go back up (with the new address)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085740' id='623113'>
+<a class='timestamp' href='#623113'><time timestamp='2018-08-01T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i have 148 connections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085740' id='623114'>
+<a class='timestamp' href='#623114'><time timestamp='2018-08-01T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+cool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085740' id='623115'>
+<a class='timestamp' href='#623115'><time timestamp='2018-08-01T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+some months back, on my long running nodes I was unable to break 125. must be more inbound right now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085740' id='623116'>
+<a class='timestamp' href='#623116'><time timestamp='2018-08-01T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+The txindex has been useful a few (rare) times, but just turning that off would delay the problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085740' id='623117'>
+<a class='timestamp' href='#623117'><time timestamp='2018-08-01T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(well, or spies, mine blocked spies really agressively)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623118'>
+<a class='timestamp' href='#623118'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+that is ~160 connections (with your block list)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623119'>
+<a class='timestamp' href='#623119'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, though I haven&#x27;t updated the blocklist for a while
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623120'>
+<a class='timestamp' href='#623120'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ossifrage: txindex on or off wouldn&#x27;t affect the behaviour w.r.t the chainstate ldb files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623121'>
+<a class='timestamp' href='#623121'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(right now I hav no nodes with public inbound)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623122'>
+<a class='timestamp' href='#623122'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: yes but he is also losing a bunch of fds to txindex.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623123'>
+<a class='timestamp' href='#623123'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and your number for those is on itself pretty high
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085800' id='623124'>
+<a class='timestamp' href='#623124'><time timestamp='2018-08-01T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+sipa, yeah but it was the chainstate + txindex that pushed the fd count &gt;1024
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085860' id='623125'>
+<a class='timestamp' href='#623125'><time timestamp='2018-08-01T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Poll is also good because its faster.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085860' id='623126'>
+<a class='timestamp' href='#623126'><time timestamp='2018-08-01T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I&#x27;d happily test a patch :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085920' id='623127'>
+<a class='timestamp' href='#623127'><time timestamp='2018-08-01T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+do we require Vista or later?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085920' id='623128'>
+<a class='timestamp' href='#623128'><time timestamp='2018-08-01T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because windows introduced a poll equivalent in Vista
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085920' id='623129'>
+<a class='timestamp' href='#623129'><time timestamp='2018-08-01T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+yes, xp support was removed a few versions ago
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085920' id='623130'>
+<a class='timestamp' href='#623130'><time timestamp='2018-08-01T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think we don&#x27;t formally support older versions but they still work.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085920' id='623131'>
+<a class='timestamp' href='#623131'><time timestamp='2018-08-01T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085980' id='623132'>
+<a class='timestamp' href='#623132'><time timestamp='2018-08-01T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+xp certainly doesn&#x27;t work anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085980' id='623133'>
+<a class='timestamp' href='#623133'><time timestamp='2018-08-01T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Also at least in theory we might work on some other platform that doesn&#x27;t have poll.  We could try switching to only poll and see if someone complains.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533085980' id='623134'>
+<a class='timestamp' href='#623134'><time timestamp='2018-08-01T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+&quot;Microsoft ended support for Windows XP on April 8th, 2014, No attempt is made to prevent installing or running the software on Windows XP, you can still do so at your own risk but be aware that there are known instabilities and issues. Please do not report issues about Windows XP to the issue tracker.&quot; &lt;-- from 0.14 release notes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086040' id='623135'>
+<a class='timestamp' href='#623135'><time timestamp='2018-08-01T01:14:00Z'>01:14</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I use XP to do my taxes, amazingly the tax software works on it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086160' id='623136'>
+<a class='timestamp' href='#623136'><time timestamp='2018-08-01T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+hm, I thought poll was faster than select, <a href="https://monkey.org/~provos/libevent/libevent-benchmark.jpg" class="link" target="_blank">https://monkey.org/~provos/libevent/libevent-benchmark.jpg</a>  then again, maybe I don&#x27;t understand that graph, because how did they manage 25000 FDs with select?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086220' id='623137'>
+<a class='timestamp' href='#623137'><time timestamp='2018-08-01T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: in windows select doesn&#x27;t have the 1024 fd limit thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086220' id='623138'>
+<a class='timestamp' href='#623138'><time timestamp='2018-08-01T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it&#x27;s implemented as a linked list or something.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086340' id='623139'>
+<a class='timestamp' href='#623139'><time timestamp='2018-08-01T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+array of fd numbers IIRC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086340' id='623140'>
+<a class='timestamp' href='#623140'><time timestamp='2018-08-01T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and it does have a limit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086340' id='623141'>
+<a class='timestamp' href='#623141'><time timestamp='2018-08-01T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+just not for the fd numbers themselves
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086340' id='623142'>
+<a class='timestamp' href='#623142'><time timestamp='2018-08-01T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+defaults to 64
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086460' id='623143'>
+<a class='timestamp' href='#623143'><time timestamp='2018-08-01T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I thought on linux you could call select() with larger fdsets and it would work, but the libc fd_set is a fixed size?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086460' id='623144'>
+<a class='timestamp' href='#623144'><time timestamp='2018-08-01T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+But it is not exactly efficient, especially with sparce sets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086460' id='623145'>
+<a class='timestamp' href='#623145'><time timestamp='2018-08-01T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+you&#x27;re supposed to be able to #define FD_SETSIZE before including stuff, to get more, but last I checked that was broken in glibc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086520' id='623146'>
+<a class='timestamp' href='#623146'><time timestamp='2018-08-01T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I&#x27;ve used epoll() for so long, using select() just makes me sad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086700' id='623147'>
+<a class='timestamp' href='#623147'><time timestamp='2018-08-01T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: indeed, but unfortunately BSDs and linux solved &quot;life beyond poll&quot; differently.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086700' id='623148'>
+<a class='timestamp' href='#623148'><time timestamp='2018-08-01T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, yeah that was never a concern for the stuff I was writing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086760' id='623149'>
+<a class='timestamp' href='#623149'><time timestamp='2018-08-01T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Sure it&#x27;s portable, you can port it to any linux you like
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086760' id='623150'>
+<a class='timestamp' href='#623150'><time timestamp='2018-08-01T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+we manage few enough connections that poll is fine anyways.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086880' id='623151'>
+<a class='timestamp' href='#623151'><time timestamp='2018-08-01T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, think you&#x27;re looking at that graph wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086880' id='623152'>
+<a class='timestamp' href='#623152'><time timestamp='2018-08-01T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+smaller is better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533086880' id='623153'>
+<a class='timestamp' href='#623153'><time timestamp='2018-08-01T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+or did you mean that poll() is the same as select() ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087000' id='623154'>
+<a class='timestamp' href='#623154'><time timestamp='2018-08-01T01:30:00Z'>01:30</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+select and poll do basically the same thing just with a much better api for poll
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087000' id='623155'>
+<a class='timestamp' href='#623155'><time timestamp='2018-08-01T01:30:00Z'>01:30</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+both pass the entire list to the kernel in every call
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087180' id='623156'>
+<a class='timestamp' href='#623156'><time timestamp='2018-08-01T01:33:00Z'>01:33</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+epoll() was a big win for high connection count, low traffic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087420' id='623157'>
+<a class='timestamp' href='#623157'><time timestamp='2018-08-01T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-3'> Dave18</span>&gt;
+With our IRC ad service you can reach a global audience of entrepreneurs and fentanyl addicts with extraordinary engagement rates! <a href="https://williampitcock.com/" class="link" target="_blank">https://williampitcock.com/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087420' id='623158'>
+<a class='timestamp' href='#623158'><time timestamp='2018-08-01T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-3'> Dave18</span>&gt;
+I thought you guys might be interested in this blog by freenode staff member Bryan &#x27;kloeri&#x27; Ostergaard <a href="https://bryanostergaard.com/" class="link" target="_blank">https://bryanostergaard.com/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087420' id='623159'>
+<a class='timestamp' href='#623159'><time timestamp='2018-08-01T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-3'> Dave18</span>&gt;
+Read what IRC investigative journalists have uncovered on the freenode pedophilia scandal <a href="https://encyclopediadramatica.rs/Freenodegate" class="link" target="_blank">https://encyclopediadramatica.rs/Freenodegate</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087420' id='623160'>
+<a class='timestamp' href='#623160'><time timestamp='2018-08-01T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-3'> Dave18</span>&gt;
+A fascinating blog by freenode staff member Matthew &#x27;mst&#x27; Trout <a href="https://MattSTrout.com/" class="link" target="_blank">https://MattSTrout.com/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087540' id='623161'>
+<a class='timestamp' href='#623161'><time timestamp='2018-08-01T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+spam again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087720' id='623162'>
+<a class='timestamp' href='#623162'><time timestamp='2018-08-01T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, epoll and kqueue are virtually identical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533087720' id='623163'>
+<a class='timestamp' href='#623163'><time timestamp='2018-08-01T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+it&#x27;s really silly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533088680' id='623164'>
+<a class='timestamp' href='#623164'><time timestamp='2018-08-01T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+I think there&#x27;s something even more different in NetBSD too..  kevent()?  kfilter_register()? I forget now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533088680' id='623165'>
+<a class='timestamp' href='#623165'><time timestamp='2018-08-01T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: yes, I was saying I thought poll was somewhat faster, but apparently not.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533088680' id='623166'>
+<a class='timestamp' href='#623166'><time timestamp='2018-08-01T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: go PR that poll patch.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533088740' id='623167'>
+<a class='timestamp' href='#623167'><time timestamp='2018-08-01T01:59:00Z'>01:59</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+There are faster things than poll if you use whatever they provide natively.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533088800' id='623168'>
+<a class='timestamp' href='#623168'><time timestamp='2018-08-01T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yes, but faster is not generally our issue, max connections = 100,  or at most a few hundred.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533088920' id='623169'>
+<a class='timestamp' href='#623169'><time timestamp='2018-08-01T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+(also no limitations a la select()&#x27;s irritating problems) -- and with a usage of the native event&#x27;ing things get very scaleable. But..  not like anyone but somoene like me is going to run a larger-scale system with NetBSD anyway.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089040' id='623170'>
+<a class='timestamp' href='#623170'><time timestamp='2018-08-01T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+midnightmagic, the issue is that epoll and kqeueue and whatever windows uses are all platform specific
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089040' id='623171'>
+<a class='timestamp' href='#623171'><time timestamp='2018-08-01T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+there&#x27;s some work being done to move to libevent but that&#x27;s not done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089040' id='623172'>
+<a class='timestamp' href='#623172'><time timestamp='2018-08-01T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+the poll() thing is pretty trivial iirc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089040' id='623173'>
+<a class='timestamp' href='#623173'><time timestamp='2018-08-01T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+80% solution for 10% the effort
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089100' id='623174'>
+<a class='timestamp' href='#623174'><time timestamp='2018-08-01T02:05:00Z'>02:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: open the PR!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089100' id='623175'>
+<a class='timestamp' href='#623175'><time timestamp='2018-08-01T02:05:00Z'>02:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I know you have had a patch.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089160' id='623176'>
+<a class='timestamp' href='#623176'><time timestamp='2018-08-01T02:06:00Z'>02:06</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+it&#x27;s like 3 years old now but should be trivial to rewrite
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089280' id='623177'>
+<a class='timestamp' href='#623177'><time timestamp='2018-08-01T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+using things like kevent natively isn&#x27;t hard, it just needs to be clean and people on those platforms will look after it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089340' id='623178'>
+<a class='timestamp' href='#623178'><time timestamp='2018-08-01T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+true but not obviously of any real value.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089580' id='623179'>
+<a class='timestamp' href='#623179'><time timestamp='2018-08-01T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+midnightmagic, under thousands of fds it doesn&#x27;t much matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089700' id='623180'>
+<a class='timestamp' href='#623180'><time timestamp='2018-08-01T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: PR PR PR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533089820' id='623181'>
+<a class='timestamp' href='#623181'><time timestamp='2018-08-01T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, yeah yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533090060' id='623182'>
+<a class='timestamp' href='#623182'><time timestamp='2018-08-01T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, i remember
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533090060' id='623183'>
+<a class='timestamp' href='#623183'><time timestamp='2018-08-01T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+windows is WSAPoll not poll
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533090060' id='623184'>
+<a class='timestamp' href='#623184'><time timestamp='2018-08-01T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+and all the types are insane
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533090060' id='623185'>
+<a class='timestamp' href='#623185'><time timestamp='2018-08-01T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+like it&#x27;s virtually identical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533090060' id='623186'>
+<a class='timestamp' href='#623186'><time timestamp='2018-08-01T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533090600' id='623187'>
+<a class='timestamp' href='#623187'><time timestamp='2018-08-01T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but i guess that codes already full of hacks for that anyways
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093120' id='623188'>
+<a class='timestamp' href='#623188'><time timestamp='2018-08-01T03:12:00Z'>03:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: windows can keep using select, it doesn&#x27;t hae the same limit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093300' id='623189'>
+<a class='timestamp' href='#623189'><time timestamp='2018-08-01T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, but its fdset implementation is a linked list with horrendous performance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093300' id='623190'>
+<a class='timestamp' href='#623190'><time timestamp='2018-08-01T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so?  I mean, we only need it to support max-connections. and it already does. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093360' id='623191'>
+<a class='timestamp' href='#623191'><time timestamp='2018-08-01T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+or is it so bad that its noticably slow even for 125 connections?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093360' id='623192'>
+<a class='timestamp' href='#623192'><time timestamp='2018-08-01T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+probably not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093660' id='623193'>
+<a class='timestamp' href='#623193'><time timestamp='2018-08-01T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+last time I checked, the only better alternative Windows had required significantly re-architecturing most programs to use it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533093660' id='623194'>
+<a class='timestamp' href='#623194'><time timestamp='2018-08-01T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+something along the lines of async IO, rather than write-ready notification/checking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533107220' id='623195'>
+<a class='timestamp' href='#623195'><time timestamp='2018-08-01T07:07:00Z'>07:07</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+My computer shat itself, but I found the leveldb mmap limit and bumped it from 1000 to 4096, hopefully that will address my problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533108660' id='623196'>
+<a class='timestamp' href='#623196'><time timestamp='2018-08-01T07:31:00Z'>07:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+luke-jr: yes let&#x27;s definitely not do that, last thing we want to maintain is complex specificially for windows rearchitected network code in the repository
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533111960' id='623197'>
+<a class='timestamp' href='#623197'><time timestamp='2018-08-01T08:26:00Z'>08:26</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Are there cases where the rev file for a previous blkXXX file are modified? Is this something that happens often? I assume it only happens at reorgs, in which case it should be very seldom except at transition to XXX+1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533111960' id='623198'>
+<a class='timestamp' href='#623198'><time timestamp='2018-08-01T08:26:00Z'>08:26</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+s/are modified/is modified/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113640' id='623199'>
+<a class='timestamp' href='#623199'><time timestamp='2018-08-01T08:54:00Z'>08:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+kallewoof: no, that never happens
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113700' id='623200'>
+<a class='timestamp' href='#623200'><time timestamp='2018-08-01T08:55:00Z'>08:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+kallewoof: only the last blkXXXXX file is written too, other files are only potentially deleted (pruning)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113700' id='623201'>
+<a class='timestamp' href='#623201'><time timestamp='2018-08-01T08:55:00Z'>08:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in case of a reorg old blocks will not actually be overwritten
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113700' id='623202'>
+<a class='timestamp' href='#623202'><time timestamp='2018-08-01T08:55:00Z'>08:55</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+wumpus: really? what if a 2-block reorg happens right after a new blk file was created containing a single block?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113700' id='623203'>
+<a class='timestamp' href='#623203'><time timestamp='2018-08-01T08:55:00Z'>08:55</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+the rev file was for reorgs, i thought
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113760' id='623204'>
+<a class='timestamp' href='#623204'><time timestamp='2018-08-01T08:56:00Z'>08:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+same for rev files, as far as I know, the data for rev-ing the old blocks will stay there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533113760' id='623205'>
+<a class='timestamp' href='#623205'><time timestamp='2018-08-01T08:56:00Z'>08:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it just won&#x27;t  be referenced by the active chain anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533114000' id='623206'>
+<a class='timestamp' href='#623206'><time timestamp='2018-08-01T09:00:00Z'>09:00</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+wumpus: Huh, okay. Well, that&#x27;s good news for masterdatadir PR then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533114060' id='623207'>
+<a class='timestamp' href='#623207'><time timestamp='2018-08-01T09:01:00Z'>09:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533114300' id='623208'>
+<a class='timestamp' href='#623208'><time timestamp='2018-08-01T09:05:00Z'>09:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that principle works, I&#x27;ve been using it for a long time with an external script
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533114360' id='623209'>
+<a class='timestamp' href='#623209'><time timestamp='2018-08-01T09:06:00Z'>09:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+<a href="https://github.com/bitcoin-core/bitcoin-maintainer-tools/blob/master/fastcopy-chaindata.py" class="link" target="_blank">https://github.com/bitcoin-core/bitcoin-maintainer-tools/blob/master/fastcopy-chaindata.py</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533115740' id='623210'>
+<a class='timestamp' href='#623210'><time timestamp='2018-08-01T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+wumpus: Wait, ldb files are readonly too? Right now I am copying the chainstate over (~4 gb)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533115800' id='623211'>
+<a class='timestamp' href='#623211'><time timestamp='2018-08-01T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+wumpus: Though I can&#x27;t really use the same approach there... wonder if it would be useful to check for hard linking capabilities and using them if found...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533116460' id='623212'>
+<a class='timestamp' href='#623212'><time timestamp='2018-08-01T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+So, about lint-locale-dependence.sh, which by the way has a list of violations about as long as the linter itself, complains about a bunch of functions because they are locale dependent. But there is no alternative (fix). If you need e.g. std::strtoull() you need to add to the list of violations in the linter. Is this even useful at all, when there are no non-locale dependent alternatives you can switch to?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533116580' id='623213'>
+<a class='timestamp' href='#623213'><time timestamp='2018-08-01T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+s/strtoull/stoull/g
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533140520' id='623214'>
+<a class='timestamp' href='#623214'><time timestamp='2018-08-01T16:22:00Z'>16:22</time></a>
+&lt;<span class='nick nick-16'> skeees</span>&gt;
+BlueMatt: sorry missed that one, updated in <a href="https://github.com/bitcoin/bitcoin/pull/13835" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13835</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533141420' id='623215'>
+<a class='timestamp' href='#623215'><time timestamp='2018-08-01T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Potentially trivial to review RPC doc improvements: #13676, #13662
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533141420' id='623216'>
+<a class='timestamp' href='#623216'><time timestamp='2018-08-01T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13676" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13676</a> | Explain that mempool memory is added to -dbcache during IBD by Sjors · Pull Request #13676 · bitcoin/bitcoin · GitHubAsset 1Asset 1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533141420' id='623217'>
+<a class='timestamp' href='#623217'><time timestamp='2018-08-01T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13662" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13662</a> | Explain when reindex-chainstate can be used instead of reindex by Sjors · Pull Request #13662 · bitcoin/bitcoin · GitHubAsset 1Asset 1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533146940' id='623218'>
+<a class='timestamp' href='#623218'><time timestamp='2018-08-01T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+do we want to make the bot join in order to message here?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533147000' id='623219'>
+<a class='timestamp' href='#623219'><time timestamp='2018-08-01T18:10:00Z'>18:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+join/leave spam would be somewhat annoying, but not as bad as spam
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533147600' id='623220'>
+<a class='timestamp' href='#623220'><time timestamp='2018-08-01T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+most clients can hide join and leave messages, so I think that&#x27;s fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533147720' id='623221'>
+<a class='timestamp' href='#623221'><time timestamp='2018-08-01T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+Does the bot have a freenode account?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533147720' id='623222'>
+<a class='timestamp' href='#623222'><time timestamp='2018-08-01T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+If so, then +q $~a allows people to still join and watch, and worst case we get join/parts from the spammer bots.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150120' id='623223'>
+<a class='timestamp' href='#623223'><time timestamp='2018-08-01T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+sipa: bot must join/part becasue that is how github works?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150180' id='623224'>
+<a class='timestamp' href='#623224'><time timestamp='2018-08-01T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+possible solution: create #botx channel, have bot join say and part there. Setup a message relaying bot (tiny python script) to relay msgs from there to here, and the relay bot will be always joined
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150240' id='623225'>
+<a class='timestamp' href='#623225'><time timestamp='2018-08-01T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+booyah: we added +n to this channel (which requires joining in order to speak) to combat spam
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150720' id='623226'>
+<a class='timestamp' href='#623226'><time timestamp='2018-08-01T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+the second bot would be present here as well and just speak it, I think is what he means.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150720' id='623227'>
+<a class='timestamp' href='#623227'><time timestamp='2018-08-01T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, i understand the suggestion - i don&#x27;t have much of an opinion on it :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150780' id='623228'>
+<a class='timestamp' href='#623228'><time timestamp='2018-08-01T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i was just explaining it&#x27;s not because how github works but because we have +n on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150780' id='623229'>
+<a class='timestamp' href='#623229'><time timestamp='2018-08-01T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+ah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150780' id='623230'>
+<a class='timestamp' href='#623230'><time timestamp='2018-08-01T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh i see; i guess booyah understood that, but by &quot;because that is how github works&quot; booyah means as opposed to have it be continuously present
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150780' id='623231'>
+<a class='timestamp' href='#623231'><time timestamp='2018-08-01T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150840' id='623232'>
+<a class='timestamp' href='#623232'><time timestamp='2018-08-01T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+(yeah just afair github bot anyway was always joining and parting)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533150900' id='623233'>
+<a class='timestamp' href='#623233'><time timestamp='2018-08-01T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+\o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533151020' id='623234'>
+<a class='timestamp' href='#623234'><time timestamp='2018-08-01T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+actually, #bitcoin-commits already exists
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533151020' id='623235'>
+<a class='timestamp' href='#623235'><time timestamp='2018-08-01T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we could have a bot mirror from there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533151320' id='623236'>
+<a class='timestamp' href='#623236'><time timestamp='2018-08-01T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+sipa: <a href="https://github.com/str4d/RelayBot" class="link" target="_blank">https://github.com/str4d/RelayBot</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533151440' id='623237'>
+<a class='timestamp' href='#623237'><time timestamp='2018-08-01T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+I hope it works between 2 chans on same server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533151440' id='623238'>
+<a class='timestamp' href='#623238'><time timestamp='2018-08-01T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;ve just turned on join/leave
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164760' id='623239'>
+<a class='timestamp' href='#623239'><time timestamp='2018-08-01T23:06:00Z'>23:06</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+so I&#x27;m looking at this page on the wiki
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164760' id='623240'>
+<a class='timestamp' href='#623240'><time timestamp='2018-08-01T23:06:00Z'>23:06</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+<a href="https://en.bitcoin.it/wiki/Secp256k1" class="link" target="_blank">https://en.bitcoin.it/wiki/Secp256k1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164820' id='623241'>
+<a class='timestamp' href='#623241'><time timestamp='2018-08-01T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+where in the source code are those parameters being implemented?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164820' id='623242'>
+<a class='timestamp' href='#623242'><time timestamp='2018-08-01T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+doing some security research for my compsec class
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164820' id='623243'>
+<a class='timestamp' href='#623243'><time timestamp='2018-08-01T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+n00bington: somewhere in src/secp256k1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164820' id='623244'>
+<a class='timestamp' href='#623244'><time timestamp='2018-08-01T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+achow101, thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164820' id='623245'>
+<a class='timestamp' href='#623245'><time timestamp='2018-08-01T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+there&#x27;s a library that implements all of that stuff: <a href="https://github.com/bitcoin-core/secp256k1" class="link" target="_blank">https://github.com/bitcoin-core/secp256k1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164820' id='623246'>
+<a class='timestamp' href='#623246'><time timestamp='2018-08-01T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+that lib is put in src/secp256k1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164880' id='623247'>
+<a class='timestamp' href='#623247'><time timestamp='2018-08-01T23:08:00Z'>23:08</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+cool lemme see if i can find it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533164880' id='623248'>
+<a class='timestamp' href='#623248'><time timestamp='2018-08-01T23:08:00Z'>23:08</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623249'>
+<a class='timestamp' href='#623249'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+n00bington: it&#x27;s spread out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623250'>
+<a class='timestamp' href='#623250'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+sipa, what do you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623251'>
+<a class='timestamp' href='#623251'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the library implementing the elliptic curve things is in b<a href="https://github.com/bitcoin-core/secp256k1" class="link" target="_blank">https://github.com/bitcoin-core/secp256k1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623252'>
+<a class='timestamp' href='#623252'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623253'>
+<a class='timestamp' href='#623253'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there&#x27;s also a separate IRC channel about it, #secp256k1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623254'>
+<a class='timestamp' href='#623254'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+oh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1533165060' id='623255'>
+<a class='timestamp' href='#623255'><time timestamp='2018-08-01T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-5'> n00bington</span>&gt;
+thanks
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

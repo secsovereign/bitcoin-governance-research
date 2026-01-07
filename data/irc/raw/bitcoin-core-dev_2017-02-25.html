@@ -1,0 +1,2520 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-02-25
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-02-25' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:24 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-01-25">&lt;</a><span class='header'>  February 2017   </span><a href="/bitcoin-core-dev/2017-03-25">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2017-02-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-02-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-02-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-02-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-02-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-02-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-02-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-02-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-02-09">9</a> <a class="" href="/bitcoin-core-dev/2017-02-10">10</a> <a class="" href="/bitcoin-core-dev/2017-02-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-02-12">12</a> <a class="" href="/bitcoin-core-dev/2017-02-13">13</a> <a class="" href="/bitcoin-core-dev/2017-02-14">14</a> <a class="" href="/bitcoin-core-dev/2017-02-15">15</a> <a class="" href="/bitcoin-core-dev/2017-02-16">16</a> <a class="" href="/bitcoin-core-dev/2017-02-17">17</a> <a class="" href="/bitcoin-core-dev/2017-02-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-02-19">19</a> <a class="" href="/bitcoin-core-dev/2017-02-20">20</a> <a class="" href="/bitcoin-core-dev/2017-02-21">21</a> <a class="" href="/bitcoin-core-dev/2017-02-22">22</a> <a class="" href="/bitcoin-core-dev/2017-02-23">23</a> <a class="" href="/bitcoin-core-dev/2017-02-24">24</a> <a class="current" href="/bitcoin-core-dev/2017-02-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-02-26">26</a> <a class="" href="/bitcoin-core-dev/2017-02-27">27</a> <a class="" href="/bitcoin-core-dev/2017-02-28">28</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1487980920' id='531661'>
+<a class='timestamp' href='#531661'><time timestamp='2017-02-25T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: want me to PR that? Or you have something else in mind?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487980920' id='531662'>
+<a class='timestamp' href='#531662'><time timestamp='2017-02-25T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: ok, here&#x27;s a theory......&quot;10:39:08 Prune:&quot; is the prune called by AcceptBlock&#x27;s FlushStateToDisk call (seems obvious given the Pre-allocating blk just above)....now, that flush call hit fDoFullFlush triggering a pcoinsTip-&gt;Flush(). OK, so now in CCoinsViewDB::BatchWrite we iterate over the entries in mapCoins, allocating memory for each one in the leveldb batch, erasing *AS WE GO*...at some point it ran out of memory, throwing 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487980920' id='531663'>
+<a class='timestamp' href='#531663'><time timestamp='2017-02-25T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+bad_alloc and leaving pcoinsTip in an inconsistent state, but std::bad_alloc is not an std::runtime_error so the catch at the end of FlushStateToDisk didnt catch it. OK, phew, so now we go to connect the next block and fail to connect its inputs (without allocating new disk space). I /think/ that explains your debug.log without hand waving about hardware errors
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981040' id='531664'>
+<a class='timestamp' href='#531664'><time timestamp='2017-02-25T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: sounds like a plausible theory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981040' id='531665'>
+<a class='timestamp' href='#531665'><time timestamp='2017-02-25T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: PR what?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981040' id='531666'>
+<a class='timestamp' href='#531666'><time timestamp='2017-02-25T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+BlueMatt: that was my reading of it as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981100' id='531667'>
+<a class='timestamp' href='#531667'><time timestamp='2017-02-25T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: <a href="https://github.com/theuni/bitcoin/commit/28afe574567ba838d46959047282460dbab39b91" class="link" target="_blank">https://github.com/theuni/bitcoin/commit/28afe574567ba838d46959047282460dbab39b91</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981100' id='531668'>
+<a class='timestamp' href='#531668'><time timestamp='2017-02-25T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if that&#x27;s the problem (and that seems to become more plausible as dbcache gets set higher, as you get the duplication only at flush time)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981100' id='531669'>
+<a class='timestamp' href='#531669'><time timestamp='2017-02-25T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we should probably make the batch construction not erase things for ccoinscache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981160' id='531670'>
+<a class='timestamp' href='#531670'><time timestamp='2017-02-25T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: yes, an easy way to make this particular, very specific issue, less likely is to not erase as we go
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981160' id='531671'>
+<a class='timestamp' href='#531671'><time timestamp='2017-02-25T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+ofc that means more memory usage, but...better than blowing up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981280' id='531672'>
+<a class='timestamp' href='#531672'><time timestamp='2017-02-25T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: alternatively, we could fail to flush, and still delete everything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981280' id='531673'>
+<a class='timestamp' href='#531673'><time timestamp='2017-02-25T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+from the cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981280' id='531674'>
+<a class='timestamp' href='#531674'><time timestamp='2017-02-25T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: hmm?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981280' id='531675'>
+<a class='timestamp' href='#531675'><time timestamp='2017-02-25T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+... and then reset pcoinsTip-&gt;hashBlock and chainActive to the last succesfully flushed block (which may be 1000s ago)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981340' id='531676'>
+<a class='timestamp' href='#531676'><time timestamp='2017-02-25T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: in that case we must AbortNode, I think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981340' id='531677'>
+<a class='timestamp' href='#531677'><time timestamp='2017-02-25T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, absolutely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981400' id='531678'>
+<a class='timestamp' href='#531678'><time timestamp='2017-02-25T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i&#x27;m worried we may not be able to to instantly abort (due to locks being held all over the place while the OOM occurs)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981460' id='531679'>
+<a class='timestamp' href='#531679'><time timestamp='2017-02-25T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, I mean ideally we&#x27;d broaden the catch in FlushStateToDisk and use the AbortNode there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981460' id='531680'>
+<a class='timestamp' href='#531680'><time timestamp='2017-02-25T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+just this time dont let the coins map get into an inconsistent state
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981520' id='531681'>
+<a class='timestamp' href='#531681'><time timestamp='2017-02-25T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: looks good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981580' id='531682'>
+<a class='timestamp' href='#531682'><time timestamp='2017-02-25T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: oh, somehow I missed that that /is/ only for bad_alloc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981580' id='531683'>
+<a class='timestamp' href='#531683'><time timestamp='2017-02-25T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, lets totally do that!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981580' id='531684'>
+<a class='timestamp' href='#531684'><time timestamp='2017-02-25T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+&lt;BlueMatt&gt; wait, does this apply to more than bad_alloc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981580' id='531685'>
+<a class='timestamp' href='#531685'><time timestamp='2017-02-25T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+&lt;cfields&gt; no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981580' id='531686'>
+<a class='timestamp' href='#531686'><time timestamp='2017-02-25T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+:)     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981580' id='531687'>
+<a class='timestamp' href='#531687'><time timestamp='2017-02-25T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh, reading comprehension fail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981880' id='531688'>
+<a class='timestamp' href='#531688'><time timestamp='2017-02-25T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: want to switch prevector to new[] and ditch realloc()? Or call get_new_handler()() if they return null?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981880' id='531689'>
+<a class='timestamp' href='#531689'><time timestamp='2017-02-25T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(or just leave it alone and let something write to 0 :p)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981880' id='531690'>
+<a class='timestamp' href='#531690'><time timestamp='2017-02-25T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: just switch it to new[]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981880' id='531691'>
+<a class='timestamp' href='#531691'><time timestamp='2017-02-25T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ok     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981880' id='531692'>
+<a class='timestamp' href='#531692'><time timestamp='2017-02-25T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+it would suck to drop realloc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981940' id='531693'>
+<a class='timestamp' href='#531693'><time timestamp='2017-02-25T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+just assert(new_ptr)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487981940' id='531694'>
+<a class='timestamp' href='#531694'><time timestamp='2017-02-25T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how often does realloc actually help?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982000' id='531695'>
+<a class='timestamp' href='#531695'><time timestamp='2017-02-25T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+no idea, but the difference between get_new_handler()() and assert(new_ptr) is minimal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982000' id='531696'>
+<a class='timestamp' href='#531696'><time timestamp='2017-02-25T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well i don&#x27;t like making prevector assume that OOMs are fatal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982000' id='531697'>
+<a class='timestamp' href='#531697'><time timestamp='2017-02-25T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s something application level
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982060' id='531698'>
+<a class='timestamp' href='#531698'><time timestamp='2017-02-25T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: yea, and in our application they always are :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982120' id='531699'>
+<a class='timestamp' href='#531699'><time timestamp='2017-02-25T00:22:00Z'>00:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+still, it&#x27;s nicer to have that knowledge in only one place
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982360' id='531700'>
+<a class='timestamp' href='#531700'><time timestamp='2017-02-25T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: internet says realloc is useful, though in our usage of prevector its likely not super noticeable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982360' id='531701'>
+<a class='timestamp' href='#531701'><time timestamp='2017-02-25T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+so I&#x27;m fine with whatever
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982600' id='531702'>
+<a class='timestamp' href='#531702'><time timestamp='2017-02-25T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: oh, i just realized... calling get_new_handler()() in prevector doesn&#x27;t imply it&#x27;s going to fail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982660' id='531703'>
+<a class='timestamp' href='#531703'><time timestamp='2017-02-25T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+huh? you mean doesnt imply its going to std::terminate instead of throwing or so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982660' id='531704'>
+<a class='timestamp' href='#531704'><time timestamp='2017-02-25T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982720' id='531705'>
+<a class='timestamp' href='#531705'><time timestamp='2017-02-25T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so, i don&#x27;t care.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487982720' id='531706'>
+<a class='timestamp' href='#531706'><time timestamp='2017-02-25T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+ok, if you prefer that, do that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487983260' id='531707'>
+<a class='timestamp' href='#531707'><time timestamp='2017-02-25T00:41:00Z'>00:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jtimon opened pull request #9855: RPC: Use integer satoshis instead BTC with decimals (master...0.15-rpc-satoshis) <a href="https://github.com/bitcoin/bitcoin/pull/9855" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9855</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487993700' id='531708'>
+<a class='timestamp' href='#531708'><time timestamp='2017-02-25T03:35:00Z'>03:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields, BlueMatt: crap, it seems i reported this exact same bug a year ago already...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487995560' id='531709'>
+<a class='timestamp' href='#531709'><time timestamp='2017-02-25T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: heh. Well, at least we can get it in for 0.14
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487995560' id='531710'>
+<a class='timestamp' href='#531710'><time timestamp='2017-02-25T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: does that mean it takes 1+ years to sync your rpi? :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487996280' id='531711'>
+<a class='timestamp' href='#531711'><time timestamp='2017-02-25T04:18:00Z'>04:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: it&#x27;s a new one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487996280' id='531712'>
+<a class='timestamp' href='#531712'><time timestamp='2017-02-25T04:18:00Z'>04:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it took 2 days to sync to the point where it was
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487999160' id='531713'>
+<a class='timestamp' href='#531713'><time timestamp='2017-02-25T05:06:00Z'>05:06</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: i have no clue how representative the CCheckQueueSpeedPrevectorJob bench is, but there&#x27;s a noticible difference when switching to new[] and dropping realloc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1487999220' id='531714'>
+<a class='timestamp' href='#531714'><time timestamp='2017-02-25T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: for the sake of being conservative this late in the release cycle, i think get_new_handler()() is likely to have much less impact
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488000540' id='531715'>
+<a class='timestamp' href='#531715'><time timestamp='2017-02-25T05:29:00Z'>05:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: ack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488000600' id='531716'>
+<a class='timestamp' href='#531716'><time timestamp='2017-02-25T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] theuni opened pull request #9856: Terminate immediately when allocation fails (master...bad_alloc_terminate2) <a href="https://github.com/bitcoin/bitcoin/pull/9856" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9856</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488000720' id='531717'>
+<a class='timestamp' href='#531717'><time timestamp='2017-02-25T05:32:00Z'>05:32</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+damn fanquake, you&#x27;re fast!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488002340' id='531718'>
+<a class='timestamp' href='#531718'><time timestamp='2017-02-25T05:59:00Z'>05:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: well i guess that discussion has been rendered moot. assert for 0.14, and do an efficient specialized unsigned char* prevector for master?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488002340' id='531719'>
+<a class='timestamp' href='#531719'><time timestamp='2017-02-25T05:59:00Z'>05:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488008760' id='531720'>
+<a class='timestamp' href='#531720'><time timestamp='2017-02-25T07:46:00Z'>07:46</time></a>
+&lt;<span class='nick nick-2'> wump</span>&gt;
+bah, #9856 is really ugly :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488008760' id='531721'>
+<a class='timestamp' href='#531721'><time timestamp='2017-02-25T07:46:00Z'>07:46</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9856" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9856</a> | Terminate immediately when allocation fails by theuni · Pull Request #9856 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009120' id='531722'>
+<a class='timestamp' href='#531722'><time timestamp='2017-02-25T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I understand wanting to terminate immediately on a memory error in some cases, but can&#x27;t you just catch the exception at some point instead of registereing a global handler?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009120' id='531723'>
+<a class='timestamp' href='#531723'><time timestamp='2017-02-25T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: the problem is exactly that it is being caught... and then we continue in an inconsistent state
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009120' id='531724'>
+<a class='timestamp' href='#531724'><time timestamp='2017-02-25T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well then crash the program at the catch site!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009180' id='531725'>
+<a class='timestamp' href='#531725'><time timestamp='2017-02-25T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s what this does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009180' id='531726'>
+<a class='timestamp' href='#531726'><time timestamp='2017-02-25T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tell the program to crash whenever new fails
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009180' id='531727'>
+<a class='timestamp' href='#531727'><time timestamp='2017-02-25T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no, this uses some poorly documented feature of c++ to change a global callback for every failed allocation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009180' id='531728'>
+<a class='timestamp' href='#531728'><time timestamp='2017-02-25T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+instead of just in the consensus code or wherever it is actually dangerous
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009300' id='531729'>
+<a class='timestamp' href='#531729'><time timestamp='2017-02-25T07:55:00Z'>07:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+some allocation errors, either in bitcoin itself or in libraries may actually be recoverable, and they would now cause a crash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009360' id='531730'>
+<a class='timestamp' href='#531730'><time timestamp='2017-02-25T07:56:00Z'>07:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, sure, longer term i think we can find something more specific
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009360' id='531731'>
+<a class='timestamp' href='#531731'><time timestamp='2017-02-25T07:56:00Z'>07:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but as long as we have &quot;catch std::exception&amp; e&quot; everywhere, which catches everything, that&#x27;s pretty hard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009360' id='531732'>
+<a class='timestamp' href='#531732'><time timestamp='2017-02-25T07:56:00Z'>07:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I think this is a bad direction to go in with the code base
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009360' id='531733'>
+<a class='timestamp' href='#531733'><time timestamp='2017-02-25T07:56:00Z'>07:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+shoudln&#x27;t we be addressing that then?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009420' id='531734'>
+<a class='timestamp' href='#531734'><time timestamp='2017-02-25T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in 0.14?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009420' id='531735'>
+<a class='timestamp' href='#531735'><time timestamp='2017-02-25T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+for 0.14 this is ok, but this is a PR to master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009480' id='531736'>
+<a class='timestamp' href='#531736'><time timestamp='2017-02-25T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hmm, you think this should go in just 0.14?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009480' id='531737'>
+<a class='timestamp' href='#531737'><time timestamp='2017-02-25T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the way the PR is now? yes, I think so. This just too aspecific an hack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009480' id='531738'>
+<a class='timestamp' href='#531738'><time timestamp='2017-02-25T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think terminating when OOM is a very reasonable thing, and certainly more reasonable than trying to continuing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009540' id='531739'>
+<a class='timestamp' href='#531739'><time timestamp='2017-02-25T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I think terminating on OOM in select cases is a reasonable thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009600' id='531740'>
+<a class='timestamp' href='#531740'><time timestamp='2017-02-25T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there may be more user-friendly things to do in some cases, but it&#x27;s very hard... allocation failures can occur pretty much everywhere, and it seems really hard to avoid inconsistent states
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009600' id='531741'>
+<a class='timestamp' href='#531741'><time timestamp='2017-02-25T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sure, it&#x27;s difficult
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009600' id='531742'>
+<a class='timestamp' href='#531742'><time timestamp='2017-02-25T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but this just feels like giving up on any kind of sane error handling
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009660' id='531743'>
+<a class='timestamp' href='#531743'><time timestamp='2017-02-25T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t think so... OOM is different from disk errors, for example
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009660' id='531744'>
+<a class='timestamp' href='#531744'><time timestamp='2017-02-25T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can cleanly recover from that, usually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009660' id='531745'>
+<a class='timestamp' href='#531745'><time timestamp='2017-02-25T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I really dislike global handlers like this, and I don&#x27;t think much software uses this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009660' id='531746'>
+<a class='timestamp' href='#531746'><time timestamp='2017-02-25T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it just changes the expectation of the c++ standard that allocations return an exception
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009720' id='531747'>
+<a class='timestamp' href='#531747'><time timestamp='2017-02-25T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+which is adding surprising behavior at a low level
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009840' id='531748'>
+<a class='timestamp' href='#531748'><time timestamp='2017-02-25T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m surprised to read that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009840' id='531749'>
+<a class='timestamp' href='#531749'><time timestamp='2017-02-25T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+on many systems allocation failures are just silently ignored and the program just crashes when it tries to use the memory.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009840' id='531750'>
+<a class='timestamp' href='#531750'><time timestamp='2017-02-25T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think that most software just doesn&#x27;t try to catch bad_alloc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009900' id='531751'>
+<a class='timestamp' href='#531751'><time timestamp='2017-02-25T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and it just crashes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009900' id='531752'>
+<a class='timestamp' href='#531752'><time timestamp='2017-02-25T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+In virtually none of the software could an allocation even possibly be handled, esp as almost everything we do involves allocation.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009900' id='531753'>
+<a class='timestamp' href='#531753'><time timestamp='2017-02-25T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ok ,never mind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009960' id='531754'>
+<a class='timestamp' href='#531754'><time timestamp='2017-02-25T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+seems you all agree, just do this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488009960' id='531755'>
+<a class='timestamp' href='#531755'><time timestamp='2017-02-25T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+but I agree that just fixing the badalloc is not a full solution. What about other exceptions? If bad alloc can cause spurrious block invalidations how long until the next thing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010020' id='531756'>
+<a class='timestamp' href='#531756'><time timestamp='2017-02-25T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well, i think we should get rid of the catch std::exception and catch ... everywhere
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010020' id='531757'>
+<a class='timestamp' href='#531757'><time timestamp='2017-02-25T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes if the code is not exception-safe, that should be addressed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010020' id='531758'>
+<a class='timestamp' href='#531758'><time timestamp='2017-02-25T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and only catch expected exceptions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010020' id='531759'>
+<a class='timestamp' href='#531759'><time timestamp='2017-02-25T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+So I am of the opinion that bad alloc should just crash but also that the software needs to deal better with unexpected exceptions in block validation... as I mentioned before this is the third case of exceptions causing bogus block rejection that we&#x27;ve had.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010020' id='531760'>
+<a class='timestamp' href='#531760'><time timestamp='2017-02-25T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but by doing that, we&#x27;d still just crash in case of an OOM
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010080' id='531761'>
+<a class='timestamp' href='#531761'><time timestamp='2017-02-25T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+at least with this PR, we write to debug.log what happened
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010080' id='531762'>
+<a class='timestamp' href='#531762'><time timestamp='2017-02-25T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but unlike AbortNode() no attempt is made to show a dialog to the user
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010080' id='531763'>
+<a class='timestamp' href='#531763'><time timestamp='2017-02-25T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+can&#x27;t show a dialog without allocating.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531764'>
+<a class='timestamp' href='#531764'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well in many cases, that would be possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531765'>
+<a class='timestamp' href='#531765'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well the point is: maybe it needs less allocation than the original allocation request
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531766'>
+<a class='timestamp' href='#531766'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+not all allocations are equal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531767'>
+<a class='timestamp' href='#531767'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531768'>
+<a class='timestamp' href='#531768'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+typically those that trip an OOM are large ones
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531769'>
+<a class='timestamp' href='#531769'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+someone might be trying to allocate a 4GB buffer, which fails, then after that the program could continue keeping in mind that it can&#x27;t have that buffer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010140' id='531770'>
+<a class='timestamp' href='#531770'><time timestamp='2017-02-25T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+That is a fair point. Also if it did something like shut down the mempool it might free enough to display a message.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010200' id='531771'>
+<a class='timestamp' href='#531771'><time timestamp='2017-02-25T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I wonder what the distribution of vm_overcommit settings is, it used to be ubiquitious, the fact that sipa even saw this suggests that it isn&#x27;t anymore.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531772'>
+<a class='timestamp' href='#531772'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+for this specific issue, it may be possible to catch the bad_alloc inside the leveldb wrapper, and if so, mark the db object as read-only
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531773'>
+<a class='timestamp' href='#531773'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+apparently some hurestic is now the default.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531774'>
+<a class='timestamp' href='#531774'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in many cases showing a simple modal dialog woudl still work, especially on windows where it&#x27;s sort of a direct sytem operation. It should at least we attempted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531775'>
+<a class='timestamp' href='#531775'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s fair
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531776'>
+<a class='timestamp' href='#531776'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i think it requires too many changes for 0.14
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531777'>
+<a class='timestamp' href='#531777'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I have no issue with that, so long as if it fails the system still shuts down.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010260' id='531778'>
+<a class='timestamp' href='#531778'><time timestamp='2017-02-25T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and we have a general &#x27;A fatal issuee has occured check debug.log&#x27; already in AbortNode
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010320' id='531779'>
+<a class='timestamp' href='#531779'><time timestamp='2017-02-25T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i really want to think harder about possible inconsistent states
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010320' id='531780'>
+<a class='timestamp' href='#531780'><time timestamp='2017-02-25T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well an allocation failure in qt will just propagate the std::alloc_error 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010320' id='531781'>
+<a class='timestamp' href='#531781'><time timestamp='2017-02-25T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+qt is exception safe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010320' id='531782'>
+<a class='timestamp' href='#531782'><time timestamp='2017-02-25T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: I&#x27;m kinda surprised that cfield&#x27;s patch works.  IIRC from gdbing boost asio it used to try to allocate 4TB of memory and the fail. I&#x27;m surprised nothing else in boost does.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010320' id='531783'>
+<a class='timestamp' href='#531783'><time timestamp='2017-02-25T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so just catch that and abort() if there is one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010380' id='531784'>
+<a class='timestamp' href='#531784'><time timestamp='2017-02-25T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: it&#x27;s c++11
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010380' id='531785'>
+<a class='timestamp' href='#531785'><time timestamp='2017-02-25T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+boost does not assume c++11
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010380' id='531786'>
+<a class='timestamp' href='#531786'><time timestamp='2017-02-25T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+for example, do we want to prevent writing to mempool.dat after some unhandled system error, to prevent corrupting it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010440' id='531787'>
+<a class='timestamp' href='#531787'><time timestamp='2017-02-25T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010440' id='531788'>
+<a class='timestamp' href='#531788'><time timestamp='2017-02-25T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if catching of the exception occurs higher up, there is less risk of those things
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010440' id='531789'>
+<a class='timestamp' href='#531789'><time timestamp='2017-02-25T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but what about writes that happen in unrelated background threads
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010440' id='531790'>
+<a class='timestamp' href='#531790'><time timestamp='2017-02-25T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the wallet gets flushed in a background thread
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010440' id='531791'>
+<a class='timestamp' href='#531791'><time timestamp='2017-02-25T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+set a flag and don&#x27;t flush anything anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010440' id='531792'>
+<a class='timestamp' href='#531792'><time timestamp='2017-02-25T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I mean all the databases are atomic right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010500' id='531793'>
+<a class='timestamp' href='#531793'><time timestamp='2017-02-25T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+you can call writes, and as long as you don&#x27;t flush, they&#x27;ll be ignored on shutdown
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010500' id='531794'>
+<a class='timestamp' href='#531794'><time timestamp='2017-02-25T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but a flag where? an exception can only propagate up to its threads&#x27; main function
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010500' id='531795'>
+<a class='timestamp' href='#531795'><time timestamp='2017-02-25T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+a global flag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010500' id='531796'>
+<a class='timestamp' href='#531796'><time timestamp='2017-02-25T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+checked before each database flag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010500' id='531797'>
+<a class='timestamp' href='#531797'><time timestamp='2017-02-25T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+flush*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010560' id='531798'>
+<a class='timestamp' href='#531798'><time timestamp='2017-02-25T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if an OOM occurs inside the background runner thread, it will - if uncaught - just kill the background runner
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010560' id='531799'>
+<a class='timestamp' href='#531799'><time timestamp='2017-02-25T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+a kind of alarm state, which makes sure nothing is permanently committed 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010560' id='531800'>
+<a class='timestamp' href='#531800'><time timestamp='2017-02-25T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+catch the exception and call a handler to set that flag?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010560' id='531801'>
+<a class='timestamp' href='#531801'><time timestamp='2017-02-25T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s really ugly...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010620' id='531802'>
+<a class='timestamp' href='#531802'><time timestamp='2017-02-25T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+why is that ugly? you should catch exceptions such as std::alloc anyway to warn the user, log something , and initiaite shutdown
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010620' id='531803'>
+<a class='timestamp' href='#531803'><time timestamp='2017-02-25T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+doesn&#x27;t leveldb have some background writer thread?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010620' id='531804'>
+<a class='timestamp' href='#531804'><time timestamp='2017-02-25T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+why is leveldb&#x27;s background thread a problem here?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010680' id='531805'>
+<a class='timestamp' href='#531805'><time timestamp='2017-02-25T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we&#x27;re concerned with corruptions of our own state, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010680' id='531806'>
+<a class='timestamp' href='#531806'><time timestamp='2017-02-25T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+leveldb won&#x27;t be writing anything that we haven&#x27;t committed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010680' id='531807'>
+<a class='timestamp' href='#531807'><time timestamp='2017-02-25T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so as soon as there is the  suspicion of inconsistent state, don&#x27;t write anything to leveldb anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010800' id='531808'>
+<a class='timestamp' href='#531808'><time timestamp='2017-02-25T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m worried about an OOM caused by a thread we don&#x27;t control
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010800' id='531809'>
+<a class='timestamp' href='#531809'><time timestamp='2017-02-25T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+then the inconsistent state won&#x27;t be committed to disk, and leveldb should be fine. Same for the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010800' id='531810'>
+<a class='timestamp' href='#531810'><time timestamp='2017-02-25T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i assume that would just cause a crash, as we can&#x27;t catch a bad_alloc there anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010860' id='531811'>
+<a class='timestamp' href='#531811'><time timestamp='2017-02-25T08:21:00Z'>08:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well yes the writer thread could die in the middle of writing, sure, but there&#x27;s no way to avoid that. The database needs t obe able to handle that, also for other crash robustness
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010920' id='531812'>
+<a class='timestamp' href='#531812'><time timestamp='2017-02-25T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+what it won&#x27;t do, however, is write inconsistent state if we haven&#x27;t told it to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010920' id='531813'>
+<a class='timestamp' href='#531813'><time timestamp='2017-02-25T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010980' id='531814'>
+<a class='timestamp' href='#531814'><time timestamp='2017-02-25T08:23:00Z'>08:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think you&#x27;re right - with some changes it may be possible to do this safely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488010980' id='531815'>
+<a class='timestamp' href='#531815'><time timestamp='2017-02-25T08:23:00Z'>08:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if we make sure there is no code that may unintentionally catch a bad_alloc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011040' id='531816'>
+<a class='timestamp' href='#531816'><time timestamp='2017-02-25T08:24:00Z'>08:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011040' id='531817'>
+<a class='timestamp' href='#531817'><time timestamp='2017-02-25T08:24:00Z'>08:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and that all the catches that do, also call AbortNode, which sets this flag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011040' id='531818'>
+<a class='timestamp' href='#531818'><time timestamp='2017-02-25T08:24:00Z'>08:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I think there should be a rule: if you catch a general std::exception, you can&#x27;t continue there, and need to stop the program
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011040' id='531819'>
+<a class='timestamp' href='#531819'><time timestamp='2017-02-25T08:24:00Z'>08:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+as you have no idea what kind of error you have and whether it&#x27;s recoverable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011040' id='531820'>
+<a class='timestamp' href='#531820'><time timestamp='2017-02-25T08:24:00Z'>08:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011040' id='531821'>
+<a class='timestamp' href='#531821'><time timestamp='2017-02-25T08:24:00Z'>08:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(so that&#x27;s for top-level handlers only)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011100' id='531822'>
+<a class='timestamp' href='#531822'><time timestamp='2017-02-25T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we have 53 places where std::exception is caught
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011160' id='531823'>
+<a class='timestamp' href='#531823'><time timestamp='2017-02-25T08:26:00Z'>08:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and 22 where ... is caught (even worse, as you can&#x27;t even inspect the object)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011160' id='531824'>
+<a class='timestamp' href='#531824'><time timestamp='2017-02-25T08:26:00Z'>08:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the ptential worry is in the networking code... some parsing problems throw exceptions, we need to be really sure to catch them and continue otherwise there&#x27;s a DoS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011160' id='531825'>
+<a class='timestamp' href='#531825'><time timestamp='2017-02-25T08:26:00Z'>08:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+e.g. serialization throws std::runtime_error instead of something specific
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011220' id='531826'>
+<a class='timestamp' href='#531826'><time timestamp='2017-02-25T08:27:00Z'>08:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+serialization throws std::ios_base
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011220' id='531827'>
+<a class='timestamp' href='#531827'><time timestamp='2017-02-25T08:27:00Z'>08:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+serialization throws std::ios_base::failure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011220' id='531828'>
+<a class='timestamp' href='#531828'><time timestamp='2017-02-25T08:27:00Z'>08:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+okay That&#x27;s always an i/o error. Better than I thought
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011280' id='531829'>
+<a class='timestamp' href='#531829'><time timestamp='2017-02-25T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there are some other things that can throw that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011280' id='531830'>
+<a class='timestamp' href='#531830'><time timestamp='2017-02-25T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+catching that and just reporting it and continuing in the network code would be ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011280' id='531831'>
+<a class='timestamp' href='#531831'><time timestamp='2017-02-25T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+network code or net_handling?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011340' id='531832'>
+<a class='timestamp' href='#531832'><time timestamp='2017-02-25T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+net handling should catch serialization failures, and disconnect the offending peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011340' id='531833'>
+<a class='timestamp' href='#531833'><time timestamp='2017-02-25T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well the packet processing. It should make sure that one node is disconnected and not thewhole program comes tumbling down
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011340' id='531834'>
+<a class='timestamp' href='#531834'><time timestamp='2017-02-25T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011340' id='531835'>
+<a class='timestamp' href='#531835'><time timestamp='2017-02-25T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011340' id='531836'>
+<a class='timestamp' href='#531836'><time timestamp='2017-02-25T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in fact, it&#x27;s that except catch this is the culprit here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011400' id='531837'>
+<a class='timestamp' href='#531837'><time timestamp='2017-02-25T08:30:00Z'>08:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*that exact
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011400' id='531838'>
+<a class='timestamp' href='#531838'><time timestamp='2017-02-25T08:30:00Z'>08:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right, it should be more specific
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011400' id='531839'>
+<a class='timestamp' href='#531839'><time timestamp='2017-02-25T08:30:00Z'>08:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+catching ios::base and potentially a few others instead of std::exception would go a long way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011400' id='531840'>
+<a class='timestamp' href='#531840'><time timestamp='2017-02-25T08:30:00Z'>08:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011580' id='531841'>
+<a class='timestamp' href='#531841'><time timestamp='2017-02-25T08:33:00Z'>08:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and some exceptions like std::bad_alloc should initiate a quick shutdown. It could still be a DoS, but the program is probably in such a bad state when it happens that continuing with the other nodes is hopeless.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011580' id='531842'>
+<a class='timestamp' href='#531842'><time timestamp='2017-02-25T08:33:00Z'>08:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(though theoretically it could stil be a botched alloc due to the remote peer specifying a very large buffer which would never occur in reality)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011760' id='531843'>
+<a class='timestamp' href='#531843'><time timestamp='2017-02-25T08:36:00Z'>08:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so I guess uploading executables for rc2 is no longer necessary and we should merge #9856 and do rc3?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488011760' id='531844'>
+<a class='timestamp' href='#531844'><time timestamp='2017-02-25T08:36:00Z'>08:36</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9856" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9856</a> | Terminate immediately when allocation fails by theuni · Pull Request #9856 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012120' id='531845'>
+<a class='timestamp' href='#531845'><time timestamp='2017-02-25T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+speaking about memory usage: another report of running out of memory with 0.14. #9857
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012120' id='531846'>
+<a class='timestamp' href='#531846'><time timestamp='2017-02-25T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9857" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9857</a> | Sync problem crashes Bitcoin: EXCEPTION: St9bad_alloc · Issue #9857 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012180' id='531847'>
+<a class='timestamp' href='#531847'><time timestamp='2017-02-25T08:43:00Z'>08:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+maybe 0.14 increased steady-state memory usage?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012540' id='531848'>
+<a class='timestamp' href='#531848'><time timestamp='2017-02-25T08:49:00Z'>08:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+maybe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012540' id='531849'>
+<a class='timestamp' href='#531849'><time timestamp='2017-02-25T08:49:00Z'>08:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the reuse of mempool memory by coincache may contribute to it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012540' id='531850'>
+<a class='timestamp' href='#531850'><time timestamp='2017-02-25T08:49:00Z'>08:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though that doesn&#x27;t affect worst-case memory usage, it may increase the average
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012600' id='531851'>
+<a class='timestamp' href='#531851'><time timestamp='2017-02-25T08:50:00Z'>08:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+for RPi we should recommend lowering the default settings, i&#x27;m afraid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488012960' id='531852'>
+<a class='timestamp' href='#531852'><time timestamp='2017-02-25T08:56:00Z'>08:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+bah, what really helps when creating a gdb parachute is propagating the exit code, if not it will just always return success <a href="https://github.com/bitcoin/bitcoin/pull/9851/commits/6d7a789fb510d540906955c377143b92acb1fbb6" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9851/commits/6d7a789fb510d540906955c377143b92acb1fbb6</a> . Forgot this and might have been spinning for nothing for a while :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013620' id='531853'>
+<a class='timestamp' href='#531853'><time timestamp='2017-02-25T09:07:00Z'>09:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+uhm. Caught that issue in the act now. Unfortunately, the traceback is useless. Gdb near-crashes while generating it!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013620' id='531854'>
+<a class='timestamp' href='#531854'><time timestamp='2017-02-25T09:07:00Z'>09:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&quot;Error while running hook_stop: Cannot access memory at address 0x24&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013680' id='531855'>
+<a class='timestamp' href='#531855'><time timestamp='2017-02-25T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+okay, so much for gdb...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013860' id='531856'>
+<a class='timestamp' href='#531856'><time timestamp='2017-02-25T09:11:00Z'>09:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that leaves trying to make it cough up a core dump, and uploading that somewhere...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013920' id='531857'>
+<a class='timestamp' href='#531857'><time timestamp='2017-02-25T09:12:00Z'>09:12</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+wumpus: cuckoocache in theory may have increase memory usage a bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013980' id='531858'>
+<a class='timestamp' href='#531858'><time timestamp='2017-02-25T09:13:00Z'>09:13</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+(if you&#x27;re curious for all steadystate memory usage increases)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013980' id='531859'>
+<a class='timestamp' href='#531859'><time timestamp='2017-02-25T09:13:00Z'>09:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+by how much?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488013980' id='531860'>
+<a class='timestamp' href='#531860'><time timestamp='2017-02-25T09:13:00Z'>09:13</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+unclear
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014040' id='531861'>
+<a class='timestamp' href='#531861'><time timestamp='2017-02-25T09:14:00Z'>09:14</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it always uses 100% of whatever&#x27;s it&#x27;s allocated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014040' id='531862'>
+<a class='timestamp' href='#531862'><time timestamp='2017-02-25T09:14:00Z'>09:14</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+whereas the previous one only uses space when it has entries (in theory)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014040' id='531863'>
+<a class='timestamp' href='#531863'><time timestamp='2017-02-25T09:14:00Z'>09:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the default max is 32 MB instead of 40 MB though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014040' id='531864'>
+<a class='timestamp' href='#531864'><time timestamp='2017-02-25T09:14:00Z'>09:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so at peak, it&#x27;s smaller
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014040' id='531865'>
+<a class='timestamp' href='#531865'><time timestamp='2017-02-25T09:14:00Z'>09:14</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+so at startup, would be using 32 MB whereas the prior was 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014100' id='531866'>
+<a class='timestamp' href='#531866'><time timestamp='2017-02-25T09:15:00Z'>09:15</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it&#x27;s just unclear how long you have to be on the network to experience a full cache w/ old code 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014160' id='531867'>
+<a class='timestamp' href='#531867'><time timestamp='2017-02-25T09:16:00Z'>09:16</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+anyways I&#x27;m pretty sure this isn&#x27;t the cause :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014220' id='531868'>
+<a class='timestamp' href='#531868'><time timestamp='2017-02-25T09:17:00Z'>09:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+1GB of memory is not much
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014280' id='531869'>
+<a class='timestamp' href='#531869'><time timestamp='2017-02-25T09:18:00Z'>09:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+indeed, runninga node with 1GB of memory has always required tweaking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014280' id='531870'>
+<a class='timestamp' href='#531870'><time timestamp='2017-02-25T09:18:00Z'>09:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s more surprising to me that 0.13.2 worked, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014280' id='531871'>
+<a class='timestamp' href='#531871'><time timestamp='2017-02-25T09:18:00Z'>09:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+he&#x27;s even reducing dbcache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014340' id='531872'>
+<a class='timestamp' href='#531872'><time timestamp='2017-02-25T09:19:00Z'>09:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I do see increased reporting of out-of-memory errors with 0.14
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014340' id='531873'>
+<a class='timestamp' href='#531873'><time timestamp='2017-02-25T09:19:00Z'>09:19</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+yeah, totally could be the sigcache, could definitely put someone over-edge 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014340' id='531874'>
+<a class='timestamp' href='#531874'><time timestamp='2017-02-25T09:19:00Z'>09:19</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+especially if they set the value higher
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014340' id='531875'>
+<a class='timestamp' href='#531875'><time timestamp='2017-02-25T09:19:00Z'>09:19</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+e.g., 128 mb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014400' id='531876'>
+<a class='timestamp' href='#531876'><time timestamp='2017-02-25T09:20:00Z'>09:20</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+prior version you could set it to a GB and run happily for a while
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014400' id='531877'>
+<a class='timestamp' href='#531877'><time timestamp='2017-02-25T09:20:00Z'>09:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+they don&#x27;t touch that setting, just dbcache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014400' id='531878'>
+<a class='timestamp' href='#531878'><time timestamp='2017-02-25T09:20:00Z'>09:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+possibly they should. We should update the recommedations for low-memory nodes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014460' id='531879'>
+<a class='timestamp' href='#531879'><time timestamp='2017-02-25T09:21:00Z'>09:21</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I don&#x27;t think practically they&#x27;d need to adjust it down, just be less agressive adjusting it up -- not much benefit in making it too large
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014520' id='531880'>
+<a class='timestamp' href='#531880'><time timestamp='2017-02-25T09:22:00Z'>09:22</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Can we (by any chance) fast track sipa&#x27;s hack to get cuckoocache back to be non pow 2?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014580' id='531881'>
+<a class='timestamp' href='#531881'><time timestamp='2017-02-25T09:23:00Z'>09:23</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it sucks if they&#x27;re picking between 8 16 32 MB sizes, some more resolution there would be good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014580' id='531882'>
+<a class='timestamp' href='#531882'><time timestamp='2017-02-25T09:23:00Z'>09:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+which # is that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014640' id='531883'>
+<a class='timestamp' href='#531883'><time timestamp='2017-02-25T09:24:00Z'>09:24</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+#9533
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014640' id='531884'>
+<a class='timestamp' href='#531884'><time timestamp='2017-02-25T09:24:00Z'>09:24</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9533" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9533</a> | Allow non-power-of-2 signature cache sizes by sipa · Pull Request #9533 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014760' id='531885'>
+<a class='timestamp' href='#531885'><time timestamp='2017-02-25T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jeremyrubin: would help to have more than a concept ACK there from you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014760' id='531886'>
+<a class='timestamp' href='#531886'><time timestamp='2017-02-25T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+k I&#x27;ll do some more thorough review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014760' id='531887'>
+<a class='timestamp' href='#531887'><time timestamp='2017-02-25T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488014880' id='531888'>
+<a class='timestamp' href='#531888'><time timestamp='2017-02-25T09:28:00Z'>09:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+also like gmaxwell I wonder what the performance difference would be, 8 multiplication would be slower than 8 logical AND
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015060' id='531889'>
+<a class='timestamp' href='#531889'><time timestamp='2017-02-25T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I&#x27;m not currently set up to run great performance tests currently (will take some work to reset up my benching environment)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015060' id='531890'>
+<a class='timestamp' href='#531890'><time timestamp='2017-02-25T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+But honestly performance was fine even when it was %
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015120' id='531891'>
+<a class='timestamp' href='#531891'><time timestamp='2017-02-25T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&#x27;fine&#x27; hehe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015120' id='531892'>
+<a class='timestamp' href='#531892'><time timestamp='2017-02-25T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+<b>*shrug*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015120' id='531893'>
+<a class='timestamp' href='#531893'><time timestamp='2017-02-25T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jeremyrubin: i&#x27;m sure that for the sigcache it doesn&#x27;t matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015120' id='531894'>
+<a class='timestamp' href='#531894'><time timestamp='2017-02-25T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but maybe it does for other things in the future
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015120' id='531895'>
+<a class='timestamp' href='#531895'><time timestamp='2017-02-25T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well it&#x27;s obviously a compromise between memory usage and performance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015120' id='531896'>
+<a class='timestamp' href='#531896'><time timestamp='2017-02-25T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I mostly changed it to hash_mask to make sipa happy :p 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015180' id='531897'>
+<a class='timestamp' href='#531897'><time timestamp='2017-02-25T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+neither &#x27;&amp;&#x27; or &#x27;* &gt;&gt;&#x27; is &#x27;better&#x27;, but we need to be careful what to choose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015180' id='531898'>
+<a class='timestamp' href='#531898'><time timestamp='2017-02-25T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well you violated the core tenet of never using integer division by a variable!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015180' id='531899'>
+<a class='timestamp' href='#531899'><time timestamp='2017-02-25T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it invokes the wrath of maxwell
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015180' id='531900'>
+<a class='timestamp' href='#531900'><time timestamp='2017-02-25T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+It was checked to not be 0 ;) 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015180' id='531901'>
+<a class='timestamp' href='#531901'><time timestamp='2017-02-25T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+anyways...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015240' id='531902'>
+<a class='timestamp' href='#531902'><time timestamp='2017-02-25T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+division? where?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015240' id='531903'>
+<a class='timestamp' href='#531903'><time timestamp='2017-02-25T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+(old version of cuckoocache used % in the hash computation)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015240' id='531904'>
+<a class='timestamp' href='#531904'><time timestamp='2017-02-25T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I saw only multiplies, if there&#x27;s a division, I&#x27;m going to NACK this one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015240' id='531905'>
+<a class='timestamp' href='#531905'><time timestamp='2017-02-25T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ooh :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015300' id='531906'>
+<a class='timestamp' href='#531906'><time timestamp='2017-02-25T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and that PR brings back the flexibility of variable sizes, but with a * and a &gt;&gt; instead of a %
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015300' id='531907'>
+<a class='timestamp' href='#531907'><time timestamp='2017-02-25T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I recall benchmarking and not being able to see a difference between %, &amp;, &gt;&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015300' id='531908'>
+<a class='timestamp' href='#531908'><time timestamp='2017-02-25T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes using % would be more straightforward code readability wise but division is even worse than multiplication
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015300' id='531909'>
+<a class='timestamp' href='#531909'><time timestamp='2017-02-25T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015300' id='531910'>
+<a class='timestamp' href='#531910'><time timestamp='2017-02-25T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+so I think it&#x27;s fairly safe to take this one.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531911'>
+<a class='timestamp' href='#531911'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531912'>
+<a class='timestamp' href='#531912'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+My one suggestion sipa is to convert size to a uint64_t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531913'>
+<a class='timestamp' href='#531913'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+like the member
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531914'>
+<a class='timestamp' href='#531914'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+so you can get rid of all the casts in the hash part
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531915'>
+<a class='timestamp' href='#531915'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+would this result in more efficient code on 32-bit though?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531916'>
+<a class='timestamp' href='#531916'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+as it guarantees that the top bits are zero
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015360' id='531917'>
+<a class='timestamp' href='#531917'><time timestamp='2017-02-25T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I&#x27;m not sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015420' id='531918'>
+<a class='timestamp' href='#531918'><time timestamp='2017-02-25T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+but they have to be cast to uint64_t in hashing part now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015420' id='531919'>
+<a class='timestamp' href='#531919'><time timestamp='2017-02-25T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+so my thought is not having to do that cast every hash is slightly more efficient code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015420' id='531920'>
+<a class='timestamp' href='#531920'><time timestamp='2017-02-25T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+casts don&#x27;t generally generate code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015420' id='531921'>
+<a class='timestamp' href='#531921'><time timestamp='2017-02-25T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+uint32_t to uint64_t even?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015420' id='531922'>
+<a class='timestamp' href='#531922'><time timestamp='2017-02-25T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+there are instructions that auto-0 it to the alu?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015480' id='531923'>
+<a class='timestamp' href='#531923'><time timestamp='2017-02-25T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+that&#x27;s fine then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015480' id='531924'>
+<a class='timestamp' href='#531924'><time timestamp='2017-02-25T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no. on 32-bit, it just means &#x27;assume top bits are 0&#x27;. On 64 bit evrything is stored in 64-bit registers and the top bits are always 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015480' id='531925'>
+<a class='timestamp' href='#531925'><time timestamp='2017-02-25T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+cool, then that&#x27;s fine as is 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015480' id='531926'>
+<a class='timestamp' href='#531926'><time timestamp='2017-02-25T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+at least on x86_64 you can&#x27;t load something into the lower 32 bits without zeroing the upper bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015540' id='531927'>
+<a class='timestamp' href='#531927'><time timestamp='2017-02-25T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I&#x27;d consider it an Ack from me then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015540' id='531928'>
+<a class='timestamp' href='#531928'><time timestamp='2017-02-25T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+The tests are pretty agressive on cuckoocache, so if the hashing idea were broken in some way it would either catch it or it would be broken in a very minor way.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015600' id='531929'>
+<a class='timestamp' href='#531929'><time timestamp='2017-02-25T09:40:00Z'>09:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+of course the considereations depend on the specific architecture, but in general casts are very cheap or generate no extra code at all especially between big types. Arithmetic with 8-bit and 16-bit values can result in extra &#x27;ANDs&#x27; in some architectures you&#x27;re right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015600' id='531930'>
+<a class='timestamp' href='#531930'><time timestamp='2017-02-25T09:40:00Z'>09:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but then it&#x27;s not so much the cast that generates the code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015600' id='531931'>
+<a class='timestamp' href='#531931'><time timestamp='2017-02-25T09:40:00Z'>09:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, having good tests is great!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015660' id='531932'>
+<a class='timestamp' href='#531932'><time timestamp='2017-02-25T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the state of testing in bitcoin core improved a lot last year
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531933'>
+<a class='timestamp' href='#531933'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+<b>*cough*</b> merge my checkqueue tests <b>*cough*</b> :P 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531934'>
+<a class='timestamp' href='#531934'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+which reminds me I should merge #9847
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531935'>
+<a class='timestamp' href='#531935'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9847" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9847</a> | Extra test vector for BIP32 by sipa · Pull Request #9847 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531936'>
+<a class='timestamp' href='#531936'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jeremyrubin: oh, aren&#x27;t they yet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531937'>
+<a class='timestamp' href='#531937'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+#9497
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531938'>
+<a class='timestamp' href='#531938'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9497" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9497</a> | CCheckQueue Unit Tests by JeremyRubin · Pull Request #9497 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015720' id='531939'>
+<a class='timestamp' href='#531939'><time timestamp='2017-02-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+usually test-only pulls are merged very quickly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015780' id='531940'>
+<a class='timestamp' href='#531940'><time timestamp='2017-02-25T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+then again I cannot really keep up anymore with the volume of pulls
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015780' id='531941'>
+<a class='timestamp' href='#531941'><time timestamp='2017-02-25T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+It&#x27;s actually fine that they weren&#x27;t, I found a mixed up loop condition (such that one test wasn&#x27;t doing much) when I was sitting with kalle
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015780' id='531942'>
+<a class='timestamp' href='#531942'><time timestamp='2017-02-25T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+which is good and bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015780' id='531943'>
+<a class='timestamp' href='#531943'><time timestamp='2017-02-25T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/f19afdbfb4cb...6206252e5073" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/f19afdbfb4cb...6206252e5073</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015780' id='531944'>
+<a class='timestamp' href='#531944'><time timestamp='2017-02-25T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 30aedcb Pieter Wuille: BIP32 extra test vector
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531945'>
+<a class='timestamp' href='#531945'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 6206252 Wladimir J. van der Laan: Merge #9847: Extra test vector for BIP32...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531946'>
+<a class='timestamp' href='#531946'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but division is even worse than multiplication -&gt; nehalem can issue a 64-bit mul every 2 cycles; a division every 19-69 cycles
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531947'>
+<a class='timestamp' href='#531947'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+But that&#x27;s all fixed now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531948'>
+<a class='timestamp' href='#531948'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #9847: Extra test vector for BIP32 (master...bip32up) <a href="https://github.com/bitcoin/bitcoin/pull/9847" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9847</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531949'>
+<a class='timestamp' href='#531949'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa: yeah, that would classify as &#x27;bad&#x27; in my eyes :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531950'>
+<a class='timestamp' href='#531950'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: the mul or the div?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531951'>
+<a class='timestamp' href='#531951'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the div
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531952'>
+<a class='timestamp' href='#531952'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+nehalem?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015840' id='531953'>
+<a class='timestamp' href='#531953'><time timestamp='2017-02-25T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, absolutely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015900' id='531954'>
+<a class='timestamp' href='#531954'><time timestamp='2017-02-25T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but &#x27;even worse&#x27; sounds like multiplication is already pretty bad... every 2 cycles is pretty good i&#x27;d say :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015900' id='531955'>
+<a class='timestamp' href='#531955'><time timestamp='2017-02-25T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+divs have historically been really bad, some CPUs don&#x27;t even have a specific instruction for it, but even those that have it&#x27;s generally terrible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015900' id='531956'>
+<a class='timestamp' href='#531956'><time timestamp='2017-02-25T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+because of the underlying computational structure of course, not because those CPUs are badly implemented or so :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015900' id='531957'>
+<a class='timestamp' href='#531957'><time timestamp='2017-02-25T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+ah, nehalem:  an intel arch name I&#x27;d thoroughly forgotten :) 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015960' id='531958'>
+<a class='timestamp' href='#531958'><time timestamp='2017-02-25T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+2 cycles is pretty good, espeically if it&#x27;s <b>*every*</b> 2 cycles
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015960' id='531959'>
+<a class='timestamp' href='#531959'><time timestamp='2017-02-25T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+and that hash routine should pipeline well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015960' id='531960'>
+<a class='timestamp' href='#531960'><time timestamp='2017-02-25T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the latency is higher than 2 cycles
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488015960' id='531961'>
+<a class='timestamp' href='#531961'><time timestamp='2017-02-25T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+usually mul is quite quick but the number of multiplication units is limited, so issuing a lot will bottleneck on that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531962'>
+<a class='timestamp' href='#531962'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but not on nehalem, apparently :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531963'>
+<a class='timestamp' href='#531963'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but the throughput is once every 2 cycles
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531964'>
+<a class='timestamp' href='#531964'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+same on skylaky, btw
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531965'>
+<a class='timestamp' href='#531965'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+what would be the throughput for logical and?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531966'>
+<a class='timestamp' href='#531966'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+0.5 or 1, depending on the type of inputs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531967'>
+<a class='timestamp' href='#531967'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+can&#x27;t be much faster than per 2 cycles
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016020' id='531968'>
+<a class='timestamp' href='#531968'><time timestamp='2017-02-25T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh!     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016080' id='531969'>
+<a class='timestamp' href='#531969'><time timestamp='2017-02-25T09:48:00Z'>09:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+0.25 for and with a constant, even
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016080' id='531970'>
+<a class='timestamp' href='#531970'><time timestamp='2017-02-25T09:48:00Z'>09:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="http://www.agner.org/optimize/instruction_tables.pdf" class="link" target="_blank">http://www.agner.org/optimize/instruction_tables.pdf</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016080' id='531971'>
+<a class='timestamp' href='#531971'><time timestamp='2017-02-25T09:48:00Z'>09:48</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+modern CPU architectures are so fast we can almost ignore computation overhead. Too bad memory didn&#x27;t keep up :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016080' id='531972'>
+<a class='timestamp' href='#531972'><time timestamp='2017-02-25T09:48:00Z'>09:48</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Also if you want to really make that hashing faster, could switch to balke2b or something 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016140' id='531973'>
+<a class='timestamp' href='#531973'><time timestamp='2017-02-25T09:49:00Z'>09:49</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa: thanks , that seems like a very useful document
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016200' id='531974'>
+<a class='timestamp' href='#531974'><time timestamp='2017-02-25T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+wumpus: +1 thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016200' id='531975'>
+<a class='timestamp' href='#531975'><time timestamp='2017-02-25T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+LOCK ADD... 18 cycles!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016380' id='531976'>
+<a class='timestamp' href='#531976'><time timestamp='2017-02-25T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ieeeh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016620' id='531977'>
+<a class='timestamp' href='#531977'><time timestamp='2017-02-25T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+so I&#x27;m trying to write some test software
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016620' id='531978'>
+<a class='timestamp' href='#531978'><time timestamp='2017-02-25T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+and I want to force segwit active
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016680' id='531979'>
+<a class='timestamp' href='#531979'><time timestamp='2017-02-25T09:58:00Z'>09:58</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+seems that isn&#x27;t trivial to do?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016680' id='531980'>
+<a class='timestamp' href='#531980'><time timestamp='2017-02-25T09:58:00Z'>09:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+regtest?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016740' id='531981'>
+<a class='timestamp' href='#531981'><time timestamp='2017-02-25T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it seems to still require some blocks to vote for it before it can be made active?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016740' id='531982'>
+<a class='timestamp' href='#531982'><time timestamp='2017-02-25T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016740' id='531983'>
+<a class='timestamp' href='#531983'><time timestamp='2017-02-25T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+3*144 blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488016800' id='531984'>
+<a class='timestamp' href='#531984'><time timestamp='2017-02-25T10:00:00Z'>10:00</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+hmm... would be kinda nice to not have to do that, similar to how I can set BIPxxxHeight = 0.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488017640' id='531985'>
+<a class='timestamp' href='#531985'><time timestamp='2017-02-25T10:14:00Z'>10:14</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+would it be safe to change VersionBitsState to read VersionBitsDeploymentInfo for an override state parameter?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488017940' id='531986'>
+<a class='timestamp' href='#531986'><time timestamp='2017-02-25T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+no I guess I&#x27;d neet to change GetStateFor
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488026520' id='531987'>
+<a class='timestamp' href='#531987'><time timestamp='2017-02-25T12:42:00Z'>12:42</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+jeremyrubin you could just turn down the number of blocks required on regtest from 144 to something lower like 10.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488037500' id='531988'>
+<a class='timestamp' href='#531988'><time timestamp='2017-02-25T15:45:00Z'>15:45</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+woohoo, 0.13 ec2 sync finally finished :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488038280' id='531989'>
+<a class='timestamp' href='#531989'><time timestamp='2017-02-25T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+for those interested... ec2 xlarge 4core, 16gb ram. All default settings:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488038340' id='531990'>
+<a class='timestamp' href='#531990'><time timestamp='2017-02-25T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+v0.13.2: 01:12:39:43
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488038340' id='531991'>
+<a class='timestamp' href='#531991'><time timestamp='2017-02-25T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+v0.14.0: 00:06:24:17
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488038460' id='531992'>
+<a class='timestamp' href='#531992'><time timestamp='2017-02-25T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-15'> paveljanik</span>&gt;
+nice!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488038580' id='531993'>
+<a class='timestamp' href='#531993'><time timestamp='2017-02-25T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Setting a reasonable dbcache cuts the 0.14 time in half. Unsure what it does for 0.13. Similar, I assume
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488038640' id='531994'>
+<a class='timestamp' href='#531994'><time timestamp='2017-02-25T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Actually no... 0.13 is doing lots more validation. So it&#x27;d still be much more than half.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488041280' id='531995'>
+<a class='timestamp' href='#531995'><time timestamp='2017-02-25T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+FYI rc2 executables are online: <a href="https://bitcoin.org/bin/bitcoin-core-0.14.0/test.rc2/" class="link" target="_blank">https://bitcoin.org/bin/bitcoin-core-0.14.0/test.rc2/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488042360' id='531996'>
+<a class='timestamp' href='#531996'><time timestamp='2017-02-25T17:06:00Z'>17:06</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+sync is faster with 0.14.0?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488052620' id='531997'>
+<a class='timestamp' href='#531997'><time timestamp='2017-02-25T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jameshilliard opened pull request #9858: remove TestBlockValidity from CreateNewBlock critical path (master...remove-tbv) <a href="https://github.com/bitcoin/bitcoin/pull/9858" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9858</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488059280' id='531998'>
+<a class='timestamp' href='#531998'><time timestamp='2017-02-25T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: jinx :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488059280' id='531999'>
+<a class='timestamp' href='#531999'><time timestamp='2017-02-25T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+?     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488059340' id='532000'>
+<a class='timestamp' href='#532000'><time timestamp='2017-02-25T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: 9858
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488059640' id='532001'>
+<a class='timestamp' href='#532001'><time timestamp='2017-02-25T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+i c ☺
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488061440' id='532002'>
+<a class='timestamp' href='#532002'><time timestamp='2017-02-25T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+would be nice if everything that went into stable branches were daggy fixes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488061500' id='532003'>
+<a class='timestamp' href='#532003'><time timestamp='2017-02-25T22:25:00Z'>22:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+daggy?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488061620' id='532004'>
+<a class='timestamp' href='#532004'><time timestamp='2017-02-25T22:27:00Z'>22:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: <a href="http://wiki.secondlife.com/wiki/Creating_a_version_control_repository#The_" class="link" target="_blank">http://wiki.secondlife.com/wiki/Creating_a_version_control_repository#The_</a>.22Daggy.22_Fix
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488061860' id='532005'>
+<a class='timestamp' href='#532005'><time timestamp='2017-02-25T22:31:00Z'>22:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+basically means bugfix commits are parented to the bug-introducing commit, allowing a merge into each branch of the same fix commit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488062220' id='532006'>
+<a class='timestamp' href='#532006'><time timestamp='2017-02-25T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+are really that many of our fixes ones where there is a obvious bug inducing commit which is recent enough for that to be useful?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488062460' id='532007'>
+<a class='timestamp' href='#532007'><time timestamp='2017-02-25T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: maybe not. as a middle-ground, I typically just try to rebase to the most recent branching point that is a clean merge to master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488062520' id='532008'>
+<a class='timestamp' href='#532008'><time timestamp='2017-02-25T22:42:00Z'>22:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+eg, everything I do now would be based on 9828f9a at the latest (if possible)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488062520' id='532009'>
+<a class='timestamp' href='#532009'><time timestamp='2017-02-25T22:42:00Z'>22:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(which I have simple-tagged as &quot;branch-0.14&quot; in my repo)
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

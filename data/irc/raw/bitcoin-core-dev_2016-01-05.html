@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2016-01-05
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2016-01-05' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2015-12-05">&lt;</a><span class='header'>   January 2016   </span><a href="/bitcoin-core-dev/2016-02-05">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                1  <a class="" href="/bitcoin-core-dev/2016-01-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2016-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2016-01-04">4</a>  <a class="current" href="/bitcoin-core-dev/2016-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2016-01-06">6</a>  <a class="" href="/bitcoin-core-dev/2016-01-07">7</a>  <a class="" href="/bitcoin-core-dev/2016-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2016-01-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-10">10</a> <a class="" href="/bitcoin-core-dev/2016-01-11">11</a> <a class="" href="/bitcoin-core-dev/2016-01-12">12</a> <a class="" href="/bitcoin-core-dev/2016-01-13">13</a> <a class="" href="/bitcoin-core-dev/2016-01-14">14</a> <a class="" href="/bitcoin-core-dev/2016-01-15">15</a> <a class="" href="/bitcoin-core-dev/2016-01-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-17">17</a> <a class="" href="/bitcoin-core-dev/2016-01-18">18</a> <a class="" href="/bitcoin-core-dev/2016-01-19">19</a> <a class="" href="/bitcoin-core-dev/2016-01-20">20</a> <a class="" href="/bitcoin-core-dev/2016-01-21">21</a> <a class="" href="/bitcoin-core-dev/2016-01-22">22</a> <a class="" href="/bitcoin-core-dev/2016-01-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-24">24</a> <a class="" href="/bitcoin-core-dev/2016-01-25">25</a> <a class="" href="/bitcoin-core-dev/2016-01-26">26</a> <a class="" href="/bitcoin-core-dev/2016-01-27">27</a> <a class="" href="/bitcoin-core-dev/2016-01-28">28</a> <a class="" href="/bitcoin-core-dev/2016-01-29">29</a> <a class="" href="/bitcoin-core-dev/2016-01-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1451962920' id='446548'>
+<a class='timestamp' href='#446548'><time timestamp='2016-01-05T03:02:00Z'>03:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: MarkoFalke: what is the intended purpose of mintxfee?  I was just looking back at the changes where Marco introduced GetRequiredFee, which was maybe a step in the right direction, but maybe not the proper fix.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451962980' id='446549'>
+<a class='timestamp' href='#446549'><time timestamp='2016-01-05T03:03:00Z'>03:03</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Perhaps I also changed this in my estimateSmartFee PR, but i don&#x27;t think so, anyway, minTxFee is not actually a minTxFee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451963040' id='446550'>
+<a class='timestamp' href='#446550'><time timestamp='2016-01-05T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it only serves as that if you are not using fee estimation or fee estimation can not return a result
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451963160' id='446551'>
+<a class='timestamp' href='#446551'><time timestamp='2016-01-05T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I&#x27;m asking this because I think we should change the default value that gets used if fee estimation can&#x27;t give you an answer.  As rusty was pointing out in bitcoin-dev, 1000 sat/KB is just too small
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451963160' id='446552'>
+<a class='timestamp' href='#446552'><time timestamp='2016-01-05T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+And since this number is rarely used, i think its fine if its significantly higher, say at least 10000 sat/KB.   But then I think all of the comments in the QT code are misleading, because you might often be paying a fee less than this and not depending on priority
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451963280' id='446553'>
+<a class='timestamp' href='#446553'><time timestamp='2016-01-05T03:08:00Z'>03:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Anwyay, super annoying since these are probably all translation strings, so maybe we can&#x27;t fix the UI confusion for 0.12.  But I still think its worth bumping the default, you don&#x27;t want to fall back to 1000 sat/KB before yoru fee estimates warm up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451991900' id='446554'>
+<a class='timestamp' href='#446554'><time timestamp='2016-01-05T11:05:00Z'>11:05</time></a>
+&lt;<span class='nick nick-13'> GitHub141</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/45d13abf4ea1...a10a7920c3ac" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/45d13abf4ea1...a10a7920c3ac</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451991900' id='446555'>
+<a class='timestamp' href='#446555'><time timestamp='2016-01-05T11:05:00Z'>11:05</time></a>
+&lt;<span class='nick nick-13'> GitHub141</span>&gt;
+bitcoin/master 5246180 Suhas Daftuar: Mark blocks with too many sigops as failed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451991900' id='446556'>
+<a class='timestamp' href='#446556'><time timestamp='2016-01-05T11:05:00Z'>11:05</time></a>
+&lt;<span class='nick nick-13'> GitHub141</span>&gt;
+bitcoin/master a10a792 Wladimir J. van der Laan: Merge pull request #7217...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451991900' id='446557'>
+<a class='timestamp' href='#446557'><time timestamp='2016-01-05T11:05:00Z'>11:05</time></a>
+&lt;<span class='nick nick-2'> GitHub105</span>&gt;
+[bitcoin] laanwj closed pull request #7217: Mark blocks with too many sigops as failed (master...fix-sigops-rejection) <a href="https://github.com/bitcoin/bitcoin/pull/7217" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7217</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451991900' id='446558'>
+<a class='timestamp' href='#446558'><time timestamp='2016-01-05T11:05:00Z'>11:05</time></a>
+&lt;<span class='nick nick-9'> GitHub58</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/e08b7cb33ca30e03a4fda2eb13fc101628907258" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/e08b7cb33ca30e03a4fda2eb13fc101628907258</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451991900' id='446559'>
+<a class='timestamp' href='#446559'><time timestamp='2016-01-05T11:05:00Z'>11:05</time></a>
+&lt;<span class='nick nick-9'> GitHub58</span>&gt;
+bitcoin/0.12 e08b7cb Suhas Daftuar: Mark blocks with too many sigops as failed...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451992560' id='446560'>
+<a class='timestamp' href='#446560'><time timestamp='2016-01-05T11:16:00Z'>11:16</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+morcos, I agree 1000 sat/KB is too low. About your question: GetRequiredFee() returns whatever is higher: the minRelayTxFee (which is needed due to the mempool) or the mintxfee (which is what the user may have set in his settings)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451992680' id='446561'>
+<a class='timestamp' href='#446561'><time timestamp='2016-01-05T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Personally I don&#x27;t use fee estimates and my .conf has a hardcoded mintxfee which just fits my time-cost-tradeoff just fine.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451992740' id='446562'>
+<a class='timestamp' href='#446562'><time timestamp='2016-01-05T11:19:00Z'>11:19</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I was planning to writeup about the &quot;hard&quot; fees in the release notes but if you are planning to change the notion of mintxfee, please let me know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451992800' id='446563'>
+<a class='timestamp' href='#446563'><time timestamp='2016-01-05T11:20:00Z'>11:20</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+wumpus, anything holding back 7193 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451993820' id='446564'>
+<a class='timestamp' href='#446564'><time timestamp='2016-01-05T11:37:00Z'>11:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: huh, &quot;pruning&quot; is kind of ambigious in this context
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451993880' id='446565'>
+<a class='timestamp' href='#446565'><time timestamp='2016-01-05T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+test looks good to me though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451993880' id='446566'>
+<a class='timestamp' href='#446566'><time timestamp='2016-01-05T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Should have been merged as part of the pull that introduced &quot;pruning&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451993940' id='446567'>
+<a class='timestamp' href='#446567'><time timestamp='2016-01-05T11:39:00Z'>11:39</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+let&#x27;s not call it pruning please
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994240' id='446568'>
+<a class='timestamp' href='#446568'><time timestamp='2016-01-05T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so  #7193 fixes the test so that it actually tests what it purports to test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994300' id='446569'>
+<a class='timestamp' href='#446569'><time timestamp='2016-01-05T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+what do you mean with &quot;pruning must fail on 0.12&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994300' id='446570'>
+<a class='timestamp' href='#446570'><time timestamp='2016-01-05T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+<b>*this test*</b> must fail on 0.12?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994360' id='446571'>
+<a class='timestamp' href='#446571'><time timestamp='2016-01-05T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and succeed on master?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994360' id='446572'>
+<a class='timestamp' href='#446572'><time timestamp='2016-01-05T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+It must fail where trimming was not yet implemented
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994420' id='446573'>
+<a class='timestamp' href='#446573'><time timestamp='2016-01-05T11:47:00Z'>11:47</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+It must pass when (and after) trimming was implemented
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994420' id='446574'>
+<a class='timestamp' href='#446574'><time timestamp='2016-01-05T11:47:00Z'>11:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right - the test, not the process itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994420' id='446575'>
+<a class='timestamp' href='#446575'><time timestamp='2016-01-05T11:47:00Z'>11:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ok then I understand, thanks ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994540' id='446576'>
+<a class='timestamp' href='#446576'><time timestamp='2016-01-05T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+oops, was a typo in my comment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994840' id='446577'>
+<a class='timestamp' href='#446577'><time timestamp='2016-01-05T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: If you want to use a preset fee, then why do you use mintxfee and not paytxfee?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994900' id='446578'>
+<a class='timestamp' href='#446578'><time timestamp='2016-01-05T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-5'> GitHub45</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a10a7920c3ac...2078495d9c5f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a10a7920c3ac...2078495d9c5f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994900' id='446579'>
+<a class='timestamp' href='#446579'><time timestamp='2016-01-05T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-5'> GitHub45</span>&gt;
+bitcoin/master fafd093 MarcoFalke: [wallet] Adjust pruning test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994900' id='446580'>
+<a class='timestamp' href='#446580'><time timestamp='2016-01-05T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-5'> GitHub45</span>&gt;
+bitcoin/master 2078495 Wladimir J. van der Laan: Merge pull request #7193...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994900' id='446581'>
+<a class='timestamp' href='#446581'><time timestamp='2016-01-05T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-16'> GitHub159</span>&gt;
+[bitcoin] laanwj closed pull request #7193: [wallet] Cleanup tests (master...MarcoFalke-2015-WalletTests) <a href="https://github.com/bitcoin/bitcoin/pull/7193" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7193</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994900' id='446582'>
+<a class='timestamp' href='#446582'><time timestamp='2016-01-05T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I guess my point was what is the intended use of mintxfee?  it seems to function now mostly as the fall back default.  it does not appear to serve as a min otherwise?  but i&#x27;m not sure i&#x27;d fully thought through all the different fee configurations
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994960' id='446583'>
+<a class='timestamp' href='#446583'><time timestamp='2016-01-05T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;m not entirely sure either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994960' id='446584'>
+<a class='timestamp' href='#446584'><time timestamp='2016-01-05T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+oh finally some life
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994960' id='446585'>
+<a class='timestamp' href='#446585'><time timestamp='2016-01-05T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+was really quiet here  this morning :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451994960' id='446586'>
+<a class='timestamp' href='#446586'><time timestamp='2016-01-05T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+morcos, paytxfee can be set via settxfee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995020' id='446587'>
+<a class='timestamp' href='#446587'><time timestamp='2016-01-05T11:57:00Z'>11:57</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+If you happen to settxfee too low, you might want a fall back
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995020' id='446588'>
+<a class='timestamp' href='#446588'><time timestamp='2016-01-05T11:57:00Z'>11:57</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+That&#x27;s what I was guessing why it was there, but your concern is valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995080' id='446589'>
+<a class='timestamp' href='#446589'><time timestamp='2016-01-05T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+so mintxfee is the &quot;hardcoded&quot; minimum whereas paytxfee is your &quot;dynamic choice&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995080' id='446590'>
+<a class='timestamp' href='#446590'><time timestamp='2016-01-05T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: yeah ok , so thats a bit what i was afraid of
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995080' id='446591'>
+<a class='timestamp' href='#446591'><time timestamp='2016-01-05T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+for someone like you, you would not want mintxfee to be set to say 20000 satoshis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995140' id='446592'>
+<a class='timestamp' href='#446592'><time timestamp='2016-01-05T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+because you would want the freedom to choose below that sometimes 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995140' id='446593'>
+<a class='timestamp' href='#446593'><time timestamp='2016-01-05T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-5'> GitHub162</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/bfdaa3c87f6054b0b1e617031d6a8f02cdfc99dd" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/bfdaa3c87f6054b0b1e617031d6a8f02cdfc99dd</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995140' id='446594'>
+<a class='timestamp' href='#446594'><time timestamp='2016-01-05T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-5'> GitHub162</span>&gt;
+bitcoin/0.12 bfdaa3c MarcoFalke: [wallet] Adjust pruning test...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995140' id='446595'>
+<a class='timestamp' href='#446595'><time timestamp='2016-01-05T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but for someone using fee estimation, they&#x27;d probably rather it fall back to something that pays a bit too much rather than the other way aroud.  as it only gets used very rarely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995260' id='446596'>
+<a class='timestamp' href='#446596'><time timestamp='2016-01-05T12:01:00Z'>12:01</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I mean luckily it is command line settable also
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995320' id='446597'>
+<a class='timestamp' href='#446597'><time timestamp='2016-01-05T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so no reason to obsesses on it now, and just pick something that is more sensible than 1000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995320' id='446598'>
+<a class='timestamp' href='#446598'><time timestamp='2016-01-05T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-14'> GitHub107</span>&gt;
+[bitcoin] jonasschnelli pushed 1 new commit to master: <a href="https://github.com/bitcoin/bitcoin/commit/aa413687de45ef9add61f97447532a87bd2b2bb7" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/aa413687de45ef9add61f97447532a87bd2b2bb7</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995320' id='446599'>
+<a class='timestamp' href='#446599'><time timestamp='2016-01-05T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-14'> GitHub107</span>&gt;
+bitcoin/master aa41368 Jonas Schnelli: Merge pull request #7282...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995320' id='446600'>
+<a class='timestamp' href='#446600'><time timestamp='2016-01-05T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-8'> GitHub75</span>&gt;
+[bitcoin] jonasschnelli closed pull request #7282: [Qt] fix coincontrol update issue when deleting a send coins entry (master...2016/01/qt_cc_fee) <a href="https://github.com/bitcoin/bitcoin/pull/7282" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7282</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995500' id='446601'>
+<a class='timestamp' href='#446601'><time timestamp='2016-01-05T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jonas, is this a backport as well?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995680' id='446602'>
+<a class='timestamp' href='#446602'><time timestamp='2016-01-05T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-13'> GitHub51</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/5cadf3eb60ddc630d9e749f7a92e51d07d2e614a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/5cadf3eb60ddc630d9e749f7a92e51d07d2e614a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451995680' id='446603'>
+<a class='timestamp' href='#446603'><time timestamp='2016-01-05T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-13'> GitHub51</span>&gt;
+bitcoin/0.12 5cadf3e Jonas Schnelli: [Qt] fix coincontrol update issue when deleting a send coin entry...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451997420' id='446604'>
+<a class='timestamp' href='#446604'><time timestamp='2016-01-05T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jonasschnelli, how can I trigger the welcome dialog of qt?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451997420' id='446605'>
+<a class='timestamp' href='#446605'><time timestamp='2016-01-05T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+firts-start dialog
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451997600' id='446606'>
+<a class='timestamp' href='#446606'><time timestamp='2016-01-05T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+-choosedatadir
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999460' id='446607'>
+<a class='timestamp' href='#446607'><time timestamp='2016-01-05T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-13'> GitHub66</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/aa413687de45...605c17844ea3" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/aa413687de45...605c17844ea3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999460' id='446608'>
+<a class='timestamp' href='#446608'><time timestamp='2016-01-05T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-13'> GitHub66</span>&gt;
+bitcoin/master fa6ad85 MarcoFalke: [devtools] Rewrite fix-copyright-headers.py
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999460' id='446609'>
+<a class='timestamp' href='#446609'><time timestamp='2016-01-05T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-13'> GitHub66</span>&gt;
+bitcoin/master fa24439 MarcoFalke: Bump copyright headers to 2015
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999460' id='446610'>
+<a class='timestamp' href='#446610'><time timestamp='2016-01-05T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-13'> GitHub66</span>&gt;
+bitcoin/master fa71669 MarcoFalke: [devtools] Use git pretty-format for year parsing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999520' id='446611'>
+<a class='timestamp' href='#446611'><time timestamp='2016-01-05T13:12:00Z'>13:12</time></a>
+&lt;<span class='nick nick-1'> GitHub122</span>&gt;
+[bitcoin] laanwj closed pull request #7205: Update copyright headers to 2015 (master...MarcoFalke-2015-BumpHeaders-0.12) <a href="https://github.com/bitcoin/bitcoin/pull/7205" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7205</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999640' id='446612'>
+<a class='timestamp' href='#446612'><time timestamp='2016-01-05T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-14'> GitHub179</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/333e1eaeea80344e5a28db6efbce2691c85e2b25" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/333e1eaeea80344e5a28db6efbce2691c85e2b25</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1451999640' id='446613'>
+<a class='timestamp' href='#446613'><time timestamp='2016-01-05T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-14'> GitHub179</span>&gt;
+bitcoin/0.12 333e1ea MarcoFalke: Bump copyright headers to 2015...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452001500' id='446614'>
+<a class='timestamp' href='#446614'><time timestamp='2016-01-05T13:45:00Z'>13:45</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+wumpus I&#x27;m still on vacation and kind of waiting on #7091 before continuing with the &quot;document-with-words-and-pictures&quot; I promised to some people, but...what is the &quot;right time for refactors and moveonlies&quot;? I really don&#x27;t want to miss it for the consensus encapsulation moveonly again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452001560' id='446615'>
+<a class='timestamp' href='#446615'><time timestamp='2016-01-05T13:46:00Z'>13:46</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I mean something like this <a href="https://github.com/jtimon/bitcoin/commit/f8c34f27d4020880647cbdbafad70793882cef79" class="link" target="_blank">https://github.com/jtimon/bitcoin/commit/f8c34f27d4020880647cbdbafad70793882cef79</a> (after #7287 )
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452001740' id='446616'>
+<a class='timestamp' href='#446616'><time timestamp='2016-01-05T13:49:00Z'>13:49</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+it was supposed to be after major version forks, right? or is it after the major released is actually done (to avoid interfering with backports)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003660' id='446617'>
+<a class='timestamp' href='#446617'><time timestamp='2016-01-05T14:21:00Z'>14:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: are you completely opposed to adding a new command line argument for 0.12.  -defaulttxfeeifnoestimate (or something)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003660' id='446618'>
+<a class='timestamp' href='#446618'><time timestamp='2016-01-05T14:21:00Z'>14:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I think it makes a lot of sense for this to be a different value than -mintxfee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003720' id='446619'>
+<a class='timestamp' href='#446619'><time timestamp='2016-01-05T14:22:00Z'>14:22</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and then we can actually make fee estimate generated fees respect -mintxfee (which they currently don&#x27;t)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003720' id='446620'>
+<a class='timestamp' href='#446620'><time timestamp='2016-01-05T14:22:00Z'>14:22</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I would then advocate that there is no need to change -mintxfee right now, we can leave it at 1000, but should someone desire to never ever send fees that low, they can bump that number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003780' id='446621'>
+<a class='timestamp' href='#446621'><time timestamp='2016-01-05T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and it&#x27;ll prevent them from doing so, regardless of how they pick their fees
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003780' id='446622'>
+<a class='timestamp' href='#446622'><time timestamp='2016-01-05T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+-defaulttxfeeifnoestimate will only come into play if you&#x27;re trying to use estimates and you can&#x27;t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003780' id='446623'>
+<a class='timestamp' href='#446623'><time timestamp='2016-01-05T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+(uh not exactly, if you&#x27;re trying to use estimates and you can&#x27;t get an estimate for the value you are asking for, it&#x27;ll make sure you pay at least that much)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003840' id='446624'>
+<a class='timestamp' href='#446624'><time timestamp='2016-01-05T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-8'> maaku</span>&gt;
+we shouldn&#x27;t be pulling numbers out of a hat for fees, mintxfee or defaulttxfeeifnoestimate or otherwise
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003840' id='446625'>
+<a class='timestamp' href='#446625'><time timestamp='2016-01-05T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so if for example you try to estimatefee 1, and it can only give you an answer for 2 and says its 25000 satoshis, but the default is 40000, then it&#x27;ll make you pay 40000 in that case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003840' id='446626'>
+<a class='timestamp' href='#446626'><time timestamp='2016-01-05T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but if you asked for 2, and got 25000 at 2, then thats fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003840' id='446627'>
+<a class='timestamp' href='#446627'><time timestamp='2016-01-05T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+maaku: if you have no estimates (on startup) you have to pull numbers from a hat
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003900' id='446628'>
+<a class='timestamp' href='#446628'><time timestamp='2016-01-05T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-8'> maaku</span>&gt;
+morcos: or you can disable transaction creation until the fee estimator is primed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003900' id='446629'>
+<a class='timestamp' href='#446629'><time timestamp='2016-01-05T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+morcos, I&#x27;d be fine with setting mintxfee to 5000 or 10000 and mention in the release notes that ppl can change it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003900' id='446630'>
+<a class='timestamp' href='#446630'><time timestamp='2016-01-05T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+my point is this is a relatively rare occurence, but makes much more sense to have it do something sane, than ridiculous (right now it defaults to mintxfee in all the cases i mentioned)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003900' id='446631'>
+<a class='timestamp' href='#446631'><time timestamp='2016-01-05T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-8'> maaku</span>&gt;
+although hopefully soon we will have the consensus changes needed to prime estimation on startup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003960' id='446632'>
+<a class='timestamp' href='#446632'><time timestamp='2016-01-05T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: I think what I proposed makes a lot more sense, because it seems to me peole might say, you know what, i odn&#x27;t care what fee estimation says i always want to pay at least X
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003960' id='446633'>
+<a class='timestamp' href='#446633'><time timestamp='2016-01-05T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+And also adjust the GUI to show the GetRequiredFee() for estimates, in case it does not yet do this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003960' id='446634'>
+<a class='timestamp' href='#446634'><time timestamp='2016-01-05T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: it&#x27;d seem more user-friendly to actually say &quot;i don&#x27;t know what fee you need to get into the next block&quot; in that case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003960' id='446635'>
+<a class='timestamp' href='#446635'><time timestamp='2016-01-05T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so giving them a way to do that with -mintxfee is valuable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452003960' id='446636'>
+<a class='timestamp' href='#446636'><time timestamp='2016-01-05T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-8'> maaku</span>&gt;
+morcos: defaulttxfeeifnoestimate seems just as crazy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004020' id='446637'>
+<a class='timestamp' href='#446637'><time timestamp='2016-01-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+aj: its not just gui, if you just do sendtoaddress() from RPC, you don&#x27;t get a chance for feedback, what does it default to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004020' id='446638'>
+<a class='timestamp' href='#446638'><time timestamp='2016-01-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and even in the gui, what should it default to if it doesn&#x27;t know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004020' id='446639'>
+<a class='timestamp' href='#446639'><time timestamp='2016-01-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+maaku: why is that crazy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004020' id='446640'>
+<a class='timestamp' href='#446640'><time timestamp='2016-01-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: RPC can give an error back :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004020' id='446641'>
+<a class='timestamp' href='#446641'><time timestamp='2016-01-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-8'> maaku</span>&gt;
+morcos: it&#x27;s another number that could be just as wrong, with either too high a fee (users get angry) or too low a fee (users get stuck)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004080' id='446642'>
+<a class='timestamp' href='#446642'><time timestamp='2016-01-05T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+what we&#x27;ve done is moved from a regime where we always hard code a default fee to a regime where we use a fee by fee estimation the vast majority of the time, except when its impossible to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004080' id='446643'>
+<a class='timestamp' href='#446643'><time timestamp='2016-01-05T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and then we should have a sane default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004080' id='446644'>
+<a class='timestamp' href='#446644'><time timestamp='2016-01-05T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-8'> maaku</span>&gt;
+better to just give an error, or in the GUI a window to enter a manual fee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004080' id='446645'>
+<a class='timestamp' href='#446645'><time timestamp='2016-01-05T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+you guys, fee estimation is not that perfect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004140' id='446646'>
+<a class='timestamp' href='#446646'><time timestamp='2016-01-05T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+you can&#x27;t just depend on it always giving you the right answer, bitcoind/-qt needs to be workable if feeestimation isn&#x27;t working
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004200' id='446647'>
+<a class='timestamp' href='#446647'><time timestamp='2016-01-05T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+for instance what you are describing would be impossible on regtest or testnet which often don&#x27;t have any estimates
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004200' id='446648'>
+<a class='timestamp' href='#446648'><time timestamp='2016-01-05T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: it would make sense being able to explicitly set a fee for the transaction (whether GUI or RPC/cmdline), but otherwise having fee estimation always working would be a better goal...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004260' id='446649'>
+<a class='timestamp' href='#446649'><time timestamp='2016-01-05T14:31:00Z'>14:31</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+its a much bigger change to eliminate fall back to default (and a worse change).  i&#x27;m just trying to make it fall back to a more sane default.  and i think its better to do that with a new variable, rather than misuse mintxfee 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004260' id='446650'>
+<a class='timestamp' href='#446650'><time timestamp='2016-01-05T14:31:00Z'>14:31</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+aj: that is the goal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004260' id='446651'>
+<a class='timestamp' href='#446651'><time timestamp='2016-01-05T14:31:00Z'>14:31</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but if its not working some small % of the time, then what should you do?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004320' id='446652'>
+<a class='timestamp' href='#446652'><time timestamp='2016-01-05T14:32:00Z'>14:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+morcos, can you elaborate again what the difference in UX is in regard to defaulttxfeeifnoestimate vs mintxfee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004320' id='446653'>
+<a class='timestamp' href='#446653'><time timestamp='2016-01-05T14:32:00Z'>14:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+What is &quot;misuse&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004380' id='446654'>
+<a class='timestamp' href='#446654'><time timestamp='2016-01-05T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+The default is: &quot;Estimate the fee to get into &lt;n&gt; blocks, where &lt;n&gt; is user set.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004380' id='446655'>
+<a class='timestamp' href='#446655'><time timestamp='2016-01-05T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: So in the case of a user trying to use fee estimation.  Right now mintxfee does not apply if fee estimation returns an answer, but if fee estimation can not return an answer for the target you are asking about, it gives you the max(any answer it did get, mintxfee).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004380' id='446656'>
+<a class='timestamp' href='#446656'><time timestamp='2016-01-05T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: if i expect something to be working 100% of the time, then i want an error when it&#x27;s not, not silently different behaviour. (ymmv)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004440' id='446657'>
+<a class='timestamp' href='#446657'><time timestamp='2016-01-05T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: I think the correct behavior for a user trying to use fee estimation is .  If you cna&#x27;t get a proper answer fee = max(answer you got, defaultfeeifnoestimate).   And in all cases, the fee is maxed with mintxfee.  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004500' id='446658'>
+<a class='timestamp' href='#446658'><time timestamp='2016-01-05T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: So there are 2 effective changes.  It&#x27;ll fall back to a more sane default and if you want to set a floor for feeestimation generated txs, you can do so now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004560' id='446659'>
+<a class='timestamp' href='#446659'><time timestamp='2016-01-05T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+aj: So what would you like fee estimation to do if you say &quot;estimatefee 1&quot; and it can only give you an answer for &quot;estimatefee 25&quot;.  Silently let you send a tx expected to be confirmed in 25 blocks. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004620' id='446660'>
+<a class='timestamp' href='#446660'><time timestamp='2016-01-05T14:37:00Z'>14:37</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: i would like an error saying &quot;best estimate is for 25 blocks&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004680' id='446661'>
+<a class='timestamp' href='#446661'><time timestamp='2016-01-05T14:38:00Z'>14:38</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: ie an error -- no transaction sent. &quot;manual&quot; intervention required. (well, if it&#x27;s RPC it could be automated by some other script, whatever)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004680' id='446662'>
+<a class='timestamp' href='#446662'><time timestamp='2016-01-05T14:38:00Z'>14:38</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+aj: there is currently no way to set the txconfirmtarget via rpc, so then you would get stuck in a position where you can&#x27;t send any txs period
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004740' id='446663'>
+<a class='timestamp' href='#446663'><time timestamp='2016-01-05T14:39:00Z'>14:39</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+agree that the rpc error is no solution
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004800' id='446664'>
+<a class='timestamp' href='#446664'><time timestamp='2016-01-05T14:40:00Z'>14:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sendtoaddress() is meant to just send the damn tx and do something smart for me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004800' id='446665'>
+<a class='timestamp' href='#446665'><time timestamp='2016-01-05T14:40:00Z'>14:40</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: (i&#x27;d rather have txconfirmtarget set as an optional parameter to sendtoaddress)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004800' id='446666'>
+<a class='timestamp' href='#446666'><time timestamp='2016-01-05T14:40:00Z'>14:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+aj: i&#x27;m trying to patch up 0.12.  we can&#x27;t rework the entire way fee estimation and wallet txs work for that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004860' id='446667'>
+<a class='timestamp' href='#446667'><time timestamp='2016-01-05T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+morcos, You were right that GetRequiredFee() is ignored. (I somehow had it differently in mind)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004860' id='446668'>
+<a class='timestamp' href='#446668'><time timestamp='2016-01-05T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i&#x27;m just trying to avoid a situation where people routinely send txs of too low fee when they just start their nodes up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004860' id='446669'>
+<a class='timestamp' href='#446669'><time timestamp='2016-01-05T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So you&#x27;d disagree to move nFeeNeeded = std::max(nFeeNeeded, GetRequiredFee(nTxBytes)); furher down
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004860' id='446670'>
+<a class='timestamp' href='#446670'><time timestamp='2016-01-05T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+(right in the line before return?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004860' id='446671'>
+<a class='timestamp' href='#446671'><time timestamp='2016-01-05T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: I do think we should do that as long as we&#x27;re not also trying to make mintxfee a sane default.  as long as its a min, then we should do that.  but we need a saner default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004920' id='446672'>
+<a class='timestamp' href='#446672'><time timestamp='2016-01-05T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+morcos: well, i&#x27;m talking about what i /want/, not necessarily what&#x27;s easy/possible :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452004920' id='446673'>
+<a class='timestamp' href='#446673'><time timestamp='2016-01-05T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+aj: well can you help us try and figure out what we should do for 0.12 instead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005100' id='446674'>
+<a class='timestamp' href='#446674'><time timestamp='2016-01-05T14:45:00Z'>14:45</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: I don&#x27;t think it ever respect mintxfee in the event an estimate was given.  (and technically it doesn&#x27;t need to respect minrelaytxfee b/c its not possible to have an estimate less than that).   But yes, lets make it respect both via GetRequiredFee, but then give people a way to have a sane default, which doesn&#x27;t require that all their fees be at least that default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005160' id='446675'>
+<a class='timestamp' href='#446675'><time timestamp='2016-01-05T14:46:00Z'>14:46</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+These will be very minor changes.  Move the GetRequiredFee and add a new commandline argument.  It almost doesn&#x27;t really matter if its not communicated very well b/c translations are closed or whatever.  It&#x27;s a default that only applies rarely.  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005400' id='446676'>
+<a class='timestamp' href='#446676'><time timestamp='2016-01-05T14:50:00Z'>14:50</time></a>
+&lt;<span class='nick nick-16'> GitHub110</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7295: [WIP] Obey mintxfee on txconfirmtarget, Bump mintxfee (master...Mf1601-wallet-mintxfee) <a href="https://github.com/bitcoin/bitcoin/pull/7295" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7295</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005400' id='446677'>
+<a class='timestamp' href='#446677'><time timestamp='2016-01-05T14:50:00Z'>14:50</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+this is what I thought.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005400' id='446678'>
+<a class='timestamp' href='#446678'><time timestamp='2016-01-05T14:50:00Z'>14:50</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Haven&#x27;t reviewed that closely, so it may be fatally wrong or not even compile
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005460' id='446679'>
+<a class='timestamp' href='#446679'><time timestamp='2016-01-05T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: yeah but thats not what i think we shoudl do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005460' id='446680'>
+<a class='timestamp' href='#446680'><time timestamp='2016-01-05T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+THat will prevent you from sending for instance 3000 sat/KB fee txs even if fee estimation is telling you those will confirm quickly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005460' id='446681'>
+<a class='timestamp' href='#446681'><time timestamp='2016-01-05T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I think the minimum should literally be the minimyum you ever want to send
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005460' id='446682'>
+<a class='timestamp' href='#446682'><time timestamp='2016-01-05T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I would recommend not raising the default of that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005520' id='446683'>
+<a class='timestamp' href='#446683'><time timestamp='2016-01-05T14:52:00Z'>14:52</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+But the fallback value if you can&#x27;t get an estimate should be larger
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005580' id='446684'>
+<a class='timestamp' href='#446684'><time timestamp='2016-01-05T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so your change to wallet.cpp stays, but we change line 2213 to nFeeNeeded = std::max(nFeeNeeded, GetArg(&quot;-fallbackfee&quot;, DEFAULT_FALLBACK_FEE));   or -defaultfeeifnoestimate or whatever you want to call it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005640' id='446685'>
+<a class='timestamp' href='#446685'><time timestamp='2016-01-05T14:54:00Z'>14:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+line 2213 only gets execute if fee estimation is indicating to you its answer is unreliable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005640' id='446686'>
+<a class='timestamp' href='#446686'><time timestamp='2016-01-05T14:54:00Z'>14:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but your addition at 2221 should stay, to respect the desired minimum
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005760' id='446687'>
+<a class='timestamp' href='#446687'><time timestamp='2016-01-05T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I don&#x27;t really like yet another fee arg, but what you say makes sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005760' id='446688'>
+<a class='timestamp' href='#446688'><time timestamp='2016-01-05T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+There would be no translations for 0.12 though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005820' id='446689'>
+<a class='timestamp' href='#446689'><time timestamp='2016-01-05T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+In order to solve the pulling numbers out of a hat concern we could even just have a formula for the -fallbackfee at every release.  -fallbackfee = estimatefee(2) which a 1 month decay instead of a 2.5 day decay calculated shortly before release
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005820' id='446690'>
+<a class='timestamp' href='#446690'><time timestamp='2016-01-05T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke: yeah, but i think the translation thing is ok, b/c users shouldn&#x27;t really need to worry about setting that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005880' id='446691'>
+<a class='timestamp' href='#446691'><time timestamp='2016-01-05T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+Frankly, we should probably replace the fee options with a %s so the same translation can be used..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005880' id='446692'>
+<a class='timestamp' href='#446692'><time timestamp='2016-01-05T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+or maybe makes more sense -fallbackfee = estimatefee(10) with a 99% threshold and a 1 month decay 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005880' id='446693'>
+<a class='timestamp' href='#446693'><time timestamp='2016-01-05T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+(I might have a PR to do that, not sure)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005940' id='446694'>
+<a class='timestamp' href='#446694'><time timestamp='2016-01-05T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+morcos: 10? What is that, blocks? Way too aggressive for a fallback..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005940' id='446695'>
+<a class='timestamp' href='#446695'><time timestamp='2016-01-05T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+too fast you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005940' id='446696'>
+<a class='timestamp' href='#446696'><time timestamp='2016-01-05T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005940' id='446697'>
+<a class='timestamp' href='#446697'><time timestamp='2016-01-05T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+the worst case scenario should allow for up to a month time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005940' id='446698'>
+<a class='timestamp' href='#446698'><time timestamp='2016-01-05T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+its not a minimum, its what gets used if fee estimation is broken
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452005940' id='446699'>
+<a class='timestamp' href='#446699'><time timestamp='2016-01-05T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+s/broken/not ready yet/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446700'>
+<a class='timestamp' href='#446700'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+not a month
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446701'>
+<a class='timestamp' href='#446701'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+if the fee estimation is broken, it can&#x27;t be block-based..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446702'>
+<a class='timestamp' href='#446702'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+a day at most
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446703'>
+<a class='timestamp' href='#446703'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but more importantly cant&#x27; give you an estimate for the # youre asking for
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446704'>
+<a class='timestamp' href='#446704'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+MarcoFalke: a week at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446705'>
+<a class='timestamp' href='#446705'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Luke-Jr: anything more than 3 days doesnt&#x27; exist right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446706'>
+<a class='timestamp' href='#446706'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+morcos how is defaulting to -mintxfee something ridiculous?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446707'>
+<a class='timestamp' href='#446707'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but i 100% agree we should be able to predict longer term fees
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446708'>
+<a class='timestamp' href='#446708'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+MarcoFalke: limiting below at GetRequiredFee should be before limiting above at maxTxFee -- if you typo and set the RequiredFee crazy high, better to have it capped than not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446709'>
+<a class='timestamp' href='#446709'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+morcos: but you&#x27;re talking about a scenario where we *don&#x27;t have estimates at all*, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006000' id='446710'>
+<a class='timestamp' href='#446710'><time timestamp='2016-01-05T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i have code to push fee estimation out to a week but i never PR&#x27;ed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446711'>
+<a class='timestamp' href='#446711'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+morcos: oooh, sounds useful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446712'>
+<a class='timestamp' href='#446712'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Luke-Jr: unfortunately i&#x27;m talking about both
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446713'>
+<a class='timestamp' href='#446713'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jtimon, mintxfee=5000. THat will prevent you from sending for instance 3000 sat/KB fee txs even if fee estimation is telling you those will confirm quickly per morcos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446714'>
+<a class='timestamp' href='#446714'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+morcos: does it by chance work with non-24/7 nodes? :D
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446715'>
+<a class='timestamp' href='#446715'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Luke-Jr: We can distinguish between them though if we want to do different things in those cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446716'>
+<a class='timestamp' href='#446716'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+jtimon: because -mintxfee is often too low to be of any use whatsoever = stuck tx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006060' id='446717'>
+<a class='timestamp' href='#446717'><time timestamp='2016-01-05T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+gotta run..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006120' id='446718'>
+<a class='timestamp' href='#446718'><time timestamp='2016-01-05T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+the default if you can&#x27;t get an estimate should not be stuck tx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006360' id='446719'>
+<a class='timestamp' href='#446719'><time timestamp='2016-01-05T15:06:00Z'>15:06</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+MarcoFalke: mhmm, why doesn&#x27;t the code decide with min(-mintxfee, estimatedFee) instead of min(-mintxfee, estimatedFee) to solve your concern?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006360' id='446720'>
+<a class='timestamp' href='#446720'><time timestamp='2016-01-05T15:06:00Z'>15:06</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+MarcoFalke: mhmm, why doesn&#x27;t the code decide with min(-mintxfee, estimatedFee) instead of max(-mintxfee, estimatedFee) to solve your concern?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006420' id='446721'>
+<a class='timestamp' href='#446721'><time timestamp='2016-01-05T15:07:00Z'>15:07</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+morcos: but -mintxfee is configurable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006480' id='446722'>
+<a class='timestamp' href='#446722'><time timestamp='2016-01-05T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+jtimon: min implies its the lowest you ever want to send regardless of what fee estimates tell you or what you accidentally choose with settxfee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006480' id='446723'>
+<a class='timestamp' href='#446723'><time timestamp='2016-01-05T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+not what you want the fall back value to be
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006480' id='446724'>
+<a class='timestamp' href='#446724'><time timestamp='2016-01-05T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it doesnt make sense to fall back to the lowest possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006540' id='446725'>
+<a class='timestamp' href='#446725'><time timestamp='2016-01-05T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+anyway, i have to run now, now that i&#x27;ve gotten some of the bickering out of the way on irc, i&#x27;ll submit a PR later this afternoon
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006540' id='446726'>
+<a class='timestamp' href='#446726'><time timestamp='2016-01-05T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+morcos ok, I think I get it, so what you want is max(-mintxfee, max(-defaulttxfeeifnoestimate, estimatedFee)) ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006540' id='446727'>
+<a class='timestamp' href='#446727'><time timestamp='2016-01-05T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+sorry, again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006540' id='446728'>
+<a class='timestamp' href='#446728'><time timestamp='2016-01-05T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+morcos ok, I think I get it, so what you want is max(-mintxfee, min(-defaulttxfeeifnoestimate, estimatedFee)) ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006660' id='446729'>
+<a class='timestamp' href='#446729'><time timestamp='2016-01-05T15:11:00Z'>15:11</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I still think min(-mintxfee, estimatedFee) should is good enough though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006660' id='446730'>
+<a class='timestamp' href='#446730'><time timestamp='2016-01-05T15:11:00Z'>15:11</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+good enough for 0.12.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006720' id='446731'>
+<a class='timestamp' href='#446731'><time timestamp='2016-01-05T15:12:00Z'>15:12</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+We may want to do the other suggestion for 0.13 if it can&#x27;t get into 12
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006720' id='446732'>
+<a class='timestamp' href='#446732'><time timestamp='2016-01-05T15:12:00Z'>15:12</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+yep, we can move to max(-newoption, min(-mintxfee, estimatedFee)) later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452006840' id='446733'>
+<a class='timestamp' href='#446733'><time timestamp='2016-01-05T15:14:00Z'>15:14</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I mean, I just wanted to understand, I surredered on relay policy/acceptToMemoryPool already...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009180' id='446734'>
+<a class='timestamp' href='#446734'><time timestamp='2016-01-05T15:53:00Z'>15:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+jtimon: what i want is max(estimatefee, -mintxfee)   where estimatefee = (if tgt found: estimatefee , else: max(estimatefee, newoption))
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009240' id='446735'>
+<a class='timestamp' href='#446735'><time timestamp='2016-01-05T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+currently the fee = (if tgt found: estimatefee, else: max(estimatefee, -mintxfee))
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009240' id='446736'>
+<a class='timestamp' href='#446736'><time timestamp='2016-01-05T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i will submit PR as soon as i get a chance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009300' id='446737'>
+<a class='timestamp' href='#446737'><time timestamp='2016-01-05T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+well if estimatefee = found ? estimatedfee : maxint, then my &quot;max(-mintxfee, min(-defaulttxfeeifnoestimate, estimatedFee))&quot; description is equivalent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009360' id='446738'>
+<a class='timestamp' href='#446738'><time timestamp='2016-01-05T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+but thank you for confirming that I understood you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009480' id='446739'>
+<a class='timestamp' href='#446739'><time timestamp='2016-01-05T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+your min is not correct though, there is never a min
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009480' id='446740'>
+<a class='timestamp' href='#446740'><time timestamp='2016-01-05T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+min(1, 2) == 1 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009540' id='446741'>
+<a class='timestamp' href='#446741'><time timestamp='2016-01-05T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+why don&#x27;t you just let me write it first. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009540' id='446742'>
+<a class='timestamp' href='#446742'><time timestamp='2016-01-05T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+min(-defaulttxfeeifnoestimate, maxint) == -defaulttxfeeifnoestimate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009600' id='446743'>
+<a class='timestamp' href='#446743'><time timestamp='2016-01-05T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+oh, i understand what you meant now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009660' id='446744'>
+<a class='timestamp' href='#446744'><time timestamp='2016-01-05T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+no if estimatefee does not work, it will return either 0 (if it didnt&#x27; work at all) or an estimate for a lower confirm target
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009660' id='446745'>
+<a class='timestamp' href='#446745'><time timestamp='2016-01-05T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+morcos: I just wanted to understand what you were saying, thanks. I don&#x27;t plan to code, review or otherwise collaborate in anything related to relay policy/mempool acceptance in the near future, I&#x27;ll just restore my previous work on jt-0.12
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452009720' id='446746'>
+<a class='timestamp' href='#446746'><time timestamp='2016-01-05T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+&quot;no if estimatefee does not work, it will return either 0 (if it didnt&#x27; work at all) or an estimate for a lower confirm target&quot; the 0 can be changed to maxint, of course, but anyway it was just a way to say it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452013560' id='446747'>
+<a class='timestamp' href='#446747'><time timestamp='2016-01-05T17:06:00Z'>17:06</time></a>
+&lt;<span class='nick nick-1'> GitHub115</span>&gt;
+[bitcoin] morcos opened pull request #7296: Add sane fallback for fee estimation (master...fallbackfee) <a href="https://github.com/bitcoin/bitcoin/pull/7296" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7296</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452013620' id='446748'>
+<a class='timestamp' href='#446748'><time timestamp='2016-01-05T17:07:00Z'>17:07</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+MarcoFalke:  OK I created my PR.  I actually changed the logic a little from what I suggested.  This will not use the fallback fee if fee estimation has given you an estimate for a slightly longer confirm target.  It only uses the fallback fee if it can&#x27;t give you any estimates at all.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452013620' id='446749'>
+<a class='timestamp' href='#446749'><time timestamp='2016-01-05T17:07:00Z'>17:07</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I think this is safest, and runs least risk of having the fallbackfee accidentally screw people by being too high
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452013740' id='446750'>
+<a class='timestamp' href='#446750'><time timestamp='2016-01-05T17:09:00Z'>17:09</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus:  I know you HATE defaults, especially ones that have to be changed over time.  But I see no way around this if you want to allow txs before fee estimates are warned up.  I suppose as aj suggests we could come up with a way to prevent that, but its a more invasive change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452013800' id='446751'>
+<a class='timestamp' href='#446751'><time timestamp='2016-01-05T17:10:00Z'>17:10</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I think we should come up with a rule of thumb using historical fee estimates for adjusting this default per major release.  I think 20000 satoshis/KB is about what you would get for estimatefee(4) over a longer time horizon.  But honestly I don&#x27;t care what we use there, as long as it makes more sense than 1000.   Anything between 5K-50K would be ok by me.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452013860' id='446752'>
+<a class='timestamp' href='#446752'><time timestamp='2016-01-05T17:11:00Z'>17:11</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+rusty: result of our discussion last night  ^^^   Thanks for bringing it up!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452014040' id='446753'>
+<a class='timestamp' href='#446753'><time timestamp='2016-01-05T17:14:00Z'>17:14</time></a>
+&lt;<span class='nick nick-7'> GitHub180</span>&gt;
+[bitcoin] MarcoFalke closed pull request #7295: [WIP] Obey mintxfee on txconfirmtarget, Bump mintxfee (master...Mf1601-wallet-mintxfee) <a href="https://github.com/bitcoin/bitcoin/pull/7295" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7295</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015600' id='446754'>
+<a class='timestamp' href='#446754'><time timestamp='2016-01-05T17:40:00Z'>17:40</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+morcos, so now that you have changed the estimation to give an estimation or 0, what&#x27;s wrong with chaning the zero to maxint and doing min(estimatefee, -mintxfee) without introducing any new parameter or default instead of max(-mintxfee, min(-defaulttxfeeifnoestimate, estimatedFee)) ? (not proposing that, again, just want to understand the need for a new runtime option)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015720' id='446755'>
+<a class='timestamp' href='#446755'><time timestamp='2016-01-05T17:42:00Z'>17:42</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+(apart from maybe having to update the documentation for -mintxfee)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015840' id='446756'>
+<a class='timestamp' href='#446756'><time timestamp='2016-01-05T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i agree it could work fine with maxint, that seems unrelated to this change, gavinandresen chose the 0 error value.  but i don&#x27;t want to use -mintxfee because i want the fallback value to be a higher number.  if you dont&#x27; have estimates you shouldn&#x27;t fall back to the lowest possible value
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015840' id='446757'>
+<a class='timestamp' href='#446757'><time timestamp='2016-01-05T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+or more in words, if there&#x27;s no estimate, you&#x27;re doing max(-mintxfee, -defaulttxfeeifnoestimate)), why not just -mintxfee?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015900' id='446758'>
+<a class='timestamp' href='#446758'><time timestamp='2016-01-05T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+&quot;because i want the fallback value to be a higher number&quot; but people can do -mintxfee=higher_number, can&#x27;t they?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015960' id='446759'>
+<a class='timestamp' href='#446759'><time timestamp='2016-01-05T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+&quot;the lowest possible value&quot; well, that&#x27;s just part of the documentation of -mintxfee (assuming it is)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452015960' id='446760'>
+<a class='timestamp' href='#446760'><time timestamp='2016-01-05T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+documentation is easy to change
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016020' id='446761'>
+<a class='timestamp' href='#446761'><time timestamp='2016-01-05T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+jtimon: yes they can, and that was originally what i wanted to do, but then it occurred to me that it makes sense to have 2 values.  one of which is the minimum fee you ever want to pay, regardless of what you set with settxfee and regardless of what fee estimates tells you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016020' id='446762'>
+<a class='timestamp' href='#446762'><time timestamp='2016-01-05T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I guess what you don&#x27;t want is being able to produce that are lower than -mintxfee, even if the estimator says it will be fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016020' id='446763'>
+<a class='timestamp' href='#446763'><time timestamp='2016-01-05T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and the other is what you want to pay by default if there are no fee estimates and you&#x27;re trying to reduce them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016020' id='446764'>
+<a class='timestamp' href='#446764'><time timestamp='2016-01-05T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I guess then my question is, why is that &quot;mininmum fee regardless of what the estimator says&quot; necessary?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016080' id='446765'>
+<a class='timestamp' href='#446765'><time timestamp='2016-01-05T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+isn&#x27;t a default for when the estimator doesn&#x27;t work enough?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016080' id='446766'>
+<a class='timestamp' href='#446766'><time timestamp='2016-01-05T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it&#x27;s probably not, but people may already use it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016080' id='446767'>
+<a class='timestamp' href='#446767'><time timestamp='2016-01-05T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+they also may use it if they are not using the estimator
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016080' id='446768'>
+<a class='timestamp' href='#446768'><time timestamp='2016-01-05T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it just seemed to big a change to completely remove what people think mintxfee does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016140' id='446769'>
+<a class='timestamp' href='#446769'><time timestamp='2016-01-05T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+to the second point, if they don&#x27;t use the estimator they would just use the single default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016140' id='446770'>
+<a class='timestamp' href='#446770'><time timestamp='2016-01-05T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+imagine someone has some external program that does their own fee estimation.  And they use settxfee to tell bitcoin core what fee to pay based on that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016200' id='446771'>
+<a class='timestamp' href='#446771'><time timestamp='2016-01-05T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+they might want to be able to set a minimum, sure they could implement the minimum logic themselves
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016200' id='446772'>
+<a class='timestamp' href='#446772'><time timestamp='2016-01-05T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but it might be a change from how they are currently using it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016200' id='446773'>
+<a class='timestamp' href='#446773'><time timestamp='2016-01-05T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+that&#x27;s what I meant by adapting the documentation, right now it says &quot;Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016200' id='446774'>
+<a class='timestamp' href='#446774'><time timestamp='2016-01-05T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yeah, well thats just completely wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016200' id='446775'>
+<a class='timestamp' href='#446775'><time timestamp='2016-01-05T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but i&#x27;m not messing around with any priority related stuff, its too annoying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016260' id='446776'>
+<a class='timestamp' href='#446776'><time timestamp='2016-01-05T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+if people think that what it does is &quot;the minimum fee regardless of what the estimator says&quot; we should change it one way or another
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016260' id='446777'>
+<a class='timestamp' href='#446777'><time timestamp='2016-01-05T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+who&#x27;s talking about priority?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016260' id='446778'>
+<a class='timestamp' href='#446778'><time timestamp='2016-01-05T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+That&#x27;s what &quot;considered zero fee&quot; means
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016260' id='446779'>
+<a class='timestamp' href='#446779'><time timestamp='2016-01-05T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+evaluated based on priority
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016320' id='446780'>
+<a class='timestamp' href='#446780'><time timestamp='2016-01-05T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+There is one more reason to keep a distinct mintxfee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016320' id='446781'>
+<a class='timestamp' href='#446781'><time timestamp='2016-01-05T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I see, I actually believe that was just copied from minrelaytxfee...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016380' id='446782'>
+<a class='timestamp' href='#446782'><time timestamp='2016-01-05T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+but -mintxfee has nothing to do with priority (I may be wrong here)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016380' id='446783'>
+<a class='timestamp' href='#446783'><time timestamp='2016-01-05T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+In the future minrelaytxfee makes more sense as the relay cost.  So if you want to RBF or evict, thats the increment you need to pay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016380' id='446784'>
+<a class='timestamp' href='#446784'><time timestamp='2016-01-05T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+But its not obvious that you want to be able to first place a tx for only relay cost, there may be a different mintxfee that is required
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016440' id='446785'>
+<a class='timestamp' href='#446785'><time timestamp='2016-01-05T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Anyway, i&#x27;m just trying not to get caught up in the whole mess of how people want to use mintxfee.  I don&#x27;t know what peole use if for, I know Marco said he used it as a safety mechanism
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016440' id='446786'>
+<a class='timestamp' href='#446786'><time timestamp='2016-01-05T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I still don&#x27;t see why two command line options (not counting minrelaytxfee) are needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016440' id='446787'>
+<a class='timestamp' href='#446787'><time timestamp='2016-01-05T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+look at it as 3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016440' id='446788'>
+<a class='timestamp' href='#446788'><time timestamp='2016-01-05T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+min, default, max
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016500' id='446789'>
+<a class='timestamp' href='#446789'><time timestamp='2016-01-05T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+well, if we want to &quot;fix mintxfee&quot;, maybe knowing more about &quot;how people use it&quot; would be interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016500' id='446790'>
+<a class='timestamp' href='#446790'><time timestamp='2016-01-05T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i don&#x27;t wnat to fix mintxfee.  i&#x27;m not changning it.  i want to give fee estimation a sane fall back value
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016500' id='446791'>
+<a class='timestamp' href='#446791'><time timestamp='2016-01-05T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+an mintxfee does not seem to fit the bill, unless i change it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016560' id='446792'>
+<a class='timestamp' href='#446792'><time timestamp='2016-01-05T17:56:00Z'>17:56</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+&quot;unless i change it&quot; that&#x27;s entirely my point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016560' id='446793'>
+<a class='timestamp' href='#446793'><time timestamp='2016-01-05T17:56:00Z'>17:56</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+but I didn&#x27;t got your point about &quot;min, default, max&quot; either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016560' id='446794'>
+<a class='timestamp' href='#446794'><time timestamp='2016-01-05T17:56:00Z'>17:56</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+each parameter has its own default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016620' id='446795'>
+<a class='timestamp' href='#446795'><time timestamp='2016-01-05T17:57:00Z'>17:57</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+and I don&#x27;t see where you are using the max
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016620' id='446796'>
+<a class='timestamp' href='#446796'><time timestamp='2016-01-05T17:57:00Z'>17:57</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+anyway, never mind, I guess I will understand it in time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016680' id='446797'>
+<a class='timestamp' href='#446797'><time timestamp='2016-01-05T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+you guys do whatever you want with this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016680' id='446798'>
+<a class='timestamp' href='#446798'><time timestamp='2016-01-05T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i&#x27;m saying the user already has options to set: the min possible fee they want to send,  the fee they will send if fee estimation doesn&#x27;t work,   the max possible fee they will send
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016680' id='446799'>
+<a class='timestamp' href='#446799'><time timestamp='2016-01-05T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+s/has/will have/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016740' id='446800'>
+<a class='timestamp' href='#446800'><time timestamp='2016-01-05T17:59:00Z'>17:59</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+oh, ok, when you talk about &quot;will have things&quot; as if they were already in, it is very confusing to me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016800' id='446801'>
+<a class='timestamp' href='#446801'><time timestamp='2016-01-05T18:00:00Z'>18:00</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+oh, I guess the max is the absurd fee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016860' id='446802'>
+<a class='timestamp' href='#446802'><time timestamp='2016-01-05T18:01:00Z'>18:01</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+still, I don&#x27;t see the point with the default, if you don&#x27;t have estimation just use the min the user has set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016920' id='446803'>
+<a class='timestamp' href='#446803'><time timestamp='2016-01-05T18:02:00Z'>18:02</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+to me this strongly smells to &quot;users are stupid so let&#x27;s have more obscure runtime options with &#x27;reasonable defaults&quot; to make it harder for them to do stupid things&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452016980' id='446804'>
+<a class='timestamp' href='#446804'><time timestamp='2016-01-05T18:03:00Z'>18:03</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+but is just a personal feeling, again you guys do whatever you want
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452017700' id='446805'>
+<a class='timestamp' href='#446805'><time timestamp='2016-01-05T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-8'> GitHub152</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7298: [qt] Intro: Display required space (master...Mf1601-qtDataDir) <a href="https://github.com/bitcoin/bitcoin/pull/7298" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7298</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452017700' id='446806'>
+<a class='timestamp' href='#446806'><time timestamp='2016-01-05T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+wumpus I&#x27;m probably leaving soon, please don&#x27;t answer my previous question while I&#x27;m gone, I don&#x27;t have a bouncer yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452018660' id='446807'>
+<a class='timestamp' href='#446807'><time timestamp='2016-01-05T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+botbot.me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452018660' id='446808'>
+<a class='timestamp' href='#446808'><time timestamp='2016-01-05T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+will archive this channel at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452018780' id='446809'>
+<a class='timestamp' href='#446809'><time timestamp='2016-01-05T18:33:00Z'>18:33</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+MarcoFalke: yes, but it&#x27;s simpler to me to just ask again than to look through the logs, at some point during the 0.13.99 I will get the &quot;now it&#x27;s the right time&quot; answer I&#x27;m waiting for, or I&#x27;ll stop asking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452019500' id='446810'>
+<a class='timestamp' href='#446810'><time timestamp='2016-01-05T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: i wasn&#x27;t around when the work on handling evicted txs for 0.12 went in.  but what did we decide to do if you have a tx that gets evicted b/c of too low fee.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452019500' id='446811'>
+<a class='timestamp' href='#446811'><time timestamp='2016-01-05T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+are those outputs then just stuck forever?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452021960' id='446812'>
+<a class='timestamp' href='#446812'><time timestamp='2016-01-05T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: sipa: i think we still need another fix for evicted txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452021960' id='446813'>
+<a class='timestamp' href='#446813'><time timestamp='2016-01-05T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+for 0.12
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452021960' id='446814'>
+<a class='timestamp' href='#446814'><time timestamp='2016-01-05T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa&#x27;s change made it so that if a tx is evicted you will not automatically respend the inputs, thats all fine and good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452021960' id='446815'>
+<a class='timestamp' href='#446815'><time timestamp='2016-01-05T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but there has to be SOME way to respend them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022020' id='446816'>
+<a class='timestamp' href='#446816'><time timestamp='2016-01-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+prior to this change, if you had a permanently stuck tx (say you just relayed it with way too low a fee or it got lost and its only in your mempool or whatever)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022020' id='446817'>
+<a class='timestamp' href='#446817'><time timestamp='2016-01-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+if you restarted your node with a higher min relay fee, then it wouldn&#x27;t make it in your mempool and by the prior logic would have been conflicted and respendable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022020' id='446818'>
+<a class='timestamp' href='#446818'><time timestamp='2016-01-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+now its just permanently unspendable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022140' id='446819'>
+<a class='timestamp' href='#446819'><time timestamp='2016-01-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+ideally we&#x27;d eventually RBF these txs or soemthing, but i dont&#x27; even know what that means if its not in your mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022140' id='446820'>
+<a class='timestamp' href='#446820'><time timestamp='2016-01-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but i think we need a way to manually be able to respend these inputs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022140' id='446821'>
+<a class='timestamp' href='#446821'><time timestamp='2016-01-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+we had talked back in November about adding a &quot;forget&quot; option, i guess that never happened?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022320' id='446822'>
+<a class='timestamp' href='#446822'><time timestamp='2016-01-05T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: they&#x27;re considered respendable if there is a conflict in the chaim
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022320' id='446823'>
+<a class='timestamp' href='#446823'><time timestamp='2016-01-05T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452022860' id='446824'>
+<a class='timestamp' href='#446824'><time timestamp='2016-01-05T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: ?  but how would there be a conflict in the chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023100' id='446825'>
+<a class='timestamp' href='#446825'><time timestamp='2016-01-05T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right, we also need a way to mark an old non-confirming transaction as respendable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023220' id='446826'>
+<a class='timestamp' href='#446826'><time timestamp='2016-01-05T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yep, its possible to manually construct and submit a double spend with createrawtransaction and that&#x27;ll be accepted b/c the original is no longer in the mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023220' id='446827'>
+<a class='timestamp' href='#446827'><time timestamp='2016-01-05T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but thats fairly tedious
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023280' id='446828'>
+<a class='timestamp' href='#446828'><time timestamp='2016-01-05T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023460' id='446829'>
+<a class='timestamp' href='#446829'><time timestamp='2016-01-05T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+should i start by taking a look at adding a forgettransaction or something rpc call and then we can worry later about the gui implementation.  i&#x27;ll have to dive into the code to figure out how to represent its respendableness, unless you already know how you&#x27;d like it done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023460' id='446830'>
+<a class='timestamp' href='#446830'><time timestamp='2016-01-05T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+maybe marktransactionrespendable  (which can only apply to wallet txs that arent&#x27; in your memory pool)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452023520' id='446831'>
+<a class='timestamp' href='#446831'><time timestamp='2016-01-05T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think we can just mark a tx as conflicting with the genesis block or something :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452024420' id='446832'>
+<a class='timestamp' href='#446832'><time timestamp='2016-01-05T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> gijensen</span>&gt;
+morcos, please removing wallet transactions that aren&#x27;t in the mempool is on my to-do list
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452026220' id='446833'>
+<a class='timestamp' href='#446833'><time timestamp='2016-01-05T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-8'> GitHub152</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7300: [trivial] Add missing copyright headers (master...Mf1601-copyrightheaders) <a href="https://github.com/bitcoin/bitcoin/pull/7300" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7300</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452032520' id='446834'>
+<a class='timestamp' href='#446834'><time timestamp='2016-01-05T22:22:00Z'>22:22</time></a>
+&lt;<span class='nick nick-12'> GitHub106</span>&gt;
+[bitcoin] theuni opened pull request #7302: C++11 build/runtime fixes (master...c++11-prep) <a href="https://github.com/bitcoin/bitcoin/pull/7302" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7302</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452037020' id='446835'>
+<a class='timestamp' href='#446835'><time timestamp='2016-01-05T23:37:00Z'>23:37</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: I noticed an order of magnitude slow down in running smartfees.py .  I tracked it down to your tricklenode-&gt;poisson change.  I guess its not unexpected that it would cause a big slowdown on any rpc tests that require mempools to be synced?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1452037140' id='446836'>
+<a class='timestamp' href='#446836'><time timestamp='2016-01-05T23:39:00Z'>23:39</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I&#x27;m not sure if its really a problem.  presumably its only in regtests that you would care about something like this.  but smartfees.py went from 40sec to 250sec
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

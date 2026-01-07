@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2021-03-10
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2021-03-10' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:16 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2021-02-10">&lt;</a><span class='header'>    March 2021    </span><a href="/bitcoin-core-dev/2021-04-10">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2021-03-01">1</a>  <a class="" href="/bitcoin-core-dev/2021-03-02">2</a>  <a class="" href="/bitcoin-core-dev/2021-03-03">3</a>  <a class="" href="/bitcoin-core-dev/2021-03-04">4</a>  <a class="" href="/bitcoin-core-dev/2021-03-05">5</a>  <a class="" href="/bitcoin-core-dev/2021-03-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2021-03-07">7</a>  <a class="" href="/bitcoin-core-dev/2021-03-08">8</a>  <a class="" href="/bitcoin-core-dev/2021-03-09">9</a> <a class="current" href="/bitcoin-core-dev/2021-03-10">10</a> <a class="" href="/bitcoin-core-dev/2021-03-11">11</a> 12 13  &#x000A;14 15 <a class="" href="/bitcoin-core-dev/2021-03-16">16</a> <a class="" href="/bitcoin-core-dev/2021-03-17">17</a> <a class="" href="/bitcoin-core-dev/2021-03-18">18</a> <a class="" href="/bitcoin-core-dev/2021-03-19">19</a> <a class="" href="/bitcoin-core-dev/2021-03-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2021-03-21">21</a> <a class="" href="/bitcoin-core-dev/2021-03-22">22</a> <a class="" href="/bitcoin-core-dev/2021-03-23">23</a> <a class="" href="/bitcoin-core-dev/2021-03-24">24</a> <a class="" href="/bitcoin-core-dev/2021-03-25">25</a> <a class="" href="/bitcoin-core-dev/2021-03-26">26</a> <a class="" href="/bitcoin-core-dev/2021-03-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2021-03-28">28</a> <a class="" href="/bitcoin-core-dev/2021-03-29">29</a> <a class="" href="/bitcoin-core-dev/2021-03-30">30</a> <a class="" href="/bitcoin-core-dev/2021-03-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1615334520' id='357892'>
+<a class='timestamp' href='#357892'><time timestamp='2021-03-10T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sdaftuar, sort of, if you have inbound connections from a peer that is itself in sync and announcing blocks then you will get headers, but won&#x27;t call FindNextBlocksToDownload and thus won&#x27;t get blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334520' id='357893'>
+<a class='timestamp' href='#357893'><time timestamp='2021-03-10T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but if you&#x27;re a listening node in ibd then you don&#x27;t announce your address so you won&#x27;t get inbound connections at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334580' id='357894'>
+<a class='timestamp' href='#357894'><time timestamp='2021-03-10T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+seems like there&#x27;s a number of things that should be changed but im unsure of why they&#x27;re all restricted in the first place
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334580' id='357895'>
+<a class='timestamp' href='#357895'><time timestamp='2021-03-10T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+well the bad headers one i am, but the no address relay im not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334640' id='357896'>
+<a class='timestamp' href='#357896'><time timestamp='2021-03-10T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/ee0dc02c6f93...bca5ee6f38f0" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/ee0dc02c6f93...bca5ee6f38f0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334640' id='357897'>
+<a class='timestamp' href='#357897'><time timestamp='2021-03-10T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ffdd7de Hennadii Stepanov: build, qt: Fix regression introduced in #21363
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334640' id='357898'>
+<a class='timestamp' href='#357898'><time timestamp='2021-03-10T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master bca5ee6 fanquake: Merge #21400: build: Fix regression introduced in #21363
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615334700' id='357899'>
+<a class='timestamp' href='#357899'><time timestamp='2021-03-10T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #21400: build: Fix regression introduced in #21363 (master...210309-regression) <a href="https://github.com/bitcoin/bitcoin/pull/21400" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21400</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335660' id='357900'>
+<a class='timestamp' href='#357900'><time timestamp='2021-03-10T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+if you&#x27;re a listening node in ibd, getting incoming connections doesn&#x27;t really help you much? really what you want is to find a node that has the honest chain. since the way you bootstrap yourself is by relaying your address to outbound peers and hoping that other people get it, you&#x27;re implicitly assuming the network graph is already connected
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335660' id='357901'>
+<a class='timestamp' href='#357901'><time timestamp='2021-03-10T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+so i think it&#x27;s sufficient for our purposes to just fix relay at the local level, and we can extrapolate out that the network will avoid getting stuck as a result
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335840' id='357902'>
+<a class='timestamp' href='#357902'><time timestamp='2021-03-10T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sdaftuar, if you&#x27;re a listening node in ibd and you get an inbound connection and that inbound connection broadcasts a block then you will send the getheaders to that peer which will trigger the full headers sync logic from that peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335840' id='357903'>
+<a class='timestamp' href='#357903'><time timestamp='2021-03-10T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+right, agreed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335840' id='357904'>
+<a class='timestamp' href='#357904'><time timestamp='2021-03-10T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but then you won&#x27;t request blocks from them and you&#x27;ll still be screwed, but marginally less screwed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335840' id='357905'>
+<a class='timestamp' href='#357905'><time timestamp='2021-03-10T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+also agreed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335840' id='357906'>
+<a class='timestamp' href='#357906'><time timestamp='2021-03-10T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+so we should fix that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335900' id='357907'>
+<a class='timestamp' href='#357907'><time timestamp='2021-03-10T00:25:00Z'>00:25</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+yes, we should <b>*also*</b> fix that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335900' id='357908'>
+<a class='timestamp' href='#357908'><time timestamp='2021-03-10T00:25:00Z'>00:25</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but we need to broadcast our address to outbound peers in the first place to get any inbound
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335900' id='357909'>
+<a class='timestamp' href='#357909'><time timestamp='2021-03-10T00:25:00Z'>00:25</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+while i don&#x27;t think that harms anything, for the reasons i gave above, i think that is a minor consideration
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335960' id='357910'>
+<a class='timestamp' href='#357910'><time timestamp='2021-03-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+look at it this way - the miner who produced that block presumably made outbound connections to the network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335960' id='357911'>
+<a class='timestamp' href='#357911'><time timestamp='2021-03-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+thinking about it that might have been why i was able to just rig IBD=false and have my node sync, i instantly got hundreds of inbound connections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335960' id='357912'>
+<a class='timestamp' href='#357912'><time timestamp='2021-03-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+can you make it so that you start broadcasting your address once you&#x27;re tip is &gt;= all your outbound peers&#x27; tips?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335960' id='357913'>
+<a class='timestamp' href='#357913'><time timestamp='2021-03-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+as long as that miner&#x27;s blocks propagate one hop, we should be able to reason that the blocks will propagate to the rest of the network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615335960' id='357914'>
+<a class='timestamp' href='#357914'><time timestamp='2021-03-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+or else nothing we do will work, if the network is partitioned
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336080' id='357915'>
+<a class='timestamp' href='#357915'><time timestamp='2021-03-10T00:28:00Z'>00:28</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+aj: using the block count they give us in their version message?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336140' id='357916'>
+<a class='timestamp' href='#357916'><time timestamp='2021-03-10T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+aj: i think that&#x27;s more complicated than it needs to be.  it should be okay by now to just always advertise ourselves, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336140' id='357917'>
+<a class='timestamp' href='#357917'><time timestamp='2021-03-10T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+because peers have logic to disconnect nodes that aren&#x27;t keeping up 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336260' id='357918'>
+<a class='timestamp' href='#357918'><time timestamp='2021-03-10T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+phantomcircuit: i would hesitate to try to learn too many lessons about addr relay in Bitcoin based on observations on altcoins
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336260' id='357919'>
+<a class='timestamp' href='#357919'><time timestamp='2021-03-10T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+my perspective for now at least is that the heuristics we use mostly seem to work, but whether they work on vastly different looking network graphs is totally unclear
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336320' id='357920'>
+<a class='timestamp' href='#357920'><time timestamp='2021-03-10T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+(mostly an aside, i think the gating of addr relay on IBD is not too significant either way)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336380' id='357921'>
+<a class='timestamp' href='#357921'><time timestamp='2021-03-10T00:33:00Z'>00:33</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sdaftuar: yeah, i guess block count would be fine as a heuristic. probably right that advertising all the time is fine though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336440' id='357922'>
+<a class='timestamp' href='#357922'><time timestamp='2021-03-10T00:34:00Z'>00:34</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sdaftuar, well for sure if we don&#x27;t advertise our address we&#x27;re unlikely to get inbound connections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336680' id='357923'>
+<a class='timestamp' href='#357923'><time timestamp='2021-03-10T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+phantomcircuit: of course. i think that is solving a distinctly different problem than block sync not working, and its worth noting that fixing block sync causes nodes to leave IBD, which mitigates these other IBD-related issues
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615336680' id='357924'>
+<a class='timestamp' href='#357924'><time timestamp='2021-03-10T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+that said i&#x27;m all in favor of pulling out the IBD gating wherever we don&#x27;t need it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615337640' id='357925'>
+<a class='timestamp' href='#357925'><time timestamp='2021-03-10T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sdaftuar, actually it looks like we might? call FindNextBlocksToDownload
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615337640' id='357926'>
+<a class='timestamp' href='#357926'><time timestamp='2021-03-10T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+(fFetch &amp;&amp; !pto-&gt;m_limited_node) || !::ChainstateActive().IsInitialBlockDownload()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615337700' id='357927'>
+<a class='timestamp' href='#357927'><time timestamp='2021-03-10T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+fFetch is the &#x27;nice&#x27; node logic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615338060' id='357928'>
+<a class='timestamp' href='#357928'><time timestamp='2021-03-10T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+fFetch will be false for inbound peers, if you have any outbound peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615338360' id='357929'>
+<a class='timestamp' href='#357929'><time timestamp='2021-03-10T01:06:00Z'>01:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615338900' id='357930'>
+<a class='timestamp' href='#357930'><time timestamp='2021-03-10T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[gui] jarolrod opened pull request #243: qt: fix issue when disabling the auto-enabled blank wallet checkbox (master...create-wallet) <a href="https://github.com/bitcoin-core/gui/pull/243" class="link" target="_blank">https://github.com/bitcoin-core/gui/pull/243</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615339440' id='357931'>
+<a class='timestamp' href='#357931'><time timestamp='2021-03-10T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sdaftuar closed pull request #20726: p2p: Add DISABLETX message for negotiating block-relay-only connections (master...2020-12-negotiate-block-relay) <a href="https://github.com/bitcoin/bitcoin/pull/20726" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20726</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615339800' id='357932'>
+<a class='timestamp' href='#357932'><time timestamp='2021-03-10T01:30:00Z'>01:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sdaftuar: :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615340040' id='357933'>
+<a class='timestamp' href='#357933'><time timestamp='2021-03-10T01:34:00Z'>01:34</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sdaftuar, indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615354140' id='357934'>
+<a class='timestamp' href='#357934'><time timestamp='2021-03-10T05:29:00Z'>05:29</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+do you think that regularly polling `getblockchaininfo` (say, every 5 seconds) to track syncing progress could have a noticeable effect on syncing times? it appears that it needs to lock cs_main
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615354440' id='357935'>
+<a class='timestamp' href='#357935'><time timestamp='2021-03-10T05:34:00Z'>05:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it does, but i don&#x27;t think it will affect sync progress
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615354500' id='357936'>
+<a class='timestamp' href='#357936'><time timestamp='2021-03-10T05:35:00Z'>05:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;ll just block while it can&#x27;t grab the lock, but that won&#x27;t interfere with actual syncing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615354980' id='357937'>
+<a class='timestamp' href='#357937'><time timestamp='2021-03-10T05:43:00Z'>05:43</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+sipa, thanks for clarifying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615355400' id='357938'>
+<a class='timestamp' href='#357938'><time timestamp='2021-03-10T05:50:00Z'>05:50</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+shesek, getbestblockhash is a better target to see if you need to call getblockchaininfo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615355520' id='357939'>
+<a class='timestamp' href='#357939'><time timestamp='2021-03-10T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+phantomcircuit, this is to display progress to the user, I&#x27;m polling getblockchaininfo until headers==blocks &amp;&amp; !ibd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615355760' id='357940'>
+<a class='timestamp' href='#357940'><time timestamp='2021-03-10T05:56:00Z'>05:56</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+shesek, ah ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356060' id='357941'>
+<a class='timestamp' href='#357941'><time timestamp='2021-03-10T06:01:00Z'>06:01</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+has a pruneuntil=&lt;height/time&gt; config option been discussed before?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356060' id='357942'>
+<a class='timestamp' href='#357942'><time timestamp='2021-03-10T06:01:00Z'>06:01</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+one currently has to start syncing, wait until the chain is indexed sufficiently, then issue `pruneblockchain`. it would be nice if this could be configured from the get-go without ongoing interaction, and also if it could prune before the height is reached to keep the peak disk usage down
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356120' id='357943'>
+<a class='timestamp' href='#357943'><time timestamp='2021-03-10T06:02:00Z'>06:02</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+shesek: you could accomplish that with prune locks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356180' id='357944'>
+<a class='timestamp' href='#357944'><time timestamp='2021-03-10T06:03:00Z'>06:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+#19463
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356180' id='357945'>
+<a class='timestamp' href='#357945'><time timestamp='2021-03-10T06:03:00Z'>06:03</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19463" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19463</a> | Prune locks by luke-jr · Pull Request #19463 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356180' id='357946'>
+<a class='timestamp' href='#357946'><time timestamp='2021-03-10T06:03:00Z'>06:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+also related #20827
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356180' id='357947'>
+<a class='timestamp' href='#357947'><time timestamp='2021-03-10T06:03:00Z'>06:03</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20827" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20827</a> | During IBD, prune as much as possible until we get close to where we will eventually keep blocks by luke-jr · Pull Request #20827 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356360' id='357948'>
+<a class='timestamp' href='#357948'><time timestamp='2021-03-10T06:06:00Z'>06:06</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+nice, they both seem pretty useful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356600' id='357949'>
+<a class='timestamp' href='#357949'><time timestamp='2021-03-10T06:10:00Z'>06:10</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+I think that users would typically want to specify a timestamp though, while prune locks works in terms of block heights
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356600' id='357950'>
+<a class='timestamp' href='#357950'><time timestamp='2021-03-10T06:10:00Z'>06:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t understand why you&#x27;d want a timestamp?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356600' id='357951'>
+<a class='timestamp' href='#357951'><time timestamp='2021-03-10T06:10:00Z'>06:10</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+it is possible to somehow ask bitcoind for the height around some timestamp?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356720' id='357952'>
+<a class='timestamp' href='#357952'><time timestamp='2021-03-10T06:12:00Z'>06:12</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+sipa, I want to let users choose how much unpruned data they want to save to enable wallet rescans, they&#x27;ll typically be thinking about this in terms of a date rather than height
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356780' id='357953'>
+<a class='timestamp' href='#357953'><time timestamp='2021-03-10T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356840' id='357954'>
+<a class='timestamp' href='#357954'><time timestamp='2021-03-10T06:14:00Z'>06:14</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+I made bitcoin wallet tracker support both, users can either `--prune-until 2021-03-10` or `--prune-until 673960` (this is with trying `pruneblockchain` repeatedly until it doesn&#x27;t fail)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615356900' id='357955'>
+<a class='timestamp' href='#357955'><time timestamp='2021-03-10T06:15:00Z'>06:15</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+could this have a negative effect on syncing times, btw? `pruneblockchain` also has to scan headers to translate the timestamp into an height
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357020' id='357956'>
+<a class='timestamp' href='#357956'><time timestamp='2021-03-10T06:17:00Z'>06:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+shesek: well, the idea is that when you make a new backup, you&#x27;d update the prune lock for that wallet&#x27;s backup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357020' id='357957'>
+<a class='timestamp' href='#357957'><time timestamp='2021-03-10T06:17:00Z'>06:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+shesek: so it won&#x27;t prune until all your wallets have a backup recent enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357020' id='357958'>
+<a class='timestamp' href='#357958'><time timestamp='2021-03-10T06:17:00Z'>06:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and if a reorg occurs, it will shift backward prune lock start heights
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357020' id='357959'>
+<a class='timestamp' href='#357959'><time timestamp='2021-03-10T06:17:00Z'>06:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so in theory, this should avoid pruning ever pruning too much
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357140' id='357960'>
+<a class='timestamp' href='#357960'><time timestamp='2021-03-10T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+this is also about enabling the future possibility of doing wallet rescans, say a user could choose to keep around everything since &#x27;18, when they first joined bitcoin, so it&#x27;ll cover all their wallets for sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357380' id='357961'>
+<a class='timestamp' href='#357961'><time timestamp='2021-03-10T06:23:00Z'>06:23</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+basically just trying to offer some middleground between not being able to rescan at all and keeping everything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357980' id='357962'>
+<a class='timestamp' href='#357962'><time timestamp='2021-03-10T06:33:00Z'>06:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/bca5ee6f38f0...ceb6df391f28" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/bca5ee6f38f0...ceb6df391f28</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357980' id='357963'>
+<a class='timestamp' href='#357963'><time timestamp='2021-03-10T06:33:00Z'>06:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fad0ae6 MarcoFalke: doc: Rename fuzz seed_dir to corpus_dir
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357980' id='357964'>
+<a class='timestamp' href='#357964'><time timestamp='2021-03-10T06:33:00Z'>06:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ceb6df3 MarcoFalke: Merge #21388: doc: Rename fuzz seed_dir to corpus_dir
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615357980' id='357965'>
+<a class='timestamp' href='#357965'><time timestamp='2021-03-10T06:33:00Z'>06:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #21388:  doc: Rename fuzz seed_dir to corpus_dir  (master...2103-docInputDir) <a href="https://github.com/bitcoin/bitcoin/pull/21388" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21388</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615359420' id='357966'>
+<a class='timestamp' href='#357966'><time timestamp='2021-03-10T06:57:00Z'>06:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #21403: build: set --build when configuring packages in depends (master...explicitly_set_depends_build) <a href="https://github.com/bitcoin/bitcoin/pull/21403" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21403</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615361160' id='357967'>
+<a class='timestamp' href='#357967'><time timestamp='2021-03-10T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/ceb6df391f28...eea6196c3d80" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/ceb6df391f28...eea6196c3d80</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615361160' id='357968'>
+<a class='timestamp' href='#357968'><time timestamp='2021-03-10T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4866934 fanquake: rpc: remove calls to CWallet.get()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615361160' id='357969'>
+<a class='timestamp' href='#357969'><time timestamp='2021-03-10T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7c90c67 fanquake: rpc: refactor rpc wallet functions to take references instead of pointers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615361160' id='357970'>
+<a class='timestamp' href='#357970'><time timestamp='2021-03-10T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master eea6196 MarcoFalke: Merge #21331: rpc: replace wallet raw pointers with references (#18592 reb...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615361160' id='357971'>
+<a class='timestamp' href='#357971'><time timestamp='2021-03-10T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #21331: rpc: replace wallet raw pointers with references (#18592 rebased) (master...18592_rebased) <a href="https://github.com/bitcoin/bitcoin/pull/21331" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21331</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615369380' id='357972'>
+<a class='timestamp' href='#357972'><time timestamp='2021-03-10T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/eea6196c3d80...7cdadf91d513" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/eea6196c3d80...7cdadf91d513</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615369380' id='357973'>
+<a class='timestamp' href='#357973'><time timestamp='2021-03-10T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master a6b0fe2 John Newbery: [net processing] Remove unused CNode.address member
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615369380' id='357974'>
+<a class='timestamp' href='#357974'><time timestamp='2021-03-10T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7cdadf9 MarcoFalke: Merge #21395: Net processing: Remove unused CNode.address member
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615369380' id='357975'>
+<a class='timestamp' href='#357975'><time timestamp='2021-03-10T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #21395: Net processing: Remove unused CNode.address member (master...2021-03-remove-address) <a href="https://github.com/bitcoin/bitcoin/pull/21395" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21395</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615369740' id='357976'>
+<a class='timestamp' href='#357976'><time timestamp='2021-03-10T09:49:00Z'>09:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #21404: refactor: Remove MakeUnique&lt;T&gt;() (master...remove_makeunique) <a href="https://github.com/bitcoin/bitcoin/pull/21404" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21404</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615369740' id='357977'>
+<a class='timestamp' href='#357977'><time timestamp='2021-03-10T09:49:00Z'>09:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #21405: compat: remove memcpy -&gt; memmove backwards compatibility alias (master...remove_memcpy_back_compat) <a href="https://github.com/bitcoin/bitcoin/pull/21405" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21405</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615380180' id='357978'>
+<a class='timestamp' href='#357978'><time timestamp='2021-03-10T12:43:00Z'>12:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] vasild opened pull request #21407: i2p: limit the size of incoming messages (master...limit_RecvUntilTerminator) <a href="https://github.com/bitcoin/bitcoin/pull/21407" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21407</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615381260' id='357979'>
+<a class='timestamp' href='#357979'><time timestamp='2021-03-10T13:01:00Z'>13:01</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+jonatack: how big is ./oom-da39a3ee5e6b4b0d3255bfef95601890afd80709? Can I get it in order to reproduce?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615381380' id='357980'>
+<a class='timestamp' href='#357980'><time timestamp='2021-03-10T13:03:00Z'>13:03</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+&quot;base unit: 0000000000000000000000000000000000000000&quot;, does it contain just a bunch of zeros? I tried with a file that contains 20 zero bytes, but it executed without errors
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615384800' id='357981'>
+<a class='timestamp' href='#357981'><time timestamp='2021-03-10T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+vasild: it is an empty file.... -rw-r--r--  1        0 Mar 10 13:20 oom-da39a3ee5e6b4b0d3255bfef95601890afd80709
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615384860' id='357982'>
+<a class='timestamp' href='#357982'><time timestamp='2021-03-10T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+executes without issues here: Executed /tmp/oom in 1 ms
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615384860' id='357983'>
+<a class='timestamp' href='#357983'><time timestamp='2021-03-10T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+can you reproduce?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615384860' id='357984'>
+<a class='timestamp' href='#357984'><time timestamp='2021-03-10T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+do you also get OOM with?  src/test/fuzz/fuzz ../qa-assets/fuzz_seed_corpus/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615384860' id='357985'>
+<a class='timestamp' href='#357985'><time timestamp='2021-03-10T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+FUZZ=i2p src/test/fuzz/fuzz ../qa-assets/fuzz_seed_corpus/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615384920' id='357986'>
+<a class='timestamp' href='#357986'><time timestamp='2021-03-10T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+(i don&#x27;t have the fuzz build anymore, testing another PR, will re-check a bit later)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615385100' id='357987'>
+<a class='timestamp' href='#357987'><time timestamp='2021-03-10T14:05:00Z'>14:05</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+I did not try but this usage looks strange: ../qa-assets/fuzz_seed_corpus/ does not contain any seeds, just subdirectories, shouldn&#x27;t that be ../qa-assets/fuzz_seed_corpus/i2p/ ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615385160' id='357988'>
+<a class='timestamp' href='#357988'><time timestamp='2021-03-10T14:06:00Z'>14:06</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+I run it like &quot;src/test/fuzz/fuzz /some/new/empty/directory&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615385220' id='357989'>
+<a class='timestamp' href='#357989'><time timestamp='2021-03-10T14:07:00Z'>14:07</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+anyway, I ran it over the weekend (~2 days) without seeing any issues
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615390500' id='357990'>
+<a class='timestamp' href='#357990'><time timestamp='2021-03-10T15:35:00Z'>15:35</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jnewbery: CI is supposed to merge PRs to master before running tests.. it should never require a rebase O.o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615391040' id='357991'>
+<a class='timestamp' href='#357991'><time timestamp='2021-03-10T15:44:00Z'>15:44</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+luke-jr: hmmm, i&#x27;m not sure that&#x27;s working on #19391. It doesn&#x27;t look like <u>_any_</u> Cirrus CI jobs have been run on it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615391040' id='357992'>
+<a class='timestamp' href='#357992'><time timestamp='2021-03-10T15:44:00Z'>15:44</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19391" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19391</a> | RPC/Mining: Clean out pre-Segwit miner compatibility code by luke-jr · Pull Request #19391 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615391040' id='357993'>
+<a class='timestamp' href='#357993'><time timestamp='2021-03-10T15:44:00Z'>15:44</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+only travis and appveyor. I guess that&#x27;s because the branch is from before cirrus was a thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615391100' id='357994'>
+<a class='timestamp' href='#357994'><time timestamp='2021-03-10T15:45:00Z'>15:45</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+i think it&#x27;s just that the last update to the PR was before cirrus was a thing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615391220' id='357995'>
+<a class='timestamp' href='#357995'><time timestamp='2021-03-10T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+I think it&#x27;s generally useful for reviewers to rebase on master fairly regularly. If you don&#x27;t then they either have to rebase it themselves, or building takes forever since everything needs to be recompiled
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615391340' id='357996'>
+<a class='timestamp' href='#357996'><time timestamp='2021-03-10T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+you don&#x27;t have to rebase, just &quot;git checkout origin/master; git merge pull/origin/12345&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392120' id='357997'>
+<a class='timestamp' href='#357997'><time timestamp='2021-03-10T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[gui] MarcoFalke merged pull request #229: Fix regression with initial sorting after pr205 (master...210227-sort) <a href="https://github.com/bitcoin-core/gui/pull/229" class="link" target="_blank">https://github.com/bitcoin-core/gui/pull/229</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392120' id='357998'>
+<a class='timestamp' href='#357998'><time timestamp='2021-03-10T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/7cdadf91d513...63314b8211d7" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/7cdadf91d513...63314b8211d7</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392120' id='357999'>
+<a class='timestamp' href='#357999'><time timestamp='2021-03-10T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c524dc5 Hennadii Stepanov: qt: Fix regression with initial sorting after pr205
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392120' id='358000'>
+<a class='timestamp' href='#358000'><time timestamp='2021-03-10T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 63314b8 MarcoFalke: Merge bitcoin-core/gui#229: Fix regression with initial sorting after pr20...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392300' id='358001'>
+<a class='timestamp' href='#358001'><time timestamp='2021-03-10T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr closed pull request #19391: RPC/Mining: Clean out pre-Segwit miner compatibility code (master...gbt_rm_versionforce) <a href="https://github.com/bitcoin/bitcoin/pull/19391" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19391</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392360' id='358002'>
+<a class='timestamp' href='#358002'><time timestamp='2021-03-10T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm, surely there&#x27;s some way to trigger a CI re-run
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392360' id='358003'>
+<a class='timestamp' href='#358003'><time timestamp='2021-03-10T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr reopened pull request #19391: RPC/Mining: Clean out pre-Segwit miner compatibility code (master...gbt_rm_versionforce) <a href="https://github.com/bitcoin/bitcoin/pull/19391" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19391</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392420' id='358004'>
+<a class='timestamp' href='#358004'><time timestamp='2021-03-10T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+EDITOR=true git commit --amend &amp;&amp; git push ... ... -f
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392420' id='358005'>
+<a class='timestamp' href='#358005'><time timestamp='2021-03-10T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+MarcoFalke: yeah, but that&#x27;s ugly :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392480' id='358006'>
+<a class='timestamp' href='#358006'><time timestamp='2021-03-10T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+git commit --allow-empty -m empty &amp;&amp; git push ... ... &amp;&amp; sleep 15 &amp;&amp; git push ... HEAD~:... -f
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392480' id='358007'>
+<a class='timestamp' href='#358007'><time timestamp='2021-03-10T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+&gt;_&lt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392480' id='358008'>
+<a class='timestamp' href='#358008'><time timestamp='2021-03-10T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+nice progress with #21376 -- 2 ACKs already :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392480' id='358009'>
+<a class='timestamp' href='#358009'><time timestamp='2021-03-10T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/21376" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/21376</a> | depends: Qt 5.12.10 by fanquake · Pull Request #21376 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615392480' id='358010'>
+<a class='timestamp' href='#358010'><time timestamp='2021-03-10T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I thought DrahtBot did it somehow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394160' id='358011'>
+<a class='timestamp' href='#358011'><time timestamp='2021-03-10T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+aj: good tip with the git merge. As a reviewer though, I want the thing I review to be as close as possible to the thing that master would be if the branch is merged, which for this project is the branch rebased on master. Probably doesn&#x27;t make that much difference though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394280' id='358012'>
+<a class='timestamp' href='#358012'><time timestamp='2021-03-10T16:38:00Z'>16:38</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+jnewbery: also `git fetch origin pull/12345/merge`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394400' id='358013'>
+<a class='timestamp' href='#358013'><time timestamp='2021-03-10T16:40:00Z'>16:40</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jnewbery: actually, what aj suggested is the closest thing (aside from the commit message and PGP sig)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394640' id='358014'>
+<a class='timestamp' href='#358014'><time timestamp='2021-03-10T16:44:00Z'>16:44</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+anyone knowing wallet code around? if you don&#x27;t mind I wanted to confirm, is Core quaranteed to correctly load and show history/ballance if you load many wallet files, of which some are the same wallet but older backup of it.  does the fact same key exists in many wallets is not bugging out some assumptions in code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394700' id='358015'>
+<a class='timestamp' href='#358015'><time timestamp='2021-03-10T16:45:00Z'>16:45</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+(if you load it all at once)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394700' id='358016'>
+<a class='timestamp' href='#358016'><time timestamp='2021-03-10T16:45:00Z'>16:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+queip: you can&#x27;t load more than one at a time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358017'>
+<a class='timestamp' href='#358017'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+luke-jr: you mean, loading older backup -wallet=wallet1.dat  while also loading new version of it -wallet=wallet2.dat is not allowed?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358018'>
+<a class='timestamp' href='#358018'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358019'>
+<a class='timestamp' href='#358019'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+is it safe (detected and refused)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358020'>
+<a class='timestamp' href='#358020'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+luke-jr: oh yes, you&#x27;re right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358021'>
+<a class='timestamp' href='#358021'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+queip: yes, for bdb wallets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358022'>
+<a class='timestamp' href='#358022'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+luke-jr: do the wallets contain some internal UUID set on creation?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394820' id='358023'>
+<a class='timestamp' href='#358023'><time timestamp='2021-03-10T16:47:00Z'>16:47</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+queip: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358024'>
+<a class='timestamp' href='#358024'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+oh great
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358025'>
+<a class='timestamp' href='#358025'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the experimetnal descriptor wallets / sqlite are missing this at the moment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358026'>
+<a class='timestamp' href='#358026'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+including old (but post 2011) versions?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358027'>
+<a class='timestamp' href='#358027'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+see #20205
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358028'>
+<a class='timestamp' href='#358028'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20205" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20205</a> | wallet: Properly support a wallet id by achow101 · Pull Request #20205 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358029'>
+<a class='timestamp' href='#358029'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-14'> queip</span>&gt;
+interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615394880' id='358030'>
+<a class='timestamp' href='#358030'><time timestamp='2021-03-10T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+queip: I&#x27;m not sure when the safe detection was added
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395180' id='358031'>
+<a class='timestamp' href='#358031'><time timestamp='2021-03-10T16:53:00Z'>16:53</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I generally merge/rebase a pull before review if I want to test it. My ccache is populated with latest master, so applying changes on top of master will make it compile faster
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395180' id='358032'>
+<a class='timestamp' href='#358032'><time timestamp='2021-03-10T16:53:00Z'>16:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+nice tip, I should do that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395240' id='358033'>
+<a class='timestamp' href='#358033'><time timestamp='2021-03-10T16:54:00Z'>16:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gcmw() { git checkout --detach origin/master &amp;&amp; git merge &quot;$@&quot;; } ? :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395300' id='358034'>
+<a class='timestamp' href='#358034'><time timestamp='2021-03-10T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-4'> sipsorcery</span>&gt;
+    
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395300' id='358035'>
+<a class='timestamp' href='#358035'><time timestamp='2021-03-10T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+just git rebase/merge bitcoin/master (not a lot to type with auto-complete)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395540' id='358036'>
+<a class='timestamp' href='#358036'><time timestamp='2021-03-10T16:59:00Z'>16:59</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+MarcoFalke: yes, same
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615395840' id='358037'>
+<a class='timestamp' href='#358037'><time timestamp='2021-03-10T17:04:00Z'>17:04</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+same, I usually rebase unless it was just rebased
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397460' id='358038'>
+<a class='timestamp' href='#358038'><time timestamp='2021-03-10T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Who runs drahbot?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397520' id='358039'>
+<a class='timestamp' href='#358039'><time timestamp='2021-03-10T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it might be nice to add an annotation when drahbot lists conflicts for last commented date (was looking at #21404 for this)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397520' id='358040'>
+<a class='timestamp' href='#358040'><time timestamp='2021-03-10T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/21404" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/21404</a> | refactor: Remove MakeUnique () by fanquake · Pull Request #21404 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397520' id='358041'>
+<a class='timestamp' href='#358041'><time timestamp='2021-03-10T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397580' id='358042'>
+<a class='timestamp' href='#358042'><time timestamp='2021-03-10T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+What is an &quot;annotation&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397640' id='358043'>
+<a class='timestamp' href='#358043'><time timestamp='2021-03-10T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+when drahbot comments with the lists of PRs conflicting, a label that shows when the PR was last updated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397640' id='358044'>
+<a class='timestamp' href='#358044'><time timestamp='2021-03-10T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+There is a dropdown &quot;edited &lt;&quot;. For example: <a href="https://github.com/bitcoin/bitcoin/pull/21244#issuecomment-782685008" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21244#issuecomment-782685008</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397640' id='358045'>
+<a class='timestamp' href='#358045'><time timestamp='2021-03-10T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+It shows the last time the comment was edited
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397640' id='358046'>
+<a class='timestamp' href='#358046'><time timestamp='2021-03-10T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+no I&#x27;m saying that for every PR listed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397700' id='358047'>
+<a class='timestamp' href='#358047'><time timestamp='2021-03-10T17:35:00Z'>17:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it might be convenient to show if it&#x27;s something that&#x27;s stale or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397700' id='358048'>
+<a class='timestamp' href='#358048'><time timestamp='2021-03-10T17:35:00Z'>17:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+If you look at <a href="https://github.com/bitcoin/bitcoin/pull/21404#issuecomment-795722299" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21404#issuecomment-795722299</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397700' id='358049'>
+<a class='timestamp' href='#358049'><time timestamp='2021-03-10T17:35:00Z'>17:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
++ jnewbery&#x27;s comment: Concept ACK, although I agree with Marco that we should wait for drahtbot to tell us how many PRs this conflicts with, and hold back if any of those are important and close to being merged.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397760' id='358050'>
+<a class='timestamp' href='#358050'><time timestamp='2021-03-10T17:36:00Z'>17:36</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+recency of PR update as a proxy for importance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397820' id='358051'>
+<a class='timestamp' href='#358051'><time timestamp='2021-03-10T17:37:00Z'>17:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Oh you mean each conflict pr in the list would have a (last updated: date). That is certainly possible, but would need to be updated on probably every run
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397820' id='358052'>
+<a class='timestamp' href='#358052'><time timestamp='2021-03-10T17:37:00Z'>17:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+you mean inverse proxy? ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397880' id='358053'>
+<a class='timestamp' href='#358053'><time timestamp='2021-03-10T17:38:00Z'>17:38</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+&#x27;heuristic&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397940' id='358054'>
+<a class='timestamp' href='#358054'><time timestamp='2021-03-10T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+For example #20966  is important, but it doesn&#x27;t have any comments (apart from &quot;Needs rebase&quot; and &quot;Rebased&quot;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397940' id='358055'>
+<a class='timestamp' href='#358055'><time timestamp='2021-03-10T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it&#x27;s not super important, I&#x27;ve found myself wanting this before though when I get random conflicts. I could see how it would be annoying to have to go back through and filter updates by drahbot/non drahbot etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615397940' id='358056'>
+<a class='timestamp' href='#358056'><time timestamp='2021-03-10T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20966" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20966</a> | banman: save the banlist in a JSON format on disk by vasild · Pull Request #20966 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398000' id='358057'>
+<a class='timestamp' href='#358057'><time timestamp='2021-03-10T17:40:00Z'>17:40</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+MarcoFalke: is drahbot open source somewhere?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398000' id='358058'>
+<a class='timestamp' href='#358058'><time timestamp='2021-03-10T17:40:00Z'>17:40</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+The code is too ugly to make open source
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398060' id='358059'>
+<a class='timestamp' href='#358059'><time timestamp='2021-03-10T17:41:00Z'>17:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+You&#x27;d be able to write nicer code in less than 5 minutes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398060' id='358060'>
+<a class='timestamp' href='#358060'><time timestamp='2021-03-10T17:41:00Z'>17:41</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+invite me to the repo I could take a look... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398060' id='358061'>
+<a class='timestamp' href='#358061'><time timestamp='2021-03-10T17:41:00Z'>17:41</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Maybe counting commit tagged ACKs for the current git tip could be a good heuristic too?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398120' id='358062'>
+<a class='timestamp' href='#358062'><time timestamp='2021-03-10T17:42:00Z'>17:42</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+MarcoFalke: not the hugest fan of devops-y stuff so it would probably take me &gt; 5 mins :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398120' id='358063'>
+<a class='timestamp' href='#358063'><time timestamp='2021-03-10T17:42:00Z'>17:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Yeah, the ACK would be a good idea
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398120' id='358064'>
+<a class='timestamp' href='#358064'><time timestamp='2021-03-10T17:42:00Z'>17:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+*ACKs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398180' id='358065'>
+<a class='timestamp' href='#358065'><time timestamp='2021-03-10T17:43:00Z'>17:43</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Maybe also adding the ability for maintainers / PR author to comment clearack if they think the acks need to be invalidated (e.g., someone finds a bug)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398180' id='358066'>
+<a class='timestamp' href='#358066'><time timestamp='2021-03-10T17:43:00Z'>17:43</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+don&#x27;t need to get too fancy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398240' id='358067'>
+<a class='timestamp' href='#358067'><time timestamp='2021-03-10T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+but I think improving the tooling a bit could help deduplicate a lot of replicated manual work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398240' id='358068'>
+<a class='timestamp' href='#358068'><time timestamp='2021-03-10T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+heh, all I know about devops is how to write a loop in bash. DrahtBot is basically a `while true; ./label_rebase.py ; done`, where the python script just imports a github api library and then tags all pulls needing rebase...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398300' id='358069'>
+<a class='timestamp' href='#358069'><time timestamp='2021-03-10T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+That&#x27;s what NACK is for
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398420' id='358070'>
+<a class='timestamp' href='#358070'><time timestamp='2021-03-10T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I think NACK is ambiguous between NACK this and all bugfixes of this v.s. &quot;the current ACKs should be invalidated&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398420' id='358071'>
+<a class='timestamp' href='#358071'><time timestamp='2021-03-10T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+But I guess it&#x27;s not too important
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398480' id='358072'>
+<a class='timestamp' href='#358072'><time timestamp='2021-03-10T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Concept NACK / Approach NACK are about the concept/Approach
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398480' id='358073'>
+<a class='timestamp' href='#358073'><time timestamp='2021-03-10T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+NACK commit_id is about a specific id
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398480' id='358074'>
+<a class='timestamp' href='#358074'><time timestamp='2021-03-10T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+(at least that&#x27;s how I use it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398480' id='358075'>
+<a class='timestamp' href='#358075'><time timestamp='2021-03-10T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Probably should be documented as such
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398480' id='358076'>
+<a class='timestamp' href='#358076'><time timestamp='2021-03-10T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398480' id='358077'>
+<a class='timestamp' href='#358077'><time timestamp='2021-03-10T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+yeah 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398540' id='358078'>
+<a class='timestamp' href='#358078'><time timestamp='2021-03-10T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Could be nice to have an @admiralackbot that has a documented ACKs API to better collate and style conform what ACKs have been used... GH also has builtin &quot;approved changes&quot; but I don&#x27;t find it explicit enough for my tastes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398600' id='358079'>
+<a class='timestamp' href='#358079'><time timestamp='2021-03-10T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Maybe I&#x27;ll hack one together if people like the idea of having something like that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398780' id='358080'>
+<a class='timestamp' href='#358080'><time timestamp='2021-03-10T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #21408: doc: Explain how NACK commit_id works (master...2103-docNack) <a href="https://github.com/bitcoin/bitcoin/pull/21408" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21408</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615398780' id='358081'>
+<a class='timestamp' href='#358081'><time timestamp='2021-03-10T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+sipa: jeremyrubin: ^ 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399320' id='358082'>
+<a class='timestamp' href='#358082'><time timestamp='2021-03-10T18:02:00Z'>18:02</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+MarcoFalke: there&#x27;s some annoying things with how git works that it probably makes sense to clarify around e.g., rebase + push -f that would make NACK id stale that we should clarify NACK &lt;id&gt; becomes NACK untill explicitly lifted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399320' id='358083'>
+<a class='timestamp' href='#358083'><time timestamp='2021-03-10T18:02:00Z'>18:02</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I made a comment as such but it feels... overkill
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399380' id='358084'>
+<a class='timestamp' href='#358084'><time timestamp='2021-03-10T18:03:00Z'>18:03</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jeremyrubin: You can re-NACK (just like a re-ACK)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399440' id='358085'>
+<a class='timestamp' href='#358085'><time timestamp='2021-03-10T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I think on the balance it&#x27;s safer to require re-ack, but not to require re-nack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399440' id='358086'>
+<a class='timestamp' href='#358086'><time timestamp='2021-03-10T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Also, if you use the GitHub NACK feature, the merge button will turn red (instead of green)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399440' id='358087'>
+<a class='timestamp' href='#358087'><time timestamp='2021-03-10T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Even after rebase
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399500' id='358088'>
+<a class='timestamp' href='#358088'><time timestamp='2021-03-10T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I think it is safe to assume a NACK is &quot;sticky&quot; until unsticked (no need to document that)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399500' id='358089'>
+<a class='timestamp' href='#358089'><time timestamp='2021-03-10T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+queip: if you load multiple wallets with the same keys, it will handle them independently. It will show all of the same transactions, although the timestamps of those transactions may differ. If you copy the wallet file, for bdb wallets, we don&#x27;t allow you to load the copies due to caching (and other) issues with bdb itself. There is no other reason that loading duplicate wallets would be disallowed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399500' id='358090'>
+<a class='timestamp' href='#358090'><time timestamp='2021-03-10T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Obviously to be on the safe side, I&#x27;d still encourage to re-NACK if needed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615399560' id='358091'>
+<a class='timestamp' href='#358091'><time timestamp='2021-03-10T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+If the documentation is too verbose, chances are less people will read it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400100' id='358092'>
+<a class='timestamp' href='#358092'><time timestamp='2021-03-10T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+what about adding labels to denote the number of ACKs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400160' id='358093'>
+<a class='timestamp' href='#358093'><time timestamp='2021-03-10T18:16:00Z'>18:16</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+which color are ACKs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400220' id='358094'>
+<a class='timestamp' href='#358094'><time timestamp='2021-03-10T18:17:00Z'>18:17</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/labels/1%20ACK" class="link" target="_blank">https://github.com/bitcoin/bitcoin/labels/1%20ACK</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400520' id='358095'>
+<a class='timestamp' href='#358095'><time timestamp='2021-03-10T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+love that idea, it&#x27;s simple
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400580' id='358096'>
+<a class='timestamp' href='#358096'><time timestamp='2021-03-10T18:23:00Z'>18:23</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+if people abuse it we can make it only count ACKs on a list (just for the tooling, people could add themselves) but I think ACK labels are great
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400640' id='358097'>
+<a class='timestamp' href='#358097'><time timestamp='2021-03-10T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+MarcoFalke: the label should be coloured lime green /s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400640' id='358098'>
+<a class='timestamp' href='#358098'><time timestamp='2021-03-10T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+luke-jr: Did that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400640' id='358099'>
+<a class='timestamp' href='#358099'><time timestamp='2021-03-10T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400640' id='358100'>
+<a class='timestamp' href='#358100'><time timestamp='2021-03-10T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+a different shade though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400640' id='358101'>
+<a class='timestamp' href='#358101'><time timestamp='2021-03-10T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+(jk)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400700' id='358102'>
+<a class='timestamp' href='#358102'><time timestamp='2021-03-10T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jeremyrubin: wait, you mean it should be key-lime green?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400760' id='358103'>
+<a class='timestamp' href='#358103'><time timestamp='2021-03-10T18:26:00Z'>18:26</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Mmm was thinking chartreuse actually 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400820' id='358104'>
+<a class='timestamp' href='#358104'><time timestamp='2021-03-10T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wut
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615400880' id='358105'>
+<a class='timestamp' href='#358105'><time timestamp='2021-03-10T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it comes from the french liquor chartreuse, which comes from &quot;charter house&quot;, where a charter can be a conferrence of privilege.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615401240' id='358106'>
+<a class='timestamp' href='#358106'><time timestamp='2021-03-10T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+nah, these liquors usually were made by monks or nuns
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615401240' id='358107'>
+<a class='timestamp' href='#358107'><time timestamp='2021-03-10T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+this one by carthusian monks located in the chartreuse mountains near the french alps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615407540' id='358108'>
+<a class='timestamp' href='#358108'><time timestamp='2021-03-10T20:19:00Z'>20:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s an interesting idea but i&#x27;m not really sure using labels for something like counting acks is a good idea, it really goes aside of the idea of labeling
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615407600' id='358109'>
+<a class='timestamp' href='#358109'><time timestamp='2021-03-10T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+there are already so many labels
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615407660' id='358110'>
+<a class='timestamp' href='#358110'><time timestamp='2021-03-10T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ui-wise it&#x27;s basically a more limited version of what bitcoinacks is doing but without the names
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615407780' id='358111'>
+<a class='timestamp' href='#358111'><time timestamp='2021-03-10T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(and no- please don&#x27;t create acked-by-wumpus acked-by-sipa etc labels xD)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615407960' id='358112'>
+<a class='timestamp' href='#358112'><time timestamp='2021-03-10T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ACK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615407960' id='358113'>
+<a class='timestamp' href='#358113'><time timestamp='2021-03-10T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(no such labels)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615408680' id='358114'>
+<a class='timestamp' href='#358114'><time timestamp='2021-03-10T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+just &#x27;number of acks&#x27; is also such an easy metric to game, if you&#x27;re going to merge it&#x27;s probably more important to pay attention to the rest
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615410240' id='358115'>
+<a class='timestamp' href='#358115'><time timestamp='2021-03-10T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonatack opened pull request #21410: test: increase rpc_timeout for fundrawtx test_transaction_too_large (master...give-test_transaction_too_large-more-time) <a href="https://github.com/bitcoin/bitcoin/pull/21410" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21410</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615411140' id='358116'>
+<a class='timestamp' href='#358116'><time timestamp='2021-03-10T21:19:00Z'>21:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonatack opened pull request #21411: test: add logging, reduce blocks generated in wallet groups test (master...wallet_groups-test) <a href="https://github.com/bitcoin/bitcoin/pull/21411" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21411</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615413840' id='358117'>
+<a class='timestamp' href='#358117'><time timestamp='2021-03-10T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+I agree with wumpus, not sure about the value of “n ACKs” labels.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615413900' id='358118'>
+<a class='timestamp' href='#358118'><time timestamp='2021-03-10T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Also, please don’t have drahtbot start adding and removing ACK labels because some spam/unknown accounts drive by and drop ACKs on things. That’s just more noise.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615414020' id='358119'>
+<a class='timestamp' href='#358119'><time timestamp='2021-03-10T22:07:00Z'>22:07</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+I think jeremyrubin idea of having some sort of last updated time in the conflict comment is a good one.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615417320' id='358120'>
+<a class='timestamp' href='#358120'><time timestamp='2021-03-10T23:02:00Z'>23:02</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, thoughts on removing zmq? afaict 100% of the users of it are using it in a way that is either dangerous or requires low interval polling anyways
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1615419060' id='358121'>
+<a class='timestamp' href='#358121'><time timestamp='2021-03-10T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] glozow opened pull request #21413: [rfc] add option to bypass contextual timelocks in testmempoolaccept? (master...2021-03-bypass-timelocks) <a href="https://github.com/bitcoin/bitcoin/pull/21413" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21413</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

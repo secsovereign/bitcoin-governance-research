@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-01-24
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-01-24' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:25 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2016-12-24">&lt;</a><span class='header'>   January 2017   </span><a href="/bitcoin-core-dev/2017-02-24">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2017-01-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-01-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-01-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-01-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-01-09">9</a> <a class="" href="/bitcoin-core-dev/2017-01-10">10</a> <a class="" href="/bitcoin-core-dev/2017-01-11">11</a> <a class="" href="/bitcoin-core-dev/2017-01-12">12</a> <a class="" href="/bitcoin-core-dev/2017-01-13">13</a> <a class="" href="/bitcoin-core-dev/2017-01-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-15">15</a> <a class="" href="/bitcoin-core-dev/2017-01-16">16</a> <a class="" href="/bitcoin-core-dev/2017-01-17">17</a> <a class="" href="/bitcoin-core-dev/2017-01-18">18</a> <a class="" href="/bitcoin-core-dev/2017-01-19">19</a> <a class="" href="/bitcoin-core-dev/2017-01-20">20</a> <a class="" href="/bitcoin-core-dev/2017-01-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-22">22</a> <a class="" href="/bitcoin-core-dev/2017-01-23">23</a> <a class="current" href="/bitcoin-core-dev/2017-01-24">24</a> <a class="" href="/bitcoin-core-dev/2017-01-25">25</a> <a class="" href="/bitcoin-core-dev/2017-01-26">26</a> <a class="" href="/bitcoin-core-dev/2017-01-27">27</a> <a class="" href="/bitcoin-core-dev/2017-01-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-29">29</a> <a class="" href="/bitcoin-core-dev/2017-01-30">30</a> <a class="" href="/bitcoin-core-dev/2017-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1485216420' id='525777'>
+<a class='timestamp' href='#525777'><time timestamp='2017-01-24T00:07:00Z'>00:07</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+think we can add an option to force bump fee even if opt-in RBF was not used? often transactions will relay regardless since they wouldn’t already be in mempools
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485216720' id='525778'>
+<a class='timestamp' href='#525778'><time timestamp='2017-01-24T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Lightsword: ugh. forcing the creation of a transaction that we won&#x27;t relay ourselves is .. a bit ugly. :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485216720' id='525779'>
+<a class='timestamp' href='#525779'><time timestamp='2017-01-24T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+gmaxwell, well it would make sense to allow ourselves to relay it as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485216780' id='525780'>
+<a class='timestamp' href='#525780'><time timestamp='2017-01-24T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Lightsword: that is equivalent to implementing full RBF
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485216840' id='525781'>
+<a class='timestamp' href='#525781'><time timestamp='2017-01-24T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and we&#x27;re not going to make an exception for your own transaction, as that&#x27;s a privacy leak
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485219360' id='525782'>
+<a class='timestamp' href='#525782'><time timestamp='2017-01-24T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+sipa, would it make sense to have it only under a force flag? I’m mainly thinking it’s better to have the bumpfee option than having to do it manually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485219480' id='525783'>
+<a class='timestamp' href='#525783'><time timestamp='2017-01-24T00:58:00Z'>00:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think the only reasonable way to do it is to first have someone use abandontransaction (which will only work if it&#x27;s already evicted from the mempool), and then a wrapper to recreate an abandoned transaction with a higher fee (but guaranteeing that some if its inputs are spent again)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485219480' id='525784'>
+<a class='timestamp' href='#525784'><time timestamp='2017-01-24T00:58:00Z'>00:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that way you don&#x27;t need an exception for relay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220080' id='525785'>
+<a class='timestamp' href='#525785'><time timestamp='2017-01-24T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: what if we would relay it ourselves because it&#x27;s dropped out of our mempool?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220080' id='525786'>
+<a class='timestamp' href='#525786'><time timestamp='2017-01-24T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: must it be abandoned explicitly?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220140' id='525787'>
+<a class='timestamp' href='#525787'><time timestamp='2017-01-24T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: otherwise the wallet won&#x27;t allow you to respend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220140' id='525788'>
+<a class='timestamp' href='#525788'><time timestamp='2017-01-24T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: bumpfee will?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220440' id='525789'>
+<a class='timestamp' href='#525789'><time timestamp='2017-01-24T01:14:00Z'>01:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: bumpfee won&#x27;t let you bump without it being bip125
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220500' id='525790'>
+<a class='timestamp' href='#525790'><time timestamp='2017-01-24T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or are you saying that bumpfee should do that, IF the result would be acceptable to our own mempool?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220560' id='525791'>
+<a class='timestamp' href='#525791'><time timestamp='2017-01-24T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: and if a &quot;force&quot; option is provided
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220620' id='525792'>
+<a class='timestamp' href='#525792'><time timestamp='2017-01-24T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that seems reasonable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220800' id='525793'>
+<a class='timestamp' href='#525793'><time timestamp='2017-01-24T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+the user can restart their node to force the transaction out of the mempool right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485220920' id='525794'>
+<a class='timestamp' href='#525794'><time timestamp='2017-01-24T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if they delete mempool.dat, yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221160' id='525795'>
+<a class='timestamp' href='#525795'><time timestamp='2017-01-24T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+is it possible to manually evict a transaction from the mempool by doing a negative prioritisetransaction call so it goes below the minfee needed to stay in the mempool?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221700' id='525796'>
+<a class='timestamp' href='#525796'><time timestamp='2017-01-24T01:35:00Z'>01:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Lightsword: I  think that would only work if the mempool was full (and some other transaction came in to cause limiting)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221700' id='525797'>
+<a class='timestamp' href='#525797'><time timestamp='2017-01-24T01:35:00Z'>01:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+however a restart combined with a negative prioritisetransaction might work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221760' id='525798'>
+<a class='timestamp' href='#525798'><time timestamp='2017-01-24T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+morcos, mempool is normally full with the way the limiter currently works right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221760' id='525799'>
+<a class='timestamp' href='#525799'><time timestamp='2017-01-24T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it won&#x27;t be full shortly after a new block was found
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221820' id='525800'>
+<a class='timestamp' href='#525800'><time timestamp='2017-01-24T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it doesn&#x27;t seem so recently..  and even if the network is busy it tends to not stay full b/c fee filter stops you getting cheap replacements
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485221940' id='525801'>
+<a class='timestamp' href='#525801'><time timestamp='2017-01-24T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+isn’t fee filter mostly based on feerate of recently evicted transactions?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222000' id='525802'>
+<a class='timestamp' href='#525802'><time timestamp='2017-01-24T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: i&#x27;m not around next week and #9371 or otherwise is necessary for 0.14..   could you take a look and if you agree with the approach, we could at least tag the PR 0.14 and i can give someone else repo access to carry it over the finish line
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222000' id='525803'>
+<a class='timestamp' href='#525803'><time timestamp='2017-01-24T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9371" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9371</a> | Notify on removal by morcos · Pull Request #9371 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222000' id='525804'>
+<a class='timestamp' href='#525804'><time timestamp='2017-01-24T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+right now just the issue is tagged for 0.14, b/c we never agreed what type of solution we want
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222060' id='525805'>
+<a class='timestamp' href='#525805'><time timestamp='2017-01-24T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: will do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222060' id='525806'>
+<a class='timestamp' href='#525806'><time timestamp='2017-01-24T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Lightsword: yes, but the minfee which the fee filter is set to = incrementalRelayRate (same as minRelayTxFee before 0.14) + the evicted rate.  in practice, this is 1000 sat/KB + 1000 sat/KB 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222120' id='525807'>
+<a class='timestamp' href='#525807'><time timestamp='2017-01-24T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+therefore excluding all the garbage between 1000-2000 sat/KB which is the only way your mempool fills up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222120' id='525808'>
+<a class='timestamp' href='#525808'><time timestamp='2017-01-24T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so until the fee rate declines below 1000 sat/KB again...  your mempool tends to get less full...   
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222180' id='525809'>
+<a class='timestamp' href='#525809'><time timestamp='2017-01-24T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+that was at least true with 3 day time expiration...    with 2 week time expiration in 0.14, your mempool might stay closer to full?   depending on current tx supply
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222300' id='525810'>
+<a class='timestamp' href='#525810'><time timestamp='2017-01-24T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: well we could allow abandond transactions to get bumped.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222300' id='525811'>
+<a class='timestamp' href='#525811'><time timestamp='2017-01-24T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+but we aren&#x27;t very permissive with abandonment.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222360' id='525812'>
+<a class='timestamp' href='#525812'><time timestamp='2017-01-24T01:46:00Z'>01:46</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think we should try as hard as possible to not ever recommend abandoning
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222360' id='525813'>
+<a class='timestamp' href='#525813'><time timestamp='2017-01-24T01:46:00Z'>01:46</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+not that it doens&#x27;t work well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222360' id='525814'>
+<a class='timestamp' href='#525814'><time timestamp='2017-01-24T01:46:00Z'>01:46</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but i think it&#x27;ll inevitably lead to people spending different outputs and having both txs confirm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222420' id='525815'>
+<a class='timestamp' href='#525815'><time timestamp='2017-01-24T01:47:00Z'>01:47</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+in that sense, i kind of think Lightsword is right...  if you have a &quot;stuck&quot; transaction and you forgot to make it opt-in RBF, it&#x27;s probably better to still let you bumpfee it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222480' id='525816'>
+<a class='timestamp' href='#525816'><time timestamp='2017-01-24T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+I think it would be a good idea to let one broadcast as well with a force flag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222480' id='525817'>
+<a class='timestamp' href='#525817'><time timestamp='2017-01-24T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+otherwise you are going to use abandontransaction and try to do it manually and end up screwing yourself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222480' id='525818'>
+<a class='timestamp' href='#525818'><time timestamp='2017-01-24T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+since it’s a major useability issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222480' id='525819'>
+<a class='timestamp' href='#525819'><time timestamp='2017-01-24T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: i think what luke is suggesting is allowing /abandonable/ transactions to be bumped
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222540' id='525820'>
+<a class='timestamp' href='#525820'><time timestamp='2017-01-24T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i do think that&#x27;s better... first fully abandoning them would perhaps introduce a race conditions where you respend the coins in between the abandon and the bump
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222540' id='525821'>
+<a class='timestamp' href='#525821'><time timestamp='2017-01-24T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think thats reasonable, but the set of abandonable transactions is so small as to make it hardly matter.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222540' id='525822'>
+<a class='timestamp' href='#525822'><time timestamp='2017-01-24T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+evicted from mempool is enough, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222600' id='525823'>
+<a class='timestamp' href='#525823'><time timestamp='2017-01-24T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but that&#x27;s basically not going to happen, unless you finagle it, and if you&#x27;re going to finagle it, well why not just let you do it anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222600' id='525824'>
+<a class='timestamp' href='#525824'><time timestamp='2017-01-24T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+whats the downside, privacy leak?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222720' id='525825'>
+<a class='timestamp' href='#525825'><time timestamp='2017-01-24T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: what morcos said.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222720' id='525826'>
+<a class='timestamp' href='#525826'><time timestamp='2017-01-24T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+is it reasonable to expect your transaction will propagate otherwise?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222720' id='525827'>
+<a class='timestamp' href='#525827'><time timestamp='2017-01-24T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i would expect relatively similar mempool among your peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222780' id='525828'>
+<a class='timestamp' href='#525828'><time timestamp='2017-01-24T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the major downside is that we&#x27;ll end up with txn in our wallet that we don&#x27;t expect to relay, which is something we kind of assume doesn&#x27;t happen.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222780' id='525829'>
+<a class='timestamp' href='#525829'><time timestamp='2017-01-24T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: well except peers change over time, so maybe not. or you might have a full rbf peer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222780' id='525830'>
+<a class='timestamp' href='#525830'><time timestamp='2017-01-24T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+or you might want to construct a tx to submit in some out of band way to a miner
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485222840' id='525831'>
+<a class='timestamp' href='#525831'><time timestamp='2017-01-24T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, you might not really care about the relay at all.. just plan on extracting the hex and giving it to the antpool doublespending service (I mean free txn priority service)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485223200' id='525832'>
+<a class='timestamp' href='#525832'><time timestamp='2017-01-24T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+sipa, I think there are enough nodes with inconsistant relay policy that you have a good chance of propagation even if your own mempool doesn’t accept the transaction, for example nodes with much more strict mempool limiting may accept it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485223200' id='525833'>
+<a class='timestamp' href='#525833'><time timestamp='2017-01-24T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i wonder if that&#x27;s a temporary thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485223320' id='525834'>
+<a class='timestamp' href='#525834'><time timestamp='2017-01-24T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+well extreme mempool limiting is usually due to resource limitations(reducing ram usage)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485223440' id='525835'>
+<a class='timestamp' href='#525835'><time timestamp='2017-01-24T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+I think in this case the privacy risks are far less of a risk than users messing up the feebump by trying to do it manually and using the wrong utxo’s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485223680' id='525836'>
+<a class='timestamp' href='#525836'><time timestamp='2017-01-24T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well because bumpfee can only diminish change, it&#x27;s already pretty limited.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485230700' id='525837'>
+<a class='timestamp' href='#525837'><time timestamp='2017-01-24T04:05:00Z'>04:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr opened pull request #9621: Define, check, and use MIN_TRANSACTION_SIZE as a const (master...cleanup_mintxsize) <a href="https://github.com/bitcoin/bitcoin/pull/9621" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9621</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485236460' id='525838'>
+<a class='timestamp' href='#525838'><time timestamp='2017-01-24T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] kallewoof opened pull request #9622: [rpc] Bug-fix: listsinceblock should include lost transactions when parameter is a reorg&#x27;d block (master...listsinceblock-include-lost-txs) <a href="https://github.com/bitcoin/bitcoin/pull/9622" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9622</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485241260' id='525839'>
+<a class='timestamp' href='#525839'><time timestamp='2017-01-24T07:01:00Z'>07:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: please close 9616
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485241380' id='525840'>
+<a class='timestamp' href='#525840'><time timestamp='2017-01-24T07:03:00Z'>07:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&quot;you promised it would only be a three-line change and you delivered :)&quot;  best pull request review comment ever.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485242220' id='525841'>
+<a class='timestamp' href='#525841'><time timestamp='2017-01-24T07:17:00Z'>07:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+?     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485242280' id='525842'>
+<a class='timestamp' href='#525842'><time timestamp='2017-01-24T07:18:00Z'>07:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa closed pull request #9616: Interested in Fixing Vulnerabilities. (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/9616" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9616</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485242400' id='525843'>
+<a class='timestamp' href='#525843'><time timestamp='2017-01-24T07:20:00Z'>07:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485246300' id='525844'>
+<a class='timestamp' href='#525844'><time timestamp='2017-01-24T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/71148b8947fe...50864529b6e7" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/71148b8947fe...50864529b6e7</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485246300' id='525845'>
+<a class='timestamp' href='#525845'><time timestamp='2017-01-24T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fa4d478 MarcoFalke: qt: Use nPowTargetSpacing constant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485246300' id='525846'>
+<a class='timestamp' href='#525846'><time timestamp='2017-01-24T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 5086452 Jonas Schnelli: Merge #9588: qt: Use nPowTargetSpacing constant...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485246300' id='525847'>
+<a class='timestamp' href='#525847'><time timestamp='2017-01-24T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #9588: qt: Use nPowTargetSpacing constant (master...Mf1701-qtParams) <a href="https://github.com/bitcoin/bitcoin/pull/9588" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9588</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485248880' id='525848'>
+<a class='timestamp' href='#525848'><time timestamp='2017-01-24T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/50864529b6e7...4a1dc35ca532" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/50864529b6e7...4a1dc35ca532</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485248880' id='525849'>
+<a class='timestamp' href='#525849'><time timestamp='2017-01-24T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ff25c32 Wladimir J. van der Laan: mempool: add notification for added/removed entries...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485248880' id='525850'>
+<a class='timestamp' href='#525850'><time timestamp='2017-01-24T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4afbde6 Alex Morcos: Introduce MemPoolConflictRemovalTracker...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485248880' id='525851'>
+<a class='timestamp' href='#525851'><time timestamp='2017-01-24T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 094e4b3 Alex Morcos: Better document usage of SyncTransaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485248880' id='525852'>
+<a class='timestamp' href='#525852'><time timestamp='2017-01-24T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #9371: Notify on removal (master...notifyOnRemoval) <a href="https://github.com/bitcoin/bitcoin/pull/9371" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9371</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485252240' id='525853'>
+<a class='timestamp' href='#525853'><time timestamp='2017-01-24T10:04:00Z'>10:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&quot;systemd local root exploit&quot;  ... gentoo user not affected.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485256440' id='525854'>
+<a class='timestamp' href='#525854'><time timestamp='2017-01-24T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: thanks for merging 9371!  i think we&#x27;re starting to get 0.14 in our sights
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485256440' id='525855'>
+<a class='timestamp' href='#525855'><time timestamp='2017-01-24T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+indeed! it&#x27;s starting to look quit good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485256440' id='525856'>
+<a class='timestamp' href='#525856'><time timestamp='2017-01-24T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+gmaxwell: which importmulti fixes did you want to get in for 0.14, besides the watch only timestamp PR that is already tagged?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485256440' id='525857'>
+<a class='timestamp' href='#525857'><time timestamp='2017-01-24T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+quitE
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485260460' id='525858'>
+<a class='timestamp' href='#525858'><time timestamp='2017-01-24T12:21:00Z'>12:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #8549: zmq: mempool notifications (master...zmq_mempool) <a href="https://github.com/bitcoin/bitcoin/pull/8549" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/8549</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485260820' id='525859'>
+<a class='timestamp' href='#525859'><time timestamp='2017-01-24T12:27:00Z'>12:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/4a1dc35ca532...1ac878ace623" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/4a1dc35ca532...1ac878ace623</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485260820' id='525860'>
+<a class='timestamp' href='#525860'><time timestamp='2017-01-24T12:27:00Z'>12:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master be31a2b Lauda: [Trivial] Update license year range to 2017...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485260820' id='525861'>
+<a class='timestamp' href='#525861'><time timestamp='2017-01-24T12:27:00Z'>12:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1ac878a Wladimir J. van der Laan: Merge #9617: [Trivial] Update license year range to 2017...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485260820' id='525862'>
+<a class='timestamp' href='#525862'><time timestamp='2017-01-24T12:27:00Z'>12:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #9617: [Trivial] Update license year range to 2017 (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/9617" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9617</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485263400' id='525863'>
+<a class='timestamp' href='#525863'><time timestamp='2017-01-24T13:10:00Z'>13:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #9284: Suppress some annoying deprecation warnings (OSX) (master...2016/12/osx_warnings) <a href="https://github.com/bitcoin/bitcoin/pull/9284" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9284</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485263460' id='525864'>
+<a class='timestamp' href='#525864'><time timestamp='2017-01-24T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #9076: [WIP][Experimental] Add Hybrid full block SPV mode (master...2016/10/spv) <a href="https://github.com/bitcoin/bitcoin/pull/9076" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9076</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485263520' id='525865'>
+<a class='timestamp' href='#525865'><time timestamp='2017-01-24T13:12:00Z'>13:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #8745: [PoC] Add wallet inspection and modification tool &quot;bitcoin-wallet-tool&quot; (master...2016/09/wallet-tool) <a href="https://github.com/bitcoin/bitcoin/pull/8745" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/8745</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485264360' id='525866'>
+<a class='timestamp' href='#525866'><time timestamp='2017-01-24T13:26:00Z'>13:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+This little refactoring seems readyish: <a href="https://github.com/bitcoin/bitcoin/pull/9143" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9143</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485264360' id='525867'>
+<a class='timestamp' href='#525867'><time timestamp='2017-01-24T13:26:00Z'>13:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Ahm... right. The freeze.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485265260' id='525868'>
+<a class='timestamp' href='#525868'><time timestamp='2017-01-24T13:41:00Z'>13:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yeah I&#x27;m not sure whether it makes sense to do now - a pure refactor is not a bugfix but neither is it a feature - depends on the regression risk I suppose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485265680' id='525869'>
+<a class='timestamp' href='#525869'><time timestamp='2017-01-24T13:48:00Z'>13:48</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Better after we branch of 0.14
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485266400' id='525870'>
+<a class='timestamp' href='#525870'><time timestamp='2017-01-24T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] s-matthew-english opened pull request #9623: fixing typo in README (master...patch-14) <a href="https://github.com/bitcoin/bitcoin/pull/9623" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9623</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485271260' id='525871'>
+<a class='timestamp' href='#525871'><time timestamp='2017-01-24T15:21:00Z'>15:21</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sf boost download issues in travis: <a href="https://travis-ci.org/bitcoin/bitcoin/jobs/194846204#L537" class="link" target="_blank">https://travis-ci.org/bitcoin/bitcoin/jobs/194846204#L537</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485271260' id='525872'>
+<a class='timestamp' href='#525872'><time timestamp='2017-01-24T15:21:00Z'>15:21</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+hope it&#x27;s temp. only
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485271500' id='525873'>
+<a class='timestamp' href='#525873'><time timestamp='2017-01-24T15:25:00Z'>15:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+so it looks like the archlinux-arm bitcoin packages are being built using a PKGBUILD different from the one published and building a modified 0.13.2 source tree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485271500' id='525874'>
+<a class='timestamp' href='#525874'><time timestamp='2017-01-24T15:25:00Z'>15:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+over under on a backdoor?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485272220' id='525875'>
+<a class='timestamp' href='#525875'><time timestamp='2017-01-24T15:37:00Z'>15:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ugh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485272880' id='525876'>
+<a class='timestamp' href='#525876'><time timestamp='2017-01-24T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+they&#x27;re looking into it (the alarm guys)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485272880' id='525877'>
+<a class='timestamp' href='#525877'><time timestamp='2017-01-24T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(thats ArchLinux-ARM)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485276180' id='525878'>
+<a class='timestamp' href='#525878'><time timestamp='2017-01-24T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: crontab (to fetch sources on fallback server) wasn&#x27;t running. should be fixed now, so fallback should work if sf.net 404&#x27;s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485277680' id='525879'>
+<a class='timestamp' href='#525879'><time timestamp='2017-01-24T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: got any ideas on #9620?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485277680' id='525880'>
+<a class='timestamp' href='#525880'><time timestamp='2017-01-24T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9620" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9620</a> | Wallet lost track of funds · Issue #9620 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485278040' id='525881'>
+<a class='timestamp' href='#525881'><time timestamp='2017-01-24T17:14:00Z'>17:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: no :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485278820' id='525882'>
+<a class='timestamp' href='#525882'><time timestamp='2017-01-24T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: &quot;all i do is sendtoaddress&quot; - &quot;the manual CPFP transaction i created&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279120' id='525883'>
+<a class='timestamp' href='#525883'><time timestamp='2017-01-24T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #9624: [Trivial] fix logging typo in FlushStateToDisk() (master...TrivialTypo) <a href="https://github.com/bitcoin/bitcoin/pull/9624" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9624</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279900' id='525884'>
+<a class='timestamp' href='#525884'><time timestamp='2017-01-24T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+BlueMatt: holy crap, arch packages are built by hand and uploaded?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279900' id='525885'>
+<a class='timestamp' href='#525885'><time timestamp='2017-01-24T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: on regular arch, yes!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279900' id='525886'>
+<a class='timestamp' href='#525886'><time timestamp='2017-01-24T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: (as in, holy crap, dont trust arch packages)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279960' id='525887'>
+<a class='timestamp' href='#525887'><time timestamp='2017-01-24T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+that&#x27;s terrifying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279960' id='525888'>
+<a class='timestamp' href='#525888'><time timestamp='2017-01-24T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: archlinux-arm has a build farm, apparently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279960' id='525889'>
+<a class='timestamp' href='#525889'><time timestamp='2017-01-24T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: everything is, when you look closely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485279960' id='525890'>
+<a class='timestamp' href='#525890'><time timestamp='2017-01-24T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+i went looking for a build log, only to come to the depressing realization :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280020' id='525891'>
+<a class='timestamp' href='#525891'><time timestamp='2017-01-24T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+BlueMatt: looks like it&#x27;s possible to me that their builder gets confused by the tag version, and doesn&#x27;t end up checking out the tag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280020' id='525892'>
+<a class='timestamp' href='#525892'><time timestamp='2017-01-24T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: I dont think there is a single linux distro which I would trust almost in any way at all....even the ones with build farms end up accepting sigs from any one of a million people to update the source files :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280020' id='525893'>
+<a class='timestamp' href='#525893'><time timestamp='2017-01-24T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: the binary reports &quot;v0.13.2.0-0d719145b-dirty&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280020' id='525894'>
+<a class='timestamp' href='#525894'><time timestamp='2017-01-24T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+that commit is v0.13.2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280020' id='525895'>
+<a class='timestamp' href='#525895'><time timestamp='2017-01-24T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(though dunno where the &quot;.0&quot; came from - is that normal for git describe?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280020' id='525896'>
+<a class='timestamp' href='#525896'><time timestamp='2017-01-24T17:47:00Z'>17:47</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+hmm     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280080' id='525897'>
+<a class='timestamp' href='#525897'><time timestamp='2017-01-24T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+the non-arm archlinux binary properly reports &quot;v0.13.2&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280080' id='525898'>
+<a class='timestamp' href='#525898'><time timestamp='2017-01-24T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well, I didnt run it, just strings&#x27;d it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280080' id='525899'>
+<a class='timestamp' href='#525899'><time timestamp='2017-01-24T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+yes, i&#x27;m looking at the same now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280140' id='525900'>
+<a class='timestamp' href='#525900'><time timestamp='2017-01-24T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ok good, well at least it&#x27;s based on the right version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280200' id='525901'>
+<a class='timestamp' href='#525901'><time timestamp='2017-01-24T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] morcos opened pull request #9625: Increase minimum debug.log size to 9MB after shrink. (master...shrinkless) <a href="https://github.com/bitcoin/bitcoin/pull/9625" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9625</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280200' id='525902'>
+<a class='timestamp' href='#525902'><time timestamp='2017-01-24T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+&quot;based on&quot; i mean the &quot;-dirty&quot; coul be anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280200' id='525903'>
+<a class='timestamp' href='#525903'><time timestamp='2017-01-24T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280200' id='525904'>
+<a class='timestamp' href='#525904'><time timestamp='2017-01-24T17:50:00Z'>17:50</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I went through what appears to be their build farm tool at <a href="https://github.com/archlinuxarm/plugbuild" class="link" target="_blank">https://github.com/archlinuxarm/plugbuild</a> and noted changes it makes to the PKGBUILD file at <a href="https://github.com/archlinuxarm/plugbuild/blob/master/client.pl#L344" class="link" target="_blank">https://github.com/archlinuxarm/plugbuild/blob/master/client.pl#L344</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280260' id='525905'>
+<a class='timestamp' href='#525905'><time timestamp='2017-01-24T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but was still unable to reproduce the PKGBUILD hash claimed in the .BUILDINFO file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280380' id='525906'>
+<a class='timestamp' href='#525906'><time timestamp='2017-01-24T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+where&#x27;s the .BUILDINFO coming from?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280440' id='525907'>
+<a class='timestamp' href='#525907'><time timestamp='2017-01-24T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+the .pkg.tar.xz thing that is the package itself has a .BUILDINFO file in it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280440' id='525908'>
+<a class='timestamp' href='#525908'><time timestamp='2017-01-24T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ah, thanks. grabbing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485280500' id='525909'>
+<a class='timestamp' href='#525909'><time timestamp='2017-01-24T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(note that the pkgbuild_sha256sum in the non-arm archlinux packages also doesnt match, but I cant figure out what modifications might be happening before that hash is calculated)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485285000' id='525910'>
+<a class='timestamp' href='#525910'><time timestamp='2017-01-24T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+gmaxwell: that -shrinkdebugfile is only defaulted on if no debug options are present, you don&#x27;t think 9MB is enough then?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485285180' id='525911'>
+<a class='timestamp' href='#525911'><time timestamp='2017-01-24T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+morcos: I know-- my though is that I&#x27;ve troubleshoot people on nodes that went out of sync two weeks before, and their log was full of connect/disconnect messages. Maybe you&#x27;re right that 9MB is enough.  I do sort of wish critical errors went into a seperate very low volume log that was never rotated.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485285240' id='525912'>
+<a class='timestamp' href='#525912'><time timestamp='2017-01-24T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yeah i certainly don&#x27;t mind doing more, was just tryign to make the patch as unobjectionable as possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485285240' id='525913'>
+<a class='timestamp' href='#525913'><time timestamp='2017-01-24T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, it&#x27;s fine.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287040' id='525914'>
+<a class='timestamp' href='#525914'><time timestamp='2017-01-24T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+morcos: The new CWallet::IsChange() function does not work after a zapwallettx, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287520' id='525915'>
+<a class='timestamp' href='#525915'><time timestamp='2017-01-24T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+hmm, jonasschnelli i think your question confused me.  Isn&#x27;t that function old?  And I&#x27;m not very familiar with zapwallettx, so not really sure what it would do?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287580' id='525916'>
+<a class='timestamp' href='#525916'><time timestamp='2017-01-24T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+morcos: I though it&#x27;s a new one... I&#x27;m doing my bumpfee review pretty late. I know.. but I just had the feeling that detecting the change output based on the address book is kinda-bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287640' id='525917'>
+<a class='timestamp' href='#525917'><time timestamp='2017-01-24T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Though,... is change when it&#x27;s <u>_not_</u> in the address book. I guess bumpfee should still work after a zapwallettx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287640' id='525918'>
+<a class='timestamp' href='#525918'><time timestamp='2017-01-24T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+well as far as i can tell it doesn&#x27;t really matter...  the failure modes are : 1) it can&#x27;t find change (or finds more than 1) and can&#x27;t bump the tx  or 2) it reduces another output to you instead of change, doesn&#x27;t seem so bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287700' id='525919'>
+<a class='timestamp' href='#525919'><time timestamp='2017-01-24T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. Right.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287760' id='525920'>
+<a class='timestamp' href='#525920'><time timestamp='2017-01-24T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Have you guys already started working on the case where bumping requires new input?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287760' id='525921'>
+<a class='timestamp' href='#525921'><time timestamp='2017-01-24T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Like when you use subtractfeefromamount
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287760' id='525922'>
+<a class='timestamp' href='#525922'><time timestamp='2017-01-24T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+have not done work on that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287820' id='525923'>
+<a class='timestamp' href='#525923'><time timestamp='2017-01-24T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ryanofsky: thanks for the info. Maybe its not worth the effort..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287820' id='525924'>
+<a class='timestamp' href='#525924'><time timestamp='2017-01-24T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+being able to spend bumped outputs is more important in that case... since the bumps will tie up more inputs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287820' id='525925'>
+<a class='timestamp' href='#525925'><time timestamp='2017-01-24T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I don&#x27;t think that makes sense for combination with subtract fee from amount
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287880' id='525926'>
+<a class='timestamp' href='#525926'><time timestamp='2017-01-24T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+well at least i think we should more narrowly define what we are trying to accomplish wiht subtractfeefromamount anyway..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287880' id='525927'>
+<a class='timestamp' href='#525927'><time timestamp='2017-01-24T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+morcos: If you have a single input, assume 25BTC, and you spend the 25BTC with subtract-fee-from-amount you endup with a tx without change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287880' id='525928'>
+<a class='timestamp' href='#525928'><time timestamp='2017-01-24T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it causes a lot of complication in the code when as far as i can tell the main use case is just send all this money over there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287940' id='525929'>
+<a class='timestamp' href='#525929'><time timestamp='2017-01-24T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I think its a fantastic feature (subtract fee from amount).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287940' id='525930'>
+<a class='timestamp' href='#525930'><time timestamp='2017-01-24T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yeah so the way to bump that is reduce the output in my opinion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287940' id='525931'>
+<a class='timestamp' href='#525931'><time timestamp='2017-01-24T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+From other wallet uses-cases, I know that people are trying to send-out the wallet funds with often leaving some coins behind.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485287940' id='525932'>
+<a class='timestamp' href='#525932'><time timestamp='2017-01-24T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yes, i agree thats a use case worse supporting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485288000' id='525933'>
+<a class='timestamp' href='#525933'><time timestamp='2017-01-24T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but we use it in a more general sense...  which is annoying...  like reducing the outputs even further to give ourselves dust change if we would have had sub-dust change... see #9343
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485288000' id='525934'>
+<a class='timestamp' href='#525934'><time timestamp='2017-01-24T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9343" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9343</a> | An error has occurred and has been logged. Please contact this bot&#x27;s administrator for more information.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485288540' id='525935'>
+<a class='timestamp' href='#525935'><time timestamp='2017-01-24T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Another wild thought,... we should probably reject self created transactions with absurde high fee during signrawtransaction (additional to ATM over sendrawtx)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289020' id='525936'>
+<a class='timestamp' href='#525936'><time timestamp='2017-01-24T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/1ac878ace623...b68f898efa09" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/1ac878ace623...b68f898efa09</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289020' id='525937'>
+<a class='timestamp' href='#525937'><time timestamp='2017-01-24T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ac9a846 John Newbery: [Trivial] fix logging typo in FlushStateToDisk()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289020' id='525938'>
+<a class='timestamp' href='#525938'><time timestamp='2017-01-24T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b68f898 Jonas Schnelli: Merge #9624: [Trivial] fix logging typo in FlushStateToDisk()...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289020' id='525939'>
+<a class='timestamp' href='#525939'><time timestamp='2017-01-24T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #9624: [Trivial] fix logging typo in FlushStateToDisk() (master...TrivialTypo) <a href="https://github.com/bitcoin/bitcoin/pull/9624" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9624</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289140' id='525940'>
+<a class='timestamp' href='#525940'><time timestamp='2017-01-24T20:19:00Z'>20:19</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+morcos: there are a bunch of small issues, I need to find the branch and pick them up. It mishandles locked wallets (it should reject trying to import a private key when the wallet is locked),  if you ask it to import a key without a birthday it just assumes now and can cause funds loss,  it&#x27;s easy to cause it to rescan everything when you didn&#x27;t think it would... node out of comission for hours
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289140' id='525941'>
+<a class='timestamp' href='#525941'><time timestamp='2017-01-24T20:19:00Z'>20:19</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289200' id='525942'>
+<a class='timestamp' href='#525942'><time timestamp='2017-01-24T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+right.. well nudge nudge,  0.14 is in the car with the engine running.. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289740' id='525943'>
+<a class='timestamp' href='#525943'><time timestamp='2017-01-24T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: please at least file issues for known issues and ask to have them marked 0.14....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289860' id='525944'>
+<a class='timestamp' href='#525944'><time timestamp='2017-01-24T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sorry for whining, but I already opened an issue for one of them where I <u>_need_</u> feedback before doing anything, and only morcos commented a bit. #9491
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289860' id='525945'>
+<a class='timestamp' href='#525945'><time timestamp='2017-01-24T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9491" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9491</a> | Importmulti api is confusing in a way that could lead to funds loss. · Issue #9491 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485289860' id='525946'>
+<a class='timestamp' href='#525946'><time timestamp='2017-01-24T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+this is not convincing me of the utility of opening more issues.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485290100' id='525947'>
+<a class='timestamp' href='#525947'><time timestamp='2017-01-24T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+behind on things, sorry :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485290100' id='525948'>
+<a class='timestamp' href='#525948'><time timestamp='2017-01-24T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: opening issues gives us all a view into how close we are to release, and also ensures we dont end up with stuff outstanding until a day before rc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485290100' id='525949'>
+<a class='timestamp' href='#525949'><time timestamp='2017-01-24T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: there are multiple reasons to open issues
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485290940' id='525950'>
+<a class='timestamp' href='#525950'><time timestamp='2017-01-24T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I don&#x27;t disagree with anything you are saying there. This doesn&#x27;t change that if you want people opening issues, you need to respond to the issues they open. Asking if fine too, but it will be ultimately ineffective if people feel that they&#x27;re wasting their time. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485291060' id='525951'>
+<a class='timestamp' href='#525951'><time timestamp='2017-01-24T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sorry, somehow I had #9491 marked in my mental list of &quot;oh, that one has an open pr for it to fix it already&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485291060' id='525952'>
+<a class='timestamp' href='#525952'><time timestamp='2017-01-24T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9491" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9491</a> | Importmulti api is confusing in a way that could lead to funds loss. · Issue #9491 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485291060' id='525953'>
+<a class='timestamp' href='#525953'><time timestamp='2017-01-24T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+not sure how it got there, but it did
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485291120' id='525954'>
+<a class='timestamp' href='#525954'><time timestamp='2017-01-24T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+s/if fine/is fine/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485296340' id='525955'>
+<a class='timestamp' href='#525955'><time timestamp='2017-01-24T22:19:00Z'>22:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #9626: Clean up a few CConnman cs_vNodes/CNode things (master...2017-01-remove-broken-unused-funcs) <a href="https://github.com/bitcoin/bitcoin/pull/9626" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9626</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485300480' id='525956'>
+<a class='timestamp' href='#525956'><time timestamp='2017-01-24T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+BlueMatt: thanks for remembering those
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485300480' id='525957'>
+<a class='timestamp' href='#525957'><time timestamp='2017-01-24T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+can we mark #9622 as 0.14 since its a pretty big bugfix and isnt too complicated?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485300480' id='525958'>
+<a class='timestamp' href='#525958'><time timestamp='2017-01-24T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9622" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9622</a> | An error has occurred and has been logged. Please contact this bot&#x27;s administrator for more information.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1485300960' id='525959'>
+<a class='timestamp' href='#525959'><time timestamp='2017-01-24T23:36:00Z'>23:36</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+agree
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-03-31
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-03-31' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:24 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-02-28">&lt;</a><span class='header'>    March 2017    </span><a href="/bitcoin-core-dev/2017-04-30">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2017-03-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-03-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-03-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-03-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-03-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-03-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-03-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-03-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-03-09">9</a> <a class="" href="/bitcoin-core-dev/2017-03-10">10</a> <a class="" href="/bitcoin-core-dev/2017-03-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-03-12">12</a> <a class="" href="/bitcoin-core-dev/2017-03-13">13</a> <a class="" href="/bitcoin-core-dev/2017-03-14">14</a> <a class="" href="/bitcoin-core-dev/2017-03-15">15</a> <a class="" href="/bitcoin-core-dev/2017-03-16">16</a> <a class="" href="/bitcoin-core-dev/2017-03-17">17</a> <a class="" href="/bitcoin-core-dev/2017-03-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-03-19">19</a> <a class="" href="/bitcoin-core-dev/2017-03-20">20</a> <a class="" href="/bitcoin-core-dev/2017-03-21">21</a> <a class="" href="/bitcoin-core-dev/2017-03-22">22</a> <a class="" href="/bitcoin-core-dev/2017-03-23">23</a> <a class="" href="/bitcoin-core-dev/2017-03-24">24</a> <a class="" href="/bitcoin-core-dev/2017-03-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-03-26">26</a> <a class="" href="/bitcoin-core-dev/2017-03-27">27</a> <a class="" href="/bitcoin-core-dev/2017-03-28">28</a> <a class="" href="/bitcoin-core-dev/2017-03-29">29</a> <a class="" href="/bitcoin-core-dev/2017-03-30">30</a> <a class="current" href="/bitcoin-core-dev/2017-03-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1490920800' id='538087'>
+<a class='timestamp' href='#538087'><time timestamp='2017-03-31T00:40:00Z'>00:40</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the leveldb logging with debug=1 is obnoxious, now I see why jnewbery wanted the exclude.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927520' id='538088'>
+<a class='timestamp' href='#538088'><time timestamp='2017-03-31T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+wumpus: uh. so boolean operations don&#x27;t appear to exist for scoped enums. so ... I don&#x27;t think I can use them without defining a set of boolean operations for them. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927520' id='538089'>
+<a class='timestamp' href='#538089'><time timestamp='2017-03-31T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: eh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927580' id='538090'>
+<a class='timestamp' href='#538090'><time timestamp='2017-03-31T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, scoped enums don&#x27;t have an implicit conversion to int
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927640' id='538091'>
+<a class='timestamp' href='#538091'><time timestamp='2017-03-31T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can still explicitly convert them, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927640' id='538092'>
+<a class='timestamp' href='#538092'><time timestamp='2017-03-31T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but enums are generally a bad approach for bitfields, as they&#x27;re intended to be exhaustive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927640' id='538093'>
+<a class='timestamp' href='#538093'><time timestamp='2017-03-31T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: wumpus suggested that I change the log print thing to use a scoped enum.  The original thing that inspired this change is that rebroad wanted to do some horrible hack to do the logical equivilent of LogPrint(LOG_NET | LOG_MEMPOOL, ...). (and of course the matching also uses it as a bitfield.)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927700' id='538094'>
+<a class='timestamp' href='#538094'><time timestamp='2017-03-31T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right, a normal enum (which behaves much more like an int) may be more appropriate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927700' id='538095'>
+<a class='timestamp' href='#538095'><time timestamp='2017-03-31T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well thats what I implemented.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927820' id='538096'>
+<a class='timestamp' href='#538096'><time timestamp='2017-03-31T02:37:00Z'>02:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+awesöme
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927820' id='538097'>
+<a class='timestamp' href='#538097'><time timestamp='2017-03-31T02:37:00Z'>02:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+in any case. I&#x27;m happy to change it to whatever. someone who has an opinion needs to tell me what to do. I think I only need a couple casts to make the enum class stuff go, but it would be ugly to do &quot;LogPrint(LOG_NET | LOG_MEMPOOL,&quot; later unless we provide | for the type.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490927940' id='538098'>
+<a class='timestamp' href='#538098'><time timestamp='2017-03-31T02:39:00Z'>02:39</time></a>
+&lt;<span class='nick nick-2'> * gmaxwell</span>&gt;
+copies the conversation into github
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490945340' id='538099'>
+<a class='timestamp' href='#538099'><time timestamp='2017-03-31T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/edc62c959ab3...8e4f7e72410d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/edc62c959ab3...8e4f7e72410d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490945340' id='538100'>
+<a class='timestamp' href='#538100'><time timestamp='2017-03-31T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c0651cc Kyle Honeycutt: Update bitcoin.conf with example for pruning...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490945340' id='538101'>
+<a class='timestamp' href='#538101'><time timestamp='2017-03-31T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8e4f7e7 MarcoFalke: Merge #10090: Update bitcoin.conf with example for pruning...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490945340' id='538102'>
+<a class='timestamp' href='#538102'><time timestamp='2017-03-31T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #10090: Update bitcoin.conf with example for pruning (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/10090" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10090</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490948520' id='538103'>
+<a class='timestamp' href='#538103'><time timestamp='2017-03-31T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/8e4f7e72410d...de301b048810" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8e4f7e72410d...de301b048810</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490948520' id='538104'>
+<a class='timestamp' href='#538104'><time timestamp='2017-03-31T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master eb66bf9 Awemany: bitcoin-tx: Fix missing range check...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490948520' id='538105'>
+<a class='timestamp' href='#538105'><time timestamp='2017-03-31T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 21704f6 John Newbery: Check stderr when testing bitcoin-tx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490948520' id='538106'>
+<a class='timestamp' href='#538106'><time timestamp='2017-03-31T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 19ecd1e John Newbery: Add tests for bitcoin-tx input checking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490948520' id='538107'>
+<a class='timestamp' href='#538107'><time timestamp='2017-03-31T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10130: bitcoin-tx input verification (awemany, jnewbery) (master...bitcoin_tx_input_sanitiser) <a href="https://github.com/bitcoin/bitcoin/pull/10130" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10130</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952660' id='538108'>
+<a class='timestamp' href='#538108'><time timestamp='2017-03-31T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/de301b048810...ba12b3a84469" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/de301b048810...ba12b3a84469</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952660' id='538109'>
+<a class='timestamp' href='#538109'><time timestamp='2017-03-31T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 625488a Wladimir J. van der Laan: util: Work around (virtual) memory exhaustion on 32-bit w/ glibc...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952660' id='538110'>
+<a class='timestamp' href='#538110'><time timestamp='2017-03-31T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ba12b3a Wladimir J. van der Laan: Merge #10120: util: Work around (virtual) memory exhaustion on 32-bit w/ glibc...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952660' id='538111'>
+<a class='timestamp' href='#538111'><time timestamp='2017-03-31T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10120: util: Work around (virtual) memory exhaustion on 32-bit w/ glibc (master...2017_03_address_space_exhaustion_workaround) <a href="https://github.com/bitcoin/bitcoin/pull/10120" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10120</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952780' id='538112'>
+<a class='timestamp' href='#538112'><time timestamp='2017-03-31T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: have we ever done benchmarks for the performamce impact of having only 1 (or 2) arenas?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952840' id='538113'>
+<a class='timestamp' href='#538113'><time timestamp='2017-03-31T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa: afaik, no. I&#x27;ve only done that on systems that would crash otherwise
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952840' id='538114'>
+<a class='timestamp' href='#538114'><time timestamp='2017-03-31T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so no way to compare :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952840' id='538115'>
+<a class='timestamp' href='#538115'><time timestamp='2017-03-31T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+infinite speedup, on those systems!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952900' id='538116'>
+<a class='timestamp' href='#538116'><time timestamp='2017-03-31T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+exactly!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952900' id='538117'>
+<a class='timestamp' href='#538117'><time timestamp='2017-03-31T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+for 32bit I don&#x27;t think we really have a choice, in any case.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490952900' id='538118'>
+<a class='timestamp' href='#538118'><time timestamp='2017-03-31T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes. the question is do we also want to customize arenas on 64-bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953020' id='538119'>
+<a class='timestamp' href='#538119'><time timestamp='2017-03-31T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa pointed out today that we really need to test that with network syncs since a chainstate reindex isn&#x27;t really multithreaded in terms of malloc activity.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953020' id='538120'>
+<a class='timestamp' href='#538120'><time timestamp='2017-03-31T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+though I don&#x27;t think so, I think on the longer run we should address leveldb&#x27;s mismanagement of memory instead, as it&#x27;s the largest reason we can&#x27;t get along with many arenas
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953020' id='538121'>
+<a class='timestamp' href='#538121'><time timestamp='2017-03-31T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Also I made the observation that the mempool on disk likely increased our memory usage in the presence of multiple areans, because instead of only having two threads with substantial allocations it resulted in three.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953080' id='538122'>
+<a class='timestamp' href='#538122'><time timestamp='2017-03-31T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953080' id='538123'>
+<a class='timestamp' href='#538123'><time timestamp='2017-03-31T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+earlier I proposed a new database durability strategy to pieter that, if it works, will let us radically reduce peak memory usage.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953140' id='538124'>
+<a class='timestamp' href='#538124'><time timestamp='2017-03-31T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and yes it may very well be that arenas doesn&#x27;t help at all for our use case, but yes, profiling would make sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953140' id='538125'>
+<a class='timestamp' href='#538125'><time timestamp='2017-03-31T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(by elimiating large batch writes)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953200' id='538126'>
+<a class='timestamp' href='#538126'><time timestamp='2017-03-31T09:40:00Z'>09:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the glibc allocator also has some other &#x27;tunables&#x27; that may have an effect on performance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490953200' id='538127'>
+<a class='timestamp' href='#538127'><time timestamp='2017-03-31T09:40:00Z'>09:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+gmaxwell: ok great!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954640' id='538128'>
+<a class='timestamp' href='#538128'><time timestamp='2017-03-31T10:04:00Z'>10:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to 0.14: <a href="https://github.com/bitcoin/bitcoin/compare/b768202695a0...e4c9a90fe9aa" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b768202695a0...e4c9a90fe9aa</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954640' id='538129'>
+<a class='timestamp' href='#538129'><time timestamp='2017-03-31T10:04:00Z'>10:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/0.14 04c21af Awemany: bitcoin-tx: Fix missing range check...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954640' id='538130'>
+<a class='timestamp' href='#538130'><time timestamp='2017-03-31T10:04:00Z'>10:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/0.14 ecc5232 John Newbery: Check stderr when testing bitcoin-tx...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954640' id='538131'>
+<a class='timestamp' href='#538131'><time timestamp='2017-03-31T10:04:00Z'>10:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/0.14 f59e3df John Newbery: Add tests for bitcoin-tx input checking...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954760' id='538132'>
+<a class='timestamp' href='#538132'><time timestamp='2017-03-31T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/ba12b3a84469...9ab26bf7e428" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/ba12b3a84469...9ab26bf7e428</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954760' id='538133'>
+<a class='timestamp' href='#538133'><time timestamp='2017-03-31T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7228ce8 Pieter Wuille: Compensate for memory peak at flush time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954760' id='538134'>
+<a class='timestamp' href='#538134'><time timestamp='2017-03-31T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9ab26bf Wladimir J. van der Laan: Merge #10126: Compensate for memory peak at flush time...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954760' id='538135'>
+<a class='timestamp' href='#538135'><time timestamp='2017-03-31T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10126: Compensate for memory peak at flush time (master...peak_compensation) <a href="https://github.com/bitcoin/bitcoin/pull/10126" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10126</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954820' id='538136'>
+<a class='timestamp' href='#538136'><time timestamp='2017-03-31T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10127: [0.14 backport] Mining: Prevent slowdown in CreateNewBlock on large mempools  (0.14...2017-03-backport-cnb-optimizations) <a href="https://github.com/bitcoin/bitcoin/pull/10127" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10127</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954880' id='538137'>
+<a class='timestamp' href='#538137'><time timestamp='2017-03-31T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.14: <a href="https://github.com/bitcoin/bitcoin/commit/0b5e162b84ec95cb63903dd21e4003a3d4503421" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/0b5e162b84ec95cb63903dd21e4003a3d4503421</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490954880' id='538138'>
+<a class='timestamp' href='#538138'><time timestamp='2017-03-31T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/0.14 0b5e162 Pieter Wuille: Compensate for memory peak at flush time...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490955120' id='538139'>
+<a class='timestamp' href='#538139'><time timestamp='2017-03-31T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+last call for 0.14.1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490957880' id='538140'>
+<a class='timestamp' href='#538140'><time timestamp='2017-03-31T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9ab26bf7e428...4aa07fa73569" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9ab26bf7e428...4aa07fa73569</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490957880' id='538141'>
+<a class='timestamp' href='#538141'><time timestamp='2017-03-31T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e6dcfee Wladimir J. van der Laan: refactor: Move GetDifficulty out of `rpc/server.h`...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490957880' id='538142'>
+<a class='timestamp' href='#538142'><time timestamp='2017-03-31T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8d8f28d Wladimir J. van der Laan: refactor: Move RPCNotifyBlockChange out of `rpc/server.h`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490957880' id='538143'>
+<a class='timestamp' href='#538143'><time timestamp='2017-03-31T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f885b67 Wladimir J. van der Laan: refactor: Make rest.cpp dependency on `*toJSON` in `blockchain.cpp` explicit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490957880' id='538144'>
+<a class='timestamp' href='#538144'><time timestamp='2017-03-31T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10095: refactor: Move GetDifficulty out of `rpc/server.h` (master...2017_03_getdifficulty_header) <a href="https://github.com/bitcoin/bitcoin/pull/10095" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10095</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490959560' id='538145'>
+<a class='timestamp' href='#538145'><time timestamp='2017-03-31T11:26:00Z'>11:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+will tag 0.14.1rc1 in a bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490964540' id='538146'>
+<a class='timestamp' href='#538146'><time timestamp='2017-03-31T12:49:00Z'>12:49</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+never mind, won&#x27;t tag 0.14.1rc1 today
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490965020' id='538147'>
+<a class='timestamp' href='#538147'><time timestamp='2017-03-31T12:57:00Z'>12:57</time></a>
+&lt;<span class='nick nick-8'> Victorsueca</span>&gt;
+wumpus: a wild bug appeared?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490965380' id='538148'>
+<a class='timestamp' href='#538148'><time timestamp='2017-03-31T13:03:00Z'>13:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490965440' id='538149'>
+<a class='timestamp' href='#538149'><time timestamp='2017-03-31T13:04:00Z'>13:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+apparently #10126 reduces the dbache too much
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490965440' id='538150'>
+<a class='timestamp' href='#538150'><time timestamp='2017-03-31T13:04:00Z'>13:04</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10126" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10126</a> | Compensate for memory peak at flush time by sipa · Pull Request #10126 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490965500' id='538151'>
+<a class='timestamp' href='#538151'><time timestamp='2017-03-31T13:05:00Z'>13:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+not really a bug, I guess, but also not desirable for a release
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490970780' id='538152'>
+<a class='timestamp' href='#538152'><time timestamp='2017-03-31T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] morcos opened pull request #10133: Clean up calculations of pcoinsTip memory usage (master...cachememory) <a href="https://github.com/bitcoin/bitcoin/pull/10133" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10133</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490970840' id='538153'>
+<a class='timestamp' href='#538153'><time timestamp='2017-03-31T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: ok take a look at that.  This would be my recommendation, but I broke it up into commits so we can talk about what makes sense for 0.14.1 and what doesn&#x27;t....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490970900' id='538154'>
+<a class='timestamp' href='#538154'><time timestamp='2017-03-31T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+I care primarily about the first commit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979720' id='538155'>
+<a class='timestamp' href='#538155'><time timestamp='2017-03-31T17:02:00Z'>17:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: i was trying to reason about whether we need the 2x factor in the rollback test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979720' id='538156'>
+<a class='timestamp' href='#538156'><time timestamp='2017-03-31T17:02:00Z'>17:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i went back and forth.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979720' id='538157'>
+<a class='timestamp' href='#538157'><time timestamp='2017-03-31T17:02:00Z'>17:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+is it true that non-dirty entries in the pcoinstip aren&#x27;t subject to a 2x usage on flush?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979720' id='538158'>
+<a class='timestamp' href='#538158'><time timestamp='2017-03-31T17:02:00Z'>17:02</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+if so then i guess i agree...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979720' id='538159'>
+<a class='timestamp' href='#538159'><time timestamp='2017-03-31T17:02:00Z'>17:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979780' id='538160'>
+<a class='timestamp' href='#538160'><time timestamp='2017-03-31T17:03:00Z'>17:03</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but certainly if pcoinstip grows which it will in the rollback, and then it will be  flushed later...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979780' id='538161'>
+<a class='timestamp' href='#538161'><time timestamp='2017-03-31T17:03:00Z'>17:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+are you sure? i thought we changed that test to not use the main cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979780' id='538162'>
+<a class='timestamp' href='#538162'><time timestamp='2017-03-31T17:03:00Z'>17:03</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+pcoinstip will grow, but will only grow with non-dirty entries
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979900' id='538163'>
+<a class='timestamp' href='#538163'><time timestamp='2017-03-31T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+for instance if your tip is block 100, you flushed after block 99 and you are rolling back block 99, won&#x27;t pcoinstip get the outputs created in block 99 pulled into it 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490979900' id='538164'>
+<a class='timestamp' href='#538164'><time timestamp='2017-03-31T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+which will be marked dirty in coins, but never flushed to pcoinstip 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980020' id='538165'>
+<a class='timestamp' href='#538165'><time timestamp='2017-03-31T17:07:00Z'>17:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: pcoinstip is not involved in the rollback test at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980020' id='538166'>
+<a class='timestamp' href='#538166'><time timestamp='2017-03-31T17:07:00Z'>17:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it uses a private cache on top of pcoinsdb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980080' id='538167'>
+<a class='timestamp' href='#538167'><time timestamp='2017-03-31T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+oh... i missed that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980080' id='538168'>
+<a class='timestamp' href='#538168'><time timestamp='2017-03-31T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+                if (!CVerifyDB().VerifyDB(chainparams, pcoinsdbview, GetArg(&quot;-checklevel&quot;, DEFAULT_CHECKLEVEL),
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980080' id='538169'>
+<a class='timestamp' href='#538169'><time timestamp='2017-03-31T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i assumed coins was built on top of pcoinstip
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980080' id='538170'>
+<a class='timestamp' href='#538170'><time timestamp='2017-03-31T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it used to be, but it caused a memory blowup that quickly caused a flush afterwards anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980140' id='538171'>
+<a class='timestamp' href='#538171'><time timestamp='2017-03-31T17:09:00Z'>17:09</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+ok, then i agree completely unnecessary there... will remove
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980200' id='538172'>
+<a class='timestamp' href='#538172'><time timestamp='2017-03-31T17:10:00Z'>17:10</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+while we&#x27;re at it..  are you ok with the other changes..  i might as well get it to mergeable state..  i agree this is all relatively minor
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980860' id='538173'>
+<a class='timestamp' href='#538173'><time timestamp='2017-03-31T17:21:00Z'>17:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+ugh.. wait on #10133..  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980860' id='538174'>
+<a class='timestamp' href='#538174'><time timestamp='2017-03-31T17:21:00Z'>17:21</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10133" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10133</a> | Clean up calculations of pcoinsTip memory usage by morcos · Pull Request #10133 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490980920' id='538175'>
+<a class='timestamp' href='#538175'><time timestamp='2017-03-31T17:22:00Z'>17:22</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+oh nm, maybe its fine.. i was just confusing myself with whether the 90% is still the right number, but you are comparing the doubled calculation with the 90% number, so it is fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490981220' id='538176'>
+<a class='timestamp' href='#538176'><time timestamp='2017-03-31T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sdaftuar opened pull request #10134: [qa] Fixes segwit block relay test after inv-direct-fetch was disabled (master...2017-03-fix-segwit-relay-test) <a href="https://github.com/bitcoin/bitcoin/pull/10134" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10134</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490984580' id='538177'>
+<a class='timestamp' href='#538177'><time timestamp='2017-03-31T18:23:00Z'>18:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #10135: Send the correct error code in reject messages (master...correctrejectmessages) <a href="https://github.com/bitcoin/bitcoin/pull/10135" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10135</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1490993280' id='538178'>
+<a class='timestamp' href='#538178'><time timestamp='2017-03-31T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery closed pull request #10123: Allow debug logs to be excluded from specified component (master...debugexclude) <a href="https://github.com/bitcoin/bitcoin/pull/10123" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10123</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

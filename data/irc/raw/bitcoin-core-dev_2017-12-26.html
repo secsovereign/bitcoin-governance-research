@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-12-26
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-12-26' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:22 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-11-26">&lt;</a><span class='header'>  December 2017   </span><a href="/bitcoin-core-dev/2018-01-26">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2017-12-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-12-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-12-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-12-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-12-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-12-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-12-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-12-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-12-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-10">10</a> <a class="" href="/bitcoin-core-dev/2017-12-11">11</a> <a class="" href="/bitcoin-core-dev/2017-12-12">12</a> <a class="" href="/bitcoin-core-dev/2017-12-13">13</a> <a class="" href="/bitcoin-core-dev/2017-12-14">14</a> <a class="" href="/bitcoin-core-dev/2017-12-15">15</a> <a class="" href="/bitcoin-core-dev/2017-12-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-17">17</a> <a class="" href="/bitcoin-core-dev/2017-12-18">18</a> <a class="" href="/bitcoin-core-dev/2017-12-19">19</a> <a class="" href="/bitcoin-core-dev/2017-12-20">20</a> <a class="" href="/bitcoin-core-dev/2017-12-21">21</a> <a class="" href="/bitcoin-core-dev/2017-12-22">22</a> <a class="" href="/bitcoin-core-dev/2017-12-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-24">24</a> <a class="" href="/bitcoin-core-dev/2017-12-25">25</a> <a class="current" href="/bitcoin-core-dev/2017-12-26">26</a> <a class="" href="/bitcoin-core-dev/2017-12-27">27</a> <a class="" href="/bitcoin-core-dev/2017-12-28">28</a> <a class="" href="/bitcoin-core-dev/2017-12-29">29</a> <a class="" href="/bitcoin-core-dev/2017-12-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1514251320' id='590188'>
+<a class='timestamp' href='#590188'><time timestamp='2017-12-26T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-7'> Scrx</span>&gt;
+Hello. I have a question regarding miners broadcasting blocks. What would happen if a miner wants to spend its resources to deliberately slow down another miner, by broadcasting invalid blocks to the network (or specifically to the full nodes it connects to)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514251500' id='590189'>
+<a class='timestamp' href='#590189'><time timestamp='2017-12-26T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-7'> Scrx</span>&gt;
+In other words, if a miner X wants to impact Y, it can connect to it and continuously broadcast bogus messages. What would be such impact in Y, considering all X is trying to do is not impact the network but simply impact Y. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514252040' id='590190'>
+<a class='timestamp' href='#590190'><time timestamp='2017-12-26T01:34:00Z'>01:34</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+Scrx: the proof of work is able to be validated in milliseconds. more a question for #bitcoin.  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514252580' id='590191'>
+<a class='timestamp' href='#590191'><time timestamp='2017-12-26T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] achow101 opened pull request #12024: Remove most recent transaction timestamp stuff from nTimeSmart (master...fix-timesmart) <a href="https://github.com/bitcoin/bitcoin/pull/12024" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12024</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514264940' id='590192'>
+<a class='timestamp' href='#590192'><time timestamp='2017-12-26T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+can anybody run through the justification of CreateNewBlock() verifying txins? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514264940' id='590193'>
+<a class='timestamp' href='#590193'><time timestamp='2017-12-26T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+items in the mempool being valid seems like a pretty solid assumption. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268360' id='590194'>
+<a class='timestamp' href='#590194'><time timestamp='2017-12-26T06:06:00Z'>06:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+echeveria: it is not a solid assumption, there are been issues in the past on several occasions that resulted in the mempool returning consensus inconsistent results.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268480' id='590195'>
+<a class='timestamp' href='#590195'><time timestamp='2017-12-26T06:08:00Z'>06:08</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+This is especially easy to happen with reorgs and changing consensus rules, doubly so since some miners go and modify the transaction selection logic.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268540' id='590196'>
+<a class='timestamp' href='#590196'><time timestamp='2017-12-26T06:09:00Z'>06:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+There is a secondary benefit of running that validation: it reheats the caches after a flush.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268600' id='590197'>
+<a class='timestamp' href='#590197'><time timestamp='2017-12-26T06:10:00Z'>06:10</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+feels expensive, but I guess that&#x27;s reasonable. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268660' id='590198'>
+<a class='timestamp' href='#590198'><time timestamp='2017-12-26T06:11:00Z'>06:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+everything is cached, so it&#x27;s not very expensive.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268660' id='590199'>
+<a class='timestamp' href='#590199'><time timestamp='2017-12-26T06:11:00Z'>06:11</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+what&#x27;s 80ms between friends I guess. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268780' id='590200'>
+<a class='timestamp' href='#590200'><time timestamp='2017-12-26T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and considering that virtually all SPV wallets show &#x27;confirmed&#x27; at a single confirmation and don&#x27;t distinguish one from more than one, ... and there have been at least two invalid blocks created by miners in the last year that would have been stopped by this kind of check ...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268840' id='590201'>
+<a class='timestamp' href='#590201'><time timestamp='2017-12-26T06:14:00Z'>06:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+80ms? you mining on a rpi? :P   it&#x27;s 23ms here on a system from 2011.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268840' id='590202'>
+<a class='timestamp' href='#590202'><time timestamp='2017-12-26T06:14:00Z'>06:14</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+80 for the total assembly and validation, it&#x27;s lower on proper hardware. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514268960' id='590203'>
+<a class='timestamp' href='#590203'><time timestamp='2017-12-26T06:16:00Z'>06:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+echeveria: yea, 36.4ms here.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514269140' id='590204'>
+<a class='timestamp' href='#590204'><time timestamp='2017-12-26T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+the underlying machine does really seem matter with getting performance bitcoind. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280600' id='590205'>
+<a class='timestamp' href='#590205'><time timestamp='2017-12-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT dkyhnfkn: owowo d9b4bef9 justanotheruser echonaut instagibbs laurentmt mesh_ davec unholymachine wumpu
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280600' id='590206'>
+<a class='timestamp' href='#590206'><time timestamp='2017-12-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT cqlmqnp: kabaum_ GoldenBear laurentmt echonaut mwatson a5m0 ludens[m] Ylbam BashCo vicenteH spinza arubi owowo rabidus wumpus instagibbs vasp dgenr8 StopAndDecryp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280600' id='590207'>
+<a class='timestamp' href='#590207'><time timestamp='2017-12-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT thrvh: Ylbam mwatson instagibbs harrymm wumpus davec GoldenBear spinza d9b4bef9 hirishaway l
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280600' id='590208'>
+<a class='timestamp' href='#590208'><time timestamp='2017-12-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ojzag: GoldenBear cireful spinza Emcy dgenr8 tyrick vicenteH davec roadcrap vasp laurentmt ghost43 kabaum echonaut Thamer Randolf ph
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590209'>
+<a class='timestamp' href='#590209'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT zelxxpm: dabura667 Thamer tyrick unholymachine t0adst00l dgenr8 cireful kabaum owowo Victorsueca qrestlove BashCo victorSN harrymm meshcollider contrapumpkin StopAndDecrypt_ Danilo__ arubi luk
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590210'>
+<a class='timestamp' href='#590210'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT bbficiskoe: davec cireful StopAndDecrypt_ GoldenBear contrapumpkin mesh_ ludens[m] Randolf a5m0 hirishaway kbgg qrestlove wxss harry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590211'>
+<a class='timestamp' href='#590211'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT rwfbgbif: kabaum a5m0 hirishaway mesh_ Victorsueca GoldenBear contrapumpkin StopAndDecrypt_ 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590212'>
+<a class='timestamp' href='#590212'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT rxnaai: rabidus vicenteH a5m0 luke-jr BashCo instagibbs d9b4bef9 kbgg ghost43 harrymm qrestlove kabaum tomatopeel tyrick justanotheruser kabau
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590213'>
+<a class='timestamp' href='#590213'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT xvvnkobyy: wumpus cireful StopAndDecrypt_ arubi yoctopede hirishaway goatpig mesh_ kabaum rabidus meshcollider m
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590214'>
+<a class='timestamp' href='#590214'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT sszfzrg: arubi wxss mesh_ cireful Danilo__ photonclock_ yoctopede victorSN ^darkfire^ t0adst00l kbgg luke-jr dgenr8 vicenteH contrapumpkin d9b
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590215'>
+<a class='timestamp' href='#590215'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT vswulzyag: luke-jr meshcollider ^darkfire^ BashCo contrapumpkin qrestlove tomatopeel yoctopede goatpig StopAndDe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590216'>
+<a class='timestamp' href='#590216'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT xyhsujku: rabidus owowo mwatson t0adst00l instagibbs vicenteH justanotheruser tyrick goatpig Thamer mesh_ d9b4bef
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590217'>
+<a class='timestamp' href='#590217'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT fvvfynz: Randolf BashCo cireful tomatopeel unholymachine kabaum ludens[m] goatpig dgenr8 qrestlove wum
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590218'>
+<a class='timestamp' href='#590218'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT nmbqqqlu: verm541 dabura667 goatpig photonclock_ ghost43 GoldenBear qrestlove ^darkfire^ Ylbam kabaum_ mwatson ludens[m] a5
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590219'>
+<a class='timestamp' href='#590219'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT plvzv: kbgg wxss tomatopeel contrapumpkin Victorsueca hirishaway Ylbam Danilo__ spinza rabidus Thamer roadcrap StopAndDecrypt_ owowo cireful vasp Emcy laurentmt ghost43 meshcollider 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590220'>
+<a class='timestamp' href='#590220'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT plkxswzb: kabaum_ t0adst00l kabaum Thamer ^darkfire^ kbgg dabura667 photonclock_ a5m0 contrapumpkin meshcollider wxss ludens[m] harrymm verm541 justanoth
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590221'>
+<a class='timestamp' href='#590221'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT idtbxs: rabidus hirishaway kabaum_ goatpig wxss justanotheruser meshcollider mesh_ tyrick dabura667 laurentmt yoctopede t0adst00l owowo arubi ^darkfire^ harrymm G
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590222'>
+<a class='timestamp' href='#590222'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT jcbhfm: qrestlove t0adst00l justanotheruser goatpig d9b4bef9 Thamer verm541 meshcollider vasp dabura667 unholymac
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590223'>
+<a class='timestamp' href='#590223'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT etlzqbfqu: victorSN tyrick justanotheruser rabidus tomatopeel dabura667 echonaut ludens[m] Emcy GoldenBear spinza unholymachine davec Ylbam vasp luke-jr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590224'>
+<a class='timestamp' href='#590224'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT iuyocyl: Thamer verm541 Emcy spinza yoctopede BashCo harrymm t0adst00l dgenr8 Ylbam wxss kbgg mwatson qrestlove a5m0 arubi Victorsuec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280660' id='590225'>
+<a class='timestamp' href='#590225'><time timestamp='2017-12-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT heyyvqewz: dgenr8 echonaut instagibbs Thamer ludens[m] vasp ghost43 qrestlove laurentmt harrymm spinza mwatson E
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590226'>
+<a class='timestamp' href='#590226'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ntharrrhdq: kbgg Ylbam t0adst00l tyrick Randolf Emcy instagibbs prometheus_falli cireful Thamer owowo laurentmt vicenteH harrymm meshcollider spinza ^darkfire^ mesh_ photonc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590227'>
+<a class='timestamp' href='#590227'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT nydumgir: vicenteH luke-jr Danilo__ a5m0 wumpus arubi meshcollider Thamer d9b4bef9 t0adst00l echonaut 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590228'>
+<a class='timestamp' href='#590228'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT dxkprxf: meshcollider yoctopede harrymm ^darkfire^ dabura667 arubi ludens[m] unholymachine justanotheruser qrestlove Thamer goatpig d
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590229'>
+<a class='timestamp' href='#590229'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT mcqnzh: yoctopede t0adst00l owowo dabura667 vasp d9b4bef9 ghost43 instagibbs Emcy contrapumpkin StopAndDecrypt_ spinza vic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590230'>
+<a class='timestamp' href='#590230'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT sdndq: goatpig GoldenBear ludens[m] Thamer spinza dabura667 tyrick dgenr8 instagibbs echonaut mwatson verm541 kabaum_ vasp 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590231'>
+<a class='timestamp' href='#590231'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT sworptfpyk: Emcy Danilo__ spinza tomatopeel owowo GoldenBear contrapumpkin kabaum_ Randolf cireful Ylbam victorSN kabaum harrymm wxss roadcrap kbgg qres
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590232'>
+<a class='timestamp' href='#590232'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-5'>@luke-jr</span>&gt;
+wtf     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590233'>
+<a class='timestamp' href='#590233'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT pzlrn: Danilo__ yoctopede ^darkfire^ arubi verm541 dgenr8 kbgg meshcollider GoldenBear unholymachine goatpig Victorsueca instagibbs rabidus luke-jr contr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590234'>
+<a class='timestamp' href='#590234'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-14'> arubi</span>&gt;
+kick
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590235'>
+<a class='timestamp' href='#590235'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT zvdulbdboq: Ylbam mwatson arubi kabaum_ cireful ghost43 wumpus a5m0 harrymm yoctopede Emcy rabidus owowo Victorsueca Randolf photonclock_ tyrick vicenteH GoldenBear meshcollider dabura667 toma
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590236'>
+<a class='timestamp' href='#590236'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-5'>@luke-jr</span>&gt;
+I did
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590237'>
+<a class='timestamp' href='#590237'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT dfftw: luke-jr dabura667 GoldenBear kbgg harrymm justanotheruser ^darkfire^ kabaum vicenteH BashCo echonaut mesh_ Victorsueca owowo u
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590238'>
+<a class='timestamp' href='#590238'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ikwbqdia: qrestlove spinza meshcollider goatpig BashCo ^darkfire^ wumpus kabaum dabura667 owowo harrymm a5m0 victorSN instagibbs d9b4bef9 cire
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590239'>
+<a class='timestamp' href='#590239'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-14'> arubi</span>&gt;
+I see +b
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590240'>
+<a class='timestamp' href='#590240'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT shbyhdurw: laurentmt wxss mesh_ spinza cireful d9b4bef9 Randolf kabaum_ luke-jr rabidus prometheus_falli mwatson t0adst00l owowo dabura667 qres
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590241'>
+<a class='timestamp' href='#590241'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT oztrfr: ghost43 kabaum_ harrymm Emcy qrestlove t0adst00l Thamer contrapumpkin cireful dgenr8 hirishawa
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590242'>
+<a class='timestamp' href='#590242'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT xqciraur: tomatopeel kbgg cireful kabaum verm541 yoctopede meshcollider wxss qrestl
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590243'>
+<a class='timestamp' href='#590243'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT xwavsmsn: unholymachine davec contrapumpkin vicenteH harrymm roadcrap victorSN ^darkfire^ yoctopede dgenr8 luke-jr mesh_ photonclock
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590244'>
+<a class='timestamp' href='#590244'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT mddcce: meshcollider ludens[m] dgenr8 qrestlove vasp instagibbs GoldenBear luke-jr ^darkfire^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590245'>
+<a class='timestamp' href='#590245'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT mleum: BashCo mwatson tyrick meshcollider vasp instagibbs contrapumpkin unholymachine luke-jr laurentmt roadcrap ^darkfire
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590246'>
+<a class='timestamp' href='#590246'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT youcvgw: mwatson justanotheruser luke-jr wxss tyrick d9b4bef9 Danilo__ victorSN qrestlove vicenteH Ylbam arubi goatpig meshcollider ludens[m] ghost43 rabidus Rando
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590247'>
+<a class='timestamp' href='#590247'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT tjzefp: d9b4bef9 wxss ghost43 goatpig tyrick tomatopeel vicenteH ^darkfire^ davec spinza dgenr8 victorSN arubi dabura667 vasp Victorsueca rabidus wumpus
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590248'>
+<a class='timestamp' href='#590248'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT vgqtdopf: kabaum_ wxss StopAndDecrypt_ victorSN ghost43 yoctopede t0adst00l Danilo__ GoldenBear Emcy prometheus_falli harrymm cireful dgenr8 mwatson inst
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590249'>
+<a class='timestamp' href='#590249'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+no k-line?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590250'>
+<a class='timestamp' href='#590250'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ufrfa: ludens[m] kbgg goatpig dabura667 mwatson BashCo arubi instagibbs vicenteH roadcrap a5m0 laurentmt wumpus vasp yoctopede harrymm Ylbam StopAndDecrypt_ cireful Emcy ow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590251'>
+<a class='timestamp' href='#590251'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT zgxmdom: mesh_ t0adst00l Thamer photonclock_ harrymm d9b4bef9 Ylbam cireful arubi kabaum Randolf luke-jr StopAndDecrypt_ dabura667 Victorsueca vicenteH yoctopede i
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590252'>
+<a class='timestamp' href='#590252'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ogqnt: davec Emcy meshcollider tomatopeel t0adst00l cireful kbgg instagibbs laurentmt contra
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590253'>
+<a class='timestamp' href='#590253'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT equtuefjdp: spinza owowo Randolf mesh_ t0adst00l mwatson ^darkfire^ Emcy kabaum_ wxss arubi rabidus GoldenBear co
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280720' id='590254'>
+<a class='timestamp' href='#590254'><time timestamp='2017-12-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT rcmxzcnk: instagibbs spinza unholymachine rabidus d9b4bef9 owowo victorSN goatpig ludens[m] vicenteH StopAndDecrypt_ harrymm justanotheruser roadcrap Vi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590255'>
+<a class='timestamp' href='#590255'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT lzcjct: Victorsueca dabura667 Randolf justanotheruser kabaum_ wumpus cireful t0adst
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590256'>
+<a class='timestamp' href='#590256'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT wvyvkm: spinza cireful ghost43 qrestlove kbgg mesh_ wxss kabaum_ vasp Thamer hirishaway photonclock_ Victorsueca yoctopede
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590257'>
+<a class='timestamp' href='#590257'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT nwkdfjla: Emcy vicenteH StopAndDecrypt_ vasp qrestlove goatpig spinza Thamer tyrick instagibb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590258'>
+<a class='timestamp' href='#590258'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT lpukrwpym: ludens[m] hirishaway victorSN contrapumpkin qrestlove dgenr8 d9b4bef9 Victorsueca ^darkfire^ rabidus Danilo__ h
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590259'>
+<a class='timestamp' href='#590259'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT nqbhhr: vasp tyrick spinza mesh_ Emcy cireful justanotheruser wxss contrapumpkin t0adst00l luke-jr qrestlove echonaut ^darkfire^ dgenr8 ludens[m] prometheus_falli tomatopeel kabaum un
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590260'>
+<a class='timestamp' href='#590260'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT giszt: vicenteH dabura667 t0adst00l justanotheruser kabaum owowo harrymm hirishaway vasp BashCo Victorsueca davec echonaut GoldenBear kbgg aru
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590261'>
+<a class='timestamp' href='#590261'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ontebwkilo: vicenteH justanotheruser kbgg wumpus photonclock_ mesh_ Emcy GoldenBear ghost43 victorSN echonaut StopAndDecryp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590262'>
+<a class='timestamp' href='#590262'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ohnbk: roadcrap meshcollider rabidus laurentmt goatpig ludens[m] arubi BashCo luke-jr spinza Emcy tomatopeel wxss hirishaway tyrick ghost43 victorSN t0adst00l echonaut d9b4bef9 kabau
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590263'>
+<a class='timestamp' href='#590263'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT gypcoyepz: kabaum kbgg tomatopeel rabidus harrymm ^darkfire^ mesh_ echonaut laurentmt victorSN GoldenBear t0adst00l ludens[
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590264'>
+<a class='timestamp' href='#590264'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-14'> arubi</span>&gt;
+huh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590265'>
+<a class='timestamp' href='#590265'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT noxudphslj: qrestlove Danilo__ vicenteH d9b4bef9 contrapumpkin harrymm hirishaway GoldenBear vasp unho
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590266'>
+<a class='timestamp' href='#590266'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT jafyutuwpv: luke-jr dgenr8 laurentmt tyrick kabaum vicenteH wumpus owowo yoctopede spinza cir
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590267'>
+<a class='timestamp' href='#590267'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT dqkpalox: kbgg owowo luke-jr dabura667 ludens[m] kabaum hirishaway BashCo tomatopeel arubi mesh_ a5m0 t0adst00l wxss vicenteH contrapumpkin StopAndDecrypt_ goatpi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590268'>
+<a class='timestamp' href='#590268'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT xdzrvdmga: tyrick wxss victorSN unholymachine rabidus Victorsueca Randolf ^darkfire^ cireful tomatopeel verm541 justanother
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590269'>
+<a class='timestamp' href='#590269'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-1'> verm541</span>&gt;
+▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT msqlbryg: Thamer StopAndDecrypt_ rabidus mwatson vicenteH photonclock_ tyrick ^darkfire^ arubi owowo spinza dgenr8 meshcollider unholymachine mesh_ BashCo Ylbam yoctopede vasp Danilo__ Randolf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280780' id='590270'>
+<a class='timestamp' href='#590270'><time timestamp='2017-12-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-9'> way68</span>&gt;
+▄▄▄▄▄▄▄▄▄▄▄ DO YOU WANT TO KEEP YOUR MAN SATISFIED DURING THE CHRISTMAS BREAK?? EL IS GIVING ANAL SEX TIPS IN ##FEMINISM RIGHT NOW DONT MISS IT ueeaumx: victorSN Emcy ludens[m] Randolf Danilo__ wxss dgenr8 wumpus vasp t0adst00l echonaut a5m0 mwatson Victorsueca ^darkfire^ mesh_ ghost43 yoctopede justanotheruser mesh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280840' id='590271'>
+<a class='timestamp' href='#590271'><time timestamp='2017-12-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-7'> berndj</span>&gt;
+luke-jr: set +n, i think. they&#x27;re not even in the channel
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280900' id='590272'>
+<a class='timestamp' href='#590272'><time timestamp='2017-12-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-5'>@luke-jr</span>&gt;
+I think that would break GitHub messages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514280900' id='590273'>
+<a class='timestamp' href='#590273'><time timestamp='2017-12-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-5'>@luke-jr</span>&gt;
+inviting Sigyn seems to have helped for now..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514291820' id='590274'>
+<a class='timestamp' href='#590274'><time timestamp='2017-12-26T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+I&#x27;ve been trying to work out why the last commit in #11904 is breaking the locking function, it works fine before that commit is added, but I can&#x27;t work out why it doesn&#x27;t work with that change. with a brand new walletdir, it creates the .walletlock file, but lock.try_lock() fails and the node crashes on startup, does anyone with more boost familiarity than me know why lock.try_lock fails when I move it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514291820' id='590275'>
+<a class='timestamp' href='#590275'><time timestamp='2017-12-26T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+to util.cpp when it worked in init.cpp and wallet/db.cpp?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514291820' id='590276'>
+<a class='timestamp' href='#590276'><time timestamp='2017-12-26T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11904" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11904</a> | Add a lock to the wallet directory by MeshCollider · Pull Request #11904 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514291820' id='590277'>
+<a class='timestamp' href='#590277'><time timestamp='2017-12-26T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/pull/11904/commits/4f600cb0ba39b1e4015e09835837b99ba8d2c785" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11904/commits/4f600cb0ba39b1e4015e09835837b99ba8d2c785</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514294700' id='590278'>
+<a class='timestamp' href='#590278'><time timestamp='2017-12-26T13:25:00Z'>13:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #12026: Prepare version scheme for 17.0 release (master...Mf1712-version17) <a href="https://github.com/bitcoin/bitcoin/pull/12026" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12026</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298360' id='590279'>
+<a class='timestamp' href='#590279'><time timestamp='2017-12-26T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-9'> zelest</span>&gt;
+how come bitcoin specifically requires bdb 4.8 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298720' id='590280'>
+<a class='timestamp' href='#590280'><time timestamp='2017-12-26T14:32:00Z'>14:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+zelest: it does not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298720' id='590281'>
+<a class='timestamp' href='#590281'><time timestamp='2017-12-26T14:32:00Z'>14:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(use --with-incompatible-bdb)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298780' id='590282'>
+<a class='timestamp' href='#590282'><time timestamp='2017-12-26T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the resulting wallet files won&#x27;t be usable in binaries compiled against older bdb, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298780' id='590283'>
+<a class='timestamp' href='#590283'><time timestamp='2017-12-26T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+all release binaries use 4.8 to guarantee compatibility of the wallet files across builds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298780' id='590284'>
+<a class='timestamp' href='#590284'><time timestamp='2017-12-26T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+oh, it still uses bdb for wallets?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590285'>
+<a class='timestamp' href='#590285'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, always has
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590286'>
+<a class='timestamp' href='#590286'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+I thought it was ripped out back after the big bdb fiasco
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590287'>
+<a class='timestamp' href='#590287'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+goes to show how much I know :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590288'>
+<a class='timestamp' href='#590288'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+by bdb fiasco you mean the march 2013 fork?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590289'>
+<a class='timestamp' href='#590289'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590290'>
+<a class='timestamp' href='#590290'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that was caused by <u>_moving <b>*off*</b> bdb_</u>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298840' id='590291'>
+<a class='timestamp' href='#590291'><time timestamp='2017-12-26T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+oh, hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298900' id='590292'>
+<a class='timestamp' href='#590292'><time timestamp='2017-12-26T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+I guess I&#x27;m misremembering :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298900' id='590293'>
+<a class='timestamp' href='#590293'><time timestamp='2017-12-26T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so yes, we moved from bdb to leveldb for the consensus logic, in 0.8
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298900' id='590294'>
+<a class='timestamp' href='#590294'><time timestamp='2017-12-26T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but wallet files never had those concerns, so for maximal compatibility we always stuck to bdb there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298960' id='590295'>
+<a class='timestamp' href='#590295'><time timestamp='2017-12-26T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+that fork would have probably happened anyways right? since bdb was consensus inconsistant even with itself depending on various factors or something like that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298960' id='590296'>
+<a class='timestamp' href='#590296'><time timestamp='2017-12-26T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-6'> contrapumpkin</span>&gt;
+makes sense :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298960' id='590297'>
+<a class='timestamp' href='#590297'><time timestamp='2017-12-26T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Lightsword: indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514298960' id='590298'>
+<a class='timestamp' href='#590298'><time timestamp='2017-12-26T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though it was harder to trigger the internal inconsostency
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514300760' id='590299'>
+<a class='timestamp' href='#590299'><time timestamp='2017-12-26T15:06:00Z'>15:06</time></a>
+&lt;<span class='nick nick-9'> zelest</span>&gt;
+sipa, oh.. and if I compile it --disable-wallet (or whatever the flag is), does it still require bdb at all?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514302920' id='590300'>
+<a class='timestamp' href='#590300'><time timestamp='2017-12-26T15:42:00Z'>15:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+zelest: with --disable-wallet you don&#x27;t need BDB at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514305020' id='590301'>
+<a class='timestamp' href='#590301'><time timestamp='2017-12-26T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-6'> _AS</span>&gt;
+is this chan help for make script minning with cpu ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514305080' id='590302'>
+<a class='timestamp' href='#590302'><time timestamp='2017-12-26T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514309040' id='590303'>
+<a class='timestamp' href='#590303'><time timestamp='2017-12-26T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fernandezpablo85 opened pull request #12027: remove brew c++ flag (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/12027" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12027</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514310540' id='590304'>
+<a class='timestamp' href='#590304'><time timestamp='2017-12-26T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Ov3rlo4d opened pull request #12029: Build: Add a makefile target for Doxygen documentation (master...make-doxygen) <a href="https://github.com/bitcoin/bitcoin/pull/12029" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12029</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514311320' id='590305'>
+<a class='timestamp' href='#590305'><time timestamp='2017-12-26T18:02:00Z'>18:02</time></a>
+&lt;<span class='nick nick-9'> zelest</span>&gt;
+sipa, as I thought, thanks for the inputs! :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514319360' id='590306'>
+<a class='timestamp' href='#590306'><time timestamp='2017-12-26T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-15'> Guest26217</span>&gt;
+hi     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514319360' id='590307'>
+<a class='timestamp' href='#590307'><time timestamp='2017-12-26T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-15'> Guest26217</span>&gt;
+hi     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1514328000' id='590308'>
+<a class='timestamp' href='#590308'><time timestamp='2017-12-26T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+I noticed a small bug in 15.1 (os x) - When my node finished syncing, it showed the most recent received funds as &#x27;unconfirmed&#x27;, with the little clock symbol empty, and the balance not reflected in the available or pending. When I looked at the transaction details, it said &#x27;42 confirmations&#x27;. Restarting the client made the funds appear in the &#x27;available&#x27; line.
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-11-27
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-11-27' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-10-27">&lt;</a><span class='header'>  November 2017   </span><a href="/bitcoin-core-dev/2017-12-27">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2017-11-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-11-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-11-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-11-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-11-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-11-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-11-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-11-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-11-09">9</a> <a class="" href="/bitcoin-core-dev/2017-11-10">10</a> <a class="" href="/bitcoin-core-dev/2017-11-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-11-12">12</a> <a class="" href="/bitcoin-core-dev/2017-11-13">13</a> <a class="" href="/bitcoin-core-dev/2017-11-14">14</a> <a class="" href="/bitcoin-core-dev/2017-11-15">15</a> <a class="" href="/bitcoin-core-dev/2017-11-16">16</a> <a class="" href="/bitcoin-core-dev/2017-11-17">17</a> <a class="" href="/bitcoin-core-dev/2017-11-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-11-19">19</a> <a class="" href="/bitcoin-core-dev/2017-11-20">20</a> <a class="" href="/bitcoin-core-dev/2017-11-21">21</a> <a class="" href="/bitcoin-core-dev/2017-11-22">22</a> <a class="" href="/bitcoin-core-dev/2017-11-23">23</a> <a class="" href="/bitcoin-core-dev/2017-11-24">24</a> <a class="" href="/bitcoin-core-dev/2017-11-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-11-26">26</a> <a class="current" href="/bitcoin-core-dev/2017-11-27">27</a> <a class="" href="/bitcoin-core-dev/2017-11-28">28</a> <a class="" href="/bitcoin-core-dev/2017-11-29">29</a> <a class="" href="/bitcoin-core-dev/2017-11-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1511779500' id='582229'>
+<a class='timestamp' href='#582229'><time timestamp='2017-11-27T10:45:00Z'>10:45</time></a>
+&lt;<span class='nick nick-3'> wallet42</span>&gt;
+What are the counter arguments to have a switch where the miner can set a couple of vbytes (10-50K) aside in a getblocktemplate that will include lowfee, oldest first transactions instead of highest paying?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511780880' id='582230'>
+<a class='timestamp' href='#582230'><time timestamp='2017-11-27T11:08:00Z'>11:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wallet42: complicates the block construction code significantly, would likely not be used by a significant portion of the hashrate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511780940' id='582231'>
+<a class='timestamp' href='#582231'><time timestamp='2017-11-27T11:09:00Z'>11:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+further, having it available even if it was used wouldn&#x27;t really benefit anyone; it&#x27;s essentially introducing a lottery in the mining construction from the perspective of wallets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781180' id='582232'>
+<a class='timestamp' href='#582232'><time timestamp='2017-11-27T11:13:00Z'>11:13</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+I was thinking about creating an RPC method to add a new destination + amount to an existing RBF transaction. Or to add a &quot;append-tx&quot; argument to sendtoaddress. Has anyone worked on that in past?  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781180' id='582233'>
+<a class='timestamp' href='#582233'><time timestamp='2017-11-27T11:13:00Z'>11:13</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+(or explained why that&#x27;s a terrible idea)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781240' id='582234'>
+<a class='timestamp' href='#582234'><time timestamp='2017-11-27T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Provoostenator: i&#x27;ve thought a bit about a more invasive idea that&#x27;s related
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781240' id='582235'>
+<a class='timestamp' href='#582235'><time timestamp='2017-11-27T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think it would be nice to have in the wallet, independent from the sendtoaddress/sendmany/... RPCs, a list of &quot;outputs i would like to pay to&quot; (with address/amount)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781300' id='582236'>
+<a class='timestamp' href='#582236'><time timestamp='2017-11-27T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and any time that list is changed, or a transaction confirms, a new single transaction is constructed that pays out to all the entries in that list that haven&#x27;t been paid to already
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781300' id='582237'>
+<a class='timestamp' href='#582237'><time timestamp='2017-11-27T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+And then have the wallet figure out if a new transaction is cheaper than amending one?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781300' id='582238'>
+<a class='timestamp' href='#582238'><time timestamp='2017-11-27T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, there is always just a single outstanding unconfirmed transaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781360' id='582239'>
+<a class='timestamp' href='#582239'><time timestamp='2017-11-27T11:16:00Z'>11:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+for any change, that transaction is modified
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781360' id='582240'>
+<a class='timestamp' href='#582240'><time timestamp='2017-11-27T11:16:00Z'>11:16</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+That makes sense.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781360' id='582241'>
+<a class='timestamp' href='#582241'><time timestamp='2017-11-27T11:16:00Z'>11:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the cost of bumping for RBF reasons is usually trivial compared to its actual fee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781360' id='582242'>
+<a class='timestamp' href='#582242'><time timestamp='2017-11-27T11:16:00Z'>11:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(just add 1sat/vbyte)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781420' id='582243'>
+<a class='timestamp' href='#582243'><time timestamp='2017-11-27T11:17:00Z'>11:17</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Right, unless it&#x27;s a very large transaction. But that would be trivial to check.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781420' id='582244'>
+<a class='timestamp' href='#582244'><time timestamp='2017-11-27T11:17:00Z'>11:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there are complications to this... for example you need coin selection that guarantees conflicts with all previously attempted unconfirmed transaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781420' id='582245'>
+<a class='timestamp' href='#582245'><time timestamp='2017-11-27T11:17:00Z'>11:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or you may need to pre-sign multiple candidate follow-up transactions based on which of your earlier attempts confirms
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781420' id='582246'>
+<a class='timestamp' href='#582246'><time timestamp='2017-11-27T11:17:00Z'>11:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(as you can&#x27;t automatically get access to encrypted keys later)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781480' id='582247'>
+<a class='timestamp' href='#582247'><time timestamp='2017-11-27T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and it likely conflicts with how people actually use bitcoin in the real world now - where they expect a txid to be something you can track
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781480' id='582248'>
+<a class='timestamp' href='#582248'><time timestamp='2017-11-27T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Oh, so in that case you&#x27;d use SIGHASH flags?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781480' id='582249'>
+<a class='timestamp' href='#582249'><time timestamp='2017-11-27T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just predict the possible sceniarios, and sign a full follow-up transaction for each (or at least for the few most likely ones)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781720' id='582250'>
+<a class='timestamp' href='#582250'><time timestamp='2017-11-27T11:22:00Z'>11:22</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa, wallet42: can&#x27;t you just use prioritisetransaction rpc on the 50 oldest/whatever transactions to get that behaviour anyway?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781780' id='582251'>
+<a class='timestamp' href='#582251'><time timestamp='2017-11-27T11:23:00Z'>11:23</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Although it sounds more elegant, I don&#x27;t think I can pull that off, yet :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781840' id='582252'>
+<a class='timestamp' href='#582252'><time timestamp='2017-11-27T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+aj: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781840' id='582253'>
+<a class='timestamp' href='#582253'><time timestamp='2017-11-27T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: predict the possible scenarios? should be called fund-xanatos-transaction...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781840' id='582254'>
+<a class='timestamp' href='#582254'><time timestamp='2017-11-27T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+xanatos?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511781900' id='582255'>
+<a class='timestamp' href='#582255'><time timestamp='2017-11-27T11:25:00Z'>11:25</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+<a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/XanatosGambit" class="link" target="_blank">http://tvtropes.org/pmwiki/pmwiki.php/Main/XanatosGambit</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782020' id='582256'>
+<a class='timestamp' href='#582256'><time timestamp='2017-11-27T11:27:00Z'>11:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Provoostenator: well i think this would be pretty much independent from all existing transaction logic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782020' id='582257'>
+<a class='timestamp' href='#582257'><time timestamp='2017-11-27T11:27:00Z'>11:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;d reuse coin selection, but that&#x27;s it :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782200' id='582258'>
+<a class='timestamp' href='#582258'><time timestamp='2017-11-27T11:30:00Z'>11:30</time></a>
+&lt;<span class='nick nick-3'> wallet42</span>&gt;
+sipa: are the wallet RPC capabilities currently enough to pull of something like that with an external python app?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782260' id='582259'>
+<a class='timestamp' href='#582259'><time timestamp='2017-11-27T11:31:00Z'>11:31</time></a>
+&lt;<span class='nick nick-3'> wallet42</span>&gt;
+As a prototype
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782260' id='582260'>
+<a class='timestamp' href='#582260'><time timestamp='2017-11-27T11:31:00Z'>11:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, just use prioritisetransaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782320' id='582261'>
+<a class='timestamp' href='#582261'><time timestamp='2017-11-27T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and getrawmempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782920' id='582262'>
+<a class='timestamp' href='#582262'><time timestamp='2017-11-27T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ugh, master allocates enormous amounts of memory for me while syncing from scratch from network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782920' id='582263'>
+<a class='timestamp' href='#582263'><time timestamp='2017-11-27T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+0.15.1 with the same configuration works fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511782980' id='582264'>
+<a class='timestamp' href='#582264'><time timestamp='2017-11-27T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(it made my system with 32G RAM OOM)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511783040' id='582265'>
+<a class='timestamp' href='#582265'><time timestamp='2017-11-27T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+sipa: any way Travis could catch something like that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511783040' id='582266'>
+<a class='timestamp' href='#582266'><time timestamp='2017-11-27T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Or does it take too long before memory usage gets out of hand?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511783100' id='582267'>
+<a class='timestamp' href='#582267'><time timestamp='2017-11-27T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it OOMed when my debug.log said the dbcache was 1.7G
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511783100' id='582268'>
+<a class='timestamp' href='#582268'><time timestamp='2017-11-27T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which is substantial but not excessive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511783100' id='582269'>
+<a class='timestamp' href='#582269'><time timestamp='2017-11-27T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and the overhead on top of what the dbcache predicts should only be a few 100 MB
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511785440' id='582270'>
+<a class='timestamp' href='#582270'><time timestamp='2017-11-27T12:24:00Z'>12:24</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+sipa: the second log link in the channel topic seems a bit stale...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511785440' id='582271'>
+<a class='timestamp' href='#582271'><time timestamp='2017-11-27T12:24:00Z'>12:24</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+Provoostenator: yeah, the cron job broke and i haven&#x27;t updated it since botbot seems better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511785920' id='582272'>
+<a class='timestamp' href='#582272'><time timestamp='2017-11-27T12:32:00Z'>12:32</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Any idea why &quot;test/functional/test_runner.py --loglevel=INFO bumpfee&quot; doesn&#x27;t result in &quot;Mining blocks...&quot; appearing my console?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511785980' id='582273'>
+<a class='timestamp' href='#582273'><time timestamp='2017-11-27T12:33:00Z'>12:33</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+It should according to: <a href="https://github.com/bitcoin/bitcoin/blob/master/test/functional/bumpfee.py#L52" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/test/functional/bumpfee.py#L52</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511786280' id='582274'>
+<a class='timestamp' href='#582274'><time timestamp='2017-11-27T12:38:00Z'>12:38</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+Provoostenator: okay cron job fixed, that wasn&#x27;t so hard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511786340' id='582275'>
+<a class='timestamp' href='#582275'><time timestamp='2017-11-27T12:39:00Z'>12:39</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+aj: nice, that seems to work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511786520' id='582276'>
+<a class='timestamp' href='#582276'><time timestamp='2017-11-27T12:42:00Z'>12:42</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Is anyone timestamping them?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511786880' id='582277'>
+<a class='timestamp' href='#582277'><time timestamp='2017-11-27T12:48:00Z'>12:48</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+Provoostenator: each line has a timestamp :) but if you mean cryptographically, no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511788560' id='582278'>
+<a class='timestamp' href='#582278'><time timestamp='2017-11-27T13:16:00Z'>13:16</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: that sounds bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511788620' id='582279'>
+<a class='timestamp' href='#582279'><time timestamp='2017-11-27T13:17:00Z'>13:17</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+re: wallet replacement, i think privacy concerns would also be substantial
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511788620' id='582280'>
+<a class='timestamp' href='#582280'><time timestamp='2017-11-27T13:17:00Z'>13:17</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+you can assume chain analysis companies would start tracking unconfirmed txs, and use that to further group outputs as related
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511788800' id='582281'>
+<a class='timestamp' href='#582281'><time timestamp='2017-11-27T13:20:00Z'>13:20</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+That&#x27;s one reason I would make this RPC-only initially.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511788920' id='582282'>
+<a class='timestamp' href='#582282'><time timestamp='2017-11-27T13:22:00Z'>13:22</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+morcos: but does it really matter much privacy wise if you spend the next transaction from your change or by amending the original transaction? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511789160' id='582283'>
+<a class='timestamp' href='#582283'><time timestamp='2017-11-27T13:26:00Z'>13:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Provoostenator: well if you spend from your change, it MAY be unclear that it was your change or the person you paid spending (agreed that right now change is probably pretty easily identifiable though)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511789160' id='582284'>
+<a class='timestamp' href='#582284'><time timestamp='2017-11-27T13:26:00Z'>13:26</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+also if you spend unconfirmed, then you have a good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511789280' id='582285'>
+<a class='timestamp' href='#582285'><time timestamp='2017-11-27T13:28:00Z'>13:28</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+I can see a use case for low priority and smaller transactions, e.g. paying back friends, where you intentionally set the fee too low, so you can keep amending it. A poor mans payment channel. Obviously there&#x27;s a privacy cost.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511789340' id='582286'>
+<a class='timestamp' href='#582286'><time timestamp='2017-11-27T13:29:00Z'>13:29</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+or rich mans payment channel as the case may be.  :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511789580' id='582287'>
+<a class='timestamp' href='#582287'><time timestamp='2017-11-27T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+&quot;TestFramework (INFO): Mining blocks...&quot; does show up in the test log file.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511789700' id='582288'>
+<a class='timestamp' href='#582288'><time timestamp='2017-11-27T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Even stranger given that the default is INFO.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511790180' id='582289'>
+<a class='timestamp' href='#582289'><time timestamp='2017-11-27T13:43:00Z'>13:43</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Ah, so I need to call &quot;test/functional/bumpfee.py --loglevel=INFO&quot; for this to work.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511794080' id='582290'>
+<a class='timestamp' href='#582290'><time timestamp='2017-11-27T14:48:00Z'>14:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] joemphilips opened pull request #11770: [REST] add a rest endpoint for estimatesmartfee, docs, and test (master...rest_fee) <a href="https://github.com/bitcoin/bitcoin/pull/11770" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11770</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511798640' id='582291'>
+<a class='timestamp' href='#582291'><time timestamp='2017-11-27T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+archaeal_: it it was me, I would have the PR title: Add REST endpoint blockhash 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511798700' id='582292'>
+<a class='timestamp' href='#582292'><time timestamp='2017-11-27T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+then one commit for the implementation, one for the test and other for the doc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511798760' id='582293'>
+<a class='timestamp' href='#582293'><time timestamp='2017-11-27T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+^ 11765
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511798820' id='582294'>
+<a class='timestamp' href='#582294'><time timestamp='2017-11-27T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-7'> archaeal_</span>&gt;
+i see...yeah that makes sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511798940' id='582295'>
+<a class='timestamp' href='#582295'><time timestamp='2017-11-27T16:09:00Z'>16:09</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+sipa I can confirm very high memory usage. I had a fresh sync (albeit a fork of 0.15.x) and it was using over 6 GB with 4GB dbcache and swap was 100% utilized.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511800500' id='582296'>
+<a class='timestamp' href='#582296'><time timestamp='2017-11-27T16:35:00Z'>16:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #11771:  [tests] Change invalidtxrequest to use BitcoinTestFramework (master...refactor_invalidtxrequest) <a href="https://github.com/bitcoin/bitcoin/pull/11771" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11771</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804220' id='582297'>
+<a class='timestamp' href='#582297'><time timestamp='2017-11-27T17:37:00Z'>17:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery closed pull request #11047: [tests] rename functional tests (master...rename_functional_tests) <a href="https://github.com/bitcoin/bitcoin/pull/11047" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11047</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804520' id='582298'>
+<a class='timestamp' href='#582298'><time timestamp='2017-11-27T17:42:00Z'>17:42</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: have a second to talk about SW wallet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804580' id='582299'>
+<a class='timestamp' href='#582299'><time timestamp='2017-11-27T17:43:00Z'>17:43</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i thought one of the cases we wanted to cover (which is mostly a version of 2 i think) is that you have a backup of a 0.15.0 wallet now, and you addwitnessaddress, but then later you have to restore from backup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804580' id='582300'>
+<a class='timestamp' href='#582300'><time timestamp='2017-11-27T17:43:00Z'>17:43</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+this is what the 2(a) case was meant to handle
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804640' id='582301'>
+<a class='timestamp' href='#582301'><time timestamp='2017-11-27T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i dont think i particularly care if we don&#x27;t handle that in 0.16, but it does seem like at some point we should handle that...  with SW out, people are going to be doing that work flow.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804760' id='582302'>
+<a class='timestamp' href='#582302'><time timestamp='2017-11-27T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+never mind, i didn&#x27;t read carefully enough..  the 1(a) case handles that if you are running 0.16, its only the downgrade case that isn&#x27;t handled
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804760' id='582303'>
+<a class='timestamp' href='#582303'><time timestamp='2017-11-27T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think that is good enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804880' id='582304'>
+<a class='timestamp' href='#582304'><time timestamp='2017-11-27T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804880' id='582305'>
+<a class='timestamp' href='#582305'><time timestamp='2017-11-27T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i&#x27;m fine with 1(a), 2(c), 3(a).  But I wonder if there is some way we can warn the user about Problem 2, like could the backup have a higher walelt version (ick)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804880' id='582306'>
+<a class='timestamp' href='#582306'><time timestamp='2017-11-27T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right, that would be one solution
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511804940' id='582307'>
+<a class='timestamp' href='#582307'><time timestamp='2017-11-27T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it&#x27;s hard to prevent backups by just file copying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511805060' id='582308'>
+<a class='timestamp' href='#582308'><time timestamp='2017-11-27T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you could have some system where a wallet is &#x27;loaded&#x27; into a node, and the wallet file itself becomes marked as a backup, but something else in the node&#x27;s configuration contains knowledge to avoid treating it as a backup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511805060' id='582309'>
+<a class='timestamp' href='#582309'><time timestamp='2017-11-27T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but... yuck
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511805240' id='582310'>
+<a class='timestamp' href='#582310'><time timestamp='2017-11-27T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+well the good thing is there is a workaround right.. so maybe  warnings are enough, saying that if you want to downgrade and you only have a backup, you first need to run 0.16 with the backup and make a fresh backup, and then you can downgrade
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511805300' id='582311'>
+<a class='timestamp' href='#582311'><time timestamp='2017-11-27T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and that is true regardless of whether you backup is from 0.15 or 0.16
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806260' id='582312'>
+<a class='timestamp' href='#582312'><time timestamp='2017-11-27T18:11:00Z'>18:11</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: I really cant say I&#x27;m a fan of 2c
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806440' id='582313'>
+<a class='timestamp' href='#582313'><time timestamp='2017-11-27T18:14:00Z'>18:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the alternatives aren&#x27;t great either though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806620' id='582314'>
+<a class='timestamp' href='#582314'><time timestamp='2017-11-27T18:17:00Z'>18:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: what did you think of my suggestion of a segwit-wallet-bestblockhash field
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806620' id='582315'>
+<a class='timestamp' href='#582315'><time timestamp='2017-11-27T18:17:00Z'>18:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+in addition to wallet-bestblockhash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806620' id='582316'>
+<a class='timestamp' href='#582316'><time timestamp='2017-11-27T18:17:00Z'>18:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+which allows you to rescan for segwit addresses if you downgraded to 15 for a while (and havent fully pruned those blocks)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806740' id='582317'>
+<a class='timestamp' href='#582317'><time timestamp='2017-11-27T18:19:00Z'>18:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: sounds doable, but it&#x27;s not really something we can continue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806800' id='582318'>
+<a class='timestamp' href='#582318'><time timestamp='2017-11-27T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s a bit of an accident that segwit was introduced in 0.13.1, but will only be actually supported 3 major versions later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806800' id='582319'>
+<a class='timestamp' href='#582319'><time timestamp='2017-11-27T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+hmm?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806860' id='582320'>
+<a class='timestamp' href='#582320'><time timestamp='2017-11-27T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t think we should continue to expect that it&#x27;s at all feasible that a new feature introduced will actually work at all after downgrading
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806860' id='582321'>
+<a class='timestamp' href='#582321'><time timestamp='2017-11-27T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I didnt claim it would/should?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806860' id='582322'>
+<a class='timestamp' href='#582322'><time timestamp='2017-11-27T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right, but the approach you suggest really only works for segwit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806860' id='582323'>
+<a class='timestamp' href='#582323'><time timestamp='2017-11-27T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not for anything later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806860' id='582324'>
+<a class='timestamp' href='#582324'><time timestamp='2017-11-27T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(likely)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806860' id='582325'>
+<a class='timestamp' href='#582325'><time timestamp='2017-11-27T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, this is specifically a segwit thing in large part cause we&#x27;re not doing a full -walletupgrade for it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806920' id='582326'>
+<a class='timestamp' href='#582326'><time timestamp='2017-11-27T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+if we were doing a -walletupgrade (which I still think is the &quot;right&quot; way to do this, but obviously with a ton more complication) then I dont think we&#x27;d need to do this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511806920' id='582327'>
+<a class='timestamp' href='#582327'><time timestamp='2017-11-27T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+a non-default clear statement of &quot;I&#x27;m moving my wallet to 0.16&quot; should be sufficient, but absent that, we should be more careful to handle some downgrade cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807040' id='582328'>
+<a class='timestamp' href='#582328'><time timestamp='2017-11-27T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+how is walletupgrade right when it leaves current wallets people are using today unrecoverable?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807040' id='582329'>
+<a class='timestamp' href='#582329'><time timestamp='2017-11-27T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+hmm?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807040' id='582330'>
+<a class='timestamp' href='#582330'><time timestamp='2017-11-27T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+people use addwitnessaddress, then their backups are instantly no good-- no lookahead, no nothing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807100' id='582331'>
+<a class='timestamp' href='#582331'><time timestamp='2017-11-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+that screup is fixed by &#x27;upgrading&#x27; by default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807100' id='582332'>
+<a class='timestamp' href='#582332'><time timestamp='2017-11-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: i don&#x27;t see how that has anything to do with explicit upgrade or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807100' id='582333'>
+<a class='timestamp' href='#582333'><time timestamp='2017-11-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I mean addwitnessaddress is barely supported and largely unsupportable, at least without something like upgradewallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807100' id='582334'>
+<a class='timestamp' href='#582334'><time timestamp='2017-11-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I mean you can auto-upgrade a user if they&#x27;ve previously used addwitnessaddress
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807100' id='582335'>
+<a class='timestamp' href='#582335'><time timestamp='2017-11-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cause an addwitnessaddress wallet is already a mess (at least wrt backups)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807160' id='582336'>
+<a class='timestamp' href='#582336'><time timestamp='2017-11-27T18:26:00Z'>18:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+explicit upgrade just guarantees that old versions will give you an error rather than silently missing things <u>_for addresses generated in the future_</u>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807160' id='582337'>
+<a class='timestamp' href='#582337'><time timestamp='2017-11-27T18:26:00Z'>18:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+obviously any addresses generated in the must should always continue to work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807160' id='582338'>
+<a class='timestamp' href='#582338'><time timestamp='2017-11-27T18:26:00Z'>18:26</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+of course, but explicit upgrade also has a clear definition for the user: you cannot open this wallet anymore in old versions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807220' id='582339'>
+<a class='timestamp' href='#582339'><time timestamp='2017-11-27T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+which if we <b>*dont*</b> do an explicit upgrade, we end up in this quagmire of backward compatibility/downgrade hell
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807220' id='582340'>
+<a class='timestamp' href='#582340'><time timestamp='2017-11-27T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+BlueMatt: if you don&#x27;t autoupgrade someone then you won&#x27;t make their backups good again.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807220' id='582341'>
+<a class='timestamp' href='#582341'><time timestamp='2017-11-27T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+&quot;make their backups good again&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807280' id='582342'>
+<a class='timestamp' href='#582342'><time timestamp='2017-11-27T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I do not think we should <b>*ever*</b> auto-upgrade someone, with the possible exception of folks who&#x27;ve previously addwitnessaddress&#x27;d, cause they&#x27;re kinda fucked if we dont, or at least we should nag them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807280' id='582343'>
+<a class='timestamp' href='#582343'><time timestamp='2017-11-27T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think at some point we should do a required uograde 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807280' id='582344'>
+<a class='timestamp' href='#582344'><time timestamp='2017-11-27T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Right now, joe blow believes our claims of supporting segwit, runs the software, follows instructions to use it... unknown to him, his backup will miss coins if recovered.  Post upgrading to a release that autoupgrades his backup will no longer miss coins when recovered.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807280' id='582345'>
+<a class='timestamp' href='#582345'><time timestamp='2017-11-27T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+<u>_You cannot tell if they&#x27;ve used addwitnessaddress because they could be loading a backup which hasn&#x27;t seen it_</u>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807340' id='582346'>
+<a class='timestamp' href='#582346'><time timestamp='2017-11-27T18:29:00Z'>18:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well 1a solves that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807400' id='582347'>
+<a class='timestamp' href='#582347'><time timestamp='2017-11-27T18:30:00Z'>18:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+if you try, you get even more awesome effects like one backup works for address X and another doesn&#x27;t for reasons entirely unrelated to address X.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807400' id='582348'>
+<a class='timestamp' href='#582348'><time timestamp='2017-11-27T18:30:00Z'>18:30</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, I think for that reason 1a is probably good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807400' id='582349'>
+<a class='timestamp' href='#582349'><time timestamp='2017-11-27T18:30:00Z'>18:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the only case that is not covered is downgrading + restoring a backup simuktaneously
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807460' id='582350'>
+<a class='timestamp' href='#582350'><time timestamp='2017-11-27T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which is inherently impossible to solve completely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807460' id='582351'>
+<a class='timestamp' href='#582351'><time timestamp='2017-11-27T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, and hence my suggestion to do a segwit-wallet-bestblockhash, cause then we at least fix it for non-pruned or only-briefly-run-as-downgraded nodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807460' id='582352'>
+<a class='timestamp' href='#582352'><time timestamp='2017-11-27T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but some solutions are possible for the case where the backup was made after uograding
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807460' id='582353'>
+<a class='timestamp' href='#582353'><time timestamp='2017-11-27T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sidestepping the version rabbithole
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807520' id='582354'>
+<a class='timestamp' href='#582354'><time timestamp='2017-11-27T18:32:00Z'>18:32</time></a>
+&lt;<span class='nick nick-16'> * BlueMatt</span>&gt;
+would also like to further discuss 2a
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807520' id='582355'>
+<a class='timestamp' href='#582355'><time timestamp='2017-11-27T18:32:00Z'>18:32</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+whats default keypool size? its not <b>*that*</b> bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807520' id='582356'>
+<a class='timestamp' href='#582356'><time timestamp='2017-11-27T18:32:00Z'>18:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+2000 keys
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807520' id='582357'>
+<a class='timestamp' href='#582357'><time timestamp='2017-11-27T18:32:00Z'>18:32</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+and, when we go to do things &quot;the right way&quot;, we can clean those out, maybe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807520' id='582358'>
+<a class='timestamp' href='#582358'><time timestamp='2017-11-27T18:32:00Z'>18:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
++ more logic and edge cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807580' id='582359'>
+<a class='timestamp' href='#582359'><time timestamp='2017-11-27T18:33:00Z'>18:33</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+with a -walletupgrade can clean out those entries
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807580' id='582360'>
+<a class='timestamp' href='#582360'><time timestamp='2017-11-27T18:33:00Z'>18:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+= something that still only works as long as you don&#x27;t actually use the wallet too much after downgrading
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807640' id='582361'>
+<a class='timestamp' href='#582361'><time timestamp='2017-11-27T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+hmm? no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807640' id='582362'>
+<a class='timestamp' href='#582362'><time timestamp='2017-11-27T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+your backups will still work cause they have the witnesses added
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807700' id='582363'>
+<a class='timestamp' href='#582363'><time timestamp='2017-11-27T18:35:00Z'>18:35</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+and the upgraded wallet obviously wont cause you set the version to be un-openable with the old version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807700' id='582364'>
+<a class='timestamp' href='#582364'><time timestamp='2017-11-27T18:35:00Z'>18:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807760' id='582365'>
+<a class='timestamp' href='#582365'><time timestamp='2017-11-27T18:36:00Z'>18:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but if the wallet was used a lot in the new version after the backup was made, you&#x27;ll hit problems when the backup&#x27;s keypool runs out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807760' id='582366'>
+<a class='timestamp' href='#582366'><time timestamp='2017-11-27T18:36:00Z'>18:36</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, but that is always true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807760' id='582367'>
+<a class='timestamp' href='#582367'><time timestamp='2017-11-27T18:36:00Z'>18:36</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+if your keypool runs out you cant run from a backup or you lose funds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807760' id='582368'>
+<a class='timestamp' href='#582368'><time timestamp='2017-11-27T18:36:00Z'>18:36</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+period.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807820' id='582369'>
+<a class='timestamp' href='#582369'><time timestamp='2017-11-27T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(I suppose with the exception of HD, but....ugh)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807820' id='582370'>
+<a class='timestamp' href='#582370'><time timestamp='2017-11-27T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, not period
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807820' id='582371'>
+<a class='timestamp' href='#582371'><time timestamp='2017-11-27T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+this is exactly the assumption we don&#x27;t need to make with HD wallets anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807880' id='582372'>
+<a class='timestamp' href='#582372'><time timestamp='2017-11-27T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+relying on the keypool to deal with downgraded backups reintroduces that assumption
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807880' id='582373'>
+<a class='timestamp' href='#582373'><time timestamp='2017-11-27T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, with the exception of HD
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807880' id='582374'>
+<a class='timestamp' href='#582374'><time timestamp='2017-11-27T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s not a small exception
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807880' id='582375'>
+<a class='timestamp' href='#582375'><time timestamp='2017-11-27T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s the norm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807940' id='582376'>
+<a class='timestamp' href='#582376'><time timestamp='2017-11-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+ok, so now we&#x27;re back to segwit-wallet-bestblockhash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807940' id='582377'>
+<a class='timestamp' href='#582377'><time timestamp='2017-11-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+thats the only way to fix that issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511807940' id='582378'>
+<a class='timestamp' href='#582378'><time timestamp='2017-11-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-3'> wallet42</span>&gt;
+sipa: ah yes. prioritisetransaction is exactly what im looking for. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808000' id='582379'>
+<a class='timestamp' href='#582379'><time timestamp='2017-11-27T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: right, but only in the case the user actually uogrades again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808000' id='582380'>
+<a class='timestamp' href='#582380'><time timestamp='2017-11-27T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well if they dont upgrade again there is literally nothing we can do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808000' id='582381'>
+<a class='timestamp' href='#582381'><time timestamp='2017-11-27T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s my point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808000' id='582382'>
+<a class='timestamp' href='#582382'><time timestamp='2017-11-27T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-3'> wallet42</span>&gt;
+spia: my python prototype question was in the context of the output list wallet amend tx amend idea you talked about with provoost
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808000' id='582383'>
+<a class='timestamp' href='#582383'><time timestamp='2017-11-27T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(and I think thats reasonable, if you use segwit in a version with a headline of &quot;SegWit Wallet&quot; and then downgrade, you&#x27;d kinda expect to not have your segwit funds)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582384'>
+<a class='timestamp' href='#582384'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: so why do we need to support the downgrade + restore case again?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582385'>
+<a class='timestamp' href='#582385'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well the current proposal does <b>*not*</b> fully work in the case you upgrade again, without a rescan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582386'>
+<a class='timestamp' href='#582386'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s without guarantees at best
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582387'>
+<a class='timestamp' href='#582387'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+if you are non-pruned its guaranteed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582388'>
+<a class='timestamp' href='#582388'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in whatever case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582389'>
+<a class='timestamp' href='#582389'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s without guarantees at best as long as you don&#x27;t upgrade
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808060' id='582390'>
+<a class='timestamp' href='#582390'><time timestamp='2017-11-27T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+huh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808120' id='582391'>
+<a class='timestamp' href='#582391'><time timestamp='2017-11-27T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+don&#x27;t upgrade after downgrading, i mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808120' id='582392'>
+<a class='timestamp' href='#582392'><time timestamp='2017-11-27T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, if you dont ever switch back to 0.16+, then you are maybe not safe in this case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808120' id='582393'>
+<a class='timestamp' href='#582393'><time timestamp='2017-11-27T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not maybe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808120' id='582394'>
+<a class='timestamp' href='#582394'><time timestamp='2017-11-27T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but so what? we can still improve things
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582395'>
+<a class='timestamp' href='#582395'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in that case nothing can be guaranteed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582396'>
+<a class='timestamp' href='#582396'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+doing a partial-rescan is a very, very big improvement for many of the cases we&#x27;re talking about
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582397'>
+<a class='timestamp' href='#582397'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+even if its not a guarantee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582398'>
+<a class='timestamp' href='#582398'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+assuming you may never upgrade to 0.16+ and trying to support that seems like nonsense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582399'>
+<a class='timestamp' href='#582399'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but thats not what I&#x27;m arguing here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582400'>
+<a class='timestamp' href='#582400'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok, so let&#x27;s walk through yhis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582401'>
+<a class='timestamp' href='#582401'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you upgrade to 0.16
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808180' id='582402'>
+<a class='timestamp' href='#582402'><time timestamp='2017-11-27T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is no segwitwallet record
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808240' id='582403'>
+<a class='timestamp' href='#582403'><time timestamp='2017-11-27T18:44:00Z'>18:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you do what? assume that the existing non-segwit wallet bestblock record is accurate?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808300' id='582404'>
+<a class='timestamp' href='#582404'><time timestamp='2017-11-27T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+a) ignore, b) rescan from segwit activation date if you have P2SH-P2WPKH entries c) always rescan from segwit activation date
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808300' id='582405'>
+<a class='timestamp' href='#582405'><time timestamp='2017-11-27T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+b assumes the file is recent enough to have those records
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808360' id='582406'>
+<a class='timestamp' href='#582406'><time timestamp='2017-11-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+d) rescan in case -findmissingsegwitoutputs=true is set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808360' id='582407'>
+<a class='timestamp' href='#582407'><time timestamp='2017-11-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+indeed, b kinda sucks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808360' id='582408'>
+<a class='timestamp' href='#582408'><time timestamp='2017-11-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think the best solution is just telling people to run with 0.16 and -rescan in that case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808360' id='582409'>
+<a class='timestamp' href='#582409'><time timestamp='2017-11-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+do we have a rescan from date rpc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808360' id='582410'>
+<a class='timestamp' href='#582410'><time timestamp='2017-11-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+i think we do now, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808420' id='582411'>
+<a class='timestamp' href='#582411'><time timestamp='2017-11-27T18:47:00Z'>18:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+unsure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808420' id='582412'>
+<a class='timestamp' href='#582412'><time timestamp='2017-11-27T18:47:00Z'>18:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I mean in that case we also need 2a, I think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808480' id='582413'>
+<a class='timestamp' href='#582413'><time timestamp='2017-11-27T18:48:00Z'>18:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808480' id='582414'>
+<a class='timestamp' href='#582414'><time timestamp='2017-11-27T18:48:00Z'>18:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+1a solves everything during a rescan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808540' id='582415'>
+<a class='timestamp' href='#582415'><time timestamp='2017-11-27T18:49:00Z'>18:49</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, sorry, 1a obviously fixes it for rescan, maybe I&#x27;m just more worried about problem 2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808540' id='582416'>
+<a class='timestamp' href='#582416'><time timestamp='2017-11-27T18:49:00Z'>18:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+unrelated to this, through some combination of multiwallet, -rescan, restarting my node.. I ended up in a situation with a bunch of wallets that lost all their transactions but think they&#x27;re in sync.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808540' id='582417'>
+<a class='timestamp' href='#582417'><time timestamp='2017-11-27T18:49:00Z'>18:49</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+more like &quot;oops, da server with wallet blew up, bring in the one we upgraded from last week, running 0.15.1, will have to do for now&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808600' id='582418'>
+<a class='timestamp' href='#582418'><time timestamp='2017-11-27T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: thats....frightening....is it 0.15.1 with the copied-db issue?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808600' id='582419'>
+<a class='timestamp' href='#582419'><time timestamp='2017-11-27T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i basically agree with sipa
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808600' id='582420'>
+<a class='timestamp' href='#582420'><time timestamp='2017-11-27T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+my solution to problem 2 is tell people to avoid downgrading and restoring, and if in exceptional cases that misses something, rescan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808600' id='582421'>
+<a class='timestamp' href='#582421'><time timestamp='2017-11-27T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+w/ recent-ish master.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808600' id='582422'>
+<a class='timestamp' href='#582422'><time timestamp='2017-11-27T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: but that doesnt solve the problem of not upgrading right away? at least 2a will help significantly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808600' id='582423'>
+<a class='timestamp' href='#582423'><time timestamp='2017-11-27T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think 1a, 3a and a guide for acceptable workflows and how to recover is the way to go..  we should not make things too difficult.  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808660' id='582424'>
+<a class='timestamp' href='#582424'><time timestamp='2017-11-27T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+however i think we will need to do something like 2a when we have the upgrade wallet option for 0.17.  but then it will i think be fully optional as to whether you upgrade or not.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808660' id='582425'>
+<a class='timestamp' href='#582425'><time timestamp='2017-11-27T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I <u>_think_</u> what I did was start with two dozen -wallets and -rescan then realized it would sequentially rescan each, killed the process, then went on to try using them directly. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808720' id='582426'>
+<a class='timestamp' href='#582426'><time timestamp='2017-11-27T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: but even if we do 2a, there is no solution for 4a
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808720' id='582427'>
+<a class='timestamp' href='#582427'><time timestamp='2017-11-27T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+recovery options are great, but they exist
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808720' id='582428'>
+<a class='timestamp' href='#582428'><time timestamp='2017-11-27T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, issue 4 is unsolveable, I agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808720' id='582429'>
+<a class='timestamp' href='#582429'><time timestamp='2017-11-27T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sorry, not actually 2a for 0.17, but something that takes all your keys in your keypool and stores them as things that implicitly might have any style address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808720' id='582430'>
+<a class='timestamp' href='#582430'><time timestamp='2017-11-27T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+with the exception of 1a + rescan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808780' id='582431'>
+<a class='timestamp' href='#582431'><time timestamp='2017-11-27T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+2a is essentially trying to avoid a recovery procedure in a situation which already is something that should never be part of normal workflow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808840' id='582432'>
+<a class='timestamp' href='#582432'><time timestamp='2017-11-27T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+if we make rescan faster we could be more liberal in expecting its use.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808900' id='582433'>
+<a class='timestamp' href='#582433'><time timestamp='2017-11-27T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+not tooo liberal, since pruned nodes can&#x27;t rescan...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808900' id='582434'>
+<a class='timestamp' href='#582434'><time timestamp='2017-11-27T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: do you have an intuition in why rescan is slow? I havent looked into it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511808960' id='582435'>
+<a class='timestamp' href='#582435'><time timestamp='2017-11-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: we should do a benchmark for reindex with and without wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809080' id='582436'>
+<a class='timestamp' href='#582436'><time timestamp='2017-11-27T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if there is a significant different between the two, there is a totally obvious improvement from not calling Solver on each output in order to match it with the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809080' id='582437'>
+<a class='timestamp' href='#582437'><time timestamp='2017-11-27T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(which construct a vector of vectors ffs)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809080' id='582438'>
+<a class='timestamp' href='#582438'><time timestamp='2017-11-27T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well we fully read and deseralize each block and each transaction then pass them through the wallet code, so that implhes 1001 memory allocations plus sha256ing each transaction (and reserializing to do so)... looking at IO we also seem to create a lot of excess  IO with opening the file, seeking to the block closing it. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809140' id='582439'>
+<a class='timestamp' href='#582439'><time timestamp='2017-11-27T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+then indeed there is the cost of just loading blocks, which could be improved by having a block deserializer that doesn&#x27;t build/verify the merkle tree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809140' id='582440'>
+<a class='timestamp' href='#582440'><time timestamp='2017-11-27T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+at least from rough looking at it, we do both a bunch of dump computation and IO and all of it serialized.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809200' id='582441'>
+<a class='timestamp' href='#582441'><time timestamp='2017-11-27T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it&#x27;s worth noting that it&#x27;s not remarkably faster with the blockchain all in cache.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809260' id='582442'>
+<a class='timestamp' href='#582442'><time timestamp='2017-11-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: ok, so I guess I feel a lot more comfortable about things if we do #11281 and recommend rescanblockchain segwit_activation_height
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809260' id='582443'>
+<a class='timestamp' href='#582443'><time timestamp='2017-11-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11281" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11281</a> | Avoid permanent cs_main/cs_wallet lock during RescanFromTime by jonasschnelli · Pull Request #11281 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809320' id='582444'>
+<a class='timestamp' href='#582444'><time timestamp='2017-11-27T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: I&#x27;d still be more comfortable with 2a...its far from a hard guarantee of anything, but I really could see someone ending up in the state where that&#x27;d save them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809320' id='582445'>
+<a class='timestamp' href='#582445'><time timestamp='2017-11-27T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+if for no other reason than someone restoring a backup may load in 0.15, realize they need 0.16, then open in 0.16 right away
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809320' id='582446'>
+<a class='timestamp' href='#582446'><time timestamp='2017-11-27T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+and end up screwing themselves
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809440' id='582447'>
+<a class='timestamp' href='#582447'><time timestamp='2017-11-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+the segwit-wallet-best-block-hash would also similarly solve the same issue even if you do my option a where you just ignore it if it isnt there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809440' id='582448'>
+<a class='timestamp' href='#582448'><time timestamp='2017-11-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+though I agree that kinda feels gross given its solving such a specific edge case without any hard guarantees
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809680' id='582449'>
+<a class='timestamp' href='#582449'><time timestamp='2017-11-27T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+can we at least high-priority #11281 for 0.16?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809680' id='582450'>
+<a class='timestamp' href='#582450'><time timestamp='2017-11-27T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11281" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11281</a> | Avoid permanent cs_main/cs_wallet lock during RescanFromTime by jonasschnelli · Pull Request #11281 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809680' id='582451'>
+<a class='timestamp' href='#582451'><time timestamp='2017-11-27T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+so that rescan is at least slightly less painful from the qt command window
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809740' id='582452'>
+<a class='timestamp' href='#582452'><time timestamp='2017-11-27T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sgtm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809740' id='582453'>
+<a class='timestamp' href='#582453'><time timestamp='2017-11-27T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+and add a &quot;I lost my segwit coins&quot; button in the debug window
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809740' id='582454'>
+<a class='timestamp' href='#582454'><time timestamp='2017-11-27T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-16'> * BlueMatt</span>&gt;
+<b>*ducks*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809980' id='582455'>
+<a class='timestamp' href='#582455'><time timestamp='2017-11-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+any kind of scanning uncertanty will cause untold amounts of prophylactic scanning.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511809980' id='582456'>
+<a class='timestamp' href='#582456'><time timestamp='2017-11-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, but I dont think we can really solve that......
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511810040' id='582457'>
+<a class='timestamp' href='#582457'><time timestamp='2017-11-27T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+in part cause 0.16 docs are going to have to have a bunch of &quot;in case you did X, do this rescan&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511810100' id='582458'>
+<a class='timestamp' href='#582458'><time timestamp='2017-11-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+thats partly why I was commenting about making rescanning faster.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511810100' id='582459'>
+<a class='timestamp' href='#582459'><time timestamp='2017-11-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, though dunno about making that a requirement for 0.16 :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511810100' id='582460'>
+<a class='timestamp' href='#582460'><time timestamp='2017-11-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh another point on speed-- I opened an issue for this-- right now if you load up a dozen wallets and -rescan. ... it rescans a dozen times, one for each wallet by itself...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511810100' id='582461'>
+<a class='timestamp' href='#582461'><time timestamp='2017-11-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, that should be fixed as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511810160' id='582462'>
+<a class='timestamp' href='#582462'><time timestamp='2017-11-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+my first idea about not spending the rest of my life rescanning was thwarted by that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511811000' id='582463'>
+<a class='timestamp' href='#582463'><time timestamp='2017-11-27T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #11775: Move fee estimator into validationinterface/cscheduler thread (master...2017-09-background-feeest) <a href="https://github.com/bitcoin/bitcoin/pull/11775" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11775</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511813460' id='582464'>
+<a class='timestamp' href='#582464'><time timestamp='2017-11-27T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BlueMatt: added 11281 to the project 7
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511813580' id='582465'>
+<a class='timestamp' href='#582465'><time timestamp='2017-11-27T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+jonasschnelli: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511813820' id='582466'>
+<a class='timestamp' href='#582466'><time timestamp='2017-11-27T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+BlueMatt: are you updating the fee estimator?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511814000' id='582467'>
+<a class='timestamp' href='#582467'><time timestamp='2017-11-27T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cluelessperson: it doesnt change the fee estimator logic, except to handle a few edge cases better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511815320' id='582468'>
+<a class='timestamp' href='#582468'><time timestamp='2017-11-27T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Lauda: using 6GB with 4GB dbcache sounds bad but not nearly the same thing i was seeing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511815380' id='582469'>
+<a class='timestamp' href='#582469'><time timestamp='2017-11-27T20:43:00Z'>20:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i was seeing 32GB usage with 1.7G dbcache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511816820' id='582470'>
+<a class='timestamp' href='#582470'><time timestamp='2017-11-27T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+Well, add 4 gb of SWAP to that so probably ~10ish (I think I allocated 7 maximum for the VM). However, yes. That is much worse :&lt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511816820' id='582471'>
+<a class='timestamp' href='#582471'><time timestamp='2017-11-27T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+Any ideas as to what is causing that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817000' id='582472'>
+<a class='timestamp' href='#582472'><time timestamp='2017-11-27T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+by &quot;using&quot; i mean RSS size, not physical usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817000' id='582473'>
+<a class='timestamp' href='#582473'><time timestamp='2017-11-27T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s pretty hard to map VM usage to physical usage, as processes can share memory etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817060' id='582474'>
+<a class='timestamp' href='#582474'><time timestamp='2017-11-27T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(by VM i mean virtual memory, not virtual machine - it&#x27;s probably confusing in this context)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817120' id='582475'>
+<a class='timestamp' href='#582475'><time timestamp='2017-11-27T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+Oh, then 6 GB yeah. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817240' id='582476'>
+<a class='timestamp' href='#582476'><time timestamp='2017-11-27T21:14:00Z'>21:14</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+Your behavior is only in current master, not in 0.15.1?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817240' id='582477'>
+<a class='timestamp' href='#582477'><time timestamp='2017-11-27T21:14:00Z'>21:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817300' id='582478'>
+<a class='timestamp' href='#582478'><time timestamp='2017-11-27T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in 0.15.1 memory usage stayed nicely within a few 100 MB of the cache size
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817300' id='582479'>
+<a class='timestamp' href='#582479'><time timestamp='2017-11-27T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though i now fail to reproduce with master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511817360' id='582480'>
+<a class='timestamp' href='#582480'><time timestamp='2017-11-27T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+That&#x27;s strange. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511819940' id='582481'>
+<a class='timestamp' href='#582481'><time timestamp='2017-11-27T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+BlueMatt: do you know who might be best to redo the logic?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511819940' id='582482'>
+<a class='timestamp' href='#582482'><time timestamp='2017-11-27T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+reason being that fees seem to jump up faster than volume
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511819940' id='582483'>
+<a class='timestamp' href='#582483'><time timestamp='2017-11-27T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+<a href="https://jochen-hoenicke.de/queue/#2h" class="link" target="_blank">https://jochen-hoenicke.de/queue/#2h</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511819940' id='582484'>
+<a class='timestamp' href='#582484'><time timestamp='2017-11-27T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/2</a> | Long-term, safe, store-of-value · Issue #2 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820000' id='582485'>
+<a class='timestamp' href='#582485'><time timestamp='2017-11-27T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cluelessperson: if there were a clear and easy fix it would have been done already :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820000' id='582486'>
+<a class='timestamp' href='#582486'><time timestamp='2017-11-27T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sadly good fee estimation is super non-trivial
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820060' id='582487'>
+<a class='timestamp' href='#582487'><time timestamp='2017-11-27T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+<b>*especially*</b> for the non-economical (eg doing non-rbf so want high confidence) case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820060' id='582488'>
+<a class='timestamp' href='#582488'><time timestamp='2017-11-27T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+BlueMatt: agreed.  I could only recommend experimenting with &quot;lower estimates slightly&quot; and see how the mempool responds.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820060' id='582489'>
+<a class='timestamp' href='#582489'><time timestamp='2017-11-27T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+that would take &gt;years to tune.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820060' id='582490'>
+<a class='timestamp' href='#582490'><time timestamp='2017-11-27T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+doing it with rbf in economical mode could probably get improvements and go down faster, etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820120' id='582491'>
+<a class='timestamp' href='#582491'><time timestamp='2017-11-27T22:02:00Z'>22:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+&quot;lower estimates slightly&quot;? what does that mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820120' id='582492'>
+<a class='timestamp' href='#582492'><time timestamp='2017-11-27T22:02:00Z'>22:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+in steady-state the fee estimator does incredibly well, it also happens to do incredibly well for very-high-confidence-of-inclusion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820120' id='582493'>
+<a class='timestamp' href='#582493'><time timestamp='2017-11-27T22:02:00Z'>22:02</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+BlueMatt:   (existing_fee_estimate) - 1 sat,    -5 sat,   -10 sat
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820120' id='582494'>
+<a class='timestamp' href='#582494'><time timestamp='2017-11-27T22:02:00Z'>22:02</time></a>
+&lt;<span class='nick nick-5'> * cluelessperson</span>&gt;
+chuckles at the absurdity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820120' id='582495'>
+<a class='timestamp' href='#582495'><time timestamp='2017-11-27T22:02:00Z'>22:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+though fee estimation also ends up being a bit of a self-fuffilling prophecy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820180' id='582496'>
+<a class='timestamp' href='#582496'><time timestamp='2017-11-27T22:03:00Z'>22:03</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, I dont think that is a good approach :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511820360' id='582497'>
+<a class='timestamp' href='#582497'><time timestamp='2017-11-27T22:06:00Z'>22:06</time></a>
+&lt;<span class='nick nick-6'> cluelessperson</span>&gt;
+BlueMatt: I&#x27;m taking classes.  Hopefully I can help in the future, but right now I&#x27;m a moronw. :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511821080' id='582498'>
+<a class='timestamp' href='#582498'><time timestamp='2017-11-27T22:18:00Z'>22:18</time></a>
+&lt;<span class='nick nick-9'> mlz</span>&gt;
+lol     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511824920' id='582499'>
+<a class='timestamp' href='#582499'><time timestamp='2017-11-27T23:22:00Z'>23:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #11779: qa: Combine logs on travis by default (master...Mf1711-travisQaLogs) <a href="https://github.com/bitcoin/bitcoin/pull/11779" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11779</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-12-22
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-12-22' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:17 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-11-22">&lt;</a><span class='header'>  December 2020   </span><a href="/bitcoin-core-dev/2021-01-22">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;       <a class="" href="/bitcoin-core-dev/2020-12-01">1</a>  <a class="" href="/bitcoin-core-dev/2020-12-02">2</a>  <a class="" href="/bitcoin-core-dev/2020-12-03">3</a>  <a class="" href="/bitcoin-core-dev/2020-12-04">4</a>  <a class="" href="/bitcoin-core-dev/2020-12-05">5</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2020-12-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-12-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-12-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-12-09">9</a> <a class="" href="/bitcoin-core-dev/2020-12-10">10</a> <a class="" href="/bitcoin-core-dev/2020-12-11">11</a> <a class="" href="/bitcoin-core-dev/2020-12-12">12</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-12-13">13</a> <a class="" href="/bitcoin-core-dev/2020-12-14">14</a> <a class="" href="/bitcoin-core-dev/2020-12-15">15</a> <a class="" href="/bitcoin-core-dev/2020-12-16">16</a> <a class="" href="/bitcoin-core-dev/2020-12-17">17</a> <a class="" href="/bitcoin-core-dev/2020-12-18">18</a> <a class="" href="/bitcoin-core-dev/2020-12-19">19</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-12-20">20</a> <a class="" href="/bitcoin-core-dev/2020-12-21">21</a> <a class="current" href="/bitcoin-core-dev/2020-12-22">22</a> <a class="" href="/bitcoin-core-dev/2020-12-23">23</a> <a class="" href="/bitcoin-core-dev/2020-12-24">24</a> <a class="" href="/bitcoin-core-dev/2020-12-25">25</a> <a class="" href="/bitcoin-core-dev/2020-12-26">26</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-12-27">27</a> <a class="" href="/bitcoin-core-dev/2020-12-28">28</a> <a class="" href="/bitcoin-core-dev/2020-12-29">29</a> <a class="" href="/bitcoin-core-dev/2020-12-30">30</a> <a class="" href="/bitcoin-core-dev/2020-12-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1608595440' id='422013'>
+<a class='timestamp' href='#422013'><time timestamp='2020-12-22T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+CubicEarth: i think the limit (if one node has 0 latency and infinite bandwidth) is ~90% -- you&#x27;d request 16*9=144=MAX_BLOCKS_IN_TRANSIT_PER_PEER*(m_max_outbound-1) blocks from the other outbounds, but stop requesting from the fast peer after 1024-144 (1024=BLOCK_DOWNLOAD_WINDOW) blocks, at which point your fast peer is gated on the slow peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608595620' id='422014'>
+<a class='timestamp' href='#422014'><time timestamp='2020-12-22T00:07:00Z'>00:07</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sdaftuar: i had the thought that it&#x27;d be nice if faster peers progressively got larger max_in_transit figures, with everyone starting off at just 1 or 2, but never looked into it. i manually kill the connections to slow nodes when i&#x27;m resyncing for a few days or more :-/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608595680' id='422015'>
+<a class='timestamp' href='#422015'><time timestamp='2020-12-22T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+aj: yeah, and also making it adaptive based on block sizes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608595680' id='422016'>
+<a class='timestamp' href='#422016'><time timestamp='2020-12-22T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though i guess that mostly matters for the historic part of the chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608595740' id='422017'>
+<a class='timestamp' href='#422017'><time timestamp='2020-12-22T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but 1024 is huge overkill for recent blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608595740' id='422018'>
+<a class='timestamp' href='#422018'><time timestamp='2020-12-22T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+eh, 1024 as total window size
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608595740' id='422019'>
+<a class='timestamp' href='#422019'><time timestamp='2020-12-22T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you were talking about per-peer limits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608596160' id='422020'>
+<a class='timestamp' href='#422020'><time timestamp='2020-12-22T00:16:00Z'>00:16</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: yeah, but smaller total window on its own would make slow peers even more of a nuisance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608596220' id='422021'>
+<a class='timestamp' href='#422021'><time timestamp='2020-12-22T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608600540' id='422022'>
+<a class='timestamp' href='#422022'><time timestamp='2020-12-22T01:29:00Z'>01:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] prayank23 opened pull request #20741: doc: Update &#x27;Secure string handling&#x27; (master...walletname-security) <a href="https://github.com/bitcoin/bitcoin/pull/20741" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20741</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608601380' id='422023'>
+<a class='timestamp' href='#422023'><time timestamp='2020-12-22T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-16'> CubicEarth</span>&gt;
+sdaftuar: I don&#x27;t think it disconnected, but it was only about 15 or 20 minutes to catch up the ~1500 blocks behind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608606300' id='422024'>
+<a class='timestamp' href='#422024'><time timestamp='2020-12-22T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, monkeying with mutate_depth and use_value_profile resulted in lots of new test cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608606300' id='422025'>
+<a class='timestamp' href='#422025'><time timestamp='2020-12-22T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+really interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616080' id='422026'>
+<a class='timestamp' href='#422026'><time timestamp='2020-12-22T05:48:00Z'>05:48</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+#20644 wont backport cleanly to 0.19 or 0.20, as the version of cctools is older. I&#x27;ve put together what should be an equivalent patch. Would be good for someone to double check it. Just finishing a gbuild
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616080' id='422027'>
+<a class='timestamp' href='#422027'><time timestamp='2020-12-22T05:48:00Z'>05:48</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+<a href="https://github.com/fanquake/bitcoin/commit/bd943d195903edcb8a4464eeed22871326e42be8" class="link" target="_blank">https://github.com/fanquake/bitcoin/commit/bd943d195903edcb8a4464eeed22871326e42be8</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616080' id='422028'>
+<a class='timestamp' href='#422028'><time timestamp='2020-12-22T05:48:00Z'>05:48</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20644" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20644</a> | Add patch to make codesign_allocate compatible with Apples by sipa · Pull Request #20644 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616140' id='422029'>
+<a class='timestamp' href='#422029'><time timestamp='2020-12-22T05:49:00Z'>05:49</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Can pull it into #20739 if it looks ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616140' id='422030'>
+<a class='timestamp' href='#422030'><time timestamp='2020-12-22T05:49:00Z'>05:49</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20739" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20739</a> | [0.19] final rc2 backports by MarcoFalke · Pull Request #20739 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616200' id='422031'>
+<a class='timestamp' href='#422031'><time timestamp='2020-12-22T05:50:00Z'>05:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanquake: looks equivalent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608616260' id='422032'>
+<a class='timestamp' href='#422032'><time timestamp='2020-12-22T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but if we&#x27;re going to use achow&#x27;s signapple tool, we don&#x27;t actually need these patches (it won&#x27;t matter if we take them or not)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618360' id='422033'>
+<a class='timestamp' href='#422033'><time timestamp='2020-12-22T06:26:00Z'>06:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+achow101: still getting that (a different) error: <a href="https://gist.github.com/jonasschnelli/557c1534461bc85925527c6a6a9a4d27" class="link" target="_blank">https://gist.github.com/jonasschnelli/557c1534461bc85925527c6a6a9a4d27</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618480' id='422034'>
+<a class='timestamp' href='#422034'><time timestamp='2020-12-22T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: are you trying to run the gitian-compiled codesign_allocate binary on macos?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618480' id='422035'>
+<a class='timestamp' href='#422035'><time timestamp='2020-12-22T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s a.linux binary
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618540' id='422036'>
+<a class='timestamp' href='#422036'><time timestamp='2020-12-22T06:29:00Z'>06:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+oh... that might be the problem.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618600' id='422037'>
+<a class='timestamp' href='#422037'><time timestamp='2020-12-22T06:30:00Z'>06:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;ll probably either want to do the whole thing on linux, or compile the cctools codesign_allocate for macos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618600' id='422038'>
+<a class='timestamp' href='#422038'><time timestamp='2020-12-22T06:30:00Z'>06:30</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+success
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618660' id='422039'>
+<a class='timestamp' href='#422039'><time timestamp='2020-12-22T06:31:00Z'>06:31</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+will try now to compile the cctools for mac.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618780' id='422040'>
+<a class='timestamp' href='#422040'><time timestamp='2020-12-22T06:33:00Z'>06:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+success? it worked?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618840' id='422041'>
+<a class='timestamp' href='#422041'><time timestamp='2020-12-22T06:34:00Z'>06:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yeah. But with the mac internal codesign_allocate binary...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608618840' id='422042'>
+<a class='timestamp' href='#422042'><time timestamp='2020-12-22T06:34:00Z'>06:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608620940' id='422043'>
+<a class='timestamp' href='#422043'><time timestamp='2020-12-22T07:09:00Z'>07:09</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+macports uses the open source cctools so that would work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608622080' id='422044'>
+<a class='timestamp' href='#422044'><time timestamp='2020-12-22T07:28:00Z'>07:28</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+okay... installing it now through MacPorts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623160' id='422045'>
+<a class='timestamp' href='#422045'><time timestamp='2020-12-22T07:46:00Z'>07:46</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+shall I test with internal codesign_allocate and with the macports cctools version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623280' id='422046'>
+<a class='timestamp' href='#422046'><time timestamp='2020-12-22T07:48:00Z'>07:48</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+<a href="https://bitcoin.jonasschnelli.ch/bitcoin-0.21.0rc3-osx-unsigned_csalloc_macports.zip" class="link" target="_blank">https://bitcoin.jonasschnelli.ch/bitcoin-0.21.0rc3-osx-unsigned_csalloc_macports.zip</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623340' id='422047'>
+<a class='timestamp' href='#422047'><time timestamp='2020-12-22T07:49:00Z'>07:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+<a href="https://bitcoin.jonasschnelli.ch/bitcoin-0.21.0rc3-osx-unsigned-csalloc_internal.zip" class="link" target="_blank">https://bitcoin.jonasschnelli.ch/bitcoin-0.21.0rc3-osx-unsigned-csalloc_internal.zip</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623340' id='422048'>
+<a class='timestamp' href='#422048'><time timestamp='2020-12-22T07:49:00Z'>07:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+testing now the gitian signer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623880' id='422049'>
+<a class='timestamp' href='#422049'><time timestamp='2020-12-22T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: whatever is compatible with what gitian does at attaching tome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623940' id='422050'>
+<a class='timestamp' href='#422050'><time timestamp='2020-12-22T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+stuffing the csalloc_internal signature through gitian signer gives me a &quot;Bitcoin-Qt.app: invalid signature (code or signature have been modified)&quot; when verifying on my mac
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608623940' id='422051'>
+<a class='timestamp' href='#422051'><time timestamp='2020-12-22T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(now testing with the cctools codesign_allocate signature)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624240' id='422052'>
+<a class='timestamp' href='#422052'><time timestamp='2020-12-22T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+success: using codesign_allocate from cctools-927.0.2_6 (throught MacPorts) works!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624240' id='422053'>
+<a class='timestamp' href='#422053'><time timestamp='2020-12-22T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yay!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624300' id='422054'>
+<a class='timestamp' href='#422054'><time timestamp='2020-12-22T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+As for the next steps: how do we pack codesign_allocate into the bitcoin-osx-unsigned.tar.gz?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624300' id='422055'>
+<a class='timestamp' href='#422055'><time timestamp='2020-12-22T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(i mean the macOS version)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624300' id='422056'>
+<a class='timestamp' href='#422056'><time timestamp='2020-12-22T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we don&#x27;t need to, i think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624300' id='422057'>
+<a class='timestamp' href='#422057'><time timestamp='2020-12-22T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Or shall we imply that the macOS code signature needs to be done on Linux?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624300' id='422058'>
+<a class='timestamp' href='#422058'><time timestamp='2020-12-22T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you just did one on osx just fine?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624360' id='422059'>
+<a class='timestamp' href='#422059'><time timestamp='2020-12-22T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yeah... but using macports and installing cctools might not be stable in the long run
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624360' id='422060'>
+<a class='timestamp' href='#422060'><time timestamp='2020-12-22T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+probably okay for now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624420' id='422061'>
+<a class='timestamp' href='#422061'><time timestamp='2020-12-22T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i guess we can add an osx cctools in there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624420' id='422062'>
+<a class='timestamp' href='#422062'><time timestamp='2020-12-22T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But I foresee this as a pitfall when someone else builds MacOS signatures in future
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624420' id='422063'>
+<a class='timestamp' href='#422063'><time timestamp='2020-12-22T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+my point is more that it doesn&#x27;t need to be reproducibly built
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624420' id='422064'>
+<a class='timestamp' href='#422064'><time timestamp='2020-12-22T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+yes. Thats right.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624420' id='422065'>
+<a class='timestamp' href='#422065'><time timestamp='2020-12-22T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it just needs to do the right thing, and we&#x27;ll know when it doesn&#x27;t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624420' id='422066'>
+<a class='timestamp' href='#422066'><time timestamp='2020-12-22T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Agree. Either we document it well or we make achow101 codesign fail when not using the cctools alloc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624480' id='422067'>
+<a class='timestamp' href='#422067'><time timestamp='2020-12-22T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or even nicer would be incorporating the allocate tool into the signer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624480' id='422068'>
+<a class='timestamp' href='#422068'><time timestamp='2020-12-22T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-12'> * jonasschnelli</span>&gt;
+pokes achow101 (he might not like that)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624540' id='422069'>
+<a class='timestamp' href='#422069'><time timestamp='2020-12-22T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but hey,... finally we can sing on linux. I bet there are a ton of other projects interested in that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624540' id='422070'>
+<a class='timestamp' href='#422070'><time timestamp='2020-12-22T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we talked about it here a few days ago
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624540' id='422071'>
+<a class='timestamp' href='#422071'><time timestamp='2020-12-22T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+iirc he wasn&quot;t planning on adding the allocate part, or at least not at firsr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624600' id='422072'>
+<a class='timestamp' href='#422072'><time timestamp='2020-12-22T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The missing codesign_allocate part would probably also be a great source of failue/debugging if other projects starting to use this tool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624600' id='422073'>
+<a class='timestamp' href='#422073'><time timestamp='2020-12-22T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(not that this is the scope)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608624660' id='422074'>
+<a class='timestamp' href='#422074'><time timestamp='2020-12-22T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+however, impressive work achow101!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625080' id='422075'>
+<a class='timestamp' href='#422075'><time timestamp='2020-12-22T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: for rc4 you&#x27;ll actually probably just want to use the macos allocate tool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625140' id='422076'>
+<a class='timestamp' href='#422076'><time timestamp='2020-12-22T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+since rc4 has my patch that makes its cctools act like the macos one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625140' id='422077'>
+<a class='timestamp' href='#422077'><time timestamp='2020-12-22T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. Sure. Your fix.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625140' id='422078'>
+<a class='timestamp' href='#422078'><time timestamp='2020-12-22T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ideally you&#x27;d use a macos build of the patched cctools
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625140' id='422079'>
+<a class='timestamp' href='#422079'><time timestamp='2020-12-22T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I mean no fix on Mac
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625140' id='422080'>
+<a class='timestamp' href='#422080'><time timestamp='2020-12-22T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but in all likelihood, the apple one will just work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625140' id='422081'>
+<a class='timestamp' href='#422081'><time timestamp='2020-12-22T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Ah.. I tried without (rc3) and it worked...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625200' id='422082'>
+<a class='timestamp' href='#422082'><time timestamp='2020-12-22T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I’ll do a testrun with rc4 before publishing the sigs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625200' id='422083'>
+<a class='timestamp' href='#422083'><time timestamp='2020-12-22T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(With the apple one)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625260' id='422084'>
+<a class='timestamp' href='#422084'><time timestamp='2020-12-22T08:21:00Z'>08:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+rc3 used unpatched cctools in its attacher
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625260' id='422085'>
+<a class='timestamp' href='#422085'><time timestamp='2020-12-22T08:21:00Z'>08:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so you need to use unpatched cctools at signing time too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625380' id='422086'>
+<a class='timestamp' href='#422086'><time timestamp='2020-12-22T08:23:00Z'>08:23</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: Yes. I tested your fix (patched cctools in attacher) with official_apple tool on signer. Which worked. I guess we can do this also for rc4?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625500' id='422087'>
+<a class='timestamp' href='#422087'><time timestamp='2020-12-22T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what build did you test?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625620' id='422088'>
+<a class='timestamp' href='#422088'><time timestamp='2020-12-22T08:27:00Z'>08:27</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Rc3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625680' id='422089'>
+<a class='timestamp' href='#422089'><time timestamp='2020-12-22T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Nope... sry. Master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625680' id='422090'>
+<a class='timestamp' href='#422090'><time timestamp='2020-12-22T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah yes, master, that makes sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625680' id='422091'>
+<a class='timestamp' href='#422091'><time timestamp='2020-12-22T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But since we backported your fix. It should behave identical (in terms of signing)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625680' id='422092'>
+<a class='timestamp' href='#422092'><time timestamp='2020-12-22T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(Rc4)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608625740' id='422093'>
+<a class='timestamp' href='#422093'><time timestamp='2020-12-22T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635580' id='422094'>
+<a class='timestamp' href='#422094'><time timestamp='2020-12-22T11:13:00Z'>11:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/f4ac48d30a84...209974d379e5" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/f4ac48d30a84...209974d379e5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635580' id='422095'>
+<a class='timestamp' href='#422095'><time timestamp='2020-12-22T11:13:00Z'>11:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e3d2ba7 practicalswift: fuzz: Update FuzzedDataProvider.h from upstream (LLVM)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635580' id='422096'>
+<a class='timestamp' href='#422096'><time timestamp='2020-12-22T11:13:00Z'>11:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 209974d MarcoFalke: Merge #20740: fuzz: Update FuzzedDataProvider.h from upstream (LLVM)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635640' id='422097'>
+<a class='timestamp' href='#422097'><time timestamp='2020-12-22T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #20740: fuzz: Update FuzzedDataProvider.h from upstream (LLVM) (master...bump-FuzzedDataProvider.h) <a href="https://github.com/bitcoin/bitcoin/pull/20740" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20740</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635820' id='422098'>
+<a class='timestamp' href='#422098'><time timestamp='2020-12-22T11:17:00Z'>11:17</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+practicalswift is not on IRC?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635880' id='422099'>
+<a class='timestamp' href='#422099'><time timestamp='2020-12-22T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+vasild: no (he wrote me an email)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608635880' id='422100'>
+<a class='timestamp' href='#422100'><time timestamp='2020-12-22T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-5'> vasild</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637200' id='422101'>
+<a class='timestamp' href='#422101'><time timestamp='2020-12-22T11:40:00Z'>11:40</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+wumpus MarcoFalke: I think #19829 might be RFM (5 ACKs at various times from MarcoFalke, jonatack, hebasto, sipa, Sjors; reACKs on the latest branch from MarcoFalke, jonatack, Sjors)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637200' id='422102'>
+<a class='timestamp' href='#422102'><time timestamp='2020-12-22T11:40:00Z'>11:40</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19829" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19829</a> | net processing: Move block inventory state to net_processing by jnewbery · Pull Request #19829 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637560' id='422103'>
+<a class='timestamp' href='#422103'><time timestamp='2020-12-22T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 8 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/209974d379e5...df127ecede80" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/209974d379e5...df127ecede80</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637560' id='422104'>
+<a class='timestamp' href='#422104'><time timestamp='2020-12-22T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 717a374 John Newbery: [net processing] Improve documentation for Peer destruction/locking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637560' id='422105'>
+<a class='timestamp' href='#422105'><time timestamp='2020-12-22T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 77a2c2f John Newbery: [net processing] Move nStartingHeight to Peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637560' id='422106'>
+<a class='timestamp' href='#422106'><time timestamp='2020-12-22T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 78040f9 John Newbery: [net processing] Rename nStartingHeight to m_starting_height
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637560' id='422107'>
+<a class='timestamp' href='#422107'><time timestamp='2020-12-22T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #19829: net processing: Move block inventory state to net_processing (master...2020-08-blocks-in-peer) <a href="https://github.com/bitcoin/bitcoin/pull/19829" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19829</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608637560' id='422108'>
+<a class='timestamp' href='#422108'><time timestamp='2020-12-22T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+thanks Marco!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608647280' id='422109'>
+<a class='timestamp' href='#422109'><time timestamp='2020-12-22T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #20744: [POC] Use std::filesystem. Remove Boost Filesystem &amp; System (master...use_std_filesystem) <a href="https://github.com/bitcoin/bitcoin/pull/20744" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20744</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608647400' id='422110'>
+<a class='timestamp' href='#422110'><time timestamp='2020-12-22T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #19245: Replace boost::filesystem with std::filesystem (master...feature/2020-06-replace-boost-filesystem-with-cpp17-filesystem) <a href="https://github.com/bitcoin/bitcoin/pull/19245" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19245</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608648300' id='422111'>
+<a class='timestamp' href='#422111'><time timestamp='2020-12-22T14:45:00Z'>14:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #20744: [POC] Use std::filesystem. Remove Boost Filesystem &amp; System (master...use_std_filesystem) <a href="https://github.com/bitcoin/bitcoin/pull/20744" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20744</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608648300' id='422112'>
+<a class='timestamp' href='#422112'><time timestamp='2020-12-22T14:45:00Z'>14:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke reopened pull request #20744: [POC] Use std::filesystem. Remove Boost Filesystem &amp; System (master...use_std_filesystem) <a href="https://github.com/bitcoin/bitcoin/pull/20744" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20744</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608651360' id='422113'>
+<a class='timestamp' href='#422113'><time timestamp='2020-12-22T15:36:00Z'>15:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #20745: qa: Correct epoll_ctl data race suppression (master...201222-epoll) <a href="https://github.com/bitcoin/bitcoin/pull/20745" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20745</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608655980' id='422114'>
+<a class='timestamp' href='#422114'><time timestamp='2020-12-22T16:53:00Z'>16:53</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+jonasschnelli: I would have liked to do the allocate within the tool too, but to do so would essentially require writing a mach-o parser and that was just too much additional work. unfortunately macholib is not sufficient and I couldn&#x27;t find another library
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656100' id='422115'>
+<a class='timestamp' href='#422115'><time timestamp='2020-12-22T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+achow101: I think its fine. Lets just document it well because otherwise the sigs attachment fail.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656100' id='422116'>
+<a class='timestamp' href='#422116'><time timestamp='2020-12-22T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656100' id='422117'>
+<a class='timestamp' href='#422117'><time timestamp='2020-12-22T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Maybe we can add a simple script to contrib/ that builds code_allocate on mac
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656100' id='422118'>
+<a class='timestamp' href='#422118'><time timestamp='2020-12-22T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I really dislike depending on macports
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656160' id='422119'>
+<a class='timestamp' href='#422119'><time timestamp='2020-12-22T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+could do that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656160' id='422120'>
+<a class='timestamp' href='#422120'><time timestamp='2020-12-22T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+That would be awesome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656160' id='422121'>
+<a class='timestamp' href='#422121'><time timestamp='2020-12-22T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Also,.. I would expect that your tool gets attention from other projects too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656220' id='422122'>
+<a class='timestamp' href='#422122'><time timestamp='2020-12-22T16:57:00Z'>16:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Its really a missing step in distribution (especially iOS, not sure if it works there as well).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656280' id='422123'>
+<a class='timestamp' href='#422123'><time timestamp='2020-12-22T16:58:00Z'>16:58</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I acutally find a codesigning tool for iOS: <a href="https://github.com/appknox/isign" class="link" target="_blank">https://github.com/appknox/isign</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656280' id='422124'>
+<a class='timestamp' href='#422124'><time timestamp='2020-12-22T16:58:00Z'>16:58</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+It might work on MacOS too, but I didn&#x27;t check. only found this after writing most of my code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608656340' id='422125'>
+<a class='timestamp' href='#422125'><time timestamp='2020-12-22T16:59:00Z'>16:59</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+since iOS also uses MachO bundles, it shouldn&#x27;t be too hard to do both. but I also have no way to test because I can&#x27;t make iOS builds without an iPhone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608657840' id='422126'>
+<a class='timestamp' href='#422126'><time timestamp='2020-12-22T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/df127ecede80...9286b1cbce78" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/df127ecede80...9286b1cbce78</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608657840' id='422127'>
+<a class='timestamp' href='#422127'><time timestamp='2020-12-22T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d71e29e Hennadii Stepanov: qa: Correct epoll_ctl data race suppression
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608657840' id='422128'>
+<a class='timestamp' href='#422128'><time timestamp='2020-12-22T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9286b1c MarcoFalke: Merge #20745: qa: Correct epoll_ctl data race suppression
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608657840' id='422129'>
+<a class='timestamp' href='#422129'><time timestamp='2020-12-22T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #20745: qa: Correct epoll_ctl data race suppression (master...201222-epoll) <a href="https://github.com/bitcoin/bitcoin/pull/20745" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20745</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608658200' id='422130'>
+<a class='timestamp' href='#422130'><time timestamp='2020-12-22T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #20746: test (master...2012-tempDel) <a href="https://github.com/bitcoin/bitcoin/pull/20746" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20746</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608658260' id='422131'>
+<a class='timestamp' href='#422131'><time timestamp='2020-12-22T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #20746: test (master...2012-tempDel) <a href="https://github.com/bitcoin/bitcoin/pull/20746" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20746</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608659640' id='422132'>
+<a class='timestamp' href='#422132'><time timestamp='2020-12-22T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #20747: net processing: Remove dropmessagestest (master...2020-12-dropmessagestest) <a href="https://github.com/bitcoin/bitcoin/pull/20747" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20747</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608661080' id='422133'>
+<a class='timestamp' href='#422133'><time timestamp='2020-12-22T18:18:00Z'>18:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #20748: test: Add race:SendZmqMessage tsan suppression (master...2012-ciSuppZmq) <a href="https://github.com/bitcoin/bitcoin/pull/20748" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20748</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608661500' id='422134'>
+<a class='timestamp' href='#422134'><time timestamp='2020-12-22T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] dongcarl opened pull request #20749: [Bundle 1/n] Prune g_chainman usage related to ::LookupBlockIndex (master...2020-09-libbitcoinruntime-v4) <a href="https://github.com/bitcoin/bitcoin/pull/20749" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20749</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608662760' id='422135'>
+<a class='timestamp' href='#422135'><time timestamp='2020-12-22T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+achow101 &quot;I acutally find a codesigning tool for iOS: <a href="https://github.com/appknox/isign" class="link" target="_blank">https://github.com/appknox/isign</a>&quot; -- if that tool work, should we maintain own tool in long run?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608664440' id='422136'>
+<a class='timestamp' href='#422136'><time timestamp='2020-12-22T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+MarcoFalke, are there rules about what should be pr&#x27;d to qa-assets?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608664500' id='422137'>
+<a class='timestamp' href='#422137'><time timestamp='2020-12-22T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+(other than them being merged
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608664500' id='422138'>
+<a class='timestamp' href='#422138'><time timestamp='2020-12-22T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608665760' id='422139'>
+<a class='timestamp' href='#422139'><time timestamp='2020-12-22T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] dongcarl opened pull request #20750: [Bundle 2/n] Prune g_chainman usage in mempool-related validation functions (master...2020-09-reduce-validation-mempool-ccsactiveglobal-usage) <a href="https://github.com/bitcoin/bitcoin/pull/20750" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20750</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608670620' id='422140'>
+<a class='timestamp' href='#422140'><time timestamp='2020-12-22T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9286b1cbce78...98de9eb1aa84" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9286b1cbce78...98de9eb1aa84</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608670620' id='422141'>
+<a class='timestamp' href='#422141'><time timestamp='2020-12-22T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3e15712 Hennadii Stepanov: Update TSan suppressions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608670620' id='422142'>
+<a class='timestamp' href='#422142'><time timestamp='2020-12-22T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 98de9eb MarcoFalke: Merge #19983: Drop some TSan suppressions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608670620' id='422143'>
+<a class='timestamp' href='#422143'><time timestamp='2020-12-22T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #19983: Drop some TSan suppressions (master...200920-supp) <a href="https://github.com/bitcoin/bitcoin/pull/19983" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19983</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608673140' id='422144'>
+<a class='timestamp' href='#422144'><time timestamp='2020-12-22T21:39:00Z'>21:39</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+hebasto: maintaining our own tool at least lets us target it to our specific needs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608673140' id='422145'>
+<a class='timestamp' href='#422145'><time timestamp='2020-12-22T21:39:00Z'>21:39</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+e.g. I can make it produced detached sigs that we can attach with the same tool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608673920' id='422146'>
+<a class='timestamp' href='#422146'><time timestamp='2020-12-22T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+achow101: could jsut as well PR that feature to the existing one..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608673920' id='422147'>
+<a class='timestamp' href='#422147'><time timestamp='2020-12-22T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+it seems unmaintained
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608673920' id='422148'>
+<a class='timestamp' href='#422148'><time timestamp='2020-12-22T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+:/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608673980' id='422149'>
+<a class='timestamp' href='#422149'><time timestamp='2020-12-22T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+it&#x27;s forked from an archived repo, but that repo has a bunch of forks so I can&#x27;t tell which one is &quot;real&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1608681300' id='422150'>
+<a class='timestamp' href='#422150'><time timestamp='2020-12-22T23:55:00Z'>23:55</time></a>
+&lt;<span class='nick nick-10'> justinmoon</span>&gt;
+Can anyone share docker or vagrant setups for the gitian build? Been following these docs and I imagine we could automate this more <a href="https://github.com/bitcoin-core/docs/blob/master/gitian-building.md" class="link" target="_blank">https://github.com/bitcoin-core/docs/blob/master/gitian-building.md</a> ...
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-09-02
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-09-02' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:17 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-08-02">&lt;</a><span class='header'>  September 2020  </span><a href="/bitcoin-core-dev/2020-10-02">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;       <a class="" href="/bitcoin-core-dev/2020-09-01">1</a>  <a class="current" href="/bitcoin-core-dev/2020-09-02">2</a>  <a class="" href="/bitcoin-core-dev/2020-09-03">3</a>  <a class="" href="/bitcoin-core-dev/2020-09-04">4</a>  <a class="" href="/bitcoin-core-dev/2020-09-05">5</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2020-09-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-09-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-09-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-09-09">9</a> <a class="" href="/bitcoin-core-dev/2020-09-10">10</a> <a class="" href="/bitcoin-core-dev/2020-09-11">11</a> <a class="" href="/bitcoin-core-dev/2020-09-12">12</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-09-13">13</a> <a class="" href="/bitcoin-core-dev/2020-09-14">14</a> <a class="" href="/bitcoin-core-dev/2020-09-15">15</a> <a class="" href="/bitcoin-core-dev/2020-09-16">16</a> <a class="" href="/bitcoin-core-dev/2020-09-17">17</a> <a class="" href="/bitcoin-core-dev/2020-09-18">18</a> <a class="" href="/bitcoin-core-dev/2020-09-19">19</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-09-20">20</a> <a class="" href="/bitcoin-core-dev/2020-09-21">21</a> <a class="" href="/bitcoin-core-dev/2020-09-22">22</a> <a class="" href="/bitcoin-core-dev/2020-09-23">23</a> <a class="" href="/bitcoin-core-dev/2020-09-24">24</a> <a class="" href="/bitcoin-core-dev/2020-09-25">25</a> <a class="" href="/bitcoin-core-dev/2020-09-26">26</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-09-27">27</a> <a class="" href="/bitcoin-core-dev/2020-09-28">28</a> <a class="" href="/bitcoin-core-dev/2020-09-29">29</a> <a class="" href="/bitcoin-core-dev/2020-09-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1599004980' id='401335'>
+<a class='timestamp' href='#401335'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+I have been trying to set up a C++ scratchpad to try things while being able to interface with the bitcoin code. I put my code in `src/scratch.cpp` and I try to compile it with `g++ -std=c++11 -O1 -fsanitize=undefined src/scratch.cpp -o scratch` (in this case I am trying to reproduce a sanitizer bug). I&#x27;m met with a wall of errors that look like
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401336'>
+<a class='timestamp' href='#401336'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+this:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401337'>
+<a class='timestamp' href='#401337'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+---
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401338'>
+<a class='timestamp' href='#401338'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+In file included from scratch.cpp:3:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401339'>
+<a class='timestamp' href='#401339'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+./netaddress.h:12:10: error: &#x27;attributes.h&#x27; file not found with &lt;angled&gt; include; use &quot;quotes&quot; instead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401340'>
+<a class='timestamp' href='#401340'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+#include &lt;attributes.h&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401341'>
+<a class='timestamp' href='#401341'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+         ^~~~~~~~~~~~~~
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401342'>
+<a class='timestamp' href='#401342'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+         &quot;attributes.h&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401343'>
+<a class='timestamp' href='#401343'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+---
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401344'>
+<a class='timestamp' href='#401344'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+Sample `src/scratch.cpp`:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401345'>
+<a class='timestamp' href='#401345'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+```
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401346'>
+<a class='timestamp' href='#401346'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+#include &lt;iostream&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401347'>
+<a class='timestamp' href='#401347'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+#include &quot;prevector.h&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401348'>
+<a class='timestamp' href='#401348'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+#include &quot;netaddress.h&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401349'>
+<a class='timestamp' href='#401349'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+#include &lt;arpa/inet.h&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401350'>
+<a class='timestamp' href='#401350'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+int main() {
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401351'>
+<a class='timestamp' href='#401351'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+    in_addr_t a = inet_addr(&quot;127.0.0.1&quot;);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599004980' id='401352'>
+<a class='timestamp' href='#401352'><time timestamp='2020-09-02T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+    CNetAddr addr{in_addr{a}};
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005100' id='401353'>
+<a class='timestamp' href='#401353'><time timestamp='2020-09-02T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+drbrule: all the bitcoin code is compiled with various compiler flags that are set in the Makefile, so it will be tricky to compile a single scratch file on its own like that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005100' id='401354'>
+<a class='timestamp' href='#401354'><time timestamp='2020-09-02T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+one thing you could do is to run `make` with V=1 (I think that&#x27;s the magic?) and see what command it runs to compile some other file under &#x27;src&#x27;, and copy the flags
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005160' id='401355'>
+<a class='timestamp' href='#401355'><time timestamp='2020-09-02T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+another option since you&#x27;re just playing around would be to just toss stuff at the bottom of some other file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005160' id='401356'>
+<a class='timestamp' href='#401356'><time timestamp='2020-09-02T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+(the best option if you actually wanted to add a file for real would be to go add it to the build stuff, but that can get kind of hairy)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005280' id='401357'>
+<a class='timestamp' href='#401357'><time timestamp='2020-09-02T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+if you want to experiment with code you can actually run (rather than merely compile), you&#x27;ll need linking too, and I would suggest you just find one of the files that implement RPCs (e.g. rpc/rawtransaction.cpp) and add a new RPC there that you can call
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005280' id='401358'>
+<a class='timestamp' href='#401358'><time timestamp='2020-09-02T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+when i try `make -n` i do see the g++ commands with all the flags but those don&#x27;t seem to address the errors.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005340' id='401359'>
+<a class='timestamp' href='#401359'><time timestamp='2020-09-02T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+i see -- so try and use the existing tooling rather than add a scratch pad. i&#x27;ll try that. thank you gwillen.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005820' id='401360'>
+<a class='timestamp' href='#401360'><time timestamp='2020-09-02T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in particular you need -Isrc here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599005940' id='401361'>
+<a class='timestamp' href='#401361'><time timestamp='2020-09-02T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+As in `g++ -std=c++11 -O1 -lsrc -fsanitize=undefined src/scratch.cpp -o scratch`?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006000' id='401362'>
+<a class='timestamp' href='#401362'><time timestamp='2020-09-02T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not l, I
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006000' id='401363'>
+<a class='timestamp' href='#401363'><time timestamp='2020-09-02T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+capital i
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006060' id='401364'>
+<a class='timestamp' href='#401364'><time timestamp='2020-09-02T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i&#x27;d be surprised if that&#x27;s all you need
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006060' id='401365'>
+<a class='timestamp' href='#401365'><time timestamp='2020-09-02T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+It moved me forward :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006060' id='401366'>
+<a class='timestamp' href='#401366'><time timestamp='2020-09-02T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+The quotes problem went away - i&#x27;ll try further with the remaining flags from `make -n`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006180' id='401367'>
+<a class='timestamp' href='#401367'><time timestamp='2020-09-02T00:23:00Z'>00:23</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+If i am reading it correctly, i need to figure out linking next because I&#x27;m getting back: &quot;Undefined symbols for architecture x86_64:&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006180' id='401368'>
+<a class='timestamp' href='#401368'><time timestamp='2020-09-02T00:23:00Z'>00:23</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+Also: `clang: error: linker command failed with exit code 1 (use -v to see invocation)`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599006180' id='401369'>
+<a class='timestamp' href='#401369'><time timestamp='2020-09-02T00:23:00Z'>00:23</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+Anyway, thanks sipa! I&#x27;ll be back with more after trying a bit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599013620' id='401370'>
+<a class='timestamp' href='#401370'><time timestamp='2020-09-02T02:27:00Z'>02:27</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+#14687 seems ready for merge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599013620' id='401371'>
+<a class='timestamp' href='#401371'><time timestamp='2020-09-02T02:27:00Z'>02:27</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14687" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14687</a> | zmq: enable tcp keepalive by mruddy · Pull Request #14687 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599013800' id='401372'>
+<a class='timestamp' href='#401372'><time timestamp='2020-09-02T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+3 tACKs, people running it as custom patch apparently, nothing controversial
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599019260' id='401373'>
+<a class='timestamp' href='#401373'><time timestamp='2020-09-02T04:01:00Z'>04:01</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Apple responded to my bug report regarding ftruncate on macos: <a href="https://openradar.appspot.com/radar?id=4930713610616832" class="link" target="_blank">https://openradar.appspot.com/radar?id=4930713610616832</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599019260' id='401374'>
+<a class='timestamp' href='#401374'><time timestamp='2020-09-02T04:01:00Z'>04:01</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+&quot;Works as currently designed&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599019320' id='401375'>
+<a class='timestamp' href='#401375'><time timestamp='2020-09-02T04:02:00Z'>04:02</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Apparently they intend to implement posix_fallocate() at some point tho, apparently.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599020460' id='401376'>
+<a class='timestamp' href='#401376'><time timestamp='2020-09-02T04:21:00Z'>04:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+kallewoof: interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599030540' id='401377'>
+<a class='timestamp' href='#401377'><time timestamp='2020-09-02T07:09:00Z'>07:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/48c108363268...3a3e21dafb72" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/48c108363268...3a3e21dafb72</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599030540' id='401378'>
+<a class='timestamp' href='#401378'><time timestamp='2020-09-02T07:09:00Z'>07:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c276df7 mruddy: zmq: enable tcp keepalive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599030540' id='401379'>
+<a class='timestamp' href='#401379'><time timestamp='2020-09-02T07:09:00Z'>07:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3a3e21d Jonas Schnelli: Merge #14687: zmq: enable tcp keepalive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599030660' id='401380'>
+<a class='timestamp' href='#401380'><time timestamp='2020-09-02T07:11:00Z'>07:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli merged pull request #14687: zmq: enable tcp keepalive (master...zmq-keep-alive) <a href="https://github.com/bitcoin/bitcoin/pull/14687" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14687</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599037620' id='401381'>
+<a class='timestamp' href='#401381'><time timestamp='2020-09-02T09:07:00Z'>09:07</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+wumpus: #19610 might be ready for merge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599037620' id='401382'>
+<a class='timestamp' href='#401382'><time timestamp='2020-09-02T09:07:00Z'>09:07</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19610" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19610</a> | p2p: refactor AlreadyHave(), CInv::type, INV/TX processing by jonatack · Pull Request #19610 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599043980' id='401383'>
+<a class='timestamp' href='#401383'><time timestamp='2020-09-02T10:53:00Z'>10:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jnewbery: looks like it!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599047160' id='401384'>
+<a class='timestamp' href='#401384'><time timestamp='2020-09-02T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 11 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3a3e21dafb72...505b39e72b48" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3a3e21dafb72...505b39e72b48</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599047160' id='401385'>
+<a class='timestamp' href='#401385'><time timestamp='2020-09-02T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 471714e Jon Atack: p2p: add CInv block message helper methods
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599047160' id='401386'>
+<a class='timestamp' href='#401386'><time timestamp='2020-09-02T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 39f1dc9 Jon Atack: p2p: remove nFetchFlags from NetMsgType TX and INV processing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599047160' id='401387'>
+<a class='timestamp' href='#401387'><time timestamp='2020-09-02T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 42ca561 John Newbery: [net processing] Split AlreadyHave() into separate block and tx functions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599047160' id='401388'>
+<a class='timestamp' href='#401388'><time timestamp='2020-09-02T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #19610: p2p: refactor AlreadyHave(), CInv::type, INV/TX processing (master...CInv-block-message-helpers) <a href="https://github.com/bitcoin/bitcoin/pull/19610" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19610</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599049200' id='401389'>
+<a class='timestamp' href='#401389'><time timestamp='2020-09-02T12:20:00Z'>12:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] n-thumann opened pull request #19859: qa: Fixes failing functional test by changing version (master...qa-fix-wrong-version) <a href="https://github.com/bitcoin/bitcoin/pull/19859" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19859</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599050160' id='401390'>
+<a class='timestamp' href='#401390'><time timestamp='2020-09-02T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/505b39e72b48...c17a00375808" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/505b39e72b48...c17a00375808</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599050160' id='401391'>
+<a class='timestamp' href='#401391'><time timestamp='2020-09-02T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d780293 Jon Atack: net: improve nLastBlockTime and nLastTXTime documentation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599050160' id='401392'>
+<a class='timestamp' href='#401392'><time timestamp='2020-09-02T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c17a003 fanquake: Merge #19857: net: improve nLastBlockTime and nLastTXTime documentation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599050160' id='401393'>
+<a class='timestamp' href='#401393'><time timestamp='2020-09-02T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #19857: net: improve nLastBlockTime and nLastTXTime documentation (master...nLast-documentation) <a href="https://github.com/bitcoin/bitcoin/pull/19857" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19857</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051000' id='401394'>
+<a class='timestamp' href='#401394'><time timestamp='2020-09-02T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+If I restart a failing travis or appveyor build, github changes from red to yellow. If I restart failing cirrus build, it github stays red
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051000' id='401395'>
+<a class='timestamp' href='#401395'><time timestamp='2020-09-02T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+Is there some lag, or is it just not even worth restarting cirrus builds because they will always stay red?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051060' id='401396'>
+<a class='timestamp' href='#401396'><time timestamp='2020-09-02T12:51:00Z'>12:51</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+cirrus will turn green after success build
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051300' id='401397'>
+<a class='timestamp' href='#401397'><time timestamp='2020-09-02T12:55:00Z'>12:55</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+oh that&#x27;s good, thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051780' id='401398'>
+<a class='timestamp' href='#401398'><time timestamp='2020-09-02T13:03:00Z'>13:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 6 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/c17a00375808...8845b38b599e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/c17a00375808...8845b38b599e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051780' id='401399'>
+<a class='timestamp' href='#401399'><time timestamp='2020-09-02T13:03:00Z'>13:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3ecf0ec Carl Dong: depends: Use $($(package)_cmake) instead of cmake
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051780' id='401400'>
+<a class='timestamp' href='#401400'><time timestamp='2020-09-02T13:03:00Z'>13:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8c7cd0c Carl Dong: depends: More robust cmake invocation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051780' id='401401'>
+<a class='timestamp' href='#401401'><time timestamp='2020-09-02T13:03:00Z'>13:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8e121e5 Carl Dong: depends: Cleanup CMake invocation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599051840' id='401402'>
+<a class='timestamp' href='#401402'><time timestamp='2020-09-02T13:04:00Z'>13:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #19685: depends: CMake invocation cleanup (master...2020-08-depends-misc) <a href="https://github.com/bitcoin/bitcoin/pull/19685" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19685</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599052500' id='401403'>
+<a class='timestamp' href='#401403'><time timestamp='2020-09-02T13:15:00Z'>13:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/8845b38b599e...c157a5069454" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8845b38b599e...c157a5069454</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599052500' id='401404'>
+<a class='timestamp' href='#401404'><time timestamp='2020-09-02T13:15:00Z'>13:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 413e0d1 João Barbosa: Avoid callback when -blocknotify is empty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599052500' id='401405'>
+<a class='timestamp' href='#401405'><time timestamp='2020-09-02T13:15:00Z'>13:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c157a50 Wladimir J. van der Laan: Merge #19840: Avoid callback when -blocknotify is empty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599052500' id='401406'>
+<a class='timestamp' href='#401406'><time timestamp='2020-09-02T13:15:00Z'>13:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #19840: Avoid callback when -blocknotify is empty (master...2020-08-blocknotify) <a href="https://github.com/bitcoin/bitcoin/pull/19840" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19840</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599053580' id='401407'>
+<a class='timestamp' href='#401407'><time timestamp='2020-09-02T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+luke-jr: it seems that it might be possible to use mrustc on non-x86 computers :) <a href="https://github.com/thepowersgang/mrustc/issues/39#issuecomment-685738622" class="link" target="_blank">https://github.com/thepowersgang/mrustc/issues/39#issuecomment-685738622</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599053700' id='401408'>
+<a class='timestamp' href='#401408'><time timestamp='2020-09-02T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+elichai2: I did try
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599053700' id='401409'>
+<a class='timestamp' href='#401409'><time timestamp='2020-09-02T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+<a href="https://github.com/thepowersgang/mrustc/pull/159" class="link" target="_blank">https://github.com/thepowersgang/mrustc/pull/159</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599053700' id='401410'>
+<a class='timestamp' href='#401410'><time timestamp='2020-09-02T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+oh, that&#x27;s cool :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599055560' id='401411'>
+<a class='timestamp' href='#401411'><time timestamp='2020-09-02T14:06:00Z'>14:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] naumenkogs opened pull request #19860: Improve diversification of new connections: privacy and stability (master...2020-09-diverse-new-conn-fixes) <a href="https://github.com/bitcoin/bitcoin/pull/19860" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19860</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599061080' id='401412'>
+<a class='timestamp' href='#401412'><time timestamp='2020-09-02T15:38:00Z'>15:38</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+May I please request a CI job restart? <a href="https://travis-ci.org/github/bitcoin/bitcoin/jobs/723342800" class="link" target="_blank">https://travis-ci.org/github/bitcoin/bitcoin/jobs/723342800</a> Also, Cirrus CI did not run on the latest force push for <a href="https://github.com/bitcoin/bitcoin/pull/19825" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19825</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599061260' id='401413'>
+<a class='timestamp' href='#401413'><time timestamp='2020-09-02T15:41:00Z'>15:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ryanofsky closed pull request #17556: test: Change feature_config_args.py not to rely on strange regtest=0 behavior (master...pr/wdpy) <a href="https://github.com/bitcoin/bitcoin/pull/17556" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17556</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599061320' id='401414'>
+<a class='timestamp' href='#401414'><time timestamp='2020-09-02T15:42:00Z'>15:42</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ryanofsky reopened pull request #17556: test: Change feature_config_args.py not to rely on strange regtest=0 behavior (master...pr/wdpy) <a href="https://github.com/bitcoin/bitcoin/pull/17556" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17556</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599061560' id='401415'>
+<a class='timestamp' href='#401415'><time timestamp='2020-09-02T15:46:00Z'>15:46</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+dhruvm, restarted the travis ci. don&#x27;t know why the cirrus ci is missing (seems lucky though)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599061620' id='401416'>
+<a class='timestamp' href='#401416'><time timestamp='2020-09-02T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+thanks ryanofsky
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599061620' id='401417'>
+<a class='timestamp' href='#401417'><time timestamp='2020-09-02T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+do you know if there&#x27;s a way to force cirrus CI to run? that&#x27;s the job that failed last time and I think I&#x27;ve fixed it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599062220' id='401418'>
+<a class='timestamp' href='#401418'><time timestamp='2020-09-02T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+dhruvm, I don&#x27;t know why it doesn&#x27;t appear, but you could push a commit with a different hash to restart all the ci&#x27;s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599062820' id='401419'>
+<a class='timestamp' href='#401419'><time timestamp='2020-09-02T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-12'> dhruvm</span>&gt;
+Hmm, It seems cirrus CI has not run on the last couple new PRs opened as well. I&#x27;ll wait it out.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599065340' id='401420'>
+<a class='timestamp' href='#401420'><time timestamp='2020-09-02T16:49:00Z'>16:49</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right, looks like it is simply not running, i hope it&#x27;s an intermittent issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1599074100' id='401421'>
+<a class='timestamp' href='#401421'><time timestamp='2020-09-02T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Crypt-iQ opened pull request #19861: build: add /usr/local/ to LCOV_PATTERN for macOS builds (master...macos_lcov_0902) <a href="https://github.com/bitcoin/bitcoin/pull/19861" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19861</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

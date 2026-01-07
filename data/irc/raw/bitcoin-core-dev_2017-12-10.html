@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-12-10
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-12-10' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-11-10">&lt;</a><span class='header'>  December 2017   </span><a href="/bitcoin-core-dev/2018-01-10">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2017-12-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-12-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-12-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-12-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-12-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-12-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-12-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-12-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-12-09">9</a>  &#x000A;<a class="current" href="/bitcoin-core-dev/2017-12-10">10</a> <a class="" href="/bitcoin-core-dev/2017-12-11">11</a> <a class="" href="/bitcoin-core-dev/2017-12-12">12</a> <a class="" href="/bitcoin-core-dev/2017-12-13">13</a> <a class="" href="/bitcoin-core-dev/2017-12-14">14</a> <a class="" href="/bitcoin-core-dev/2017-12-15">15</a> <a class="" href="/bitcoin-core-dev/2017-12-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-17">17</a> <a class="" href="/bitcoin-core-dev/2017-12-18">18</a> <a class="" href="/bitcoin-core-dev/2017-12-19">19</a> <a class="" href="/bitcoin-core-dev/2017-12-20">20</a> <a class="" href="/bitcoin-core-dev/2017-12-21">21</a> <a class="" href="/bitcoin-core-dev/2017-12-22">22</a> <a class="" href="/bitcoin-core-dev/2017-12-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-24">24</a> <a class="" href="/bitcoin-core-dev/2017-12-25">25</a> <a class="" href="/bitcoin-core-dev/2017-12-26">26</a> <a class="" href="/bitcoin-core-dev/2017-12-27">27</a> <a class="" href="/bitcoin-core-dev/2017-12-28">28</a> <a class="" href="/bitcoin-core-dev/2017-12-29">29</a> <a class="" href="/bitcoin-core-dev/2017-12-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1512867360' id='585745'>
+<a class='timestamp' href='#585745'><time timestamp='2017-12-10T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+sipa: ahh ok, thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512885240' id='585746'>
+<a class='timestamp' href='#585746'><time timestamp='2017-12-10T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+why is the boost::to_lower() inside a #ifdef WIN32 here: <a href="https://github.com/bitcoin/bitcoin/blob/master/src/util.cpp#L419" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/util.cpp#L419</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512885240' id='585747'>
+<a class='timestamp' href='#585747'><time timestamp='2017-12-10T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+does that mean its only case insensitive on win32 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512885420' id='585748'>
+<a class='timestamp' href='#585748'><time timestamp='2017-12-10T05:57:00Z'>05:57</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+windows itself is mostly case insensitive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512885480' id='585749'>
+<a class='timestamp' href='#585749'><time timestamp='2017-12-10T05:58:00Z'>05:58</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+although I think some of the underlying filesystems used like NTFS can be case sensivite
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512885900' id='585750'>
+<a class='timestamp' href='#585750'><time timestamp='2017-12-10T06:05:00Z'>06:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+NTFS on windows is case insensitive but case preserving
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512885960' id='585751'>
+<a class='timestamp' href='#585751'><time timestamp='2017-12-10T06:06:00Z'>06:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but that line of code has nothing do with filesystems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512886020' id='585752'>
+<a class='timestamp' href='#585752'><time timestamp='2017-12-10T06:07:00Z'>06:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s so that &quot;bitcoind /daemon=1&quot; works, which I think gets passed to the application as &quot;/DAEMON=1&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512888420' id='585753'>
+<a class='timestamp' href='#585753'><time timestamp='2017-12-10T06:47:00Z'>06:47</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+ah I see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512890100' id='585754'>
+<a class='timestamp' href='#585754'><time timestamp='2017-12-10T07:15:00Z'>07:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] irq13 opened pull request #11860: move banned peer log messages behind -debug=net (master...no-log-bans) <a href="https://github.com/bitcoin/bitcoin/pull/11860" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11860</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512903780' id='585755'>
+<a class='timestamp' href='#585755'><time timestamp='2017-12-10T11:03:00Z'>11:03</time></a>
+&lt;<span class='nick nick-7'> ieririr</span>&gt;
+hi there, does anybody have an idea of the time needed to spread a fix? in case of major flaw in crypto core I mean 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512904560' id='585756'>
+<a class='timestamp' href='#585756'><time timestamp='2017-12-10T11:16:00Z'>11:16</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+is it me or funding an already funded transaction hits AvailableCoins?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512929100' id='585757'>
+<a class='timestamp' href='#585757'><time timestamp='2017-12-10T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+sipa: /win 23
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512929100' id='585758'>
+<a class='timestamp' href='#585758'><time timestamp='2017-12-10T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+oops sorry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512934200' id='585759'>
+<a class='timestamp' href='#585759'><time timestamp='2017-12-10T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+is it by design that the core client gives no indication that it&#x27;s creating a new wallet file (ie, when one goes missing) ? or is that a bug?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512938820' id='585760'>
+<a class='timestamp' href='#585760'><time timestamp='2017-12-10T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BGL: what would you expect to happen?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512941760' id='585761'>
+<a class='timestamp' href='#585761'><time timestamp='2017-12-10T21:36:00Z'>21:36</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+at a minimum say hey your wallet file was missing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512941820' id='585762'>
+<a class='timestamp' href='#585762'><time timestamp='2017-12-10T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think it does say that in the log, but maybe not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942000' id='585763'>
+<a class='timestamp' href='#585763'><time timestamp='2017-12-10T21:40:00Z'>21:40</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+certain things have a real minimum-effort feel going for it with the client
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942060' id='585764'>
+<a class='timestamp' href='#585764'><time timestamp='2017-12-10T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+and with btc being 15k now i think the standards might need to be up a little
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942060' id='585765'>
+<a class='timestamp' href='#585765'><time timestamp='2017-12-10T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what else would you expect?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942060' id='585766'>
+<a class='timestamp' href='#585766'><time timestamp='2017-12-10T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+so like let&#x27;s say your sql db goes down
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942060' id='585767'>
+<a class='timestamp' href='#585767'><time timestamp='2017-12-10T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+&lt;insert variable of obvious common sense&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942120' id='585768'>
+<a class='timestamp' href='#585768'><time timestamp='2017-12-10T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+asking what people expect is not lending toward resolution
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942120' id='585769'>
+<a class='timestamp' href='#585769'><time timestamp='2017-12-10T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t understand what you feel is missing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942120' id='585770'>
+<a class='timestamp' href='#585770'><time timestamp='2017-12-10T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+that may be exactly the problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942180' id='585771'>
+<a class='timestamp' href='#585771'><time timestamp='2017-12-10T21:43:00Z'>21:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+okay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942180' id='585772'>
+<a class='timestamp' href='#585772'><time timestamp='2017-12-10T21:43:00Z'>21:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well, issue reports or pull requests welcome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942240' id='585773'>
+<a class='timestamp' href='#585773'><time timestamp='2017-12-10T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  Are there some specific problems with the standards that you are aware of presently?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942240' id='585774'>
+<a class='timestamp' href='#585774'><time timestamp='2017-12-10T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+waiting on people to point out the obvious is often the demise of software
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942240' id='585775'>
+<a class='timestamp' href='#585775'><time timestamp='2017-12-10T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what do you expect to happen? fail to start?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942240' id='585776'>
+<a class='timestamp' href='#585776'><time timestamp='2017-12-10T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that would break backward compatibility
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942300' id='585777'>
+<a class='timestamp' href='#585777'><time timestamp='2017-12-10T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+yes, let&#x27;s all act as if your wallet file disappearing and the client literally indicating nothing is wrong is perfectly acceptable. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942300' id='585778'>
+<a class='timestamp' href='#585778'><time timestamp='2017-12-10T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+i would literally fire both of you for acting so stupid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942300' id='585779'>
+<a class='timestamp' href='#585779'><time timestamp='2017-12-10T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the client is unable to distinguish that from starting up the first time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942300' id='585780'>
+<a class='timestamp' href='#585780'><time timestamp='2017-12-10T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+the correct answer is yes, maybe that&#x27;s a good idea, we should look into that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585781'>
+<a class='timestamp' href='#585781'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+maybe that&#x27;s part of the problem?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585782'>
+<a class='timestamp' href='#585782'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+does this sound like such a difficult issue?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585783'>
+<a class='timestamp' href='#585783'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585784'>
+<a class='timestamp' href='#585784'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+wow     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585785'>
+<a class='timestamp' href='#585785'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is literally nothing the client could do the know that missing a file is different from starting up the first time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585786'>
+<a class='timestamp' href='#585786'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  I&#x27;m not sure who you&#x27;re directing that to, but please keep in mind that people here are volunteers.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942360' id='585787'>
+<a class='timestamp' href='#585787'><time timestamp='2017-12-10T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;re very welcome to help improve the software
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942420' id='585788'>
+<a class='timestamp' href='#585788'><time timestamp='2017-12-10T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but insulting volunteers is not likely to get your issue resolved
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942420' id='585789'>
+<a class='timestamp' href='#585789'><time timestamp='2017-12-10T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+being a volunteer does not make up for incompetent ego
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942420' id='585790'>
+<a class='timestamp' href='#585790'><time timestamp='2017-12-10T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+my only issue is the quality of this client
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942420' id='585791'>
+<a class='timestamp' href='#585791'><time timestamp='2017-12-10T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  With regard to people losing their wallet files, backups are highly recommended, and having copies of one&#x27;s Private Keys is obviously imperative.  Perhaps if this isn&#x27;t being explained to the end-user properly there could indeed be room for improvement there.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942480' id='585792'>
+<a class='timestamp' href='#585792'><time timestamp='2017-12-10T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BGL: you must literally have manually deleted a database file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942480' id='585793'>
+<a class='timestamp' href='#585793'><time timestamp='2017-12-10T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is no other way the file would be missing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942480' id='585794'>
+<a class='timestamp' href='#585794'><time timestamp='2017-12-10T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that is the exact same situation as starting up the first time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942480' id='585795'>
+<a class='timestamp' href='#585795'><time timestamp='2017-12-10T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+please, be constructive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942480' id='585796'>
+<a class='timestamp' href='#585796'><time timestamp='2017-12-10T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  My ego doesn&#x27;t factor into this -- it went on vacation a long time ago, and I have no idea where it is these days, although I do keep receiving hotel bills so I know where it has been.  ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942540' id='585797'>
+<a class='timestamp' href='#585797'><time timestamp='2017-12-10T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+sipa:  There is another possibility -- the user logged in with a different profile and so it looks like a new setup to the client software.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942540' id='585798'>
+<a class='timestamp' href='#585798'><time timestamp='2017-12-10T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;ve never previously heard a report from a user that their wallet file was unexpectedly removed. Any idea how a user would end up in that situation?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942540' id='585799'>
+<a class='timestamp' href='#585799'><time timestamp='2017-12-10T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  Did your wallet file go missing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942600' id='585800'>
+<a class='timestamp' href='#585800'><time timestamp='2017-12-10T21:50:00Z'>21:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Randolf: &quot;profile&quot; ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942600' id='585801'>
+<a class='timestamp' href='#585801'><time timestamp='2017-12-10T21:50:00Z'>21:50</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+sipa:  Well, in the Windows world at least, there are user profiles which each have their own collections of home directories and personalized settings for the OS and various applications.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942660' id='585802'>
+<a class='timestamp' href='#585802'><time timestamp='2017-12-10T21:51:00Z'>21:51</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+sipa:  Unfortunately with Windows, whenever it corrupts itself the user is sometimes logged in with a temporary profile instead of their usual one.  In such cases, a wallet file could seem to go missing if it was stored under the user-specific home directory.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942660' id='585803'>
+<a class='timestamp' href='#585803'><time timestamp='2017-12-10T21:51:00Z'>21:51</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+sipa:  But this really isn&#x27;t a Bitcoin issue -- it&#x27;s an Operating System issue that has the same impact on other applications too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942720' id='585804'>
+<a class='timestamp' href='#585804'><time timestamp='2017-12-10T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Randolf: how would that deny access to the wallet but also leave the blockchain?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942780' id='585805'>
+<a class='timestamp' href='#585805'><time timestamp='2017-12-10T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+gmaxwell:  That&#x27;s interesting.  If the blockchain was also stored in the user&#x27;s profile directory, then your concern makes sense.  However, if the blockchain was stored in a public profile (as some applications with shared or constant data do) then that could explain why the blockchain would remain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942780' id='585806'>
+<a class='timestamp' href='#585806'><time timestamp='2017-12-10T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+in place.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942840' id='585807'>
+<a class='timestamp' href='#585807'><time timestamp='2017-12-10T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+gmaxwell:  Another possibility is that bitcoind has its own profile and is storing the blockchain data under its own profile which is not the same as the user&#x27;s profile.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942840' id='585808'>
+<a class='timestamp' href='#585808'><time timestamp='2017-12-10T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+...specifically the wallet-user&#x27;s profile.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942840' id='585809'>
+<a class='timestamp' href='#585809'><time timestamp='2017-12-10T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Randolf: unless he&#x27;s running unreleased software, the blockchain and the wallet are in the same directory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942840' id='585810'>
+<a class='timestamp' href='#585810'><time timestamp='2017-12-10T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+sipa:  Okay, then that rules that possibility out.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512942900' id='585811'>
+<a class='timestamp' href='#585811'><time timestamp='2017-12-10T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Another possibility is that the user installed some malicious software that uploads wallet files then deletes them from the user&#x27;s system.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943380' id='585812'>
+<a class='timestamp' href='#585812'><time timestamp='2017-12-10T22:03:00Z'>22:03</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+Randolf: that&#x27;s not possible because &lt;the user&gt; &quot;must literally have manually deleted a database file&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943500' id='585813'>
+<a class='timestamp' href='#585813'><time timestamp='2017-12-10T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BGL: if that&#x27;s not what happened, i&#x27;d very much like to know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943620' id='585814'>
+<a class='timestamp' href='#585814'><time timestamp='2017-12-10T22:07:00Z'>22:07</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+please save me from having to explain an infinite number of ways files can be deleted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943680' id='585815'>
+<a class='timestamp' href='#585815'><time timestamp='2017-12-10T22:08:00Z'>22:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not by bitcoind itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943740' id='585816'>
+<a class='timestamp' href='#585816'><time timestamp='2017-12-10T22:09:00Z'>22:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+either you directly, or software you chose to run deleted a file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943740' id='585817'>
+<a class='timestamp' href='#585817'><time timestamp='2017-12-10T22:09:00Z'>22:09</time></a>
+&lt;<span class='nick nick-6'> BGL</span>&gt;
+reminder: i&#x27;m simply pointing out the client says/does nothing when a wallet file goes missing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512943740' id='585818'>
+<a class='timestamp' href='#585818'><time timestamp='2017-12-10T22:09:00Z'>22:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, because <b>*it can&#x27;t*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944100' id='585819'>
+<a class='timestamp' href='#585819'><time timestamp='2017-12-10T22:15:00Z'>22:15</time></a>
+&lt;<span class='nick nick-12'> mesh_</span>&gt;
+Best we could do is add a debug.log message which says something like &quot;wallet.dat does not exist, creating...&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944100' id='585820'>
+<a class='timestamp' href='#585820'><time timestamp='2017-12-10T22:15:00Z'>22:15</time></a>
+&lt;<span class='nick nick-12'> mesh_</span>&gt;
+BGL: that could be an opportunity for you to contribute, you could open a PR if you wanted :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944100' id='585821'>
+<a class='timestamp' href='#585821'><time timestamp='2017-12-10T22:15:00Z'>22:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+mesh_: the logs do reflect when it creates one.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944160' id='585822'>
+<a class='timestamp' href='#585822'><time timestamp='2017-12-10T22:16:00Z'>22:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The software also does not warn you when your computer is running in an enviroment without enough oxygen for human life... there are an infinitude of ways that something strange could be going on; without an understood sequence of events that would cause the situation it&#x27;s usually not reasonable to do anything about it, since the &quot;do something&quot; is usually context dependant.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944220' id='585823'>
+<a class='timestamp' href='#585823'><time timestamp='2017-12-10T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+^ lol.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944280' id='585824'>
+<a class='timestamp' href='#585824'><time timestamp='2017-12-10T22:18:00Z'>22:18</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+gmaxwell: I can only see a message like &quot;2017-12-10 22:16:37 Using wallet test.dat&quot; and then it reports there are 0 keys, but no actual creation message?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944340' id='585825'>
+<a class='timestamp' href='#585825'><time timestamp='2017-12-10T22:19:00Z'>22:19</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+<a href="https://www.irccloud.com/pastebin/rzTcABjN/" class="link" target="_blank">https://www.irccloud.com/pastebin/rzTcABjN/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944400' id='585826'>
+<a class='timestamp' href='#585826'><time timestamp='2017-12-10T22:20:00Z'>22:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Morover, spurrious warnings cause user error.  E.g. we&#x27;ve seen users lose funds because they opened their debug.log and saw log entries with &quot;ERROR&quot; in them, and then started taking increasingly drastic actions to remediate the actually-harmless messages which eventually culminated in them forever deleting their wallet, or posting their files online for othe people ... including the wallet.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944400' id='585827'>
+<a class='timestamp' href='#585827'><time timestamp='2017-12-10T22:20:00Z'>22:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Moreover*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944400' id='585828'>
+<a class='timestamp' href='#585828'><time timestamp='2017-12-10T22:20:00Z'>22:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+meshcollider: indeed, it shows it with zero sizes when its first created.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944460' id='585829'>
+<a class='timestamp' href='#585829'><time timestamp='2017-12-10T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+maybe bitcoin-core should build in telemetry service and leave the generation of debug log for advanced users.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944460' id='585830'>
+<a class='timestamp' href='#585830'><time timestamp='2017-12-10T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+gmaxwell: yeah but that is not clear to any user, I&#x27;m just suggesting BGL might want to add a simpler message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944460' id='585831'>
+<a class='timestamp' href='#585831'><time timestamp='2017-12-10T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+to protect users against themselves
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944700' id='585832'>
+<a class='timestamp' href='#585832'><time timestamp='2017-12-10T22:25:00Z'>22:25</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+mryandao: well we intentionally toned down the text in debug log to reduce incidents of those sorts of screwups, seems to have owrked.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512944760' id='585833'>
+<a class='timestamp' href='#585833'><time timestamp='2017-12-10T22:26:00Z'>22:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+meshcollider: would be reasonable and harmless, though I&#x27;m dubious that it would actually help anything.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945660' id='585834'>
+<a class='timestamp' href='#585834'><time timestamp='2017-12-10T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  Doesn&#x27;t the client report to you that the file was not found?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945660' id='585835'>
+<a class='timestamp' href='#585835'><time timestamp='2017-12-10T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  ...when you attempt to open it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945720' id='585836'>
+<a class='timestamp' href='#585836'><time timestamp='2017-12-10T22:42:00Z'>22:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Randolf: there is no &#x27;opening&#x27; the file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945780' id='585837'>
+<a class='timestamp' href='#585837'><time timestamp='2017-12-10T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is a hardcoded filename (wallet.dat) which contains the wallet; if it doesn&#x27;t exist, it&#x27;s created
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945840' id='585838'>
+<a class='timestamp' href='#585838'><time timestamp='2017-12-10T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+sipa:  Ah, well, in that case the client software won&#x27;t be able to detect if a previous wallet file was deleted.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945840' id='585839'>
+<a class='timestamp' href='#585839'><time timestamp='2017-12-10T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the daemon supports having multiple wallets loaded simultaneously, but the GUI doesn&#x27;t support opening/closing other wallets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945840' id='585840'>
+<a class='timestamp' href='#585840'><time timestamp='2017-12-10T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(not yet, at least)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512945960' id='585841'>
+<a class='timestamp' href='#585841'><time timestamp='2017-12-10T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Okay.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512946020' id='585842'>
+<a class='timestamp' href='#585842'><time timestamp='2017-12-10T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+That&#x27;s very curious.  I wonder what happened to BGL&#x27;s wallet file.  I&#x27;m sure that neither the client nor bitcoind deleted it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512946020' id='585843'>
+<a class='timestamp' href='#585843'><time timestamp='2017-12-10T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  Did you save your Private Keys?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1512946080' id='585844'>
+<a class='timestamp' href='#585844'><time timestamp='2017-12-10T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+BGL:  If you did, then you can enter them again.
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-05-27
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-05-27' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:18 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-04-27">&lt;</a><span class='header'>     May 2020     </span><a href="/bitcoin-core-dev/2020-06-27">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2020-05-01">1</a>  <a class="" href="/bitcoin-core-dev/2020-05-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2020-05-03">3</a>  <a class="" href="/bitcoin-core-dev/2020-05-04">4</a>  <a class="" href="/bitcoin-core-dev/2020-05-05">5</a>  <a class="" href="/bitcoin-core-dev/2020-05-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-05-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-05-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-05-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-10">10</a> <a class="" href="/bitcoin-core-dev/2020-05-11">11</a> <a class="" href="/bitcoin-core-dev/2020-05-12">12</a> <a class="" href="/bitcoin-core-dev/2020-05-13">13</a> <a class="" href="/bitcoin-core-dev/2020-05-14">14</a> <a class="" href="/bitcoin-core-dev/2020-05-15">15</a> <a class="" href="/bitcoin-core-dev/2020-05-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-17">17</a> <a class="" href="/bitcoin-core-dev/2020-05-18">18</a> <a class="" href="/bitcoin-core-dev/2020-05-19">19</a> <a class="" href="/bitcoin-core-dev/2020-05-20">20</a> <a class="" href="/bitcoin-core-dev/2020-05-21">21</a> <a class="" href="/bitcoin-core-dev/2020-05-22">22</a> <a class="" href="/bitcoin-core-dev/2020-05-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-24">24</a> <a class="" href="/bitcoin-core-dev/2020-05-25">25</a> <a class="" href="/bitcoin-core-dev/2020-05-26">26</a> <a class="current" href="/bitcoin-core-dev/2020-05-27">27</a> <a class="" href="/bitcoin-core-dev/2020-05-28">28</a> <a class="" href="/bitcoin-core-dev/2020-05-29">29</a> <a class="" href="/bitcoin-core-dev/2020-05-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1590541620' id='388976'>
+<a class='timestamp' href='#388976'><time timestamp='2020-05-27T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+any opinions on sqlite3 amalgamation source code (a ginormous sqlite3.c file that is all of sqlite&#x27;s source code, provided by them), or linking against system/depends?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590541800' id='388977'>
+<a class='timestamp' href='#388977'><time timestamp='2020-05-27T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+given their strong guarantees for forward and backward compatibility, i think we should just link against the system version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590541860' id='388978'>
+<a class='timestamp' href='#388978'><time timestamp='2020-05-27T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(and pin one version in depends)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590541920' id='388979'>
+<a class='timestamp' href='#388979'><time timestamp='2020-05-27T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+the only issue that could be a problem is if the system version was compiled with some option like THREADSAFE=0 which probably wouldn&#x27;t be good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542220' id='388980'>
+<a class='timestamp' href='#388980'><time timestamp='2020-05-27T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+achow101: hard NACK on bundling it..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542220' id='388981'>
+<a class='timestamp' href='#388981'><time timestamp='2020-05-27T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+why does our end need to use threads for sqlite?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542220' id='388982'>
+<a class='timestamp' href='#388982'><time timestamp='2020-05-27T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+bdb isn&#x27;t threadsafe, is ti?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542220' id='388983'>
+<a class='timestamp' href='#388983'><time timestamp='2020-05-27T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+bdb is definitely threadsafe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542220' id='388984'>
+<a class='timestamp' href='#388984'><time timestamp='2020-05-27T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+we don&#x27;t need to use threads, but I&#x27;m not convinced that we don&#x27;t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542280' id='388985'>
+<a class='timestamp' href='#388985'><time timestamp='2020-05-27T01:18:00Z'>01:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+and I&#x27;d rather that the library does the threadsafe stuff even if it isn&#x27;t needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542400' id='388986'>
+<a class='timestamp' href='#388986'><time timestamp='2020-05-27T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sqlite3_threadsafe()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542460' id='388987'>
+<a class='timestamp' href='#388987'><time timestamp='2020-05-27T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+would be nicer to detect during configure tho
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542520' id='388988'>
+<a class='timestamp' href='#388988'><time timestamp='2020-05-27T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+at configure time you can&#x27;t know what flags the runtime version the user will be dynamically linking against has enabled...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590542520' id='388989'>
+<a class='timestamp' href='#388989'><time timestamp='2020-05-27T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547320' id='388990'>
+<a class='timestamp' href='#388990'><time timestamp='2020-05-27T02:42:00Z'>02:42</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] achow101 opened pull request #19077: wallet: Add sqlite as an alternative wallet database and use it for new descriptor wallets (master...sqlite-wallet) <a href="https://github.com/bitcoin/bitcoin/pull/19077" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19077</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547500' id='388991'>
+<a class='timestamp' href='#388991'><time timestamp='2020-05-27T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
++ 240&#x27;000 lines
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547500' id='388992'>
+<a class='timestamp' href='#388992'><time timestamp='2020-05-27T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+sqlite3.c is quite the amalgamation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547500' id='388993'>
+<a class='timestamp' href='#388993'><time timestamp='2020-05-27T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+the sqlite3.c amalgamation file is very large
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547860' id='388994'>
+<a class='timestamp' href='#388994'><time timestamp='2020-05-27T02:51:00Z'>02:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: as luke-jr mentioned, if we need thread-safeness, you can include an assert(sqlite_threadsafe())
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547920' id='388995'>
+<a class='timestamp' href='#388995'><time timestamp='2020-05-27T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so i don&#x27;t think that&#x27;s a reason to bundle
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547920' id='388996'>
+<a class='timestamp' href='#388996'><time timestamp='2020-05-27T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] meshcollider pushed 12 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/4af01b37d402...520e435b5e56" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/4af01b37d402...520e435b5e56</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547920' id='388997'>
+<a class='timestamp' href='#388997'><time timestamp='2020-05-27T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c877709 Andrew Chow: wallettool: Add a salvage command
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547920' id='388998'>
+<a class='timestamp' href='#388998'><time timestamp='2020-05-27T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cdd955e Andrew Chow: Add basic test for bitcoin-wallet salvage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547920' id='388999'>
+<a class='timestamp' href='#388999'><time timestamp='2020-05-27T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d321046 Andrew Chow: wallet: remove -salvagewallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547920' id='389000'>
+<a class='timestamp' href='#389000'><time timestamp='2020-05-27T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] meshcollider merged pull request #18918: wallet: Move salvagewallet into wallettool (master...wallettool-salvagewallet) <a href="https://github.com/bitcoin/bitcoin/pull/18918" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18918</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547980' id='389001'>
+<a class='timestamp' href='#389001'><time timestamp='2020-05-27T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+The linter is having an absolute meltdown over sqlite3.c heh: <a href="https://travis-ci.org/github/bitcoin/bitcoin/jobs/691575513" class="link" target="_blank">https://travis-ci.org/github/bitcoin/bitcoin/jobs/691575513</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590547980' id='389002'>
+<a class='timestamp' href='#389002'><time timestamp='2020-05-27T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+yeah, trying to figure out how to exlucde it from everything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548040' id='389003'>
+<a class='timestamp' href='#389003'><time timestamp='2020-05-27T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sipa: there are some other options that could be problematic. I haven&#x27;t fully explored them yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548040' id='389004'>
+<a class='timestamp' href='#389004'><time timestamp='2020-05-27T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+achow101: don&#x27;t, just remove it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548040' id='389005'>
+<a class='timestamp' href='#389005'><time timestamp='2020-05-27T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Please explore them quickly then :) 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548040' id='389006'>
+<a class='timestamp' href='#389006'><time timestamp='2020-05-27T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: i doubt that, as long as we use no crazy extensions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548460' id='389007'>
+<a class='timestamp' href='#389007'><time timestamp='2020-05-27T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+SQLITE_DEFAULT_FILE_FORMAT could be useful in the future for compatibility stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548460' id='389008'>
+<a class='timestamp' href='#389008'><time timestamp='2020-05-27T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+but I suppose if that matters we can deal with it later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590548760' id='389009'>
+<a class='timestamp' href='#389009'><time timestamp='2020-05-27T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+achow101: you can configure it at runtime..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590549240' id='389010'>
+<a class='timestamp' href='#389010'><time timestamp='2020-05-27T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+now I need to figure out how to add sqlite to depends and travis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590550200' id='389011'>
+<a class='timestamp' href='#389011'><time timestamp='2020-05-27T03:30:00Z'>03:30</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Travis should be easy :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590571560' id='389012'>
+<a class='timestamp' href='#389012'><time timestamp='2020-05-27T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+harding: #17219 was merged on April 17th, which if after 0.20 branched off
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590571620' id='389013'>
+<a class='timestamp' href='#389013'><time timestamp='2020-05-27T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17219" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17219</a> | wallet: allow transaction without change if keypool is empty by Sjors · Pull Request #17219 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590571860' id='389014'>
+<a class='timestamp' href='#389014'><time timestamp='2020-05-27T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I plan to do a write-up on hardware wallet pull requests and they relate. The meat and potatos is in #16546, which I keep up to date regularly.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590571920' id='389015'>
+<a class='timestamp' href='#389015'><time timestamp='2020-05-27T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16546" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16546</a> | External signer support - Wallet Box edition by Sjors · Pull Request #16546 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572040' id='389016'>
+<a class='timestamp' href='#389016'><time timestamp='2020-05-27T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It depends on an improvment to sendmany  sendaddress to work with PSBT. There&#x27;s multiple ways to do that, including writing a whole new send RPC method like in #16378
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572040' id='389017'>
+<a class='timestamp' href='#389017'><time timestamp='2020-05-27T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16378" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16378</a> | The ultimate send RPC by Sjors · Pull Request #16378 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572040' id='389018'>
+<a class='timestamp' href='#389018'><time timestamp='2020-05-27T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It also needs a way to communicate with the device, which for now I&#x27;m using Boost::Process for. Similar to the dicussion with multiprocess, that method can be swapped out later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572100' id='389019'>
+<a class='timestamp' href='#389019'><time timestamp='2020-05-27T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+But I haven&#x27;t seen any worked out alternatives in over a year, so #15382  appears the way to go.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572100' id='389020'>
+<a class='timestamp' href='#389020'><time timestamp='2020-05-27T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/15382" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/15382</a> | util: add runCommandParseJSON by Sjors · Pull Request #15382 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572160' id='389021'>
+<a class='timestamp' href='#389021'><time timestamp='2020-05-27T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Finally there&#x27;s a GUI PR which is more rough, and depends on all the above. But it nicely illustrates what a relatively user friendly experience could look like. #16546
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572160' id='389022'>
+<a class='timestamp' href='#389022'><time timestamp='2020-05-27T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16546" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16546</a> | External signer support - Wallet Box edition by Sjors · Pull Request #16546 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572160' id='389023'>
+<a class='timestamp' href='#389023'><time timestamp='2020-05-27T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I mean #16549
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572160' id='389024'>
+<a class='timestamp' href='#389024'><time timestamp='2020-05-27T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16549" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16549</a> | UI external signer support (e.g. hardware wallet) by Sjors · Pull Request #16549 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572220' id='389025'>
+<a class='timestamp' href='#389025'><time timestamp='2020-05-27T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I keep that one rebased too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572280' id='389026'>
+<a class='timestamp' href='#389026'><time timestamp='2020-05-27T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Everything is designed to work with HWI, but any other script or program with the same interface works too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572340' id='389027'>
+<a class='timestamp' href='#389027'><time timestamp='2020-05-27T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Which I imagine could be more than just a locally connected hardware wallet. E.g. perhaps an online multisig cosigner service.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572820' id='389028'>
+<a class='timestamp' href='#389028'><time timestamp='2020-05-27T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+provoostenator: per our recent discussion offline, it would be great to move these forward by highlighting the highest or first priority one to focus review on, and maybe add to the blockers tomorrow... 15382 or 16546 IIUC? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590572880' id='389029'>
+<a class='timestamp' href='#389029'><time timestamp='2020-05-27T09:48:00Z'>09:48</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+15382 would make sense for that, since it has no dependencies
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573000' id='389030'>
+<a class='timestamp' href='#389030'><time timestamp='2020-05-27T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+But also kallewoof&#x27;s #11413 (though he has a Signet PR in prioriy list)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573000' id='389031'>
+<a class='timestamp' href='#389031'><time timestamp='2020-05-27T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11413" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11413</a> | [wallet] [rpc] sendtoaddress/sendmany: Add explicit feerate option by kallewoof · Pull Request #11413 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573060' id='389032'>
+<a class='timestamp' href='#389032'><time timestamp='2020-05-27T09:51:00Z'>09:51</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+^ that PR is a such a bit change to the send RPC calls that it blocks other work on them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573060' id='389033'>
+<a class='timestamp' href='#389033'><time timestamp='2020-05-27T09:51:00Z'>09:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/520e435b5e56...48e114e0a86f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/520e435b5e56...48e114e0a86f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573060' id='389034'>
+<a class='timestamp' href='#389034'><time timestamp='2020-05-27T09:51:00Z'>09:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1c91ffe pad: doc : add link to readme.md in the first section
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573060' id='389035'>
+<a class='timestamp' href='#389035'><time timestamp='2020-05-27T09:51:00Z'>09:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 48e114e fanquake: Merge #19061: doc: Add link to Visual Studio build readme
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573120' id='389036'>
+<a class='timestamp' href='#389036'><time timestamp='2020-05-27T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #19061: doc: Add link to Visual Studio build readme (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/19061" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19061</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590573120' id='389037'>
+<a class='timestamp' href='#389037'><time timestamp='2020-05-27T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+provoostenator: ok, noting for my review list. (i probably won&#x27;t be at the irc meeting since they are during my sleep hours ATM, but i&#x27;ll check the blockers list anyway) 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590575760' id='389038'>
+<a class='timestamp' href='#389038'><time timestamp='2020-05-27T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/48e114e0a86f...cffbf1eb9a47" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/48e114e0a86f...cffbf1eb9a47</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590575760' id='389039'>
+<a class='timestamp' href='#389039'><time timestamp='2020-05-27T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4c82579 Elichai Turkel: Remove outdated comment about DER encoding
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590575760' id='389040'>
+<a class='timestamp' href='#389040'><time timestamp='2020-05-27T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cffbf1e fanquake: Merge #19073: Remove outdated comment about DER encoding
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590575760' id='389041'>
+<a class='timestamp' href='#389041'><time timestamp='2020-05-27T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #19073: Remove outdated comment about DER encoding (master...2020-05-remove-der-comment) <a href="https://github.com/bitcoin/bitcoin/pull/19073" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19073</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590576060' id='389042'>
+<a class='timestamp' href='#389042'><time timestamp='2020-05-27T10:41:00Z'>10:41</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+provoostenator: yeah, I don&#x27;t know why 17219 seemed to be described in the 0.20 draft release notes.  Let me see if I can figure out who added it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590576120' id='389043'>
+<a class='timestamp' href='#389043'><time timestamp='2020-05-27T10:42:00Z'>10:42</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+It might have been achow101 on my misdirection. I thought that PR was part of 0.20.0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590576180' id='389044'>
+<a class='timestamp' href='#389044'><time timestamp='2020-05-27T10:43:00Z'>10:43</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+<a href="https://github.com/bitcoin-core/bitcoin-devwiki/wiki/0.20.0-Release-Notes-Draft/_compare/c5bd4e39348402cd9d2cbadf9bbc049836a9df16" class="link" target="_blank">https://github.com/bitcoin-core/bitcoin-devwiki/wiki/0.20.0-Release-Notes-Draft/_compare/c5bd4e39348402cd9d2cbadf9bbc049836a9df16</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590576300' id='389045'>
+<a class='timestamp' href='#389045'><time timestamp='2020-05-27T10:45:00Z'>10:45</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+Ok, mystery solved.  I just wanted to make sure I wasn&#x27;t removing something that actually did apply to 0.20.  I&#x27;ve got it queued for a PR to master for when I finish editing all the 0.20 stuff.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590577920' id='389046'>
+<a class='timestamp' href='#389046'><time timestamp='2020-05-27T11:12:00Z'>11:12</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+instagibbs: I <b>*will*</b> get around to reviewing #17331 (and its parent) next week even though I hate coin selection, I promise. The next couple of days are just going to be super busy but after that, as you requested... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590577920' id='389047'>
+<a class='timestamp' href='#389047'><time timestamp='2020-05-27T11:12:00Z'>11:12</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17331" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17331</a> | Use effective values throughout coin selection by achow101 · Pull Request #17331 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590578100' id='389048'>
+<a class='timestamp' href='#389048'><time timestamp='2020-05-27T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Same with #18275, sorry kalle, it&#x27;s been on my list for a while but I promise it isn&#x27;t forgotten
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590578100' id='389049'>
+<a class='timestamp' href='#389049'><time timestamp='2020-05-27T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/18275" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/18275</a> | wallet: error if an explicit fee rate was given but the needed fee rate differed by kallewoof · Pull Request #18275 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590578280' id='389050'>
+<a class='timestamp' href='#389050'><time timestamp='2020-05-27T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/cffbf1eb9a47...9ccaee1d5e2e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/cffbf1eb9a47...9ccaee1d5e2e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590578280' id='389051'>
+<a class='timestamp' href='#389051'><time timestamp='2020-05-27T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c57f03c Calvin Kim: refactor: Replace const char* to std::string
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590578280' id='389052'>
+<a class='timestamp' href='#389052'><time timestamp='2020-05-27T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9ccaee1 MarcoFalke: Merge #19004: refactor: Replace const char* to std::string
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590578340' id='389053'>
+<a class='timestamp' href='#389053'><time timestamp='2020-05-27T11:19:00Z'>11:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #19004: refactor: Replace const char* to std::string (master...replace-char-with-string) <a href="https://github.com/bitcoin/bitcoin/pull/19004" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19004</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590580680' id='389054'>
+<a class='timestamp' href='#389054'><time timestamp='2020-05-27T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+Hi, why is the nVersion of the block header the top bits instead of the &quot;regular&quot; ones? (ie why `0x20000000UL` instead of `4`)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590583260' id='389055'>
+<a class='timestamp' href='#389055'><time timestamp='2020-05-27T12:41:00Z'>12:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #19078: test: Add salvage test for wallet tool (master...2005-testWalletToolSalvage) <a href="https://github.com/bitcoin/bitcoin/pull/19078" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19078</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590583740' id='389056'>
+<a class='timestamp' href='#389056'><time timestamp='2020-05-27T12:49:00Z'>12:49</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+I added some previously-undocumented changes to the 0.20 release notes draft.  Review is appreciated; I&#x27;m happy to make any edits: <a href="https://github.com/bitcoin-core/bitcoin-devwiki/wiki/0.20.0-Release-Notes-Draft/_compare/cd86fd949c5dc3bf8c85f7f4935cac0c1ae0fb55...d87bc6f05e506ae1ff358ccff4e7f4cbbe2c1fb3" class="link" target="_blank">https://github.com/bitcoin-core/bitcoin-devwiki/wiki/0.20.0-Release-Notes-Draft/_compare/cd86fd949c5dc3bf8c85f7f4935cac0c1ae0fb55...d87bc6f05e506ae1ff358ccff4e7f4cbbe2c1fb3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590584220' id='389057'>
+<a class='timestamp' href='#389057'><time timestamp='2020-05-27T12:57:00Z'>12:57</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+harding: probably just squashing the &quot;build system&quot; section added at the bottom with the &quot;build system section&quot; at the top of the notes. Unless they were kept split for a reason.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590584760' id='389058'>
+<a class='timestamp' href='#389058'><time timestamp='2020-05-27T13:06:00Z'>13:06</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+harding: lgtm. micro-nit: s/parameter than can be used/parameter that can be used/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590589800' id='389059'>
+<a class='timestamp' href='#389059'><time timestamp='2020-05-27T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+fanquake, jonatack: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590595020' id='389060'>
+<a class='timestamp' href='#389060'><time timestamp='2020-05-27T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-7'> roconnor</span>&gt;
+elichai2: See BIP-9
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590599220' id='389061'>
+<a class='timestamp' href='#389061'><time timestamp='2020-05-27T17:07:00Z'>17:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] gillichu opened pull request #19082: Moved the CScriptNum asserts into the unit test in script.py (master...issue24) <a href="https://github.com/bitcoin/bitcoin/pull/19082" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19082</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590606660' id='389062'>
+<a class='timestamp' href='#389062'><time timestamp='2020-05-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] rajarshimaitra closed pull request #19063: rpc: testmempoolaccept returns transaction fee (master...fee-in-testmempoolaccept) <a href="https://github.com/bitcoin/bitcoin/pull/19063" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19063</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590617040' id='389063'>
+<a class='timestamp' href='#389063'><time timestamp='2020-05-27T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] gzhao408 opened pull request #19083: test: msg_mempool, fRelay, and other bloomfilter tests (master...test-bloomfilter) <a href="https://github.com/bitcoin/bitcoin/pull/19083" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19083</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590622440' id='389064'>
+<a class='timestamp' href='#389064'><time timestamp='2020-05-27T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 8 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9ccaee1d5e2e...55b4c65bd1d8" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9ccaee1d5e2e...55b4c65bd1d8</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590622440' id='389065'>
+<a class='timestamp' href='#389065'><time timestamp='2020-05-27T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c3cf2f5 Anthony Towns: rpc/blockchain.cpp: Remove g_utxosetscan mutex that is only protecting a s...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590622440' id='389066'>
+<a class='timestamp' href='#389066'><time timestamp='2020-05-27T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master de7c5f4 Anthony Towns: wallet/wallet.h: Remove mutexScanning which was only protecting a single a...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590622440' id='389067'>
+<a class='timestamp' href='#389067'><time timestamp='2020-05-27T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8b5af3d Anthony Towns: net: fMsgProcWake use LOCK instead of lock_guard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1590622500' id='389068'>
+<a class='timestamp' href='#389068'><time timestamp='2020-05-27T23:35:00Z'>23:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #16127: More thread safety annotation coverage (master...201905-locking) <a href="https://github.com/bitcoin/bitcoin/pull/16127" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16127</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

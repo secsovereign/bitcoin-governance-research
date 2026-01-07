@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2015-10-29
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2015-10-29' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2015-09-29">&lt;</a><span class='header'>   October 2015   </span><a href="/bitcoin-core-dev/2015-11-29">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2015-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2015-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2015-10-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2015-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2015-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2015-10-06">6</a>  <a class="" href="/bitcoin-core-dev/2015-10-07">7</a>  <a class="" href="/bitcoin-core-dev/2015-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2015-10-09">9</a> <a class="" href="/bitcoin-core-dev/2015-10-10">10</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2015-10-11">11</a> <a class="" href="/bitcoin-core-dev/2015-10-12">12</a> <a class="" href="/bitcoin-core-dev/2015-10-13">13</a> <a class="" href="/bitcoin-core-dev/2015-10-14">14</a> <a class="" href="/bitcoin-core-dev/2015-10-15">15</a> <a class="" href="/bitcoin-core-dev/2015-10-16">16</a> <a class="" href="/bitcoin-core-dev/2015-10-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2015-10-18">18</a> <a class="" href="/bitcoin-core-dev/2015-10-19">19</a> <a class="" href="/bitcoin-core-dev/2015-10-20">20</a> <a class="" href="/bitcoin-core-dev/2015-10-21">21</a> <a class="" href="/bitcoin-core-dev/2015-10-22">22</a> <a class="" href="/bitcoin-core-dev/2015-10-23">23</a> <a class="" href="/bitcoin-core-dev/2015-10-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2015-10-25">25</a> <a class="" href="/bitcoin-core-dev/2015-10-26">26</a> <a class="" href="/bitcoin-core-dev/2015-10-27">27</a> <a class="" href="/bitcoin-core-dev/2015-10-28">28</a> <a class="current" href="/bitcoin-core-dev/2015-10-29">29</a> <a class="" href="/bitcoin-core-dev/2015-10-30">30</a> <a class="" href="/bitcoin-core-dev/2015-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1446077040' id='433131'>
+<a class='timestamp' href='#433131'><time timestamp='2015-10-29T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+what&#x27;s the status of BIP62 (malleability)? is there something documenting what&#x27;s stopping it from being ready to be deployed, at least for third-party malleability?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446077220' id='433132'>
+<a class='timestamp' href='#433132'><time timestamp='2015-10-29T00:07:00Z'>00:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: the fix for nussance third party malleability is already deployed, in 0.11.1 and 0.10.3, but most hashpower isn&#x27;t running it yet.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446077280' id='433133'>
+<a class='timestamp' href='#433133'><time timestamp='2015-10-29T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+BIP62 which also protects against miners creating malleability for a subset of transactions likely has issues still, and needs to be rewritten... fortunately the parts of it that don&#x27;t have issues are flowing in.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446077520' id='433134'>
+<a class='timestamp' href='#433134'><time timestamp='2015-10-29T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: the downside is that some wallets with absentee maintance are going to get their transactions blocked; but a couple years of nagging is all we could do and with active attacks going on it didn&#x27;t make sense to wait any longer and let everyone continue to get disrupted just to avoid disrupting wallets responsible for only a couple percent of transactions.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446077700' id='433135'>
+<a class='timestamp' href='#433135'><time timestamp='2015-10-29T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+gmaxwell: makes sense... is there an existing PR for bip 62 or something i can read?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446077820' id='433136'>
+<a class='timestamp' href='#433136'><time timestamp='2015-10-29T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+gmaxwell: (the consensus change side, more than the already-deployed isStandard changes i mean)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446078420' id='433137'>
+<a class='timestamp' href='#433137'><time timestamp='2015-10-29T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: well they&#x27;re one in the same in Bitcoin Core; these changes are accomplished via validation flags. To make them non-standard we add the new restrictions to the set of flags used to verify transactions going into the mempool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446078420' id='433138'>
+<a class='timestamp' href='#433138'><time timestamp='2015-10-29T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+To add them to consensus, the softfork negoiates turning them on for block validation.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446078540' id='433139'>
+<a class='timestamp' href='#433139'><time timestamp='2015-10-29T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+gmaxwell: hmm, i guess i&#x27;m confused as to what are the parts that have issues and need rewriting before it can softfork and protect from miners too then?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079020' id='433140'>
+<a class='timestamp' href='#433140'><time timestamp='2015-10-29T00:37:00Z'>00:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: there are more sources of malleability for transactions generally (but not ordinary p2pkh and multisig) than this addresses; at the same time, fancy contract usage -- like swaps and refunds need #9 (and perhaps #8) to be addressed, and CLTV addresses their needs better.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079080' id='433141'>
+<a class='timestamp' href='#433141'><time timestamp='2015-10-29T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: as far as softforking it, it really need to be comprehensively non-standard first before we can do that; and softforking to prevent nussance mallability from miners is probably of pretty low value since miners have no reason to create it, so it&#x27;s a lower priority especially considering how complex and invasive the changes are.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079140' id='433142'>
+<a class='timestamp' href='#433142'><time timestamp='2015-10-29T00:39:00Z'>00:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(and because every time we&#x27;ve picked up BIP62 again we&#x27;ve found more cases that weren&#x27;t covered. :( )
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079140' id='433143'>
+<a class='timestamp' href='#433143'><time timestamp='2015-10-29T00:39:00Z'>00:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(again, related to less common usage)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079200' id='433144'>
+<a class='timestamp' href='#433144'><time timestamp='2015-10-29T00:40:00Z'>00:40</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+gmaxwell: oh, hmm. that sounds more complicated than i was hoping :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079320' id='433145'>
+<a class='timestamp' href='#433145'><time timestamp='2015-10-29T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: rethinking this resulted in coming up with the seggregated witness approach thats in elements alpha, and which may be possible to soft-fork into bitcoin.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079320' id='433146'>
+<a class='timestamp' href='#433146'><time timestamp='2015-10-29T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+So personally thats the route I&#x27;d like to go down.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079320' id='433147'>
+<a class='timestamp' href='#433147'><time timestamp='2015-10-29T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+gmaxwell: i was assuming that was a lot further off than bip62 though?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079320' id='433148'>
+<a class='timestamp' href='#433148'><time timestamp='2015-10-29T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bip62 can be simplified a lot now, if we want just that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079380' id='433149'>
+<a class='timestamp' href='#433149'><time timestamp='2015-10-29T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+all of bip62&#x27;s rules are already nonstandard in 0.10.3 and 0.11.1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079380' id='433150'>
+<a class='timestamp' href='#433150'><time timestamp='2015-10-29T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+BIP62 is infintely far off right now, no one is working on it. And I don&#x27;t think the approach is likely to be very successful; except for blocking malleability in a few narrow cases (which we&#x27;ve already been breaking out)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079380' id='433151'>
+<a class='timestamp' href='#433151'><time timestamp='2015-10-29T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so if the network accepts those rules, we don&#x27;t even need v2 transactions in bip62... just unconditionally make violations of its rules fatal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079440' id='433152'>
+<a class='timestamp' href='#433152'><time timestamp='2015-10-29T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+For the nussance things, non-standardness is sufficient. For contracts BIP62 is insufficient, but CLTV covers a lot of them.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079440' id='433153'>
+<a class='timestamp' href='#433153'><time timestamp='2015-10-29T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(CLTV and CSV)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079680' id='433154'>
+<a class='timestamp' href='#433154'><time timestamp='2015-10-29T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+gmaxwell: so how far off is segregated witness? it doesn&#x27;t have a bip, and needs a block size increase, i think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079860' id='433155'>
+<a class='timestamp' href='#433155'><time timestamp='2015-10-29T00:51:00Z'>00:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what does the block size have to do with it...?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079860' id='433156'>
+<a class='timestamp' href='#433156'><time timestamp='2015-10-29T00:51:00Z'>00:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the complication is mostly that it needs a change in the p2p relay protocol for blocks and transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079980' id='433157'>
+<a class='timestamp' href='#433157'><time timestamp='2015-10-29T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: i thought i just read that segregated witness increased tx size by a bunch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079980' id='433158'>
+<a class='timestamp' href='#433158'><time timestamp='2015-10-29T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i thibk you&#x27;re confusing with confidential transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079980' id='433159'>
+<a class='timestamp' href='#433159'><time timestamp='2015-10-29T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: aha; &quot;In fact, this witnessing occupies 2/3rd of the blockchain.&quot; <a href="https://bitcointalk.org/index.php?topic=1210235.0" class="link" target="_blank">https://bitcointalk.org/index.php?topic=1210235.0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446079980' id='433160'>
+<a class='timestamp' href='#433160'><time timestamp='2015-10-29T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: could be
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080040' id='433161'>
+<a class='timestamp' href='#433161'><time timestamp='2015-10-29T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+seggregated witness just moves scriptSig out of transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080040' id='433162'>
+<a class='timestamp' href='#433162'><time timestamp='2015-10-29T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in alpha, the seggregation is scriptSig AND the range proofs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080040' id='433163'>
+<a class='timestamp' href='#433163'><time timestamp='2015-10-29T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: aha, that makes more sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080220' id='433164'>
+<a class='timestamp' href='#433164'><time timestamp='2015-10-29T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: that idea i mentioned about scanning the feerate sort for &quot;hot hashes&quot; (txins likely to be redeemed in the next few blocks) and then not deleting those from the cache on a flush
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080280' id='433165'>
+<a class='timestamp' href='#433165'><time timestamp='2015-10-29T00:58:00Z'>00:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it has some promise, i just coded up a rough version, takes about 30ms to generate the set of txins from the top 10MB worth of txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080280' id='433166'>
+<a class='timestamp' href='#433166'><time timestamp='2015-10-29T00:58:00Z'>00:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+its hard for me to calculate exactly how well its working b/c it totally screwed up the cache size accounting unless i get a bit smarter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080400' id='433167'>
+<a class='timestamp' href='#433167'><time timestamp='2015-10-29T01:00:00Z'>01:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+that 30ms is out of a flush time thats usually in the 300ms range, but then causes validation times to get a bit faster.  anyway, i&#x27;ll play around with it some more.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080460' id='433168'>
+<a class='timestamp' href='#433168'><time timestamp='2015-10-29T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: ... uh, ... thats saying that <u>_currently_</u> it&#x27;s 2/3rd of the blockchain, which is all bandwidth that could be <u>_saved_</u> by a synchronizing node that isn&#x27;t checking historic signatures.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080460' id='433169'>
+<a class='timestamp' href='#433169'><time timestamp='2015-10-29T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+aj: so its the opposite, and one of the reasons that that approach is so much more attractive.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080520' id='433170'>
+<a class='timestamp' href='#433170'><time timestamp='2015-10-29T01:02:00Z'>01:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(though until a week or so ago I didn&#x27;t believe it was soft-forkable, but luke appears to have more or less solved that design question)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446080580' id='433171'>
+<a class='timestamp' href='#433171'><time timestamp='2015-10-29T01:03:00Z'>01:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: i haven&#x27;t heard luke&#x27;s idea, but I think it&#x27;s simple enough? use &quot;&lt;reedeemscripthash&gt; OP_NOP7&quot; as scriptPubKey, &quot;&quot; as scriptSig, and define an auxiliary data structure with &quot;&lt;scriptSig&gt; &lt;redeemScript&gt;&quot; in it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446081060' id='433172'>
+<a class='timestamp' href='#433172'><time timestamp='2015-10-29T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: yes sir. And require the scrippubkey in the original datastructure to be empty for OP_SEGWITNESS scripts. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446081120' id='433173'>
+<a class='timestamp' href='#433173'><time timestamp='2015-10-29T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+er original scriptsig.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446081120' id='433174'>
+<a class='timestamp' href='#433174'><time timestamp='2015-10-29T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as i said :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446081180' id='433175'>
+<a class='timestamp' href='#433175'><time timestamp='2015-10-29T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+lol &quot;&quot; didn&#x27;t take up enough space on the screen.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083700' id='433176'>
+<a class='timestamp' href='#433176'><time timestamp='2015-10-29T01:55:00Z'>01:55</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Why is leveldb in the core in the first place?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083820' id='433177'>
+<a class='timestamp' href='#433177'><time timestamp='2015-10-29T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because we want to have control over its changes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083820' id='433178'>
+<a class='timestamp' href='#433178'><time timestamp='2015-10-29T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+By not changing it...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083820' id='433179'>
+<a class='timestamp' href='#433179'><time timestamp='2015-10-29T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and we have local modifications to it (win env, disable compression, and we&#x27;ve had other ones before)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083820' id='433180'>
+<a class='timestamp' href='#433180'><time timestamp='2015-10-29T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Ref <a href="https://github.com/bitcoin/bitcoin/pull/6899" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6899</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083820' id='433181'>
+<a class='timestamp' href='#433181'><time timestamp='2015-10-29T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if a bug were to be found in leveldb, fixing it may cause a consensus failure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083880' id='433182'>
+<a class='timestamp' href='#433182'><time timestamp='2015-10-29T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and bugs like that have happened
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446083880' id='433183'>
+<a class='timestamp' href='#433183'><time timestamp='2015-10-29T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(before we were using leveldb, to be clear)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084060' id='433184'>
+<a class='timestamp' href='#433184'><time timestamp='2015-10-29T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+bsm117532: leveldb has (prior to our use of it) fixed &#x27;bugs&#x27; that would have broken network consensus.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084120' id='433185'>
+<a class='timestamp' href='#433185'><time timestamp='2015-10-29T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh jinx, sorry.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084120' id='433186'>
+<a class='timestamp' href='#433186'><time timestamp='2015-10-29T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+That&#x27;s yucky on so many levels.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084120' id='433187'>
+<a class='timestamp' href='#433187'><time timestamp='2015-10-29T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how do you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084120' id='433188'>
+<a class='timestamp' href='#433188'><time timestamp='2015-10-29T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+FWIW I&#x27;d have put it in a separate repo under bitcoin, rather than import the code directly.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433189'>
+<a class='timestamp' href='#433189'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bsm117532: <a href="https://github.com/bitcoin/leveldb" class="link" target="_blank">https://github.com/bitcoin/leveldb</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433190'>
+<a class='timestamp' href='#433190'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Yeah, like that ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433191'>
+<a class='timestamp' href='#433191'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not like that; that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433192'>
+<a class='timestamp' href='#433192'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It is.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433193'>
+<a class='timestamp' href='#433193'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+The github repo should have a reference to it, rather than have the code imported.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433194'>
+<a class='timestamp' href='#433194'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that is how git subtree works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084180' id='433195'>
+<a class='timestamp' href='#433195'><time timestamp='2015-10-29T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+subtrees are ugly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084240' id='433196'>
+<a class='timestamp' href='#433196'><time timestamp='2015-10-29T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+checking...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084240' id='433197'>
+<a class='timestamp' href='#433197'><time timestamp='2015-10-29T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but the only alternative is submodules, which are even more ugly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084240' id='433198'>
+<a class='timestamp' href='#433198'><time timestamp='2015-10-29T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Yeah that&#x27;s what I mean, a submodule.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084300' id='433199'>
+<a class='timestamp' href='#433199'><time timestamp='2015-10-29T02:05:00Z'>02:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well we&#x27;re using subtrees
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084300' id='433200'>
+<a class='timestamp' href='#433200'><time timestamp='2015-10-29T02:05:00Z'>02:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t feel like reiterating the advantages of one over the other in either direction; you can find enough discussion about that on the internet :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084360' id='433201'>
+<a class='timestamp' href='#433201'><time timestamp='2015-10-29T02:06:00Z'>02:06</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+AFAICT, when I clone bitcoin, I don&#x27;t get the bitcoin/leveldb repo.  I get bitcoin/src/leveldb which is entirely separate.  Am I wrong about that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084360' id='433202'>
+<a class='timestamp' href='#433202'><time timestamp='2015-10-29T02:06:00Z'>02:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+correct, though a script is included to verify their correspondence
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084420' id='433203'>
+<a class='timestamp' href='#433203'><time timestamp='2015-10-29T02:07:00Z'>02:07</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I see.  Egad that&#x27;s ugly.  Well then you&#x27;ll just have to deal with spurious patches to leveldb.  :-P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084480' id='433204'>
+<a class='timestamp' href='#433204'><time timestamp='2015-10-29T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if we need to change something to our leveldb tree, the correct way is submit it as a PR to the bitcoin/leveldb repo, and then bitcoin core can update to a new version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084480' id='433205'>
+<a class='timestamp' href='#433205'><time timestamp='2015-10-29T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+That makes sense.  It&#x27;s the other direction that is generating a problem here.  (modifying src/leveldb...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084540' id='433206'>
+<a class='timestamp' href='#433206'><time timestamp='2015-10-29T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we don&#x27;t ever accept changes directly to that directory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084660' id='433207'>
+<a class='timestamp' href='#433207'><time timestamp='2015-10-29T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Well we&#x27;re going to replace leveldb with sqlite, right?!?!  ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084720' id='433208'>
+<a class='timestamp' href='#433208'><time timestamp='2015-10-29T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+maybe.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084720' id='433209'>
+<a class='timestamp' href='#433209'><time timestamp='2015-10-29T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+is sqlite performant enough?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084720' id='433210'>
+<a class='timestamp' href='#433210'><time timestamp='2015-10-29T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Also replace Berkeley db with /dev/null...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084720' id='433211'>
+<a class='timestamp' href='#433211'><time timestamp='2015-10-29T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bsm117532: already possible, use --disable-wallet at compile time :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084720' id='433212'>
+<a class='timestamp' href='#433212'><time timestamp='2015-10-29T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+CodeShark: doubtful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084780' id='433213'>
+<a class='timestamp' href='#433213'><time timestamp='2015-10-29T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+sipa: I&#x27;m well aware, always do.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084840' id='433214'>
+<a class='timestamp' href='#433214'><time timestamp='2015-10-29T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+we&#x27;re pretty set on ditching leveldb, though, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084840' id='433215'>
+<a class='timestamp' href='#433215'><time timestamp='2015-10-29T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+CodeShark: don&#x27;t know.  I re-ran some benchmarks from an old article: <a href="https://gist.github.com/mcelrath/6952eab246a7c705a0fb" class="link" target="_blank">https://gist.github.com/mcelrath/6952eab246a7c705a0fb</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084840' id='433216'>
+<a class='timestamp' href='#433216'><time timestamp='2015-10-29T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+CodeShark: only if a suitable replacement is found
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084900' id='433217'>
+<a class='timestamp' href='#433217'><time timestamp='2015-10-29T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I think we need a more targeted leveldb vs. sqlite (or something else) comparison.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084900' id='433218'>
+<a class='timestamp' href='#433218'><time timestamp='2015-10-29T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bsm117532: jeff has a branch with bitcoin core running on sqlite3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084900' id='433219'>
+<a class='timestamp' href='#433219'><time timestamp='2015-10-29T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but there are problems with background checkpointing etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084960' id='433220'>
+<a class='timestamp' href='#433220'><time timestamp='2015-10-29T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+the main issues with leveldb are that it&#x27;s no longer being maintained and that it doesn&#x27;t guarantee consistency, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084960' id='433221'>
+<a class='timestamp' href='#433221'><time timestamp='2015-10-29T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Well he did that quickly...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084960' id='433222'>
+<a class='timestamp' href='#433222'><time timestamp='2015-10-29T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+CodeShark: it does guarantee consistency; it just seems to fail on windows pretty often
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084960' id='433223'>
+<a class='timestamp' href='#433223'><time timestamp='2015-10-29T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+doesn&#x27;t it rely on the OS queueing up writes in the correct order or something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084960' id='433224'>
+<a class='timestamp' href='#433224'><time timestamp='2015-10-29T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446084960' id='433225'>
+<a class='timestamp' href='#433225'><time timestamp='2015-10-29T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or at least, it doesn&#x27;t intend to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085020' id='433226'>
+<a class='timestamp' href='#433226'><time timestamp='2015-10-29T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it relies on the OS behaviour properly when asked to do a synchronous write/flush, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085080' id='433227'>
+<a class='timestamp' href='#433227'><time timestamp='2015-10-29T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Are we worried about db corruption on power failure?  Or something else generating inconsistencies?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085080' id='433228'>
+<a class='timestamp' href='#433228'><time timestamp='2015-10-29T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, that&#x27;s what seems to happen
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085140' id='433229'>
+<a class='timestamp' href='#433229'><time timestamp='2015-10-29T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+I haven&#x27;t looked at the actual study, but <a href="https://en.wikipedia.org/wiki/LevelDB#Bugs_and_Reliability" class="link" target="_blank">https://en.wikipedia.org/wiki/LevelDB#Bugs_and_Reliability</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085140' id='433230'>
+<a class='timestamp' href='#433230'><time timestamp='2015-10-29T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+That&#x27;s a very hard problem that I don&#x27;t think bitcoin can solve by choice of db.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085140' id='433231'>
+<a class='timestamp' href='#433231'><time timestamp='2015-10-29T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+This is why Oracle charges big bucks for dedicated hardware.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085140' id='433232'>
+<a class='timestamp' href='#433232'><time timestamp='2015-10-29T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sqlite is well known for being very stable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085200' id='433233'>
+<a class='timestamp' href='#433233'><time timestamp='2015-10-29T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+sqlite has worked very well for me in certain applications that don&#x27;t require extremely frequent insertions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085200' id='433234'>
+<a class='timestamp' href='#433234'><time timestamp='2015-10-29T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: aye, the mere simplicity of sqlite is very attractive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085200' id='433235'>
+<a class='timestamp' href='#433235'><time timestamp='2015-10-29T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+CodeShark: we have extremely infrequent insertions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085260' id='433236'>
+<a class='timestamp' href='#433236'><time timestamp='2015-10-29T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but they&#x27;re very big batches
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085260' id='433237'>
+<a class='timestamp' href='#433237'><time timestamp='2015-10-29T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I&#x27;ve had good luck with sqlite too.  But these are anecdotes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085320' id='433238'>
+<a class='timestamp' href='#433238'><time timestamp='2015-10-29T02:22:00Z'>02:22</time></a>
+&lt;<span class='nick nick-9'> tripleslash</span>&gt;
+bsm117532, its not even power failure.  Windows gives very little time for apps to cleanly shutdown these days.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085380' id='433239'>
+<a class='timestamp' href='#433239'><time timestamp='2015-10-29T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+lmdb seems to be a interesting candidate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085380' id='433240'>
+<a class='timestamp' href='#433240'><time timestamp='2015-10-29T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it&#x27;s mmap-based, so not usable on 32-bit systems for such large databases as we have
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085440' id='433241'>
+<a class='timestamp' href='#433241'><time timestamp='2015-10-29T02:24:00Z'>02:24</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: leveldb is just used for the txdb atm right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085440' id='433242'>
+<a class='timestamp' href='#433242'><time timestamp='2015-10-29T02:24:00Z'>02:24</time></a>
+&lt;<span class='nick nick-9'> tripleslash</span>&gt;
+Pretty much any new pc today is shipping x64.  There comes a time where it will be time to just cut the cord on the X86 systems.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085500' id='433243'>
+<a class='timestamp' href='#433243'><time timestamp='2015-10-29T02:25:00Z'>02:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dcousens: block index and chainstate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085500' id='433244'>
+<a class='timestamp' href='#433244'><time timestamp='2015-10-29T02:25:00Z'>02:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tripleslash: yet ARM is becoming more and more relevant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085560' id='433245'>
+<a class='timestamp' href='#433245'><time timestamp='2015-10-29T02:26:00Z'>02:26</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+can&#x27;t we create multiple databases all restricted to 4 gigs? :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085560' id='433246'>
+<a class='timestamp' href='#433246'><time timestamp='2015-10-29T02:26:00Z'>02:26</time></a>
+&lt;<span class='nick nick-9'> tripleslash</span>&gt;
+sipa: true that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085560' id='433247'>
+<a class='timestamp' href='#433247'><time timestamp='2015-10-29T02:26:00Z'>02:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+CodeShark: we need atomic changes across databases then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085620' id='433248'>
+<a class='timestamp' href='#433248'><time timestamp='2015-10-29T02:27:00Z'>02:27</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I vote that a 64 bit system as a requirement is a reasonable thing.  Bending over backwards to shoe-horn into 32 bits is not worth anyone&#x27;s time.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085620' id='433249'>
+<a class='timestamp' href='#433249'><time timestamp='2015-10-29T02:27:00Z'>02:27</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: right, the CBlockTree is defined in txdb.h haha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085740' id='433250'>
+<a class='timestamp' href='#433250'><time timestamp='2015-10-29T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+we can always support mmap on 64-bit systems and fall back on leveldb for 32-bit systems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085740' id='433251'>
+<a class='timestamp' href='#433251'><time timestamp='2015-10-29T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+although dunno what that might entail regarding consensus
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085800' id='433252'>
+<a class='timestamp' href='#433252'><time timestamp='2015-10-29T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+it only takes one &quot;undocumented feature&quot; to screw everything up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085800' id='433253'>
+<a class='timestamp' href='#433253'><time timestamp='2015-10-29T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+having multiple databases is technically not hard; the database interface is pretty neatly abstracted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085860' id='433254'>
+<a class='timestamp' href='#433254'><time timestamp='2015-10-29T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it&#x27;s very unattractive to risk divergence between them, especially when testing mostly happens on one, and production mostly on another :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085860' id='433255'>
+<a class='timestamp' href='#433255'><time timestamp='2015-10-29T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: production on 32-bit?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085920' id='433256'>
+<a class='timestamp' href='#433256'><time timestamp='2015-10-29T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Quick git question...I did a push -f to overwrite my previous commit, because I like having clean histories. I could have also made a second commit on this PR.  Does anyone care?  Would github have squashed them anyway?  (Re: <a href="https://github.com/bitcoin/bitcoin/pull/6899" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6899</a> )
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085920' id='433257'>
+<a class='timestamp' href='#433257'><time timestamp='2015-10-29T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bsm117532: github won&#x27;t squash for you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085920' id='433258'>
+<a class='timestamp' href='#433258'><time timestamp='2015-10-29T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+reviewers may ask to squash things
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085920' id='433259'>
+<a class='timestamp' href='#433259'><time timestamp='2015-10-29T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-14'> * bsm117532</span>&gt;
+has spent too long being the only committer to his repo.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085920' id='433260'>
+<a class='timestamp' href='#433260'><time timestamp='2015-10-29T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Ok so I did the right thing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085980' id='433261'>
+<a class='timestamp' href='#433261'><time timestamp='2015-10-29T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+only reason to not squash is if it&#x27;s a complicated commit that required lots of review (for example, big code movement commits)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085980' id='433262'>
+<a class='timestamp' href='#433262'><time timestamp='2015-10-29T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: is the squash op not deterministic?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085980' id='433263'>
+<a class='timestamp' href='#433263'><time timestamp='2015-10-29T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dcousens: the resulting tree of a squashed commit is identical to the resulting tree of the series of commits it derived from
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446085980' id='433264'>
+<a class='timestamp' href='#433264'><time timestamp='2015-10-29T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+There is no squash op... rebase -i is very manual and not deterministic at all.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086040' id='433265'>
+<a class='timestamp' href='#433265'><time timestamp='2015-10-29T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+I know the rebase is, and hence verifiable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086040' id='433266'>
+<a class='timestamp' href='#433266'><time timestamp='2015-10-29T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dcousens: you&#x27;re confusing commits with trees
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086040' id='433267'>
+<a class='timestamp' href='#433267'><time timestamp='2015-10-29T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+rebase is only not deterministic when you either change commit order or rebase off a different branch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086040' id='433268'>
+<a class='timestamp' href='#433268'><time timestamp='2015-10-29T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or if there were conflicts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086100' id='433269'>
+<a class='timestamp' href='#433269'><time timestamp='2015-10-29T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or merges within the commits you&#x27;re rebasing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086100' id='433270'>
+<a class='timestamp' href='#433270'><time timestamp='2015-10-29T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+rebase applies a merge resolution algorithm, and you can change that algorithm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086100' id='433271'>
+<a class='timestamp' href='#433271'><time timestamp='2015-10-29T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+commit followed by squash is effectively the same as commit --amend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086100' id='433272'>
+<a class='timestamp' href='#433272'><time timestamp='2015-10-29T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which is also not deterministic :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086100' id='433273'>
+<a class='timestamp' href='#433273'><time timestamp='2015-10-29T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(the resulting tree is, but the commit itself isn&#x27;t)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086160' id='433274'>
+<a class='timestamp' href='#433274'><time timestamp='2015-10-29T02:36:00Z'>02:36</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086160' id='433275'>
+<a class='timestamp' href='#433275'><time timestamp='2015-10-29T02:36:00Z'>02:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the reason it isn&#x27;t is because a commit has a timestamp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086160' id='433276'>
+<a class='timestamp' href='#433276'><time timestamp='2015-10-29T02:36:00Z'>02:36</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+but that&#x27;s a trivial source of nondeterminism ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086220' id='433277'>
+<a class='timestamp' href='#433277'><time timestamp='2015-10-29T02:37:00Z'>02:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can avoid it by specifying the timestamp on the command-line, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086220' id='433278'>
+<a class='timestamp' href='#433278'><time timestamp='2015-10-29T02:37:00Z'>02:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086220' id='433279'>
+<a class='timestamp' href='#433279'><time timestamp='2015-10-29T02:37:00Z'>02:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but rebases are generally not verifiable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086220' id='433280'>
+<a class='timestamp' href='#433280'><time timestamp='2015-10-29T02:37:00Z'>02:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and afaik nobody does that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086580' id='433281'>
+<a class='timestamp' href='#433281'><time timestamp='2015-10-29T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+LMDB does look really interesting...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086700' id='433282'>
+<a class='timestamp' href='#433282'><time timestamp='2015-10-29T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Looks like it uses COW instead of sqlite&#x27;s *.journal which I think is write-ahead logging.  So should be much faster than sqlite, probably a factor of 2.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086700' id='433283'>
+<a class='timestamp' href='#433283'><time timestamp='2015-10-29T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086700' id='433284'>
+<a class='timestamp' href='#433284'><time timestamp='2015-10-29T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+It looks like an in-memory btrfs ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086760' id='433285'>
+<a class='timestamp' href='#433285'><time timestamp='2015-10-29T02:46:00Z'>02:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+except it&#x27;s not in-memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446086760' id='433286'>
+<a class='timestamp' href='#433286'><time timestamp='2015-10-29T02:46:00Z'>02:46</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Yeah but mmapped, so it looks like it&#x27;s in-memory.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446087000' id='433287'>
+<a class='timestamp' href='#433287'><time timestamp='2015-10-29T02:50:00Z'>02:50</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I&#x27;ve got one more tedious bug I want to fix, but maybe then I&#x27;ll look at making an LMDB branch for comparison.  If it was so easy for jeff to rip out leveldb for sqlite...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088200' id='433288'>
+<a class='timestamp' href='#433288'><time timestamp='2015-10-29T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+COW is COW, somewhat like write-ahead logging.  :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088200' id='433289'>
+<a class='timestamp' href='#433289'><time timestamp='2015-10-29T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+If you order your writes properly, it&#x27;s write-once
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088200' id='433290'>
+<a class='timestamp' href='#433290'><time timestamp='2015-10-29T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+... i do wish we could just use LMDB
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088260' id='433291'>
+<a class='timestamp' href='#433291'><time timestamp='2015-10-29T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+It&#x27;s quite easy to switch out.  I could do an LMDB patch.  Also working on a COW dbm myself.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088320' id='433292'>
+<a class='timestamp' href='#433292'><time timestamp='2015-10-29T03:12:00Z'>03:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m sure it wouldn&#x27;t be hard; but LMDB is a total no go on 32-bit systems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088320' id='433293'>
+<a class='timestamp' href='#433293'><time timestamp='2015-10-29T03:12:00Z'>03:12</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+the best performance should be COW + Kyoto Cabinet scheme
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088320' id='433294'>
+<a class='timestamp' href='#433294'><time timestamp='2015-10-29T03:12:00Z'>03:12</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+(KC is worth a look too)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088380' id='433295'>
+<a class='timestamp' href='#433295'><time timestamp='2015-10-29T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+COW practically guarantees no corruption (assuming write order is proper)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088440' id='433296'>
+<a class='timestamp' href='#433296'><time timestamp='2015-10-29T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i would be interested in LMDB&#x27;s performance...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088440' id='433297'>
+<a class='timestamp' href='#433297'><time timestamp='2015-10-29T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+no idea if LMDB performs better than KC.  Worth benching, definitely.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088500' id='433298'>
+<a class='timestamp' href='#433298'><time timestamp='2015-10-29T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+Google benching leveldb, sqlite, kyoto cabinet: <a href="http://leveldb.googlecode.com/svn/trunk/doc/benchmark.html" class="link" target="_blank">http://leveldb.googlecode.com/svn/trunk/doc/benchmark.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088500' id='433299'>
+<a class='timestamp' href='#433299'><time timestamp='2015-10-29T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jgarzik, COW without any delete? :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088560' id='433300'>
+<a class='timestamp' href='#433300'><time timestamp='2015-10-29T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+phantomcircuit, typical strategy is reclaim after X generations of the superblock
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088560' id='433301'>
+<a class='timestamp' href='#433301'><time timestamp='2015-10-29T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+assuming no stored snapshots
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088560' id='433302'>
+<a class='timestamp' href='#433302'><time timestamp='2015-10-29T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="http://symas.com/mdb/microbench/" class="link" target="_blank">http://symas.com/mdb/microbench/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088680' id='433303'>
+<a class='timestamp' href='#433303'><time timestamp='2015-10-29T03:18:00Z'>03:18</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+Useful link.  They should have benched the KC hash db and not btree.  ;p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088740' id='433304'>
+<a class='timestamp' href='#433304'><time timestamp='2015-10-29T03:19:00Z'>03:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not a fair comparison, as lmdb/leveldb only do ordered maps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088800' id='433305'>
+<a class='timestamp' href='#433305'><time timestamp='2015-10-29T03:20:00Z'>03:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+has anyone managed to complete a sync with jeff&#x27;s sqllite attempt?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088800' id='433306'>
+<a class='timestamp' href='#433306'><time timestamp='2015-10-29T03:20:00Z'>03:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think jcorgan said it was going on day 2 for him.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088800' id='433307'>
+<a class='timestamp' href='#433307'><time timestamp='2015-10-29T03:20:00Z'>03:20</time></a>
+&lt;<span class='nick nick-9'> tripleslash</span>&gt;
+if you build a win64 binary for me, I&#x27;ll give it a go.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088860' id='433308'>
+<a class='timestamp' href='#433308'><time timestamp='2015-10-29T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+bench&#x27;d BDB in b-tree mode too :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088860' id='433309'>
+<a class='timestamp' href='#433309'><time timestamp='2015-10-29T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+if we didn&#x27;t need ordering, things could go really fast
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088860' id='433310'>
+<a class='timestamp' href='#433310'><time timestamp='2015-10-29T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we don&#x27;t really need ordering
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088920' id='433311'>
+<a class='timestamp' href='#433311'><time timestamp='2015-10-29T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though it may end up being useful if we go from per-tx caching to per-txout caching
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446088920' id='433312'>
+<a class='timestamp' href='#433312'><time timestamp='2015-10-29T03:22:00Z'>03:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and for normative utxo hashes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446089040' id='433313'>
+<a class='timestamp' href='#433313'><time timestamp='2015-10-29T03:24:00Z'>03:24</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jgarzik, more importantly we can significantly over provision the initial db to avoid resizing constantly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446089640' id='433314'>
+<a class='timestamp' href='#433314'><time timestamp='2015-10-29T03:34:00Z'>03:34</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+LMDB could use a windowed mmap approach and support 32-bit systems, &gt;2GB databases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446089640' id='433315'>
+<a class='timestamp' href='#433315'><time timestamp='2015-10-29T03:34:00Z'>03:34</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+or we could just drop 32-bit support
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446089700' id='433316'>
+<a class='timestamp' href='#433316'><time timestamp='2015-10-29T03:35:00Z'>03:35</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+&quot;full node = big database = big iron = no rPi&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090060' id='433317'>
+<a class='timestamp' href='#433317'><time timestamp='2015-10-29T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+jgarzik: …
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090060' id='433318'>
+<a class='timestamp' href='#433318'><time timestamp='2015-10-29T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+I use 32-bit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090060' id='433319'>
+<a class='timestamp' href='#433319'><time timestamp='2015-10-29T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-9'> tripleslash</span>&gt;
+Luke-Jr, you also use dialup.  At some point, people have to upgrade. ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090060' id='433320'>
+<a class='timestamp' href='#433320'><time timestamp='2015-10-29T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+except for Valgrind not supporting it, it&#x27;s a more logical choice than 64-bit. especially x32, once more stuff works.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090120' id='433321'>
+<a class='timestamp' href='#433321'><time timestamp='2015-10-29T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+tripleslash: I do not use dialup.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090120' id='433322'>
+<a class='timestamp' href='#433322'><time timestamp='2015-10-29T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-9'> tripleslash</span>&gt;
+my apologies.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090120' id='433323'>
+<a class='timestamp' href='#433323'><time timestamp='2015-10-29T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+for large databases the address space helps a -lot-.  x32 useful but not in this case.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090120' id='433324'>
+<a class='timestamp' href='#433324'><time timestamp='2015-10-29T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+tripleslash: also, I upgraded to 64-bit within a week of AMD releasing the first 64-bit capable CPU. I decided a year or two ago that CPUs were fast enough that 32-bit was the better option now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090180' id='433325'>
+<a class='timestamp' href='#433325'><time timestamp='2015-10-29T03:43:00Z'>03:43</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+jgarzik: x32 is only useful if basically everything is x32; not so much if you have both x32 and amd64 programs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446090180' id='433326'>
+<a class='timestamp' href='#433326'><time timestamp='2015-10-29T03:43:00Z'>03:43</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+not true (but off-topic so I&#x27;ll stop)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446093120' id='433327'>
+<a class='timestamp' href='#433327'><time timestamp='2015-10-29T04:32:00Z'>04:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+note: LMDB&#x27;s on-disk format is platform dependent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446093120' id='433328'>
+<a class='timestamp' href='#433328'><time timestamp='2015-10-29T04:32:00Z'>04:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(byte order and word size)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097080' id='433329'>
+<a class='timestamp' href='#433329'><time timestamp='2015-10-29T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jgarzik, unfortunately lmdb really isn&#x27;t an option because of the trade offs they made
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097080' id='433330'>
+<a class='timestamp' href='#433330'><time timestamp='2015-10-29T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+phantomcircuit: any specifics, apart from intentionally no support for 32 bit systems?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097440' id='433331'>
+<a class='timestamp' href='#433331'><time timestamp='2015-10-29T05:44:00Z'>05:44</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+Luke-Jr: &quot;CPUs were fast enough that 32-bit was the better option
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097440' id='433332'>
+<a class='timestamp' href='#433332'><time timestamp='2015-10-29T05:44:00Z'>05:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: well no integrity checks iirc, and non-portable data (latter less of an issue); I think there was some other thing wumpus raised.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097500' id='433333'>
+<a class='timestamp' href='#433333'><time timestamp='2015-10-29T05:45:00Z'>05:45</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+If its not relevant, could you PM what you mean by that, ooi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097500' id='433334'>
+<a class='timestamp' href='#433334'><time timestamp='2015-10-29T05:45:00Z'>05:45</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+dcousens: #bitcoin maybe?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097500' id='433335'>
+<a class='timestamp' href='#433335'><time timestamp='2015-10-29T05:45:00Z'>05:45</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+Luke-Jr: sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446097560' id='433336'>
+<a class='timestamp' href='#433336'><time timestamp='2015-10-29T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: or we could just admit that we&#x27;ll need a custom data structure to make any kind of commitment space/time efficient. :-/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105060' id='433337'>
+<a class='timestamp' href='#433337'><time timestamp='2015-10-29T07:51:00Z'>07:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+-1 for dropping 32 bit support, I want to support 32-bit ARM
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105120' id='433338'>
+<a class='timestamp' href='#433338'><time timestamp='2015-10-29T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+leveldb works well enough I see no need for any kind of desperate measures
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105180' id='433339'>
+<a class='timestamp' href='#433339'><time timestamp='2015-10-29T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+experimenting with other databases, fine, but I don&#x27;t like this talk of dropping support for platforms just to accomodate a library
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105600' id='433340'>
+<a class='timestamp' href='#433340'><time timestamp='2015-10-29T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+I agree with not removing leveldb support - but other than the fact we have close to zero tolerance for differences in consensus behavior, I think supporting multiple databases is generally a good idea
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105660' id='433341'>
+<a class='timestamp' href='#433341'><time timestamp='2015-10-29T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we&#x27;ve made it very easy to switch the database, but not looking forward to maintaining and testing multiple db backends in the upstream repository
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105720' id='433342'>
+<a class='timestamp' href='#433342'><time timestamp='2015-10-29T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it&#x27;s very easy to use another one, though most alternatives have performance so poor they&#x27;re just unusable.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105780' id='433343'>
+<a class='timestamp' href='#433343'><time timestamp='2015-10-29T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I can&#x27;t say this enough, the database is not an external interface, it&#x27;s just an implementation detail of bitcoind. There should be zero reason for users to switch it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105780' id='433344'>
+<a class='timestamp' href='#433344'><time timestamp='2015-10-29T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+apparently corruption is not that infrequent on windows
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105780' id='433345'>
+<a class='timestamp' href='#433345'><time timestamp='2015-10-29T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+then fix it on windows! it&#x27;s not magic or rocket science
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105780' id='433346'>
+<a class='timestamp' href='#433346'><time timestamp='2015-10-29T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;m tired of this complaining
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433347'>
+<a class='timestamp' href='#433347'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433348'>
+<a class='timestamp' href='#433348'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+CodeShark: sure, so go fix it!  it&#x27;s likely the same issue that existed on OSX or similar.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433349'>
+<a class='timestamp' href='#433349'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+can we pool a bounty or something like that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433350'>
+<a class='timestamp' href='#433350'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+you mean fix leveldb itself?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433351'>
+<a class='timestamp' href='#433351'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(where fsync didn&#x27;t work for writes via mmaps)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433352'>
+<a class='timestamp' href='#433352'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t want to hear &quot;leveldb is broken on windows&quot; every day, this is not tea time with bitcoin-dev, we should be constructive here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433353'>
+<a class='timestamp' href='#433353'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+CodeShark: leveldb&#x27;s FS access is abstracted, the windows interface we use is probably only used by us and nothing else.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105840' id='433354'>
+<a class='timestamp' href='#433354'><time timestamp='2015-10-29T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105900' id='433355'>
+<a class='timestamp' href='#433355'><time timestamp='2015-10-29T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+In chrome, for example, all the FS access is via some totally chrome specific layer and doesn&#x27;t touch any of the FS access code we use.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105960' id='433356'>
+<a class='timestamp' href='#433356'><time timestamp='2015-10-29T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+I don&#x27;t really fricking care, personally - I don&#x27;t really run a bunch of bitcoin core instances on windows - I&#x27;m just repeating what I&#x27;ve heard from others
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446105960' id='433357'>
+<a class='timestamp' href='#433357'><time timestamp='2015-10-29T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+CodeShark: you actually run windows though, none of the other people who would normally fix something like this do.. and we don&#x27;t even have an archive of a reproduction.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106080' id='433358'>
+<a class='timestamp' href='#433358'><time timestamp='2015-10-29T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+(tomorrow we find out CodeShark stopped running Windows :p)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106080' id='433359'>
+<a class='timestamp' href='#433359'><time timestamp='2015-10-29T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I do care but I don&#x27;t have access to a remotely recent windows machine at the moment, and know very little about windows internals or debugging. I generally use wine when I need to do that but it&#x27;s no help here.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106140' id='433360'>
+<a class='timestamp' href='#433360'><time timestamp='2015-10-29T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+my windows development at present consists almost 100% of crossbuilds from linux
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106200' id='433361'>
+<a class='timestamp' href='#433361'><time timestamp='2015-10-29T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+windows is just the way I access VMs and servers ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106200' id='433362'>
+<a class='timestamp' href='#433362'><time timestamp='2015-10-29T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+from one machine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106200' id='433363'>
+<a class='timestamp' href='#433363'><time timestamp='2015-10-29T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+none of my other machines run windows
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446106260' id='433364'>
+<a class='timestamp' href='#433364'><time timestamp='2015-10-29T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-9'> CodeShark</span>&gt;
+<a href="http://research.cs.wisc.edu/adsl/Publications/alc-hotdep13.pdf" class="link" target="_blank">http://research.cs.wisc.edu/adsl/Publications/alc-hotdep13.pdf</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446107340' id='433365'>
+<a class='timestamp' href='#433365'><time timestamp='2015-10-29T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-8'> GitHub14</span>&gt;
+[bitcoin] laanwj opened pull request #6900: gitian: build on ubuntu 14.04 (master...2015_10_gitian_trusty) <a href="https://github.com/bitcoin/bitcoin/pull/6900" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6900</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446108600' id='433366'>
+<a class='timestamp' href='#433366'><time timestamp='2015-10-29T08:50:00Z'>08:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+an easy to implement robustness option would be to auto-back up the utxo database once in a while. This can be done in a similar fashion to gettxoutsetinfo, on a snapshot inthe background. Then if unrecoverable database issues happen, restore that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446108720' id='433367'>
+<a class='timestamp' href='#433367'><time timestamp='2015-10-29T08:52:00Z'>08:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(not meant as a substitute for solving the leveldb issue on windows, but what I like is that it helps for both known and unknown issues)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446110640' id='433368'>
+<a class='timestamp' href='#433368'><time timestamp='2015-10-29T09:24:00Z'>09:24</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+I&#x27;m wondering about the process of removing stuff from the mempool when a new block comes in.  So transactions from the block naturally are remove from the mempool. Is that mallaeble safe?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446110640' id='433369'>
+<a class='timestamp' href='#433369'><time timestamp='2015-10-29T09:24:00Z'>09:24</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+Is the txid used for that removal?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446110640' id='433370'>
+<a class='timestamp' href='#433370'><time timestamp='2015-10-29T09:24:00Z'>09:24</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+Or is it smarter that that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446110640' id='433371'>
+<a class='timestamp' href='#433371'><time timestamp='2015-10-29T09:24:00Z'>09:24</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446110700' id='433372'>
+<a class='timestamp' href='#433372'><time timestamp='2015-10-29T09:25:00Z'>09:25</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+zander, any transactions which conflicts with the new block is removed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446110700' id='433373'>
+<a class='timestamp' href='#433373'><time timestamp='2015-10-29T09:25:00Z'>09:25</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+ah, ok. Thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446112560' id='433374'>
+<a class='timestamp' href='#433374'><time timestamp='2015-10-29T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-10'> max777555</span>&gt;
+Friends start a new cloud of mining <a href="https://cldmine.com/account/registration/4075" class="link" target="_blank">https://cldmine.com/account/registration/4075</a> Very similar to when registering RDPmain dogikoin 1500 bonus on you buying power and immediately start earning a great opportunity to earn at the very beginning to invite many partners and earn a passive join !!!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446112920' id='433375'>
+<a class='timestamp' href='#433375'><time timestamp='2015-10-29T10:02:00Z'>10:02</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, sipa ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446119160' id='433376'>
+<a class='timestamp' href='#433376'><time timestamp='2015-10-29T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-9'> GitHub195</span>&gt;
+[bitcoin] laanwj closed pull request #6781: [QT] pretty print (indent) multiline html output (master...2015/10/qt_rpcconsole_pp) <a href="https://github.com/bitcoin/bitcoin/pull/6781" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6781</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120780' id='433377'>
+<a class='timestamp' href='#433377'><time timestamp='2015-10-29T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-10'> GitHub111</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/8daffe227bc6...26752767df45" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8daffe227bc6...26752767df45</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120780' id='433378'>
+<a class='timestamp' href='#433378'><time timestamp='2015-10-29T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-10'> GitHub111</span>&gt;
+bitcoin/master 3e187f2 Suhas Daftuar: Fix BIP65 p2p test...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120780' id='433379'>
+<a class='timestamp' href='#433379'><time timestamp='2015-10-29T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-10'> GitHub111</span>&gt;
+bitcoin/master 2675276 Wladimir J. van der Laan: Merge pull request #6894...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120780' id='433380'>
+<a class='timestamp' href='#433380'><time timestamp='2015-10-29T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-4'> GitHub96</span>&gt;
+[bitcoin] laanwj closed pull request #6894: [Tests] Fix BIP65 p2p test (master...fix-bip65-p2p-test) <a href="https://github.com/bitcoin/bitcoin/pull/6894" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6894</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120840' id='433381'>
+<a class='timestamp' href='#433381'><time timestamp='2015-10-29T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+We need a test case on windows that generates leveldb corruption, so as to evaluate other db alternatives.  Anecdotes that it happens with leveldb and might not with some other db are unsatisfactory.  What can we do to &quot;pull the rug out from under bitcoind&quot; and test this?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120840' id='433382'>
+<a class='timestamp' href='#433382'><time timestamp='2015-10-29T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Questions about performance are a lot easier to be quantitative about...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120900' id='433383'>
+<a class='timestamp' href='#433383'><time timestamp='2015-10-29T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+reproduction should be simple: run it on a windows pc, crashhe computer or disconnect the power
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120900' id='433384'>
+<a class='timestamp' href='#433384'><time timestamp='2015-10-29T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it appears that no one remotely capapble and willing to troubleshoot this issue has no windows PC to check though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120900' id='433385'>
+<a class='timestamp' href='#433385'><time timestamp='2015-10-29T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+That&#x27;s pretty tedious.  :-/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120960' id='433386'>
+<a class='timestamp' href='#433386'><time timestamp='2015-10-29T12:16:00Z'>12:16</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I don&#x27;t have a windows pc either...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120960' id='433387'>
+<a class='timestamp' href='#433387'><time timestamp='2015-10-29T12:16:00Z'>12:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well from what I understand it <b>*always*</b> happens, so it&#x27;s not that bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120960' id='433388'>
+<a class='timestamp' href='#433388'><time timestamp='2015-10-29T12:16:00Z'>12:16</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+I was thinking like kill -9 on a remote windows vm, or something like that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446120960' id='433389'>
+<a class='timestamp' href='#433389'><time timestamp='2015-10-29T12:16:00Z'>12:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well a VM could work, I don&#x27;t know - couldn&#x27;t reproduce it with wine at least last time I tried
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121080' id='433390'>
+<a class='timestamp' href='#433390'><time timestamp='2015-10-29T12:18:00Z'>12:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but a full VM is closer to the real thing. I don&#x27;t have any windows licenses for a VM either, though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121320' id='433391'>
+<a class='timestamp' href='#433391'><time timestamp='2015-10-29T12:22:00Z'>12:22</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+We should be able to get a windows VM through Azure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121860' id='433392'>
+<a class='timestamp' href='#433392'><time timestamp='2015-10-29T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-12'> GitHub178</span>&gt;
+[bitcoin] laanwj pushed 5 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/26752767df45...b2ce2c1f0fb1" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/26752767df45...b2ce2c1f0fb1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121860' id='433393'>
+<a class='timestamp' href='#433393'><time timestamp='2015-10-29T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-12'> GitHub178</span>&gt;
+bitcoin/master 95f4291 MarcoFalke: [trivial] Rewrite help text for feature enabled by default...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121860' id='433394'>
+<a class='timestamp' href='#433394'><time timestamp='2015-10-29T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-12'> GitHub178</span>&gt;
+bitcoin/master bf68191 MarcoFalke: [trivial] rpcnet: fix typo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121860' id='433395'>
+<a class='timestamp' href='#433395'><time timestamp='2015-10-29T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-12'> GitHub178</span>&gt;
+bitcoin/master 6782f58 MarcoFalke: [trivial] Latest config.guess...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446121860' id='433396'>
+<a class='timestamp' href='#433396'><time timestamp='2015-10-29T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-8'> GitHub152</span>&gt;
+[bitcoin] laanwj closed pull request #6870: [trivial] Misc cleanup and translations (master...MarcoFalke-2015-trivial3) <a href="https://github.com/bitcoin/bitcoin/pull/6870" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6870</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433397'>
+<a class='timestamp' href='#433397'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-10'> GitHub57</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/b2ce2c1f0fb1...b28c229324d0" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b2ce2c1f0fb1...b28c229324d0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433398'>
+<a class='timestamp' href='#433398'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-10'> GitHub57</span>&gt;
+bitcoin/master a83f3c2 Bob McElrath: Add explicit shared_ptr constructor due to C++11 error
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433399'>
+<a class='timestamp' href='#433399'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-10'> GitHub57</span>&gt;
+bitcoin/master b28c229 Wladimir J. van der Laan: Merge pull request #6899...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433400'>
+<a class='timestamp' href='#433400'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-4'> GitHub144</span>&gt;
+[bitcoin] laanwj closed pull request #6899: Add explicit shared_ptr constructor due to C++11 error (master...cpp11) <a href="https://github.com/bitcoin/bitcoin/pull/6899" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6899</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433401'>
+<a class='timestamp' href='#433401'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-3'> GitHub189</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/b28c229324d0...725539ea0376" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b28c229324d0...725539ea0376</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433402'>
+<a class='timestamp' href='#433402'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-3'> GitHub189</span>&gt;
+bitcoin/master 0be387a Daniel Kraft: unittest: fix test for null tx input...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433403'>
+<a class='timestamp' href='#433403'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-3'> GitHub189</span>&gt;
+bitcoin/master 725539e Wladimir J. van der Laan: Merge pull request #6863...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446122400' id='433404'>
+<a class='timestamp' href='#433404'><time timestamp='2015-10-29T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-16'> GitHub146</span>&gt;
+[bitcoin] laanwj closed pull request #6863: [Test Suite] Fix test for null tx input (master...null-txin-test) <a href="https://github.com/bitcoin/bitcoin/pull/6863" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6863</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123180' id='433405'>
+<a class='timestamp' href='#433405'><time timestamp='2015-10-29T12:53:00Z'>12:53</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+wumpus: for the windows box, would I need a complete chain?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123180' id='433406'>
+<a class='timestamp' href='#433406'><time timestamp='2015-10-29T12:53:00Z'>12:53</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+I can put bitcoin-qt on a old gaming rig if necessary, have to dust it off a little but, if its worth it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123360' id='433407'>
+<a class='timestamp' href='#433407'><time timestamp='2015-10-29T12:56:00Z'>12:56</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+It would be good to know quantitatively if we&#x27;re actually fixing something by changing the db or just making a mess.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123480' id='433408'>
+<a class='timestamp' href='#433408'><time timestamp='2015-10-29T12:58:00Z'>12:58</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+mcelrath: would I need to build latest?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123540' id='433409'>
+<a class='timestamp' href='#433409'><time timestamp='2015-10-29T12:59:00Z'>12:59</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+I&#x27;d assume so if the aim was to actually fix it haha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123540' id='433410'>
+<a class='timestamp' href='#433410'><time timestamp='2015-10-29T12:59:00Z'>12:59</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+build latest bitcoind?  Yes, I mean we&#x27;d want to take jgarzik&#x27;s sqlite branch and a lmdb branch and violently kill them and see what happens to their db&#x27;s too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123600' id='433411'>
+<a class='timestamp' href='#433411'><time timestamp='2015-10-29T13:00:00Z'>13:00</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+It&#x27;s kind of an involved test :-/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123660' id='433412'>
+<a class='timestamp' href='#433412'><time timestamp='2015-10-29T13:01:00Z'>13:01</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+mcelrath: well, I&#x27;ll see what I can set up tomorrow.  Midnight here so I won&#x27;t go about messing with setting up a dev-env
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123660' id='433413'>
+<a class='timestamp' href='#433413'><time timestamp='2015-10-29T13:01:00Z'>13:01</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+But writing a shell script to kill things in a tight loop sounds like an appropriate thing to do to Windows.  ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123720' id='433414'>
+<a class='timestamp' href='#433414'><time timestamp='2015-10-29T13:02:00Z'>13:02</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+Cool, thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446123720' id='433415'>
+<a class='timestamp' href='#433415'><time timestamp='2015-10-29T13:02:00Z'>13:02</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+I&#x27;m pretty sure we (or lots of people) can get an azure instance.  But I&#x27;ve never used a remote windows vm.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446124080' id='433416'>
+<a class='timestamp' href='#433416'><time timestamp='2015-10-29T13:08:00Z'>13:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+dcousens: I don&#x27;t think so, I think you just have to kill it while it&#x27;s syncing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446124140' id='433417'>
+<a class='timestamp' href='#433417'><time timestamp='2015-10-29T13:09:00Z'>13:09</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+wumpus: likely that the shutdown time itself will be dependent on how many writeops are waiting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446124140' id='433418'>
+<a class='timestamp' href='#433418'><time timestamp='2015-10-29T13:09:00Z'>13:09</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+Perhaps worth doing on a HDD, not a SSD?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446124140' id='433419'>
+<a class='timestamp' href='#433419'><time timestamp='2015-10-29T13:09:00Z'>13:09</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+ :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125100' id='433420'>
+<a class='timestamp' href='#433420'><time timestamp='2015-10-29T13:25:00Z'>13:25</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+Is bitcoin anymore consensus-dependent on leveldb?  If we swap it out with sqlite or lmdb, will it still be consensus critical? (and can it be made non-consensus critical?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125340' id='433421'>
+<a class='timestamp' href='#433421'><time timestamp='2015-10-29T13:29:00Z'>13:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+everything that is called by the consensus code is, in principle, consensus critical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125400' id='433422'>
+<a class='timestamp' href='#433422'><time timestamp='2015-10-29T13:30:00Z'>13:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so is the database, the file system, the OS. But all that should be important is that they behave correctly.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125460' id='433423'>
+<a class='timestamp' href='#433423'><time timestamp='2015-10-29T13:31:00Z'>13:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if there are silent bugs it is problematic. For example, if leveldb would ignoring keys with certain properties, using a database without that erratic behavior would fork off from nodes using leveldb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125460' id='433424'>
+<a class='timestamp' href='#433424'><time timestamp='2015-10-29T13:31:00Z'>13:31</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+IOW if the verification code (erroneously) can&#x27;t look up a txid or utxo, it causes a block to be rejected, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125580' id='433425'>
+<a class='timestamp' href='#433425'><time timestamp='2015-10-29T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+not if it is reported as a database error and simply crashes the node. It is a problem if a record is reported to be present when it is not, or the other way around, or the data is corrupted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125640' id='433426'>
+<a class='timestamp' href='#433426'><time timestamp='2015-10-29T13:34:00Z'>13:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(which is why leveldb&#x27;s checksums on everything are nice to have, it provides added assurance that if something is returned it&#x27;s at least correct)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125760' id='433427'>
+<a class='timestamp' href='#433427'><time timestamp='2015-10-29T13:36:00Z'>13:36</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+I&#x27;m pretty seriously worried about silent bit flips or hash computation errors causing nodes to fail, and how to detect it.  But spurious errors like that won&#x27;t cause a majority of nodes to reject blocks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446125880' id='433428'>
+<a class='timestamp' href='#433428'><time timestamp='2015-10-29T13:38:00Z'>13:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+majority plays no role in bitcoin - if <b>*your*</b> node forks from the block chain, that&#x27;s a risk to you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446126000' id='433429'>
+<a class='timestamp' href='#433429'><time timestamp='2015-10-29T13:40:00Z'>13:40</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+Exactly.  But having a majority of miners screw up is a bigger problem than little &#x27;ol me.  ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446126360' id='433430'>
+<a class='timestamp' href='#433430'><time timestamp='2015-10-29T13:46:00Z'>13:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but yes the most dangerous bugs are consistent ones - note that an database-OS bug could be dangerous in that way, for example forking off all MacOSX nodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446127920' id='433431'>
+<a class='timestamp' href='#433431'><time timestamp='2015-10-29T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-7'> GitHub33</span>&gt;
+[bitcoin] dajohi opened pull request #6902: policy:  Add new constant MAX_STANDARD_MULTISIG_KEYS (master...multisig_keys) <a href="https://github.com/bitcoin/bitcoin/pull/6902" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6902</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446130080' id='433432'>
+<a class='timestamp' href='#433432'><time timestamp='2015-10-29T14:48:00Z'>14:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: what does the 25-50% of the cache number that&#x27;s used for nCoinDBCache represent?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446130860' id='433433'>
+<a class='timestamp' href='#433433'><time timestamp='2015-10-29T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+Hmm I can&#x27;t assign this to myself: <a href="https://github.com/bitcoin/bitcoin/issues/6903" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/6903</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446130980' id='433434'>
+<a class='timestamp' href='#433434'><time timestamp='2015-10-29T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: leveldb cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446130980' id='433435'>
+<a class='timestamp' href='#433435'><time timestamp='2015-10-29T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: you mean its internal caching?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446130980' id='433436'>
+<a class='timestamp' href='#433436'><time timestamp='2015-10-29T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446131040' id='433437'>
+<a class='timestamp' href='#433437'><time timestamp='2015-10-29T15:04:00Z'>15:04</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+oh i see, ha, i thought that local variable wasn&#x27;t used anywhere, i didn&#x27;t think to look in init
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446131280' id='433438'>
+<a class='timestamp' href='#433438'><time timestamp='2015-10-29T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-9'> GitHub195</span>&gt;
+[bitcoin] LordOfTheCoin opened pull request #6904: LevelDB Fixes and Enhancements (master...2015_sqlite) <a href="https://github.com/bitcoin/bitcoin/pull/6904" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6904</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446131340' id='433439'>
+<a class='timestamp' href='#433439'><time timestamp='2015-10-29T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+Why is someone other than jgarzik making PR&#x27;s from his repo?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446131460' id='433440'>
+<a class='timestamp' href='#433440'><time timestamp='2015-10-29T15:11:00Z'>15:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+heh, i didn&#x27;t even realize that by seeing github&#x27;s email
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446132120' id='433441'>
+<a class='timestamp' href='#433441'><time timestamp='2015-10-29T15:22:00Z'>15:22</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+FYI, replacing auto_ptr -&gt; unique_ptr (C++11) in the 5 places it appears does not introduce any new compiler errors or warnings due to the slightly different assignment semantics.  So making this replacement should be fine to switch to C++11.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446135000' id='433442'>
+<a class='timestamp' href='#433442'><time timestamp='2015-10-29T16:10:00Z'>16:10</time></a>
+&lt;<span class='nick nick-9'> GitHub101</span>&gt;
+[bitcoin] LordOfTheCoin closed pull request #6904: LevelDB Fixes and Enhancements (master...2015_sqlite) <a href="https://github.com/bitcoin/bitcoin/pull/6904" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6904</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446135000' id='433443'>
+<a class='timestamp' href='#433443'><time timestamp='2015-10-29T16:10:00Z'>16:10</time></a>
+&lt;<span class='nick nick-8'> GitHub8</span>&gt;
+[bitcoin] LordOfTheCoin reopened pull request #6904: LevelDB Fixes and Enhancements (master...2015_sqlite) <a href="https://github.com/bitcoin/bitcoin/pull/6904" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6904</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446135000' id='433444'>
+<a class='timestamp' href='#433444'><time timestamp='2015-10-29T16:10:00Z'>16:10</time></a>
+&lt;<span class='nick nick-11'> GitHub5</span>&gt;
+[bitcoin] LordOfTheCoin closed pull request #6904: LevelDB Fixes and Enhancements (master...2015_sqlite) <a href="https://github.com/bitcoin/bitcoin/pull/6904" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6904</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446138840' id='433445'>
+<a class='timestamp' href='#433445'><time timestamp='2015-10-29T17:14:00Z'>17:14</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: ok this might be a bit obscure, so i&#x27;ll just look into if you have no idea off the top off your head.  but if I have a bunch of entries cached in a pcoinsTip and then I call TestBlockValidity on a block that accesses only those entries
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446138900' id='433446'>
+<a class='timestamp' href='#433446'><time timestamp='2015-10-29T17:15:00Z'>17:15</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+TBV will build a CCoinsViewCache on top of pcoinsTip, which cache will be passed to ConnectBlock which will build yet another on top.  modify the top most cache, and flush to the intermediate cache, then return to TBV which will just dump the intermediate cache on the ground
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446138900' id='433447'>
+<a class='timestamp' href='#433447'><time timestamp='2015-10-29T17:15:00Z'>17:15</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+any reason that would be FASTER if some of the entries in the pcoinsTip cache had FRESH or DIRTY flags as opposed to if they all had no flags.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446139440' id='433448'>
+<a class='timestamp' href='#433448'><time timestamp='2015-10-29T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so pcoinsTip &gt; TBV-Cache &gt; ConnectBlock-Cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446139500' id='433449'>
+<a class='timestamp' href='#433449'><time timestamp='2015-10-29T17:25:00Z'>17:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and it&#x27;s in pcoinsTip that pre-existing flags would matter?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446141840' id='433450'>
+<a class='timestamp' href='#433450'><time timestamp='2015-10-29T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+cfields, would you mind if I rebase trivial-next?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446141960' id='433451'>
+<a class='timestamp' href='#433451'><time timestamp='2015-10-29T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: sorry i missed your pm the other day. you could, but it&#x27;s kinda a pain. i&#x27;d prefer to take care of it this week. I think the separate repo turned out to not make things any easier.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446142080' id='433452'>
+<a class='timestamp' href='#433452'><time timestamp='2015-10-29T18:08:00Z'>18:08</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Ok, then. I will leave it to you to take care of it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446143280' id='433453'>
+<a class='timestamp' href='#433453'><time timestamp='2015-10-29T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-9'> GitHub129</span>&gt;
+[bitcoin] MarcoFalke opened pull request #6905: Use constants and minor fixes by luke-jr (master...lukejr-constants-no-mergeConf) <a href="https://github.com/bitcoin/bitcoin/pull/6905" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6905</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446143340' id='433454'>
+<a class='timestamp' href='#433454'><time timestamp='2015-10-29T18:29:00Z'>18:29</time></a>
+&lt;<span class='nick nick-2'> GitHub81</span>&gt;
+[bitcoin] gmaxwell opened pull request #6906: Reject invalid pubkeys when reading ckey items from the wallet. (master...ckey_pubkey_check) <a href="https://github.com/bitcoin/bitcoin/pull/6906" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6906</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446144120' id='433455'>
+<a class='timestamp' href='#433455'><time timestamp='2015-10-29T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: yeah thats what i meant, but maybe thats not the issue.  i&#x27;ll dig into it.  but i really like this idea of keeping the hot items in the cache.  then you can flush it much more regularly and don&#x27;t have to worry about it growing too big.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446144780' id='433456'>
+<a class='timestamp' href='#433456'><time timestamp='2015-10-29T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-16'> GitHub171</span>&gt;
+[bitcoin] MarcoFalke closed pull request #6905: Use constants and minor fixes by luke-jr (master...lukejr-constants-no-mergeConf) <a href="https://github.com/bitcoin/bitcoin/pull/6905" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6905</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446145380' id='433457'>
+<a class='timestamp' href='#433457'><time timestamp='2015-10-29T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: oh i lied about that anywya,  there is no extra cache in ConnectBlock.  it just uses the TBV cache, or in the normal case the cache on pcoinsTip is added in ConnectTip before ConnectBlock
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446148800' id='433458'>
+<a class='timestamp' href='#433458'><time timestamp='2015-10-29T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Any thoughts on the clang-format thing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446148860' id='433459'>
+<a class='timestamp' href='#433459'><time timestamp='2015-10-29T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-3'> mcelrath</span>&gt;
+FYI: <a href="https://github.com/andrewseidl/githook-clang-format" class="link" target="_blank">https://github.com/andrewseidl/githook-clang-format</a> &quot;Warning: Do not use this on an existing codebase that isn&#x27;t already in your desired style. Doing so will lead to a string a dirty commits where your code changes are intermixed with clang-format&#x27;s formatting changes. Furthermore, every developer will need to install this hook. If they don&#x27;t, you will again end up with commits with a mixture of code and formatting changes.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446148860' id='433460'>
+<a class='timestamp' href='#433460'><time timestamp='2015-10-29T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+already covered in #bitcoin-dev meeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446148920' id='433461'>
+<a class='timestamp' href='#433461'><time timestamp='2015-10-29T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Do those channels have different scopes? I remember bitcoin-dev is deprecated?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446149940' id='433462'>
+<a class='timestamp' href='#433462'><time timestamp='2015-10-29T20:19:00Z'>20:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+this channel has a very narrow scope: code changes to the bitcoin core project
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150000' id='433463'>
+<a class='timestamp' href='#433463'><time timestamp='2015-10-29T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+clang format discussion would be very ontopic here IMHO
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150000' id='433464'>
+<a class='timestamp' href='#433464'><time timestamp='2015-10-29T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it was somehow part of the wider bitcoin irc meeting, which took place in #bitcoin-dev an hour ago
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150480' id='433465'>
+<a class='timestamp' href='#433465'><time timestamp='2015-10-29T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-13'> davec</span>&gt;
+Is it intentional that the &quot;minRelayTxFee&quot; is not actually a minimum?  I suspect the answer is yes and the variable simply wasn&#x27;t renamed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150540' id='433466'>
+<a class='timestamp' href='#433466'><time timestamp='2015-10-29T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+It&#x27;s a minimum per node basis to get into that nodes mempool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150600' id='433467'>
+<a class='timestamp' href='#433467'><time timestamp='2015-10-29T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-13'> davec</span>&gt;
+Well, the code is doing <a href="https://github.com/bitcoin/bitcoin/blob/master/src/amount.cpp#L22-L27" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/amount.cpp#L22-L27</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150660' id='433468'>
+<a class='timestamp' href='#433468'><time timestamp='2015-10-29T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-13'> davec</span>&gt;
+so if you have a tx of say 250 bytes, the will result in 250 * 1000 (the default &quot;minRelayTxFee&quot;) / 1000 = 250 which is clearly &lt; 1000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150660' id='433469'>
+<a class='timestamp' href='#433469'><time timestamp='2015-10-29T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+yes, it&#x27;s per kB
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150780' id='433470'>
+<a class='timestamp' href='#433470'><time timestamp='2015-10-29T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right it&#x27;s the minimum *per KB*, all fees in bitcoin core are per kB
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150840' id='433471'>
+<a class='timestamp' href='#433471'><time timestamp='2015-10-29T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+all fee settings at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150840' id='433472'>
+<a class='timestamp' href='#433472'><time timestamp='2015-10-29T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+wumpus, not paytxfee ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150840' id='433473'>
+<a class='timestamp' href='#433473'><time timestamp='2015-10-29T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+not yet at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150960' id='433474'>
+<a class='timestamp' href='#433474'><time timestamp='2015-10-29T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-13'> davec</span>&gt;
+alright thanks for confirming.  The naming and description made it seem like it was an absolute minumum, so I wanted to confirm.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446150960' id='433475'>
+<a class='timestamp' href='#433475'><time timestamp='2015-10-29T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-13'> davec</span>&gt;
+because that&#x27;s obviously not what the code is doing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446151020' id='433476'>
+<a class='timestamp' href='#433476'><time timestamp='2015-10-29T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446152340' id='433477'>
+<a class='timestamp' href='#433477'><time timestamp='2015-10-29T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Does src/qt require a different .clang-format style file?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446153060' id='433478'>
+<a class='timestamp' href='#433478'><time timestamp='2015-10-29T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-15'> GitHub71</span>&gt;
+[bitcoin] jtimon opened pull request #6907: Chainparams: Use a regular factory for creating chainparams (master...chainparams-factory-0.12.99) <a href="https://github.com/bitcoin/bitcoin/pull/6907" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6907</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446153900' id='433479'>
+<a class='timestamp' href='#433479'><time timestamp='2015-10-29T21:25:00Z'>21:25</time></a>
+&lt;<span class='nick nick-14'> GitHub107</span>&gt;
+[bitcoin] jtimon opened pull request #6908: Chainparams: DRY: Make qt/guiutil.cpp fit BIP70 chain name strings (master...chainparams-bip70-0.12.99) <a href="https://github.com/bitcoin/bitcoin/pull/6908" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6908</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446154200' id='433480'>
+<a class='timestamp' href='#433480'><time timestamp='2015-10-29T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+heh, a rebase with master jumps to 300-600% CPU usage immediately
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446154200' id='433481'>
+<a class='timestamp' href='#433481'><time timestamp='2015-10-29T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*reindex
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446154260' id='433482'>
+<a class='timestamp' href='#433482'><time timestamp='2015-10-29T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+thats because reindex checks all the signatures.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446154260' id='433483'>
+<a class='timestamp' href='#433483'><time timestamp='2015-10-29T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not historical ones?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446154260' id='433484'>
+<a class='timestamp' href='#433484'><time timestamp='2015-10-29T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yes, historical ones.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446154320' id='433485'>
+<a class='timestamp' href='#433485'><time timestamp='2015-10-29T21:32:00Z'>21:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, because we don&#x27;t have the header yet for the chainpoint it is an ancestor of
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446161100' id='433486'>
+<a class='timestamp' href='#433486'><time timestamp='2015-10-29T23:25:00Z'>23:25</time></a>
+&lt;<span class='nick nick-7'> GitHub7</span>&gt;
+[bitcoin] MarcoFalke reopened pull request #6905: Use constants and minor fixes by luke-jr (master...lukejr-constants-no-mergeConf) <a href="https://github.com/bitcoin/bitcoin/pull/6905" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6905</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446161220' id='433487'>
+<a class='timestamp' href='#433487'><time timestamp='2015-10-29T23:27:00Z'>23:27</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1446162780' id='433488'>
+<a class='timestamp' href='#433488'><time timestamp='2015-10-29T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Can someone build me windows binaries for <a href="https://github.com/bitcoin/bitcoin/pull/6906" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6906</a> ?   (oh I miss the testers that produced binaries as a side effect...)
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2022-12-07
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2022-12-07' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:12 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2022-11-07">&lt;</a><span class='header'>  December 2022   </span><a href="/bitcoin-core-dev/2023-01-07">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2022-12-01">1</a>  <a class="" href="/bitcoin-core-dev/2022-12-02">2</a>  <a class="" href="/bitcoin-core-dev/2022-12-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2022-12-04">4</a>  <a class="" href="/bitcoin-core-dev/2022-12-05">5</a>  <a class="" href="/bitcoin-core-dev/2022-12-06">6</a>  <a class="current" href="/bitcoin-core-dev/2022-12-07">7</a>  <a class="" href="/bitcoin-core-dev/2022-12-08">8</a>  <a class="" href="/bitcoin-core-dev/2022-12-09">9</a> <a class="" href="/bitcoin-core-dev/2022-12-10">10</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2022-12-11">11</a> <a class="" href="/bitcoin-core-dev/2022-12-12">12</a> <a class="" href="/bitcoin-core-dev/2022-12-13">13</a> <a class="" href="/bitcoin-core-dev/2022-12-14">14</a> <a class="" href="/bitcoin-core-dev/2022-12-15">15</a> <a class="" href="/bitcoin-core-dev/2022-12-16">16</a> <a class="" href="/bitcoin-core-dev/2022-12-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2022-12-18">18</a> <a class="" href="/bitcoin-core-dev/2022-12-19">19</a> <a class="" href="/bitcoin-core-dev/2022-12-20">20</a> <a class="" href="/bitcoin-core-dev/2022-12-21">21</a> <a class="" href="/bitcoin-core-dev/2022-12-22">22</a> <a class="" href="/bitcoin-core-dev/2022-12-23">23</a> <a class="" href="/bitcoin-core-dev/2022-12-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2022-12-25">25</a> <a class="" href="/bitcoin-core-dev/2022-12-26">26</a> <a class="" href="/bitcoin-core-dev/2022-12-27">27</a> <a class="" href="/bitcoin-core-dev/2022-12-28">28</a> <a class="" href="/bitcoin-core-dev/2022-12-29">29</a> <a class="" href="/bitcoin-core-dev/2022-12-30">30</a> <a class="" href="/bitcoin-core-dev/2022-12-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1670371208' id='876083'>
+<a class='timestamp' href='#876083'><time timestamp='2022-12-07T00:00:08Z'>00:00</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+any ideas why configuring with --enable-debug makes wallet_import_rescan.py go from taking 20 secs to 400 secs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670373496' id='876084'>
+<a class='timestamp' href='#876084'><time timestamp='2022-12-07T00:38:16Z'>00:38</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+hmm, looks like generating a lot of blocks gets a lot slower with enable-debug
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670373830' id='876085'>
+<a class='timestamp' href='#876085'><time timestamp='2022-12-07T00:43:50Z'>00:43</time></a>
+dviola has quit [Quit: WeeChat 3.7.1]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670375018' id='876086'>
+<a class='timestamp' href='#876086'><time timestamp='2022-12-07T01:03:38Z'>01:03</time></a>
+&lt;<span class='nick nick-10'>sipa</span>&gt;
+Does --enable-debug enable a block index check or so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670375038' id='876087'>
+<a class='timestamp' href='#876087'><time timestamp='2022-12-07T01:03:58Z'>01:03</time></a>
+&lt;<span class='nick nick-10'>sipa</span>&gt;
+Generating N blocks could have a quadratic effect (after every block, check the entire index).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670375299' id='876088'>
+<a class='timestamp' href='#876088'><time timestamp='2022-12-07T01:08:19Z'>01:08</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+I don&#x27;t think so. I think it just disables some compiler optimizations
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670375388' id='876089'>
+<a class='timestamp' href='#876089'><time timestamp='2022-12-07T01:09:48Z'>01:09</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+and enables debug lockorder and lock contention
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670375666' id='876090'>
+<a class='timestamp' href='#876090'><time timestamp='2022-12-07T01:14:26Z'>01:14</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670375785' id='876091'>
+<a class='timestamp' href='#876091'><time timestamp='2022-12-07T01:16:25Z'>01:16</time></a>
+andrewtoth has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670376060' id='876092'>
+<a class='timestamp' href='#876092'><time timestamp='2022-12-07T01:21:00Z'>01:21</time></a>
+andrewtoth has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670376489' id='876093'>
+<a class='timestamp' href='#876093'><time timestamp='2022-12-07T01:28:09Z'>01:28</time></a>
+enyc has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670376572' id='876094'>
+<a class='timestamp' href='#876094'><time timestamp='2022-12-07T01:29:32Z'>01:29</time></a>
+enyc has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670379415' id='876095'>
+<a class='timestamp' href='#876095'><time timestamp='2022-12-07T02:16:55Z'>02:16</time></a>
+SpellChecker has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670379443' id='876096'>
+<a class='timestamp' href='#876096'><time timestamp='2022-12-07T02:17:23Z'>02:17</time></a>
+SpellChecker has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670380295' id='876097'>
+<a class='timestamp' href='#876097'><time timestamp='2022-12-07T02:31:35Z'>02:31</time></a>
+merlinB_ has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670380994' id='876098'>
+<a class='timestamp' href='#876098'><time timestamp='2022-12-07T02:43:14Z'>02:43</time></a>
+andrewtoth has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670382805' id='876099'>
+<a class='timestamp' href='#876099'><time timestamp='2022-12-07T03:13:25Z'>03:13</time></a>
+andrewtoth has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670382831' id='876100'>
+<a class='timestamp' href='#876100'><time timestamp='2022-12-07T03:13:51Z'>03:13</time></a>
+andrewtoth has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670382850' id='876101'>
+<a class='timestamp' href='#876101'><time timestamp='2022-12-07T03:14:10Z'>03:14</time></a>
+ziggie has quit [Quit: Connection closed for inactivity]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670383016' id='876102'>
+<a class='timestamp' href='#876102'><time timestamp='2022-12-07T03:16:56Z'>03:16</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670383056' id='876103'>
+<a class='timestamp' href='#876103'><time timestamp='2022-12-07T03:17:36Z'>03:17</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670383676' id='876104'>
+<a class='timestamp' href='#876104'><time timestamp='2022-12-07T03:27:56Z'>03:27</time></a>
+bitdex has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670383771' id='876105'>
+<a class='timestamp' href='#876105'><time timestamp='2022-12-07T03:29:31Z'>03:29</time></a>
+vasild has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670383826' id='876106'>
+<a class='timestamp' href='#876106'><time timestamp='2022-12-07T03:30:26Z'>03:30</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670384096' id='876107'>
+<a class='timestamp' href='#876107'><time timestamp='2022-12-07T03:34:56Z'>03:34</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670385140' id='876108'>
+<a class='timestamp' href='#876108'><time timestamp='2022-12-07T03:52:20Z'>03:52</time></a>
+sloorush has quit [Ping timeout: 248 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670385172' id='876109'>
+<a class='timestamp' href='#876109'><time timestamp='2022-12-07T03:52:52Z'>03:52</time></a>
+sloorush has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670385304' id='876110'>
+<a class='timestamp' href='#876110'><time timestamp='2022-12-07T03:55:04Z'>03:55</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670385417' id='876111'>
+<a class='timestamp' href='#876111'><time timestamp='2022-12-07T03:56:57Z'>03:56</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670386151' id='876112'>
+<a class='timestamp' href='#876112'><time timestamp='2022-12-07T04:09:11Z'>04:09</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670386157' id='876113'>
+<a class='timestamp' href='#876113'><time timestamp='2022-12-07T04:09:17Z'>04:09</time></a>
+andrewtoth has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670389034' id='876114'>
+<a class='timestamp' href='#876114'><time timestamp='2022-12-07T04:57:14Z'>04:57</time></a>
+jon_atack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670389179' id='876115'>
+<a class='timestamp' href='#876115'><time timestamp='2022-12-07T04:59:39Z'>04:59</time></a>
+jonatack has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670389261' id='876116'>
+<a class='timestamp' href='#876116'><time timestamp='2022-12-07T05:01:01Z'>05:01</time></a>
+cmirror has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670389292' id='876117'>
+<a class='timestamp' href='#876117'><time timestamp='2022-12-07T05:01:32Z'>05:01</time></a>
+cmirror has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670389739' id='876118'>
+<a class='timestamp' href='#876118'><time timestamp='2022-12-07T05:08:59Z'>05:08</time></a>
+jon_atack has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670392453' id='876119'>
+<a class='timestamp' href='#876119'><time timestamp='2022-12-07T05:54:13Z'>05:54</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670392497' id='876120'>
+<a class='timestamp' href='#876120'><time timestamp='2022-12-07T05:54:57Z'>05:54</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670392587' id='876121'>
+<a class='timestamp' href='#876121'><time timestamp='2022-12-07T05:56:27Z'>05:56</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670392611' id='876122'>
+<a class='timestamp' href='#876122'><time timestamp='2022-12-07T05:56:51Z'>05:56</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393043' id='876123'>
+<a class='timestamp' href='#876123'><time timestamp='2022-12-07T06:04:03Z'>06:04</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393044' id='876124'>
+<a class='timestamp' href='#876124'><time timestamp='2022-12-07T06:04:04Z'>06:04</time></a>
+vasild has quit [Read error: Connection reset by peer]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393044' id='876125'>
+<a class='timestamp' href='#876125'><time timestamp='2022-12-07T06:04:04Z'>06:04</time></a>
+SpellChecker has quit [Read error: Connection reset by peer]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393044' id='876126'>
+<a class='timestamp' href='#876126'><time timestamp='2022-12-07T06:04:04Z'>06:04</time></a>
+andrewtoth_ has quit [Read error: Connection reset by peer]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393065' id='876127'>
+<a class='timestamp' href='#876127'><time timestamp='2022-12-07T06:04:25Z'>06:04</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393072' id='876128'>
+<a class='timestamp' href='#876128'><time timestamp='2022-12-07T06:04:32Z'>06:04</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393092' id='876129'>
+<a class='timestamp' href='#876129'><time timestamp='2022-12-07T06:04:52Z'>06:04</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393242' id='876130'>
+<a class='timestamp' href='#876130'><time timestamp='2022-12-07T06:07:22Z'>06:07</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393247' id='876131'>
+<a class='timestamp' href='#876131'><time timestamp='2022-12-07T06:07:27Z'>06:07</time></a>
+SpellChecker has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393289' id='876132'>
+<a class='timestamp' href='#876132'><time timestamp='2022-12-07T06:08:09Z'>06:08</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393372' id='876133'>
+<a class='timestamp' href='#876133'><time timestamp='2022-12-07T06:09:32Z'>06:09</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393443' id='876134'>
+<a class='timestamp' href='#876134'><time timestamp='2022-12-07T06:10:43Z'>06:10</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670393591' id='876135'>
+<a class='timestamp' href='#876135'><time timestamp='2022-12-07T06:13:11Z'>06:13</time></a>
+vasild has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670393906' id='876136'>
+<a class='timestamp' href='#876136'><time timestamp='2022-12-07T06:18:26Z'>06:18</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670394075' id='876137'>
+<a class='timestamp' href='#876137'><time timestamp='2022-12-07T06:21:15Z'>06:21</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670394104' id='876138'>
+<a class='timestamp' href='#876138'><time timestamp='2022-12-07T06:21:44Z'>06:21</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670394278' id='876139'>
+<a class='timestamp' href='#876139'><time timestamp='2022-12-07T06:24:38Z'>06:24</time></a>
+SpellChecker has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670394364' id='876140'>
+<a class='timestamp' href='#876140'><time timestamp='2022-12-07T06:26:04Z'>06:26</time></a>
+SpellChecker has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670397081' id='876141'>
+<a class='timestamp' href='#876141'><time timestamp='2022-12-07T07:11:21Z'>07:11</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670397138' id='876142'>
+<a class='timestamp' href='#876142'><time timestamp='2022-12-07T07:12:18Z'>07:12</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670399362' id='876143'>
+<a class='timestamp' href='#876143'><time timestamp='2022-12-07T07:49:22Z'>07:49</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/0596aa40f77a...272fb0a5cf2c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/0596aa40f77a...272fb0a5cf2c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670399363' id='876144'>
+<a class='timestamp' href='#876144'><time timestamp='2022-12-07T07:49:23Z'>07:49</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master fa825bd MarcoFalke: util: Include full version id in bug reports
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670399363' id='876145'>
+<a class='timestamp' href='#876145'><time timestamp='2022-12-07T07:49:23Z'>07:49</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 272fb0a MarcoFalke: Merge bitcoin/bitcoin#26645: util: Include full version id in bug reports
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670399368' id='876146'>
+<a class='timestamp' href='#876146'><time timestamp='2022-12-07T07:49:28Z'>07:49</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #26645: util: Include full version id in bug reports (master...2212-full-version-id-🍁) <a href="https://github.com/bitcoin/bitcoin/pull/26645" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26645</a>
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670399515' id='876147'>
+<a class='timestamp' href='#876147'><time timestamp='2022-12-07T07:51:55Z'>07:51</time></a>
+zeropoint has quit [Quit: leaving]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670399853' id='876148'>
+<a class='timestamp' href='#876148'><time timestamp='2022-12-07T07:57:33Z'>07:57</time></a>
+AaronvanW has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670400680' id='876149'>
+<a class='timestamp' href='#876149'><time timestamp='2022-12-07T08:11:20Z'>08:11</time></a>
+&lt;<span class='nick nick-6'>vasild</span>&gt;
+If PR1 introducing some feature gets merged seemingly without controversy and shortly afterwards PR2 attempts to revert PR1 and PR2 turns out to be strongly controversal with many strong ACKs and NACKs, then I think it follows that PR1 would have been controversal too if the people ACKings the reversal were aware of it and its implications. Could that be a reason to merge the reversal PR2 even 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670400686' id='876150'>
+<a class='timestamp' href='#876150'><time timestamp='2022-12-07T08:11:26Z'>08:11</time></a>
+&lt;<span class='nick nick-6'>vasild</span>&gt;
+though it is controversal? (I am not taking side in the fullrbf debate)
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670401968' id='876151'>
+<a class='timestamp' href='#876151'><time timestamp='2022-12-07T08:32:48Z'>08:32</time></a>
+sipsorcery has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670402640' id='876152'>
+<a class='timestamp' href='#876152'><time timestamp='2022-12-07T08:44:00Z'>08:44</time></a>
+lowhope has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670402767' id='876153'>
+<a class='timestamp' href='#876153'><time timestamp='2022-12-07T08:46:07Z'>08:46</time></a>
+lowhope_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670403193' id='876154'>
+<a class='timestamp' href='#876154'><time timestamp='2022-12-07T08:53:13Z'>08:53</time></a>
+Guest6 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670403239' id='876155'>
+<a class='timestamp' href='#876155'><time timestamp='2022-12-07T08:53:59Z'>08:53</time></a>
+Guest6 has quit [Client Quit]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670403308' id='876156'>
+<a class='timestamp' href='#876156'><time timestamp='2022-12-07T08:55:08Z'>08:55</time></a>
+<u>_andrewtoth_</u> has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670403440' id='876157'>
+<a class='timestamp' href='#876157'><time timestamp='2022-12-07T08:57:20Z'>08:57</time></a>
+andrewtoth_ has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670403631' id='876158'>
+<a class='timestamp' href='#876158'><time timestamp='2022-12-07T09:00:31Z'>09:00</time></a>
+&lt;<span class='nick nick-7'>josie[m]</span>&gt;
+vasild: &quot;then I think it follows that PR1 would have been controversal too if the people ACKings the reversal were aware of it and its implications&quot; i dont think this is necessarily always true. it may apply to some cases but not enough to prescribe as a general rule. better to treat PRs on a case by case basis, imo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670403664' id='876159'>
+<a class='timestamp' href='#876159'><time timestamp='2022-12-07T09:01:04Z'>09:01</time></a>
+&lt;<span class='nick nick-6'>vasild</span>&gt;
+josie[m]: yeah, I agree
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670404059' id='876160'>
+<a class='timestamp' href='#876160'><time timestamp='2022-12-07T09:07:39Z'>09:07</time></a>
+SpellChecker has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670404286' id='876161'>
+<a class='timestamp' href='#876161'><time timestamp='2022-12-07T09:11:26Z'>09:11</time></a>
+SpellChecker has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670404559' id='876162'>
+<a class='timestamp' href='#876162'><time timestamp='2022-12-07T09:15:59Z'>09:15</time></a>
+sipsorcery has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670405034' id='876163'>
+<a class='timestamp' href='#876163'><time timestamp='2022-12-07T09:23:54Z'>09:23</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670405105' id='876164'>
+<a class='timestamp' href='#876164'><time timestamp='2022-12-07T09:25:05Z'>09:25</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670405204' id='876165'>
+<a class='timestamp' href='#876165'><time timestamp='2022-12-07T09:26:44Z'>09:26</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670405330' id='876166'>
+<a class='timestamp' href='#876166'><time timestamp='2022-12-07T09:28:50Z'>09:28</time></a>
+vasild has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670405342' id='876167'>
+<a class='timestamp' href='#876167'><time timestamp='2022-12-07T09:29:02Z'>09:29</time></a>
+&lt;<span class='nick nick-8'>BitcoinErrorLog</span>&gt;
+In the case of RBF topics, I think it&#x27;s fair to say they have always been controversial. In the case of mempoolfullrbf, I think it is fair to say there was controversy before v24 actually shipped, evidenced by quite a few mailing list posts, the original version of my PR by Suhas, etc. The current debate is made more complicated by uncertainty around what is procedure, what the actual benefit of mempoolfullrbf might 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670405342' id='876168'>
+<a class='timestamp' href='#876168'><time timestamp='2022-12-07T09:29:02Z'>09:29</time></a>
+&lt;<span class='nick nick-8'>BitcoinErrorLog</span>&gt;
+n/whether it is okay to break the user space.
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670405357' id='876169'>
+<a class='timestamp' href='#876169'><time timestamp='2022-12-07T09:29:17Z'>09:29</time></a>
+<u>_andrewtoth_</u> has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670405950' id='876170'>
+<a class='timestamp' href='#876170'><time timestamp='2022-12-07T09:39:10Z'>09:39</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670406047' id='876171'>
+<a class='timestamp' href='#876171'><time timestamp='2022-12-07T09:40:47Z'>09:40</time></a>
+&lt;<span class='nick nick-4'>fanquake</span>&gt;
+To github.com:bitcoin-core/bitcoin-detached-sigs.git
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670406051' id='876172'>
+<a class='timestamp' href='#876172'><time timestamp='2022-12-07T09:40:51Z'>09:40</time></a>
+&lt;<span class='nick nick-4'>fanquake</span>&gt;
+ * [new tag]         v24.0.1 -&gt; v24.0.1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670406079' id='876173'>
+<a class='timestamp' href='#876173'><time timestamp='2022-12-07T09:41:19Z'>09:41</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #26651: test: Avoid intermittent timeout in feature_assumevalid.py (master...2212-test-fix-assumevalid-🌞) <a href="https://github.com/bitcoin/bitcoin/pull/26651" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26651</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670406165' id='876174'>
+<a class='timestamp' href='#876174'><time timestamp='2022-12-07T09:42:45Z'>09:42</time></a>
+mudsip has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670406322' id='876175'>
+<a class='timestamp' href='#876175'><time timestamp='2022-12-07T09:45:22Z'>09:45</time></a>
+mudsip has quit [Client Quit]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670406382' id='876176'>
+<a class='timestamp' href='#876176'><time timestamp='2022-12-07T09:46:22Z'>09:46</time></a>
+szkl has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670407068' id='876177'>
+<a class='timestamp' href='#876177'><time timestamp='2022-12-07T09:57:48Z'>09:57</time></a>
+Lightsword has quit [Quit: ZNC]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670407097' id='876178'>
+<a class='timestamp' href='#876178'><time timestamp='2022-12-07T09:58:17Z'>09:58</time></a>
+windsok has quit [Quit: No Ping reply in 180 seconds.]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670407166' id='876179'>
+<a class='timestamp' href='#876179'><time timestamp='2022-12-07T09:59:26Z'>09:59</time></a>
+Lightsword has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670407232' id='876180'>
+<a class='timestamp' href='#876180'><time timestamp='2022-12-07T10:00:32Z'>10:00</time></a>
+windsok has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670407455' id='876181'>
+<a class='timestamp' href='#876181'><time timestamp='2022-12-07T10:04:15Z'>10:04</time></a>
+vasild has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670407945' id='876182'>
+<a class='timestamp' href='#876182'><time timestamp='2022-12-07T10:12:25Z'>10:12</time></a>
+GregTonoski has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670408078' id='876183'>
+<a class='timestamp' href='#876183'><time timestamp='2022-12-07T10:14:38Z'>10:14</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670410121' id='876184'>
+<a class='timestamp' href='#876184'><time timestamp='2022-12-07T10:48:41Z'>10:48</time></a>
+GregTonoski has quit [Quit: Client closed]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670410572' id='876185'>
+<a class='timestamp' href='#876185'><time timestamp='2022-12-07T10:56:12Z'>10:56</time></a>
+sipsorcery has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670410994' id='876186'>
+<a class='timestamp' href='#876186'><time timestamp='2022-12-07T11:03:14Z'>11:03</time></a>
+ajonas has quit [Quit: Connection closed for inactivity]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670411050' id='876187'>
+<a class='timestamp' href='#876187'><time timestamp='2022-12-07T11:04:10Z'>11:04</time></a>
+sipsorcery has quit [Ping timeout: 252 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670411648' id='876188'>
+<a class='timestamp' href='#876188'><time timestamp='2022-12-07T11:14:08Z'>11:14</time></a>
+vasild has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670411670' id='876189'>
+<a class='timestamp' href='#876189'><time timestamp='2022-12-07T11:14:30Z'>11:14</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670411783' id='876190'>
+<a class='timestamp' href='#876190'><time timestamp='2022-12-07T11:16:23Z'>11:16</time></a>
+bitdex has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670411898' id='876191'>
+<a class='timestamp' href='#876191'><time timestamp='2022-12-07T11:18:18Z'>11:18</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670412466' id='876192'>
+<a class='timestamp' href='#876192'><time timestamp='2022-12-07T11:27:46Z'>11:27</time></a>
+AaronvanW has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670413977' id='876193'>
+<a class='timestamp' href='#876193'><time timestamp='2022-12-07T11:52:57Z'>11:52</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] dergoegge closed pull request #26590: net, refactor: Kill proxy globals (master...2022-11-socks5-refactor) <a href="https://github.com/bitcoin/bitcoin/pull/26590" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26590</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670414131' id='876194'>
+<a class='timestamp' href='#876194'><time timestamp='2022-12-07T11:55:31Z'>11:55</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] dergoegge closed pull request #26583: net: Make CNode message process queue private (master...2022-11-connman-pollmessage) <a href="https://github.com/bitcoin/bitcoin/pull/26583" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26583</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670414312' id='876195'>
+<a class='timestamp' href='#876195'><time timestamp='2022-12-07T11:58:32Z'>11:58</time></a>
+brunoerg has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670414335' id='876196'>
+<a class='timestamp' href='#876196'><time timestamp='2022-12-07T11:58:55Z'>11:58</time></a>
+AaronvanW has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670416368' id='876197'>
+<a class='timestamp' href='#876197'><time timestamp='2022-12-07T12:32:48Z'>12:32</time></a>
+AaronvanW has quit [Ping timeout: 265 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670417444' id='876198'>
+<a class='timestamp' href='#876198'><time timestamp='2022-12-07T12:50:44Z'>12:50</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670417543' id='876199'>
+<a class='timestamp' href='#876199'><time timestamp='2022-12-07T12:52:23Z'>12:52</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670418308' id='876200'>
+<a class='timestamp' href='#876200'><time timestamp='2022-12-07T13:05:08Z'>13:05</time></a>
+bitdex has quit [Quit: = &quot;&quot;]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670419298' id='876201'>
+<a class='timestamp' href='#876201'><time timestamp='2022-12-07T13:21:38Z'>13:21</time></a>
+AaronvanW has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670419694' id='876202'>
+<a class='timestamp' href='#876202'><time timestamp='2022-12-07T13:28:14Z'>13:28</time></a>
+vasild has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670419804' id='876203'>
+<a class='timestamp' href='#876203'><time timestamp='2022-12-07T13:30:04Z'>13:30</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670421211' id='876204'>
+<a class='timestamp' href='#876204'><time timestamp='2022-12-07T13:53:31Z'>13:53</time></a>
+jon_atack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670421573' id='876205'>
+<a class='timestamp' href='#876205'><time timestamp='2022-12-07T13:59:33Z'>13:59</time></a>
+jonatack1 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670421659' id='876206'>
+<a class='timestamp' href='#876206'><time timestamp='2022-12-07T14:00:59Z'>14:00</time></a>
+jon_atack has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670423788' id='876207'>
+<a class='timestamp' href='#876207'><time timestamp='2022-12-07T14:36:28Z'>14:36</time></a>
+jtraub91 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670424412' id='876208'>
+<a class='timestamp' href='#876208'><time timestamp='2022-12-07T14:46:52Z'>14:46</time></a>
+jonatack1 has quit [Ping timeout: 252 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670424450' id='876209'>
+<a class='timestamp' href='#876209'><time timestamp='2022-12-07T14:47:30Z'>14:47</time></a>
+jonatack1 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670424891' id='876210'>
+<a class='timestamp' href='#876210'><time timestamp='2022-12-07T14:54:51Z'>14:54</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 4 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/272fb0a5cf2c...7d515600034b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/272fb0a5cf2c...7d515600034b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670424891' id='876211'>
+<a class='timestamp' href='#876211'><time timestamp='2022-12-07T14:54:51Z'>14:54</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 82e272a Ryan Ofsky: refactor: Move src/interfaces/*.cpp files to libbitcoin_common.a
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670424891' id='876212'>
+<a class='timestamp' href='#876212'><time timestamp='2022-12-07T14:54:51Z'>14:54</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master dd6e8bd fanquake: build: remove BOOST_CPPFLAGS from libbitcoin_util
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670424891' id='876213'>
+<a class='timestamp' href='#876213'><time timestamp='2022-12-07T14:54:51Z'>14:54</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master b19c412 Ryan Ofsky: refactor: Rename ambiguous interfaces::MakeHandler functions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670424897' id='876214'>
+<a class='timestamp' href='#876214'><time timestamp='2022-12-07T14:54:57Z'>14:54</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #26298: refactor: Move src/interfaces/*.cpp files to libbitcoin_common.a (master...pr/intclean) <a href="https://github.com/bitcoin/bitcoin/pull/26298" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26298</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670425633' id='876215'>
+<a class='timestamp' href='#876215'><time timestamp='2022-12-07T15:07:13Z'>15:07</time></a>
+Ombre has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670428399' id='876216'>
+<a class='timestamp' href='#876216'><time timestamp='2022-12-07T15:53:19Z'>15:53</time></a>
+halosghost has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670428645' id='876217'>
+<a class='timestamp' href='#876217'><time timestamp='2022-12-07T15:57:25Z'>15:57</time></a>
+pablomartin has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670429036' id='876218'>
+<a class='timestamp' href='#876218'><time timestamp='2022-12-07T16:03:56Z'>16:03</time></a>
+jonatack1 has quit [Ping timeout: 246 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670429075' id='876219'>
+<a class='timestamp' href='#876219'><time timestamp='2022-12-07T16:04:35Z'>16:04</time></a>
+AaronvanW has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670429726' id='876220'>
+<a class='timestamp' href='#876220'><time timestamp='2022-12-07T16:15:26Z'>16:15</time></a>
+Guest52 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670430261' id='876221'>
+<a class='timestamp' href='#876221'><time timestamp='2022-12-07T16:24:21Z'>16:24</time></a>
+rozehnal_paul has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670430277' id='876222'>
+<a class='timestamp' href='#876222'><time timestamp='2022-12-07T16:24:37Z'>16:24</time></a>
+rozehnal_paul42 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670430345' id='876223'>
+<a class='timestamp' href='#876223'><time timestamp='2022-12-07T16:25:45Z'>16:25</time></a>
+rozehnal_paul42 has quit [Client Quit]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670430916' id='876224'>
+<a class='timestamp' href='#876224'><time timestamp='2022-12-07T16:35:16Z'>16:35</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/7d515600034b...9052d869c967" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/7d515600034b...9052d869c967</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670430917' id='876225'>
+<a class='timestamp' href='#876225'><time timestamp='2022-12-07T16:35:17Z'>16:35</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 6fb102c Randall Naar: test: Changed small_txpuzzle_randfee to return the virtual size instead of...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670430918' id='876226'>
+<a class='timestamp' href='#876226'><time timestamp='2022-12-07T16:35:18Z'>16:35</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 9052d86 MarcoFalke: Merge bitcoin/bitcoin#26517: test: Changed small_txpuzzle_randfee to retur...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670430925' id='876227'>
+<a class='timestamp' href='#876227'><time timestamp='2022-12-07T16:35:25Z'>16:35</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #26517: test: Changed small_txpuzzle_randfee to return the virtual size instead of the transaction hex for feerate calculation. (master...use-vsize-for-fee-tests) <a href="https://github.com/bitcoin/bitcoin/pull/26517" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26517</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670430939' id='876228'>
+<a class='timestamp' href='#876228'><time timestamp='2022-12-07T16:35:39Z'>16:35</time></a>
+AaronvanW has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670431182' id='876229'>
+<a class='timestamp' href='#876229'><time timestamp='2022-12-07T16:39:42Z'>16:39</time></a>
+pablomartin4btc has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670431339' id='876230'>
+<a class='timestamp' href='#876230'><time timestamp='2022-12-07T16:42:19Z'>16:42</time></a>
+pablomartin has quit [Ping timeout: 248 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670431466' id='876231'>
+<a class='timestamp' href='#876231'><time timestamp='2022-12-07T16:44:26Z'>16:44</time></a>
+Guest52 has quit [Quit: Client closed]
+<br>
+</div>
+
+<div class='info op-leave' data-timestamp='1670431660' id='876232'>
+<a class='timestamp' href='#876232'><time timestamp='2022-12-07T16:47:40Z'>16:47</time></a>
+Ombre has left #bitcoin-core-dev [#bitcoin-core-dev]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670431801' id='876233'>
+<a class='timestamp' href='#876233'><time timestamp='2022-12-07T16:50:01Z'>16:50</time></a>
+ghost43_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670431843' id='876234'>
+<a class='timestamp' href='#876234'><time timestamp='2022-12-07T16:50:43Z'>16:50</time></a>
+b_101 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670431844' id='876235'>
+<a class='timestamp' href='#876235'><time timestamp='2022-12-07T16:50:44Z'>16:50</time></a>
+ghost43 has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670432527' id='876236'>
+<a class='timestamp' href='#876236'><time timestamp='2022-12-07T17:02:07Z'>17:02</time></a>
+yashraj has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670432557' id='876237'>
+<a class='timestamp' href='#876237'><time timestamp='2022-12-07T17:02:37Z'>17:02</time></a>
+ghost43_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670432574' id='876238'>
+<a class='timestamp' href='#876238'><time timestamp='2022-12-07T17:02:54Z'>17:02</time></a>
+ghost43 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433144' id='876239'>
+<a class='timestamp' href='#876239'><time timestamp='2022-12-07T17:12:24Z'>17:12</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] brunoerg opened pull request #26653: test, init: perturb file to ensure failure instead of only deleting them (master...2022-12-stress-test-perturbing) <a href="https://github.com/bitcoin/bitcoin/pull/26653" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26653</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433657' id='876240'>
+<a class='timestamp' href='#876240'><time timestamp='2022-12-07T17:20:57Z'>17:20</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+glozow: i was just looking at your comment in #26451 about the mining-on-a-mempool-cluster code in #26152, which i just took a look at.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433660' id='876241'>
+<a class='timestamp' href='#876241'><time timestamp='2022-12-07T17:21:00Z'>17:21</time></a>
+&lt;<span class='nick nick-10'>gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/26451" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/26451</a> | Enforce incentive compatibility for all RBF replacements by sdaftuar · Pull Request #26451 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433665' id='876242'>
+<a class='timestamp' href='#876242'><time timestamp='2022-12-07T17:21:05Z'>17:21</time></a>
+&lt;<span class='nick nick-10'>gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/26152" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/26152</a> | Bump unconfirmed ancestor transactions to target feerate by Xekyo · Pull Request #26152 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433700' id='876243'>
+<a class='timestamp' href='#876243'><time timestamp='2022-12-07T17:21:40Z'>17:21</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+glozow: am i correct in understanding that the CalculateCluster function could pull in the whole mempool, and isn&#x27;t constrained by ancestor/descendant limits?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433721' id='876244'>
+<a class='timestamp' href='#876244'><time timestamp='2022-12-07T17:22:01Z'>17:22</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+(that&#x27;s my read of what connectedness means, so i want to check to see if i might have misunderstood)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670433857' id='876245'>
+<a class='timestamp' href='#876245'><time timestamp='2022-12-07T17:24:17Z'>17:24</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+Murch: ^ you may know the answer to this as well?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670434053' id='876246'>
+<a class='timestamp' href='#876246'><time timestamp='2022-12-07T17:27:33Z'>17:27</time></a>
+&lt;<span class='nick nick-10'>glozow</span>&gt;
+sdaftuar: yes correct, that is possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670434243' id='876247'>
+<a class='timestamp' href='#876247'><time timestamp='2022-12-07T17:30:43Z'>17:30</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+thank you!
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670434317' id='876248'>
+<a class='timestamp' href='#876248'><time timestamp='2022-12-07T17:31:57Z'>17:31</time></a>
+Talkless has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670434630' id='876249'>
+<a class='timestamp' href='#876249'><time timestamp='2022-12-07T17:37:10Z'>17:37</time></a>
+&lt;<span class='nick nick-10'>glozow</span>&gt;
+(so yeah, not really acceptable if calling from p2p)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670434690' id='876250'>
+<a class='timestamp' href='#876250'><time timestamp='2022-12-07T17:38:10Z'>17:38</time></a>
+&lt;<span class='nick nick-10'>glozow</span>&gt;
+it should be very easy to implement a stopping point based on number of entries visited for example. but if we need an answer...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670435006' id='876251'>
+<a class='timestamp' href='#876251'><time timestamp='2022-12-07T17:43:26Z'>17:43</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+glozow: i was thinking that perhaps we could just look at the direct conflicts + ancestors. that has the benefit of the RBF reasoning being &quot;local&quot;, in the sense that unrelated transactions are excluded from the logic (which seems better for reasoning), and also limits computational complexity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670435040' id='876252'>
+<a class='timestamp' href='#876252'><time timestamp='2022-12-07T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+however that is still potentially a lot of transactions (roughly 2500 i think, with the 100-reaplcement rule in effect)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670435088' id='876253'>
+<a class='timestamp' href='#876253'><time timestamp='2022-12-07T17:44:48Z'>17:44</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+also, you might want to consider putting in some kind of similar limit for the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670435123' id='876254'>
+<a class='timestamp' href='#876254'><time timestamp='2022-12-07T17:45:23Z'>17:45</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+but i haven&#x27;t reviewed the PR so can&#x27;t really comment, just seems worrisome on its face
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670435148' id='876255'>
+<a class='timestamp' href='#876255'><time timestamp='2022-12-07T17:45:48Z'>17:45</time></a>
+b_101 has quit [Ping timeout: 252 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670435406' id='876256'>
+<a class='timestamp' href='#876256'><time timestamp='2022-12-07T17:50:06Z'>17:50</time></a>
+yashraj has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670435441' id='876257'>
+<a class='timestamp' href='#876257'><time timestamp='2022-12-07T17:50:41Z'>17:50</time></a>
+yashraj has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670435730' id='876258'>
+<a class='timestamp' href='#876258'><time timestamp='2022-12-07T17:55:30Z'>17:55</time></a>
+yashraj has quit [Ping timeout: 256 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670436022' id='876259'>
+<a class='timestamp' href='#876259'><time timestamp='2022-12-07T18:00:22Z'>18:00</time></a>
+sipsorcery has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670436138' id='876260'>
+<a class='timestamp' href='#876260'><time timestamp='2022-12-07T18:02:18Z'>18:02</time></a>
+&lt;<span class='nick nick-10'>glozow</span>&gt;
+agree a limit makes sense for wallet-only as well yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670436138' id='876261'>
+<a class='timestamp' href='#876261'><time timestamp='2022-12-07T18:02:18Z'>18:02</time></a>
+&lt;<span class='nick nick-10'>glozow</span>&gt;
+My initial reaction is that limiting to direct conflicts + ancestors leaves quite a bit of room for underestimation, as I tend to think of these things as &quot;can somebody pin.&quot; Improving the heuristic even if still perfect seems worthwhile given the current Rule #2 has little impact on &quot;can somebody pin&quot; anyway.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670436141' id='876262'>
+<a class='timestamp' href='#876262'><time timestamp='2022-12-07T18:02:21Z'>18:02</time></a>
+&lt;<span class='nick nick-10'>gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/2</a> | Long-term, safe, store-of-value · Issue #2 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670436144' id='876263'>
+<a class='timestamp' href='#876263'><time timestamp='2022-12-07T18:02:24Z'>18:02</time></a>
+&lt;<span class='nick nick-10'>glozow</span>&gt;
+still imperfect*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670437295' id='876264'>
+<a class='timestamp' href='#876264'><time timestamp='2022-12-07T18:21:35Z'>18:21</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] john-moffett opened pull request #26654: util: Show descriptive error messages when FileCommit fails (master...2022_12_BetterSystemErrorLogging) <a href="https://github.com/bitcoin/bitcoin/pull/26654" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/26654</a>
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670438043' id='876265'>
+<a class='timestamp' href='#876265'><time timestamp='2022-12-07T18:34:03Z'>18:34</time></a>
+rozehnal_paul has quit [Quit: Connection closed]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670438267' id='876266'>
+<a class='timestamp' href='#876266'><time timestamp='2022-12-07T18:37:47Z'>18:37</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670438304' id='876267'>
+<a class='timestamp' href='#876267'><time timestamp='2022-12-07T18:38:24Z'>18:38</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670438319' id='876268'>
+<a class='timestamp' href='#876268'><time timestamp='2022-12-07T18:38:39Z'>18:38</time></a>
+sipsorcery has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670438334' id='876269'>
+<a class='timestamp' href='#876269'><time timestamp='2022-12-07T18:38:54Z'>18:38</time></a>
+sipsorcery has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670438472' id='876270'>
+<a class='timestamp' href='#876270'><time timestamp='2022-12-07T18:41:12Z'>18:41</time></a>
+Talkless has quit [Quit: Konversation terminated!]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670438503' id='876271'>
+<a class='timestamp' href='#876271'><time timestamp='2022-12-07T18:41:43Z'>18:41</time></a>
+Talkless has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670438724' id='876272'>
+<a class='timestamp' href='#876272'><time timestamp='2022-12-07T18:45:24Z'>18:45</time></a>
+bitcoinerrorlog1 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670438955' id='876273'>
+<a class='timestamp' href='#876273'><time timestamp='2022-12-07T18:49:15Z'>18:49</time></a>
+BitcoinErrorLog has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670439276' id='876274'>
+<a class='timestamp' href='#876274'><time timestamp='2022-12-07T18:54:36Z'>18:54</time></a>
+zeropoint has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670439748' id='876275'>
+<a class='timestamp' href='#876275'><time timestamp='2022-12-07T19:02:28Z'>19:02</time></a>
+codo has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670440705' id='876276'>
+<a class='timestamp' href='#876276'><time timestamp='2022-12-07T19:18:25Z'>19:18</time></a>
+cotsuka9 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670440777' id='876277'>
+<a class='timestamp' href='#876277'><time timestamp='2022-12-07T19:19:37Z'>19:19</time></a>
+jonatack1 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670440790' id='876278'>
+<a class='timestamp' href='#876278'><time timestamp='2022-12-07T19:19:50Z'>19:19</time></a>
+cotsuka has quit [Ping timeout: 268 seconds]
+<br>
+</div>
+
+<div class='info op-nick' data-timestamp='1670440791' id='876279'>
+<a class='timestamp' href='#876279'><time timestamp='2022-12-07T19:19:51Z'>19:19</time></a>
+cotsuka9 is now known as cotsuka
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670442637' id='876280'>
+<a class='timestamp' href='#876280'><time timestamp='2022-12-07T19:50:37Z'>19:50</time></a>
+&lt;<span class='nick nick-12'>Murch</span>&gt;
+glozow: We chatted a bunch about this today at lunch. I think that if we considered all ancestors and only our own other relatives for each UTXO, we would only be prone to overestimating bump fees by essentially not relying on bumping by foreign descendants of our ancestry.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670443063' id='876281'>
+<a class='timestamp' href='#876281'><time timestamp='2022-12-07T19:57:43Z'>19:57</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+glozow: er i misspoke when i said &quot;direct conflicts and ancestors&quot;. what i was thinking in my head was &quot;all conflicts and their ancestors&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670443082' id='876282'>
+<a class='timestamp' href='#876282'><time timestamp='2022-12-07T19:58:02Z'>19:58</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+glozow: but not sure i follow what you mean by leaving room for underestimation, can you clarify?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670443192' id='876283'>
+<a class='timestamp' href='#876283'><time timestamp='2022-12-07T19:59:52Z'>19:59</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+i think that underestimating the mining scores of what is in the mempool (eg because we exclude parts of the transaction graph which might make those conflicting transactions actually have a higher score) 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670443213' id='876284'>
+<a class='timestamp' href='#876284'><time timestamp='2022-12-07T20:00:13Z'>20:00</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+results in less &quot;pinning&quot; because new transactions don&#x27;t need to pay as much as they really should
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670443229' id='876285'>
+<a class='timestamp' href='#876285'><time timestamp='2022-12-07T20:00:29Z'>20:00</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+that&#x27;s an incentive compatibility issue, though -- but maybe a small isssue in practice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670443287' id='876286'>
+<a class='timestamp' href='#876286'><time timestamp='2022-12-07T20:01:27Z'>20:01</time></a>
+&lt;<span class='nick nick-9'>sdaftuar</span>&gt;
+where it gets murkier is exactly what comparison we do. in the world where we use a mini-miner on a transaction subgraph, is the right calculation to ensure that the mining score of the new transaction is strictly better than that of all the to-be-replaced transactions? or do we quantify things in some more precise way?
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670444902' id='876287'>
+<a class='timestamp' href='#876287'><time timestamp='2022-12-07T20:28:22Z'>20:28</time></a>
+SpellChecker has quit [Quit: bye]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670444957' id='876288'>
+<a class='timestamp' href='#876288'><time timestamp='2022-12-07T20:29:17Z'>20:29</time></a>
+SpellChecker has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670445077' id='876289'>
+<a class='timestamp' href='#876289'><time timestamp='2022-12-07T20:31:17Z'>20:31</time></a>
+Talkless has quit [Quit: Konversation terminated!]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670445828' id='876290'>
+<a class='timestamp' href='#876290'><time timestamp='2022-12-07T20:43:48Z'>20:43</time></a>
+sipsorcery has quit [Ping timeout: 256 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670445873' id='876291'>
+<a class='timestamp' href='#876291'><time timestamp='2022-12-07T20:44:33Z'>20:44</time></a>
+sipsorcery has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670446032' id='876292'>
+<a class='timestamp' href='#876292'><time timestamp='2022-12-07T20:47:12Z'>20:47</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670446146' id='876293'>
+<a class='timestamp' href='#876293'><time timestamp='2022-12-07T20:49:06Z'>20:49</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670446397' id='876294'>
+<a class='timestamp' href='#876294'><time timestamp='2022-12-07T20:53:17Z'>20:53</time></a>
+jonatack1 has quit [Ping timeout: 252 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670446871' id='876295'>
+<a class='timestamp' href='#876295'><time timestamp='2022-12-07T21:01:11Z'>21:01</time></a>
+andrewtoth_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670446904' id='876296'>
+<a class='timestamp' href='#876296'><time timestamp='2022-12-07T21:01:44Z'>21:01</time></a>
+Guest42 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670446907' id='876297'>
+<a class='timestamp' href='#876297'><time timestamp='2022-12-07T21:01:47Z'>21:01</time></a>
+andrewtoth_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670446976' id='876298'>
+<a class='timestamp' href='#876298'><time timestamp='2022-12-07T21:02:56Z'>21:02</time></a>
+Guest42 has quit [Client Quit]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670447125' id='876299'>
+<a class='timestamp' href='#876299'><time timestamp='2022-12-07T21:05:25Z'>21:05</time></a>
+jtraub91 has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670448587' id='876300'>
+<a class='timestamp' href='#876300'><time timestamp='2022-12-07T21:29:47Z'>21:29</time></a>
+pablomartin4btc has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670448991' id='876301'>
+<a class='timestamp' href='#876301'><time timestamp='2022-12-07T21:36:31Z'>21:36</time></a>
+jtraub91 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670449259' id='876302'>
+<a class='timestamp' href='#876302'><time timestamp='2022-12-07T21:40:59Z'>21:40</time></a>
+jtraub91 has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670449855' id='876303'>
+<a class='timestamp' href='#876303'><time timestamp='2022-12-07T21:50:55Z'>21:50</time></a>
+brunoerg has quit []
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670450100' id='876304'>
+<a class='timestamp' href='#876304'><time timestamp='2022-12-07T21:55:00Z'>21:55</time></a>
+b_101 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670450394' id='876305'>
+<a class='timestamp' href='#876305'><time timestamp='2022-12-07T21:59:54Z'>21:59</time></a>
+b_101 has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670452277' id='876306'>
+<a class='timestamp' href='#876306'><time timestamp='2022-12-07T22:31:17Z'>22:31</time></a>
+halosghost has quit [Quit: WeeChat 3.7.1]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670452763' id='876307'>
+<a class='timestamp' href='#876307'><time timestamp='2022-12-07T22:39:23Z'>22:39</time></a>
+b_101 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670454462' id='876308'>
+<a class='timestamp' href='#876308'><time timestamp='2022-12-07T23:07:42Z'>23:07</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1670455793' id='876309'>
+<a class='timestamp' href='#876309'><time timestamp='2022-12-07T23:29:53Z'>23:29</time></a>
+yanmaani1 has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670455841' id='876310'>
+<a class='timestamp' href='#876310'><time timestamp='2022-12-07T23:30:41Z'>23:30</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 pushed 4 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9052d869c967...bbfcbcfa0c10" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9052d869c967...bbfcbcfa0c10</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670455841' id='876311'>
+<a class='timestamp' href='#876311'><time timestamp='2022-12-07T23:30:41Z'>23:30</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 7075848 willcl-ark: script: Add fish completions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670455841' id='876312'>
+<a class='timestamp' href='#876312'><time timestamp='2022-12-07T23:30:41Z'>23:30</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master a27a445 willcl-ark: refactor: Sub-folder bash completions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670455842' id='876313'>
+<a class='timestamp' href='#876313'><time timestamp='2022-12-07T23:30:42Z'>23:30</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master ccba4fe willcl-ark: doc: Add completion subdir to contrib/README.md
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670455855' id='876314'>
+<a class='timestamp' href='#876314'><time timestamp='2022-12-07T23:30:55Z'>23:30</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 merged pull request #24611: Add fish completions (master...fish_completions) <a href="https://github.com/bitcoin/bitcoin/pull/24611" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/24611</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1670455961' id='876315'>
+<a class='timestamp' href='#876315'><time timestamp='2022-12-07T23:32:41Z'>23:32</time></a>
+yanmaani1 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670456573' id='876316'>
+<a class='timestamp' href='#876316'><time timestamp='2022-12-07T23:42:53Z'>23:42</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 pushed 5 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/bbfcbcfa0c10...a653f4bb1f06" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/bbfcbcfa0c10...a653f4bb1f06</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670456573' id='876317'>
+<a class='timestamp' href='#876317'><time timestamp='2022-12-07T23:42:53Z'>23:42</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 852891f brunoerg: refactor, wallet: use optional for `label` in `ListTransactions`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670456573' id='876318'>
+<a class='timestamp' href='#876318'><time timestamp='2022-12-07T23:42:53Z'>23:42</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 722e9a4 brunoerg: wallet, rpc: add `label` to `listsinceblock`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670456574' id='876319'>
+<a class='timestamp' href='#876319'><time timestamp='2022-12-07T23:42:54Z'>23:42</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master fe488b4 brunoerg: test: add coverage for `label` in `listsinceblock`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1670456578' id='876320'>
+<a class='timestamp' href='#876320'><time timestamp='2022-12-07T23:42:58Z'>23:42</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 merged pull request #25934: wallet, rpc: add `label` to `listsinceblock` (master...2022-08-add-label-listsinceblock) <a href="https://github.com/bitcoin/bitcoin/pull/25934" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/25934</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-10-16
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-10-16' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-09-16">&lt;</a><span class='header'>   October 2017   </span><a href="/bitcoin-core-dev/2017-11-16">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2017-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-10-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-10-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-10-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-10-09">9</a> <a class="" href="/bitcoin-core-dev/2017-10-10">10</a> <a class="" href="/bitcoin-core-dev/2017-10-11">11</a> <a class="" href="/bitcoin-core-dev/2017-10-12">12</a> <a class="" href="/bitcoin-core-dev/2017-10-13">13</a> <a class="" href="/bitcoin-core-dev/2017-10-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-10-15">15</a> <a class="current" href="/bitcoin-core-dev/2017-10-16">16</a> <a class="" href="/bitcoin-core-dev/2017-10-17">17</a> <a class="" href="/bitcoin-core-dev/2017-10-18">18</a> <a class="" href="/bitcoin-core-dev/2017-10-19">19</a> <a class="" href="/bitcoin-core-dev/2017-10-20">20</a> <a class="" href="/bitcoin-core-dev/2017-10-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-10-22">22</a> <a class="" href="/bitcoin-core-dev/2017-10-23">23</a> <a class="" href="/bitcoin-core-dev/2017-10-24">24</a> <a class="" href="/bitcoin-core-dev/2017-10-25">25</a> <a class="" href="/bitcoin-core-dev/2017-10-26">26</a> <a class="" href="/bitcoin-core-dev/2017-10-27">27</a> <a class="" href="/bitcoin-core-dev/2017-10-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-10-29">29</a> <a class="" href="/bitcoin-core-dev/2017-10-30">30</a> <a class="" href="/bitcoin-core-dev/2017-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1508114760' id='575479'>
+<a class='timestamp' href='#575479'><time timestamp='2017-10-16T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+is there an rpc command for converting from txid to wtxid? e.g. previously the node observed a transaction with some txid, i want to find its wtxid.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508114940' id='575480'>
+<a class='timestamp' href='#575480'><time timestamp='2017-10-16T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+kanzure: getrawtransaction &lt;hash&gt; true ? (it seems to me that you couldn&#x27;t find the wtxid in the general case unless it&#x27;s txindexed)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508114940' id='575481'>
+<a class='timestamp' href='#575481'><time timestamp='2017-10-16T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+esotericnonsense: Or if it is in your wallet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508114940' id='575482'>
+<a class='timestamp' href='#575482'><time timestamp='2017-10-16T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+No such mempool or blockchain transaction. Use gettransaction for wallet transactions.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508114940' id='575483'>
+<a class='timestamp' href='#575483'><time timestamp='2017-10-16T00:49:00Z'>00:49</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+yes, lazy language, basically if it&#x27;s available to bitcoind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508115000' id='575484'>
+<a class='timestamp' href='#575484'><time timestamp='2017-10-16T00:50:00Z'>00:50</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+i&#x27;m absolutely certain this is a real transaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508115000' id='575485'>
+<a class='timestamp' href='#575485'><time timestamp='2017-10-16T00:50:00Z'>00:50</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+kanzure: is it sensitive? if it&#x27;s not, you can pm me (I have txindex on)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508117580' id='575486'>
+<a class='timestamp' href='#575486'><time timestamp='2017-10-16T01:33:00Z'>01:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+kanzure: does gettransaction work?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508117580' id='575487'>
+<a class='timestamp' href='#575487'><time timestamp='2017-10-16T01:33:00Z'>01:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(for wallet txn)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508117580' id='575488'>
+<a class='timestamp' href='#575488'><time timestamp='2017-10-16T01:33:00Z'>01:33</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+decoderawtransaction works for my purposes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508117580' id='575489'>
+<a class='timestamp' href='#575489'><time timestamp='2017-10-16T01:33:00Z'>01:33</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+has hash and txid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508117640' id='575490'>
+<a class='timestamp' href='#575490'><time timestamp='2017-10-16T01:34:00Z'>01:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah of course
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508118120' id='575491'>
+<a class='timestamp' href='#575491'><time timestamp='2017-10-16T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+soeone wanna close #11502? Guy is just asking for support at this point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508118120' id='575492'>
+<a class='timestamp' href='#575492'><time timestamp='2017-10-16T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11502" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11502</a> | estimatefee is returning way-off value · Issue #11502 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119560' id='575493'>
+<a class='timestamp' href='#575493'><time timestamp='2017-10-16T02:06:00Z'>02:06</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+sipa: which one is the wtxid? why is it &quot;txid&quot; and &quot;hash&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119620' id='575494'>
+<a class='timestamp' href='#575494'><time timestamp='2017-10-16T02:07:00Z'>02:07</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+What is the pull request number that implements segwit wallet? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119680' id='575495'>
+<a class='timestamp' href='#575495'><time timestamp='2017-10-16T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+kanzure: they&#x27;re both the same. it&#x27;d be nice if the same term was used across the API.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119680' id='575496'>
+<a class='timestamp' href='#575496'><time timestamp='2017-10-16T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+esotericnonsense: which one is both the same? the values you were returning were different between &quot;txid&quot; and &quot;hash&quot;.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119680' id='575497'>
+<a class='timestamp' href='#575497'><time timestamp='2017-10-16T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+kanzure: there&#x27;s some discussion in <a href="https://github.com/bitcoin/bitcoin/pull/11203" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11203</a> regarding &#x27;what happens if there&#x27;s a segwitv2&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119740' id='575498'>
+<a class='timestamp' href='#575498'><time timestamp='2017-10-16T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+wtxid and hash are the same
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119740' id='575499'>
+<a class='timestamp' href='#575499'><time timestamp='2017-10-16T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+txid is different
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119860' id='575500'>
+<a class='timestamp' href='#575500'><time timestamp='2017-10-16T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+the txid is the hash of the transaction serialized without witness data (what would be seen by an old pre-segwit node), hash/wxtid is the hash of the transaction serialized with witness data
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119860' id='575501'>
+<a class='timestamp' href='#575501'><time timestamp='2017-10-16T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+wtxid*.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119920' id='575502'>
+<a class='timestamp' href='#575502'><time timestamp='2017-10-16T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+in v0.15.0 why is txid and hash the same for a segwit transaction?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508119920' id='575503'>
+<a class='timestamp' href='#575503'><time timestamp='2017-10-16T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+in decoderawtransaction rpc output
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508120280' id='575504'>
+<a class='timestamp' href='#575504'><time timestamp='2017-10-16T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-1'> cheetah2</span>&gt;
+How does one get the wallet passphrase using bitcoind getaccountaddress to make the account in php?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508120760' id='575505'>
+<a class='timestamp' href='#575505'><time timestamp='2017-10-16T02:26:00Z'>02:26</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+kanzure: they shouldn&#x27;t be. do you have an example?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508121120' id='575506'>
+<a class='timestamp' href='#575506'><time timestamp='2017-10-16T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+cheetah2: wrong channel, try #bitcoin 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508129760' id='575507'>
+<a class='timestamp' href='#575507'><time timestamp='2017-10-16T04:56:00Z'>04:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/6ab0e4cf4954...2c66cea2d186" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/6ab0e4cf4954...2c66cea2d186</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508129760' id='575508'>
+<a class='timestamp' href='#575508'><time timestamp='2017-10-16T04:56:00Z'>04:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 43f76f6 MeshCollider: Add missing comma from rescanblockchain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508129760' id='575509'>
+<a class='timestamp' href='#575509'><time timestamp='2017-10-16T04:56:00Z'>04:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2c66cea Jonas Schnelli: Merge #11496: [Trivial] Add missing comma from rescanblockchain example...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508129820' id='575510'>
+<a class='timestamp' href='#575510'><time timestamp='2017-10-16T04:57:00Z'>04:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #11496: [Trivial] Add missing comma from rescanblockchain example (master...201710_missing_comma) <a href="https://github.com/bitcoin/bitcoin/pull/11496" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11496</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508131860' id='575511'>
+<a class='timestamp' href='#575511'><time timestamp='2017-10-16T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] achow101 opened pull request #11507: Don&#x27;t do slow transaction lookup when txindex is enabled (master...getrawtx-txindex) <a href="https://github.com/bitcoin/bitcoin/pull/11507" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11507</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508132820' id='575512'>
+<a class='timestamp' href='#575512'><time timestamp='2017-10-16T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli opened pull request #11508: Fix crash via division by zero assertion (master...2017/10/qt_cc_crash_zero) <a href="https://github.com/bitcoin/bitcoin/pull/11508" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11508</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508135220' id='575513'>
+<a class='timestamp' href='#575513'><time timestamp='2017-10-16T06:27:00Z'>06:27</time></a>
+&lt;<span class='nick nick-3'> ecurrencyhodler_</span>&gt;
+Hello
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508135280' id='575514'>
+<a class='timestamp' href='#575514'><time timestamp='2017-10-16T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-3'> ecurrencyhodler_</span>&gt;
+Anyone understand the tech behind confidential transactions?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508135280' id='575515'>
+<a class='timestamp' href='#575515'><time timestamp='2017-10-16T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+try #bitcoin-wizards
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508135280' id='575516'>
+<a class='timestamp' href='#575516'><time timestamp='2017-10-16T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-3'> ecurrencyhodler_</span>&gt;
+Oh okay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508135280' id='575517'>
+<a class='timestamp' href='#575517'><time timestamp='2017-10-16T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-3'> ecurrencyhodler_</span>&gt;
+Ty     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508139240' id='575518'>
+<a class='timestamp' href='#575518'><time timestamp='2017-10-16T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #11509: Avoid assertion failure in coin control dialog. Fixes #11501. (master...dfeevary) <a href="https://github.com/bitcoin/bitcoin/pull/11509" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11509</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508139300' id='575519'>
+<a class='timestamp' href='#575519'><time timestamp='2017-10-16T07:35:00Z'>07:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #11509: Avoid assertion failure in coin control dialog. Fixes #11501. (master...dfeevary) <a href="https://github.com/bitcoin/bitcoin/pull/11509" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11509</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508146020' id='575520'>
+<a class='timestamp' href='#575520'><time timestamp='2017-10-16T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] simonmulser opened pull request #11510: Trivial: Log when peer reached MAX_BLOCKS_IN_TRANSIT_PER_PEER (master...add_log) <a href="https://github.com/bitcoin/bitcoin/pull/11510" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11510</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508167200' id='575521'>
+<a class='timestamp' href='#575521'><time timestamp='2017-10-16T15:20:00Z'>15:20</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+ping luke-jr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508167260' id='575522'>
+<a class='timestamp' href='#575522'><time timestamp='2017-10-16T15:21:00Z'>15:21</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+why was the test removed in #10593?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508167260' id='575523'>
+<a class='timestamp' href='#575523'><time timestamp='2017-10-16T15:21:00Z'>15:21</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10593" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10593</a> | Relax punishment for peers relaying invalid blocks and headers by luke-jr · Pull Request #10593 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508170560' id='575524'>
+<a class='timestamp' href='#575524'><time timestamp='2017-10-16T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+promag: because it was testing for behaviour that was undesirable to have
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508177640' id='575525'>
+<a class='timestamp' href='#575525'><time timestamp='2017-10-16T18:14:00Z'>18:14</time></a>
+&lt;<span class='nick nick-3'> Alexaaa</span>&gt;
+Hi all, Would learning this technology help me find a career and if so where should I start?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508177760' id='575526'>
+<a class='timestamp' href='#575526'><time timestamp='2017-10-16T18:16:00Z'>18:16</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Alexaaa: #bitcoin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508181720' id='575527'>
+<a class='timestamp' href='#575527'><time timestamp='2017-10-16T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-3'> rumpuscat</span>&gt;
+help -l
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508185920' id='575528'>
+<a class='timestamp' href='#575528'><time timestamp='2017-10-16T20:32:00Z'>20:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] donaloconnor opened pull request #11511: [Init] Remove redundant exit(EXIT_FAILURE) instances and replace with return false (master...161017_refactor_AppInit) <a href="https://github.com/bitcoin/bitcoin/pull/11511" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11511</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508190300' id='575529'>
+<a class='timestamp' href='#575529'><time timestamp='2017-10-16T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #11512: Use GetDesireableServiceFlags in seeds, dnsseeds, fixing static seed adding (master...2017-10-seed-service-bits-cleanups) <a href="https://github.com/bitcoin/bitcoin/pull/11512" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11512</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

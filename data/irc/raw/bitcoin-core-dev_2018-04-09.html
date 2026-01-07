@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-04-09
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-04-09' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:22 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-03-09">&lt;</a><span class='header'>    April 2018    </span><a href="/bitcoin-core-dev/2018-05-09">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2018-04-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-04-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-04-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-04-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-04-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-04-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-04-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-04-08">8</a>  <a class="current" href="/bitcoin-core-dev/2018-04-09">9</a> <a class="" href="/bitcoin-core-dev/2018-04-10">10</a> <a class="" href="/bitcoin-core-dev/2018-04-11">11</a> <a class="" href="/bitcoin-core-dev/2018-04-12">12</a> <a class="" href="/bitcoin-core-dev/2018-04-13">13</a> <a class="" href="/bitcoin-core-dev/2018-04-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-04-15">15</a> <a class="" href="/bitcoin-core-dev/2018-04-16">16</a> <a class="" href="/bitcoin-core-dev/2018-04-17">17</a> <a class="" href="/bitcoin-core-dev/2018-04-18">18</a> <a class="" href="/bitcoin-core-dev/2018-04-19">19</a> <a class="" href="/bitcoin-core-dev/2018-04-20">20</a> <a class="" href="/bitcoin-core-dev/2018-04-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-04-22">22</a> <a class="" href="/bitcoin-core-dev/2018-04-23">23</a> <a class="" href="/bitcoin-core-dev/2018-04-24">24</a> <a class="" href="/bitcoin-core-dev/2018-04-25">25</a> <a class="" href="/bitcoin-core-dev/2018-04-26">26</a> <a class="" href="/bitcoin-core-dev/2018-04-27">27</a> <a class="" href="/bitcoin-core-dev/2018-04-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-04-29">29</a> <a class="" href="/bitcoin-core-dev/2018-04-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1523242680' id='607253'>
+<a class='timestamp' href='#607253'><time timestamp='2018-04-09T02:58:00Z'>02:58</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+I&#x27;m a little confused about coinbase transactions and &#x27;is all from me&#x27;. Currently, CWallet::IsAllFromMe will say no to a coinbase transaction, even (it appears) if it&#x27;s the miner&#x27;s wallet. The check itself tries to find the prevout in the wallet, but prevout is 0000..., so it obviously won&#x27;t be there. This causes issues with the IsAllFromMe PR (#12508), which I patched by explicitly saying &#x27;true&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242680' id='607254'>
+<a class='timestamp' href='#607254'><time timestamp='2018-04-09T02:58:00Z'>02:58</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+for coinbase txs in CWallet::IsAllFromMe, but I wonder if this will cause everyone to think they own all coinbase transactions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242680' id='607255'>
+<a class='timestamp' href='#607255'><time timestamp='2018-04-09T02:58:00Z'>02:58</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12508" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12508</a> | IsAllFromMe by kallewoof · Pull Request #12508 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242800' id='607256'>
+<a class='timestamp' href='#607256'><time timestamp='2018-04-09T03:00:00Z'>03:00</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Then again, if it&#x27;s a coinbase tx, it will have 100+ confirmations, so in all cases where IsAllFromMe matters (mostly unconfirmed, or low confirm count), it&#x27;s irrelevant.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242800' id='607257'>
+<a class='timestamp' href='#607257'><time timestamp='2018-04-09T03:00:00Z'>03:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+hmm interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242860' id='607258'>
+<a class='timestamp' href='#607258'><time timestamp='2018-04-09T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Or is there a case where a 100+ confirm input being mine or not mine makes a difference? I guess in spending it someone could double spend, so ^ is probably not right..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242920' id='607259'>
+<a class='timestamp' href='#607259'><time timestamp='2018-04-09T03:02:00Z'>03:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+for 100+ confirms there is no difference. The reason for the 100 depth is to make sure it&#x27;s deep enough to avoid any realistic reorgs causing trouble.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523242980' id='607260'>
+<a class='timestamp' href='#607260'><time timestamp='2018-04-09T03:03:00Z'>03:03</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+wumpus: Right. But I realized someone could spend a coinbase tx sending 12.5 btc to me, my node would think it was &#x27;from me&#x27; and act accordingly, and then they would double spend it and I would risk losing 12.5 btc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243040' id='607261'>
+<a class='timestamp' href='#607261'><time timestamp='2018-04-09T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+huh? I don&#x27;t understand what you&#x27;re saying at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243040' id='607262'>
+<a class='timestamp' href='#607262'><time timestamp='2018-04-09T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+generated coins are from noone..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243040' id='607263'>
+<a class='timestamp' href='#607263'><time timestamp='2018-04-09T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+luke-jr: Me neither. I think I&#x27;m very confused.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243100' id='607264'>
+<a class='timestamp' href='#607264'><time timestamp='2018-04-09T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+from me means that the inputs were coins treated as yours
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243100' id='607265'>
+<a class='timestamp' href='#607265'><time timestamp='2018-04-09T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Right. So a coinbase input would not be considered yours even if you created the block?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243100' id='607266'>
+<a class='timestamp' href='#607266'><time timestamp='2018-04-09T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s impossible to double-spend a coinbase, by definition the coinbase can only be in the block where the reward is taken
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243100' id='607267'>
+<a class='timestamp' href='#607267'><time timestamp='2018-04-09T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+kallewoof: the coinbase isn&#x27;t really an input at all, just dummy data
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243160' id='607268'>
+<a class='timestamp' href='#607268'><time timestamp='2018-04-09T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+A coinbase transaction has a coinbase input and an output. I was talking about double spending the output.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243160' id='607269'>
+<a class='timestamp' href='#607269'><time timestamp='2018-04-09T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+luke-jr: The question is, should IsAllFromMe(a coinbase tx) say true or false, for the miner mining it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243160' id='607270'>
+<a class='timestamp' href='#607270'><time timestamp='2018-04-09T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+false obviously?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243160' id='607271'>
+<a class='timestamp' href='#607271'><time timestamp='2018-04-09T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it&#x27;s TO the miner, not FROM him
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243280' id='607272'>
+<a class='timestamp' href='#607272'><time timestamp='2018-04-09T03:08:00Z'>03:08</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+luke-jr: All right. That makes things a bit tricky, I guess, but I&#x27;ll dig.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243340' id='607273'>
+<a class='timestamp' href='#607273'><time timestamp='2018-04-09T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+luke-jr: It doesn&#x27;t seem like morcos&#x27;s initial idea in #9167 is compatible with your interpretation, though: &quot;Created a new wallet and walletTx function IsAllFromMe which correctly computes whether all the inputs to a transaction match the requested IsMine filter.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243340' id='607274'>
+<a class='timestamp' href='#607274'><time timestamp='2018-04-09T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9167" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9167</a> | IsAllFromMe by morcos · Pull Request #9167 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243340' id='607275'>
+<a class='timestamp' href='#607275'><time timestamp='2018-04-09T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+kallewoof: i don&#x27;t understand why you&#x27;re concerned about coinbase txn at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243400' id='607276'>
+<a class='timestamp' href='#607276'><time timestamp='2018-04-09T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+coinbases are by definition never from anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243400' id='607277'>
+<a class='timestamp' href='#607277'><time timestamp='2018-04-09T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+sipa: IsMine says true and IsAllFromMe says false for coinbase txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243400' id='607278'>
+<a class='timestamp' href='#607278'><time timestamp='2018-04-09T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, as it should?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243460' id='607279'>
+<a class='timestamp' href='#607279'><time timestamp='2018-04-09T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Sorry, I meant, IsFromMe and IsAllFromMe say true/false for coinbase
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243460' id='607280'>
+<a class='timestamp' href='#607280'><time timestamp='2018-04-09T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, why is that a problem?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243580' id='607281'>
+<a class='timestamp' href='#607281'><time timestamp='2018-04-09T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Wait, are coinbase transactions from me or not from me? If IsFromMe says true and there&#x27;s only a coinbase input why would IsAllFromMe say false? Shouldn&#x27;t both say the same in this case?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243580' id='607282'>
+<a class='timestamp' href='#607282'><time timestamp='2018-04-09T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+luke-jr says false is correct. In which case IsFromMe is wrong, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243580' id='607283'>
+<a class='timestamp' href='#607283'><time timestamp='2018-04-09T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wait
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243580' id='607284'>
+<a class='timestamp' href='#607284'><time timestamp='2018-04-09T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, IsFromMe is true?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243580' id='607285'>
+<a class='timestamp' href='#607285'><time timestamp='2018-04-09T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243580' id='607286'>
+<a class='timestamp' href='#607286'><time timestamp='2018-04-09T03:13:00Z'>03:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that i don&#x27;t understand!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607287'>
+<a class='timestamp' href='#607287'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+maybe it&#x27;s a special rule for foinbase tzn
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607288'>
+<a class='timestamp' href='#607288'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+coinbase tzn
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607289'>
+<a class='timestamp' href='#607289'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+All it does is check GetDebit(tx, ISMINE_ALL) &gt; 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607290'>
+<a class='timestamp' href='#607290'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+txn     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607291'>
+<a class='timestamp' href='#607291'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Right -- I&#x27;m saying I need to add that to CWallet::IsAllFromMe as well.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607292'>
+<a class='timestamp' href='#607292'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+that=the special rule for coinbase txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243640' id='607293'>
+<a class='timestamp' href='#607293'><time timestamp='2018-04-09T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what is IsAllFromMe even used for?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243700' id='607294'>
+<a class='timestamp' href='#607294'><time timestamp='2018-04-09T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+That&#x27;s a great question. It seems to be used in feebumper, and in wallet.cpp in some places.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243760' id='607295'>
+<a class='timestamp' href='#607295'><time timestamp='2018-04-09T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Actually no it&#x27;s only used in feebumper on master.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243820' id='607296'>
+<a class='timestamp' href='#607296'><time timestamp='2018-04-09T03:17:00Z'>03:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yay     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243820' id='607297'>
+<a class='timestamp' href='#607297'><time timestamp='2018-04-09T03:17:00Z'>03:17</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+So it seems completely fine to allow the special case.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243820' id='607298'>
+<a class='timestamp' href='#607298'><time timestamp='2018-04-09T03:17:00Z'>03:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well, you can&#x27;t feebump a coinbase!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523243820' id='607299'>
+<a class='timestamp' href='#607299'><time timestamp='2018-04-09T03:17:00Z'>03:17</time></a>
+&lt;<span class='nick nick-9'> * kallewoof</span>&gt;
+nods
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523246220' id='607300'>
+<a class='timestamp' href='#607300'><time timestamp='2018-04-09T03:57:00Z'>03:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/27278dffe877...4781813b5617" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/27278dffe877...4781813b5617</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523246220' id='607301'>
+<a class='timestamp' href='#607301'><time timestamp='2018-04-09T03:57:00Z'>03:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 08b17de Karl-Johan Alm: [arith_uint256] Do not destroy *this content if passed-in operator may reference it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523246220' id='607302'>
+<a class='timestamp' href='#607302'><time timestamp='2018-04-09T03:57:00Z'>03:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b120f7b Karl-Johan Alm: [test] Add tests for self usage in arith_uint256
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523246220' id='607303'>
+<a class='timestamp' href='#607303'><time timestamp='2018-04-09T03:57:00Z'>03:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4781813 Wladimir J. van der Laan: Merge #12537: [arith_uint256] Make it safe to use &quot;self&quot; in operators...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523246280' id='607304'>
+<a class='timestamp' href='#607304'><time timestamp='2018-04-09T03:58:00Z'>03:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12537: [arith_uint256] Make it safe to use &quot;self&quot; in operators (master...uint-safe-self-op) <a href="https://github.com/bitcoin/bitcoin/pull/12537" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12537</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523253360' id='607305'>
+<a class='timestamp' href='#607305'><time timestamp='2018-04-09T05:56:00Z'>05:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] VizXu opened pull request #12919: no message (0.8...master) <a href="https://github.com/bitcoin/bitcoin/pull/12919" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12919</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523253420' id='607306'>
+<a class='timestamp' href='#607306'><time timestamp='2018-04-09T05:57:00Z'>05:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #12919: no message (0.8...master) <a href="https://github.com/bitcoin/bitcoin/pull/12919" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12919</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523260320' id='607307'>
+<a class='timestamp' href='#607307'><time timestamp='2018-04-09T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] kallewoof opened pull request #12920: test: Fix sign for expected values (master...test-signs) <a href="https://github.com/bitcoin/bitcoin/pull/12920" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12920</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523263980' id='607308'>
+<a class='timestamp' href='#607308'><time timestamp='2018-04-09T08:53:00Z'>08:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Empact opened pull request #12921: Make use of cpuid.h bit definitions (master...cpuid-bits) <a href="https://github.com/bitcoin/bitcoin/pull/12921" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12921</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523271540' id='607309'>
+<a class='timestamp' href='#607309'><time timestamp='2018-04-09T10:59:00Z'>10:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+does anyone happen to have an arm32 system with crc32 feature in /proc/cpuinfo?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523271720' id='607310'>
+<a class='timestamp' href='#607310'><time timestamp='2018-04-09T11:02:00Z'>11:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I want to port <a href="https://github.com/laanwj/crcbench" class="link" target="_blank">https://github.com/laanwj/crcbench</a> to arm32 (with the goal of integrating that into leveldb) however I currently have no wway to test. Well I could check if it compiles, I guess.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523271840' id='607311'>
+<a class='timestamp' href='#607311'><time timestamp='2018-04-09T11:04:00Z'>11:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh right, I guess 64-bit ARM can run 32-bit executables
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274060' id='607312'>
+<a class='timestamp' href='#607312'><time timestamp='2018-04-09T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+PSA: We now have 15 parallel jobs on travis for the next year :3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274120' id='607313'>
+<a class='timestamp' href='#607313'><time timestamp='2018-04-09T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+awesome, thank you MarcoFalke :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274180' id='607314'>
+<a class='timestamp' href='#607314'><time timestamp='2018-04-09T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Thanks to ChainCode for sponsoring that!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274240' id='607315'>
+<a class='timestamp' href='#607315'><time timestamp='2018-04-09T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274540' id='607316'>
+<a class='timestamp' href='#607316'><time timestamp='2018-04-09T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/4781813b5617...6fc5a050f216" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/4781813b5617...6fc5a050f216</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274540' id='607317'>
+<a class='timestamp' href='#607317'><time timestamp='2018-04-09T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master bf08fc5 Karl-Johan Alm: test: Assert on correct variable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274540' id='607318'>
+<a class='timestamp' href='#607318'><time timestamp='2018-04-09T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 6fc5a05 MarcoFalke: Merge #12918: test: Assert on correct variable...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523274600' id='607319'>
+<a class='timestamp' href='#607319'><time timestamp='2018-04-09T11:50:00Z'>11:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12918: test: Assert on correct variable (master...test-typo-rpcrawtx) <a href="https://github.com/bitcoin/bitcoin/pull/12918" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12918</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275140' id='607320'>
+<a class='timestamp' href='#607320'><time timestamp='2018-04-09T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/6fc5a050f216...a04440feb9c9" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/6fc5a050f216...a04440feb9c9</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275140' id='607321'>
+<a class='timestamp' href='#607321'><time timestamp='2018-04-09T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 280023f practicalswift: Remove duplicate includes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275140' id='607322'>
+<a class='timestamp' href='#607322'><time timestamp='2018-04-09T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c36b720 practicalswift: Add Travis check for duplicate includes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275140' id='607323'>
+<a class='timestamp' href='#607323'><time timestamp='2018-04-09T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master a04440f MarcoFalke: Merge #11878: Add Travis check for duplicate includes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275140' id='607324'>
+<a class='timestamp' href='#607324'><time timestamp='2018-04-09T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #11878: Add Travis check for duplicate includes (master...lint-includes) <a href="https://github.com/bitcoin/bitcoin/pull/11878" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11878</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275500' id='607325'>
+<a class='timestamp' href='#607325'><time timestamp='2018-04-09T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a04440feb9c9...cd8e45b4e75a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a04440feb9c9...cd8e45b4e75a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275500' id='607326'>
+<a class='timestamp' href='#607326'><time timestamp='2018-04-09T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c198dc0 Jan Čapek: [Doc] Clarify the meaning of fee delta not being a fee rate in prioritisetransaction RPC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275500' id='607327'>
+<a class='timestamp' href='#607327'><time timestamp='2018-04-09T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cd8e45b MarcoFalke: Merge #12007: [Doc] Clarify the meaning of fee delta not being a fee rate in prioritisetransaction RPC...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275500' id='607328'>
+<a class='timestamp' href='#607328'><time timestamp='2018-04-09T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12007: [Doc] Clarify the meaning of fee delta not being a fee rate in prioritisetransaction RPC (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/12007" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12007</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275620' id='607329'>
+<a class='timestamp' href='#607329'><time timestamp='2018-04-09T12:07:00Z'>12:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/cd8e45b4e75a...603975b96a15" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/cd8e45b4e75a...603975b96a15</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275620' id='607330'>
+<a class='timestamp' href='#607330'><time timestamp='2018-04-09T12:07:00Z'>12:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9142dfe practicalswift: Use explicit casting in cuckoocache&#x27;s compute_hashes(...) to clarify integer conversion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275620' id='607331'>
+<a class='timestamp' href='#607331'><time timestamp='2018-04-09T12:07:00Z'>12:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 603975b MarcoFalke: Merge #12770: Use explicit casting in cuckoocache&#x27;s compute_hashes(...) to clarify integer conversion...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275680' id='607332'>
+<a class='timestamp' href='#607332'><time timestamp='2018-04-09T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12770: Use explicit casting in cuckoocache&#x27;s compute_hashes(...) to clarify integer conversion (master...cuckoocache) <a href="https://github.com/bitcoin/bitcoin/pull/12770" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12770</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523275980' id='607333'>
+<a class='timestamp' href='#607333'><time timestamp='2018-04-09T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+MarcoFalke: wow!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523277960' id='607334'>
+<a class='timestamp' href='#607334'><time timestamp='2018-04-09T12:46:00Z'>12:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so apparently the crc32 extension only exists on armv8, but I didn&#x27;t know 32-bit-only armv8 existed but apparently it does (Cortex-A32)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523278200' id='607335'>
+<a class='timestamp' href='#607335'><time timestamp='2018-04-09T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+anyhow getauxv trick to detect cpu features works; if (getauxval(AT_HWCAP) &amp; HWCAP_CRC32) { on aarch64 and  if (getauxval(AT_HWCAP2) &amp; HWCAP2_CRC32) {  on arm32
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280120' id='607336'>
+<a class='timestamp' href='#607336'><time timestamp='2018-04-09T13:22:00Z'>13:22</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Anyone else seeing this: #12915?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280120' id='607337'>
+<a class='timestamp' href='#607337'><time timestamp='2018-04-09T13:22:00Z'>13:22</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12915" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12915</a> | Segmentation fault in util: ScheduleBatchPriority · Issue #12915 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280420' id='607338'>
+<a class='timestamp' href='#607338'><time timestamp='2018-04-09T13:27:00Z'>13:27</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+hmm, i thought designator initialisers (param{.sched_priority=0}) weren&#x27;t ok for c++11 (<a href="http://en.cppreference.com/w/cpp/language/aggregate_initialization" class="link" target="_blank">http://en.cppreference.com/w/cpp/language/aggregate_initialization</a> says they&#x27;re c++20 fwiw)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280660' id='607339'>
+<a class='timestamp' href='#607339'><time timestamp='2018-04-09T13:31:00Z'>13:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: nope. it crashes inside pthread_setschedparam? that&#x27;s curious
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280720' id='607340'>
+<a class='timestamp' href='#607340'><time timestamp='2018-04-09T13:32:00Z'>13:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the only way I see that can happen if is a null pointer is passed, but as it is passing a pointer to a static variable you&#x27;d say that&#x27;s not possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280780' id='607341'>
+<a class='timestamp' href='#607341'><time timestamp='2018-04-09T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+does this only happen with the sanitize ron?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280900' id='607342'>
+<a class='timestamp' href='#607342'><time timestamp='2018-04-09T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+err, should it be pthread_self() not 0 as the first argument?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523280960' id='607343'>
+<a class='timestamp' href='#607343'><time timestamp='2018-04-09T13:36:00Z'>13:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+uhmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281020' id='607344'>
+<a class='timestamp' href='#607344'><time timestamp='2018-04-09T13:37:00Z'>13:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the man page doesn&#x27;t say anything about 0 being a valid value, at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281020' id='607345'>
+<a class='timestamp' href='#607345'><time timestamp='2018-04-09T13:37:00Z'>13:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: can you try that ^^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281080' id='607346'>
+<a class='timestamp' href='#607346'><time timestamp='2018-04-09T13:38:00Z'>13:38</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+happens also with sanitizer off
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281140' id='607347'>
+<a class='timestamp' href='#607347'><time timestamp='2018-04-09T13:39:00Z'>13:39</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I&#x27;ve seen segfaults in the unit test a couple of days ago, but they went away after a reboot. Really sketchy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281260' id='607348'>
+<a class='timestamp' href='#607348'><time timestamp='2018-04-09T13:41:00Z'>13:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+should definitely be pthread_self() - non-determinism in thread ids might explain why it sometimes crashes and sometimes not?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281320' id='607349'>
+<a class='timestamp' href='#607349'><time timestamp='2018-04-09T13:42:00Z'>13:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+For me it always faults
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281380' id='607350'>
+<a class='timestamp' href='#607350'><time timestamp='2018-04-09T13:43:00Z'>13:43</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+The unit test thing was a different topic. Just related because it was also a segfault
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281560' id='607351'>
+<a class='timestamp' href='#607351'><time timestamp='2018-04-09T13:46:00Z'>13:46</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Making it &quot;const static sched_param param{0};&quot; didn&#x27;t help
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281620' id='607352'>
+<a class='timestamp' href='#607352'><time timestamp='2018-04-09T13:47:00Z'>13:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj opened pull request #12923: util: Pass pthread_self() to pthread_setschedparam instead of 0 (master...2018_04_pthread_self) <a href="https://github.com/bitcoin/bitcoin/pull/12923" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12923</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281680' id='607353'>
+<a class='timestamp' href='#607353'><time timestamp='2018-04-09T13:48:00Z'>13:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+will try that ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281860' id='607354'>
+<a class='timestamp' href='#607354'><time timestamp='2018-04-09T13:51:00Z'>13:51</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+aj: wumpus: Thx. Work for me now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281860' id='607355'>
+<a class='timestamp' href='#607355'><time timestamp='2018-04-09T13:51:00Z'>13:51</time></a>
+&lt;<span class='nick nick-5'> * MarcoFalke</span>&gt;
+subway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281860' id='607356'>
+<a class='timestamp' href='#607356'><time timestamp='2018-04-09T13:51:00Z'>13:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I can make the initializer change in the same PR, but as it compiles in c++11 mode, I&#x27;m not sure .
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523281980' id='607357'>
+<a class='timestamp' href='#607357'><time timestamp='2018-04-09T13:53:00Z'>13:53</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+<a href="https://stackoverflow.com/questions/43471743/pthread-self-on-linux" class="link" target="_blank">https://stackoverflow.com/questions/43471743/pthread-self-on-linux</a> -- suggests that without linking pthreads, pthread_self() will sometimes/often/?? return 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282040' id='607358'>
+<a class='timestamp' href='#607358'><time timestamp='2018-04-09T13:54:00Z'>13:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that explains why it works for some
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282040' id='607359'>
+<a class='timestamp' href='#607359'><time timestamp='2018-04-09T13:54:00Z'>13:54</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+aj: I added the cout and it is definetly not 0 for me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282100' id='607360'>
+<a class='timestamp' href='#607360'><time timestamp='2018-04-09T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it depends on the specifics of the pthread implementation, after all posix threads is an interface, not a specific implementation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282100' id='607361'>
+<a class='timestamp' href='#607361'><time timestamp='2018-04-09T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+aj: if you don&#x27;t link pthreads, pthread_self won&#x27;t resolve at all, and calling it would be a segfault..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282100' id='607362'>
+<a class='timestamp' href='#607362'><time timestamp='2018-04-09T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I would expect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282100' id='607363'>
+<a class='timestamp' href='#607363'><time timestamp='2018-04-09T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so one should not make any assumptions about the value that it returns
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282280' id='607364'>
+<a class='timestamp' href='#607364'><time timestamp='2018-04-09T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+luke-jr: works fine for me without linking libpthread, value is very non-zero either way though. (i don&#x27;t get a segfault with marcofalke&#x27;s test case)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282340' id='607365'>
+<a class='timestamp' href='#607365'><time timestamp='2018-04-09T13:59:00Z'>13:59</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+aj: well, glibc no longer has libpthread anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523282340' id='607366'>
+<a class='timestamp' href='#607366'><time timestamp='2018-04-09T13:59:00Z'>13:59</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(threading is part of the libc now, and linking libpthread explicitly actually can have harmful side effects)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283240' id='607367'>
+<a class='timestamp' href='#607367'><time timestamp='2018-04-09T14:14:00Z'>14:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+about time that threading moved into libc, even little embedded SoCs are mulitcore these days, having threading as something special/optional is just absurd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283240' id='607368'>
+<a class='timestamp' href='#607368'><time timestamp='2018-04-09T14:14:00Z'>14:14</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jamesob closed pull request #12873: [ci] Run functional tests using bitcoin-qt in one Travis job (master...2018-04-03-travis-func-qt) <a href="https://github.com/bitcoin/bitcoin/pull/12873" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12873</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283300' id='607369'>
+<a class='timestamp' href='#607369'><time timestamp='2018-04-09T14:15:00Z'>14:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: would be nice if they didn&#x27;t have bugs doing it though :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283300' id='607370'>
+<a class='timestamp' href='#607370'><time timestamp='2018-04-09T14:15:00Z'>14:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(with glibc, if you link libpthread, and then call vfork early on, it will just return a pointer to the vfork function rather than actually forking)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283300' id='607371'>
+<a class='timestamp' href='#607371'><time timestamp='2018-04-09T14:15:00Z'>14:15</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jamesob: maybe just open a new PR instead? :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283360' id='607372'>
+<a class='timestamp' href='#607372'><time timestamp='2018-04-09T14:16:00Z'>14:16</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+aj: yeah, probably a good idea. Wonder why/how that PR is screwing travis up.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523283360' id='607373'>
+<a class='timestamp' href='#607373'><time timestamp='2018-04-09T14:16:00Z'>14:16</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+sorry for the spam
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285520' id='607374'>
+<a class='timestamp' href='#607374'><time timestamp='2018-04-09T14:52:00Z'>14:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: curious: whats the reason for implementing NI crc for arm 32bit?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285580' id='607375'>
+<a class='timestamp' href='#607375'><time timestamp='2018-04-09T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: last time I checked, quite a lot of time is spent crcing (for leveldb checksums), while verifying the chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285700' id='607376'>
+<a class='timestamp' href='#607376'><time timestamp='2018-04-09T14:55:00Z'>14:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Good to know. I just started to play with the ODROID HC2 (Cortex-A15)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285700' id='607377'>
+<a class='timestamp' href='#607377'><time timestamp='2018-04-09T14:55:00Z'>14:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so using those extensions on hardware that support them probably helps, though I agree the 32-bit case is unlikley to be hit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285700' id='607378'>
+<a class='timestamp' href='#607378'><time timestamp='2018-04-09T14:55:00Z'>14:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(as 32-bit armv8 are very rare)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285760' id='607379'>
+<a class='timestamp' href='#607379'><time timestamp='2018-04-09T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ah, nice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285760' id='607380'>
+<a class='timestamp' href='#607380'><time timestamp='2018-04-09T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I guess Odroids XU4 and HC2 are 32 bit armv7?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285820' id='607381'>
+<a class='timestamp' href='#607381'><time timestamp='2018-04-09T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Not sure if the have NI crc32
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285880' id='607382'>
+<a class='timestamp' href='#607382'><time timestamp='2018-04-09T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Don&#x27;t have access until Thursday to the machine... so no /proc/cpuinto right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285940' id='607383'>
+<a class='timestamp' href='#607383'><time timestamp='2018-04-09T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+armv7 never has crc32
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285940' id='607384'>
+<a class='timestamp' href='#607384'><time timestamp='2018-04-09T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Just read that up... v8 is min, right.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523285940' id='607385'>
+<a class='timestamp' href='#607385'><time timestamp='2018-04-09T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+v8.1-A AFAIK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523286960' id='607386'>
+<a class='timestamp' href='#607386'><time timestamp='2018-04-09T15:16:00Z'>15:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #12924: Fix hdmaster-key / seed-key confusion (scripted diff) (master...master_key_to_seed) <a href="https://github.com/bitcoin/bitcoin/pull/12924" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12924</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523287200' id='607387'>
+<a class='timestamp' href='#607387'><time timestamp='2018-04-09T15:20:00Z'>15:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #12094: Fix hdmaster-key / seed-key confusion (master...2018/01/hdseed) <a href="https://github.com/bitcoin/bitcoin/pull/12094" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12094</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523287980' id='607388'>
+<a class='timestamp' href='#607388'><time timestamp='2018-04-09T15:33:00Z'>15:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/603975b96a15...a7cbe38ae2dd" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/603975b96a15...a7cbe38ae2dd</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523287980' id='607389'>
+<a class='timestamp' href='#607389'><time timestamp='2018-04-09T15:33:00Z'>15:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cff66e6 Wladimir J. van der Laan: util: Pass pthread_self() to pthread_setschedparam instead of 0...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523287980' id='607390'>
+<a class='timestamp' href='#607390'><time timestamp='2018-04-09T15:33:00Z'>15:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b86730a Wladimir J. van der Laan: util: Remove designator initializer from ScheduleBatchPriority...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523287980' id='607391'>
+<a class='timestamp' href='#607391'><time timestamp='2018-04-09T15:33:00Z'>15:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master a7cbe38 Wladimir J. van der Laan: Merge #12923: util: Pass pthread_self() to pthread_setschedparam instead of 0...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523288040' id='607392'>
+<a class='timestamp' href='#607392'><time timestamp='2018-04-09T15:34:00Z'>15:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12923: util: Pass pthread_self() to pthread_setschedparam instead of 0 (master...2018_04_pthread_self) <a href="https://github.com/bitcoin/bitcoin/pull/12923" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12923</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523290560' id='607393'>
+<a class='timestamp' href='#607393'><time timestamp='2018-04-09T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Empact closed pull request #12921: Make use of cpuid.h bit definitions (master...cpuid-bits) <a href="https://github.com/bitcoin/bitcoin/pull/12921" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12921</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523290920' id='607394'>
+<a class='timestamp' href='#607394'><time timestamp='2018-04-09T16:22:00Z'>16:22</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+it it me or CWalletTx::GetRequestCount() is not used?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523291340' id='607395'>
+<a class='timestamp' href='#607395'><time timestamp='2018-04-09T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+promag, src/interface/wallet.cpp:95:    result.request_count = wtx.GetRequestCount();
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523291400' id='607396'>
+<a class='timestamp' href='#607396'><time timestamp='2018-04-09T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+rigth, but request_count is not used
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523291400' id='607397'>
+<a class='timestamp' href='#607397'><time timestamp='2018-04-09T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+oh sorry, it is
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523291400' id='607398'>
+<a class='timestamp' href='#607398'><time timestamp='2018-04-09T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+my bad :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523291400' id='607399'>
+<a class='timestamp' href='#607399'><time timestamp='2018-04-09T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+np     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523292780' id='607400'>
+<a class='timestamp' href='#607400'><time timestamp='2018-04-09T16:53:00Z'>16:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli opened pull request #12925: [Trivial] Logprint the start of a rescan (master...2018/04/rescan) <a href="https://github.com/bitcoin/bitcoin/pull/12925" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12925</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523294460' id='607401'>
+<a class='timestamp' href='#607401'><time timestamp='2018-04-09T17:21:00Z'>17:21</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+now that we&#x27;re not supporting Python2, can we start adding function (type) annotations to functional test code? I think that&#x27;ll help make the test framework a bit easier to use
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295000' id='607402'>
+<a class='timestamp' href='#607402'><time timestamp='2018-04-09T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a7cbe38ae2dd...0700b6f778d9" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a7cbe38ae2dd...0700b6f778d9</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295000' id='607403'>
+<a class='timestamp' href='#607403'><time timestamp='2018-04-09T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ea23945 Russell Yanofsky: scripted-diff: Rename wallet database classes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295000' id='607404'>
+<a class='timestamp' href='#607404'><time timestamp='2018-04-09T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 398c6f0 Russell Yanofsky: Update walletdb comment after renaming....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295000' id='607405'>
+<a class='timestamp' href='#607405'><time timestamp='2018-04-09T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9b0f0c5 Russell Yanofsky: Add m_ prefix to WalletBatch::m_batch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295000' id='607406'>
+<a class='timestamp' href='#607406'><time timestamp='2018-04-09T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #11851: scripted-diff: Rename wallet database classes (master...pr/wren) <a href="https://github.com/bitcoin/bitcoin/pull/11851" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11851</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295060' id='607407'>
+<a class='timestamp' href='#607407'><time timestamp='2018-04-09T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jamesob: I guess so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295180' id='607408'>
+<a class='timestamp' href='#607408'><time timestamp='2018-04-09T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+I&#x27;m thinking particularly for arguments in util functions like &quot;pubkey&quot; and &quot;blockhash&quot; which are pretty ambiguous
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295720' id='607409'>
+<a class='timestamp' href='#607409'><time timestamp='2018-04-09T17:42:00Z'>17:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;ve never used type annotations in python so I don&#x27;t know how useful they are
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523295960' id='607410'>
+<a class='timestamp' href='#607410'><time timestamp='2018-04-09T17:46:00Z'>17:46</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+the use is pretty limited out of the box; they&#x27;re like more succinct docstrings. there are third-party tools that do verification, though I&#x27;ve never used any of them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523297940' id='607411'>
+<a class='timestamp' href='#607411'><time timestamp='2018-04-09T18:19:00Z'>18:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;d say make an example PR where you change a few functions, then see how the review goes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523299080' id='607412'>
+<a class='timestamp' href='#607412'><time timestamp='2018-04-09T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/0700b6f778d9...cf8073f8d1d1" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/0700b6f778d9...cf8073f8d1d1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523299080' id='607413'>
+<a class='timestamp' href='#607413'><time timestamp='2018-04-09T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fab9095 MarcoFalke: qa: Windows fixups for functional tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523299080' id='607414'>
+<a class='timestamp' href='#607414'><time timestamp='2018-04-09T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cf8073f MarcoFalke: Merge #12917: qa: Windows fixups for functional tests...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523299140' id='607415'>
+<a class='timestamp' href='#607415'><time timestamp='2018-04-09T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12917: qa: Windows fixups for functional tests (master...Mf1804-qaWinFixups) <a href="https://github.com/bitcoin/bitcoin/pull/12917" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12917</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523301960' id='607416'>
+<a class='timestamp' href='#607416'><time timestamp='2018-04-09T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+wumpus: sounds good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523306100' id='607417'>
+<a class='timestamp' href='#607417'><time timestamp='2018-04-09T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa opened pull request #12926: Run unit tests in parallel (master...201804_parunit) <a href="https://github.com/bitcoin/bitcoin/pull/12926" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12926</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523307360' id='607418'>
+<a class='timestamp' href='#607418'><time timestamp='2018-04-09T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] trulex opened pull request #12927: Docs: fixed link, replaced QT with Qt (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/12927" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12927</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523309280' id='607419'>
+<a class='timestamp' href='#607419'><time timestamp='2018-04-09T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+wumpus: I&#x27;m adding #12892 as high priority for review. Please go ahead and remove it if you don&#x27;t think it merits that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523309280' id='607420'>
+<a class='timestamp' href='#607420'><time timestamp='2018-04-09T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12892" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12892</a> | [wallet] [rpc] introduce label API for wallet by jnewbery · Pull Request #12892 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523309340' id='607421'>
+<a class='timestamp' href='#607421'><time timestamp='2018-04-09T21:29:00Z'>21:29</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+oh, looks like I&#x27;m not allowed to. It needs triage into one of the columns
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315340' id='607422'>
+<a class='timestamp' href='#607422'><time timestamp='2018-04-09T23:09:00Z'>23:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/cf8073f8d1d1...7ee6fc58f87b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/cf8073f8d1d1...7ee6fc58f87b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315340' id='607423'>
+<a class='timestamp' href='#607423'><time timestamp='2018-04-09T23:09:00Z'>23:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 23abfb7 Steve Lee: added logging line back that was accidentally removed with #10762
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315340' id='607424'>
+<a class='timestamp' href='#607424'><time timestamp='2018-04-09T23:09:00Z'>23:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7ee6fc5 MarcoFalke: Merge #12845: Trivial: Add logging line in init.cpp that was accidentally removed with #10762...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315400' id='607425'>
+<a class='timestamp' href='#607425'><time timestamp='2018-04-09T23:10:00Z'>23:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12845: Trivial: Add logging line in init.cpp that was accidentally removed with #10762 (master...add_logging_line_to_newer_branch) <a href="https://github.com/bitcoin/bitcoin/pull/12845" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12845</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315460' id='607426'>
+<a class='timestamp' href='#607426'><time timestamp='2018-04-09T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/7ee6fc58f87b...06ead15050f5" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/7ee6fc58f87b...06ead15050f5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315460' id='607427'>
+<a class='timestamp' href='#607427'><time timestamp='2018-04-09T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7039319 Darko Janković: Docs: fixed link, replaced QT with Qt
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315460' id='607428'>
+<a class='timestamp' href='#607428'><time timestamp='2018-04-09T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 06ead15 MarcoFalke: Merge #12927: Docs: fixed link, replaced QT with Qt...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315520' id='607429'>
+<a class='timestamp' href='#607429'><time timestamp='2018-04-09T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12927: Docs: fixed link, replaced QT with Qt (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/12927" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12927</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315520' id='607430'>
+<a class='timestamp' href='#607430'><time timestamp='2018-04-09T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/06ead15050f5...727175a08dff" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/06ead15050f5...727175a08dff</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315520' id='607431'>
+<a class='timestamp' href='#607431'><time timestamp='2018-04-09T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 75d0e4c Suhas Daftuar: [qa] Delete cookie file before starting node...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315520' id='607432'>
+<a class='timestamp' href='#607432'><time timestamp='2018-04-09T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 727175a MarcoFalke: Merge #12902: [qa] Handle potential cookie race when starting node...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523315580' id='607433'>
+<a class='timestamp' href='#607433'><time timestamp='2018-04-09T23:13:00Z'>23:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12902: [qa] Handle potential cookie race when starting node (master...2018-04-improve-dbcrash-restarts) <a href="https://github.com/bitcoin/bitcoin/pull/12902" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12902</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1523316360' id='607434'>
+<a class='timestamp' href='#607434'><time timestamp='2018-04-09T23:26:00Z'>23:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #12928: qt: Initialize variables previously neither defined where defined nor in constructor (master...qt-constructors) <a href="https://github.com/bitcoin/bitcoin/pull/12928" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12928</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

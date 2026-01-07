@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-08-12
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-08-12' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-07-12">&lt;</a><span class='header'>   August 2018    </span><a href="/bitcoin-core-dev/2018-09-12">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2018-08-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-08-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-08-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-08-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-08-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-08-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-08-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-08-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-08-09">9</a> <a class="" href="/bitcoin-core-dev/2018-08-10">10</a> <a class="" href="/bitcoin-core-dev/2018-08-11">11</a>  &#x000A;<a class="current" href="/bitcoin-core-dev/2018-08-12">12</a> <a class="" href="/bitcoin-core-dev/2018-08-13">13</a> <a class="" href="/bitcoin-core-dev/2018-08-14">14</a> <a class="" href="/bitcoin-core-dev/2018-08-15">15</a> <a class="" href="/bitcoin-core-dev/2018-08-16">16</a> <a class="" href="/bitcoin-core-dev/2018-08-17">17</a> <a class="" href="/bitcoin-core-dev/2018-08-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-19">19</a> <a class="" href="/bitcoin-core-dev/2018-08-20">20</a> <a class="" href="/bitcoin-core-dev/2018-08-21">21</a> <a class="" href="/bitcoin-core-dev/2018-08-22">22</a> <a class="" href="/bitcoin-core-dev/2018-08-23">23</a> <a class="" href="/bitcoin-core-dev/2018-08-24">24</a> <a class="" href="/bitcoin-core-dev/2018-08-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-26">26</a> <a class="" href="/bitcoin-core-dev/2018-08-27">27</a> <a class="" href="/bitcoin-core-dev/2018-08-28">28</a> <a class="" href="/bitcoin-core-dev/2018-08-29">29</a> <a class="" href="/bitcoin-core-dev/2018-08-30">30</a> <a class="" href="/bitcoin-core-dev/2018-08-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1534053900' id='624359'>
+<a class='timestamp' href='#624359'><time timestamp='2018-08-12T06:05:00Z'>06:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: yes. rekeying is done after a fix amount of traffic in bytes. But re-hashing the secret would not change anything if ECDA of logged traffic can be broken?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534055580' id='624360'>
+<a class='timestamp' href='#624360'><time timestamp='2018-08-12T06:33:00Z'>06:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: right, we should also perhaps consider rekeying once an hour. What rekeying accomplishes, assuming the old key is deleted, is that if a system is compromised you can&#x27;t extract the keys from memory to decrypt traffic you logged before compromise.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534055880' id='624361'>
+<a class='timestamp' href='#624361'><time timestamp='2018-08-12T06:38:00Z'>06:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The reason I suggest triggering on time is because if you have e.g. a SPV client, it might be days until it has transfered 1GB of traffic. which might make it interesting to try to go seize other nodes a target under observation was connected to in order to decrypt their traffic. Admittedly a really fring risk, but it should be ~free to avoid.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534055940' id='624362'>
+<a class='timestamp' href='#624362'><time timestamp='2018-08-12T06:39:00Z'>06:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(basically a similar motivation to why we don&#x27;t log IPs by default)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056000' id='624363'>
+<a class='timestamp' href='#624363'><time timestamp='2018-08-12T06:40:00Z'>06:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the only reason not to rekey on every message is performance, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056060' id='624364'>
+<a class='timestamp' href='#624364'><time timestamp='2018-08-12T06:41:00Z'>06:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Right.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056060' id='624365'>
+<a class='timestamp' href='#624365'><time timestamp='2018-08-12T06:41:00Z'>06:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sha2 is slower than chacha.. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056120' id='624366'>
+<a class='timestamp' href='#624366'><time timestamp='2018-08-12T06:42:00Z'>06:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+interestingly, I&#x27;m not aware of any well known cipher mode which natively has irreversable state.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056120' id='624367'>
+<a class='timestamp' href='#624367'><time timestamp='2018-08-12T06:42:00Z'>06:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+chacha takes a 256 bits key, and produces blobs of 512 bits of output
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056180' id='624368'>
+<a class='timestamp' href='#624368'><time timestamp='2018-08-12T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+why not say encrypt every message with the current encryption key, and then afterwards extract another 256 bits from the stream, which become the new encryption key?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056180' id='624369'>
+<a class='timestamp' href='#624369'><time timestamp='2018-08-12T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+chacha has 0 initialization cost
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056240' id='624370'>
+<a class='timestamp' href='#624370'><time timestamp='2018-08-12T06:44:00Z'>06:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Because thats not a well studied construct. it would also be 50% of the speed of using it normally.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056360' id='624371'>
+<a class='timestamp' href='#624371'><time timestamp='2018-08-12T06:46:00Z'>06:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+why would it be slower?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056360' id='624372'>
+<a class='timestamp' href='#624372'><time timestamp='2018-08-12T06:46:00Z'>06:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, if you assume the messages are small i guess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056420' id='624373'>
+<a class='timestamp' href='#624373'><time timestamp='2018-08-12T06:47:00Z'>06:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ah I thought you meant per 512 bits of output rather than per protocol message.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056480' id='624374'>
+<a class='timestamp' href='#624374'><time timestamp='2018-08-12T06:48:00Z'>06:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+we could also email djb to ask, might well be that someone has published on a mode that does this. Though I think elsewhere where this concern was addressed, it was always just addressed by rekeying from a higher level rather than at the block cipher level.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056600' id='624375'>
+<a class='timestamp' href='#624375'><time timestamp='2018-08-12T06:50:00Z'>06:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Though as I was saying, I think it&#x27;s kind of a fringe concern, if we want to do something complicated, I&#x27;d rather it be armoring against ECDH break then N-th level optimizations to how fast we forget keying material.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056660' id='624376'>
+<a class='timestamp' href='#624376'><time timestamp='2018-08-12T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(or even better, get the indistinguishable authentication protocol finished)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056900' id='624377'>
+<a class='timestamp' href='#624377'><time timestamp='2018-08-12T06:55:00Z'>06:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right; i&#x27;m mostly wondering why &quot;use a prng-based stream cipher, and after each message, read the next encrpytion key from the stream&quot; isn&#x27;t a common construction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056900' id='624378'>
+<a class='timestamp' href='#624378'><time timestamp='2018-08-12T06:55:00Z'>06:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Because almost everything has key init costs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534056960' id='624379'>
+<a class='timestamp' href='#624379'><time timestamp='2018-08-12T06:56:00Z'>06:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+also because the whole reason you normally use a stream cipher is random access.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534057020' id='624380'>
+<a class='timestamp' href='#624380'><time timestamp='2018-08-12T06:57:00Z'>06:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+there have been some &#x27;reuse resistant&#x27; quasi-stream-cipher proposals perhaps some of those get irreversability as a side effect. dunno.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534067460' id='624381'>
+<a class='timestamp' href='#624381'><time timestamp='2018-08-12T09:51:00Z'>09:51</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus 13938 should be ok to go in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534067820' id='624382'>
+<a class='timestamp' href='#624382'><time timestamp='2018-08-12T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Also 13808
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534067940' id='624383'>
+<a class='timestamp' href='#624383'><time timestamp='2018-08-12T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+is the bot dead?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534071480' id='624384'>
+<a class='timestamp' href='#624384'><time timestamp='2018-08-12T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell, sipa: the new protocol does have encryption optional, therefore the question rises if detecting the key handshake versus a version message is sane
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534071480' id='624385'>
+<a class='timestamp' href='#624385'><time timestamp='2018-08-12T10:58:00Z'>10:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I guess its acceptable to assume a version message (an not a key) when we detect a message magic and the rest of a legacy header
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534071540' id='624386'>
+<a class='timestamp' href='#624386'><time timestamp='2018-08-12T10:59:00Z'>10:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I guess it&#x27;s almost impossible to derive a pubkey with the network magic &amp; version part of the header
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534079460' id='624387'>
+<a class='timestamp' href='#624387'><time timestamp='2018-08-12T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534079520' id='624388'>
+<a class='timestamp' href='#624388'><time timestamp='2018-08-12T13:12:00Z'>13:12</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+Can someone please provide me download stats (or at least share in %) of bitcoin core, regarding the different platform versions (Win, Linux, OSX, etc) ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534079580' id='624389'>
+<a class='timestamp' href='#624389'><time timestamp='2018-08-12T13:13:00Z'>13:13</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+that would be very helpful for my master thesis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534080000' id='624390'>
+<a class='timestamp' href='#624390'><time timestamp='2018-08-12T13:20:00Z'>13:20</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+would very appreciate it, if someone could help me with that question
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534080000' id='624391'>
+<a class='timestamp' href='#624391'><time timestamp='2018-08-12T13:20:00Z'>13:20</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+reald0ff1: I don&#x27;t know if anyone has that information for BitcoinCore.org, sorry.  In addition, the binaries can also be downloaded from Bitcoin.org (maintained by a different team) or via a torrent (with optional magnet URI) that contains the binaries for all platforms.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534080840' id='624392'>
+<a class='timestamp' href='#624392'><time timestamp='2018-08-12T13:34:00Z'>13:34</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+well thanks for the answer. I think I will try to contact bitcoincore.org via email and bitcoin.org also via email to the website maintainer. Maybe some of them could provide me stats
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534080900' id='624393'>
+<a class='timestamp' href='#624393'><time timestamp='2018-08-12T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+I developing a security tool for cryptocurrency users and I selected windows as target plattform. I have the feeling that the most users use windows (I am not talking about devs, etc.)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534080960' id='624394'>
+<a class='timestamp' href='#624394'><time timestamp='2018-08-12T13:36:00Z'>13:36</time></a>
+&lt;<span class='nick nick-16'> reald0ff1</span>&gt;
+however, would be still nice to have some stats to prove that &quot;feeling&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534082580' id='624395'>
+<a class='timestamp' href='#624395'><time timestamp='2018-08-12T14:03:00Z'>14:03</time></a>
+&lt;<span class='nick nick-13'> devmob</span>&gt;
+hi, I&#x27;d really like to know how bitcoin does gossip, like how the gossip protocol is implemented 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534082580' id='624396'>
+<a class='timestamp' href='#624396'><time timestamp='2018-08-12T14:03:00Z'>14:03</time></a>
+&lt;<span class='nick nick-13'> devmob</span>&gt;
+can someone point me somewhere ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534088820' id='624397'>
+<a class='timestamp' href='#624397'><time timestamp='2018-08-12T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-14'> itaseski</span>&gt;
+devmob: <a href="https://en.wikipedia.org/wiki/Gossip_protocol" class="link" target="_blank">https://en.wikipedia.org/wiki/Gossip_protocol</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534088820' id='624398'>
+<a class='timestamp' href='#624398'><time timestamp='2018-08-12T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-14'> itaseski</span>&gt;
+is this helpful?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534088880' id='624399'>
+<a class='timestamp' href='#624399'><time timestamp='2018-08-12T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-14'> itaseski</span>&gt;
+it is general but it explains how gossip protocols work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534088880' id='624400'>
+<a class='timestamp' href='#624400'><time timestamp='2018-08-12T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-14'> itaseski</span>&gt;
+i wasn&#x27;t able to find anything bitcoin specific ...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534089540' id='624401'>
+<a class='timestamp' href='#624401'><time timestamp='2018-08-12T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+he left. also, <a href="https://bitcoin.stackexchange.com" class="link" target="_blank">https://bitcoin.stackexchange.com</a> is your friend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534094940' id='624402'>
+<a class='timestamp' href='#624402'><time timestamp='2018-08-12T17:29:00Z'>17:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: we could just discard keys that match the strictest version handshake pattern we can come up with, no biggie
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534095000' id='624403'>
+<a class='timestamp' href='#624403'><time timestamp='2018-08-12T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: on the encryption subject, libsodium has avx2 and ssse3 chacha20 implementations: <a href="https://github.com/jedisct1/libsodium/tree/1.0.16/src/libsodium/crypto_stream/chacha20/dolbeau" class="link" target="_blank">https://github.com/jedisct1/libsodium/tree/1.0.16/src/libsodium/crypto_stream/chacha20/dolbeau</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534095060' id='624404'>
+<a class='timestamp' href='#624404'><time timestamp='2018-08-12T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and sse2 poly1305 <a href="https://github.com/jedisct1/libsodium/tree/1.0.16/src/libsodium/crypto_onetimeauth/poly1305/sse2" class="link" target="_blank">https://github.com/jedisct1/libsodium/tree/1.0.16/src/libsodium/crypto_onetimeauth/poly1305/sse2</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534098900' id='624405'>
+<a class='timestamp' href='#624405'><time timestamp='2018-08-12T18:35:00Z'>18:35</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: about dolbeau&#x27;s Chacha20 AVX/SSSE implementation: &quot;Beware: those implementations are purely designed for speed on recent Intel architectures (mostly Haswell and newer), and ARMv8 (64 bits) with the crypto extension. They were not verified to be resistant to side channel attacks.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534098960' id='624406'>
+<a class='timestamp' href='#624406'><time timestamp='2018-08-12T18:36:00Z'>18:36</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The later would probably require further analysis since the timing side channel attackes seems to be one of the big benefits of chacha20 (I may be wrong though)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534098960' id='624407'>
+<a class='timestamp' href='#624407'><time timestamp='2018-08-12T18:36:00Z'>18:36</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+*attack resistance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101600' id='624408'>
+<a class='timestamp' href='#624408'><time timestamp='2018-08-12T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+sipa: Wouldn&#x27;t the stempool make every mempool action half as fast (since everything would have to be done once for the mempool and then for the stempool)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101600' id='624409'>
+<a class='timestamp' href='#624409'><time timestamp='2018-08-12T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Also I am not sure about the memory overhead of having the mempool duplicated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101600' id='624410'>
+<a class='timestamp' href='#624410'><time timestamp='2018-08-12T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+The transactions are shared ptrs, but still...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101600' id='624411'>
+<a class='timestamp' href='#624411'><time timestamp='2018-08-12T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: well, dandelion needs some way of dealing with unconfirmed dependencies
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101720' id='624412'>
+<a class='timestamp' href='#624412'><time timestamp='2018-08-12T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: the reference code the authors posted included a stempool, though i commented on memory usage concerns
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101780' id='624413'>
+<a class='timestamp' href='#624413'><time timestamp='2018-08-12T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I know that the BIP mentions a stempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101780' id='624414'>
+<a class='timestamp' href='#624414'><time timestamp='2018-08-12T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Agree that we need to handle dependencies
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101840' id='624415'>
+<a class='timestamp' href='#624415'><time timestamp='2018-08-12T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I was hoping we could do a primitive cache for now and later replace that with <a href="https://github.com/bitcoin/bitcoin/pull/13804" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13804</a> (tx pool layer)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101840' id='624416'>
+<a class='timestamp' href='#624416'><time timestamp='2018-08-12T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+an alternative would be to have a 2-tier mempool, where each transaction has a flag whether it&#x27;s public or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101900' id='624417'>
+<a class='timestamp' href='#624417'><time timestamp='2018-08-12T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and accepting a public tx ignores (and kicks out) any nonpublic conflicts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534101960' id='624418'>
+<a class='timestamp' href='#624418'><time timestamp='2018-08-12T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+That sounds like every single line of txmempool.cpp had to be amended with an if(public) else ...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102020' id='624419'>
+<a class='timestamp' href='#624419'><time timestamp='2018-08-12T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i doubt that, tbh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102020' id='624420'>
+<a class='timestamp' href='#624420'><time timestamp='2018-08-12T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+most of it is just data structurr maintenance which would be unaffected
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102020' id='624421'>
+<a class='timestamp' href='#624421'><time timestamp='2018-08-12T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i don&#x27;t think it&#x27;d be a trivial change either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102080' id='624422'>
+<a class='timestamp' href='#624422'><time timestamp='2018-08-12T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the set of non-public transactions in general should be very small
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102140' id='624423'>
+<a class='timestamp' href='#624423'><time timestamp='2018-08-12T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as you expect every non-public tx to become a public one after some time (and the auto fluff after timeout essentially guarantees that after some timeout)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102200' id='624424'>
+<a class='timestamp' href='#624424'><time timestamp='2018-08-12T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so perhaps the &quot;stempool excluding mempool&quot; can be small and have lower consistency requirements
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102200' id='624425'>
+<a class='timestamp' href='#624425'><time timestamp='2018-08-12T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+like, we run ATMP to accept things into it, but don&#x27;t require it is at all times consistent with the actual mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102200' id='624426'>
+<a class='timestamp' href='#624426'><time timestamp='2018-08-12T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as things expire quickly from the extra set, it can have a tight memory limit and not much avenue for dos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102260' id='624427'>
+<a class='timestamp' href='#624427'><time timestamp='2018-08-12T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+sipa: The dos protection should happen per edge (peer) and not on the global mempool, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102320' id='624428'>
+<a class='timestamp' href='#624428'><time timestamp='2018-08-12T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+The stempool limit would only be a fallback limit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102320' id='624429'>
+<a class='timestamp' href='#624429'><time timestamp='2018-08-12T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+We wouldn&#x27;t want one peer use up all the stempool capacity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102320' id='624430'>
+<a class='timestamp' href='#624430'><time timestamp='2018-08-12T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102380' id='624431'>
+<a class='timestamp' href='#624431'><time timestamp='2018-08-12T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Also, I am certain that we leak information by using the global (shared among all peers) stempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102380' id='624432'>
+<a class='timestamp' href='#624432'><time timestamp='2018-08-12T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so perhaps it can even be a per-peer small set of unconfirmed dandelion txn, which you use to do dependency checks for dandelion txn coming from that peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102440' id='624433'>
+<a class='timestamp' href='#624433'><time timestamp='2018-08-12T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which has much clearer privacy and dos reasonong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102440' id='624434'>
+<a class='timestamp' href='#624434'><time timestamp='2018-08-12T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+You&#x27;d forward but then later discard dandelion txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102440' id='624435'>
+<a class='timestamp' href='#624435'><time timestamp='2018-08-12T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well the combined set of those extra txn is your set of to-fluff things
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102500' id='624436'>
+<a class='timestamp' href='#624436'><time timestamp='2018-08-12T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So if an attacker send the same dandelion tx twice with a rbf one on another route they can guess part of the route
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102500' id='624437'>
+<a class='timestamp' href='#624437'><time timestamp='2018-08-12T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102500' id='624438'>
+<a class='timestamp' href='#624438'><time timestamp='2018-08-12T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+(talking about the shared mempool) Not the per-peer set of txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102560' id='624439'>
+<a class='timestamp' href='#624439'><time timestamp='2018-08-12T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i like the per-peer set :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102560' id='624440'>
+<a class='timestamp' href='#624440'><time timestamp='2018-08-12T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think you&#x27;re right that there is risk in a global stempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102560' id='624441'>
+<a class='timestamp' href='#624441'><time timestamp='2018-08-12T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the per-peer set sounds like it wouldn&#x27;t need much more than a way to pass in an entra map with txn to ATMP
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102620' id='624442'>
+<a class='timestamp' href='#624442'><time timestamp='2018-08-12T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+That would have a compute overhead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102620' id='624443'>
+<a class='timestamp' href='#624443'><time timestamp='2018-08-12T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hardly, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102680' id='624444'>
+<a class='timestamp' href='#624444'><time timestamp='2018-08-12T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+(re-calculating the set of dependencies for all txs)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102680' id='624445'>
+<a class='timestamp' href='#624445'><time timestamp='2018-08-12T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+just to check on tx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102680' id='624446'>
+<a class='timestamp' href='#624446'><time timestamp='2018-08-12T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102680' id='624447'>
+<a class='timestamp' href='#624447'><time timestamp='2018-08-12T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+why?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102740' id='624448'>
+<a class='timestamp' href='#624448'><time timestamp='2018-08-12T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just something that feeds into the lookup of utxos being spent logic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102740' id='624449'>
+<a class='timestamp' href='#624449'><time timestamp='2018-08-12T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+&quot;if not found in mempool or chainstate, also look here&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102800' id='624450'>
+<a class='timestamp' href='#624450'><time timestamp='2018-08-12T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but you don&#x27;t do complete conflict analysis or replacement or whatever in those extra sets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102800' id='624451'>
+<a class='timestamp' href='#624451'><time timestamp='2018-08-12T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So you could send a tx that spends and output and the output that was used to create that output (assuming 1in-1out txs for now)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102800' id='624452'>
+<a class='timestamp' href='#624452'><time timestamp='2018-08-12T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+s/and/an
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102860' id='624453'>
+<a class='timestamp' href='#624453'><time timestamp='2018-08-12T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102860' id='624454'>
+<a class='timestamp' href='#624454'><time timestamp='2018-08-12T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+perhaps you could even permit double spends inside the extra set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102860' id='624455'>
+<a class='timestamp' href='#624455'><time timestamp='2018-08-12T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So a peer could drain your allowance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102860' id='624456'>
+<a class='timestamp' href='#624456'><time timestamp='2018-08-12T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+for free
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102860' id='624457'>
+<a class='timestamp' href='#624457'><time timestamp='2018-08-12T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what allowance?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102920' id='624458'>
+<a class='timestamp' href='#624458'><time timestamp='2018-08-12T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+&quot;allowance&quot; = txs your dandelion destinations accept
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102920' id='624459'>
+<a class='timestamp' href='#624459'><time timestamp='2018-08-12T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+num tx/minute or whatever
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102920' id='624460'>
+<a class='timestamp' href='#624460'><time timestamp='2018-08-12T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m confused
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102980' id='624461'>
+<a class='timestamp' href='#624461'><time timestamp='2018-08-12T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I think we just concluded that the &quot;cheap check&quot; (pass in set of previous txs) can lead to thinking an invalid tx is valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102980' id='624462'>
+<a class='timestamp' href='#624462'><time timestamp='2018-08-12T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+so we&#x27;d forward invalid txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534102980' id='624463'>
+<a class='timestamp' href='#624463'><time timestamp='2018-08-12T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103040' id='624464'>
+<a class='timestamp' href='#624464'><time timestamp='2018-08-12T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well, not invalid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103040' id='624465'>
+<a class='timestamp' href='#624465'><time timestamp='2018-08-12T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but conflicting, yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103040' id='624466'>
+<a class='timestamp' href='#624466'><time timestamp='2018-08-12T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+They&#x27;d never be accepted to a real mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103040' id='624467'>
+<a class='timestamp' href='#624467'><time timestamp='2018-08-12T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+never as is invalid consensus
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103040' id='624468'>
+<a class='timestamp' href='#624468'><time timestamp='2018-08-12T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that depends on the order those extra txn get added to people&#x27;s mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103040' id='624469'>
+<a class='timestamp' href='#624469'><time timestamp='2018-08-12T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, you do full consensus validation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103100' id='624470'>
+<a class='timestamp' href='#624470'><time timestamp='2018-08-12T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So you need to calculate all mempool dependencies and stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103100' id='624471'>
+<a class='timestamp' href='#624471'><time timestamp='2018-08-12T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103160' id='624472'>
+<a class='timestamp' href='#624472'><time timestamp='2018-08-12T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+validity is just a) can we find the inputs b) are those inputs not yet spent by another mempool txn c) do scripts validate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103160' id='624473'>
+<a class='timestamp' href='#624473'><time timestamp='2018-08-12T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i suggest skipping just (b) for dandelion relay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103220' id='624474'>
+<a class='timestamp' href='#624474'><time timestamp='2018-08-12T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Though, for a) you use the set of {mempool inputs} OR {prev dandelion txs inputs}
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103220' id='624475'>
+<a class='timestamp' href='#624475'><time timestamp='2018-08-12T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103220' id='624476'>
+<a class='timestamp' href='#624476'><time timestamp='2018-08-12T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+so if a dandelion txs spent mempool tx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103280' id='624477'>
+<a class='timestamp' href='#624477'><time timestamp='2018-08-12T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but whenever the mempool changes, you don&#x27;t update the extra sets, so they can grow inconsistent with eachother
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103280' id='624478'>
+<a class='timestamp' href='#624478'><time timestamp='2018-08-12T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i don&#x27;t think that&#x27;s a problem; you&#x27;ll notice when trying to fluff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103280' id='624479'>
+<a class='timestamp' href='#624479'><time timestamp='2018-08-12T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+hmm, give me a sec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103280' id='624480'>
+<a class='timestamp' href='#624480'><time timestamp='2018-08-12T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+How do I draw a picture in irc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103340' id='624481'>
+<a class='timestamp' href='#624481'><time timestamp='2018-08-12T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+haha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103400' id='624482'>
+<a class='timestamp' href='#624482'><time timestamp='2018-08-12T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we should discuss this on the ML though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103640' id='624483'>
+<a class='timestamp' href='#624483'><time timestamp='2018-08-12T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Assume mempool has one output: A. Assume dandelion tx spends this input A and creates output B. We send this dandelion tx. Assume another dandelion tx spends {A,B} and creates output C, which is valid, since we use the set of outputs in the mempool and previous dandelion txs, but the tx itself is consensus invalid. Send this tx. Repeat with {A,C}-&gt;D, {A,D}-&gt;E ... for free
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103700' id='624484'>
+<a class='timestamp' href='#624484'><time timestamp='2018-08-12T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i see your point.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103700' id='624485'>
+<a class='timestamp' href='#624485'><time timestamp='2018-08-12T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I hope you prove me wrong, because I also like the per peer set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103880' id='624486'>
+<a class='timestamp' href='#624486'><time timestamp='2018-08-12T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+is there some rate limiting on dandelion txn per peer?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103880' id='624487'>
+<a class='timestamp' href='#624487'><time timestamp='2018-08-12T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+In my implementation, yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103940' id='624488'>
+<a class='timestamp' href='#624488'><time timestamp='2018-08-12T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+is there in the BIP? (i haven&#x27;t read the latest draft)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534103940' id='624489'>
+<a class='timestamp' href='#624489'><time timestamp='2018-08-12T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+not explicitly mentioned
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104000' id='624490'>
+<a class='timestamp' href='#624490'><time timestamp='2018-08-12T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Maybe there is in the appendix (reference implementation), haven&#x27;t looked too closely at that, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104480' id='624491'>
+<a class='timestamp' href='#624491'><time timestamp='2018-08-12T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you disallow replacement of dandelion txn, it becomes a lot easier
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104480' id='624492'>
+<a class='timestamp' href='#624492'><time timestamp='2018-08-12T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+yeah, but we don&#x27;t want to kill rbf for dandelion txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104480' id='624493'>
+<a class='timestamp' href='#624493'><time timestamp='2018-08-12T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and perhaps that&#x27;s not crazy; you can replace, but first need to wait until the dandelion relay has settled into the mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104480' id='624494'>
+<a class='timestamp' href='#624494'><time timestamp='2018-08-12T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I&#x27;d rather enforce rbf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104540' id='624495'>
+<a class='timestamp' href='#624495'><time timestamp='2018-08-12T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+(which is what my cache is effectively doing, I think)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104540' id='624496'>
+<a class='timestamp' href='#624496'><time timestamp='2018-08-12T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but you don&#x27;t support dependencies between dandelion txn, or do you?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104540' id='624497'>
+<a class='timestamp' href='#624497'><time timestamp='2018-08-12T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+nope
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104600' id='624498'>
+<a class='timestamp' href='#624498'><time timestamp='2018-08-12T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+You&#x27;d have to use rbf to &quot;eat up&quot; all dependencies
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104720' id='624499'>
+<a class='timestamp' href='#624499'><time timestamp='2018-08-12T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+replacement generally seems to be something that happens in the scale of hours, and certainly longer than interblock time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104720' id='624500'>
+<a class='timestamp' href='#624500'><time timestamp='2018-08-12T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+both in use cases and incentives
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104780' id='624501'>
+<a class='timestamp' href='#624501'><time timestamp='2018-08-12T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+while dependent transactions can be in the scale of seconds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104780' id='624502'>
+<a class='timestamp' href='#624502'><time timestamp='2018-08-12T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(blobs of interdependent txn)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104780' id='624503'>
+<a class='timestamp' href='#624503'><time timestamp='2018-08-12T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+What about the use case of &quot;replacement to avoid a change output-round-trip&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104840' id='624504'>
+<a class='timestamp' href='#624504'><time timestamp='2018-08-12T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+i.e. avoid long chain of unconfirmed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104840' id='624505'>
+<a class='timestamp' href='#624505'><time timestamp='2018-08-12T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you&#x27;re doing that in a scale of seconds-minutes you should probably just batch better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534104960' id='624506'>
+<a class='timestamp' href='#624506'><time timestamp='2018-08-12T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+hmm, starting to like that idea
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534105800' id='624507'>
+<a class='timestamp' href='#624507'><time timestamp='2018-08-12T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: It&#x27;s somewhat implausable to me that someone managed to make a sidechannel vulnerable chacha20 which was also fast. I&#x27;m happy to review them for it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534105860' id='624508'>
+<a class='timestamp' href='#624508'><time timestamp='2018-08-12T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: two layer mempool sounds hard to now screw up and accidentally leak data.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106160' id='624509'>
+<a class='timestamp' href='#624509'><time timestamp='2018-08-12T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+A per peer stempool (which of course shares the actual tx data itself across all peers) makes sense to me.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106220' id='624510'>
+<a class='timestamp' href='#624510'><time timestamp='2018-08-12T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it it requires you augment the protocol to route the dependencies along the same path as the parent.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106220' id='624511'>
+<a class='timestamp' href='#624511'><time timestamp='2018-08-12T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+which might have privacy implications. .. I think none of the research on dandelion so far really considered chains of unconfirmed txn.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106280' id='624512'>
+<a class='timestamp' href='#624512'><time timestamp='2018-08-12T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(I&#x27;d <u>_generally_</u> expect that routing children along the same path as parents would be privacy improving, but there may be factors like leaking out of the stem at different points that have bad effects like reducing the privacy of the whole chain to that of the weakest one)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106340' id='624513'>
+<a class='timestamp' href='#624513'><time timestamp='2018-08-12T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: read on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106340' id='624514'>
+<a class='timestamp' href='#624514'><time timestamp='2018-08-12T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, you already saw the per-peer idea
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106520' id='624515'>
+<a class='timestamp' href='#624515'><time timestamp='2018-08-12T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I also agree that we don&#x27;t need to care about stem transactions getting invalidated by mempool txn. But I think we do want to check them against each other. In particular I shouldn&#x27;t be able to give you 100 distinct spends of the same coin and have you route them all out to the same peer. To send two of them to two different peers would be ducky.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106640' id='624516'>
+<a class='timestamp' href='#624516'><time timestamp='2018-08-12T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: yeah, if you don&#x27;t care about replacing txn while they are not in the mempool that sounds easy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106640' id='624517'>
+<a class='timestamp' href='#624517'><time timestamp='2018-08-12T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it means you don&#x27;t need the dependency tracking or replacement or whatever logic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106700' id='624518'>
+<a class='timestamp' href='#624518'><time timestamp='2018-08-12T20:45:00Z'>20:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just verify against the combined set of chainstate+mempool+ peer-specific set of unconfirmed dandelion txn
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106760' id='624519'>
+<a class='timestamp' href='#624519'><time timestamp='2018-08-12T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+right, but again, if dandelion parents are peer spectific, we must endeavor to route children along the same path as parents, or otherwise they&#x27;ll propagate poorly.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624520'>
+<a class='timestamp' href='#624520'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dandelion already does that; it has a per-peer destination peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624521'>
+<a class='timestamp' href='#624521'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so subsequent transactions will go to the same outgoing peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624522'>
+<a class='timestamp' href='#624522'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: it has _two_.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624523'>
+<a class='timestamp' href='#624523'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+unless there is a shuffle in between
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624524'>
+<a class='timestamp' href='#624524'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+only one per incoming peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624525'>
+<a class='timestamp' href='#624525'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+two globally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624526'>
+<a class='timestamp' href='#624526'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh right, okay.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106820' id='624527'>
+<a class='timestamp' href='#624527'><time timestamp='2018-08-12T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+What is the use case for tx chains of dandelion txs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106880' id='624528'>
+<a class='timestamp' href='#624528'><time timestamp='2018-08-12T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+MarcoFalke: uh, being able to spend your funds without waiting for a block. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106880' id='624529'>
+<a class='timestamp' href='#624529'><time timestamp='2018-08-12T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: what is the use cade for tx chains in general? :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106880' id='624530'>
+<a class='timestamp' href='#624530'><time timestamp='2018-08-12T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+same answer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106880' id='624531'>
+<a class='timestamp' href='#624531'><time timestamp='2018-08-12T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+why block, you can wait for a fluff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106880' id='624532'>
+<a class='timestamp' href='#624532'><time timestamp='2018-08-12T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s ~minute or so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106940' id='624533'>
+<a class='timestamp' href='#624533'><time timestamp='2018-08-12T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+if someone pays you 1 BTC, you spend 0.1 ... now your wallet interface needs to randomly <u>_fail_</u> and tell you that you can&#x27;t spend again, until a fluff has happened?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106940' id='624534'>
+<a class='timestamp' href='#624534'><time timestamp='2018-08-12T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;re right, waiting for a block is not relevant here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106940' id='624535'>
+<a class='timestamp' href='#624535'><time timestamp='2018-08-12T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+yeah, I mean if we don&#x27;t allow replacement of dandelion txs, we might as well not allow chains
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106940' id='624536'>
+<a class='timestamp' href='#624536'><time timestamp='2018-08-12T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: i disagree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106940' id='624537'>
+<a class='timestamp' href='#624537'><time timestamp='2018-08-12T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+and ask people to batch if the time between spends is ~1minute
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534106940' id='624538'>
+<a class='timestamp' href='#624538'><time timestamp='2018-08-12T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is a different timescale
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107000' id='624539'>
+<a class='timestamp' href='#624539'><time timestamp='2018-08-12T20:50:00Z'>20:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+That would mean that we couldn&#x27;t use dandelion as the standard way to announce transactions, if that were the decision I&#x27;d say we shouldn&#x27;t bother implementing it at all.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107000' id='624540'>
+<a class='timestamp' href='#624540'><time timestamp='2018-08-12T20:50:00Z'>20:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as i said before, i think it&#x27;s reasonable if replacement only works in a timescale of minutes/hours
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107000' id='624541'>
+<a class='timestamp' href='#624541'><time timestamp='2018-08-12T20:50:00Z'>20:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Ideally people sould batch, sure, but someone cannot guarentee that they won&#x27;t need to make another payment 40 seconds after the last.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107000' id='624542'>
+<a class='timestamp' href='#624542'><time timestamp='2018-08-12T20:50:00Z'>20:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but dependencies need to work in seconds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107060' id='624543'>
+<a class='timestamp' href='#624543'><time timestamp='2018-08-12T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Why wouldn&#x27;t we allow replacements? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107060' id='624544'>
+<a class='timestamp' href='#624544'><time timestamp='2018-08-12T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Would be more expensive to check
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107120' id='624545'>
+<a class='timestamp' href='#624545'><time timestamp='2018-08-12T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+potentially scales with the number of txs in this edges cache (stem)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107120' id='624546'>
+<a class='timestamp' href='#624546'><time timestamp='2018-08-12T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you don&#x27;t actually &#x27;replace&#x27; the transaction, but you can relay a transaction that conflicts with the peer&#x27;s stemppool if it would otherwise pass the replacement criteria.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107120' id='624547'>
+<a class='timestamp' href='#624547'><time timestamp='2018-08-12T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: i think that&#x27;s an order of magnitude more complex to implement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107120' id='624548'>
+<a class='timestamp' href='#624548'><time timestamp='2018-08-12T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+how so? you have a map of tx parents. It&#x27;s just like the orphan pool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107180' id='624549'>
+<a class='timestamp' href='#624549'><time timestamp='2018-08-12T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+in any case, I don&#x27;t see a fundimental reason to not allow replacement... it would probably be fine to skip it for now due to complexity.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107180' id='624550'>
+<a class='timestamp' href='#624550'><time timestamp='2018-08-12T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: the rules for replacement are a complex piece of policy.. that depends on relay fee, discard fee, mempool size, cyclic dependency checks, ...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107240' id='624551'>
+<a class='timestamp' href='#624551'><time timestamp='2018-08-12T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107240' id='624552'>
+<a class='timestamp' href='#624552'><time timestamp='2018-08-12T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+all of those don&#x27;t really have a direct translation to multiple layers of mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107240' id='624553'>
+<a class='timestamp' href='#624553'><time timestamp='2018-08-12T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so uh, how would we handle a dandelion txn which would be a replacement for something in the mempool?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624554'>
+<a class='timestamp' href='#624554'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we shouldn&#x27;t?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624555'>
+<a class='timestamp' href='#624555'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+That works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624556'>
+<a class='timestamp' href='#624556'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Then I think it&#x27;s busted.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624557'>
+<a class='timestamp' href='#624557'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+heh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624558'>
+<a class='timestamp' href='#624558'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Of course you can replace mempool txs with dandelion txs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624559'>
+<a class='timestamp' href='#624559'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, ugh.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624560'>
+<a class='timestamp' href='#624560'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+of course that needs to work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624561'>
+<a class='timestamp' href='#624561'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I mean, maybe only once, but it works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107300' id='624562'>
+<a class='timestamp' href='#624562'><time timestamp='2018-08-12T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+again: I think we cannot make dandelion the standard way to announce txn we should not deploy it. And if it kills replacement of long ago announced txn, then we can&#x27;t do that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624563'>
+<a class='timestamp' href='#624563'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624564'>
+<a class='timestamp' href='#624564'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624565'>
+<a class='timestamp' href='#624565'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t think that&#x27;s an issue though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624566'>
+<a class='timestamp' href='#624566'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It&#x27;s simple in any case, see if ATMP would accept, and if so it&#x27;s eligable for stem relay if not conflicted in the peers&#x27; stem cache.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624567'>
+<a class='timestamp' href='#624567'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dandelion tx validation operates on the sum of mempool + extra tzn
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624568'>
+<a class='timestamp' href='#624568'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it doesn&#x27;t need to deal with replacements
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107360' id='624569'>
+<a class='timestamp' href='#624569'><time timestamp='2018-08-12T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just validation against that set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107420' id='624570'>
+<a class='timestamp' href='#624570'><time timestamp='2018-08-12T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+also I think we can also &#x27;support replacement&#x27;  by fluffing anything that passes ATMP but conflicts with our stem cache.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107420' id='624571'>
+<a class='timestamp' href='#624571'><time timestamp='2018-08-12T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke gave an example above where that&#x27;s busted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107420' id='624572'>
+<a class='timestamp' href='#624572'><time timestamp='2018-08-12T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+sipa: I said it works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107480' id='624573'>
+<a class='timestamp' href='#624573'><time timestamp='2018-08-12T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+[16:55] &lt;MarcoFalke&gt; That works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107480' id='624574'>
+<a class='timestamp' href='#624574'><time timestamp='2018-08-12T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh? what about your a/b, a/c, a/d example?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107540' id='624575'>
+<a class='timestamp' href='#624575'><time timestamp='2018-08-12T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Well, that is what I meant with &quot;I mean, maybe only once, but it works&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107540' id='624576'>
+<a class='timestamp' href='#624576'><time timestamp='2018-08-12T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;m not following.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107540' id='624577'>
+<a class='timestamp' href='#624577'><time timestamp='2018-08-12T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+We fell back to the earlier discussion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107540' id='624578'>
+<a class='timestamp' href='#624578'><time timestamp='2018-08-12T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+okay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107600' id='624579'>
+<a class='timestamp' href='#624579'><time timestamp='2018-08-12T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+[15:54] &lt;MarcoFalke&gt; Assume mempool has one output: A. Assume dandelion tx spends this input A and creates output B. We send this dandelion tx. Assume another dandelion tx spends {A,B} and creates output C, which is valid, since we use the set of outputs in the mempool and previous dandelion txs, but the tx itself is consensus invalid. Send this tx. Repeat with {A,C}-&gt;D, {A,D}-&gt;E ... for free
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107600' id='624580'>
+<a class='timestamp' href='#624580'><time timestamp='2018-08-12T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if ATMP needs to do complex replacement checks w.r.t things already in the extra set, it becomes hard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107600' id='624581'>
+<a class='timestamp' href='#624581'><time timestamp='2018-08-12T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+replacement checks against the mempool of the form &quot;would this be accepted to the mempool&quot; are easy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107660' id='624582'>
+<a class='timestamp' href='#624582'><time timestamp='2018-08-12T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the combination of replacement and chaning is cancer. :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107660' id='624583'>
+<a class='timestamp' href='#624583'><time timestamp='2018-08-12T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107660' id='624584'>
+<a class='timestamp' href='#624584'><time timestamp='2018-08-12T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So pick one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107720' id='624585'>
+<a class='timestamp' href='#624585'><time timestamp='2018-08-12T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+however, if replacement within the extra set is not allowed, it&#x27;s easy enough - discard anything that conflicts with the extra set already
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107720' id='624586'>
+<a class='timestamp' href='#624586'><time timestamp='2018-08-12T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Well we can support replacement for non-chained, and also support chaining.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107720' id='624587'>
+<a class='timestamp' href='#624587'><time timestamp='2018-08-12T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+otherwise, validate against the mempool with full policy check, getting utxos from the extra set as needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107720' id='624588'>
+<a class='timestamp' href='#624588'><time timestamp='2018-08-12T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and for the kind of replacement we don&#x27;t support, I think we could still queue the transaction and not propagate it but fluff it when it times out.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107720' id='624589'>
+<a class='timestamp' href='#624589'><time timestamp='2018-08-12T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if accepted, put in the extra set (which is limited is size, and automatically ezpires through auto fluffing)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107780' id='624590'>
+<a class='timestamp' href='#624590'><time timestamp='2018-08-12T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so at least chained replacements work, they just might have worse privacy/propagation.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107780' id='624591'>
+<a class='timestamp' href='#624591'><time timestamp='2018-08-12T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and fluffing is just implemented as adding to the local mempool... which means that stuff that has been invalidated by intermediate mempool action just gets ignored
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107960' id='624592'>
+<a class='timestamp' href='#624592'><time timestamp='2018-08-12T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so the criteria for going into the extra-set is &quot;doesn&#x27;t need a parent in the extraset and passes ATMP  OR  it needs a parent in the extraset, doesn&#x27;t conflict with the extra set and with the parent its consensus valid/standard&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534107960' id='624593'>
+<a class='timestamp' href='#624593'><time timestamp='2018-08-12T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and if you get something that conflicts with the extraset, and doesn&#x27;t pass ATMP, you throw it in the orphanmap.  It&#x27;ll get connected once the parents get fluffed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108020' id='624594'>
+<a class='timestamp' href='#624594'><time timestamp='2018-08-12T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Then: replacement works, chaining works, and chaining+replacement turns into orphans which still work after the parents fluff.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108200' id='624595'>
+<a class='timestamp' href='#624595'><time timestamp='2018-08-12T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I totally agree that wallets shoudl be batching and whatnot, but consider: we don&#x27;t even have a friendly way to do that... There is no dohicky in bitcoin core where you can queue a payment, have it draft it, but not send it, waiting for either more payments it can be bached with, timeout, or shutdown trigger.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108440' id='624596'>
+<a class='timestamp' href='#624596'><time timestamp='2018-08-12T21:14:00Z'>21:14</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So fluffing a chained dandelion tx also fluffs its parents? (even though one of the parents might still be &quot;traveling&quot; on a stem)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108560' id='624597'>
+<a class='timestamp' href='#624597'><time timestamp='2018-08-12T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+thats why I was saying &#x27;weakest in the chain&#x27; above. :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108560' id='624598'>
+<a class='timestamp' href='#624598'><time timestamp='2018-08-12T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Yeah, so the suggestion would be to avoid chaining, but support it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108620' id='624599'>
+<a class='timestamp' href='#624599'><time timestamp='2018-08-12T21:17:00Z'>21:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+don&#x27;t fluff things which have an unfluffed parent?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108920' id='624600'>
+<a class='timestamp' href='#624600'><time timestamp='2018-08-12T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+You&#x27;d be keeping them much longer in the cache/embargo (on average) and thus use more space for chained txs than unchained ones on avg
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534108980' id='624601'>
+<a class='timestamp' href='#624601'><time timestamp='2018-08-12T21:23:00Z'>21:23</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+A child times out, but you couldn&#x27;t fluff it because the parent&#x27;s timeout is in the future
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534109100' id='624602'>
+<a class='timestamp' href='#624602'><time timestamp='2018-08-12T21:25:00Z'>21:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i feel like there should perhaps be something where a dependency in the extra set results in the two txn being merged into a packaga
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534109160' id='624603'>
+<a class='timestamp' href='#624603'><time timestamp='2018-08-12T21:26:00Z'>21:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and then have the timeout for the package become a weighted average of the inout timeouts or so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534109160' id='624604'>
+<a class='timestamp' href='#624604'><time timestamp='2018-08-12T21:26:00Z'>21:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*input
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1534109220' id='624605'>
+<a class='timestamp' href='#624605'><time timestamp='2018-08-12T21:27:00Z'>21:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but... complicated
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

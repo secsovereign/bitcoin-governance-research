@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-05-10
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-05-10' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:18 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-04-10">&lt;</a><span class='header'>     May 2020     </span><a href="/bitcoin-core-dev/2020-06-10">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2020-05-01">1</a>  <a class="" href="/bitcoin-core-dev/2020-05-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2020-05-03">3</a>  <a class="" href="/bitcoin-core-dev/2020-05-04">4</a>  <a class="" href="/bitcoin-core-dev/2020-05-05">5</a>  <a class="" href="/bitcoin-core-dev/2020-05-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-05-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-05-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-05-09">9</a>  &#x000A;<a class="current" href="/bitcoin-core-dev/2020-05-10">10</a> <a class="" href="/bitcoin-core-dev/2020-05-11">11</a> <a class="" href="/bitcoin-core-dev/2020-05-12">12</a> <a class="" href="/bitcoin-core-dev/2020-05-13">13</a> <a class="" href="/bitcoin-core-dev/2020-05-14">14</a> <a class="" href="/bitcoin-core-dev/2020-05-15">15</a> <a class="" href="/bitcoin-core-dev/2020-05-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-17">17</a> <a class="" href="/bitcoin-core-dev/2020-05-18">18</a> <a class="" href="/bitcoin-core-dev/2020-05-19">19</a> <a class="" href="/bitcoin-core-dev/2020-05-20">20</a> <a class="" href="/bitcoin-core-dev/2020-05-21">21</a> <a class="" href="/bitcoin-core-dev/2020-05-22">22</a> <a class="" href="/bitcoin-core-dev/2020-05-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-24">24</a> <a class="" href="/bitcoin-core-dev/2020-05-25">25</a> <a class="" href="/bitcoin-core-dev/2020-05-26">26</a> <a class="" href="/bitcoin-core-dev/2020-05-27">27</a> <a class="" href="/bitcoin-core-dev/2020-05-28">28</a> <a class="" href="/bitcoin-core-dev/2020-05-29">29</a> <a class="" href="/bitcoin-core-dev/2020-05-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-05-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1589089260' id='386641'>
+<a class='timestamp' href='#386641'><time timestamp='2020-05-10T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-12'> shesek</span>&gt;
+how do conflicting transactions fit into the most recent sorting of listttransactions? do they get sorted at the original height they were confirmed at? also, are there any guarantees for the ordering of unconfirmed transactions among themselves?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589105520' id='386642'>
+<a class='timestamp' href='#386642'><time timestamp='2020-05-10T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #18927: Pass bilingual_str argument to AbortNode() (master...200510-abort) <a href="https://github.com/bitcoin/bitcoin/pull/18927" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18927</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589110680' id='386643'>
+<a class='timestamp' href='#386643'><time timestamp='2020-05-10T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #18928: build: don&#x27;t pass -w when building for Windows (master...dont_try_suppress_all_warnings_win) <a href="https://github.com/bitcoin/bitcoin/pull/18928" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18928</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589114160' id='386644'>
+<a class='timestamp' href='#386644'><time timestamp='2020-05-10T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #18929: ci: Pass down MAKEJOBS to fuzz test_runner (master...2005-fuzzMakejobs) <a href="https://github.com/bitcoin/bitcoin/pull/18929" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18929</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589119320' id='386645'>
+<a class='timestamp' href='#386645'><time timestamp='2020-05-10T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonatack opened pull request #18931: net: use CMessageHeader::HEADER_SIZE, add missing include (master...netcpp-use-CMessageHeader_HEADER_SIZE) <a href="https://github.com/bitcoin/bitcoin/pull/18931" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18931</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589120280' id='386646'>
+<a class='timestamp' href='#386646'><time timestamp='2020-05-10T14:18:00Z'>14:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic opened pull request #18932: test: move sync_blocks implementation to framework member function (master...move-sync-blocks-to-framework) <a href="https://github.com/bitcoin/bitcoin/pull/18932" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18932</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589120340' id='386647'>
+<a class='timestamp' href='#386647'><time timestamp='2020-05-10T14:19:00Z'>14:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #18933: rpc: Add submit option to generateblock (master...2004-rpcBlock) <a href="https://github.com/bitcoin/bitcoin/pull/18933" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18933</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589123100' id='386648'>
+<a class='timestamp' href='#386648'><time timestamp='2020-05-10T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic opened pull request #18935: test: add more assert_* methods (master...new-asserts-for-functional-testing) <a href="https://github.com/bitcoin/bitcoin/pull/18935" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18935</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589130360' id='386649'>
+<a class='timestamp' href='#386649'><time timestamp='2020-05-10T17:06:00Z'>17:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] andrewtoth opened pull request #18936: validation: Persist coins cache to disk and load on startup (master...persist-coinscache) <a href="https://github.com/bitcoin/bitcoin/pull/18936" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18936</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589130540' id='386650'>
+<a class='timestamp' href='#386650'><time timestamp='2020-05-10T17:09:00Z'>17:09</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+can i not use LoadBlockIndex from wallet.cpp or is there some black magic auto conf thing i need to adjust for the linker to work?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589130660' id='386651'>
+<a class='timestamp' href='#386651'><time timestamp='2020-05-10T17:11:00Z'>17:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+phantomcircuit: bitcoin-wallet doesn&#x27;t do blockchain stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589130720' id='386652'>
+<a class='timestamp' href='#386652'><time timestamp='2020-05-10T17:12:00Z'>17:12</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+luke-jr, so i should use the chain interface?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589130840' id='386653'>
+<a class='timestamp' href='#386653'><time timestamp='2020-05-10T17:14:00Z'>17:14</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+im looking at the wallet rpc rescan which ends up calling CWallet::ScanForWalletTransactions which does walk the chain, but through the chain interface
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589130900' id='386654'>
+<a class='timestamp' href='#386654'><time timestamp='2020-05-10T17:15:00Z'>17:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589131200' id='386655'>
+<a class='timestamp' href='#386655'><time timestamp='2020-05-10T17:20:00Z'>17:20</time></a>
+&lt;<span class='nick nick-8'> midnight</span>&gt;
+sipa: hello! hashrate graphs! Far as I know, nobody else publishes reliably-accurate graphs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589131260' id='386656'>
+<a class='timestamp' href='#386656'><time timestamp='2020-05-10T17:21:00Z'>17:21</time></a>
+&lt;<span class='nick nick-8'> midnight</span>&gt;
+:-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589131620' id='386657'>
+<a class='timestamp' href='#386657'><time timestamp='2020-05-10T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+midnight: yes, what is wrong with them?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589131680' id='386658'>
+<a class='timestamp' href='#386658'><time timestamp='2020-05-10T17:28:00Z'>17:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, he&#x27;s saying they&#x27;re good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589131740' id='386659'>
+<a class='timestamp' href='#386659'><time timestamp='2020-05-10T17:29:00Z'>17:29</time></a>
+&lt;<span class='nick nick-8'> midnight</span>&gt;
+sipa: Thank you!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589131800' id='386660'>
+<a class='timestamp' href='#386660'><time timestamp='2020-05-10T17:30:00Z'>17:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, you&#x27;re welcome :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589133360' id='386661'>
+<a class='timestamp' href='#386661'><time timestamp='2020-05-10T17:56:00Z'>17:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] theStack opened pull request #18937: refactor: s/command/msg_type/ in CNetMsgMaker and CSerializedNetMsg (master...20200520-refactor-replace-command-by-msgtype-part-3) <a href="https://github.com/bitcoin/bitcoin/pull/18937" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18937</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589136360' id='386662'>
+<a class='timestamp' href='#386662'><time timestamp='2020-05-10T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #18938: tests: Fill fuzzing coverage gaps for functions in consensus/validation.h, primitives/block.h and util/translation.h (master...fuzzers-misc-5) <a href="https://github.com/bitcoin/bitcoin/pull/18938" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18938</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140620' id='386663'>
+<a class='timestamp' href='#386663'><time timestamp='2020-05-10T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #17551: test: added test for RPCConvertNamedValues in rpc_tests (master...expanding-test-coverage) <a href="https://github.com/bitcoin/bitcoin/pull/17551" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17551</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140620' id='386664'>
+<a class='timestamp' href='#386664'><time timestamp='2020-05-10T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #17700: cli: add -generate option (master...resurrect-generate-method) <a href="https://github.com/bitcoin/bitcoin/pull/17700" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17700</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140620' id='386665'>
+<a class='timestamp' href='#386665'><time timestamp='2020-05-10T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #17732: test: check for valgrind presence and set appropriate exit flags (master...valgrind-detection) <a href="https://github.com/bitcoin/bitcoin/pull/17732" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17732</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140680' id='386666'>
+<a class='timestamp' href='#386666'><time timestamp='2020-05-10T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #17623: rpc: add extensive file checks for dumptxoutset and dumpwallet (master...checks-for-dump-functions) <a href="https://github.com/bitcoin/bitcoin/pull/17623" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17623</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140680' id='386667'>
+<a class='timestamp' href='#386667'><time timestamp='2020-05-10T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18570: rpc: return block hash &amp; height in getbalances, gettransaction &amp; getwalletinfo JSONs (master...return-blockhash-with-wallet-calls) <a href="https://github.com/bitcoin/bitcoin/pull/18570" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18570</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140680' id='386668'>
+<a class='timestamp' href='#386668'><time timestamp='2020-05-10T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18592: rpc: replace raw pointers with shared_ptrs (master...rpcwallet-replace-pointers) <a href="https://github.com/bitcoin/bitcoin/pull/18592" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18592</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140740' id='386669'>
+<a class='timestamp' href='#386669'><time timestamp='2020-05-10T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18611: cli: show default values in config args log (master...compare-params) <a href="https://github.com/bitcoin/bitcoin/pull/18611" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18611</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140740' id='386670'>
+<a class='timestamp' href='#386670'><time timestamp='2020-05-10T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18827: rpc: added getrpcwhitelist method (master...getrpcwhitelist) <a href="https://github.com/bitcoin/bitcoin/pull/18827" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18827</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140740' id='386671'>
+<a class='timestamp' href='#386671'><time timestamp='2020-05-10T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18871: rpc: prevent circular deps by extracting into separate include (master...prevent-circular-deps) <a href="https://github.com/bitcoin/bitcoin/pull/18871" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18871</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140800' id='386672'>
+<a class='timestamp' href='#386672'><time timestamp='2020-05-10T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18932: test: move sync_* implementations to framework member functions (master...move-sync-blocks-to-framework) <a href="https://github.com/bitcoin/bitcoin/pull/18932" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18932</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589140800' id='386673'>
+<a class='timestamp' href='#386673'><time timestamp='2020-05-10T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18935: test: add more assert_* methods (master...new-asserts-for-functional-testing) <a href="https://github.com/bitcoin/bitcoin/pull/18935" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18935</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589141880' id='386674'>
+<a class='timestamp' href='#386674'><time timestamp='2020-05-10T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] brakmic closed pull request #18830: rpc: add user field to getrpcinfo&#x27;s json (master...getrpcinfo) <a href="https://github.com/bitcoin/bitcoin/pull/18830" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18830</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589147460' id='386675'>
+<a class='timestamp' href='#386675'><time timestamp='2020-05-10T21:51:00Z'>21:51</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Anyone know why brakmic closed all of his PRs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589147580' id='386676'>
+<a class='timestamp' href='#386676'><time timestamp='2020-05-10T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+☹
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589147640' id='386677'>
+<a class='timestamp' href='#386677'><time timestamp='2020-05-10T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-8'> fjahr</span>&gt;
+Seems very weird. The last one was opened 5h before it was closed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589148000' id='386678'>
+<a class='timestamp' href='#386678'><time timestamp='2020-05-10T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+I guess the answer is in #18930. He must have decided to leave.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589148000' id='386679'>
+<a class='timestamp' href='#386679'><time timestamp='2020-05-10T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/18930" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/18930</a> | test: Remove sync_blocks global · Issue #18930 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589150880' id='386680'>
+<a class='timestamp' href='#386680'><time timestamp='2020-05-10T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+lol &quot;please stop submitting prs&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589150880' id='386681'>
+<a class='timestamp' href='#386681'><time timestamp='2020-05-10T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+what the fuck
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589154120' id='386682'>
+<a class='timestamp' href='#386682'><time timestamp='2020-05-10T23:42:00Z'>23:42</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] mzumsande opened pull request #18939: doc: add c++17-enable flag to fuzzing instructions (master...202005_fuzz_doc) <a href="https://github.com/bitcoin/bitcoin/pull/18939" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18939</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1589154600' id='386683'>
+<a class='timestamp' href='#386683'><time timestamp='2020-05-10T23:50:00Z'>23:50</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+brakmic was making a real effort lately to begin reviewing as well
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

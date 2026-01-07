@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-06-11
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-06-11' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:24 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-05-11">&lt;</a><span class='header'>    June 2017     </span><a href="/bitcoin-core-dev/2017-07-11">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2017-06-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-06-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-06-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-06-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-06-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-06-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-06-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-06-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-06-09">9</a> <a class="" href="/bitcoin-core-dev/2017-06-10">10</a>  &#x000A;<a class="current" href="/bitcoin-core-dev/2017-06-11">11</a> <a class="" href="/bitcoin-core-dev/2017-06-12">12</a> <a class="" href="/bitcoin-core-dev/2017-06-13">13</a> <a class="" href="/bitcoin-core-dev/2017-06-14">14</a> <a class="" href="/bitcoin-core-dev/2017-06-15">15</a> <a class="" href="/bitcoin-core-dev/2017-06-16">16</a> <a class="" href="/bitcoin-core-dev/2017-06-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-06-18">18</a> <a class="" href="/bitcoin-core-dev/2017-06-19">19</a> <a class="" href="/bitcoin-core-dev/2017-06-20">20</a> <a class="" href="/bitcoin-core-dev/2017-06-21">21</a> <a class="" href="/bitcoin-core-dev/2017-06-22">22</a> <a class="" href="/bitcoin-core-dev/2017-06-23">23</a> <a class="" href="/bitcoin-core-dev/2017-06-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-06-25">25</a> <a class="" href="/bitcoin-core-dev/2017-06-26">26</a> <a class="" href="/bitcoin-core-dev/2017-06-27">27</a> <a class="" href="/bitcoin-core-dev/2017-06-28">28</a> <a class="" href="/bitcoin-core-dev/2017-06-29">29</a> <a class="" href="/bitcoin-core-dev/2017-06-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1497140100' id='549990'>
+<a class='timestamp' href='#549990'><time timestamp='2017-06-11T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+So, you need to modify the options available and re-ping the others who might want another type of answer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497159720' id='549991'>
+<a class='timestamp' href='#549991'><time timestamp='2017-06-11T05:42:00Z'>05:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+instagibbs: so with these effective amount changes, perhaps what we should also do is have an effective size: e.g. if you are considering spending unconfirmed change from a prior transaction, you should adjust its size to whatever would be needed to CPFP the ancestors up to the rate you&#x27;re targeting.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497182580' id='549992'>
+<a class='timestamp' href='#549992'><time timestamp='2017-06-11T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/76f268b9bd1b...2e7d8f8b7d98" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/76f268b9bd1b...2e7d8f8b7d98</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497182580' id='549993'>
+<a class='timestamp' href='#549993'><time timestamp='2017-06-11T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c45cbaf Andrew Chow: Fix stopatheight...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497182580' id='549994'>
+<a class='timestamp' href='#549994'><time timestamp='2017-06-11T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2e7d8f8 Wladimir J. van der Laan: Merge #10569: Fix stopatheight...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497182640' id='549995'>
+<a class='timestamp' href='#549995'><time timestamp='2017-06-11T12:04:00Z'>12:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10569: Fix stopatheight (master...fix-stopatheight) <a href="https://github.com/bitcoin/bitcoin/pull/10569" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10569</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183240' id='549996'>
+<a class='timestamp' href='#549996'><time timestamp='2017-06-11T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus are you merging a few prs now?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183420' id='549997'>
+<a class='timestamp' href='#549997'><time timestamp='2017-06-11T12:17:00Z'>12:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fanquake: possibly, do you have other suggestions?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183540' id='549998'>
+<a class='timestamp' href='#549998'><time timestamp='2017-06-11T12:19:00Z'>12:19</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus Yea there are a few that look ready to go. 1 sec.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183540' id='549999'>
+<a class='timestamp' href='#549999'><time timestamp='2017-06-11T12:19:00Z'>12:19</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+10560 is a easy merge/close. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183600' id='550000'>
+<a class='timestamp' href='#550000'><time timestamp='2017-06-11T12:20:00Z'>12:20</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+10566 is a trivial doc chance.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183660' id='550001'>
+<a class='timestamp' href='#550001'><time timestamp='2017-06-11T12:21:00Z'>12:21</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+10561
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183660' id='550002'>
+<a class='timestamp' href='#550002'><time timestamp='2017-06-11T12:21:00Z'>12:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550003'>
+<a class='timestamp' href='#550003'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/2e7d8f8b7d98...562caf1c74fd" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/2e7d8f8b7d98...562caf1c74fd</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550004'>
+<a class='timestamp' href='#550004'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3289ef4 practicalswift: Remove unused constant MEMPOOL_GD_VERSION
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550005'>
+<a class='timestamp' href='#550005'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master dce8239 practicalswift: Comment out unused constant REJECT_DUST
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550006'>
+<a class='timestamp' href='#550006'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 562caf1 Wladimir J. van der Laan: Merge #10560: Remove unused constants...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550007'>
+<a class='timestamp' href='#550007'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes those look ready
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550008'>
+<a class='timestamp' href='#550008'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10560: Remove unused constants (master...noop-modes) <a href="https://github.com/bitcoin/bitcoin/pull/10560" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10560</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550009'>
+<a class='timestamp' href='#550009'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Just unsure how many can be merged before one of them needs a rebase :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183780' id='550010'>
+<a class='timestamp' href='#550010'><time timestamp='2017-06-11T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+10553
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183900' id='550011'>
+<a class='timestamp' href='#550011'><time timestamp='2017-06-11T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I was thinking again a few days ago it would be very useful to have a tool that visualizes which PRs conflict with each other. But I don&#x27;t think that information is easily available from the API.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183900' id='550012'>
+<a class='timestamp' href='#550012'><time timestamp='2017-06-11T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+would also be useful to find duplicates etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183900' id='550013'>
+<a class='timestamp' href='#550013'><time timestamp='2017-06-11T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+10546 should also be ok. I&#x27;m not sure what is being used to find the includes, but the pr didn&#x27;t work on Windows initially, then broke again compiling. I&#x27;m wondering if it&#x27;s possible we can inadvertently nuke an include for something like win32, and break something without noticing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183960' id='550014'>
+<a class='timestamp' href='#550014'><time timestamp='2017-06-11T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus yea I think we may have even discussed a similar tool before? You mentioned you had a system for it at a previous job.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183960' id='550015'>
+<a class='timestamp' href='#550015'><time timestamp='2017-06-11T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/562caf1c74fd...5d034ee7faaf" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/562caf1c74fd...5d034ee7faaf</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183960' id='550016'>
+<a class='timestamp' href='#550016'><time timestamp='2017-06-11T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7631066 practicalswift: Use the &quot;domain name setup&quot; image (previously unused) in the gitian docs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183960' id='550017'>
+<a class='timestamp' href='#550017'><time timestamp='2017-06-11T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 5d034ee Wladimir J. van der Laan: Merge #10566: [docs] Use the &quot;domain name setup&quot; image (previously unused) in the gitian docs...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497183960' id='550018'>
+<a class='timestamp' href='#550018'><time timestamp='2017-06-11T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10566: [docs] Use the &quot;domain name setup&quot; image (previously unused) in the gitian docs (master...unreferenced-file) <a href="https://github.com/bitcoin/bitcoin/pull/10566" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10566</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184020' id='550019'>
+<a class='timestamp' href='#550019'><time timestamp='2017-06-11T12:27:00Z'>12:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fanquake: yep, exactly, it was really neat, apart from that the revision control there was slow as molasses and so hard to navigate a lot of departmetns resorted to 90&#x27;s-style changelogs at the top of C files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184140' id='550020'>
+<a class='timestamp' href='#550020'><time timestamp='2017-06-11T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+10568 could also go in.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184140' id='550021'>
+<a class='timestamp' href='#550021'><time timestamp='2017-06-11T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fairly sure git can do it better, even a brute force &quot;fetch upstream/pull/*/head for every open pull, then for every A on B try &#x27;git merge&#x27;&quot; shouldn&#x27;t take too long
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184140' id='550022'>
+<a class='timestamp' href='#550022'><time timestamp='2017-06-11T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+just need to find time to make it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184200' id='550023'>
+<a class='timestamp' href='#550023'><time timestamp='2017-06-11T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it could even pre-optimize by skipping pulls that affect disjunct sets of files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184200' id='550024'>
+<a class='timestamp' href='#550024'><time timestamp='2017-06-11T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
++combinations
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184260' id='550025'>
+<a class='timestamp' href='#550025'><time timestamp='2017-06-11T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Yea, ideally it would &quot;know&quot; what PRs are most important, by looking at high the priority queue, and blocking merges that break something that&#x27;s already been rebased 17 times and has a multitude of ACKs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184320' id='550026'>
+<a class='timestamp' href='#550026'><time timestamp='2017-06-11T12:32:00Z'>12:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/5d034ee7faaf...e4918316d80f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/5d034ee7faaf...e4918316d80f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184320' id='550027'>
+<a class='timestamp' href='#550027'><time timestamp='2017-06-11T12:32:00Z'>12:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e53a0fa practicalswift: Remove duplicate includes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184320' id='550028'>
+<a class='timestamp' href='#550028'><time timestamp='2017-06-11T12:32:00Z'>12:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e491831 Wladimir J. van der Laan: Merge #10561: Remove duplicate includes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184380' id='550029'>
+<a class='timestamp' href='#550029'><time timestamp='2017-06-11T12:33:00Z'>12:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10561: Remove duplicate includes (master...remove-duplicate-includes) <a href="https://github.com/bitcoin/bitcoin/pull/10561" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10561</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184380' id='550030'>
+<a class='timestamp' href='#550030'><time timestamp='2017-06-11T12:33:00Z'>12:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well we have a list of high-priority PRs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184680' id='550031'>
+<a class='timestamp' href='#550031'><time timestamp='2017-06-11T12:38:00Z'>12:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so I guess the usual question for such a tool would be &quot;would merging this low-prio PR force rebase of any high-prio PRs&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497184860' id='550032'>
+<a class='timestamp' href='#550032'><time timestamp='2017-06-11T12:41:00Z'>12:41</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Should be able to do 10497 before 10193, as it&#x27;s easy to redo the scripted diff, and it needs a rebase anyways.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497188220' id='550033'>
+<a class='timestamp' href='#550033'><time timestamp='2017-06-11T13:37:00Z'>13:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/e4918316d80f...2c2d98806253" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/e4918316d80f...2c2d98806253</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497188220' id='550034'>
+<a class='timestamp' href='#550034'><time timestamp='2017-06-11T13:37:00Z'>13:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 49de096 practicalswift: Remove unused Boost includes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497188220' id='550035'>
+<a class='timestamp' href='#550035'><time timestamp='2017-06-11T13:37:00Z'>13:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2c2d988 Wladimir J. van der Laan: Merge #10546: Remove 33 unused Boost includes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497188280' id='550036'>
+<a class='timestamp' href='#550036'><time timestamp='2017-06-11T13:38:00Z'>13:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10546: Remove 33 unused Boost includes (master...remove-unused-boost-includes) <a href="https://github.com/bitcoin/bitcoin/pull/10546" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10546</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497205620' id='550037'>
+<a class='timestamp' href='#550037'><time timestamp='2017-06-11T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+Hi I am using bitcoin core and accidentally only added 0.00000798 BTC as fee. Will this tx be processed by the miners? How can I either stop that transaction or add a fee? Are there other options?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497206520' id='550038'>
+<a class='timestamp' href='#550038'><time timestamp='2017-06-11T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+gmaxwell, hmmm good point, it&#x27;s like having smaller effective value, in those cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497206640' id='550039'>
+<a class='timestamp' href='#550039'><time timestamp='2017-06-11T18:44:00Z'>18:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+instagibbs: and once we&#x27;ve selected it, we should add more fees to bring the ancestor bundle up to the current requested feerate.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497206640' id='550040'>
+<a class='timestamp' href='#550040'><time timestamp='2017-06-11T18:44:00Z'>18:44</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+yep     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207000' id='550041'>
+<a class='timestamp' href='#550041'><time timestamp='2017-06-11T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-13'> murchandamus</span>&gt;
+hi Greg, did you see my pm yesterday?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207060' id='550042'>
+<a class='timestamp' href='#550042'><time timestamp='2017-06-11T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+any idea what to do in my case? Shall I &quot;zapwallettxes&quot;? Whats the risk?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207180' id='550043'>
+<a class='timestamp' href='#550043'><time timestamp='2017-06-11T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-13'> murchandamus</span>&gt;
+txpending: You&#x27;re in the wrong channel, this channel is about Bitcoin Core development. You might want to ask in #bitcoin. Meanwhile this might answer your question<a href="https://bitcoin.stackexchange.com/a/41972/5406" class="link" target="_blank">https://bitcoin.stackexchange.com/a/41972/5406</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207300' id='550044'>
+<a class='timestamp' href='#550044'><time timestamp='2017-06-11T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+murchandamus: thanks for the pointers! However, I haven&#x27;t found a way in the bitcoin core QT gui to &quot;Send all your bitcoins from the addresses recorded in step 1 to a new address with the recommended or higher than recommended fee.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207300' id='550045'>
+<a class='timestamp' href='#550045'><time timestamp='2017-06-11T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+txpending, #bitcoin please, people will help
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207300' id='550046'>
+<a class='timestamp' href='#550046'><time timestamp='2017-06-11T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+since this is the dev channel, maybe this is a &quot;feature request&quot; ;-) I
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207420' id='550047'>
+<a class='timestamp' href='#550047'><time timestamp='2017-06-11T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+instagibbs: isn&#x27;t it a usability bug if that&#x27;s a valid usecase and the GUI doesn&#x27;t provide means to cater for that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207540' id='550048'>
+<a class='timestamp' href='#550048'><time timestamp='2017-06-11T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+txpending, rather than continue arguing, please move it to #bitcoin. If the answers aren&#x27;t satisfying, the place to go next is github repo and file an issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207660' id='550049'>
+<a class='timestamp' href='#550049'><time timestamp='2017-06-11T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+instagibbs: yes, I&#x27;ll file an issue. wasn&#x27;t my intention to argue, but I was rather afraid that my tx will be out there, never complete and my bitcoins are lost.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497207660' id='550050'>
+<a class='timestamp' href='#550050'><time timestamp='2017-06-11T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-14'> txpending</span>&gt;
+have a nice day. bye.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497213900' id='550051'>
+<a class='timestamp' href='#550051'><time timestamp='2017-06-11T20:45:00Z'>20:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10573: Remove unnecessary includes (master...remove-unneccessary-includes) <a href="https://github.com/bitcoin/bitcoin/pull/10573" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10573</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497214200' id='550052'>
+<a class='timestamp' href='#550052'><time timestamp='2017-06-11T20:50:00Z'>20:50</time></a>
+&lt;<span class='nick nick-5'> TheV01D</span>&gt;
+in 2017 , who removes headers :D
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497214380' id='550053'>
+<a class='timestamp' href='#550053'><time timestamp='2017-06-11T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift closed pull request #10573: Remove unnecessary includes (master...remove-unneccessary-includes) <a href="https://github.com/bitcoin/bitcoin/pull/10573" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10573</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497214380' id='550054'>
+<a class='timestamp' href='#550054'><time timestamp='2017-06-11T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+nobody.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497217260' id='550055'>
+<a class='timestamp' href='#550055'><time timestamp='2017-06-11T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10574: Remove includes in .cpp files for things the corresponding .h file already included (master...redundant) <a href="https://github.com/bitcoin/bitcoin/pull/10574" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10574</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497219240' id='550056'>
+<a class='timestamp' href='#550056'><time timestamp='2017-06-11T22:14:00Z'>22:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+murchandamus: ypu just haven&#x27;t gotten to it yet!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497221640' id='550057'>
+<a class='timestamp' href='#550057'><time timestamp='2017-06-11T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa opened pull request #10575: Header include guideline (master...includeguide) <a href="https://github.com/bitcoin/bitcoin/pull/10575" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10575</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1497224760' id='550058'>
+<a class='timestamp' href='#550058'><time timestamp='2017-06-11T23:46:00Z'>23:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] gmaxwell opened pull request #10577: Add an explanation of quickly hashing onto a non-power of two range. (master...hashrange-comment) <a href="https://github.com/bitcoin/bitcoin/pull/10577" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10577</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

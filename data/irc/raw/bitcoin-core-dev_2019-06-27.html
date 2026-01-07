@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2019-06-27
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2019-06-27' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:20 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2019-05-27">&lt;</a><span class='header'>    June 2019     </span><a href="/bitcoin-core-dev/2019-07-27">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                   <a class="" href="/bitcoin-core-dev/2019-06-01">1</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2019-06-02">2</a>  <a class="" href="/bitcoin-core-dev/2019-06-03">3</a>  <a class="" href="/bitcoin-core-dev/2019-06-04">4</a>  <a class="" href="/bitcoin-core-dev/2019-06-05">5</a>  <a class="" href="/bitcoin-core-dev/2019-06-06">6</a>  <a class="" href="/bitcoin-core-dev/2019-06-07">7</a>  <a class="" href="/bitcoin-core-dev/2019-06-08">8</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2019-06-09">9</a> <a class="" href="/bitcoin-core-dev/2019-06-10">10</a> <a class="" href="/bitcoin-core-dev/2019-06-11">11</a> <a class="" href="/bitcoin-core-dev/2019-06-12">12</a> <a class="" href="/bitcoin-core-dev/2019-06-13">13</a> <a class="" href="/bitcoin-core-dev/2019-06-14">14</a> <a class="" href="/bitcoin-core-dev/2019-06-15">15</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-06-16">16</a> <a class="" href="/bitcoin-core-dev/2019-06-17">17</a> <a class="" href="/bitcoin-core-dev/2019-06-18">18</a> <a class="" href="/bitcoin-core-dev/2019-06-19">19</a> <a class="" href="/bitcoin-core-dev/2019-06-20">20</a> <a class="" href="/bitcoin-core-dev/2019-06-21">21</a> <a class="" href="/bitcoin-core-dev/2019-06-22">22</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-06-23">23</a> <a class="" href="/bitcoin-core-dev/2019-06-24">24</a> <a class="" href="/bitcoin-core-dev/2019-06-25">25</a> <a class="" href="/bitcoin-core-dev/2019-06-26">26</a> <a class="current" href="/bitcoin-core-dev/2019-06-27">27</a> <a class="" href="/bitcoin-core-dev/2019-06-28">28</a> <a class="" href="/bitcoin-core-dev/2019-06-29">29</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-06-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1561598520' id='670320'>
+<a class='timestamp' href='#670320'><time timestamp='2019-06-27T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sipa: meshcollider: Instead of having the ScriptPubKeyManagers be the SigningProviders for CWallet, what do you think about keeping CWallet as a SigningProvider and just having it poll all of its ScriptPubKeyManagers for keys and scripts? I think this makes the implementation much simpler as it doesn&#x27;t require knowing exactly which address type the output is in order to sign for it (as well as a bunch of other things that take 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561598520' id='670321'>
+<a class='timestamp' href='#670321'><time timestamp='2019-06-27T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+SigingProviders)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561602540' id='670322'>
+<a class='timestamp' href='#670322'><time timestamp='2019-06-27T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: did you see my comment on your issue?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561602600' id='670323'>
+<a class='timestamp' href='#670323'><time timestamp='2019-06-27T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think a more efficient interface is having a method that you give an sPK, and it gives you a SigningProvider for it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561602600' id='670324'>
+<a class='timestamp' href='#670324'><time timestamp='2019-06-27T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which for the legacy one would just give its built-in bulky one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561602660' id='670325'>
+<a class='timestamp' href='#670325'><time timestamp='2019-06-27T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and for descriptor based ones would expand the relevant descriptor at the right index and just return that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561603860' id='670326'>
+<a class='timestamp' href='#670326'><time timestamp='2019-06-27T02:51:00Z'>02:51</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sipa: there are a few things I think that approach won&#x27;t work for. I&#x27;ll take a closer look at that tomorrow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561604220' id='670327'>
+<a class='timestamp' href='#670327'><time timestamp='2019-06-27T02:57:00Z'>02:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: yeah, i believe that; it&#x27;s just a suggestion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561610100' id='670328'>
+<a class='timestamp' href='#670328'><time timestamp='2019-06-27T04:35:00Z'>04:35</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+achow101: I thought that was handled by just checking IsMine on all of them anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561610400' id='670329'>
+<a class='timestamp' href='#670329'><time timestamp='2019-06-27T04:40:00Z'>04:40</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ngl, I think I did it way too rushed. If you look at the commits in my box-the-wallet branch, you&#x27;ll see that they quality of each commit starts dropping off rapidly towards the end. I&#x27;ll probably end up redoing a large chunk of it anyways
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561610400' id='670330'>
+<a class='timestamp' href='#670330'><time timestamp='2019-06-27T04:40:00Z'>04:40</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+at least now I know what all needs to actually be changed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561612920' id='670331'>
+<a class='timestamp' href='#670331'><time timestamp='2019-06-27T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Has anyone else seen a crash similar too #16027 ? I don&#x27;t think it&#x27;s related solely to sleep/hibernation, as I&#x27;ve had two occurrences, both happening right after unloading a wallet. Unfortunately not running under lldb in either case..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561612920' id='670332'>
+<a class='timestamp' href='#670332'><time timestamp='2019-06-27T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16027" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16027</a> | client 0.18.0 crashes when computer wakes up from hibernation · Issue #16027 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561623420' id='670333'>
+<a class='timestamp' href='#670333'><time timestamp='2019-06-27T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-7'> awalvie_</span>&gt;
+hey there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561624080' id='670334'>
+<a class='timestamp' href='#670334'><time timestamp='2019-06-27T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-7'> awalvie_</span>&gt;
+hello there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561633140' id='670335'>
+<a class='timestamp' href='#670335'><time timestamp='2019-06-27T10:59:00Z'>10:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag closed pull request #12419: Force distinct destinations in CWallet::CreateTransaction (master...2018-02-distinct-destinations) <a href="https://github.com/bitcoin/bitcoin/pull/12419" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12419</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561644960' id='670336'>
+<a class='timestamp' href='#670336'><time timestamp='2019-06-27T14:16:00Z'>14:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag opened pull request #16299: bench: Move generated data to a dedicated translation unit (master...2019-06-benchmark-data) <a href="https://github.com/bitcoin/bitcoin/pull/16299" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16299</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561645500' id='670337'>
+<a class='timestamp' href='#670337'><time timestamp='2019-06-27T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3077f11dadff...7400135b7918" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3077f11dadff...7400135b7918</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561645500' id='670338'>
+<a class='timestamp' href='#670338'><time timestamp='2019-06-27T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9a84169 practicalswift: tests: Reduce compilation time and unneccessary recompiles by removing unu...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561645500' id='670339'>
+<a class='timestamp' href='#670339'><time timestamp='2019-06-27T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7400135 MarcoFalke: Merge #16278: tests: Remove unused includes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561645560' id='670340'>
+<a class='timestamp' href='#670340'><time timestamp='2019-06-27T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #16278: tests: Remove unused includes (master...cut-compilation-bloat-in-unit-tests) <a href="https://github.com/bitcoin/bitcoin/pull/16278" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16278</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561645860' id='670341'>
+<a class='timestamp' href='#670341'><time timestamp='2019-06-27T14:31:00Z'>14:31</time></a>
+&lt;<span class='nick nick-15'> promag_</span>&gt;
+instagibbs: re #16292 AFAIK next block height must equal current block count, that&#x27;s why genesis has height 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561645860' id='670342'>
+<a class='timestamp' href='#670342'><time timestamp='2019-06-27T14:31:00Z'>14:31</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16292" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16292</a> | wallet_resendwallettransaction.py: fix coinbase height by instagibbs · Pull Request #16292 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646040' id='670343'>
+<a class='timestamp' href='#670343'><time timestamp='2019-06-27T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+promag, no, `getblockcount` and co are actually doing `getblockchainheight`, bad naming
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646040' id='670344'>
+<a class='timestamp' href='#670344'><time timestamp='2019-06-27T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+instagibbs: I was going to comment that yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646040' id='670345'>
+<a class='timestamp' href='#670345'><time timestamp='2019-06-27T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+and height starts with genesis as 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646040' id='670346'>
+<a class='timestamp' href='#670346'><time timestamp='2019-06-27T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+it doens&#x27;t count genesis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646040' id='670347'>
+<a class='timestamp' href='#670347'><time timestamp='2019-06-27T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+:/ sorry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646040' id='670348'>
+<a class='timestamp' href='#670348'><time timestamp='2019-06-27T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+cool, someone had a PR for turning on bip34 for regtest, couldn&#x27;t find it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561646100' id='670349'>
+<a class='timestamp' href='#670349'><time timestamp='2019-06-27T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+might be worth pushing forward 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561653600' id='670350'>
+<a class='timestamp' href='#670350'><time timestamp='2019-06-27T16:40:00Z'>16:40</time></a>
+&lt;<span class='nick nick-4'> pinheadmz</span>&gt;
+During IBD, is fRelay set to false in `version` messages? Or do we just ignore incoming tx / inv-tx messages but &quot;allow&quot; them?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561653660' id='670351'>
+<a class='timestamp' href='#670351'><time timestamp='2019-06-27T16:41:00Z'>16:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke reopened pull request #16294: qt: test: Create at most one testing setup (master...1906-qtTestOnlyOneTestingSetup) <a href="https://github.com/bitcoin/bitcoin/pull/16294" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16294</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561657680' id='670352'>
+<a class='timestamp' href='#670352'><time timestamp='2019-06-27T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ /query andytoshi 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561659300' id='670353'>
+<a class='timestamp' href='#670353'><time timestamp='2019-06-27T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #16255: util: Remove code to cache datadir (master...1906-utilNoPath) <a href="https://github.com/bitcoin/bitcoin/pull/16255" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16255</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561659360' id='670354'>
+<a class='timestamp' href='#670354'><time timestamp='2019-06-27T18:16:00Z'>18:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #16300: util: Explain why the path is cached (master...1906-utilPathWhy) <a href="https://github.com/bitcoin/bitcoin/pull/16300" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16300</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661220' id='670355'>
+<a class='timestamp' href='#670355'><time timestamp='2019-06-27T18:47:00Z'>18:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+pinheadmz: fRelay is set to true during ibd, as there&#x27;s no way to change it for existing peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661280' id='670356'>
+<a class='timestamp' href='#670356'><time timestamp='2019-06-27T18:48:00Z'>18:48</time></a>
+&lt;<span class='nick nick-4'> pinheadmz</span>&gt;
+wumpus: could there be an optimization there? We dont need tx invs during IBD...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661580' id='670357'>
+<a class='timestamp' href='#670357'><time timestamp='2019-06-27T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+pinheadmz: maybe, it doesn&#x27;t really matter, I think, IDB takes so much more bandwidth than any amount of invs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661640' id='670358'>
+<a class='timestamp' href='#670358'><time timestamp='2019-06-27T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+pinheadmz: -blocksonly, fyi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661700' id='670359'>
+<a class='timestamp' href='#670359'><time timestamp='2019-06-27T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-4'> pinheadmz</span>&gt;
+cfields: sure, but that doesn&#x27;t stop peers from sending, we just dont process the inv or getdata
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661700' id='670360'>
+<a class='timestamp' href='#670360'><time timestamp='2019-06-27T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no, blocksonly really sets fRelay to false
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661700' id='670361'>
+<a class='timestamp' href='#670361'><time timestamp='2019-06-27T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+^^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661700' id='670362'>
+<a class='timestamp' href='#670362'><time timestamp='2019-06-27T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-4'> pinheadmz</span>&gt;
+ah right right right tnx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661880' id='670363'>
+<a class='timestamp' href='#670363'><time timestamp='2019-06-27T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-4'> pinheadmz</span>&gt;
+but then after IBD theres no way to turn it back to true -- sounds like its not a concern
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561661940' id='670364'>
+<a class='timestamp' href='#670364'><time timestamp='2019-06-27T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+restarting without -blocksonly would effectively be the same, you&#x27;d lose all peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662000' id='670365'>
+<a class='timestamp' href='#670365'><time timestamp='2019-06-27T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+inv during IBD can also be interesting for light client wallets during IBD
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662000' id='670366'>
+<a class='timestamp' href='#670366'><time timestamp='2019-06-27T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+meeting?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662000' id='670367'>
+<a class='timestamp' href='#670367'><time timestamp='2019-06-27T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meeting!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670368'>
+<a class='timestamp' href='#670368'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#startmeeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670369'>
+<a class='timestamp' href='#670369'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Meeting started Thu Jun 27 19:01:00 2019 UTC.  The chair is wumpus. Information about MeetBot at <a href="http://wiki.debian.org/MeetBot" class="link" target="_blank">http://wiki.debian.org/MeetBot</a>.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670370'>
+<a class='timestamp' href='#670370'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Useful Commands: #action #agreed #help #info #idea #link #topic.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670371'>
+<a class='timestamp' href='#670371'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670372'>
+<a class='timestamp' href='#670372'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670373'>
+<a class='timestamp' href='#670373'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670374'>
+<a class='timestamp' href='#670374'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670375'>
+<a class='timestamp' href='#670375'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+hello
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670376'>
+<a class='timestamp' href='#670376'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-11'> moneyball</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670377'>
+<a class='timestamp' href='#670377'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+two topics on the list for today: 0.18.1: Backports #16035, depends build cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662060' id='670378'>
+<a class='timestamp' href='#670378'><time timestamp='2019-06-27T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16035" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16035</a> | 0.18.1: Backports by MarcoFalke · Pull Request #16035 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662120' id='670379'>
+<a class='timestamp' href='#670379'><time timestamp='2019-06-27T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+any last minute topic proposals?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662180' id='670380'>
+<a class='timestamp' href='#670380'><time timestamp='2019-06-27T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#topic High priority for review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662180' id='670381'>
+<a class='timestamp' href='#670381'><time timestamp='2019-06-27T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/projects/8" class="link" target="_blank">https://github.com/bitcoin/bitcoin/projects/8</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662180' id='670382'>
+<a class='timestamp' href='#670382'><time timestamp='2019-06-27T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+5 blockers, 1 bugfix, 7(!) things requiring concept ACK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662180' id='670383'>
+<a class='timestamp' href='#670383'><time timestamp='2019-06-27T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+anything to add/remove/merge ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662240' id='670384'>
+<a class='timestamp' href='#670384'><time timestamp='2019-06-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I&#x27;d like to nominate #16257 for 0.18.1 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662240' id='670385'>
+<a class='timestamp' href='#670385'><time timestamp='2019-06-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16257" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16257</a> | [wallet] abort when attempting to fund a transaction above -maxtxfee by Sjors · Pull Request #16257 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662240' id='670386'>
+<a class='timestamp' href='#670386'><time timestamp='2019-06-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+swap #15450 for #16227 please
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662240' id='670387'>
+<a class='timestamp' href='#670387'><time timestamp='2019-06-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/15450" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/15450</a> | [GUI] Create wallet menu option by achow101 · Pull Request #15450 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662240' id='670388'>
+<a class='timestamp' href='#670388'><time timestamp='2019-06-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16227" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16227</a> | Refactor CWallets inheritance chain by achow101 · Pull Request #16227 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662240' id='670389'>
+<a class='timestamp' href='#670389'><time timestamp='2019-06-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator:if you want to nominate a backport might be better to do it in MarcoFalke &#x27;s topic?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662300' id='670390'>
+<a class='timestamp' href='#670390'><time timestamp='2019-06-27T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Yes, sorry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662300' id='670391'>
+<a class='timestamp' href='#670391'><time timestamp='2019-06-27T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh, it&#x27;s not merged yet to master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662360' id='670392'>
+<a class='timestamp' href='#670392'><time timestamp='2019-06-27T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ok that should be under &#x27;bugfix&#x27; the nI suppose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662420' id='670393'>
+<a class='timestamp' href='#670393'><time timestamp='2019-06-27T19:07:00Z'>19:07</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Based on stats from Blockchair on 0.1 BTC fees, I think quite a few people are firing that footgun (unless there&#x27;s another wallet that produces exact 0.1 BTC fees).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662420' id='670394'>
+<a class='timestamp' href='#670394'><time timestamp='2019-06-27T19:07:00Z'>19:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+achow101: done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662480' id='670395'>
+<a class='timestamp' href='#670395'><time timestamp='2019-06-27T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: that&#x27;s worrying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662480' id='670396'>
+<a class='timestamp' href='#670396'><time timestamp='2019-06-27T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+<a href="https://blockchair.com/bitcoin/transactions?q=fee" class="link" target="_blank">https://blockchair.com/bitcoin/transactions?q=fee</a>(10000000)#
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662480' id='670397'>
+<a class='timestamp' href='#670397'><time timestamp='2019-06-27T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It&#x27;s beacuse if you set feeRate to &quot;1&quot; that doesn&#x27;t mean 1 satoshi per byte.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662540' id='670398'>
+<a class='timestamp' href='#670398'><time timestamp='2019-06-27T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right, sounds like a bug
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662600' id='670399'>
+<a class='timestamp' href='#670399'><time timestamp='2019-06-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+provoostenator: holy crap that&#x27;s insane
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662600' id='670400'>
+<a class='timestamp' href='#670400'><time timestamp='2019-06-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+another case of quietly ignoring an error
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662660' id='670401'>
+<a class='timestamp' href='#670401'><time timestamp='2019-06-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that&#x27;s always a red flag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662660' id='670402'>
+<a class='timestamp' href='#670402'><time timestamp='2019-06-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It rounds down the fee instead of aborting. Which has been the case for years, but the &quot;satoshi per byte&quot; convention is newer, so maybe that&#x27;s what causes the increase.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662660' id='670403'>
+<a class='timestamp' href='#670403'><time timestamp='2019-06-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+:o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662660' id='670404'>
+<a class='timestamp' href='#670404'><time timestamp='2019-06-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+And the new PSBT methods also have this setting.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662660' id='670405'>
+<a class='timestamp' href='#670405'><time timestamp='2019-06-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+provoostenator: that&#x27;s 25 BTC in fees this month overall
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662720' id='670406'>
+<a class='timestamp' href='#670406'><time timestamp='2019-06-27T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+this is the miner trolling X)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662720' id='670407'>
+<a class='timestamp' href='#670407'><time timestamp='2019-06-27T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Some of these are batches, but quite a few are small txs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662720' id='670408'>
+<a class='timestamp' href='#670408'><time timestamp='2019-06-27T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+For big batches something else happens: the user sets a higher fee, but then we round it down.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662720' id='670409'>
+<a class='timestamp' href='#670409'><time timestamp='2019-06-27T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Which can cause large batch transactions to get stuck.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662720' id='670410'>
+<a class='timestamp' href='#670410'><time timestamp='2019-06-27T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+^^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662780' id='670411'>
+<a class='timestamp' href='#670411'><time timestamp='2019-06-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+In both cases, I think throwing an error is just better. User can always override the maxfee, or manually set a fee.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662780' id='670412'>
+<a class='timestamp' href='#670412'><time timestamp='2019-06-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662780' id='670413'>
+<a class='timestamp' href='#670413'><time timestamp='2019-06-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+how is that we are only running into this now? hasn&#x27;t this behavior been in for ages?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662780' id='670414'>
+<a class='timestamp' href='#670414'><time timestamp='2019-06-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662840' id='670415'>
+<a class='timestamp' href='#670415'><time timestamp='2019-06-27T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+<a href="https://blockchair.com/bitcoin/transactions?q=fee" class="link" target="_blank">https://blockchair.com/bitcoin/transactions?q=fee</a>(20000000)#
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662840' id='670416'>
+<a class='timestamp' href='#670416'><time timestamp='2019-06-27T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+achow101: no one ever reported it AFAIK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662840' id='670417'>
+<a class='timestamp' href='#670417'><time timestamp='2019-06-27T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+those are old
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662840' id='670418'>
+<a class='timestamp' href='#670418'><time timestamp='2019-06-27T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+this is the first time I hear this is the case, it sounds awful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662900' id='670419'>
+<a class='timestamp' href='#670419'><time timestamp='2019-06-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it looks like in december 2017 there were ~100 cases of this per day as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662900' id='670420'>
+<a class='timestamp' href='#670420'><time timestamp='2019-06-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
++1 for merging provoostenator&#x27;s PR soon and doing 0.18.1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662900' id='670421'>
+<a class='timestamp' href='#670421'><time timestamp='2019-06-27T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I&#x27;ll be quick to address feedback on the PR.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662960' id='670422'>
+<a class='timestamp' href='#670422'><time timestamp='2019-06-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662960' id='670423'>
+<a class='timestamp' href='#670423'><time timestamp='2019-06-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+thanks provoostenator for bringing this to attention
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662960' id='670424'>
+<a class='timestamp' href='#670424'><time timestamp='2019-06-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+sipa: that was the ath period?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662960' id='670425'>
+<a class='timestamp' href='#670425'><time timestamp='2019-06-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+promag: i just looked at dec 20th 2017
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662960' id='670426'>
+<a class='timestamp' href='#670426'><time timestamp='2019-06-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+December 2017 was fee madness yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561662960' id='670427'>
+<a class='timestamp' href='#670427'><time timestamp='2019-06-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+So people start manually setting the fee.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663020' id='670428'>
+<a class='timestamp' href='#670428'><time timestamp='2019-06-27T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so this is certainly not a few phenomenon, and also not the first that it seems actually impactful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663020' id='670429'>
+<a class='timestamp' href='#670429'><time timestamp='2019-06-27T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+s/few/new/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663020' id='670430'>
+<a class='timestamp' href='#670430'><time timestamp='2019-06-27T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+And also when mempool &quot;weather reports&quot; became popular, and more wallets started supporting fee settings. Most using the satoshi per byte unit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663080' id='670431'>
+<a class='timestamp' href='#670431'><time timestamp='2019-06-27T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ack with fixing it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663080' id='670432'>
+<a class='timestamp' href='#670432'><time timestamp='2019-06-27T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+really wonder why this is never reported, not strange some people complain about high fees at least then :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663140' id='670433'>
+<a class='timestamp' href='#670433'><time timestamp='2019-06-27T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663140' id='670434'>
+<a class='timestamp' href='#670434'><time timestamp='2019-06-27T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#topic 0.18.1: Backports #16035 (MarcoFalke)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663140' id='670435'>
+<a class='timestamp' href='#670435'><time timestamp='2019-06-27T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16035" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16035</a> | 0.18.1: Backports by MarcoFalke · Pull Request #16035 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663200' id='670436'>
+<a class='timestamp' href='#670436'><time timestamp='2019-06-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+maxfee should be batch sane
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663260' id='670437'>
+<a class='timestamp' href='#670437'><time timestamp='2019-06-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t know what Marco wants to discuss about this topic,doesn&#x27;t seem like he&#x27;s here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670438'>
+<a class='timestamp' href='#670438'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Marco!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670439'>
+<a class='timestamp' href='#670439'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+sry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670440'>
+<a class='timestamp' href='#670440'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+here, hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670441'>
+<a class='timestamp' href='#670441'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+so close.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670442'>
+<a class='timestamp' href='#670442'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I wrapped up on the backports
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670443'>
+<a class='timestamp' href='#670443'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+cfields: wow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663320' id='670444'>
+<a class='timestamp' href='#670444'><time timestamp='2019-06-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+heh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663380' id='670445'>
+<a class='timestamp' href='#670445'><time timestamp='2019-06-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: ^^ looks like we have a last-minute one by provoostenator and then really want to do 0.18.1 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663380' id='670446'>
+<a class='timestamp' href='#670446'><time timestamp='2019-06-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663380' id='670447'>
+<a class='timestamp' href='#670447'><time timestamp='2019-06-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+promag: all of dec 2017 had 6336 instances; way worse than now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663380' id='670448'>
+<a class='timestamp' href='#670448'><time timestamp='2019-06-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Would be nice if one or two went through my cherry-picks (to check if they are solved correctly) and if the commits itself make sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663440' id='670449'>
+<a class='timestamp' href='#670449'><time timestamp='2019-06-27T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663440' id='670450'>
+<a class='timestamp' href='#670450'><time timestamp='2019-06-27T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#action check MarcoFalke&#x27;s backports in #16035
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663440' id='670451'>
+<a class='timestamp' href='#670451'><time timestamp='2019-06-27T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+provoostenator&#x27;s fix still needs review. I&#x27;d rather have it backported after the existing backports are merged (and reviewed)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663440' id='670452'>
+<a class='timestamp' href='#670452'><time timestamp='2019-06-27T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16035" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16035</a> | 0.18.1: Backports by MarcoFalke · Pull Request #16035 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663440' id='670453'>
+<a class='timestamp' href='#670453'><time timestamp='2019-06-27T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+MarcoFalke: absolutely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663500' id='670454'>
+<a class='timestamp' href='#670454'><time timestamp='2019-06-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I think fanquake and promag already had a look
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663500' id='670455'>
+<a class='timestamp' href='#670455'><time timestamp='2019-06-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it should always be in master first
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663500' id='670456'>
+<a class='timestamp' href='#670456'><time timestamp='2019-06-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I don&#x27;t want to nag them again to re-ACK, so my backport branch is final
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663500' id='670457'>
+<a class='timestamp' href='#670457'><time timestamp='2019-06-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663500' id='670458'>
+<a class='timestamp' href='#670458'><time timestamp='2019-06-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-6'> ddustin</span>&gt;
+How do we know the .1 fees aren&#x27;t miners?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663560' id='670459'>
+<a class='timestamp' href='#670459'><time timestamp='2019-06-27T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+yes, most of the backports are clean cherry picks, and the others are trivial. Also non critical changes imo.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663560' id='670460'>
+<a class='timestamp' href='#670460'><time timestamp='2019-06-27T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ddustin: we don&#x27;t, but 0.1 BTC is a suspicious number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663560' id='670461'>
+<a class='timestamp' href='#670461'><time timestamp='2019-06-27T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ddustin: we don&#x27;t, though it seems unlikely for miners to pay themselves so much fees when they can include their own transactions for free
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663620' id='670462'>
+<a class='timestamp' href='#670462'><time timestamp='2019-06-27T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+are we tagging 0.18.1 after that PR?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663620' id='670463'>
+<a class='timestamp' href='#670463'><time timestamp='2019-06-27T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+promag: I think so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663620' id='670464'>
+<a class='timestamp' href='#670464'><time timestamp='2019-06-27T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+If nothing else pops up, hehe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663620' id='670465'>
+<a class='timestamp' href='#670465'><time timestamp='2019-06-27T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663680' id='670466'>
+<a class='timestamp' href='#670466'><time timestamp='2019-06-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+:(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663680' id='670467'>
+<a class='timestamp' href='#670467'><time timestamp='2019-06-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+I think #13339 should be in 0.18
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663680' id='670468'>
+<a class='timestamp' href='#670468'><time timestamp='2019-06-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13339" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13339</a> | wallet: Replace %w by wallet name in -walletnotify script by promag · Pull Request #13339 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663680' id='670469'>
+<a class='timestamp' href='#670469'><time timestamp='2019-06-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#topic depends build cache (cfields)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663680' id='670470'>
+<a class='timestamp' href='#670470'><time timestamp='2019-06-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+promag:that&#x27;s a feature
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663740' id='670471'>
+<a class='timestamp' href='#670471'><time timestamp='2019-06-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t see why it&#x27;d be backported
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663740' id='670472'>
+<a class='timestamp' href='#670472'><time timestamp='2019-06-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+multiwallet is kind of useless for integrators without that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663740' id='670473'>
+<a class='timestamp' href='#670473'><time timestamp='2019-06-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+actually; the cases in dec 2017 were not absurd; they were all paying reasonable feerates for that time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663740' id='670474'>
+<a class='timestamp' href='#670474'><time timestamp='2019-06-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we&#x27;re talking about 0.18.1 here the 0.19 feature freeze is somewhat further waway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663800' id='670475'>
+<a class='timestamp' href='#670475'><time timestamp='2019-06-27T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+wumpus: i understand, it&#x27;s a bit sad it missed 0.18
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663800' id='670476'>
+<a class='timestamp' href='#670476'><time timestamp='2019-06-27T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(2019-09-15 to be exact)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663800' id='670477'>
+<a class='timestamp' href='#670477'><time timestamp='2019-06-27T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+promag: yes, blame windows and its absurd escaping rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663860' id='670478'>
+<a class='timestamp' href='#670478'><time timestamp='2019-06-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+absurd and inconsistent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663860' id='670479'>
+<a class='timestamp' href='#670479'><time timestamp='2019-06-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+So for the travis/depends bottleneck issue, I thought of some low-hanging fruit that I think would have quite an impact. By simply sharing the intermediate depends binary packages globally among builds, we avoid situations where dozens of PRs are all rebuilding all of depends.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663860' id='670480'>
+<a class='timestamp' href='#670480'><time timestamp='2019-06-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Instead, the first to finish would send it to the cache server, and each client would check for that package before building it itself. Because all packages-names are deterministically generated and unique, there should be no filename collisions, so maintenance should be effectively zero on the storage side. At most, a cron job to delete the oldest files now and then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663860' id='670481'>
+<a class='timestamp' href='#670481'><time timestamp='2019-06-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+wumpus: I&#x27;ve asked if we could just ignore windows, let&#x27;s move to the PR later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663860' id='670482'>
+<a class='timestamp' href='#670482'><time timestamp='2019-06-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+As a side-effect, it would also kick in and avoid complete depends builds when Travis fails to download its cache.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663860' id='670483'>
+<a class='timestamp' href='#670483'><time timestamp='2019-06-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I&#x27;ll try to hack it together this week. It may be enough that we don&#x27;t need to make the bigger changes we discussed a few weeks ago.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663920' id='670484'>
+<a class='timestamp' href='#670484'><time timestamp='2019-06-27T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: how would this cache server work, e.g. how to prevent PRs from uploading arbitrary binary dependencies, or do you intend to build them outside of travis?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663920' id='670485'>
+<a class='timestamp' href='#670485'><time timestamp='2019-06-27T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+cfields: The cache would be read-write by anyone?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663980' id='670486'>
+<a class='timestamp' href='#670486'><time timestamp='2019-06-27T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+this has always been the problem with uploading any kind of data from travis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663980' id='670487'>
+<a class='timestamp' href='#670487'><time timestamp='2019-06-27T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+you can configure travis to have local secrets as environment variables
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663980' id='670488'>
+<a class='timestamp' href='#670488'><time timestamp='2019-06-27T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+so you have an api key or something in one of the travis environment vars that lets you upload to the server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561663980' id='670489'>
+<a class='timestamp' href='#670489'><time timestamp='2019-06-27T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+achow101: I could write a PR to dump those secrets?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664040' id='670490'>
+<a class='timestamp' href='#670490'><time timestamp='2019-06-27T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+You can disable secrets for prs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664040' id='670491'>
+<a class='timestamp' href='#670491'><time timestamp='2019-06-27T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: Indeed. It&#x27;s also going to be a problem with some of the other, more complicated splits that we discussed. I figure this is a much smaller surface to experiment with.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664040' id='670492'>
+<a class='timestamp' href='#670492'><time timestamp='2019-06-27T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+for branches that would be OK, that&#x27;s proabably enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664040' id='670493'>
+<a class='timestamp' href='#670493'><time timestamp='2019-06-27T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no one is going to merge a PR that dumps secrets and if so we have much bigger issues :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664100' id='670494'>
+<a class='timestamp' href='#670494'><time timestamp='2019-06-27T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I feel like the same problem would be solved by having a shorter cache expiry on travis for pull requests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664100' id='670495'>
+<a class='timestamp' href='#670495'><time timestamp='2019-06-27T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: I&#x27;m thinking it may be possible to leverage github tags somehow for &quot;allowed to cache&quot; or so. That way the cache is always primed before another PR branches from it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664100' id='670496'>
+<a class='timestamp' href='#670496'><time timestamp='2019-06-27T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;m sad that we need this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664100' id='670497'>
+<a class='timestamp' href='#670497'><time timestamp='2019-06-27T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+<a href="https://docs.travis-ci.com/user/environment-variables#defining-encrypted-variables-in-travisyml" class="link" target="_blank">https://docs.travis-ci.com/user/environment-variables#defining-encrypted-variables-in-travisyml</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664100' id='670498'>
+<a class='timestamp' href='#670498'><time timestamp='2019-06-27T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so the alternative CI ideas were a dead end?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664160' id='670499'>
+<a class='timestamp' href='#670499'><time timestamp='2019-06-27T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+travis lets you encrypt variables, but it&#x27;s not available for PRs for the reason that promag said
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664160' id='670500'>
+<a class='timestamp' href='#670500'><time timestamp='2019-06-27T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Travis already re-generates and caches depends on master, the pull requests are just too slow to pick it up, since they still have their own cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664160' id='670501'>
+<a class='timestamp' href='#670501'><time timestamp='2019-06-27T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+semaphore2 would have a nice cache tool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664160' id='670502'>
+<a class='timestamp' href='#670502'><time timestamp='2019-06-27T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: nono, this was just something that occured to me today. I thought it was a good idea, but if you don&#x27;t like it, no big deal.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664160' id='670503'>
+<a class='timestamp' href='#670503'><time timestamp='2019-06-27T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+that lets you manually control the key/storage-blobs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664160' id='670504'>
+<a class='timestamp' href='#670504'><time timestamp='2019-06-27T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: semaphore2 sounds great, but it doesn&#x27;t allow viewing the test logs?!?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664220' id='670505'>
+<a class='timestamp' href='#670505'><time timestamp='2019-06-27T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+cfields: Have you seen my comment?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664220' id='670506'>
+<a class='timestamp' href='#670506'><time timestamp='2019-06-27T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+they promised to get this done in the next days...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664220' id='670507'>
+<a class='timestamp' href='#670507'><time timestamp='2019-06-27T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: it just feels so hacky to implement our own caching on an external server because travis is too stupid to handle that correctly, it seems a base thing !
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664220' id='670508'>
+<a class='timestamp' href='#670508'><time timestamp='2019-06-27T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but,.. maybe its something we should follow but not do now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664280' id='670509'>
+<a class='timestamp' href='#670509'><time timestamp='2019-06-27T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: I&#x27;m not against your idea, but it seems to go from bad to worse, what&#x27;s the next thing we have to implement for them :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664280' id='670510'>
+<a class='timestamp' href='#670510'><time timestamp='2019-06-27T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664280' id='670511'>
+<a class='timestamp' href='#670511'><time timestamp='2019-06-27T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: yes, that&#x27;s what I was attempting to address. All PRs would immediately have access to those files instead of waiting on the cache.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664340' id='670512'>
+<a class='timestamp' href='#670512'><time timestamp='2019-06-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+since we are customer of travis, can we not request a feature?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664340' id='670513'>
+<a class='timestamp' href='#670513'><time timestamp='2019-06-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that will probably take too long, if they pick it up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664340' id='670514'>
+<a class='timestamp' href='#670514'><time timestamp='2019-06-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+very likely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664340' id='670515'>
+<a class='timestamp' href='#670515'><time timestamp='2019-06-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: I&#x27;m not sure that&#x27;s fair. They have storage/upload capabilities, but we&#x27;re just using the cache.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664340' id='670516'>
+<a class='timestamp' href='#670516'><time timestamp='2019-06-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+cfields: With immediately you mean &quot;after the depends built finished&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670517'>
+<a class='timestamp' href='#670517'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: oh we&#x27;d be using their upload/storage capabilities?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670518'>
+<a class='timestamp' href='#670518'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So we&#x27;d have to wait either until our own depends server finishes the depends built or until travis finishes it. I don&#x27;t see the difference
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670519'>
+<a class='timestamp' href='#670519'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: that makes sense, I wasn&#x27;t aware of that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670520'>
+<a class='timestamp' href='#670520'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: I mean: PR1 is created which touches depends, then PR2 is created, then PR1 is merged, PR2 rebuilds depends next time it&#x27;s bumped whether it touched them or not.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670521'>
+<a class='timestamp' href='#670521'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(I believe I typed that out right)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670522'>
+<a class='timestamp' href='#670522'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: I thought this would have to be some external server run by ourselves
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670523'>
+<a class='timestamp' href='#670523'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+cfields: also doesn&#x27;t work for prs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664460' id='670524'>
+<a class='timestamp' href='#670524'><time timestamp='2019-06-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: well, that was my open question, but I guess you&#x27;ve answered it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664520' id='670525'>
+<a class='timestamp' href='#670525'><time timestamp='2019-06-27T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+promag: wait, really?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664520' id='670526'>
+<a class='timestamp' href='#670526'><time timestamp='2019-06-27T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+<a href="https://docs.travis-ci.com/user/uploading-artifacts/" class="link" target="_blank">https://docs.travis-ci.com/user/uploading-artifacts/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664520' id='670527'>
+<a class='timestamp' href='#670527'><time timestamp='2019-06-27T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+is this what you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664580' id='670528'>
+<a class='timestamp' href='#670528'><time timestamp='2019-06-27T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+promag: ugh. Ok. That&#x27;s probably why we don&#x27;t do this already, huh? :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664580' id='670529'>
+<a class='timestamp' href='#670529'><time timestamp='2019-06-27T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+promag: I don&#x27;t believe that any blocks you from making the upload part of your script itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664640' id='670530'>
+<a class='timestamp' href='#670530'><time timestamp='2019-06-27T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Ok, I&#x27;ll go back to the drawing board. Thanks, all.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664640' id='670531'>
+<a class='timestamp' href='#670531'><time timestamp='2019-06-27T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+cfields: I wonder what would happen if we disabled the cache for pull requests completely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664640' id='670532'>
+<a class='timestamp' href='#670532'><time timestamp='2019-06-27T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks cfields for working on this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664640' id='670533'>
+<a class='timestamp' href='#670533'><time timestamp='2019-06-27T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So they would always get the freshest cache from master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664700' id='670534'>
+<a class='timestamp' href='#670534'><time timestamp='2019-06-27T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that seems preferable, as long as the PR doesn&#x27;t change depends (in which case you can expect slowness anyway)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664700' id='670535'>
+<a class='timestamp' href='#670535'><time timestamp='2019-06-27T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+achow101: true, but then you have to manage all of that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664760' id='670536'>
+<a class='timestamp' href='#670536'><time timestamp='2019-06-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: Hmm, let&#x27;s take a look after the meeting?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664760' id='670537'>
+<a class='timestamp' href='#670537'><time timestamp='2019-06-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I guess it would make it impossible to run travis on pulls that change depends (as pointed out by wumpus)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664760' id='670538'>
+<a class='timestamp' href='#670538'><time timestamp='2019-06-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I wasn&#x27;t aware you could configure that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664760' id='670539'>
+<a class='timestamp' href='#670539'><time timestamp='2019-06-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(or forgot)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664820' id='670540'>
+<a class='timestamp' href='#670540'><time timestamp='2019-06-27T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664820' id='670541'>
+<a class='timestamp' href='#670541'><time timestamp='2019-06-27T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: each push would just nuke its own cache and rebuild, I think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664940' id='670542'>
+<a class='timestamp' href='#670542'><time timestamp='2019-06-27T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So maybe we could wipe all pull request caches after 1-3 days?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561664940' id='670543'>
+<a class='timestamp' href='#670543'><time timestamp='2019-06-27T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Not a perfect solution, but might approximate well enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665000' id='670544'>
+<a class='timestamp' href='#670544'><time timestamp='2019-06-27T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if it&#x27;s better than it&#x27;s better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665000' id='670545'>
+<a class='timestamp' href='#670545'><time timestamp='2019-06-27T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: are there options for that now as well?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665000' id='670546'>
+<a class='timestamp' href='#670546'><time timestamp='2019-06-27T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+I could write a script for it (and ping travis on my issue from last year)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665060' id='670547'>
+<a class='timestamp' href='#670547'><time timestamp='2019-06-27T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+script via api?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665060' id='670548'>
+<a class='timestamp' href='#670548'><time timestamp='2019-06-27T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Either way, +1 on the ping :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665060' id='670549'>
+<a class='timestamp' href='#670549'><time timestamp='2019-06-27T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s definitely possible to wipe caches through the API
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665060' id='670550'>
+<a class='timestamp' href='#670550'><time timestamp='2019-06-27T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+per PR or for all of them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665180' id='670551'>
+<a class='timestamp' href='#670551'><time timestamp='2019-06-27T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Ok. Going to have to think on it some. But +1 for whatever makes it better.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665180' id='670552'>
+<a class='timestamp' href='#670552'><time timestamp='2019-06-27T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ok, that concludes the meeting I think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665240' id='670553'>
+<a class='timestamp' href='#670553'><time timestamp='2019-06-27T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks everyone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665240' id='670554'>
+<a class='timestamp' href='#670554'><time timestamp='2019-06-27T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#endmeeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665240' id='670555'>
+<a class='timestamp' href='#670555'><time timestamp='2019-06-27T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Meeting ended Thu Jun 27 19:54:47 2019 UTC.  Information about MeetBot at <a href="http://wiki.debian.org/MeetBot" class="link" target="_blank">http://wiki.debian.org/MeetBot</a> . (v 0.1.4)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665240' id='670556'>
+<a class='timestamp' href='#670556'><time timestamp='2019-06-27T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Minutes:        <a href="http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-06-27-19.01.html" class="link" target="_blank">http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-06-27-19.01.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665240' id='670557'>
+<a class='timestamp' href='#670557'><time timestamp='2019-06-27T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Minutes (text): <a href="http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-06-27-19.01.txt" class="link" target="_blank">http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-06-27-19.01.txt</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665240' id='670558'>
+<a class='timestamp' href='#670558'><time timestamp='2019-06-27T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Log:            <a href="http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-06-27-19.01.log.html" class="link" target="_blank">http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-06-27-19.01.log.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665300' id='670559'>
+<a class='timestamp' href='#670559'><time timestamp='2019-06-27T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+correct me if i&#x27;m wrong, what we really wish for is depends/built cached across pr&#x27;s? (cache by last depends commit, conf params, arc etc)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665360' id='670560'>
+<a class='timestamp' href='#670560'><time timestamp='2019-06-27T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+promag: yes. That&#x27;s how it currently works. But it&#x27;s racy, and there are some nasty pitfalls.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665360' id='670561'>
+<a class='timestamp' href='#670561'><time timestamp='2019-06-27T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+ok :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665480' id='670562'>
+<a class='timestamp' href='#670562'><time timestamp='2019-06-27T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+wumpus: whenever you can <a href="https://github.com/bitcoin/bitcoin/pull/13339#issuecomment-504653790" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13339#issuecomment-504653790</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665480' id='670563'>
+<a class='timestamp' href='#670563'><time timestamp='2019-06-27T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: why is it racy? Do they use non-atomic copies/overwrites?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665600' id='670564'>
+<a class='timestamp' href='#670564'><time timestamp='2019-06-27T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+promag: say I have a PR that changes one of the base depends files, say depends/Makefile. That will cause all of depends to be rebuilt for that PR.  When it&#x27;s merged into master, the master branch is rebuilt and the depends are cached at that point. But all existing PRs have their own cache already from the previous master build. So when they&#x27;re rebased to master, they have to rebuild everything again.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665660' id='670565'>
+<a class='timestamp' href='#670565'><time timestamp='2019-06-27T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+So basically touching depends/ causes a huge slowdown across all PRs and builds for a while.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665720' id='670566'>
+<a class='timestamp' href='#670566'><time timestamp='2019-06-27T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+bah...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665720' id='670567'>
+<a class='timestamp' href='#670567'><time timestamp='2019-06-27T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+promag: it looks like only the addon is disabled for PRs, not the artifact tool?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665720' id='670568'>
+<a class='timestamp' href='#670568'><time timestamp='2019-06-27T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+cfields: &quot;So when they&#x27;re rebased to master, they have to rebuild everything again.&quot; why?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665780' id='670569'>
+<a class='timestamp' href='#670569'><time timestamp='2019-06-27T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+uploading artifacts belongs to the deployment step, which travis skips for prs, see <a href="https://docs.travis-ci.com/user/deployment/#pull-requests" class="link" target="_blank">https://docs.travis-ci.com/user/deployment/#pull-requests</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665780' id='670570'>
+<a class='timestamp' href='#670570'><time timestamp='2019-06-27T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+promag: because their depends are now stale, master bumped something.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665780' id='670571'>
+<a class='timestamp' href='#670571'><time timestamp='2019-06-27T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+blah, ok.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665840' id='670572'>
+<a class='timestamp' href='#670572'><time timestamp='2019-06-27T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: Yeah. I guess it has to. Writing with moving can be make atomic. But I guess if a worker is reading the cache while another worker is writing the same is problematic. They probably lock the cache during reads.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665900' id='670573'>
+<a class='timestamp' href='#670573'><time timestamp='2019-06-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+*can be made atomic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665900' id='670574'>
+<a class='timestamp' href='#670574'><time timestamp='2019-06-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: yep.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665900' id='670575'>
+<a class='timestamp' href='#670575'><time timestamp='2019-06-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Though writing 40MB should be a matter of ms&#x27;es
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665900' id='670576'>
+<a class='timestamp' href='#670576'><time timestamp='2019-06-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: it&#x27;s also a question of inheritance, though. Who pulls from whom and when?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665900' id='670577'>
+<a class='timestamp' href='#670577'><time timestamp='2019-06-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+That&#x27;s the main complication.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665900' id='670578'>
+<a class='timestamp' href='#670578'><time timestamp='2019-06-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I guess that fallback model makes sense to me.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665960' id='670579'>
+<a class='timestamp' href='#670579'><time timestamp='2019-06-27T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Check if the branch has a cache or fall back to master (or more grained)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665960' id='670580'>
+<a class='timestamp' href='#670580'><time timestamp='2019-06-27T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+but we aren&#x27;t changing depends that much are we?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561665960' id='670581'>
+<a class='timestamp' href='#670581'><time timestamp='2019-06-27T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+can&#x27;t we not just cache single depends packages instead of a whole host package?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666020' id='670582'>
+<a class='timestamp' href='#670582'><time timestamp='2019-06-27T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: that&#x27;s close to what I was suggesting.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666020' id='670583'>
+<a class='timestamp' href='#670583'><time timestamp='2019-06-27T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+like md5( host || package-name || package-version)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666020' id='670584'>
+<a class='timestamp' href='#670584'><time timestamp='2019-06-27T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: s/md5/sha2, and that&#x27;s how it currently works :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666080' id='670585'>
+<a class='timestamp' href='#670585'><time timestamp='2019-06-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+aha...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666080' id='670586'>
+<a class='timestamp' href='#670586'><time timestamp='2019-06-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+TIL
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666080' id='670587'>
+<a class='timestamp' href='#670587'><time timestamp='2019-06-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: but that is how the depends internally caches... right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666080' id='670588'>
+<a class='timestamp' href='#670588'><time timestamp='2019-06-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+It recurses through the dependency chain, though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666080' id='670589'>
+<a class='timestamp' href='#670589'><time timestamp='2019-06-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but not how we write it to the travis cache?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666080' id='670590'>
+<a class='timestamp' href='#670590'><time timestamp='2019-06-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: we just write those files to the cache, and the next build picks them up...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666140' id='670591'>
+<a class='timestamp' href='#670591'><time timestamp='2019-06-27T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I was suggesting that we could somehow write them to a big global cache, and let future builds try to fetch them before building themselves.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666140' id='670592'>
+<a class='timestamp' href='#670592'><time timestamp='2019-06-27T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+yes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666140' id='670593'>
+<a class='timestamp' href='#670593'><time timestamp='2019-06-27T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+need to read back... I guess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666200' id='670594'>
+<a class='timestamp' href='#670594'><time timestamp='2019-06-27T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+that operation can be write-only, because 2 package names will never collide with each-other. So it would be trivial to automate.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666200' id='670595'>
+<a class='timestamp' href='#670595'><time timestamp='2019-06-27T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I was just hopping,... lets assume Qt dependency has changed, we grab all the others (since sha2( host || package-name || package-version) is cached) and just compile the new Qt
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666200' id='670596'>
+<a class='timestamp' href='#670596'><time timestamp='2019-06-27T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+But the question of access causes it to break down, as everyone was quick to remind me :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666260' id='670597'>
+<a class='timestamp' href='#670597'><time timestamp='2019-06-27T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Yes, that&#x27;s how it works.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666260' id='670598'>
+<a class='timestamp' href='#670598'><time timestamp='2019-06-27T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+The problem is when, for example, openssl is changed. That ALSO causes qt rebuilds.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666260' id='670599'>
+<a class='timestamp' href='#670599'><time timestamp='2019-06-27T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+So anything that&#x27;s more low-level than the package descriptors screws everything up for a while.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666260' id='670600'>
+<a class='timestamp' href='#670600'><time timestamp='2019-06-27T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+so take the dependency package &amp; version into the hash?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666320' id='670601'>
+<a class='timestamp' href='#670601'><time timestamp='2019-06-27T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: <a href="https://github.com/bitcoin/bitcoin/blob/master/depends/funcs.mk#L42" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/depends/funcs.mk#L42</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666380' id='670602'>
+<a class='timestamp' href='#670602'><time timestamp='2019-06-27T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I should be quite... :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666380' id='670603'>
+<a class='timestamp' href='#670603'><time timestamp='2019-06-27T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Not exactly the easiest thing to read, but it takes all of that into account. The hashes are nearly guaranteed to be unique.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666380' id='670604'>
+<a class='timestamp' href='#670604'><time timestamp='2019-06-27T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: you&#x27;re fine! It&#x27;s not exactly straightforward.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666440' id='670605'>
+<a class='timestamp' href='#670605'><time timestamp='2019-06-27T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+[22:10:42]  &lt;cfields&gt;But the question of access causes it to break down, as everyone was quick to remind me :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666440' id='670606'>
+<a class='timestamp' href='#670606'><time timestamp='2019-06-27T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+^ -- do you mean with that that reading while writing is racy?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666440' id='670607'>
+<a class='timestamp' href='#670607'><time timestamp='2019-06-27T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: no, I mean allowing open access to upload somewhere without being DoS&#x27;d.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666500' id='670608'>
+<a class='timestamp' href='#670608'><time timestamp='2019-06-27T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Oh. I see.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666500' id='670609'>
+<a class='timestamp' href='#670609'><time timestamp='2019-06-27T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+That&#x27;s why we&#x27;ve ultimately avoided having Travis do any useful uploading.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666500' id='670610'>
+<a class='timestamp' href='#670610'><time timestamp='2019-06-27T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I was trying to check wether with samephores2 cache manager this would be possible...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666500' id='670611'>
+<a class='timestamp' href='#670611'><time timestamp='2019-06-27T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+since they have key/blob storage, I think it would
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666560' id='670612'>
+<a class='timestamp' href='#670612'><time timestamp='2019-06-27T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+So I think the ideal solution for us would be to allow for merged caches.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666560' id='670613'>
+<a class='timestamp' href='#670613'><time timestamp='2019-06-27T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I&#x27;ll have to think about it some more, but I believe that would be perfect.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666560' id='670614'>
+<a class='timestamp' href='#670614'><time timestamp='2019-06-27T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: merged between branches?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666560' id='670615'>
+<a class='timestamp' href='#670615'><time timestamp='2019-06-27T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(single global cache)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666620' id='670616'>
+<a class='timestamp' href='#670616'><time timestamp='2019-06-27T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+We have a per-branch (master) cache as well a per-PR branch. If both of those were fetched and extracted, I think we would almost always skip rebuilding.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666620' id='670617'>
+<a class='timestamp' href='#670617'><time timestamp='2019-06-27T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+s/we/Travis.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666620' id='670618'>
+<a class='timestamp' href='#670618'><time timestamp='2019-06-27T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I see.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666620' id='670619'>
+<a class='timestamp' href='#670619'><time timestamp='2019-06-27T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Right now, according to MarcoFalke, we can choose.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666680' id='670620'>
+<a class='timestamp' href='#670620'><time timestamp='2019-06-27T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Hmm.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666740' id='670621'>
+<a class='timestamp' href='#670621'><time timestamp='2019-06-27T20:19:00Z'>20:19</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I&#x27;ll experiment with that. Might be easy for Travis to implement, too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561666800' id='670622'>
+<a class='timestamp' href='#670622'><time timestamp='2019-06-27T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. Asking them costs nothing...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667040' id='670623'>
+<a class='timestamp' href='#670623'><time timestamp='2019-06-27T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-6'> jb55</span>&gt;
+re promag on #13339: yes please! walletnotify seems kind of gimped now without it getting the walletname. running patched versions isn&#x27;t fun either :[
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667040' id='670624'>
+<a class='timestamp' href='#670624'><time timestamp='2019-06-27T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13339" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13339</a> | wallet: Replace %w by wallet name in -walletnotify script by promag · Pull Request #13339 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667100' id='670625'>
+<a class='timestamp' href='#670625'><time timestamp='2019-06-27T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+jb55: auto debug log parsing notification! Yay!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667160' id='670626'>
+<a class='timestamp' href='#670626'><time timestamp='2019-06-27T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jonasschnelli: that&#x27;s some badass suggestion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667160' id='670627'>
+<a class='timestamp' href='#670627'><time timestamp='2019-06-27T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jonasschnelli: multiprocess ipc with debug log parsing ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667220' id='670628'>
+<a class='timestamp' href='#670628'><time timestamp='2019-06-27T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+but really, say you have 10s of wallets loaded, how can you know which wallet to call gettransaction?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667340' id='670629'>
+<a class='timestamp' href='#670629'><time timestamp='2019-06-27T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+promag: just parse [default wallet] AddToWallet f9abce7434904fcf8b5d3c4a6e4e07d25373c7f9c76a216c8fb45027a79b6c0c
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667340' id='670630'>
+<a class='timestamp' href='#670630'><time timestamp='2019-06-27T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+something like (.*) AddToWallet (.*)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667340' id='670631'>
+<a class='timestamp' href='#670631'><time timestamp='2019-06-27T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(am I really suggesting this?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667640' id='670632'>
+<a class='timestamp' href='#670632'><time timestamp='2019-06-27T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jonasschnelli: just saying that -walletnotify is incomplete, I&#x27;m also not fond of the %w thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667640' id='670633'>
+<a class='timestamp' href='#670633'><time timestamp='2019-06-27T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+cfields: It would be nice if we could seed the last time the depends folder was changed into the hash in the cache name
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667640' id='670634'>
+<a class='timestamp' href='#670634'><time timestamp='2019-06-27T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+promag: sure. Your PR makes complete sense to me.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667640' id='670635'>
+<a class='timestamp' href='#670635'><time timestamp='2019-06-27T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The debug.log -&gt; notification is silly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667820' id='670636'>
+<a class='timestamp' href='#670636'><time timestamp='2019-06-27T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jonasschnelli: well not really, maybe better than running a patched version ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667880' id='670637'>
+<a class='timestamp' href='#670637'><time timestamp='2019-06-27T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jonasschnelli: btw have a look at #16285
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667880' id='670638'>
+<a class='timestamp' href='#670638'><time timestamp='2019-06-27T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16285" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16285</a> | rpc: Improve scantxoutset response and help message by promag · Pull Request #16285 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667880' id='670639'>
+<a class='timestamp' href='#670639'><time timestamp='2019-06-27T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+promag: probably... depends on whos doing the patch and in what environment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561667940' id='670640'>
+<a class='timestamp' href='#670640'><time timestamp='2019-06-27T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+MarcoFalke: then it would be non-deterministic?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561668060' id='670641'>
+<a class='timestamp' href='#670641'><time timestamp='2019-06-27T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+assume the current travis cache name is `env|sha2`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561668060' id='670642'>
+<a class='timestamp' href='#670642'><time timestamp='2019-06-27T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+the new one would be `(env &amp;&amp; git log -1 ./depends)|sha2`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561668060' id='670643'>
+<a class='timestamp' href='#670643'><time timestamp='2019-06-27T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Would be deterministic, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561668120' id='670644'>
+<a class='timestamp' href='#670644'><time timestamp='2019-06-27T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+and it would change every time depends changes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561668120' id='670645'>
+<a class='timestamp' href='#670645'><time timestamp='2019-06-27T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+But it doesn&#x27;s look like this is possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561668300' id='670646'>
+<a class='timestamp' href='#670646'><time timestamp='2019-06-27T20:45:00Z'>20:45</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+right, it&#x27;d have to be bumped manually.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561671240' id='670647'>
+<a class='timestamp' href='#670647'><time timestamp='2019-06-27T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+no meeting highlight today :o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1561674060' id='670648'>
+<a class='timestamp' href='#670648'><time timestamp='2019-06-27T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] meshcollider closed pull request #16192: Wallet: Catches situations where capping on maxtxfee drops the fee too low (master...issue-10122) <a href="https://github.com/bitcoin/bitcoin/pull/16192" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16192</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

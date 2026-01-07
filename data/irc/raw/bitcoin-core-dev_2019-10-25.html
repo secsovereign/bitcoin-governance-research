@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2019-10-25
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2019-10-25' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:19 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2019-09-25">&lt;</a><span class='header'>   October 2019   </span><a href="/bitcoin-core-dev/2019-11-25">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;       <a class="" href="/bitcoin-core-dev/2019-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2019-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2019-10-03">3</a>  <a class="" href="/bitcoin-core-dev/2019-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2019-10-05">5</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2019-10-06">6</a>  <a class="" href="/bitcoin-core-dev/2019-10-07">7</a>  8  9 10 11 12  &#x000A;13 <a class="" href="/bitcoin-core-dev/2019-10-14">14</a> <a class="" href="/bitcoin-core-dev/2019-10-15">15</a> <a class="" href="/bitcoin-core-dev/2019-10-16">16</a> <a class="" href="/bitcoin-core-dev/2019-10-17">17</a> <a class="" href="/bitcoin-core-dev/2019-10-18">18</a> <a class="" href="/bitcoin-core-dev/2019-10-19">19</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-10-20">20</a> <a class="" href="/bitcoin-core-dev/2019-10-21">21</a> <a class="" href="/bitcoin-core-dev/2019-10-22">22</a> <a class="" href="/bitcoin-core-dev/2019-10-23">23</a> <a class="" href="/bitcoin-core-dev/2019-10-24">24</a> <a class="current" href="/bitcoin-core-dev/2019-10-25">25</a> <a class="" href="/bitcoin-core-dev/2019-10-26">26</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-10-27">27</a> <a class="" href="/bitcoin-core-dev/2019-10-28">28</a> <a class="" href="/bitcoin-core-dev/2019-10-29">29</a> <a class="" href="/bitcoin-core-dev/2019-10-30">30</a> <a class="" href="/bitcoin-core-dev/2019-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1571965320' id='682799'>
+<a class='timestamp' href='#682799'><time timestamp='2019-10-25T01:02:00Z'>01:02</time></a>
+&lt;<span class='nick nick-1'> roasbeef</span>&gt;
+provoostenator: responded elsewhere, but yeh I think the bip should be modified to raise back to 1k to reduce the number of round trips when catching up, the PR on the bip to move from 1k to 100 was merged w/o any comments, iirc bitcoin has settings to limit upload on a per peer basis as well which can kick in, as it&#x27;s no diff from spamming a perry with getblocks/getdata messages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571992200' id='682800'>
+<a class='timestamp' href='#682800'><time timestamp='2019-10-25T08:30:00Z'>08:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Sjors opened pull request #17246: wallet: avoid knapsack when there&#x27;s no change (master...2019/10/less-knapsack) <a href="https://github.com/bitcoin/bitcoin/pull/17246" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17246</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571996520' id='682801'>
+<a class='timestamp' href='#682801'><time timestamp='2019-10-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+let&#x27;s try to have some more ACKs on #17165 soon
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571996520' id='682802'>
+<a class='timestamp' href='#682802'><time timestamp='2019-10-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17165" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17165</a> | Remove BIP70 support by fanquake . Pull Request #17165 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571996520' id='682803'>
+<a class='timestamp' href='#682803'><time timestamp='2019-10-25T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(not only concept, please)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571997660' id='682804'>
+<a class='timestamp' href='#682804'><time timestamp='2019-10-25T10:01:00Z'>10:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #15140: test: fix script_p2sh_tests OP_PUSHBACK2/4 missing (master...test_20190110) <a href="https://github.com/bitcoin/bitcoin/pull/15140" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15140</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571997780' id='682805'>
+<a class='timestamp' href='#682805'><time timestamp='2019-10-25T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/fce7c7542234...366753e46e1f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/fce7c7542234...366753e46e1f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571997780' id='682806'>
+<a class='timestamp' href='#682806'><time timestamp='2019-10-25T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 50037e9 Cory Fields: depends: fix boost mac cross build with clang 9+
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571997780' id='682807'>
+<a class='timestamp' href='#682807'><time timestamp='2019-10-25T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 366753e Wladimir J. van der Laan: Merge #17231: depends: fix boost mac cross build with clang 9+
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571997780' id='682808'>
+<a class='timestamp' href='#682808'><time timestamp='2019-10-25T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #17231: depends: fix boost mac cross build with clang 9+ (master...fix-boost-clang9) <a href="https://github.com/bitcoin/bitcoin/pull/17231" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17231</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571998860' id='682809'>
+<a class='timestamp' href='#682809'><time timestamp='2019-10-25T10:21:00Z'>10:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+what was the flag to make bitcoind log the IPs it&#x27;s trying to connect to again?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571998920' id='682810'>
+<a class='timestamp' href='#682810'><time timestamp='2019-10-25T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#17247 is strange, I&#x27;m trying to figure out if they&#x27;re somehow connecting to false peer addresses or that their ISP is resetting bitcoin connections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571998920' id='682811'>
+<a class='timestamp' href='#682811'><time timestamp='2019-10-25T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17247" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17247</a> | socket recv error Connection reset by peer (104) . Issue #17247 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571999160' id='682812'>
+<a class='timestamp' href='#682812'><time timestamp='2019-10-25T10:26:00Z'>10:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+looks like they&#x27;re in China, too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571999160' id='682813'>
+<a class='timestamp' href='#682813'><time timestamp='2019-10-25T10:26:00Z'>10:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+might be a censorship issue @ BlueMatt 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571999340' id='682814'>
+<a class='timestamp' href='#682814'><time timestamp='2019-10-25T10:29:00Z'>10:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+anyone else from China here experiencing similar problems?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1571999340' id='682815'>
+<a class='timestamp' href='#682815'><time timestamp='2019-10-25T10:29:00Z'>10:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+or another country for that matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004080' id='682816'>
+<a class='timestamp' href='#682816'><time timestamp='2019-10-25T11:48:00Z'>11:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/366753e46e1f...90ed98ae9a2a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/366753e46e1f...90ed98ae9a2a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004080' id='682817'>
+<a class='timestamp' href='#682817'><time timestamp='2019-10-25T11:48:00Z'>11:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fa92813 MarcoFalke: consensus: Explain why fCheckDuplicateInputs can not be skipped and remove...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004080' id='682818'>
+<a class='timestamp' href='#682818'><time timestamp='2019-10-25T11:48:00Z'>11:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 90ed98a Wladimir J. van der Laan: Merge #17080: consensus: Explain why fCheckDuplicateInputs can not be skip...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004080' id='682819'>
+<a class='timestamp' href='#682819'><time timestamp='2019-10-25T11:48:00Z'>11:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #17080: consensus: Explain why fCheckDuplicateInputs can not be skipped and remove it (master...1909-docCheckInputs) <a href="https://github.com/bitcoin/bitcoin/pull/17080" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17080</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004560' id='682820'>
+<a class='timestamp' href='#682820'><time timestamp='2019-10-25T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/90ed98ae9a2a...37855ec9df57" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/90ed98ae9a2a...37855ec9df57</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004560' id='682821'>
+<a class='timestamp' href='#682821'><time timestamp='2019-10-25T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b05ec41 marcaiaf: Add unit testing for the CompressScript functions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004560' id='682822'>
+<a class='timestamp' href='#682822'><time timestamp='2019-10-25T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 37855ec Wladimir J. van der Laan: Merge #17220: tests: Add unit testing for the CompressScript function
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004560' id='682823'>
+<a class='timestamp' href='#682823'><time timestamp='2019-10-25T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #17220: tests: Add unit testing for the CompressScript function (master...add_compress_test_cases) <a href="https://github.com/bitcoin/bitcoin/pull/17220" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17220</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004740' id='682824'>
+<a class='timestamp' href='#682824'><time timestamp='2019-10-25T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+added 0.19.0 milestone to #17135 and removed it from #17035 (bumped to 0.19.1)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004740' id='682825'>
+<a class='timestamp' href='#682825'><time timestamp='2019-10-25T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17135" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17135</a> | gui: Make polling in ClientModel asynchronous by promag . Pull Request #17135 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004740' id='682826'>
+<a class='timestamp' href='#682826'><time timestamp='2019-10-25T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17035" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17035</a> | qt: Fix text display when state of prune button is changed by emilengler . Pull Request #17035 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004860' id='682827'>
+<a class='timestamp' href='#682827'><time timestamp='2019-10-25T12:01:00Z'>12:01</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+ACK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004860' id='682828'>
+<a class='timestamp' href='#682828'><time timestamp='2019-10-25T12:01:00Z'>12:01</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+I will take a look at 17135 this morning
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004920' id='682829'>
+<a class='timestamp' href='#682829'><time timestamp='2019-10-25T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+wumpus: the Great Firewall is known to reset connections for stuff it doesn&#x27;t like; it creates the perception of a crappy website.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004920' id='682830'>
+<a class='timestamp' href='#682830'><time timestamp='2019-10-25T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fanquake: great! we&#x27;ve been making it less scary
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004980' id='682831'>
+<a class='timestamp' href='#682831'><time timestamp='2019-10-25T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+But this is the same peer (104) over and over again.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572004980' id='682832'>
+<a class='timestamp' href='#682832'><time timestamp='2019-10-25T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: yes, I&#x27;ve seen this behavior for other things for the Chinese firewall, which is why it worried me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005040' id='682833'>
+<a class='timestamp' href='#682833'><time timestamp='2019-10-25T12:04:00Z'>12:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: but I&#x27;m no longer so worried, there have been no other reports, something like this would be massive
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005100' id='682834'>
+<a class='timestamp' href='#682834'><time timestamp='2019-10-25T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Would be useful if debug=net were to log the IP along with the peer number...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005100' id='682835'>
+<a class='timestamp' href='#682835'><time timestamp='2019-10-25T12:05:00Z'>12:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, that&#x27;s why I asked, I know there&#x27;s a setting to enable logging of IPs of the peers it connects to, this would hav allowed me to try the peers myself and see if they have the same behavior from here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005160' id='682836'>
+<a class='timestamp' href='#682836'><time timestamp='2019-10-25T12:06:00Z'>12:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+e.g. to see if it is a <b>*peer problem*</b> or a network problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005220' id='682837'>
+<a class='timestamp' href='#682837'><time timestamp='2019-10-25T12:07:00Z'>12:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: (104) is not the peer number but the error number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005280' id='682838'>
+<a class='timestamp' href='#682838'><time timestamp='2019-10-25T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+errno -l|grep 104
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005280' id='682839'>
+<a class='timestamp' href='#682839'><time timestamp='2019-10-25T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ECONNRESET 104 Connection reset by peer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005580' id='682840'>
+<a class='timestamp' href='#682840'><time timestamp='2019-10-25T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+found it, it&#x27;s `-logips`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005640' id='682841'>
+<a class='timestamp' href='#682841'><time timestamp='2019-10-25T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/37855ec9df57...48cb468ce3f5" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/37855ec9df57...48cb468ce3f5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005640' id='682842'>
+<a class='timestamp' href='#682842'><time timestamp='2019-10-25T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 0a433fc John Newbery: [validation] Remove unused cacheSigStore from CheckInputsFromMempoolAndCac...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005640' id='682843'>
+<a class='timestamp' href='#682843'><time timestamp='2019-10-25T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 48cb468 fanquake: Merge #17242: refactor: Remove unused cacheSigStore from CheckInputsFromMe...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572005700' id='682844'>
+<a class='timestamp' href='#682844'><time timestamp='2019-10-25T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #17242: refactor: Remove unused cacheSigStore from CheckInputsFromMempooAndCache (master...2019-10-checkinputsfrommempool) <a href="https://github.com/bitcoin/bitcoin/pull/17242" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17242</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572006120' id='682845'>
+<a class='timestamp' href='#682845'><time timestamp='2019-10-25T12:22:00Z'>12:22</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Is there a command line incantation (for macOS) to reset an outbound connection?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572006300' id='682846'>
+<a class='timestamp' href='#682846'><time timestamp='2019-10-25T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+tcpkill ftw
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572006300' id='682847'>
+<a class='timestamp' href='#682847'><time timestamp='2019-10-25T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(no idea if that&#x27;s still a thing tbh :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572007740' id='682848'>
+<a class='timestamp' href='#682848'><time timestamp='2019-10-25T12:49:00Z'>12:49</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+This seems similar: <a href="https://github.com/google/tcp_killer/pull/1" class="link" target="_blank">https://github.com/google/tcp_killer/pull/1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572007800' id='682849'>
+<a class='timestamp' href='#682849'><time timestamp='2019-10-25T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+But it causes a graceful disconnect, so I need to tweak it somehow.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572009240' id='682850'>
+<a class='timestamp' href='#682850'><time timestamp='2019-10-25T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jbeich opened pull request #17249: Unbreak build with boost 1.72 (master...boost) <a href="https://github.com/bitcoin/bitcoin/pull/17249" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17249</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572009540' id='682851'>
+<a class='timestamp' href='#682851'><time timestamp='2019-10-25T13:19:00Z'>13:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #17250: Avoid unused call to GuessVerificationProgress in NotifyHeaderTip (master...1910-NoWrongGuess) <a href="https://github.com/bitcoin/bitcoin/pull/17250" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17250</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010320' id='682852'>
+<a class='timestamp' href='#682852'><time timestamp='2019-10-25T13:32:00Z'>13:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+injecting a call to close() seems risky; after that, the fd could be reused for something else (say, a new connection ,or a file), and the program doesn&#x27;t know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010320' id='682853'>
+<a class='timestamp' href='#682853'><time timestamp='2019-10-25T13:32:00Z'>13:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: then again it&#x27;s only for testing one particular thing, I suppose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010380' id='682854'>
+<a class='timestamp' href='#682854'><time timestamp='2019-10-25T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It&#x27;s just to test stuff, maybe the Google folks have a better idea:https://github.com/google/tcp_killer/pull/2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010500' id='682855'>
+<a class='timestamp' href='#682855'><time timestamp='2019-10-25T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s just, it can result in nasty corruptions, if say, leveldb decides to open a file next and the P2P layer keeps writing into the fd that&#x27;s now owned by the file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010500' id='682856'>
+<a class='timestamp' href='#682856'><time timestamp='2019-10-25T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but you&#x27;ll have backups I guess 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010740' id='682857'>
+<a class='timestamp' href='#682857'><time timestamp='2019-10-25T13:39:00Z'>13:39</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Oh that&#x27;s not healthy indeed...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010860' id='682858'>
+<a class='timestamp' href='#682858'><time timestamp='2019-10-25T13:41:00Z'>13:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Sjors opened pull request #17251: net: SocketHandler logs peer id for close and disconnect (master...2019/10/net-socket-peer) <a href="https://github.com/bitcoin/bitcoin/pull/17251" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17251</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010860' id='682859'>
+<a class='timestamp' href='#682859'><time timestamp='2019-10-25T13:41:00Z'>13:41</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I put a warning in the PR description
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572010980' id='682860'>
+<a class='timestamp' href='#682860'><time timestamp='2019-10-25T13:43:00Z'>13:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t know a good solution that can work from the process itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572011760' id='682861'>
+<a class='timestamp' href='#682861'><time timestamp='2019-10-25T13:56:00Z'>13:56</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+sdaftuar_, these slides are actually more complete than I expected, useful resource for starting to understand mempool stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572011880' id='682862'>
+<a class='timestamp' href='#682862'><time timestamp='2019-10-25T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+instagibbs is there a public link?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572011880' id='682863'>
+<a class='timestamp' href='#682863'><time timestamp='2019-10-25T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+he shared on gdrive, with permission I can upload the pdf somewhere?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572011940' id='682864'>
+<a class='timestamp' href='#682864'><time timestamp='2019-10-25T13:59:00Z'>13:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag opened pull request #17252: 0.19: gui: Make polling in ClientModel asynchronous (0.19...2019-10-backport-17135) <a href="https://github.com/bitcoin/bitcoin/pull/17252" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17252</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012060' id='682865'>
+<a class='timestamp' href='#682865'><time timestamp='2019-10-25T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+instagibbs: please do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012060' id='682866'>
+<a class='timestamp' href='#682866'><time timestamp='2019-10-25T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+if someone wants to turn that into a wiki page, that might be best?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012120' id='682867'>
+<a class='timestamp' href='#682867'><time timestamp='2019-10-25T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I could strip mine the slides, stick it on the wiki
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012120' id='682868'>
+<a class='timestamp' href='#682868'><time timestamp='2019-10-25T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+:P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012540' id='682869'>
+<a class='timestamp' href='#682869'><time timestamp='2019-10-25T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+fanquake, <a href="https://github.com/bitcoin-core/bitcoin-devwiki/wiki/Mempool-and-mining" class="link" target="_blank">https://github.com/bitcoin-core/bitcoin-devwiki/wiki/Mempool-and-mining</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012600' id='682870'>
+<a class='timestamp' href='#682870'><time timestamp='2019-10-25T14:10:00Z'>14:10</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+this can obviously be cleaned up. I have at least one clarifying question
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012600' id='682871'>
+<a class='timestamp' href='#682871'><time timestamp='2019-10-25T14:10:00Z'>14:10</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+instagibbs well formatted I see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012600' id='682872'>
+<a class='timestamp' href='#682872'><time timestamp='2019-10-25T14:10:00Z'>14:10</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012600' id='682873'>
+<a class='timestamp' href='#682873'><time timestamp='2019-10-25T14:10:00Z'>14:10</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+i went and added extra lines to break up the slides
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012660' id='682874'>
+<a class='timestamp' href='#682874'><time timestamp='2019-10-25T14:11:00Z'>14:11</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+pretty much hero level editing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572012660' id='682875'>
+<a class='timestamp' href='#682875'><time timestamp='2019-10-25T14:11:00Z'>14:11</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Looks good though. Will read through this arvo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572013680' id='682876'>
+<a class='timestamp' href='#682876'><time timestamp='2019-10-25T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sdaftuar: <a href="https://github.com/bitcoin/bitcoin/pull/15660#issuecomment-476006719" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15660#issuecomment-476006719</a> is that patch posted anywhere?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572013740' id='682877'>
+<a class='timestamp' href='#682877'><time timestamp='2019-10-25T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(maybe the original PR should be reopened with it?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572013740' id='682878'>
+<a class='timestamp' href='#682878'><time timestamp='2019-10-25T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+oy, i can try to find it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572014100' id='682879'>
+<a class='timestamp' href='#682879'><time timestamp='2019-10-25T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+maybe useful: git reflog show --format=&#x27;%&lt;|(30)%cd %h %gs&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572014100' id='682880'>
+<a class='timestamp' href='#682880'><time timestamp='2019-10-25T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] elichai opened pull request #17253: Remove boost from time.cpp (master...2019-10-boost_sleep_time) <a href="https://github.com/bitcoin/bitcoin/pull/17253" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17253</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572014160' id='682881'>
+<a class='timestamp' href='#682881'><time timestamp='2019-10-25T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+ponders if there&#x27;s a way to get the ref change date
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572014340' id='682882'>
+<a class='timestamp' href='#682882'><time timestamp='2019-10-25T14:39:00Z'>14:39</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+thanks for that command, but can&#x27;t seem to find it. i&#x27;ll spend a couple minutes and see how hard it is to redo (since the point of the cleanup was to make it easy)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015420' id='682883'>
+<a class='timestamp' href='#682883'><time timestamp='2019-10-25T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+wumpus: so basically I should steer away from anything related to threads? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015480' id='682884'>
+<a class='timestamp' href='#682884'><time timestamp='2019-10-25T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+elichai2: nah, not specifically: I think the high-level thing is that all the low-hanging boost replacements have been done, and everything that&#x27;s left has probably been tried to replace over the last few years but failed, be sure to do some research into previous PRs or ask around first
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015540' id='682885'>
+<a class='timestamp' href='#682885'><time timestamp='2019-10-25T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+yeah. I didn&#x27;t know that was the case. next time i&#x27;ll search the github before
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015540' id='682886'>
+<a class='timestamp' href='#682886'><time timestamp='2019-10-25T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+e.g. there&#x27;s probably some annoying death-by-a-thousand-cuts reason why it&#x27;s still there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015540' id='682887'>
+<a class='timestamp' href='#682887'><time timestamp='2019-10-25T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+especially with the note in the scheduler 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015540' id='682888'>
+<a class='timestamp' href='#682888'><time timestamp='2019-10-25T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+`// boost::thread / boost::chrono should be ported to std::thread / std::chrono // when we support C++11.`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015600' id='682889'>
+<a class='timestamp' href='#682889'><time timestamp='2019-10-25T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+so it makes it sound like the only reason is no one cared enough :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015720' id='682890'>
+<a class='timestamp' href='#682890'><time timestamp='2019-10-25T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+elichai2: that, or the comment was over-optimistic :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015720' id='682891'>
+<a class='timestamp' href='#682891'><time timestamp='2019-10-25T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] elichai closed pull request #17253: utils: Remove boost from time.cpp (master...2019-10-boost_sleep_time) <a href="https://github.com/bitcoin/bitcoin/pull/17253" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17253</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015720' id='682892'>
+<a class='timestamp' href='#682892'><time timestamp='2019-10-25T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I, really really wish we could get rid of the boost::sleep madness and it wasn&#x27;t like this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015780' id='682893'>
+<a class='timestamp' href='#682893'><time timestamp='2019-10-25T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I vaguely remember cfields once did a full replacement of the boost chrono/sleep stuff, including handling thread group interrupts, but even he had to give up !
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015840' id='682894'>
+<a class='timestamp' href='#682894'><time timestamp='2019-10-25T15:04:00Z'>15:04</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+elichai2, I recommend opening an issue with your sad news. Open issues make problems easier to track
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015840' id='682895'>
+<a class='timestamp' href='#682895'><time timestamp='2019-10-25T15:04:00Z'>15:04</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+:(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015900' id='682896'>
+<a class='timestamp' href='#682896'><time timestamp='2019-10-25T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+wumpus: but about the times. isn&#x27;t it enough to assert now &gt; 0? why was #16117 completley closed?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015900' id='682897'>
+<a class='timestamp' href='#682897'><time timestamp='2019-10-25T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16117" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16117</a> | util: Replace boost:: with std:: in utiltime by MarcoFalke . Pull Request #16117 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015900' id='682898'>
+<a class='timestamp' href='#682898'><time timestamp='2019-10-25T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+luke-jr: i think something like this works <a href="https://github.com/sdaftuar/bitcoin/commits/test-15633-2" class="link" target="_blank">https://github.com/sdaftuar/bitcoin/commits/test-15633-2</a> . 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015900' id='682899'>
+<a class='timestamp' href='#682899'><time timestamp='2019-10-25T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+elichai2: it probably didn&#x27;t seem worth it anymore after the bad news
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015900' id='682900'>
+<a class='timestamp' href='#682900'><time timestamp='2019-10-25T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-10'> elichai2</span>&gt;
+instagibbs: yeah, I might start with an issue(if doesn&#x27;t exist yet, I won&#x27;t make this mistake twice heh) that lists all the known boost right now. and people can comment (and i&#x27;ll search) for why haven&#x27;t we replaced them yet. for future references
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572015960' id='682901'>
+<a class='timestamp' href='#682901'><time timestamp='2019-10-25T15:06:00Z'>15:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+opening an issue is probably a good idea, too many people stepped into this trap
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016020' id='682902'>
+<a class='timestamp' href='#682902'><time timestamp='2019-10-25T15:07:00Z'>15:07</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I&#x27;m a fan of opening an issue when closing PRs, if the problem is real, but solution somehow insufficient 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016020' id='682903'>
+<a class='timestamp' href='#682903'><time timestamp='2019-10-25T15:07:00Z'>15:07</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+(if the PR doesn&#x27;t already link an issue, of course!)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016080' id='682904'>
+<a class='timestamp' href='#682904'><time timestamp='2019-10-25T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/48cb468ce3f5...693e40090ae7" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/48cb468ce3f5...693e40090ae7</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016080' id='682905'>
+<a class='timestamp' href='#682905'><time timestamp='2019-10-25T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master dc2fdb9 practicalswift: tests: Add fuzzing harness for various CScript related functions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016080' id='682906'>
+<a class='timestamp' href='#682906'><time timestamp='2019-10-25T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 693e400 MarcoFalke: Merge #17083: tests: Add fuzzing harness for various CScript related funct...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016080' id='682907'>
+<a class='timestamp' href='#682907'><time timestamp='2019-10-25T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes that&#x27;d be the ideal case, that a PR fixes an existing issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016140' id='682908'>
+<a class='timestamp' href='#682908'><time timestamp='2019-10-25T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #17083: tests: Add fuzzing harness for various CScript related functions (master...fuzzers-script) <a href="https://github.com/bitcoin/bitcoin/pull/17083" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17083</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016140' id='682909'>
+<a class='timestamp' href='#682909'><time timestamp='2019-10-25T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&#x27;replace boost&#x27; isn&#x27;t really an issue in itself (though there&#x27;s a project that groups issues and PRs around it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016380' id='682910'>
+<a class='timestamp' href='#682910'><time timestamp='2019-10-25T15:13:00Z'>15:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+maybe &quot;replace the boost thread interrupt system&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572016380' id='682911'>
+<a class='timestamp' href='#682911'><time timestamp='2019-10-25T15:13:00Z'>15:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I think it&#x27;d be a partial redesign of things, not necessarily a one to one change
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572018420' id='682912'>
+<a class='timestamp' href='#682912'><time timestamp='2019-10-25T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+fwiw, added a %rd format for git-reflog <a href="http://dpaste.com/3BPT9GY" class="link" target="_blank">http://dpaste.com/3BPT9GY</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572020340' id='682913'>
+<a class='timestamp' href='#682913'><time timestamp='2019-10-25T16:19:00Z'>16:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] adamjonas opened pull request #17254: test: fix script_p2sh_tests OP_PUSHBACK2/4 missing (master...2019-10-missing-OP_PUSHBACK-test) <a href="https://github.com/bitcoin/bitcoin/pull/17254" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17254</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572020460' id='682914'>
+<a class='timestamp' href='#682914'><time timestamp='2019-10-25T16:21:00Z'>16:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sdaftuar: now I&#x27;m pondering what a non-segwit peer with CBv2 means :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572021000' id='682915'>
+<a class='timestamp' href='#682915'><time timestamp='2019-10-25T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: spy node?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572021180' id='682916'>
+<a class='timestamp' href='#682916'><time timestamp='2019-10-25T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: well, sdaftuar changed gmax&#x27;s check for NODE_SEGWIT to CBv2, I assume for a reason
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572022560' id='682917'>
+<a class='timestamp' href='#682917'><time timestamp='2019-10-25T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: fwiw, it wasn&#x27;t that I gave up, it&#x27;s that the end-result was very, very non-c++11-like.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572022560' id='682918'>
+<a class='timestamp' href='#682918'><time timestamp='2019-10-25T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Ended up having to resort to a bunch of c api&#x27;s afterall.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572022620' id='682919'>
+<a class='timestamp' href='#682919'><time timestamp='2019-10-25T16:57:00Z'>16:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Pretty sure it&#x27;s still floating around in a branch somewhere, it&#x27;s just arguably no better than using boost :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572022980' id='682920'>
+<a class='timestamp' href='#682920'><time timestamp='2019-10-25T17:03:00Z'>17:03</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Oh, sorry, this was about the threading interrupt stuff, not wall clock stuff.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572023040' id='682921'>
+<a class='timestamp' href='#682921'><time timestamp='2019-10-25T17:04:00Z'>17:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Different branch, but similar outcome :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572023340' id='682922'>
+<a class='timestamp' href='#682922'><time timestamp='2019-10-25T17:09:00Z'>17:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] emilengler opened pull request #17256: doc: Change apt-get to apt (master...2019-10-apt-get-to-apt) <a href="https://github.com/bitcoin/bitcoin/pull/17256" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17256</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024420' id='682923'>
+<a class='timestamp' href='#682923'><time timestamp='2019-10-25T17:27:00Z'>17:27</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+man, PRs that are like 300+ line changes that aren&#x27;t scripted diffs considered harmful. having to re-review (and re-review) a giant changeset because review has gone on for another month and a rebase has happened is a drag.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024660' id='682924'>
+<a class='timestamp' href='#682924'><time timestamp='2019-10-25T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+typically I do re-review by comparing the diffs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024780' id='682925'>
+<a class='timestamp' href='#682925'><time timestamp='2019-10-25T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+300 lines? you&#x27;re like a baby :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024780' id='682926'>
+<a class='timestamp' href='#682926'><time timestamp='2019-10-25T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-9'> * instagibbs</span>&gt;
+ducks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024840' id='682927'>
+<a class='timestamp' href='#682927'><time timestamp='2019-10-25T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gdd() {        local A=&quot;$1&quot;; shift        local B=&quot;$1&quot;; shift        gd &quot;$A&quot; &quot;$@&quot; &gt;/tmp/a        gd &quot;$B&quot; &quot;$@&quot; &gt;/tmp/b        diff /tmp/{a,b} -u | less }
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024840' id='682928'>
+<a class='timestamp' href='#682928'><time timestamp='2019-10-25T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+newlines not included
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572024960' id='682929'>
+<a class='timestamp' href='#682929'><time timestamp='2019-10-25T17:36:00Z'>17:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #17257: gui: disable font antialiasing for QR image address (master...disable_qr_font_antialiasing) <a href="https://github.com/bitcoin/bitcoin/pull/17257" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17257</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025020' id='682930'>
+<a class='timestamp' href='#682930'><time timestamp='2019-10-25T17:37:00Z'>17:37</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+jamesob 2100 lines waiting for you in 17165
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025080' id='682931'>
+<a class='timestamp' href='#682931'><time timestamp='2019-10-25T17:38:00Z'>17:38</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+although they are easy to review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025140' id='682932'>
+<a class='timestamp' href='#682932'><time timestamp='2019-10-25T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+These &quot;connection reset&quot; log entries look more like a probing attack to me: <a href="https://github.com/bitcoin/bitcoin/issues/17247#issuecomment-546444882" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17247#issuecomment-546444882</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025380' id='682933'>
+<a class='timestamp' href='#682933'><time timestamp='2019-10-25T17:43:00Z'>17:43</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+luke-jr: see the comment on gmax&#x27;s original PR.  the code he had there wasn&#x27;t right 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025440' id='682934'>
+<a class='timestamp' href='#682934'><time timestamp='2019-10-25T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+wumpus: are you sure those connections arent incoming?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025440' id='682935'>
+<a class='timestamp' href='#682935'><time timestamp='2019-10-25T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+provoostenator, did you ever implement, or start implementing that optionsmodel test? i might pick up on that if you started something
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025440' id='682936'>
+<a class='timestamp' href='#682936'><time timestamp='2019-10-25T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+provoostenator: yes, it is.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572025440' id='682937'>
+<a class='timestamp' href='#682937'><time timestamp='2019-10-25T17:44:00Z'>17:44</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+ryanofsky: nope, go for it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572026100' id='682938'>
+<a class='timestamp' href='#682938'><time timestamp='2019-10-25T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+luke-jr: yup that&#x27;s what I&#x27;ll do, but still think that giant PRs are in most cases an antipattern
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682939'>
+<a class='timestamp' href='#682939'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+#startmeeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682940'>
+<a class='timestamp' href='#682940'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Meeting started Fri Oct 25 19:00:21 2019 UTC.  The chair is meshcollider. Information about MeetBot at <a href="http://wiki.debian.org/MeetBot" class="link" target="_blank">http://wiki.debian.org/MeetBot</a>.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682941'>
+<a class='timestamp' href='#682941'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Useful Commands: #action #agreed #help #info #idea #link #topic.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682942'>
+<a class='timestamp' href='#682942'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+wallet meeting?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682943'>
+<a class='timestamp' href='#682943'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682944'>
+<a class='timestamp' href='#682944'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682945'>
+<a class='timestamp' href='#682945'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+#bitcoin-core-dev Wallet Meeting: wumpus sipa gmaxwell jonasschnelli morcos luke-jr sdaftuar jtimon cfields petertodd kanzure bluematt instagibbs phantomcircuit codeshark michagogo marcofalke paveljanik NicolasDorier jl2012 achow101 meshcollider jnewbery maaku fanquake promag provoostenator aj Chris_Stewart_5 dongcarl gwillen jamesob ken281221 ryanofsky gleb moneyball
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682946'>
+<a class='timestamp' href='#682946'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682947'>
+<a class='timestamp' href='#682947'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682948'>
+<a class='timestamp' href='#682948'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Topics?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030000' id='682949'>
+<a class='timestamp' href='#682949'><time timestamp='2019-10-25T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-6'> digi_james</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030060' id='682950'>
+<a class='timestamp' href='#682950'><time timestamp='2019-10-25T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030060' id='682951'>
+<a class='timestamp' href='#682951'><time timestamp='2019-10-25T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Not really. Lots of review work out there, just do it :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030060' id='682952'>
+<a class='timestamp' href='#682952'><time timestamp='2019-10-25T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+&lt;suggestor&gt; now that bitcoin core is defaulting to segwit more, I wonder if it would make sense to change the default on spending unconfirmed change to not spend non-segwit unconfirmed change due to malleability.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030120' id='682953'>
+<a class='timestamp' href='#682953'><time timestamp='2019-10-25T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+BlueMatt, hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030120' id='682954'>
+<a class='timestamp' href='#682954'><time timestamp='2019-10-25T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+achow101, you mentioned something about wanting to work on coin selection again, if you want to mention it here? (I don&#x27;t know what you were thinking)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030120' id='682955'>
+<a class='timestamp' href='#682955'><time timestamp='2019-10-25T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Coin selection already prefers confirmed coins, so that seems a bit overkill.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030120' id='682956'>
+<a class='timestamp' href='#682956'><time timestamp='2019-10-25T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+true, it heavily tries deeply-then-shallow-confirmed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030180' id='682957'>
+<a class='timestamp' href='#682957'><time timestamp='2019-10-25T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+instagibbs: yes, planning on doing some coin selection stuff and reviving SRD
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030180' id='682958'>
+<a class='timestamp' href='#682958'><time timestamp='2019-10-25T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Thanks to everyone who has been reviewing #16341, it&#x27;s getting very close now which is awesome :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030180' id='682959'>
+<a class='timestamp' href='#682959'><time timestamp='2019-10-25T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16341" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16341</a> | Introduce ScriptPubKeyMan interface and use it for key and script management (aka wallet boxes) by achow101 . Pull Request #16341 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030180' id='682960'>
+<a class='timestamp' href='#682960'><time timestamp='2019-10-25T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I went down the coin selection rabbit hole yesterday. Happy to review attemps by others :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030180' id='682961'>
+<a class='timestamp' href='#682961'><time timestamp='2019-10-25T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Sorry I haven&#x27;t had time to re-review SPKM PR :/ 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030240' id='682962'>
+<a class='timestamp' href='#682962'><time timestamp='2019-10-25T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Honestly knapsack has to die
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030240' id='682963'>
+<a class='timestamp' href='#682963'><time timestamp='2019-10-25T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+BlueMatt: would there even be non-segwit unconfirmed change unless the wallet is configured to addresstype=legacy?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030300' id='682964'>
+<a class='timestamp' href='#682964'><time timestamp='2019-10-25T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Previously I had tried working on the wallet again, and threw my hands up in dispair because of the knapsack loop behavior
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030300' id='682965'>
+<a class='timestamp' href='#682965'><time timestamp='2019-10-25T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+errr changetype=legacy.. I don&#x27;t think we make non-segwit change anymore?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030300' id='682966'>
+<a class='timestamp' href='#682966'><time timestamp='2019-10-25T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+achow101: no, you need to avoid spending any change that came from a transaction with non-segwit inputs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030300' id='682967'>
+<a class='timestamp' href='#682967'><time timestamp='2019-10-25T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cause that underlying tx is malleable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030300' id='682968'>
+<a class='timestamp' href='#682968'><time timestamp='2019-10-25T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+oh right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030360' id='682969'>
+<a class='timestamp' href='#682969'><time timestamp='2019-10-25T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+achow101, so personally speaking, I&#x27;d strong concept ACK killing off knapsack if the UTXO simulation story doesn&#x27;t look awful 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030360' id='682970'>
+<a class='timestamp' href='#682970'><time timestamp='2019-10-25T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+imo it&#x27;s limped along by fear of removing the current UTXO vacuum(that doesn&#x27;t benefit small wallets anyways!)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682971'>
+<a class='timestamp' href='#682971'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/693e40090ae7...25d7e2e78137" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/693e40090ae7...25d7e2e78137</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682972'>
+<a class='timestamp' href='#682972'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 04dbdd6 Sjors Provoost: [net] SocketHandler: log peer id for close and disconnect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682973'>
+<a class='timestamp' href='#682973'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 25d7e2e fanquake: Merge #17251: net: SocketHandler logs peer id for close and disconnect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682974'>
+<a class='timestamp' href='#682974'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Yeah that loop is horrible. It doesnt&#x27; even really start at the top: splitting the fee amongst outputs is done at the top, based on the last iteration.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682975'>
+<a class='timestamp' href='#682975'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #17251: net: SocketHandler logs peer id for close and disconnect (master...2019/10/net-socket-peer) <a href="https://github.com/bitcoin/bitcoin/pull/17251" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17251</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682976'>
+<a class='timestamp' href='#682976'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+^ yolo merge, before Travis ready :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682977'>
+<a class='timestamp' href='#682977'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+It makes improvements to the wallet basically impossible :( 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030480' id='682978'>
+<a class='timestamp' href='#682978'><time timestamp='2019-10-25T19:08:00Z'>19:08</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+some improvements*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030540' id='682979'>
+<a class='timestamp' href='#682979'><time timestamp='2019-10-25T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] adamjonas opened pull request #17258: Fix issue with conflicted mempool tx in listsinceblock (master...listsinceblock-filter-conflicts) <a href="https://github.com/bitcoin/bitcoin/pull/17258" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17258</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030540' id='682980'>
+<a class='timestamp' href='#682980'><time timestamp='2019-10-25T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+anyways, stepping off soapbox
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030540' id='682981'>
+<a class='timestamp' href='#682981'><time timestamp='2019-10-25T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+f.e., having the wallet implicitly CPFP
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682982'>
+<a class='timestamp' href='#682982'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+instagibbs: you&#x27;ll like #17246
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682983'>
+<a class='timestamp' href='#682983'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/17246" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/17246</a> | wallet: avoid knapsack when theres no change by Sjors . Pull Request #17246 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682984'>
+<a class='timestamp' href='#682984'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+BlueMatt: I suppose that idea is reasonable. but, on the topic of unconfirmed change, how do we handle fee bumping a tx from which we&#x27;ve spent the unconfirmed change?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682985'>
+<a class='timestamp' href='#682985'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+(or some variant thereof)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682986'>
+<a class='timestamp' href='#682986'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+provoostenator, right, CPFP would have worked for me... only for CPFP case :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682987'>
+<a class='timestamp' href='#682987'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+you dont
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682988'>
+<a class='timestamp' href='#682988'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+you bump the next one up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682989'>
+<a class='timestamp' href='#682989'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cpfp :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030600' id='682990'>
+<a class='timestamp' href='#682990'><time timestamp='2019-10-25T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+but I felt that wasn&#x27;t worth it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030660' id='682991'>
+<a class='timestamp' href='#682991'><time timestamp='2019-10-25T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+topic request: #16341
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030660' id='682992'>
+<a class='timestamp' href='#682992'><time timestamp='2019-10-25T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16341" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16341</a> | Introduce ScriptPubKeyMan interface and use it for key and script management (aka wallet boxes) by achow101 . Pull Request #16341 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030720' id='682993'>
+<a class='timestamp' href='#682993'><time timestamp='2019-10-25T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+BlueMatt: true. I was about to suggest that maybe we shouldn&#x27;t allow unconfirmed change at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030720' id='682994'>
+<a class='timestamp' href='#682994'><time timestamp='2019-10-25T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+And with upcoming more complex scripts, maybe we shouldn&#x27;t, because we aren&#x27;t necessarily the sole owner of those outputs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030780' id='682995'>
+<a class='timestamp' href='#682995'><time timestamp='2019-10-25T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Instead of spending unconfirmed change, we could RBF and add an output?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030840' id='682996'>
+<a class='timestamp' href='#682996'><time timestamp='2019-10-25T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+That would be a nice fee saving UX improvment.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030840' id='682997'>
+<a class='timestamp' href='#682997'><time timestamp='2019-10-25T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+(though non trivial if the pre-RBF transactions gets mined)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030840' id='682998'>
+<a class='timestamp' href='#682998'><time timestamp='2019-10-25T19:14:00Z'>19:14</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+that&#x27;s the sticky part
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030900' id='682999'>
+<a class='timestamp' href='#682999'><time timestamp='2019-10-25T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+You can sign two variants and start broadcasting the fallback if needed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030900' id='683000'>
+<a class='timestamp' href='#683000'><time timestamp='2019-10-25T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+But that&#x27;s less of a set-and-forget than we have now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030900' id='683001'>
+<a class='timestamp' href='#683001'><time timestamp='2019-10-25T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+our wallet is very &quot;transactional&quot; i nthe wrong sense currently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030900' id='683002'>
+<a class='timestamp' href='#683002'><time timestamp='2019-10-25T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+set-and-quit-and-forget I mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572030900' id='683003'>
+<a class='timestamp' href='#683003'><time timestamp='2019-10-25T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+transaction as in CTransaction rather than logical transaction :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031080' id='683004'>
+<a class='timestamp' href='#683004'><time timestamp='2019-10-25T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+next topic?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031080' id='683005'>
+<a class='timestamp' href='#683005'><time timestamp='2019-10-25T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+#topic SPKM PR #16341 (jnewbery)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031080' id='683006'>
+<a class='timestamp' href='#683006'><time timestamp='2019-10-25T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16341" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16341</a> | Introduce ScriptPubKeyMan interface and use it for key and script management (aka wallet boxes) by achow101 . Pull Request #16341 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031080' id='683007'>
+<a class='timestamp' href='#683007'><time timestamp='2019-10-25T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ack &#x27;n merge pls
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031080' id='683008'>
+<a class='timestamp' href='#683008'><time timestamp='2019-10-25T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Go and bug sipa first, he said he wanted to review it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031140' id='683009'>
+<a class='timestamp' href='#683009'><time timestamp='2019-10-25T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+I&#x27;d like to help but there&#x27;s no way I have time to review the PR in the way that it&#x27;s structured
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031140' id='683010'>
+<a class='timestamp' href='#683010'><time timestamp='2019-10-25T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+jnewbery: did you also look at ryanofsky&#x27;s variant, with the same end result?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031140' id='683011'>
+<a class='timestamp' href='#683011'><time timestamp='2019-10-25T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+I&#x27;m particularly concerned about ryanofsky&#x27;s comment here: <a href="https://github.com/bitcoin/bitcoin/pull/16341#issuecomment-541330425" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16341#issuecomment-541330425</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031140' id='683012'>
+<a class='timestamp' href='#683012'><time timestamp='2019-10-25T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+jnewbery: do you want me to use ryanofsky&#x27;s structure?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031140' id='683013'>
+<a class='timestamp' href='#683013'><time timestamp='2019-10-25T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I found it useful to review achow101&#x27;s version first, and then ryanofsky&#x27;s version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031140' id='683014'>
+<a class='timestamp' href='#683014'><time timestamp='2019-10-25T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+provoostenator achow101: I haven&#x27;t looked at Russ&#x27;s version yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031200' id='683015'>
+<a class='timestamp' href='#683015'><time timestamp='2019-10-25T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+it&#x27;s mostly about the volume of changes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031200' id='683016'>
+<a class='timestamp' href='#683016'><time timestamp='2019-10-25T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+But I wouldn&#x27;t either is ideal. Russ&#x27; version does a <u>_lot_</u> of stuff in big increments in the beginning. But his later commits are perhaps better.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031200' id='683017'>
+<a class='timestamp' href='#683017'><time timestamp='2019-10-25T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+I know it&#x27;d take me at least a week to review so much code and satisfy myself that there aren&#x27;t bugs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031260' id='683018'>
+<a class='timestamp' href='#683018'><time timestamp='2019-10-25T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It&#x27;s a huge PR indeed. But it&#x27;s not obvious how to refactor the giant ball of spaghetti in multiple steps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031260' id='683019'>
+<a class='timestamp' href='#683019'><time timestamp='2019-10-25T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+just catching up but my branch has two big commits at the beginning. one is 100% moveonly. one is a bunch of renames
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031260' id='683020'>
+<a class='timestamp' href='#683020'><time timestamp='2019-10-25T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+every other commit is small
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031320' id='683021'>
+<a class='timestamp' href='#683021'><time timestamp='2019-10-25T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Yeah this has come up in discussion a few times, noone has come up with an alternative to either this or more massive commits 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031320' id='683022'>
+<a class='timestamp' href='#683022'><time timestamp='2019-10-25T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+ryanofsky: would only merging those first two commits leave us in a bad state (would it be possible to slice those off in their own PR)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031380' id='683023'>
+<a class='timestamp' href='#683023'><time timestamp='2019-10-25T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+I can definitely review move-only/rename commits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031380' id='683024'>
+<a class='timestamp' href='#683024'><time timestamp='2019-10-25T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+merging those two commits would be fine, as far as i know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031380' id='683025'>
+<a class='timestamp' href='#683025'><time timestamp='2019-10-25T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+achow101: what do you think about that approach?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031440' id='683026'>
+<a class='timestamp' href='#683026'><time timestamp='2019-10-25T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+If we are going to split this PR up a bit, maybe we should feature-freeze the wallet until all the parts are in to avoid things getting messy half way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031440' id='683027'>
+<a class='timestamp' href='#683027'><time timestamp='2019-10-25T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+jnewbery: I haven&#x27;t looked at russ&#x27;s branch in detail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031440' id='683028'>
+<a class='timestamp' href='#683028'><time timestamp='2019-10-25T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Maybe the &quot;Refactor: Split up CWallet and LegacyScriptPubKeyMan and classes&quot; can split into one commit that introduces the class, and one that moves the methods over?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031440' id='683029'>
+<a class='timestamp' href='#683029'><time timestamp='2019-10-25T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+that&#x27;s the other thing true, you&#x27;re going to force people to rebase 2+ times
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031440' id='683030'>
+<a class='timestamp' href='#683030'><time timestamp='2019-10-25T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+in serious ways
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031500' id='683031'>
+<a class='timestamp' href='#683031'><time timestamp='2019-10-25T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Well they can just wait til it&#x27;s all in ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031500' id='683032'>
+<a class='timestamp' href='#683032'><time timestamp='2019-10-25T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+just to clarify my github comment from a few weeks ago, i&#x27;m fine if achow&#x27;s pr is merged as is, i just wouldn&#x27;t want my ack to be a deciding factor
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031560' id='683033'>
+<a class='timestamp' href='#683033'><time timestamp='2019-10-25T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+it&#x27;s too many scattered changes that i don&#x27;t fully understand to be confident about all of them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031560' id='683034'>
+<a class='timestamp' href='#683034'><time timestamp='2019-10-25T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+That&#x27;s my main concern (separate from not being able to review it myself):I&#x27;m worried that due to the size of this PR, other people who have reviewed it haven&#x27;t been able to do so in sufficient detail to avoid merging bugs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031560' id='683035'>
+<a class='timestamp' href='#683035'><time timestamp='2019-10-25T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ryanofsky: I think the only reason acks came in quickly after yours is because they were just waiting for you to be done asking for changes before commenting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031560' id='683036'>
+<a class='timestamp' href='#683036'><time timestamp='2019-10-25T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Yeah it is enormous, I&#x27;m feeling the same way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031620' id='683037'>
+<a class='timestamp' href='#683037'><time timestamp='2019-10-25T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+achow101, yes you&#x27;re right i probably misinterpreted the timing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031620' id='683038'>
+<a class='timestamp' href='#683038'><time timestamp='2019-10-25T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+That&#x27;s why I want to merge it early on in the 0.20 release cycle so we have plenty of time to identify bugs before we get close to a release
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031620' id='683039'>
+<a class='timestamp' href='#683039'><time timestamp='2019-10-25T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Yes, I had reviewed once, then waited for velocity to stop, then reviewed the diff between the version I&#x27;d reviewed and tip. That said, it deserves more eyes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031680' id='683040'>
+<a class='timestamp' href='#683040'><time timestamp='2019-10-25T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Smaller PRs would definitely encourage more reviews too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031680' id='683041'>
+<a class='timestamp' href='#683041'><time timestamp='2019-10-25T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+meshcollider, i don&#x27;t think this has to be an all or nothing thing merged early in the release cycle. you could merge the moves early, and then let all the little behavior changes get reviewed as normal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031680' id='683042'>
+<a class='timestamp' href='#683042'><time timestamp='2019-10-25T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+For release cycle it doesn&#x27;t matter much if we wait another week or two for proof-of-newbery
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031740' id='683043'>
+<a class='timestamp' href='#683043'><time timestamp='2019-10-25T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+I&#x27;m raising it because I&#x27;m not getting the sense from any of the reviewers who have ACKed that they&#x27;re super confident
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031740' id='683044'>
+<a class='timestamp' href='#683044'><time timestamp='2019-10-25T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I can try to break it up further based on ryanofsky&#x27;s branch as it seems like people are okay with some big moveonlys and renames
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031800' id='683045'>
+<a class='timestamp' href='#683045'><time timestamp='2019-10-25T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+achow101: thanks! I&#x27;ll also try to take a look at ryanofsky&#x27;s version next week
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031800' id='683046'>
+<a class='timestamp' href='#683046'><time timestamp='2019-10-25T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+if we want to do it in smaller prs, then I think we should feature freeze the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031800' id='683047'>
+<a class='timestamp' href='#683047'><time timestamp='2019-10-25T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(speaking as someone who has not looked at the changes in detail, but plans to)  big moveonlys are still fairly mechanically verifiable, regardless of size
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031860' id='683048'>
+<a class='timestamp' href='#683048'><time timestamp='2019-10-25T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+yeah i think the first big commit which is completely moveonly is basically trivial
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031860' id='683049'>
+<a class='timestamp' href='#683049'><time timestamp='2019-10-25T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+(now I just need to find ryanofsky&#x27;s branch, I seem to be clikcing all the wrong &quot;Load more comments..&quot;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031860' id='683050'>
+<a class='timestamp' href='#683050'><time timestamp='2019-10-25T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+the second big commit which is the &quot;rename&quot; commit is kind of eyeglazing but still boring and reviewable i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031860' id='683051'>
+<a class='timestamp' href='#683051'><time timestamp='2019-10-25T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Can this channel be opened again or at least mention in the title that log in is required?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031860' id='683052'>
+<a class='timestamp' href='#683052'><time timestamp='2019-10-25T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+People keep running into this issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031920' id='683053'>
+<a class='timestamp' href='#683053'><time timestamp='2019-10-25T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+achow101: I&#x27;m happy to do that for a while because otherwise this is going to take forever to get in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031980' id='683054'>
+<a class='timestamp' href='#683054'><time timestamp='2019-10-25T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+achow101: <a href="https://github.com/ryanofsky/bitcoin/commits/pr/keyman" class="link" target="_blank">https://github.com/ryanofsky/bitcoin/commits/pr/keyman</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031980' id='683055'>
+<a class='timestamp' href='#683055'><time timestamp='2019-10-25T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+if feature freeze is the plan, I think people should be allowed a window to squeeze in near-merged features :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572031980' id='683056'>
+<a class='timestamp' href='#683056'><time timestamp='2019-10-25T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+with heads up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032040' id='683057'>
+<a class='timestamp' href='#683057'><time timestamp='2019-10-25T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+unless the freeze is like... a week
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032040' id='683058'>
+<a class='timestamp' href='#683058'><time timestamp='2019-10-25T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I think some large-ish changes could also become scripted-diffs, so that will help review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032040' id='683059'>
+<a class='timestamp' href='#683059'><time timestamp='2019-10-25T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+i&#x27;m fine with a feature freeze, but not sure what a feature freeze would be doing...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032100' id='683060'>
+<a class='timestamp' href='#683060'><time timestamp='2019-10-25T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+If ryanofsky&#x27;s branch really is two big commits (that become the first PR) and then a bunch of small commits, I also don&#x27;t understand the need for a feature freeze
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032100' id='683061'>
+<a class='timestamp' href='#683061'><time timestamp='2019-10-25T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+it sounds like the disruptive rebasey part would be those first two commits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032100' id='683062'>
+<a class='timestamp' href='#683062'><time timestamp='2019-10-25T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think it&#x27;s simpler to have reviewers lined up for a &quot;it will be merged on day X&quot;, and then the PR author can rebase that day exactly, everyone give a final ack, and it&#x27;s merged
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032100' id='683063'>
+<a class='timestamp' href='#683063'><time timestamp='2019-10-25T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+and once they&#x27;re in they&#x27;re in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032100' id='683064'>
+<a class='timestamp' href='#683064'><time timestamp='2019-10-25T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+yeah exactly all the commits are small and normal except 2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032220' id='683065'>
+<a class='timestamp' href='#683065'><time timestamp='2019-10-25T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+ok provided you think it&#x27;s only 1 painful break, fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032220' id='683066'>
+<a class='timestamp' href='#683066'><time timestamp='2019-10-25T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+if the concern is difficulty rebasing the 2 big commits, i&#x27;ve done than several times, and it hasn&#x27;t been a big deal. can continue to do it if desired
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032220' id='683067'>
+<a class='timestamp' href='#683067'><time timestamp='2019-10-25T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+let&#x27;s just do that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032220' id='683068'>
+<a class='timestamp' href='#683068'><time timestamp='2019-10-25T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Alright achow101 happy?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032220' id='683069'>
+<a class='timestamp' href='#683069'><time timestamp='2019-10-25T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032280' id='683070'>
+<a class='timestamp' href='#683070'><time timestamp='2019-10-25T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Sweet, any other topics?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032280' id='683071'>
+<a class='timestamp' href='#683071'><time timestamp='2019-10-25T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+achow101: if you&#x27;re replacing the branch, please make a new PR...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032280' id='683072'>
+<a class='timestamp' href='#683072'><time timestamp='2019-10-25T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+yes, new prs will be opened
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032280' id='683073'>
+<a class='timestamp' href='#683073'><time timestamp='2019-10-25T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032280' id='683074'>
+<a class='timestamp' href='#683074'><time timestamp='2019-10-25T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Great, so I don&#x27;t have to write a Chrome plugin to auto-click &quot;Load More...&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032280' id='683075'>
+<a class='timestamp' href='#683075'><time timestamp='2019-10-25T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Please do that anyway :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032340' id='683076'>
+<a class='timestamp' href='#683076'><time timestamp='2019-10-25T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+Hello?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032400' id='683077'>
+<a class='timestamp' href='#683077'><time timestamp='2019-10-25T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+since #16944 got un-scope-creeped, I think it&#x27;s close to merge (selfish reminder)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032400' id='683078'>
+<a class='timestamp' href='#683078'><time timestamp='2019-10-25T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/16944" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/16944</a> | gui: create PSBT with watch-only wallet by Sjors . Pull Request #16944 . bitcoin/bitcoin . GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032400' id='683079'>
+<a class='timestamp' href='#683079'><time timestamp='2019-10-25T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+JeremyCrookshank, pong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032400' id='683080'>
+<a class='timestamp' href='#683080'><time timestamp='2019-10-25T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+Oh thankgod people can see my messages now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032400' id='683081'>
+<a class='timestamp' href='#683081'><time timestamp='2019-10-25T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+:)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683082'>
+<a class='timestamp' href='#683082'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Yep I&#x27;m going to take a look at that today instagibbs 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683083'>
+<a class='timestamp' href='#683083'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+#endmeeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683084'>
+<a class='timestamp' href='#683084'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Meeting ended Fri Oct 25 19:41:15 2019 UTC.  Information about MeetBot at <a href="http://wiki.debian.org/MeetBot" class="link" target="_blank">http://wiki.debian.org/MeetBot</a> . (v 0.1.4)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683085'>
+<a class='timestamp' href='#683085'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Minutes:        <a href="http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-10-25-19.00.html" class="link" target="_blank">http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-10-25-19.00.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683086'>
+<a class='timestamp' href='#683086'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Minutes (text): <a href="http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-10-25-19.00.txt" class="link" target="_blank">http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-10-25-19.00.txt</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683087'>
+<a class='timestamp' href='#683087'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-4'> lightningbot</span>&gt;
+Log:            <a href="http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-10-25-19.00.log.html" class="link" target="_blank">http://www.erisian.com.au/meetbot/bitcoin-core-dev/2019/bitcoin-core-dev.2019-10-25-19.00.log.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572032460' id='683088'>
+<a class='timestamp' href='#683088'><time timestamp='2019-10-25T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Yes, it can be merged independent of the keypool stuff; it just won&#x27;t work for keypool-less watch-only wallets.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033000' id='683089'>
+<a class='timestamp' href='#683089'><time timestamp='2019-10-25T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+How often are the meetings?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033060' id='683090'>
+<a class='timestamp' href='#683090'><time timestamp='2019-10-25T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+JeremyCrookshank, wallet meetings i think are every-other Friday, beginning of this hour
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033060' id='683091'>
+<a class='timestamp' href='#683091'><time timestamp='2019-10-25T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+main meeting is weekly, Thursday, same time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033120' id='683092'>
+<a class='timestamp' href='#683092'><time timestamp='2019-10-25T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+Thank you :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033120' id='683093'>
+<a class='timestamp' href='#683093'><time timestamp='2019-10-25T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+(scheduled in UTC, so it might be a different local time for you next week depending on where you live)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033120' id='683094'>
+<a class='timestamp' href='#683094'><time timestamp='2019-10-25T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+right, iceland time ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033180' id='683095'>
+<a class='timestamp' href='#683095'><time timestamp='2019-10-25T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+My main concern with using ryanofsky&#x27;s commits is the second one, it&#x27;s not just a rename as it does introduce LegacyScriptPubKeyMan and changes some wallet things to use that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033240' id='683096'>
+<a class='timestamp' href='#683096'><time timestamp='2019-10-25T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+maybe it can be broken down further?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033240' id='683097'>
+<a class='timestamp' href='#683097'><time timestamp='2019-10-25T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+for reference, this is <a href="https://github.com/ryanofsky/bitcoin/commit/96beb6b80aed453d30f217481dfc10f14c87d200" class="link" target="_blank">https://github.com/ryanofsky/bitcoin/commit/96beb6b80aed453d30f217481dfc10f14c87d200</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033240' id='683098'>
+<a class='timestamp' href='#683098'><time timestamp='2019-10-25T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+yes it could be broken down, sjors has suggested doing rpc file separately for example
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033300' id='683099'>
+<a class='timestamp' href='#683099'><time timestamp='2019-10-25T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+but everything there is a mechanical change, renaming, wrapping aliasing, no changes in behavior. it&#x27;s just big
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033300' id='683100'>
+<a class='timestamp' href='#683100'><time timestamp='2019-10-25T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+easiest way to see that is to run the git diff commands in the commit description
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033720' id='683101'>
+<a class='timestamp' href='#683101'><time timestamp='2019-10-25T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+And maybe also have one commit that introduces the (Legacy)ScriptPubKeyMan class itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033780' id='683102'>
+<a class='timestamp' href='#683102'><time timestamp='2019-10-25T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+eyeglazing is an understatement for that commit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033900' id='683103'>
+<a class='timestamp' href='#683103'><time timestamp='2019-10-25T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+how many PRs do people want? 2? more?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572033960' id='683104'>
+<a class='timestamp' href='#683104'><time timestamp='2019-10-25T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+provoostenator, i wasn&#x27;t sure what you meant there. the class without the methods would just be an empty class declaration
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034020' id='683105'>
+<a class='timestamp' href='#683105'><time timestamp='2019-10-25T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+achow, one awkward thing is those 4 commits before the 2 big ones
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034020' id='683106'>
+<a class='timestamp' href='#683106'><time timestamp='2019-10-25T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ryanofsky: yeah, I was going to see if I could break this up such that those 4 would slide in before whatever changes they are required for
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034080' id='683107'>
+<a class='timestamp' href='#683107'><time timestamp='2019-10-25T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+may need 4 PRs for that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034080' id='683108'>
+<a class='timestamp' href='#683108'><time timestamp='2019-10-25T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+looking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034200' id='683109'>
+<a class='timestamp' href='#683109'><time timestamp='2019-10-25T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+i wonder if we could just merge those now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034200' id='683110'>
+<a class='timestamp' href='#683110'><time timestamp='2019-10-25T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I&#x27;m also looking to drop or merge together the &quot;unsure if necessary&quot; commits with other commits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034200' id='683111'>
+<a class='timestamp' href='#683111'><time timestamp='2019-10-25T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+also gonna base on mater
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034200' id='683112'>
+<a class='timestamp' href='#683112'><time timestamp='2019-10-25T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+*master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034260' id='683113'>
+<a class='timestamp' href='#683113'><time timestamp='2019-10-25T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+otherwise i can update my branch to just put the two big commits first
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034320' id='683114'>
+<a class='timestamp' href='#683114'><time timestamp='2019-10-25T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ryanofsky: I&#x27;m pretty sure they can fit in other places. They originally were placed before the commits that required them but moved because semi-unrelated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034320' id='683115'>
+<a class='timestamp' href='#683115'><time timestamp='2019-10-25T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+which &quot;unsure if necessary&quot; commits do you think are good?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034320' id='683116'>
+<a class='timestamp' href='#683116'><time timestamp='2019-10-25T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+<a href="https://github.com/ryanofsky/bitcoin/commit/a9ee4ca8060f71b8edc2b4aff685f9dbc3841488" class="link" target="_blank">https://github.com/ryanofsky/bitcoin/commit/a9ee4ca8060f71b8edc2b4aff685f9dbc3841488</a> and <a href="https://github.com/ryanofsky/bitcoin/commit/0a036d2c4af9ee6b40a2028a789c32bc36b1464a" class="link" target="_blank">https://github.com/ryanofsky/bitcoin/commit/0a036d2c4af9ee6b40a2028a789c32bc36b1464a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034380' id='683117'>
+<a class='timestamp' href='#683117'><time timestamp='2019-10-25T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ScriptPubKeyMan unique_ptr and include &lt;functional.h&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034440' id='683118'>
+<a class='timestamp' href='#683118'><time timestamp='2019-10-25T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+ok why the unique pointer one? it just seems to create a dummy wrapper that doesn&#x27;t do anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034560' id='683119'>
+<a class='timestamp' href='#683119'><time timestamp='2019-10-25T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+wrong commit, nvm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034560' id='683120'>
+<a class='timestamp' href='#683120'><time timestamp='2019-10-25T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+include functional is the only one to keep
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034680' id='683121'>
+<a class='timestamp' href='#683121'><time timestamp='2019-10-25T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+got it, i understand that one now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572034680' id='683122'>
+<a class='timestamp' href='#683122'><time timestamp='2019-10-25T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+ryanofsky: I meant class with function defitions and maybe noop methods. That way the function bodies can move from one structure to another. But ignore if impractical.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572035160' id='683123'>
+<a class='timestamp' href='#683123'><time timestamp='2019-10-25T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+achow101 just updated <a href="https://github.com/ryanofsky/bitcoin/commits/pr/keyman" class="link" target="_blank">https://github.com/ryanofsky/bitcoin/commits/pr/keyman</a>, no big change
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572035220' id='683124'>
+<a class='timestamp' href='#683124'><time timestamp='2019-10-25T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+i just moved the two big commits earlier. i think the first three commits would make a good pr: two moveonlys and the eyeglazing rename
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572035340' id='683125'>
+<a class='timestamp' href='#683125'><time timestamp='2019-10-25T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+compilation and tests should still pass the whole way through but can reconfirm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572035640' id='683126'>
+<a class='timestamp' href='#683126'><time timestamp='2019-10-25T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+ping
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572035880' id='683127'>
+<a class='timestamp' href='#683127'><time timestamp='2019-10-25T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+pong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572036060' id='683128'>
+<a class='timestamp' href='#683128'><time timestamp='2019-10-25T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+pang
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572036060' id='683129'>
+<a class='timestamp' href='#683129'><time timestamp='2019-10-25T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-3'> za-kk</span>&gt;
+peng
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572037740' id='683130'>
+<a class='timestamp' href='#683130'><time timestamp='2019-10-25T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] achow101 closed pull request #16341: Introduce ScriptPubKeyMan interface and use it for key and script management (aka wallet boxes) (master...box-the-wallet) <a href="https://github.com/bitcoin/bitcoin/pull/16341" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/16341</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572037860' id='683131'>
+<a class='timestamp' href='#683131'><time timestamp='2019-10-25T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] achow101 opened pull request #17260: Split some CWallet functions into new LegacyScriptPubKeyMan (master...wallet-box-pr-1) <a href="https://github.com/bitcoin/bitcoin/pull/17260" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17260</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572037920' id='683132'>
+<a class='timestamp' href='#683132'><time timestamp='2019-10-25T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] emilengler closed pull request #17256: doc: Change apt-get to apt (master...2019-10-apt-get-to-apt) <a href="https://github.com/bitcoin/bitcoin/pull/17256" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17256</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572037920' id='683133'>
+<a class='timestamp' href='#683133'><time timestamp='2019-10-25T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+^^ 1st pr open
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572038100' id='683134'>
+<a class='timestamp' href='#683134'><time timestamp='2019-10-25T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+thanks, easy ack for me. need to silence the linters thought, i guess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572038880' id='683135'>
+<a class='timestamp' href='#683135'><time timestamp='2019-10-25T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+JeremyCrookshank: Bitcoin Core IRC meetings info here <a href="https://github.com/jonatack/bitcoin-development/blob/master/bitcoin-core-dev-irc-meetings.txt" class="link" target="_blank">https://github.com/jonatack/bitcoin-development/blob/master/bitcoin-core-dev-irc-meetings.txt</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572039060' id='683136'>
+<a class='timestamp' href='#683136'><time timestamp='2019-10-25T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+JeremyCrookshank: also <a href="https://github.com/fanquake/core-review/blob/master/irc.md" class="link" target="_blank">https://github.com/fanquake/core-review/blob/master/irc.md</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572039240' id='683137'>
+<a class='timestamp' href='#683137'><time timestamp='2019-10-25T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ryanofsky: not all commits compile, so gonna have to make a few changes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572039240' id='683138'>
+<a class='timestamp' href='#683138'><time timestamp='2019-10-25T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+also doing some reordering
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572045360' id='683139'>
+<a class='timestamp' href='#683139'><time timestamp='2019-10-25T23:16:00Z'>23:16</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+thank you jona
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1572045360' id='683140'>
+<a class='timestamp' href='#683140'><time timestamp='2019-10-25T23:16:00Z'>23:16</time></a>
+&lt;<span class='nick nick-4'> JeremyCrookshank</span>&gt;
+:)
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

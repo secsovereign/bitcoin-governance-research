@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-10-06
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-10-06' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-09-06">&lt;</a><span class='header'>   October 2018   </span><a href="/bitcoin-core-dev/2018-11-06">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2018-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-10-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-10-05">5</a>  <a class="current" href="/bitcoin-core-dev/2018-10-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-10-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-10-09">9</a> <a class="" href="/bitcoin-core-dev/2018-10-10">10</a> <a class="" href="/bitcoin-core-dev/2018-10-11">11</a> <a class="" href="/bitcoin-core-dev/2018-10-12">12</a> <a class="" href="/bitcoin-core-dev/2018-10-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-14">14</a> <a class="" href="/bitcoin-core-dev/2018-10-15">15</a> <a class="" href="/bitcoin-core-dev/2018-10-16">16</a> <a class="" href="/bitcoin-core-dev/2018-10-17">17</a> <a class="" href="/bitcoin-core-dev/2018-10-18">18</a> <a class="" href="/bitcoin-core-dev/2018-10-19">19</a> <a class="" href="/bitcoin-core-dev/2018-10-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-21">21</a> <a class="" href="/bitcoin-core-dev/2018-10-22">22</a> <a class="" href="/bitcoin-core-dev/2018-10-23">23</a> <a class="" href="/bitcoin-core-dev/2018-10-24">24</a> <a class="" href="/bitcoin-core-dev/2018-10-25">25</a> <a class="" href="/bitcoin-core-dev/2018-10-26">26</a> <a class="" href="/bitcoin-core-dev/2018-10-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-28">28</a> <a class="" href="/bitcoin-core-dev/2018-10-29">29</a> <a class="" href="/bitcoin-core-dev/2018-10-30">30</a> <a class="" href="/bitcoin-core-dev/2018-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1538786220' id='633230'>
+<a class='timestamp' href='#633230'><time timestamp='2018-10-06T00:37:00Z'>00:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Do other people think that it would be reasonable if setting the upload limiter to a low value (e.g. below 500 MB/day) set the service flags towards non-whitelisted connections to be the pruned flags?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538786220' id='633231'>
+<a class='timestamp' href='#633231'><time timestamp='2018-10-06T00:37:00Z'>00:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+e.g. have a -limitednode  that defaults to false and gets softset to true if a low limiter is set.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538786280' id='633232'>
+<a class='timestamp' href='#633232'><time timestamp='2018-10-06T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I didn&#x27;t propose this previously because we didn&#x27;t have NODE_LIMITED yet... but we do now, and its widely deployed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538789040' id='633233'>
+<a class='timestamp' href='#633233'><time timestamp='2018-10-06T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: maybe a tri-state so users can disable sending any blocks at all?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538789280' id='633234'>
+<a class='timestamp' href='#633234'><time timestamp='2018-10-06T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Is it really interesting to support that? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538789280' id='633235'>
+<a class='timestamp' href='#633235'><time timestamp='2018-10-06T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: that would be more a -clientmode than really a tristate on limited. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538789880' id='633236'>
+<a class='timestamp' href='#633236'><time timestamp='2018-10-06T01:38:00Z'>01:38</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: unsure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795040' id='633237'>
+<a class='timestamp' href='#633237'><time timestamp='2018-10-06T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-2'> ken2812221_</span>&gt;
+When would the RPC server send back 503 Service Unavailable? It happened occassionally on feature_uacomment.py on Appveyor. <a href="https://ci.appveyor.com/project/DrahtBot/bitcoin/build/master.2001" class="link" target="_blank">https://ci.appveyor.com/project/DrahtBot/bitcoin/build/master.2001</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795160' id='633238'>
+<a class='timestamp' href='#633238'><time timestamp='2018-10-06T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+ken2812221_: startup?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795220' id='633239'>
+<a class='timestamp' href='#633239'><time timestamp='2018-10-06T03:07:00Z'>03:07</time></a>
+&lt;<span class='nick nick-2'> ken2812221_</span>&gt;
+I think so. But it never fail with 503 on Linux.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795280' id='633240'>
+<a class='timestamp' href='#633240'><time timestamp='2018-10-06T03:08:00Z'>03:08</time></a>
+&lt;<span class='nick nick-2'> ken2812221_</span>&gt;
+I think we should have an extra check for 503 on wait_for_rpc_connection?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795700' id='633241'>
+<a class='timestamp' href='#633241'><time timestamp='2018-10-06T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+ken2812221, i think it&#x27;s a timing issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795700' id='633242'>
+<a class='timestamp' href='#633242'><time timestamp='2018-10-06T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+lol damn
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538795760' id='633243'>
+<a class='timestamp' href='#633243'><time timestamp='2018-10-06T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+unlucky. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538796000' id='633244'>
+<a class='timestamp' href='#633244'><time timestamp='2018-10-06T03:20:00Z'>03:20</time></a>
+&lt;<span class='nick nick-2'> ken2812221_</span>&gt;
+What do you mean timing issue?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538796060' id='633245'>
+<a class='timestamp' href='#633245'><time timestamp='2018-10-06T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-2'> ken2812221_</span>&gt;
+Connectting from mobile, sry.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538797860' id='633246'>
+<a class='timestamp' href='#633246'><time timestamp='2018-10-06T03:51:00Z'>03:51</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+ken2812221, i mean it&#x27;s got race condition issues
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538798040' id='633247'>
+<a class='timestamp' href='#633247'><time timestamp='2018-10-06T03:54:00Z'>03:54</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+Hmm, I hate race condition. Going to figure it out.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538804700' id='633248'>
+<a class='timestamp' href='#633248'><time timestamp='2018-10-06T05:45:00Z'>05:45</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Is the &quot;Bitcoin Core Sponsorship Programme&quot; still going on?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538804820' id='633249'>
+<a class='timestamp' href='#633249'><time timestamp='2018-10-06T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-6'> karelb</span>&gt;
+I asked on GitHub and nobody knows
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538804820' id='633250'>
+<a class='timestamp' href='#633250'><time timestamp='2018-10-06T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-6'> karelb</span>&gt;
+<a href="https://github.com/bitcoin-core/bitcoincore.org/issues/607" class="link" target="_blank">https://github.com/bitcoin-core/bitcoincore.org/issues/607</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538804820' id='633251'>
+<a class='timestamp' href='#633251'><time timestamp='2018-10-06T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-6'> karelb</span>&gt;
+I would think it&#x27;s probably not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538805540' id='633252'>
+<a class='timestamp' href='#633252'><time timestamp='2018-10-06T05:59:00Z'>05:59</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+That is a shame, I&#x27;m also not sure if it should be discussed in this channel as this is not a dev topic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538809560' id='633253'>
+<a class='timestamp' href='#633253'><time timestamp='2018-10-06T07:06:00Z'>07:06</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+is there a good way to ask the wallet to do coin selection including watch-only coins (for offline signing)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538809740' id='633254'>
+<a class='timestamp' href='#633254'><time timestamp='2018-10-06T07:09:00Z'>07:09</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I tried just setting the fAllowWatchOnly flag on CCoinControl
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538809740' id='633255'>
+<a class='timestamp' href='#633255'><time timestamp='2018-10-06T07:09:00Z'>07:09</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but various bits of machinery do not want to include watch-only coins even with that flag set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538809860' id='633256'>
+<a class='timestamp' href='#633256'><time timestamp='2018-10-06T07:11:00Z'>07:11</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+in particular in CWallet::GetAvailableBalance we check COutput::fSpendable on the coins before we count them, even if the fAllowWatchOnly flag is set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538810460' id='633257'>
+<a class='timestamp' href='#633257'><time timestamp='2018-10-06T07:21:00Z'>07:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gwillen: I thought fundrawtransaction could do it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538810760' id='633258'>
+<a class='timestamp' href='#633258'><time timestamp='2018-10-06T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: fundrawtransaction should be able to select watch only coins
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538810880' id='633259'>
+<a class='timestamp' href='#633259'><time timestamp='2018-10-06T07:28:00Z'>07:28</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: spendable in that case means solvable. the private key does not necessarily need to be in the wallet, but the pubkey and any related scripts do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538810940' id='633260'>
+<a class='timestamp' href='#633260'><time timestamp='2018-10-06T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+hmmmmmmmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811120' id='633261'>
+<a class='timestamp' href='#633261'><time timestamp='2018-10-06T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I feel dumb asking this but why is solvability necessary 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811120' id='633262'>
+<a class='timestamp' href='#633262'><time timestamp='2018-10-06T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+phantomcircuit: do you have a log from a failing rpc_zmq.py test for #14336? Or a link to travis for a failing build?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811120' id='633263'>
+<a class='timestamp' href='#633263'><time timestamp='2018-10-06T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14336" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14336</a> | net: implement poll by pstratem · Pull Request #14336 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811120' id='633264'>
+<a class='timestamp' href='#633264'><time timestamp='2018-10-06T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+it&#x27;s enough to be able to find the utxos in order to build a transaction, right? as long as the offline signer can solve it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811120' id='633265'>
+<a class='timestamp' href='#633265'><time timestamp='2018-10-06T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: solvability is required for fee estimation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811180' id='633266'>
+<a class='timestamp' href='#633266'><time timestamp='2018-10-06T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+ahhhhhhh hmmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811180' id='633267'>
+<a class='timestamp' href='#633267'><time timestamp='2018-10-06T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+ok, then I have another dumb question
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811240' id='633268'>
+<a class='timestamp' href='#633268'><time timestamp='2018-10-06T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+assuming that using importpubkey instead of importaddress will get me a solvable watch-only key, how do I <u>_get_</u> a pubkey that I can import with importpubkey?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811240' id='633269'>
+<a class='timestamp' href='#633269'><time timestamp='2018-10-06T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+validateaddress only gives the scriptpubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811240' id='633270'>
+<a class='timestamp' href='#633270'><time timestamp='2018-10-06T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+(I mean, starting from a wallet that does know the privkey, how do I export the pubkey so I can then import it elsewhere)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811240' id='633271'>
+<a class='timestamp' href='#633271'><time timestamp='2018-10-06T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+use getaddressinfo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811300' id='633272'>
+<a class='timestamp' href='#633272'><time timestamp='2018-10-06T07:35:00Z'>07:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+validateaddress is turning into a non-wallet RPC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811300' id='633273'>
+<a class='timestamp' href='#633273'><time timestamp='2018-10-06T07:35:00Z'>07:35</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+aha, thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811360' id='633274'>
+<a class='timestamp' href='#633274'><time timestamp='2018-10-06T07:36:00Z'>07:36</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+gwillen: consider writing up a howto after getting your offline signing going..?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811360' id='633275'>
+<a class='timestamp' href='#633275'><time timestamp='2018-10-06T07:36:00Z'>07:36</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+midnightmagic: the goal here is not merely to write a howto, it&#x27;s to write a GUI :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811420' id='633276'>
+<a class='timestamp' href='#633276'><time timestamp='2018-10-06T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but a howto is not a bad idea as an intermediate step
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811420' id='633277'>
+<a class='timestamp' href='#633277'><time timestamp='2018-10-06T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+including the offline component?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811420' id='633278'>
+<a class='timestamp' href='#633278'><time timestamp='2018-10-06T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811420' id='633279'>
+<a class='timestamp' href='#633279'><time timestamp='2018-10-06T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+oh, nice.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811420' id='633280'>
+<a class='timestamp' href='#633280'><time timestamp='2018-10-06T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+nvm me then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538811420' id='633281'>
+<a class='timestamp' href='#633281'><time timestamp='2018-10-06T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I mean, a gui will take awhile to get in, a real offline signing howto isn&#x27;t a bad idea at all, I keep referring to greg&#x27;s version but it doesn&#x27;t use the wallet for coin selection, it just does it by hand
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812440' id='633282'>
+<a class='timestamp' href='#633282'><time timestamp='2018-10-06T07:54:00Z'>07:54</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+ah, dangit, I&#x27;m hitting <a href="https://github.com/bitcoin/bitcoin/issues/12253" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12253</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812440' id='633283'>
+<a class='timestamp' href='#633283'><time timestamp='2018-10-06T07:54:00Z'>07:54</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+you can&#x27;t actually do this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812500' id='633284'>
+<a class='timestamp' href='#633284'><time timestamp='2018-10-06T07:55:00Z'>07:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well, thats a recently introduced bug unfortunately.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812560' id='633285'>
+<a class='timestamp' href='#633285'><time timestamp='2018-10-06T07:56:00Z'>07:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812620' id='633286'>
+<a class='timestamp' href='#633286'><time timestamp='2018-10-06T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+it seems like importing a segwit address solvably was just not yet implemented
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812680' id='633287'>
+<a class='timestamp' href='#633287'><time timestamp='2018-10-06T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: if you import the pubkey using importmulti, you will get all of the segwit stuff too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812680' id='633288'>
+<a class='timestamp' href='#633288'><time timestamp='2018-10-06T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+no, see the bug, doesn&#x27;t work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812680' id='633289'>
+<a class='timestamp' href='#633289'><time timestamp='2018-10-06T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+unless I&#x27;m misunderstanding what&#x27;s happening, you cannot get &quot;solvable&quot;: true for a segwit address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812680' id='633290'>
+<a class='timestamp' href='#633290'><time timestamp='2018-10-06T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gwillen: I think 12253 is just outdated, and doesn&#x27;t reflect the full segwit support or 0.16.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812680' id='633291'>
+<a class='timestamp' href='#633291'><time timestamp='2018-10-06T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: you specify the p2pkh address, then give a pubkey array with the pubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812680' id='633292'>
+<a class='timestamp' href='#633292'><time timestamp='2018-10-06T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+oh hm okay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633293'>
+<a class='timestamp' href='#633293'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I already did that though, I provided the redeemscript and the pubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633294'>
+<a class='timestamp' href='#633294'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+you end up with the pubkey being imported. the address is ignored
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633295'>
+<a class='timestamp' href='#633295'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but it&#x27;s still not solvable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633296'>
+<a class='timestamp' href='#633296'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I may be doing it wrong, it did accept it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633297'>
+<a class='timestamp' href='#633297'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+don&#x27;t give the redeemScript
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633298'>
+<a class='timestamp' href='#633298'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+also don&#x27;t give a bech32 address or p2sh address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812740' id='633299'>
+<a class='timestamp' href='#633299'><time timestamp='2018-10-06T07:59:00Z'>07:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+erm, how do I get a p2pkh address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812800' id='633300'>
+<a class='timestamp' href='#633300'><time timestamp='2018-10-06T08:00:00Z'>08:00</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+there&#x27;s a way using getaddressinfo and then decodescript
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812860' id='633301'>
+<a class='timestamp' href='#633301'><time timestamp='2018-10-06T08:01:00Z'>08:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gwillen: for testing purpose, lol <a href="http://gobittest.appspot.com/Address" class="link" target="_blank">http://gobittest.appspot.com/Address</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812920' id='633302'>
+<a class='timestamp' href='#633302'><time timestamp='2018-10-06T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+hahaha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812920' id='633303'>
+<a class='timestamp' href='#633303'><time timestamp='2018-10-06T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I need testnet though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812980' id='633304'>
+<a class='timestamp' href='#633304'><time timestamp='2018-10-06T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+also it feels a little bad to me that there&#x27;s no permutation of the stuff that comes out of getaddressinfo that can go into importmulti and work :-P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812980' id='633305'>
+<a class='timestamp' href='#633305'><time timestamp='2018-10-06T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gwillen: yeah, importmulti and segwit is only accidental to the extent that it works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538812980' id='633306'>
+<a class='timestamp' href='#633306'><time timestamp='2018-10-06T08:03:00Z'>08:03</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+there was some method I found a while ago, but I can&#x27;t remember it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813040' id='633307'>
+<a class='timestamp' href='#633307'><time timestamp='2018-10-06T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we should have prioritized that for 0.17...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813040' id='633308'>
+<a class='timestamp' href='#633308'><time timestamp='2018-10-06T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+sipa: is <a href="https://github.com/bitcoin/bitcoin/issues/12253" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12253</a> still current? gmaxwell was saying he thought it was outdated.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813040' id='633309'>
+<a class='timestamp' href='#633309'><time timestamp='2018-10-06T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think it&#x27;s current?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813040' id='633310'>
+<a class='timestamp' href='#633310'><time timestamp='2018-10-06T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it was a known missing part in 0.16
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813040' id='633311'>
+<a class='timestamp' href='#633311'><time timestamp='2018-10-06T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and we didn&#x27;t improve upon it in 0.17 afaik
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813100' id='633312'>
+<a class='timestamp' href='#633312'><time timestamp='2018-10-06T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+does the crazy shit achow101 proposed above function as a workaround to get a segwit address imported, or does it just import it as a non-segwit address and happen to work?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813340' id='633313'>
+<a class='timestamp' href='#633313'><time timestamp='2018-10-06T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The wallet works much more like &quot;bag of pubkeys which get interperted many ways&quot; than we&#x27;d like, but changing it is slow going due to compatbility needs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813400' id='633314'>
+<a class='timestamp' href='#633314'><time timestamp='2018-10-06T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+will just doing importpubkey do the right thing, and interpret the pubkey many ways?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813400' id='633315'>
+<a class='timestamp' href='#633315'><time timestamp='2018-10-06T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I had thought I couldn&#x27;t do that because of rescanning but achow pointed out that I can just rescan manually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813760' id='633316'>
+<a class='timestamp' href='#633316'><time timestamp='2018-10-06T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+yesss okay that works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538813940' id='633317'>
+<a class='timestamp' href='#633317'><time timestamp='2018-10-06T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+hi, sorry to bug you guys, bitcoin 0.17 installer is identified as maleware by MBAM, is this known ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538814420' id='633318'>
+<a class='timestamp' href='#633318'><time timestamp='2018-10-06T08:27:00Z'>08:27</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+^false positive. #bitcoin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538814480' id='633319'>
+<a class='timestamp' href='#633319'><time timestamp='2018-10-06T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+yep though so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538814480' id='633320'>
+<a class='timestamp' href='#633320'><time timestamp='2018-10-06T08:28:00Z'>08:28</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+but no google info about it. i reported it to MBAM
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538814540' id='633321'>
+<a class='timestamp' href='#633321'><time timestamp='2018-10-06T08:29:00Z'>08:29</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+thedrs: check the PGP signatures
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820300' id='633322'>
+<a class='timestamp' href='#633322'><time timestamp='2018-10-06T10:05:00Z'>10:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The wallets watch-only capabilities is a mess!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820360' id='633323'>
+<a class='timestamp' href='#633323'><time timestamp='2018-10-06T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The only way how to import a watch only multisig is by importing the outer script, the readme-script and all it&#x27;s pubkeys (via importpubkey)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820360' id='633324'>
+<a class='timestamp' href='#633324'><time timestamp='2018-10-06T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you don&#x27;t need the pubkeys for multisig
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820360' id='633325'>
+<a class='timestamp' href='#633325'><time timestamp='2018-10-06T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+only for p2pkh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820360' id='633326'>
+<a class='timestamp' href='#633326'><time timestamp='2018-10-06T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa:If you don&#x27;t import the pubkey they are non-solvable and not useable in fundraw
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820420' id='633327'>
+<a class='timestamp' href='#633327'><time timestamp='2018-10-06T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+So you need to import via importpubkey (and import all possible scripts!)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820420' id='633328'>
+<a class='timestamp' href='#633328'><time timestamp='2018-10-06T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: that makes no sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820420' id='633329'>
+<a class='timestamp' href='#633329'><time timestamp='2018-10-06T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+GetScriptForRawPubKey will then lead to extract the pubKey and place them mapWatchKeys
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820420' id='633330'>
+<a class='timestamp' href='#633330'><time timestamp='2018-10-06T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Agree it makes no sense...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820420' id='633331'>
+<a class='timestamp' href='#633331'><time timestamp='2018-10-06T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+importing a pubkey is so that the signing code can find the pubkey based on the hash of the key
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820480' id='633332'>
+<a class='timestamp' href='#633332'><time timestamp='2018-10-06T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in a multisig there are no key hashes involved
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820480' id='633333'>
+<a class='timestamp' href='#633333'><time timestamp='2018-10-06T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just the redeemscript should be enough for multisig
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820480' id='633334'>
+<a class='timestamp' href='#633334'><time timestamp='2018-10-06T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+plus importaddress of the toplevel thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820480' id='633335'>
+<a class='timestamp' href='#633335'><time timestamp='2018-10-06T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. But following isSolvable, it will require to find the pubkey in oder to flag it solveable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633336'>
+<a class='timestamp' href='#633336'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it has the pubkey; it&#x27;s in the redeemscript
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633337'>
+<a class='timestamp' href='#633337'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m very skeptical :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633338'>
+<a class='timestamp' href='#633338'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but it won&#x27;t find it...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633339'>
+<a class='timestamp' href='#633339'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+have you tried this?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633340'>
+<a class='timestamp' href='#633340'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633341'>
+<a class='timestamp' href='#633341'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i find this very hard to believe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633342'>
+<a class='timestamp' href='#633342'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+mapWatchKeys gets only touched by AddWatchOnly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633343'>
+<a class='timestamp' href='#633343'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Try yourself... with the following steps:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633344'>
+<a class='timestamp' href='#633344'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+1. createwallet &quot;dummy&quot; true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820540' id='633345'>
+<a class='timestamp' href='#633345'><time timestamp='2018-10-06T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what do you need mapWatchKeys for in multisig?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820600' id='633346'>
+<a class='timestamp' href='#633346'><time timestamp='2018-10-06T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: pure watching no,.. but if you want to use them for watchOnly coinselection via fundraw, yes, you need it with the corrent code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820600' id='633347'>
+<a class='timestamp' href='#633347'><time timestamp='2018-10-06T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that makes no sense :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820600' id='633348'>
+<a class='timestamp' href='#633348'><time timestamp='2018-10-06T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you say so, i believe you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633349'>
+<a class='timestamp' href='#633349'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bit i don&#x27;t know what that is the case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633350'>
+<a class='timestamp' href='#633350'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Try it youself. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633351'>
+<a class='timestamp' href='#633351'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i can&#x27;t right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633352'>
+<a class='timestamp' href='#633352'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Sure. No hurry...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633353'>
+<a class='timestamp' href='#633353'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+the use case: decouple the keys from the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633354'>
+<a class='timestamp' href='#633354'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(via importing scripts and using fundrawtransaction)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633355'>
+<a class='timestamp' href='#633355'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes not claiming this isn&#x27;t important!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820660' id='633356'>
+<a class='timestamp' href='#633356'><time timestamp='2018-10-06T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m just not understanding why you need to import the pubkeys
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820720' id='633357'>
+<a class='timestamp' href='#633357'><time timestamp='2018-10-06T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+they are in the redeemscript
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820720' id='633358'>
+<a class='timestamp' href='#633358'><time timestamp='2018-10-06T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the signing code doesn&#x27;t need to look up any pubkeys
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820720' id='633359'>
+<a class='timestamp' href='#633359'><time timestamp='2018-10-06T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Because: fundraw takes only solvable imputs. isSolveable requires to find the pubKey in the keystore.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820720' id='633360'>
+<a class='timestamp' href='#633360'><time timestamp='2018-10-06T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But it&#x27;s fixable IMO
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820720' id='633361'>
+<a class='timestamp' href='#633361'><time timestamp='2018-10-06T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+why?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820780' id='633362'>
+<a class='timestamp' href='#633362'><time timestamp='2018-10-06T10:13:00Z'>10:13</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+isSolveable <u>_currently_</u> requires to find the pubKey... its just coded that way...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820780' id='633363'>
+<a class='timestamp' href='#633363'><time timestamp='2018-10-06T10:13:00Z'>10:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+can you point me to the code?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820840' id='633364'>
+<a class='timestamp' href='#633364'><time timestamp='2018-10-06T10:14:00Z'>10:14</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+1s..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820840' id='633365'>
+<a class='timestamp' href='#633365'><time timestamp='2018-10-06T10:14:00Z'>10:14</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+code part 1: <a href="https://github.com/bitcoin/bitcoin/blob/master/src/script/sign.cpp#L141" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/script/sign.cpp#L141</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820900' id='633366'>
+<a class='timestamp' href='#633366'><time timestamp='2018-10-06T10:15:00Z'>10:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sure, but that doesn&#x27;t need the pubkey imported, only the redeemscript
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820960' id='633367'>
+<a class='timestamp' href='#633367'><time timestamp='2018-10-06T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+code part 2: <a href="https://github.com/bitcoin/bitcoin/blob/aa39ca764578a9017e03796b554955796022eb0d/src/script/sign.cpp#L84" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/aa39ca764578a9017e03796b554955796022eb0d/src/script/sign.cpp#L84</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820960' id='633368'>
+<a class='timestamp' href='#633368'><time timestamp='2018-10-06T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(GetPubKey(provider, sigdata, keyid, pubkey);)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820960' id='633369'>
+<a class='timestamp' href='#633369'><time timestamp='2018-10-06T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Goes into: bool CCryptoKeyStore::GetPubKey(const CKeyID &amp;address, CPubKey&amp; vchPubKeyOut) const
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820960' id='633370'>
+<a class='timestamp' href='#633370'><time timestamp='2018-10-06T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538820960' id='633371'>
+<a class='timestamp' href='#633371'><time timestamp='2018-10-06T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;re right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821020' id='633372'>
+<a class='timestamp' href='#633372'><time timestamp='2018-10-06T10:17:00Z'>10:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s stupid :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821020' id='633373'>
+<a class='timestamp' href='#633373'><time timestamp='2018-10-06T10:17:00Z'>10:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+yes... it&#x27;s a mess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821020' id='633374'>
+<a class='timestamp' href='#633374'><time timestamp='2018-10-06T10:17:00Z'>10:17</time></a>
+&lt;<span class='nick nick-4'> * sipa</span>&gt;
+quietly mentions descriptors again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821020' id='633375'>
+<a class='timestamp' href='#633375'><time timestamp='2018-10-06T10:17:00Z'>10:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Indeed!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821080' id='633376'>
+<a class='timestamp' href='#633376'><time timestamp='2018-10-06T10:18:00Z'>10:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+You can bypass that problem by importpubkey all the multisigs pubkeys because it will generate a RawPubKeyScript where the pubkeys gets extracted and added to the keystore. :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821080' id='633377'>
+<a class='timestamp' href='#633377'><time timestamp='2018-10-06T10:18:00Z'>10:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(with an overhead of a couple of unused scripts)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821080' id='633378'>
+<a class='timestamp' href='#633378'><time timestamp='2018-10-06T10:18:00Z'>10:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821080' id='633379'>
+<a class='timestamp' href='#633379'><time timestamp='2018-10-06T10:18:00Z'>10:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but that&#x27;s pretty ridiculous
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821140' id='633380'>
+<a class='timestamp' href='#633380'><time timestamp='2018-10-06T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Which you have to do anyways for P2SH(P2WPKH) scripts to flag them solvable since importmulti can&#x27;t handle it...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821140' id='633381'>
+<a class='timestamp' href='#633381'><time timestamp='2018-10-06T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+or for native P2WPKH
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821200' id='633382'>
+<a class='timestamp' href='#633382'><time timestamp='2018-10-06T10:20:00Z'>10:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+because importmulti compare the scriptPubKey with the P2PKH(pubkey) and refuse to insert the pubkey if no match. :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821560' id='633383'>
+<a class='timestamp' href='#633383'><time timestamp='2018-10-06T10:26:00Z'>10:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: fixing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821620' id='633384'>
+<a class='timestamp' href='#633384'><time timestamp='2018-10-06T10:27:00Z'>10:27</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: \o/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821800' id='633385'>
+<a class='timestamp' href='#633385'><time timestamp='2018-10-06T10:30:00Z'>10:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: i wonder if this was a regression in 0.17?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821800' id='633386'>
+<a class='timestamp' href='#633386'><time timestamp='2018-10-06T10:30:00Z'>10:30</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: possible... I haven&#x27;t checked that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821800' id='633387'>
+<a class='timestamp' href='#633387'><time timestamp='2018-10-06T10:30:00Z'>10:30</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(will do now)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538821920' id='633388'>
+<a class='timestamp' href='#633388'><time timestamp='2018-10-06T10:32:00Z'>10:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538822040' id='633389'>
+<a class='timestamp' href='#633389'><time timestamp='2018-10-06T10:34:00Z'>10:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: i need to run, but this may fix it: <a href="https://github.com/sipa/bitcoin/tree/201810_importpubkeylol" class="link" target="_blank">https://github.com/sipa/bitcoin/tree/201810_importpubkeylol</a> (it fails a bip174 test, need to investigate)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538822040' id='633390'>
+<a class='timestamp' href='#633390'><time timestamp='2018-10-06T10:34:00Z'>10:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+thanks.. no hurry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538822820' id='633391'>
+<a class='timestamp' href='#633391'><time timestamp='2018-10-06T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: looks like a 0.17 regression
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538823240' id='633392'>
+<a class='timestamp' href='#633392'><time timestamp='2018-10-06T10:54:00Z'>10:54</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+luke-jr, i verified it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538823240' id='633393'>
+<a class='timestamp' href='#633393'><time timestamp='2018-10-06T10:54:00Z'>10:54</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+ &gt;sha256sum /c/bitcoin-0.17.0-win64-setup.exe b37f738ab17a93e24028fa74280b74c353653cf03fc2fb7da6ead8669e440b1a */c/bitcoin-0.17.0-win64-setup.exe /c/Users/ichi &gt;certUtil -hashfile /c/bitcoin-0.17.0-win64-setup.exe SHA256 SHA256 hash of file C:/bitcoin-0.17.0-win64-setup.exe: b3 7f 73 8a b1 7a 93 e2 40 28 fa 74 28 0b 74 c3 53 65 3c f0 3f c2 fb 7d a6 ea d8 66 9e 44 0b 1a
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538823300' id='633394'>
+<a class='timestamp' href='#633394'><time timestamp='2018-10-06T10:55:00Z'>10:55</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+looks ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538823360' id='633395'>
+<a class='timestamp' href='#633395'><time timestamp='2018-10-06T10:56:00Z'>10:56</time></a>
+&lt;<span class='nick nick-7'> thedrs</span>&gt;
+ran it via virustotal, and strangley, MBAM passes it there. Although i 7/67 negativ results
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538824440' id='633396'>
+<a class='timestamp' href='#633396'><time timestamp='2018-10-06T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+thedrs: virustotal tells you literally nothing about the safety of running a binary, sorry.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538831760' id='633397'>
+<a class='timestamp' href='#633397'><time timestamp='2018-10-06T13:16:00Z'>13:16</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+jonasschnelli: sipa: so it seems kind of weird to me actually that you need keys to be solvable for fundraw and such to work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538831820' id='633398'>
+<a class='timestamp' href='#633398'><time timestamp='2018-10-06T13:17:00Z'>13:17</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+achow101 said it was for fee estimation (I guess so you know the signature size), which makes sense, but ... the various signatures are not that different in size, you could easily make a conservative estimate without needing issolvable to be true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538831820' id='633399'>
+<a class='timestamp' href='#633399'><time timestamp='2018-10-06T13:17:00Z'>13:17</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+you might overpay a little but in a lot of cases that&#x27;s fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538831820' id='633400'>
+<a class='timestamp' href='#633400'><time timestamp='2018-10-06T13:17:00Z'>13:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gwillen: Yes. probably. for P2PKH, you could assume key is always compressed...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538831880' id='633401'>
+<a class='timestamp' href='#633401'><time timestamp='2018-10-06T13:18:00Z'>13:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+or overpay always by assuming its uncompressed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538831880' id='633402'>
+<a class='timestamp' href='#633402'><time timestamp='2018-10-06T13:18:00Z'>13:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+maybe make it even configurable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538832420' id='633403'>
+<a class='timestamp' href='#633403'><time timestamp='2018-10-06T13:27:00Z'>13:27</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+<b>*nods*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538832420' id='633404'>
+<a class='timestamp' href='#633404'><time timestamp='2018-10-06T13:27:00Z'>13:27</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+better to overpay I think, if you&#x27;re being sloppy 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538832420' id='633405'>
+<a class='timestamp' href='#633405'><time timestamp='2018-10-06T13:27:00Z'>13:27</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+although I guess with RBF it&#x27;s not so bad anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538832780' id='633406'>
+<a class='timestamp' href='#633406'><time timestamp='2018-10-06T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+yes. better overpay.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538832780' id='633407'>
+<a class='timestamp' href='#633407'><time timestamp='2018-10-06T13:33:00Z'>13:33</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but who uses uncompressed keys anymore?!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538834340' id='633408'>
+<a class='timestamp' href='#633408'><time timestamp='2018-10-06T13:59:00Z'>13:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: gemini
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538834520' id='633409'>
+<a class='timestamp' href='#633409'><time timestamp='2018-10-06T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I need to test later, but do we even require the pubkey for fee estimation with P2WPKH inputs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538834520' id='633410'>
+<a class='timestamp' href='#633410'><time timestamp='2018-10-06T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I hope not but fear we do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538834520' id='633411'>
+<a class='timestamp' href='#633411'><time timestamp='2018-10-06T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes i&#x27;m sure we do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538834580' id='633412'>
+<a class='timestamp' href='#633412'><time timestamp='2018-10-06T14:03:00Z'>14:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+solvability is defined as &quot;can you sign, ignoring lack of private keys&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538834580' id='633413'>
+<a class='timestamp' href='#633413'><time timestamp='2018-10-06T14:03:00Z'>14:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can&#x27;t sign for a P2WPKH without knowing the pubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538835660' id='633414'>
+<a class='timestamp' href='#633414'><time timestamp='2018-10-06T14:21:00Z'>14:21</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+shouldn&#x27;t we split solvability from signability?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538835960' id='633415'>
+<a class='timestamp' href='#633415'><time timestamp='2018-10-06T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t think so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538836020' id='633416'>
+<a class='timestamp' href='#633416'><time timestamp='2018-10-06T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s an interesting special case that indeed for P2WPKH you don&#x27;t actually need to know the pubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538836020' id='633417'>
+<a class='timestamp' href='#633417'><time timestamp='2018-10-06T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i think that the fact that you don&#x27;t have it now is more a side effect of it being annoying to pass in, rather than not knowing it at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538836980' id='633418'>
+<a class='timestamp' href='#633418'><time timestamp='2018-10-06T14:43:00Z'>14:43</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but in order to run fundraw with watch-only, you only want to calculate the fee. If you use P2WPKS or P2SH(P2WPKH) or P2WSH(multisig)... you can calculate the fee when you have the scriptPubKey and optionally the redeem script.. right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538837040' id='633419'>
+<a class='timestamp' href='#633419'><time timestamp='2018-10-06T14:44:00Z'>14:44</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Maybe I get it wrong, but IMHO, the dummysigner is for fee calculation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538837760' id='633420'>
+<a class='timestamp' href='#633420'><time timestamp='2018-10-06T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: yes, my point is that generally when you need to use fundraw, you know the redeemScript/pubkeys involved
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538837820' id='633421'>
+<a class='timestamp' href='#633421'><time timestamp='2018-10-06T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and it&#x27;s only because it&#x27;s annoying to import them that we&#x27;re talkijg about the few edge cases (like p2wpkh) where you can indeed estimate the fee correctly without knowing the pubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538852280' id='633422'>
+<a class='timestamp' href='#633422'><time timestamp='2018-10-06T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jnewbery, i do not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538869260' id='633423'>
+<a class='timestamp' href='#633423'><time timestamp='2018-10-06T23:41:00Z'>23:41</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+ok, if you see the failure again, please paste logs/link into the PR and I&#x27;ll try to work out why it&#x27;s failing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538869680' id='633424'>
+<a class='timestamp' href='#633424'><time timestamp='2018-10-06T23:48:00Z'>23:48</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+If it&#x27;s rpc_zmq.py L31 then I suspect some race between the ZMQNotificationInterface initialization and the test framework sending the getzmqnotifications RPC. Logs would prove that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538869920' id='633425'>
+<a class='timestamp' href='#633425'><time timestamp='2018-10-06T23:52:00Z'>23:52</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+The ZMQ rpc test is pretty useless. I don&#x27;t know why that rpc isn&#x27;t just tested in the interface_zmq.py test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538869980' id='633426'>
+<a class='timestamp' href='#633426'><time timestamp='2018-10-06T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jnewbery, it&#x27;s the getzmqnotifications call on line 30/31
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538869980' id='633427'>
+<a class='timestamp' href='#633427'><time timestamp='2018-10-06T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+im pretty sure it&#x27;s just a race as you said
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

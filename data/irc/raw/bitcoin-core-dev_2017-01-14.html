@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-01-14
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-01-14' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:25 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2016-12-14">&lt;</a><span class='header'>   January 2017   </span><a href="/bitcoin-core-dev/2017-02-14">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2017-01-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-01-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-01-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-01-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-01-09">9</a> <a class="" href="/bitcoin-core-dev/2017-01-10">10</a> <a class="" href="/bitcoin-core-dev/2017-01-11">11</a> <a class="" href="/bitcoin-core-dev/2017-01-12">12</a> <a class="" href="/bitcoin-core-dev/2017-01-13">13</a> <a class="current" href="/bitcoin-core-dev/2017-01-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-15">15</a> <a class="" href="/bitcoin-core-dev/2017-01-16">16</a> <a class="" href="/bitcoin-core-dev/2017-01-17">17</a> <a class="" href="/bitcoin-core-dev/2017-01-18">18</a> <a class="" href="/bitcoin-core-dev/2017-01-19">19</a> <a class="" href="/bitcoin-core-dev/2017-01-20">20</a> <a class="" href="/bitcoin-core-dev/2017-01-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-22">22</a> <a class="" href="/bitcoin-core-dev/2017-01-23">23</a> <a class="" href="/bitcoin-core-dev/2017-01-24">24</a> <a class="" href="/bitcoin-core-dev/2017-01-25">25</a> <a class="" href="/bitcoin-core-dev/2017-01-26">26</a> <a class="" href="/bitcoin-core-dev/2017-01-27">27</a> <a class="" href="/bitcoin-core-dev/2017-01-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-01-29">29</a> <a class="" href="/bitcoin-core-dev/2017-01-30">30</a> <a class="" href="/bitcoin-core-dev/2017-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1484352180' id='523943'>
+<a class='timestamp' href='#523943'><time timestamp='2017-01-14T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+In src/core_write.cpp:ScriptToAsmStr() there is a check for an integer printout with 0 &lt;= vch.size() &lt;= 4 -- otherwise it prints out a hex string. But for decodescript 6900, (decoding to OP_VERIFY 0) the vch.size() I believe for the second byte is 0, rather than an actual 0x00, and so the decode works apparently by accident..? Am I missing something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484352360' id='523944'>
+<a class='timestamp' href='#523944'><time timestamp='2017-01-14T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3908fc472805...e126d0c12ca6" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3908fc472805...e126d0c12ca6</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484352360' id='523945'>
+<a class='timestamp' href='#523945'><time timestamp='2017-01-14T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 997a98a Gregory Maxwell: Replace FindLatestBefore used by importmuti with FindEarliestAtLeast....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484352360' id='523946'>
+<a class='timestamp' href='#523946'><time timestamp='2017-01-14T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4b06e41 Suhas Daftuar: Add unit test for FindEarliestAtLeast
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484352360' id='523947'>
+<a class='timestamp' href='#523947'><time timestamp='2017-01-14T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e126d0c Pieter Wuille: Merge #9490: Replace FindLatestBefore used by importmuti with FindEarliestAtLeast....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484352360' id='523948'>
+<a class='timestamp' href='#523948'><time timestamp='2017-01-14T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa closed pull request #9490: Replace FindLatestBefore used by importmuti with FindEarliestAtLeast. (master...fix_find_latest_before) <a href="https://github.com/bitcoin/bitcoin/pull/9490" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9490</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353740' id='523949'>
+<a class='timestamp' href='#523949'><time timestamp='2017-01-14T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: good idea. I&#x27;m not exactly sure how to execute it though. I&#x27;d rather not trip up someone&#x27;s manual efforts to enable sanitizers. Maybe add a --enable-sanitizers config option, off by default, that tries to turn on as many non-conflicting ones as possible?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353740' id='523950'>
+<a class='timestamp' href='#523950'><time timestamp='2017-01-14T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+BlueMatt: woohoo! congrats on merge.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353860' id='523951'>
+<a class='timestamp' href='#523951'><time timestamp='2017-01-14T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: we may need 2 or 3 separate builds with sanitizers, unfortunately
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353920' id='523952'>
+<a class='timestamp' href='#523952'><time timestamp='2017-01-14T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: but yes, optional sounds right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353920' id='523953'>
+<a class='timestamp' href='#523953'><time timestamp='2017-01-14T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: right. Maybe there&#x27;s no realistic way to add to configure, then? We can just handle with cflags for travis/gitian :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353920' id='523954'>
+<a class='timestamp' href='#523954'><time timestamp='2017-01-14T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you wouldn&#x27;t want to enable sanitizers on production binaries, obviously
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353980' id='523955'>
+<a class='timestamp' href='#523955'><time timestamp='2017-01-14T00:33:00Z'>00:33</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+right, it&#x27;d build both sets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484353980' id='523956'>
+<a class='timestamp' href='#523956'><time timestamp='2017-01-14T00:33:00Z'>00:33</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I suppose just doing it for travis would be a start
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354040' id='523957'>
+<a class='timestamp' href='#523957'><time timestamp='2017-01-14T00:34:00Z'>00:34</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+we already have a slow, minimal build with debug cranked up for libstdc++.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354160' id='523958'>
+<a class='timestamp' href='#523958'><time timestamp='2017-01-14T00:36:00Z'>00:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the sets you can do are 1) -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer 2) -fsanitize=thread 3) -fsanitize=memory (clang only, and requires rebuild of all dependencies)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354160' id='523959'>
+<a class='timestamp' href='#523959'><time timestamp='2017-01-14T00:36:00Z'>00:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;ve only played around with the first for now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354280' id='523960'>
+<a class='timestamp' href='#523960'><time timestamp='2017-01-14T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+is no-omit-frame-pointer needed for correctness? or just helpful backtraces?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354340' id='523961'>
+<a class='timestamp' href='#523961'><time timestamp='2017-01-14T00:39:00Z'>00:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i am not sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354340' id='523962'>
+<a class='timestamp' href='#523962'><time timestamp='2017-01-14T00:39:00Z'>00:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+that one might be tricky since it&#x27;s enabled at -O2, iirc. Not sure what &quot;-fno-omit-frame-pointer -O2&quot; turns into
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354340' id='523963'>
+<a class='timestamp' href='#523963'><time timestamp='2017-01-14T00:39:00Z'>00:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ok     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354400' id='523964'>
+<a class='timestamp' href='#523964'><time timestamp='2017-01-14T00:40:00Z'>00:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think individual -f things override the -O defaults
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354460' id='523965'>
+<a class='timestamp' href='#523965'><time timestamp='2017-01-14T00:41:00Z'>00:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+i would hope so. My fear is that it&#x27;s order-based, like warnings.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354460' id='523966'>
+<a class='timestamp' href='#523966'><time timestamp='2017-01-14T00:41:00Z'>00:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354460' id='523967'>
+<a class='timestamp' href='#523967'><time timestamp='2017-01-14T00:41:00Z'>00:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+seems likely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354520' id='523968'>
+<a class='timestamp' href='#523968'><time timestamp='2017-01-14T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+if so, that&#x27;d be tricky, since -Ox sneak in all over the place.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484354520' id='523969'>
+<a class='timestamp' href='#523969'><time timestamp='2017-01-14T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+will mess around with &#x27;em
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355540' id='523970'>
+<a class='timestamp' href='#523970'><time timestamp='2017-01-14T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: yea, feels good to get a few things in for 0.14....do feel bad that I havent done enough review this week and am holding up things like bumpfee :&#x27;(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355540' id='523971'>
+<a class='timestamp' href='#523971'><time timestamp='2017-01-14T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+will at least finish this review before going out :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355540' id='523972'>
+<a class='timestamp' href='#523972'><time timestamp='2017-01-14T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-16'> * BlueMatt</span>&gt;
+hopes ryanofsky has time to spare this weekend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355600' id='523973'>
+<a class='timestamp' href='#523973'><time timestamp='2017-01-14T01:00:00Z'>01:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+heh. it&#x27;d be a rookie move to make plans the weekend before freeze/release :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355600' id='523974'>
+<a class='timestamp' href='#523974'><time timestamp='2017-01-14T01:00:00Z'>01:00</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well he is a rookie, after all :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523975'>
+<a class='timestamp' href='#523975'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+like &#x27;participating in the mit mystery hunt&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523976'>
+<a class='timestamp' href='#523976'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(at least in bitcoin)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523977'>
+<a class='timestamp' href='#523977'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or &#x27;agreeing to review workshop papers with deadline the 15th&#x27; ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523978'>
+<a class='timestamp' href='#523978'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+heh, yea, what were you and gmaxwell thinking, sipa????
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523979'>
+<a class='timestamp' href='#523979'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+:P     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523980'>
+<a class='timestamp' href='#523980'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: ahah, that&#x27;s this weekend?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355660' id='523981'>
+<a class='timestamp' href='#523981'><time timestamp='2017-01-14T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;ll be so happy when i get back to california on tuesday
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355720' id='523982'>
+<a class='timestamp' href='#523982'><time timestamp='2017-01-14T01:02:00Z'>01:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+all this vacation thing is too stressful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355720' id='523983'>
+<a class='timestamp' href='#523983'><time timestamp='2017-01-14T01:02:00Z'>01:02</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+heh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484355840' id='523984'>
+<a class='timestamp' href='#523984'><time timestamp='2017-01-14T01:04:00Z'>01:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jeremyrubin: are you still pushing for your checkqueue rewrite? I&#x27;m rebasing the interruptible threads, and just remembered how terribly inefficient that is. There are some easy gains for sure. But I won&#x27;t mess with it if it&#x27;s being nuked anyway.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356020' id='523985'>
+<a class='timestamp' href='#523985'><time timestamp='2017-01-14T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+cfields: we should be careful with &#x27;--enable&#x27; because there are users that run ./configure and then turn on every enable.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356080' id='523986'>
+<a class='timestamp' href='#523986'><time timestamp='2017-01-14T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: note that -fsanitize=memory also has weird LLVM/kernel matching issues, and is basically impossible on Travis currently (I used to use it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356080' id='523987'>
+<a class='timestamp' href='#523987'><time timestamp='2017-01-14T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+gmaxwell: well --enable-debug would already be hurting them pretty badly :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356080' id='523988'>
+<a class='timestamp' href='#523988'><time timestamp='2017-01-14T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: ah, good to know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356140' id='523989'>
+<a class='timestamp' href='#523989'><time timestamp='2017-01-14T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+cfields: yea agreed we should probably fix that -- though at least that one says &#x27;debug&#x27;.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356140' id='523990'>
+<a class='timestamp' href='#523990'><time timestamp='2017-01-14T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: cfields: also, we absolutely should NOT use -fsanitize=x with prod binaries. they are not intended for that, and add exploits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356140' id='523991'>
+<a class='timestamp' href='#523991'><time timestamp='2017-01-14T01:09:00Z'>01:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: absolutely!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356200' id='523992'>
+<a class='timestamp' href='#523992'><time timestamp='2017-01-14T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9549: [net] Avoid possibility of NULL pointer dereference in MarkBlockAsInFlight(...) (master...avoid-potential-null-pointer-dereference-in-markblockasinflight) <a href="https://github.com/bitcoin/bitcoin/pull/9549" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9549</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356200' id='523993'>
+<a class='timestamp' href='#523993'><time timestamp='2017-01-14T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+maybe making them -dev-debug -dev-sanatize-foo etc would be sufficient.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356200' id='523994'>
+<a class='timestamp' href='#523994'><time timestamp='2017-01-14T01:10:00Z'>01:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+can someone tell him that if he thinks he actually has a possible null reref in code like that he should send it privately?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356260' id='523995'>
+<a class='timestamp' href='#523995'><time timestamp='2017-01-14T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh the description is okay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356260' id='523996'>
+<a class='timestamp' href='#523996'><time timestamp='2017-01-14T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(ignore me)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356260' id='523997'>
+<a class='timestamp' href='#523997'><time timestamp='2017-01-14T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ideally i think those sanitize things should build separate binaries (bitcoind_san_X, test_bitcoin_san_X, ...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356260' id='523998'>
+<a class='timestamp' href='#523998'><time timestamp='2017-01-14T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if that&#x27;s at all possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356320' id='523999'>
+<a class='timestamp' href='#523999'><time timestamp='2017-01-14T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+maybe it&#x27;s easier with a wrapper script around configure/make rather than inside the system
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356320' id='524000'>
+<a class='timestamp' href='#524000'><time timestamp='2017-01-14T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+is there a reason to special-case it at all? what&#x27;s wrong with just passing CXXFLAGS?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356320' id='524001'>
+<a class='timestamp' href='#524001'><time timestamp='2017-01-14T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: read the discussion above :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356320' id='524002'>
+<a class='timestamp' href='#524002'><time timestamp='2017-01-14T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ideally, make check etc... build the multiple configurations and run all tests on all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356380' id='524003'>
+<a class='timestamp' href='#524003'><time timestamp='2017-01-14T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+As another side, we use the oneliners in our release notes but often our choice of them is really poor for this purpose.  Case in point ^ sounds like a serious crasher or even exploitable.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356380' id='524004'>
+<a class='timestamp' href='#524004'><time timestamp='2017-01-14T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+cfields: I did skim it, but didn&#x27;t see a rationale
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356500' id='524005'>
+<a class='timestamp' href='#524005'><time timestamp='2017-01-14T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: if we do it as a wrapper around (and just re-run configure and test for each of the sanitizers), it will just be passing CXXFLAGS/LDFLAGS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356500' id='524006'>
+<a class='timestamp' href='#524006'><time timestamp='2017-01-14T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: i was kinda thinking same as you. Not sure it makes sense to handle in the build-system. as sipa said, maybe a wrapper makes more sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356500' id='524007'>
+<a class='timestamp' href='#524007'><time timestamp='2017-01-14T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: but it would be nice if it was completely integrated, so that the multiple tests/builds can run in parallel just from make, for exampe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356500' id='524008'>
+<a class='timestamp' href='#524008'><time timestamp='2017-01-14T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oh, for make check basically?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356500' id='524009'>
+<a class='timestamp' href='#524009'><time timestamp='2017-01-14T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356560' id='524010'>
+<a class='timestamp' href='#524010'><time timestamp='2017-01-14T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but make check should also run pull-tester/rpc-tests.py then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356560' id='524011'>
+<a class='timestamp' href='#524011'><time timestamp='2017-01-14T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i guess we can just start by doing it as a wrapper over the build system
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356620' id='524012'>
+<a class='timestamp' href='#524012'><time timestamp='2017-01-14T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+making make check run rpc tests shouldn&#x27;t be hard, unlike sanitizers :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356860' id='524013'>
+<a class='timestamp' href='#524013'><time timestamp='2017-01-14T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: hmm, how do they interact with lto? it&#x27;d be nice if some of them could be enabled at link-time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356920' id='524014'>
+<a class='timestamp' href='#524014'><time timestamp='2017-01-14T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: they play well with lto, but you need to pass them both at compile and at link time, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356920' id='524015'>
+<a class='timestamp' href='#524015'><time timestamp='2017-01-14T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+Is a verbose transaction decode available through the rpc block decode interfaces..?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484356980' id='524016'>
+<a class='timestamp' href='#524016'><time timestamp='2017-01-14T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+decoderawtransaction?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357040' id='524017'>
+<a class='timestamp' href='#524017'><time timestamp='2017-01-14T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+sipa: The function interface has a txDetails bool which defaults to false but .. I don&#x27;t know where it can be called with true through the rpc. Only the REST interface I think..?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357040' id='524018'>
+<a class='timestamp' href='#524018'><time timestamp='2017-01-14T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+blockToJSON() I mean.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357040' id='524019'>
+<a class='timestamp' href='#524019'><time timestamp='2017-01-14T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+midnightmagic: you mean with something like getblock?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357040' id='524020'>
+<a class='timestamp' href='#524020'><time timestamp='2017-01-14T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+Yeah.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357100' id='524021'>
+<a class='timestamp' href='#524021'><time timestamp='2017-01-14T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+no. but I have an open pr for that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357100' id='524022'>
+<a class='timestamp' href='#524022'><time timestamp='2017-01-14T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+ah, nice. \o thanks. I&#x27;ll look for your PR then instead of doing my own.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357160' id='524023'>
+<a class='timestamp' href='#524023'><time timestamp='2017-01-14T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] gmaxwell opened pull request #9550: Trim down the XP notice and say more about what we support. (master...we_got_it_already) <a href="https://github.com/bitcoin/bitcoin/pull/9550" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9550</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357160' id='524024'>
+<a class='timestamp' href='#524024'><time timestamp='2017-01-14T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+midnightmagic: #8704
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357220' id='524025'>
+<a class='timestamp' href='#524025'><time timestamp='2017-01-14T01:27:00Z'>01:27</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8704" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8704</a> | [RPC] Transaction details in getblock by achow101 · Pull Request #8704 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357280' id='524026'>
+<a class='timestamp' href='#524026'><time timestamp='2017-01-14T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+excellent.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357340' id='524027'>
+<a class='timestamp' href='#524027'><time timestamp='2017-01-14T01:29:00Z'>01:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+&lt;/mrburns&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357400' id='524028'>
+<a class='timestamp' href='#524028'><time timestamp='2017-01-14T01:30:00Z'>01:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: I really wish make check ran the rpc tests though the rpc tests have more dependencies than the oridnary builds.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357400' id='524029'>
+<a class='timestamp' href='#524029'><time timestamp='2017-01-14T01:30:00Z'>01:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+But I think we need to, because increasingly the useful tests are in rpctests.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484357400' id='524030'>
+<a class='timestamp' href='#524030'><time timestamp='2017-01-14T01:30:00Z'>01:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think current make check has a poor ratio of excution time to sensitivity.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359560' id='524031'>
+<a class='timestamp' href='#524031'><time timestamp='2017-01-14T02:06:00Z'>02:06</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+morcos: getbalance(&quot;*&quot;, 1, True) is defined as a synonym of getbalance(), but bumpfee breaks that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359560' id='524032'>
+<a class='timestamp' href='#524032'><time timestamp='2017-01-14T02:06:00Z'>02:06</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(note that I think bumpfee also breaks some account balance shit, but I didnt bother to audit that - do we care?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359680' id='524033'>
+<a class='timestamp' href='#524033'><time timestamp='2017-01-14T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+morcos / sdaftuar / ryanofsky: please add the following test-case <a href="https://0bin.net/paste/m91nHUQbD39EXaQ6#9fJ3bvAfAib5xWWwVdh3Ck0v7jQht1r8iDMQKQDpfTC" class="link" target="_blank">https://0bin.net/paste/m91nHUQbD39EXaQ6#9fJ3bvAfAib5xWWwVdh3Ck0v7jQht1r8iDMQKQDpfTC</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359680' id='524034'>
+<a class='timestamp' href='#524034'><time timestamp='2017-01-14T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9</a> | Fix for GUI on Macs and latest wxWidgets by gavinandresen · Pull Request #9 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359680' id='524035'>
+<a class='timestamp' href='#524035'><time timestamp='2017-01-14T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+no gribble
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359800' id='524036'>
+<a class='timestamp' href='#524036'><time timestamp='2017-01-14T02:10:00Z'>02:10</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(it currently fails on the last line of the test)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484359800' id='524037'>
+<a class='timestamp' href='#524037'><time timestamp='2017-01-14T02:10:00Z'>02:10</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+note that if you move that test to be the last one run you&#x27;ll get fun results - getbalance(&quot;*&quot;, 1, True) is negative!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360340' id='524038'>
+<a class='timestamp' href='#524038'><time timestamp='2017-01-14T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+BlueMatt, <a href="https://github.com/bitcoin/bitcoin/issues/8183" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8183</a> Perhaps still the case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360340' id='524039'>
+<a class='timestamp' href='#524039'><time timestamp='2017-01-14T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+they haven&#x27;t been the same in a number of cases already :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360400' id='524040'>
+<a class='timestamp' href='#524040'><time timestamp='2017-01-14T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+hum, ok, that seems shit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524041'>
+<a class='timestamp' href='#524041'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+can we tag #8183 for 0.14, then, that is insane
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524042'>
+<a class='timestamp' href='#524042'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8183" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8183</a> | getbalance comment incorrect · Issue #8183 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524043'>
+<a class='timestamp' href='#524043'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+BlueMatt: I had assumed there might be an issue like that after you brought up your GUI question, and it was on my list to look into...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524044'>
+<a class='timestamp' href='#524044'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+we either need to fix it or fix the docs in getbalance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524045'>
+<a class='timestamp' href='#524045'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+they significantly imply that if you specify &quot;*&quot; as account you&#x27;ll get sane results
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524046'>
+<a class='timestamp' href='#524046'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i guess in my head i sometimes confuse getbalance &quot;*&quot; with something that has to do with accounts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524047'>
+<a class='timestamp' href='#524047'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but quite honestly getbalance &quot;*&quot; is a shit show
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524048'>
+<a class='timestamp' href='#524048'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+why do we even need it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524049'>
+<a class='timestamp' href='#524049'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+yeah it&#x27;s really bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524050'>
+<a class='timestamp' href='#524050'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+:)     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524051'>
+<a class='timestamp' href='#524051'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+i mean :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524052'>
+<a class='timestamp' href='#524052'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i would suggest it should be deprecated with accounts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524053'>
+<a class='timestamp' href='#524053'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+getbalance &quot;*&quot; should throw an exception as &quot;FUCK YOU, WE DEPRECATED THIS FOREVER AGO&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360460' id='524054'>
+<a class='timestamp' href='#524054'><time timestamp='2017-01-14T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+it is marked deprecated the way i read the docs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360520' id='524055'>
+<a class='timestamp' href='#524055'><time timestamp='2017-01-14T02:22:00Z'>02:22</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+the fact that it returns insanity is gonna confuse someone, and it has been deprecated, so it should throw an exception as its known-unsafe and we likely wont fix it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360520' id='524056'>
+<a class='timestamp' href='#524056'><time timestamp='2017-01-14T02:22:00Z'>02:22</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+From #9167 : &quot;Note that the fee reported in the details and any other function which depends on ListTransactions is not changed as getbalance(&quot;*&quot;) depends on having incorrect negative fees calculated on mixed debit transactions in order to track the right balances.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360580' id='524057'>
+<a class='timestamp' href='#524057'><time timestamp='2017-01-14T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9167" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9167</a> | IsAllFromMe by morcos · Pull Request #9167 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360580' id='524058'>
+<a class='timestamp' href='#524058'><time timestamp='2017-01-14T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I mean it may be deprecated, but that doesnt mean it gets to return insanity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360580' id='524059'>
+<a class='timestamp' href='#524059'><time timestamp='2017-01-14T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+if its gonna return insanity, it needs to die
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360700' id='524060'>
+<a class='timestamp' href='#524060'><time timestamp='2017-01-14T02:25:00Z'>02:25</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+anyway got to go
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484360880' id='524061'>
+<a class='timestamp' href='#524061'><time timestamp='2017-01-14T02:28:00Z'>02:28</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+when you have to google C++ operator precedence in the process of review, something has gone horribly wrong :&#x27;(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484361840' id='524062'>
+<a class='timestamp' href='#524062'><time timestamp='2017-01-14T02:44:00Z'>02:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+BlueMatt: time to study operator precidence more! :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484362200' id='524063'>
+<a class='timestamp' href='#524063'><time timestamp='2017-01-14T02:50:00Z'>02:50</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+clearly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484363640' id='524064'>
+<a class='timestamp' href='#524064'><time timestamp='2017-01-14T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields Made the required changes in 9469, and pulled in your commits. Any chance while your looking at Qt stuff, you can take a look at #9126. Have you seen that issue at all?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484363640' id='524065'>
+<a class='timestamp' href='#524065'><time timestamp='2017-01-14T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9126" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9126</a> | An error has occurred and has been logged. Please contact this bot&#x27;s administrator for more information.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365320' id='524066'>
+<a class='timestamp' href='#524066'><time timestamp='2017-01-14T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I think #9484 is ready for merge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365320' id='524067'>
+<a class='timestamp' href='#524067'><time timestamp='2017-01-14T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9484" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9484</a> | Introduce assumevalid setting to skip validation presumed valid scripts. by gmaxwell · Pull Request #9484 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365320' id='524068'>
+<a class='timestamp' href='#524068'><time timestamp='2017-01-14T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(just thought I&#x27;d mention it so it doesnt slip 0.14)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365440' id='524069'>
+<a class='timestamp' href='#524069'><time timestamp='2017-01-14T03:44:00Z'>03:44</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: you were saying you&#x27;d be super dissapointed if some of the net fixes didnt make 0.14...well there is one bunch left from your pr that is at risk - #9535
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365440' id='524070'>
+<a class='timestamp' href='#524070'><time timestamp='2017-01-14T03:44:00Z'>03:44</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9535" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9535</a> | Split CNode::cs_vSend: message processing and message sending by TheBlueMatt · Pull Request #9535 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365500' id='524071'>
+<a class='timestamp' href='#524071'><time timestamp='2017-01-14T03:45:00Z'>03:45</time></a>
+&lt;<span class='nick nick-16'> * BlueMatt</span>&gt;
+does solomly swear all helgrind issues will be thoroughly debugged prior to release :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484365500' id='524072'>
+<a class='timestamp' href='#524072'><time timestamp='2017-01-14T03:45:00Z'>03:45</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+9535 wont add any, but I know of a few still left
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366460' id='524073'>
+<a class='timestamp' href='#524073'><time timestamp='2017-01-14T04:01:00Z'>04:01</time></a>
+&lt;<span class='nick nick-4'> * sipa</span>&gt;
+tests 9535 with -fsanitize=thread
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366580' id='524074'>
+<a class='timestamp' href='#524074'><time timestamp='2017-01-14T04:03:00Z'>04:03</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: thar be dragons
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366580' id='524075'>
+<a class='timestamp' href='#524075'><time timestamp='2017-01-14T04:03:00Z'>04:03</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(not cause by 9535)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366640' id='524076'>
+<a class='timestamp' href='#524076'><time timestamp='2017-01-14T04:04:00Z'>04:04</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+d     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366640' id='524077'>
+<a class='timestamp' href='#524077'><time timestamp='2017-01-14T04:04:00Z'>04:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, i expect it to fail (on master)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366640' id='524078'>
+<a class='timestamp' href='#524078'><time timestamp='2017-01-14T04:04:00Z'>04:04</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+can I buy a &quot;d&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366640' id='524079'>
+<a class='timestamp' href='#524079'><time timestamp='2017-01-14T04:04:00Z'>04:04</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I can give you a list of places it will fail :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366700' id='524080'>
+<a class='timestamp' href='#524080'><time timestamp='2017-01-14T04:05:00Z'>04:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+alright folks, I&#x27;m all reviewed-out...and likely wont have time tomorrow. apologize for those I didnt get to, but will try again on sunday
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366700' id='524081'>
+<a class='timestamp' href='#524081'><time timestamp='2017-01-14T04:05:00Z'>04:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484366880' id='524082'>
+<a class='timestamp' href='#524082'><time timestamp='2017-01-14T04:08:00Z'>04:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok, bitcoin-cli fails with -fsanitize=thread... i think there is some build config failure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484368080' id='524083'>
+<a class='timestamp' href='#524083'><time timestamp='2017-01-14T04:28:00Z'>04:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] 2HCHO opened pull request #9551: disable out of sync warnings for regtest network (master...ca4b90519c3c210f) <a href="https://github.com/bitcoin/bitcoin/pull/9551" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9551</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484369940' id='524084'>
+<a class='timestamp' href='#524084'><time timestamp='2017-01-14T04:59:00Z'>04:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: yes, i&#x27;d expect that to be a bloodbath if it works. But there should be no new issues, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484369940' id='524085'>
+<a class='timestamp' href='#524085'><time timestamp='2017-01-14T04:59:00Z'>04:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: specifically, anything that uses CNodeStats is very racy.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371140' id='524086'>
+<a class='timestamp' href='#524086'><time timestamp='2017-01-14T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: i think it inteferes with some fortify/aslr/... we&#x27;re using
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371140' id='524087'>
+<a class='timestamp' href='#524087'><time timestamp='2017-01-14T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bitcoin-cli has no threads
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371740' id='524088'>
+<a class='timestamp' href='#524088'><time timestamp='2017-01-14T05:29:00Z'>05:29</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: oh, yes, for sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371740' id='524089'>
+<a class='timestamp' href='#524089'><time timestamp='2017-01-14T05:29:00Z'>05:29</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+i read somewhere that FORTIFY is incompatible with some, sec for link
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371800' id='524090'>
+<a class='timestamp' href='#524090'><time timestamp='2017-01-14T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in fact, the compiler detector fails with -fsanitize=thread (&quot;C++ compiler cannot produce binaries&quot;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371860' id='524091'>
+<a class='timestamp' href='#524091'><time timestamp='2017-01-14T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: <a href="https://www.sourceware.org/ml/libc-alpha/2016-09/msg00080.html" class="link" target="_blank">https://www.sourceware.org/ml/libc-alpha/2016-09/msg00080.html</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484371860' id='524092'>
+<a class='timestamp' href='#524092'><time timestamp='2017-01-14T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+comes from here: <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer" class="link" target="_blank">https://github.com/google/sanitizers/wiki/AddressSanitizer</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484372100' id='524093'>
+<a class='timestamp' href='#524093'><time timestamp='2017-01-14T05:35:00Z'>05:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: will have a look at 9126
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484372160' id='524094'>
+<a class='timestamp' href='#524094'><time timestamp='2017-01-14T05:36:00Z'>05:36</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(at some point this weekend)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484372220' id='524095'>
+<a class='timestamp' href='#524095'><time timestamp='2017-01-14T05:37:00Z'>05:37</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields cheers. Interesting build error on just the osx build of 9469. &quot;Qt requires a C++11 compiler and yours does not seem to be that.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484372280' id='524096'>
+<a class='timestamp' href='#524096'><time timestamp='2017-01-14T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Thought I might have messed up passing -c++std c++11. But that looks ok. <a href="https://travis-ci.org/bitcoin/bitcoin/jobs/191837557#L895" class="link" target="_blank">https://travis-ci.org/bitcoin/bitcoin/jobs/191837557#L895</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484372460' id='524097'>
+<a class='timestamp' href='#524097'><time timestamp='2017-01-14T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+-std=c++11 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373300' id='524098'>
+<a class='timestamp' href='#524098'><time timestamp='2017-01-14T05:55:00Z'>05:55</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: hmm, strange. it built fine for me locally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373300' id='524099'>
+<a class='timestamp' href='#524099'><time timestamp='2017-01-14T05:55:00Z'>05:55</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields yes me too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373360' id='524100'>
+<a class='timestamp' href='#524100'><time timestamp='2017-01-14T05:56:00Z'>05:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: ah, it&#x27;s the damn .mm again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373420' id='524101'>
+<a class='timestamp' href='#524101'><time timestamp='2017-01-14T05:57:00Z'>05:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: i noticed something at one point and suspected that might happen
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373420' id='524102'>
+<a class='timestamp' href='#524102'><time timestamp='2017-01-14T05:57:00Z'>05:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+trying to remember
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373540' id='524103'>
+<a class='timestamp' href='#524103'><time timestamp='2017-01-14T05:59:00Z'>05:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ah, right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373540' id='524104'>
+<a class='timestamp' href='#524104'><time timestamp='2017-01-14T05:59:00Z'>05:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: <a href="https://github.com/bitcoin/bitcoin/blob/master/depends/config.site.in#L66" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/depends/config.site.in#L66</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373540' id='524105'>
+<a class='timestamp' href='#524105'><time timestamp='2017-01-14T05:59:00Z'>05:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+mind nuking that line and giving it a try?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373660' id='524106'>
+<a class='timestamp' href='#524106'><time timestamp='2017-01-14T06:01:00Z'>06:01</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields Have pushed that change up to GH.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373660' id='524107'>
+<a class='timestamp' href='#524107'><time timestamp='2017-01-14T06:01:00Z'>06:01</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Will start a new build here also.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373720' id='524108'>
+<a class='timestamp' href='#524108'><time timestamp='2017-01-14T06:02:00Z'>06:02</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373840' id='524109'>
+<a class='timestamp' href='#524109'><time timestamp='2017-01-14T06:04:00Z'>06:04</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Just realised I forgot you had two commits on top of mine, so that change is now part of your translations build commit. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373840' id='524110'>
+<a class='timestamp' href='#524110'><time timestamp='2017-01-14T06:04:00Z'>06:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: for the reasoning, see <a href="https://github.com/bitcoin/bitcoin/blob/master/configure.ac#L62" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/configure.ac#L62</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373840' id='524111'>
+<a class='timestamp' href='#524111'><time timestamp='2017-01-14T06:04:00Z'>06:04</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Can fixup later if the builds passed. Otherwise np.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373900' id='524112'>
+<a class='timestamp' href='#524112'><time timestamp='2017-01-14T06:05:00Z'>06:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: np. Though if this fixes, we probably want to commit it as a one-liner. It&#x27;s a good backport candidate.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484373960' id='524113'>
+<a class='timestamp' href='#524113'><time timestamp='2017-01-14T06:06:00Z'>06:06</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields good point. Will split it out post builds passing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374080' id='524114'>
+<a class='timestamp' href='#524114'><time timestamp='2017-01-14T06:08:00Z'>06:08</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: only reason i mention is that i had a theory at one point that it was the cause of the 10.7 back-compat breakage. Since it&#x27;s responsible for intoducing c++03 abi objects into the 0.13 build.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374260' id='524115'>
+<a class='timestamp' href='#524115'><time timestamp='2017-01-14T06:11:00Z'>06:11</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields ok. Just made note of it in a comment in that PR.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374440' id='524116'>
+<a class='timestamp' href='#524116'><time timestamp='2017-01-14T06:14:00Z'>06:14</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: thanks :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374500' id='524117'>
+<a class='timestamp' href='#524117'><time timestamp='2017-01-14T06:15:00Z'>06:15</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+cfields I&#x27;ll stop pestering now, you can go and enjoy the rest of your saturday heh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374680' id='524118'>
+<a class='timestamp' href='#524118'><time timestamp='2017-01-14T06:18:00Z'>06:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+fanquake: heh, np. i meant to test that a long time ago, glad it came up either way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374680' id='524119'>
+<a class='timestamp' href='#524119'><time timestamp='2017-01-14T06:18:00Z'>06:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+besides, this is what i enjoy :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374740' id='524120'>
+<a class='timestamp' href='#524120'><time timestamp='2017-01-14T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+woohoo, success
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374860' id='524121'>
+<a class='timestamp' href='#524121'><time timestamp='2017-01-14T06:21:00Z'>06:21</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Awesome. I&#x27;ll fixup that commit then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484374920' id='524122'>
+<a class='timestamp' href='#524122'><time timestamp='2017-01-14T06:22:00Z'>06:22</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+great, thanks again!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484385420' id='524123'>
+<a class='timestamp' href='#524123'><time timestamp='2017-01-14T09:17:00Z'>09:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jamesmacwhite opened pull request #9552: Add IPv6 support to qos.sh (master...qos-ipv6) <a href="https://github.com/bitcoin/bitcoin/pull/9552" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9552</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484386860' id='524124'>
+<a class='timestamp' href='#524124'><time timestamp='2017-01-14T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-8'> jerryco</span>&gt;
+hello
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484386860' id='524125'>
+<a class='timestamp' href='#524125'><time timestamp='2017-01-14T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-8'> jerryco</span>&gt;
+how to install bitcoin-core centos ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484386980' id='524126'>
+<a class='timestamp' href='#524126'><time timestamp='2017-01-14T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9553: Use z = std::max(x - y, 0) instead of z = x - y; if (z &lt; 0) z = 0; (master...std-max) <a href="https://github.com/bitcoin/bitcoin/pull/9553" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9553</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484387520' id='524127'>
+<a class='timestamp' href='#524127'><time timestamp='2017-01-14T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jerryco: <a href="https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md#dependency-build-instructions-fedora" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md#dependency-build-instructions-fedora</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389500' id='524128'>
+<a class='timestamp' href='#524128'><time timestamp='2017-01-14T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/e126d0c12ca6...8daf103fa138" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/e126d0c12ca6...8daf103fa138</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389500' id='524129'>
+<a class='timestamp' href='#524129'><time timestamp='2017-01-14T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 988d300 practicalswift: [qt] Rename formateNiceTimeOffset(qint64) to formatNiceTimeOffset(qint64)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389500' id='524130'>
+<a class='timestamp' href='#524130'><time timestamp='2017-01-14T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8daf103 MarcoFalke: Merge #9528: [qt] Rename formateNiceTimeOffset(qint64) to formatNiceTimeOffset(qint64)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389560' id='524131'>
+<a class='timestamp' href='#524131'><time timestamp='2017-01-14T10:26:00Z'>10:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #9528: [qt] Rename formateNiceTimeOffset(qint64) to formatNiceTimeOffset(qint64) (master...rename-formateNiceTimeOffset) <a href="https://github.com/bitcoin/bitcoin/pull/9528" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9528</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389860' id='524132'>
+<a class='timestamp' href='#524132'><time timestamp='2017-01-14T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/8daf103fa138...23281a4dc3af" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8daf103fa138...23281a4dc3af</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389860' id='524133'>
+<a class='timestamp' href='#524133'><time timestamp='2017-01-14T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b348287 Alex Morcos: Clarify that prioritisetransaction remains supported
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389860' id='524134'>
+<a class='timestamp' href='#524134'><time timestamp='2017-01-14T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 34ede12 Alex Morcos: Document fee estimation changes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389860' id='524135'>
+<a class='timestamp' href='#524135'><time timestamp='2017-01-14T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 23281a4 MarcoFalke: Merge #9531: Release notes for estimation changes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484389860' id='524136'>
+<a class='timestamp' href='#524136'><time timestamp='2017-01-14T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #9531: Release notes for estimation changes  (master...relnotes) <a href="https://github.com/bitcoin/bitcoin/pull/9531" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9531</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484419860' id='524137'>
+<a class='timestamp' href='#524137'><time timestamp='2017-01-14T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: -fsanitize=thread &quot;runs&quot; with LDFLAGS=&quot;-no-pie&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484419920' id='524138'>
+<a class='timestamp' href='#524138'><time timestamp='2017-01-14T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: only with newer compilers.. neither Gentoo-stable compiler supports sanitize=thread without PIE
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484419980' id='524139'>
+<a class='timestamp' href='#524139'><time timestamp='2017-01-14T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and with PIE requires either a newer LLVM or older kernel
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484419980' id='524140'>
+<a class='timestamp' href='#524140'><time timestamp='2017-01-14T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(neither of which are available on Travis)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484420040' id='524141'>
+<a class='timestamp' href='#524141'><time timestamp='2017-01-14T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the LLVM fix backports only so far as 3.8 FWIW (porting to 3.7 seemed difficult, at least)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484420040' id='524142'>
+<a class='timestamp' href='#524142'><time timestamp='2017-01-14T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: using gcc 6.2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484420100' id='524143'>
+<a class='timestamp' href='#524143'><time timestamp='2017-01-14T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ok, just pointing out that isn&#x27;t a reasonable min requirement ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484420100' id='524144'>
+<a class='timestamp' href='#524144'><time timestamp='2017-01-14T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+peers at Gentoo have 6.3 masked, but no other 6.x at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484421600' id='524145'>
+<a class='timestamp' href='#524145'><time timestamp='2017-01-14T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9554: [test] Avoid potential NULL pointer dereference in addrman_tests.cpp (master...avoid-null-pointer-dereference-in-addrman_tests) <a href="https://github.com/bitcoin/bitcoin/pull/9554" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9554</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423100' id='524146'>
+<a class='timestamp' href='#524146'><time timestamp='2017-01-14T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9555: [test] Avoid triggering undefined behaviour in tx_invalid-test (transaction_tests.cpp) (master...avoid-ub-in-tx_invalid-test) <a href="https://github.com/bitcoin/bitcoin/pull/9555" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9555</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423520' id='524147'>
+<a class='timestamp' href='#524147'><time timestamp='2017-01-14T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-4'> Netmage</span>&gt;
+Hi, I use bitcoint-qt. The size of the block chain is overall 113 GB large. Is this a normal value for the current block chain ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423580' id='524148'>
+<a class='timestamp' href='#524148'><time timestamp='2017-01-14T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+Netmage: sadly yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423640' id='524149'>
+<a class='timestamp' href='#524149'><time timestamp='2017-01-14T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-4'> Netmage</span>&gt;
+ok, is there a good way to decrease the size ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423700' id='524150'>
+<a class='timestamp' href='#524150'><time timestamp='2017-01-14T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-4'> Netmage</span>&gt;
+Without having problems afterwards
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423820' id='524151'>
+<a class='timestamp' href='#524151'><time timestamp='2017-01-14T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes, luke-jr, Netcraft confirmed: gentoo is dead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423820' id='524152'>
+<a class='timestamp' href='#524152'><time timestamp='2017-01-14T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+Netmage: look at the docs for the -prune option
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423820' id='524153'>
+<a class='timestamp' href='#524153'><time timestamp='2017-01-14T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Netmage: depends on if you need to restore old wallet backups etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423880' id='524154'>
+<a class='timestamp' href='#524154'><time timestamp='2017-01-14T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+luke-jr: ok, sooooo utack for #9499?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484423880' id='524155'>
+<a class='timestamp' href='#524155'><time timestamp='2017-01-14T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9499" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9499</a> | Use recent-rejects, orphans, and recently-replaced txn for compact-block-reconstruction by TheBlueMatt · Pull Request #9499 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424000' id='524156'>
+<a class='timestamp' href='#524156'><time timestamp='2017-01-14T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+BlueMatt: I did not complete review of all the code; I&#x27;m not sure it&#x27;s worth doing as-is, but I don&#x27;t object to it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424060' id='524157'>
+<a class='timestamp' href='#524157'><time timestamp='2017-01-14T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+huh? folks have reported on the order of 10% fewer rtts!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424060' id='524158'>
+<a class='timestamp' href='#524158'><time timestamp='2017-01-14T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+how is that not worth doing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424060' id='524159'>
+<a class='timestamp' href='#524159'><time timestamp='2017-01-14T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(or more)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424120' id='524160'>
+<a class='timestamp' href='#524160'><time timestamp='2017-01-14T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it just seemed like a lot of complexity for what appeared to be random caching; maybe I&#x27;m wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424120' id='524161'>
+<a class='timestamp' href='#524161'><time timestamp='2017-01-14T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+maybe in practice it happens to work out to be very effective
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424120' id='524162'>
+<a class='timestamp' href='#524162'><time timestamp='2017-01-14T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+most of that pr&#x27;s &quot;complexity&quot; is copying one block of code.....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424120' id='524163'>
+<a class='timestamp' href='#524163'><time timestamp='2017-01-14T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I did review that block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424180' id='524164'>
+<a class='timestamp' href='#524164'><time timestamp='2017-01-14T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but, yes, three independant benchmarks posted on the pr suggested its a huge win
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424180' id='524165'>
+<a class='timestamp' href='#524165'><time timestamp='2017-01-14T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ok, maybe it is! I&#x27;m not objecting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424240' id='524166'>
+<a class='timestamp' href='#524166'><time timestamp='2017-01-14T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+if my review matters for the merge, I can go back and finish it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424300' id='524167'>
+<a class='timestamp' href='#524167'><time timestamp='2017-01-14T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+all reviews matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424300' id='524168'>
+<a class='timestamp' href='#524168'><time timestamp='2017-01-14T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+:)     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424300' id='524169'>
+<a class='timestamp' href='#524169'><time timestamp='2017-01-14T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+maybe I should be doing this one commit-by-commit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424300' id='524170'>
+<a class='timestamp' href='#524170'><time timestamp='2017-01-14T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424300' id='524171'>
+<a class='timestamp' href='#524171'><time timestamp='2017-01-14T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+that tends to make most reviews easier :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424720' id='524172'>
+<a class='timestamp' href='#524172'><time timestamp='2017-01-14T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I&#x27;d be a lot more comfortable that there isn&#x27;t an implicit mask in rebasing code, if plTxnReplaced were at the end of the function signature
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424720' id='524173'>
+<a class='timestamp' href='#524173'><time timestamp='2017-01-14T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+s/mask/cast/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424840' id='524174'>
+<a class='timestamp' href='#524174'><time timestamp='2017-01-14T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I believe gcc would complain in any way you fuck that up?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424840' id='524175'>
+<a class='timestamp' href='#524175'><time timestamp='2017-01-14T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+checking..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424840' id='524176'>
+<a class='timestamp' href='#524176'><time timestamp='2017-01-14T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+it should complain if you try to pass a bool into that pointer?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424900' id='524177'>
+<a class='timestamp' href='#524177'><time timestamp='2017-01-14T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+i suppose unless, for some reason, you want to fOverrideMempoolLimit based on whether not a std::vector&lt;CTransactionRef&gt;* is non-null
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424900' id='524178'>
+<a class='timestamp' href='#524178'><time timestamp='2017-01-14T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but......
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484424960' id='524179'>
+<a class='timestamp' href='#524179'><time timestamp='2017-01-14T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+yeah, probably safe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484425380' id='524180'>
+<a class='timestamp' href='#524180'><time timestamp='2017-01-14T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+BlueMatt: c73554042886fb63fb48edf29cf827951edde341 needs a #include &quot;netprocessing.h&quot; in init.cpp I think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484425440' id='524181'>
+<a class='timestamp' href='#524181'><time timestamp='2017-01-14T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+init has an include net_processing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484425680' id='524182'>
+<a class='timestamp' href='#524182'><time timestamp='2017-01-14T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+right, nm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484426820' id='524183'>
+<a class='timestamp' href='#524183'><time timestamp='2017-01-14T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cfields: is there a reason CConnman::ForNode calls the provided function with cs_vNodes still locked? that seems bad?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484426820' id='524184'>
+<a class='timestamp' href='#524184'><time timestamp='2017-01-14T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9556: Remove redundant semicolons (master...remove-redundant-braces) <a href="https://github.com/bitcoin/bitcoin/pull/9556" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9556</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484427300' id='524185'>
+<a class='timestamp' href='#524185'><time timestamp='2017-01-14T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+If anyone is interested in #8469 and wants to get some internet points on SO: <a href="http://stackoverflow.com/questions/41539334/including-header-file-in-cpp-causes-nasty-error" class="link" target="_blank">http://stackoverflow.com/questions/41539334/including-header-file-in-cpp-causes-nasty-error</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484427300' id='524186'>
+<a class='timestamp' href='#524186'><time timestamp='2017-01-14T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8469" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8469</a> | [POC] Introducing property based testing to Core by Christewart · Pull Request #8469 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484428560' id='524187'>
+<a class='timestamp' href='#524187'><time timestamp='2017-01-14T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9557: Use static_cast&lt;new_type&gt;(...) instead of deprecated new_type(...) (functional cast) (master...avoid-functional-cast-expression) <a href="https://github.com/bitcoin/bitcoin/pull/9557" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9557</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484430120' id='524188'>
+<a class='timestamp' href='#524188'><time timestamp='2017-01-14T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #9558: Clarify assumptions made about when BlockCheck is called (master...2017-01-blockcheckeddocs) <a href="https://github.com/bitcoin/bitcoin/pull/9558" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9558</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484431680' id='524189'>
+<a class='timestamp' href='#524189'><time timestamp='2017-01-14T22:08:00Z'>22:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] 2HCHO closed pull request #9551: disable out of sync warnings for regtest network (master...ca4b90519c3c210f) <a href="https://github.com/bitcoin/bitcoin/pull/9551" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9551</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484432580' id='524190'>
+<a class='timestamp' href='#524190'><time timestamp='2017-01-14T22:23:00Z'>22:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9559: [net] Avoid possibility of NULL pointer dereference in ProcessMessage(...) (master...avoid-null-pointer-deref-in-processmessage) <a href="https://github.com/bitcoin/bitcoin/pull/9559" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9559</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484435040' id='524191'>
+<a class='timestamp' href='#524191'><time timestamp='2017-01-14T23:04:00Z'>23:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #9560: [rpc] Avoid possibility of NULL pointer dereference in getblocktemplate(...) (master...avoid-null-pointer-dereference-in-rpc-blockchain) <a href="https://github.com/bitcoin/bitcoin/pull/9560" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9560</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437020' id='524192'>
+<a class='timestamp' href='#524192'><time timestamp='2017-01-14T23:37:00Z'>23:37</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+man practicalswift needs to calm down a bit with this....bad timing, yo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437320' id='524193'>
+<a class='timestamp' href='#524193'><time timestamp='2017-01-14T23:42:00Z'>23:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+release&#x27;s on fire, yo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437380' id='524194'>
+<a class='timestamp' href='#524194'><time timestamp='2017-01-14T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+yea, as in a bunch of stuff is cruisin&#x27; to miss :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437380' id='524195'>
+<a class='timestamp' href='#524195'><time timestamp='2017-01-14T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: how&#x27;s mystery hung going?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437380' id='524196'>
+<a class='timestamp' href='#524196'><time timestamp='2017-01-14T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+t     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437620' id='524197'>
+<a class='timestamp' href='#524197'><time timestamp='2017-01-14T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: first team finished at 4am this morning, shortest hunt ever
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437620' id='524198'>
+<a class='timestamp' href='#524198'><time timestamp='2017-01-14T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: our team finished early afternoon today
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437680' id='524199'>
+<a class='timestamp' href='#524199'><time timestamp='2017-01-14T23:48:00Z'>23:48</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh shit, wow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437860' id='524200'>
+<a class='timestamp' href='#524200'><time timestamp='2017-01-14T23:51:00Z'>23:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #9561: Wake message handling thread when we receive a new block (master...2017-01-wakeup-on-new-block) <a href="https://github.com/bitcoin/bitcoin/pull/9561" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9561</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1484437980' id='524201'>
+<a class='timestamp' href='#524201'><time timestamp='2017-01-14T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+^ one-line change provides 100ms improvement in block-relay latency for non-compact-block peers :p
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

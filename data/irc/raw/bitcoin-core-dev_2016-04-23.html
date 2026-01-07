@@ -1,0 +1,2800 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2016-04-23
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2016-04-23' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:26 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2016-03-23">&lt;</a><span class='header'>    April 2016    </span><a href="/bitcoin-core-dev/2016-05-23">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2016-04-01">1</a>  <a class="" href="/bitcoin-core-dev/2016-04-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2016-04-03">3</a>  <a class="" href="/bitcoin-core-dev/2016-04-04">4</a>  <a class="" href="/bitcoin-core-dev/2016-04-05">5</a>  <a class="" href="/bitcoin-core-dev/2016-04-06">6</a>  <a class="" href="/bitcoin-core-dev/2016-04-07">7</a>  <a class="" href="/bitcoin-core-dev/2016-04-08">8</a>  <a class="" href="/bitcoin-core-dev/2016-04-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-04-10">10</a> <a class="" href="/bitcoin-core-dev/2016-04-11">11</a> <a class="" href="/bitcoin-core-dev/2016-04-12">12</a> <a class="" href="/bitcoin-core-dev/2016-04-13">13</a> <a class="" href="/bitcoin-core-dev/2016-04-14">14</a> <a class="" href="/bitcoin-core-dev/2016-04-15">15</a> <a class="" href="/bitcoin-core-dev/2016-04-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-04-17">17</a> <a class="" href="/bitcoin-core-dev/2016-04-18">18</a> <a class="" href="/bitcoin-core-dev/2016-04-19">19</a> <a class="" href="/bitcoin-core-dev/2016-04-20">20</a> <a class="" href="/bitcoin-core-dev/2016-04-21">21</a> <a class="" href="/bitcoin-core-dev/2016-04-22">22</a> <a class="current" href="/bitcoin-core-dev/2016-04-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-04-24">24</a> <a class="" href="/bitcoin-core-dev/2016-04-25">25</a> <a class="" href="/bitcoin-core-dev/2016-04-26">26</a> <a class="" href="/bitcoin-core-dev/2016-04-27">27</a> <a class="" href="/bitcoin-core-dev/2016-04-28">28</a> <a class="" href="/bitcoin-core-dev/2016-04-29">29</a> <a class="" href="/bitcoin-core-dev/2016-04-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1461370620' id='464612'>
+<a class='timestamp' href='#464612'><time timestamp='2016-04-23T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+gmaxwell: hah, i made the same patch myself to see how big the changes were, then figured out that this must be exactly what sipa meant about the ever-expanding scope of that PR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461376680' id='464613'>
+<a class='timestamp' href='#464613'><time timestamp='2016-04-23T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sdaftuar: I do feel kinda bad that it takes a mempool lock now several times for each transaction in the queue, but it&#x27;s negligble. It could be easily optimized later, e.g. to have a function that took the set and populated a vector of {hash, depth, feerate} and dropped evicted transactions, all under a single lock acquisition. But that can be done another day...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461376680' id='464614'>
+<a class='timestamp' href='#464614'><time timestamp='2016-04-23T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the improvement from this for propagation of dependant transactions is really substantial, and I&#x27;d rather not delay it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390240' id='464615'>
+<a class='timestamp' href='#464615'><time timestamp='2016-04-23T05:44:00Z'>05:44</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, currently have fuzzing of CDataStream &gt;&gt; CBlock working
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390300' id='464616'>
+<a class='timestamp' href='#464616'><time timestamp='2016-04-23T05:45:00Z'>05:45</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+great!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390300' id='464617'>
+<a class='timestamp' href='#464617'><time timestamp='2016-04-23T05:45:00Z'>05:45</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+i figured that would exercise the most of the serialization stuff in one go
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390360' id='464618'>
+<a class='timestamp' href='#464618'><time timestamp='2016-04-23T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+also discovered that combining std::copy with violation of the strict aliasing rule is a bad idea
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390360' id='464619'>
+<a class='timestamp' href='#464619'><time timestamp='2016-04-23T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+(on the latest gcc at least)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390420' id='464620'>
+<a class='timestamp' href='#464620'><time timestamp='2016-04-23T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+violating aliasing rules is always a bad idea. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390660' id='464621'>
+<a class='timestamp' href='#464621'><time timestamp='2016-04-23T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, i wasn&#x27;t expecting it to violate the rule though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390660' id='464622'>
+<a class='timestamp' href='#464622'><time timestamp='2016-04-23T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+(and there&#x27;s no warning about it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390660' id='464623'>
+<a class='timestamp' href='#464623'><time timestamp='2016-04-23T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+ie thought it was char*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390720' id='464624'>
+<a class='timestamp' href='#464624'><time timestamp='2016-04-23T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ah, no you were copying a vector, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390720' id='464625'>
+<a class='timestamp' href='#464625'><time timestamp='2016-04-23T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+copying from std::vector&lt;char&gt; to uint32_t*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390720' id='464626'>
+<a class='timestamp' href='#464626'><time timestamp='2016-04-23T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea... not quite. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390720' id='464627'>
+<a class='timestamp' href='#464627'><time timestamp='2016-04-23T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Have you tried introducing a bug and verifying that it finds it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461390780' id='464628'>
+<a class='timestamp' href='#464628'><time timestamp='2016-04-23T05:53:00Z'>05:53</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+currently im trying to identify which exceptions i should catch as &quot;that&#x27;s expected&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461391560' id='464629'>
+<a class='timestamp' href='#464629'><time timestamp='2016-04-23T06:06:00Z'>06:06</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, huh memcpy is void*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461391560' id='464630'>
+<a class='timestamp' href='#464630'><time timestamp='2016-04-23T06:06:00Z'>06:06</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+i guess this is <b>*also*</b> violating sa
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461391860' id='464631'>
+<a class='timestamp' href='#464631'><time timestamp='2016-04-23T06:11:00Z'>06:11</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+it seems like catching std::ios_base::failure is enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461391920' id='464632'>
+<a class='timestamp' href='#464632'><time timestamp='2016-04-23T06:12:00Z'>06:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: it isn&#x27;t the protype that can violate SA, its whats done inside, if you implemented your own memcpy and did your accesses via char pointers you&#x27;d be fine.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461391980' id='464633'>
+<a class='timestamp' href='#464633'><time timestamp='2016-04-23T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, i wonder if glibc memcpy is char* internally or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461392520' id='464634'>
+<a class='timestamp' href='#464634'><time timestamp='2016-04-23T06:22:00Z'>06:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+phantomcircuit: i assume it&#x27;s written in asm :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461392580' id='464635'>
+<a class='timestamp' href='#464635'><time timestamp='2016-04-23T06:23:00Z'>06:23</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&quot;lol&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461396840' id='464636'>
+<a class='timestamp' href='#464636'><time timestamp='2016-04-23T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+phantomcircuit: it&#x27;s SSSE3 usually :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461396840' id='464637'>
+<a class='timestamp' href='#464637'><time timestamp='2016-04-23T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I had to build my glibc with -mno-ssse3 or stuff crashed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461396840' id='464638'>
+<a class='timestamp' href='#464638'><time timestamp='2016-04-23T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+luke-jr, ha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461396900' id='464639'>
+<a class='timestamp' href='#464639'><time timestamp='2016-04-23T07:35:00Z'>07:35</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+never figured out why Haswell&#x27;s SSSE3 seems to be broken in 32-bit mode.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397020' id='464640'>
+<a class='timestamp' href='#464640'><time timestamp='2016-04-23T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-6'> GitHub187</span>&gt;
+[bitcoin] laanwj opened pull request #7927: Minor changes to dbwrapper to simplify support for other databases (master...2016_04_dbwrapper_modernization) <a href="https://github.com/bitcoin/bitcoin/pull/7927" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7927</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397140' id='464641'>
+<a class='timestamp' href='#464641'><time timestamp='2016-04-23T07:39:00Z'>07:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you mean &#x27;x32&#x27; right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464642'>
+<a class='timestamp' href='#464642'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+no, regular 32-bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464643'>
+<a class='timestamp' href='#464643'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+weird.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464644'>
+<a class='timestamp' href='#464644'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I suspect x32 would work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464645'>
+<a class='timestamp' href='#464645'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+my best guess so far has been pointer alignment stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464646'>
+<a class='timestamp' href='#464646'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I assume it&#x27;s not haswell, but some GCC bug. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464647'>
+<a class='timestamp' href='#464647'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397320' id='464648'>
+<a class='timestamp' href='#464648'><time timestamp='2016-04-23T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+maybe Haswell is stricted on the spec than previous CPUs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397380' id='464649'>
+<a class='timestamp' href='#464649'><time timestamp='2016-04-23T07:43:00Z'>07:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i doubt the spec changed, but perhaps older cpus were more lenient with spec violations :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397380' id='464650'>
+<a class='timestamp' href='#464650'><time timestamp='2016-04-23T07:43:00Z'>07:43</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+although it&#x27;d be a glibc <b>*and*</b> Mesa bug, as it turned up at least both implementations of memcpy (not sure why Mesa has a separate one, but oh well)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397440' id='464651'>
+<a class='timestamp' href='#464651'><time timestamp='2016-04-23T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+or GCC, but I don&#x27;t see how the compiler could be at fault for this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397440' id='464652'>
+<a class='timestamp' href='#464652'><time timestamp='2016-04-23T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+IIRC it&#x27;s inline asm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461397440' id='464653'>
+<a class='timestamp' href='#464653'><time timestamp='2016-04-23T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(but I haven&#x27;t looked at it in probably a year or so)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461398280' id='464654'>
+<a class='timestamp' href='#464654'><time timestamp='2016-04-23T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+luke-jr, that would explain why it does what i expect it to do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461398280' id='464655'>
+<a class='timestamp' href='#464655'><time timestamp='2016-04-23T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461398280' id='464656'>
+<a class='timestamp' href='#464656'><time timestamp='2016-04-23T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, it seems like the only way to ensure sa isn&#x27;t being violated would be to copy byte by byte
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461398760' id='464657'>
+<a class='timestamp' href='#464657'><time timestamp='2016-04-23T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+phantomcircuit: void* is allowed to alias any pointer, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461398880' id='464658'>
+<a class='timestamp' href='#464658'><time timestamp='2016-04-23T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+in C, at least; not sure about C++ - it complains if you do it implicitly, at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461405900' id='464659'>
+<a class='timestamp' href='#464659'><time timestamp='2016-04-23T10:05:00Z'>10:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i upgraded to xenial, did git -dfx, ccache -C, ./autogen.sh, ./configure, make -j5... and i get util.cpp:817:53: error: ‘COPYRIGHT_HOLDERS’ was not declared in this scope
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461405960' id='464660'>
+<a class='timestamp' href='#464660'><time timestamp='2016-04-23T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-4'> * sipa</span>&gt;
+tries again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406020' id='464661'>
+<a class='timestamp' href='#464661'><time timestamp='2016-04-23T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+stale config.h somewhere?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406020' id='464662'>
+<a class='timestamp' href='#464662'><time timestamp='2016-04-23T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+after git -dfx ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406020' id='464663'>
+<a class='timestamp' href='#464663'><time timestamp='2016-04-23T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+eh, git clean -dfx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406140' id='464664'>
+<a class='timestamp' href='#464664'><time timestamp='2016-04-23T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hm, assuming our gitignore is okay that should eliminate any
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406200' id='464665'>
+<a class='timestamp' href='#464665'><time timestamp='2016-04-23T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+git clean -dfx deletes all files not checked in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406200' id='464666'>
+<a class='timestamp' href='#464666'><time timestamp='2016-04-23T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+including ignored files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406200' id='464667'>
+<a class='timestamp' href='#464667'><time timestamp='2016-04-23T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but also others
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406200' id='464668'>
+<a class='timestamp' href='#464668'><time timestamp='2016-04-23T10:10:00Z'>10:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so gitignore is not relevant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406260' id='464669'>
+<a class='timestamp' href='#464669'><time timestamp='2016-04-23T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406260' id='464670'>
+<a class='timestamp' href='#464670'><time timestamp='2016-04-23T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think it&#x27;s working now...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406320' id='464671'>
+<a class='timestamp' href='#464671'><time timestamp='2016-04-23T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+what changed?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406320' id='464672'>
+<a class='timestamp' href='#464672'><time timestamp='2016-04-23T10:12:00Z'>10:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i did git clean -dfx again...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406500' id='464673'>
+<a class='timestamp' href='#464673'><time timestamp='2016-04-23T10:15:00Z'>10:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+strange
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406560' id='464674'>
+<a class='timestamp' href='#464674'><time timestamp='2016-04-23T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+btw I got also the same error yestersday
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406560' id='464675'>
+<a class='timestamp' href='#464675'><time timestamp='2016-04-23T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I don&#x27;t suppose either of you saved the config.h/log to compare?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406560' id='464676'>
+<a class='timestamp' href='#464676'><time timestamp='2016-04-23T10:16:00Z'>10:16</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+I can reproduce one sec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406740' id='464677'>
+<a class='timestamp' href='#464677'><time timestamp='2016-04-23T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+luke-jr:  right now I have the error, what do you want I do to help fixing it ? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406740' id='464678'>
+<a class='timestamp' href='#464678'><time timestamp='2016-04-23T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+(I&#x27;m not linux wizard so step by step would be appreciated :p)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461406800' id='464679'>
+<a class='timestamp' href='#464679'><time timestamp='2016-04-23T10:20:00Z'>10:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+NicolasDorier: ideally, copy the entire bitcoin/ dir somewhere, then re-do it successfully and compare
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461407040' id='464680'>
+<a class='timestamp' href='#464680'><time timestamp='2016-04-23T10:24:00Z'>10:24</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+k one sec.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461407940' id='464681'>
+<a class='timestamp' href='#464681'><time timestamp='2016-04-23T10:39:00Z'>10:39</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+mmh, now getting another error after git clean -dfx... but that might be unrelated to the earrlier copyright error as I&#x27;m not on master branch right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461407940' id='464682'>
+<a class='timestamp' href='#464682'><time timestamp='2016-04-23T10:39:00Z'>10:39</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+<a href="https://usercontent.irccloud-cdn.com/file/BO3RdE0Q/" class="link" target="_blank">https://usercontent.irccloud-cdn.com/file/BO3RdE0Q/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461407940' id='464683'>
+<a class='timestamp' href='#464683'><time timestamp='2016-04-23T10:39:00Z'>10:39</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+will check out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461408420' id='464684'>
+<a class='timestamp' href='#464684'><time timestamp='2016-04-23T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+nevermind was a space in the path
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461408420' id='464685'>
+<a class='timestamp' href='#464685'><time timestamp='2016-04-23T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+ah no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461409440' id='464686'>
+<a class='timestamp' href='#464686'><time timestamp='2016-04-23T11:04:00Z'>11:04</time></a>
+&lt;<span class='nick nick-7'> randy-waterhouse</span>&gt;
+recent commit 351abf9e035581e3320fbb72ec5b1fa452b09c2f (depends build) introduces following error <a href="http://pastebin.com/q5cP70y8" class="link" target="_blank">http://pastebin.com/q5cP70y8</a> (and core dump) on bitcoin-qt
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461410040' id='464687'>
+<a class='timestamp' href='#464687'><time timestamp='2016-04-23T11:14:00Z'>11:14</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+I could not reproduce the &#x27;COPYRIGHT_HOLDERS&#x27; error after the first git clean -dfx. It compiled fine :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461410280' id='464688'>
+<a class='timestamp' href='#464688'><time timestamp='2016-04-23T11:18:00Z'>11:18</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+usually just a make clean;./autogen.sh solves this for me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411600' id='464689'>
+<a class='timestamp' href='#464689'><time timestamp='2016-04-23T11:40:00Z'>11:40</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+NicolasDorier: ok, so now you have two dirs to compare, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411600' id='464690'>
+<a class='timestamp' href='#464690'><time timestamp='2016-04-23T11:40:00Z'>11:40</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+yes. one which compile and the other with the error
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411660' id='464691'>
+<a class='timestamp' href='#464691'><time timestamp='2016-04-23T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+but I wanted to replicate the bug wherer git clean -dfx does not solve the copyright error, it happened to me once as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411720' id='464692'>
+<a class='timestamp' href='#464692'><time timestamp='2016-04-23T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+NicolasDorier: diff -ur firstdir seconddir &gt;diff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411720' id='464693'>
+<a class='timestamp' href='#464693'><time timestamp='2016-04-23T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+then pastebin the diff file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411720' id='464694'>
+<a class='timestamp' href='#464694'><time timestamp='2016-04-23T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411720' id='464695'>
+<a class='timestamp' href='#464695'><time timestamp='2016-04-23T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+one sec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411900' id='464696'>
+<a class='timestamp' href='#464696'><time timestamp='2016-04-23T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+luke-jr it has more than 512kb does not see to be able to copy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411960' id='464697'>
+<a class='timestamp' href='#464697'><time timestamp='2016-04-23T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+dropbox?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461411960' id='464698'>
+<a class='timestamp' href='#464698'><time timestamp='2016-04-23T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+one sec yes I&#x27;ll find a way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412080' id='464699'>
+<a class='timestamp' href='#464699'><time timestamp='2016-04-23T11:48:00Z'>11:48</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+luke-jr: <a href="https://aois.blob.core.windows.net/public/diff.txt" class="link" target="_blank">https://aois.blob.core.windows.net/public/diff.txt</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412080' id='464700'>
+<a class='timestamp' href='#464700'><time timestamp='2016-04-23T11:48:00Z'>11:48</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+I need to run
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412320' id='464701'>
+<a class='timestamp' href='#464701'><time timestamp='2016-04-23T11:52:00Z'>11:52</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+in the bitcoin folder does not compile bitcoin2 does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412380' id='464702'>
+<a class='timestamp' href='#464702'><time timestamp='2016-04-23T11:53:00Z'>11:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+are you sure the source code is the same across the two?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412380' id='464703'>
+<a class='timestamp' href='#464703'><time timestamp='2016-04-23T11:53:00Z'>11:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the dependencies are different, which is a bit suspicious
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412500' id='464704'>
+<a class='timestamp' href='#464704'><time timestamp='2016-04-23T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+-rpcserver.h:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412500' id='464705'>
+<a class='timestamp' href='#464705'><time timestamp='2016-04-23T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
++rpc/server.h:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412500' id='464706'>
+<a class='timestamp' href='#464706'><time timestamp='2016-04-23T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+definitely not the same..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461412560' id='464707'>
+<a class='timestamp' href='#464707'><time timestamp='2016-04-23T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+one looks 0.12, the other master
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461416040' id='464708'>
+<a class='timestamp' href='#464708'><time timestamp='2016-04-23T12:54:00Z'>12:54</time></a>
+&lt;<span class='nick nick-2'> airmac</span>&gt;
+anyone wanna trade i got 29g of bitgold with trade for bitcoin intrested msg me for trade we can use escrow if you want
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461416040' id='464709'>
+<a class='timestamp' href='#464709'><time timestamp='2016-04-23T12:54:00Z'>12:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+airmac: not here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461416040' id='464710'>
+<a class='timestamp' href='#464710'><time timestamp='2016-04-23T12:54:00Z'>12:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+#bitcoin-otc or similar channels please
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461418200' id='464711'>
+<a class='timestamp' href='#464711'><time timestamp='2016-04-23T13:30:00Z'>13:30</time></a>
+&lt;<span class='nick nick-12'> nkuttler</span>&gt;
+sipa: already banned from everywhere
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461418260' id='464712'>
+<a class='timestamp' href='#464712'><time timestamp='2016-04-23T13:31:00Z'>13:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+nkuttler: ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461423480' id='464713'>
+<a class='timestamp' href='#464713'><time timestamp='2016-04-23T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-2'> airmac</span>&gt;
+anyone wanna trade i got 29g of bitgold with trade for bitcoin intrested msg me for trade we can use escrow if you want\
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461423480' id='464714'>
+<a class='timestamp' href='#464714'><time timestamp='2016-04-23T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-2'> belcher</span>&gt;
+wrong channel, go to #bitcoin-otc or similar
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430560' id='464715'>
+<a class='timestamp' href='#464715'><time timestamp='2016-04-23T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+How is this a valid test case? Shouldn&#x27;t the 0x00 be pushed onto the stack by just an OP_0? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430560' id='464716'>
+<a class='timestamp' href='#464716'><time timestamp='2016-04-23T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+[&quot;0x01 0x00&quot;, &quot;1&quot;, &quot;MINIMALDATA&quot;]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430680' id='464717'>
+<a class='timestamp' href='#464717'><time timestamp='2016-04-23T16:58:00Z'>16:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+link?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430680' id='464718'>
+<a class='timestamp' href='#464718'><time timestamp='2016-04-23T16:58:00Z'>16:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, i get it 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430740' id='464719'>
+<a class='timestamp' href='#464719'><time timestamp='2016-04-23T16:59:00Z'>16:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, OP_0 pushes the empty vector onto the stack, not 0x00
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430740' id='464720'>
+<a class='timestamp' href='#464720'><time timestamp='2016-04-23T16:59:00Z'>16:59</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+ooo. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430800' id='464721'>
+<a class='timestamp' href='#464721'><time timestamp='2016-04-23T17:00:00Z'>17:00</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Tricky :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430860' id='464722'>
+<a class='timestamp' href='#464722'><time timestamp='2016-04-23T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Is that what this comment is saying? I didn&#x27;t really understand the comment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430860' id='464723'>
+<a class='timestamp' href='#464723'><time timestamp='2016-04-23T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+[&quot;Numeric minimaldata rules are only applied when a stack item is numerically evaluated; the push itself is allowed&quot;]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430860' id='464724'>
+<a class='timestamp' href='#464724'><time timestamp='2016-04-23T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/blob/master/src/test/data/script_tests.json#L598" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/test/data/script_tests.json#L598</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461430980' id='464725'>
+<a class='timestamp' href='#464725'><time timestamp='2016-04-23T17:03:00Z'>17:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, that&#x27;s exactly what it&#x27;s saying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461431040' id='464726'>
+<a class='timestamp' href='#464726'><time timestamp='2016-04-23T17:04:00Z'>17:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MINIMALDATA includes 2 rules: for every push operation, the shortest possible form must be used 2) whenever a stack element is interpreter as a number, it must be in the shortest possible notation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461431040' id='464727'>
+<a class='timestamp' href='#464727'><time timestamp='2016-04-23T17:04:00Z'>17:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+here, 0x00 is pushed onto the stack with a push operation that satisfies 1)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461431100' id='464728'>
+<a class='timestamp' href='#464728'><time timestamp='2016-04-23T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+2) is not applicable, because it is not being interpreted as a number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461431340' id='464729'>
+<a class='timestamp' href='#464729'><time timestamp='2016-04-23T17:09:00Z'>17:09</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Ok that makes sense. Thanks sipa. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439560' id='464730'>
+<a class='timestamp' href='#464730'><time timestamp='2016-04-23T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oops, we released 0.12.1 with no practical way to mine (GBT hasn&#x27;t been updated for BIP 9) :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439560' id='464731'>
+<a class='timestamp' href='#464731'><time timestamp='2016-04-23T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+well, practical and correct I guess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439560' id='464732'>
+<a class='timestamp' href='#464732'><time timestamp='2016-04-23T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+should I de-bundle BIP 9 GBT stuff from segwit, or just figure wait for that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439920' id='464733'>
+<a class='timestamp' href='#464733'><time timestamp='2016-04-23T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+not sure there&#x27;s a way to support 0.12.1 properly, so basically means the softfork &quot;needs&quot; to be delayed?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439920' id='464734'>
+<a class='timestamp' href='#464734'><time timestamp='2016-04-23T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how do you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439980' id='464735'>
+<a class='timestamp' href='#464735'><time timestamp='2016-04-23T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s already being used by miners
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439980' id='464736'>
+<a class='timestamp' href='#464736'><time timestamp='2016-04-23T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: there&#x27;s no way for GBT clients to know what the rules are
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461439980' id='464737'>
+<a class='timestamp' href='#464737'><time timestamp='2016-04-23T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there&#x27;s no need for that if they&#x27;re connecting to a trusted bitcoind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440040' id='464738'>
+<a class='timestamp' href='#464738'><time timestamp='2016-04-23T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+GBT requires it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440040' id='464739'>
+<a class='timestamp' href='#464739'><time timestamp='2016-04-23T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+since it could very well be needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440040' id='464740'>
+<a class='timestamp' href='#464740'><time timestamp='2016-04-23T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+eg, with segwit the handling of txid/hash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440100' id='464741'>
+<a class='timestamp' href='#464741'><time timestamp='2016-04-23T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so let&#x27;s say there is a softfork that adds UTXO commitments
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440100' id='464742'>
+<a class='timestamp' href='#464742'><time timestamp='2016-04-23T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what you going to do? provide the entire utxo set in the GBT response?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440100' id='464743'>
+<a class='timestamp' href='#464743'><time timestamp='2016-04-23T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I could hack libblkmaker to understand that the new &quot;version&quot; can be treated as the previous ones, but this will break as soon as that bit is reused
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440100' id='464744'>
+<a class='timestamp' href='#464744'><time timestamp='2016-04-23T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+your view of reality is a dream
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440100' id='464745'>
+<a class='timestamp' href='#464745'><time timestamp='2016-04-23T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+GBT is not being used the way you envision it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440160' id='464746'>
+<a class='timestamp' href='#464746'><time timestamp='2016-04-23T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+in such a case, the GBT client needs to be aware the commitment is required and where
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440160' id='464747'>
+<a class='timestamp' href='#464747'><time timestamp='2016-04-23T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so it can place the commitment from the local bitcoind in the right part of the block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440160' id='464748'>
+<a class='timestamp' href='#464748'><time timestamp='2016-04-23T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or it could just not bother, and use a full node to construct the block proposals, which is in a much better position to do so, and already knows everything necessary (apart from coinbase outputs)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440160' id='464749'>
+<a class='timestamp' href='#464749'><time timestamp='2016-04-23T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: I wouldn&#x27;t have even noticed this if it wasn&#x27;t.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440220' id='464750'>
+<a class='timestamp' href='#464750'><time timestamp='2016-04-23T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but no need to have thing discussion again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440220' id='464751'>
+<a class='timestamp' href='#464751'><time timestamp='2016-04-23T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m fine with reporting what bip9 deployments are active and available in GBT
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440220' id='464752'>
+<a class='timestamp' href='#464752'><time timestamp='2016-04-23T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but please don&#x27;t go claim that it&#x27;s not possible to mine without
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440280' id='464753'>
+<a class='timestamp' href='#464753'><time timestamp='2016-04-23T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is no real world mining now that needs such information
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440280' id='464754'>
+<a class='timestamp' href='#464754'><time timestamp='2016-04-23T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+per spec, GBT clients cannot work with 0.12.1 as-is today.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440280' id='464755'>
+<a class='timestamp' href='#464755'><time timestamp='2016-04-23T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and de facto miners implementing it do not work with it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440340' id='464756'>
+<a class='timestamp' href='#464756'><time timestamp='2016-04-23T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+why not? all deployed GBT clients in the world work fine with it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440340' id='464757'>
+<a class='timestamp' href='#464757'><time timestamp='2016-04-23T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I&#x27;m just trying to find a clean way to fix this real-world problem miners are encountering
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440340' id='464758'>
+<a class='timestamp' href='#464758'><time timestamp='2016-04-23T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+nope
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440340' id='464759'>
+<a class='timestamp' href='#464759'><time timestamp='2016-04-23T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how so?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440340' id='464760'>
+<a class='timestamp' href='#464760'><time timestamp='2016-04-23T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the version field is unrecognised, so they throw an error
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440460' id='464761'>
+<a class='timestamp' href='#464761'><time timestamp='2016-04-23T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how do you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440460' id='464762'>
+<a class='timestamp' href='#464762'><time timestamp='2016-04-23T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+<a href="https://github.com/bitcoin/libblkmaker/blob/master/blkmaker_jansson.c#L273" class="link" target="_blank">https://github.com/bitcoin/libblkmaker/blob/master/blkmaker_jansson.c#L273</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440520' id='464763'>
+<a class='timestamp' href='#464763'><time timestamp='2016-04-23T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok, so the software needs to be updated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440580' id='464764'>
+<a class='timestamp' href='#464764'><time timestamp='2016-04-23T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i see what you&#x27;re saying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440640' id='464765'>
+<a class='timestamp' href='#464765'><time timestamp='2016-04-23T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though i think most gbt clients just pass through the version field, and they would be fine, because bitcoind&#x27;s block template always corresponds to a valid block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440640' id='464766'>
+<a class='timestamp' href='#464766'><time timestamp='2016-04-23T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+those would be fine now (albeit not per spec), but they&#x27;ll break worse with segwit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440700' id='464767'>
+<a class='timestamp' href='#464767'><time timestamp='2016-04-23T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I suppose libblkmaker can treat the case of (currentsoftforkversion &amp;&amp; !bip9)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440700' id='464768'>
+<a class='timestamp' href='#464768'><time timestamp='2016-04-23T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+as long as the next softfork uses BIP9 GBT changes, that would protect against bit reuse
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440700' id='464769'>
+<a class='timestamp' href='#464769'><time timestamp='2016-04-23T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think it may be best to disentangle the segwit changes from bip9 changes to gbt
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440700' id='464770'>
+<a class='timestamp' href='#464770'><time timestamp='2016-04-23T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+does that sound reasonable?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440700' id='464771'>
+<a class='timestamp' href='#464771'><time timestamp='2016-04-23T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440760' id='464772'>
+<a class='timestamp' href='#464772'><time timestamp='2016-04-23T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so today I will focus/prioritise 1) finish revising GBT BIP changes, 2) split BIP9 GBT code from segwit, 3) update libblkmaker to detect 0.12.1 situation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440880' id='464773'>
+<a class='timestamp' href='#464773'><time timestamp='2016-04-23T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so i think we at least agreed that gbt should report the list of currently active rules, probably by name
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440880' id='464774'>
+<a class='timestamp' href='#464774'><time timestamp='2016-04-23T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(trying to remember the discussion we had before)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461440940' id='464775'>
+<a class='timestamp' href='#464775'><time timestamp='2016-04-23T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+version: bits the server likes you to set, vbavailable: {name:bit} mapping array the server allows you to set, vbrequired: bits the server demands you to set
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441000' id='464776'>
+<a class='timestamp' href='#464776'><time timestamp='2016-04-23T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+apart from that there were two other functions: 1) policy about which bits the server allows you to set/not set, and a suggestion 3) providing information about linkage between available bits and the deployment they correspond to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441000' id='464777'>
+<a class='timestamp' href='#464777'><time timestamp='2016-04-23T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m a bit unconfortable with the last thing, as it&#x27;s only useful in the case the client trusts the server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441060' id='464778'>
+<a class='timestamp' href='#464778'><time timestamp='2016-04-23T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so libblkmaker will have a special case for 0x20000000 &amp;&amp; !vbavailable, to handle 0.12.1 correctly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441060' id='464779'>
+<a class='timestamp' href='#464779'><time timestamp='2016-04-23T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how will you deal with 0x20000001?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441120' id='464780'>
+<a class='timestamp' href='#464780'><time timestamp='2016-04-23T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hm, I&#x27;m confused
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441180' id='464781'>
+<a class='timestamp' href='#464781'><time timestamp='2016-04-23T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I pulled 0x20000000 out of a recent block to be lazy, but that indicates no softforks, doesn&#x27;t it? :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441240' id='464782'>
+<a class='timestamp' href='#464782'><time timestamp='2016-04-23T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oh, the begin time..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441240' id='464783'>
+<a class='timestamp' href='#464783'><time timestamp='2016-04-23T19:54:00Z'>19:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, after may 1st it will set 0x20000001
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441300' id='464784'>
+<a class='timestamp' href='#464784'><time timestamp='2016-04-23T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so I need to check for &amp; 0xFFFFFFFE == 0x20000000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441300' id='464785'>
+<a class='timestamp' href='#464785'><time timestamp='2016-04-23T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: ^ relevant discussion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441360' id='464786'>
+<a class='timestamp' href='#464786'><time timestamp='2016-04-23T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: re vbrequired: the server can always reject submissions that clear bits it insists on, so this merely informs clients in advance so they can choose not to use that server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441720' id='464787'>
+<a class='timestamp' href='#464787'><time timestamp='2016-04-23T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: right, no problem with saying &quot;these bits you must set, and these you may set&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441780' id='464788'>
+<a class='timestamp' href='#464788'><time timestamp='2016-04-23T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m unconvinced about providing information about what bits corresponds with whicj deployment, as that is ourely informational with nonrelevance to what answers are acceptable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441840' id='464789'>
+<a class='timestamp' href='#464789'><time timestamp='2016-04-23T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*which *purely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441840' id='464790'>
+<a class='timestamp' href='#464790'><time timestamp='2016-04-23T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*no relevance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441900' id='464791'>
+<a class='timestamp' href='#464791'><time timestamp='2016-04-23T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+in the sense that you wish to discuss it further before proceeding that direction, or just a comment?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441900' id='464792'>
+<a class='timestamp' href='#464792'><time timestamp='2016-04-23T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+like, we also don&#x27;t provide information about what the coinbase maturity is, while it could just as easily change in a softfork
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441960' id='464793'>
+<a class='timestamp' href='#464793'><time timestamp='2016-04-23T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+things like that are why GBT says clients shouldn&#x27;t make assumptions about block versions they don&#x27;t understand ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441960' id='464794'>
+<a class='timestamp' href='#464794'><time timestamp='2016-04-23T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+my point is that this mapping information is going beyond the scope of the GBT call, and if clients which tovparticipate in voting, well, then they are responsible for knowing what means what
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441960' id='464795'>
+<a class='timestamp' href='#464795'><time timestamp='2016-04-23T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*wish to participate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441960' id='464796'>
+<a class='timestamp' href='#464796'><time timestamp='2016-04-23T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+&quot;what means what&quot; depends on blockchain context they lack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441960' id='464797'>
+<a class='timestamp' href='#464797'><time timestamp='2016-04-23T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+nno, it does not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461441960' id='464798'>
+<a class='timestamp' href='#464798'><time timestamp='2016-04-23T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s in the bips
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461442020' id='464799'>
+<a class='timestamp' href='#464799'><time timestamp='2016-04-23T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, there is one piece of context information they lack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461442020' id='464800'>
+<a class='timestamp' href='#464800'><time timestamp='2016-04-23T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+mediantimepast
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461442080' id='464801'>
+<a class='timestamp' href='#464801'><time timestamp='2016-04-23T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+also testnet vs mainnet, but that&#x27;s admittedly less important
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461442080' id='464802'>
+<a class='timestamp' href='#464802'><time timestamp='2016-04-23T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461442140' id='464803'>
+<a class='timestamp' href='#464803'><time timestamp='2016-04-23T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+possibly becomes important if we try to use GBT for sidechains (but I&#x27;m not convinced that makes sense)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461442980' id='464804'>
+<a class='timestamp' href='#464804'><time timestamp='2016-04-23T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ok, step 1 done I hope: <a href="https://github.com/bitcoin/bips/pull/365" class="link" target="_blank">https://github.com/bitcoin/bips/pull/365</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461443220' id='464805'>
+<a class='timestamp' href='#464805'><time timestamp='2016-04-23T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+luke-jr: your changes dont render properly <a href="https://i.imgur.com/Qmwqh0k.png" class="link" target="_blank">https://i.imgur.com/Qmwqh0k.png</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461443340' id='464806'>
+<a class='timestamp' href='#464806'><time timestamp='2016-04-23T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+sipa, &quot;Otherwise, going from WITNESS-&gt;P2SH+WITNESS would be possible, which is not a softfork.&quot; I don&#x27;t grok this. Could you briefly explain it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461443400' id='464807'>
+<a class='timestamp' href='#464807'><time timestamp='2016-04-23T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+btcdrak: looks like none of the GBT stuff does, due to GitHub migration
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461443460' id='464808'>
+<a class='timestamp' href='#464808'><time timestamp='2016-04-23T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+<a href="https://help.github.com/articles/supported-mediawiki-formats/#unsupported-mediawiki-syntaxes" class="link" target="_blank">https://help.github.com/articles/supported-mediawiki-formats/#unsupported-mediawiki-syntaxes</a> :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461443580' id='464809'>
+<a class='timestamp' href='#464809'><time timestamp='2016-04-23T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+btcdrak: fixed by avoiding the templates
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445440' id='464810'>
+<a class='timestamp' href='#464810'><time timestamp='2016-04-23T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+instagibbs: say you have a normal P2SH (not witness) output being spent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445500' id='464811'>
+<a class='timestamp' href='#464811'><time timestamp='2016-04-23T21:05:00Z'>21:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445560' id='464812'>
+<a class='timestamp' href='#464812'><time timestamp='2016-04-23T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+instagibbs: say you have an invalid witness-in-p2sh spending
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445620' id='464813'>
+<a class='timestamp' href='#464813'><time timestamp='2016-04-23T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+with just witness enabled, that&#x27;s valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445620' id='464814'>
+<a class='timestamp' href='#464814'><time timestamp='2016-04-23T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+wait what, is it invalid or invalid?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445620' id='464815'>
+<a class='timestamp' href='#464815'><time timestamp='2016-04-23T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+err valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445740' id='464816'>
+<a class='timestamp' href='#464816'><time timestamp='2016-04-23T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+say you have a p2sh output, and a corresponding input to spend it, which provides redeemscript which is a witness script, and then witness program that corresponds to it, but is invalid (say it&#x27;s  wrong signature)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445740' id='464817'>
+<a class='timestamp' href='#464817'><time timestamp='2016-04-23T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+why would enabling witness make that valid?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445800' id='464818'>
+<a class='timestamp' href='#464818'><time timestamp='2016-04-23T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+wrong signatures should always be wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445800' id='464819'>
+<a class='timestamp' href='#464819'><time timestamp='2016-04-23T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you evaluate that with WITNESS, it is valid, because it&#x27;s a p2sh outout, which is an anyone can spend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445860' id='464820'>
+<a class='timestamp' href='#464820'><time timestamp='2016-04-23T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you evaluate with WITNESS+P2SH, the P2SH evaluation happens, which triggers the witness logic, which is invalid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445860' id='464821'>
+<a class='timestamp' href='#464821'><time timestamp='2016-04-23T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+eh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445860' id='464822'>
+<a class='timestamp' href='#464822'><time timestamp='2016-04-23T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s all true, but not the reason why it&#x27;s not a softfork
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461445920' id='464823'>
+<a class='timestamp' href='#464823'><time timestamp='2016-04-23T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+oops just checked context. didn&#x27;t see the question re: the comment. nevermind.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446100' id='464824'>
+<a class='timestamp' href='#464824'><time timestamp='2016-04-23T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+&quot;say you have a p2sh output&quot; are you saying this is a p2wsh or something similar
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446160' id='464825'>
+<a class='timestamp' href='#464825'><time timestamp='2016-04-23T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+or just a plain p2sh like today
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446220' id='464826'>
+<a class='timestamp' href='#464826'><time timestamp='2016-04-23T21:17:00Z'>21:17</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+oh i see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446280' id='464827'>
+<a class='timestamp' href='#464827'><time timestamp='2016-04-23T21:18:00Z'>21:18</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I&#x27;m not quite getting the comment then, although I agree with what you&#x27;re saying here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446400' id='464828'>
+<a class='timestamp' href='#464828'><time timestamp='2016-04-23T21:20:00Z'>21:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+let me think again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446400' id='464829'>
+<a class='timestamp' href='#464829'><time timestamp='2016-04-23T21:20:00Z'>21:20</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+it sounds like you&#x27;re saying SOFTFORK1 this is valid, then adding SOFTFORK2 it&#x27;s now invalid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446400' id='464830'>
+<a class='timestamp' href='#464830'><time timestamp='2016-04-23T21:20:00Z'>21:20</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+which is def of softfork?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446460' id='464831'>
+<a class='timestamp' href='#464831'><time timestamp='2016-04-23T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is a similar rule for cleanstack, and that one i can explain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446460' id='464832'>
+<a class='timestamp' href='#464832'><time timestamp='2016-04-23T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, the problem is that when validation with  flags1 fails, but with flags1+flags2 succeeds, then it is not a aoftfork
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446460' id='464833'>
+<a class='timestamp' href='#464833'><time timestamp='2016-04-23T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and all flags should be softforks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446580' id='464834'>
+<a class='timestamp' href='#464834'><time timestamp='2016-04-23T21:23:00Z'>21:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+mempool validations relies on that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446640' id='464835'>
+<a class='timestamp' href='#464835'><time timestamp='2016-04-23T21:24:00Z'>21:24</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I&#x27;m clearly missing something important here.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446640' id='464836'>
+<a class='timestamp' href='#464836'><time timestamp='2016-04-23T21:24:00Z'>21:24</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+probably what the flag semantics are or something
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446820' id='464837'>
+<a class='timestamp' href='#464837'><time timestamp='2016-04-23T21:27:00Z'>21:27</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+oh... it&#x27;s just talking about the actual implementation and program flow...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446880' id='464838'>
+<a class='timestamp' href='#464838'><time timestamp='2016-04-23T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-9'> * instagibbs</span>&gt;
+smacks forehead 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446880' id='464839'>
+<a class='timestamp' href='#464839'><time timestamp='2016-04-23T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ so, for ok, for WWITNESS and CLEANSTACK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446880' id='464840'>
+<a class='timestamp' href='#464840'><time timestamp='2016-04-23T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+any witness spend would fail CLEANSTACK validation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446880' id='464841'>
+<a class='timestamp' href='#464841'><time timestamp='2016-04-23T21:28:00Z'>21:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because it is just pushes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446940' id='464842'>
+<a class='timestamp' href='#464842'><time timestamp='2016-04-23T21:29:00Z'>21:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so it clearly does not satisfy CLEANSTACK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446940' id='464843'>
+<a class='timestamp' href='#464843'><time timestamp='2016-04-23T21:29:00Z'>21:29</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I misunderstood the comment, as I thought
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461446940' id='464844'>
+<a class='timestamp' href='#464844'><time timestamp='2016-04-23T21:29:00Z'>21:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+unless when WITNESS is enabled, then we ignore the CLEANSTACK rule
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447000' id='464845'>
+<a class='timestamp' href='#464845'><time timestamp='2016-04-23T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+thus, a change in flags from CLEANSTACK to CLEANSTACK+WITNESS is not a softfork
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447000' id='464846'>
+<a class='timestamp' href='#464846'><time timestamp='2016-04-23T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I read it as &quot;BIP141 by itself is somehow a hardfork&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447000' id='464847'>
+<a class='timestamp' href='#464847'><time timestamp='2016-04-23T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447000' id='464848'>
+<a class='timestamp' href='#464848'><time timestamp='2016-04-23T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+totally get it now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447000' id='464849'>
+<a class='timestamp' href='#464849'><time timestamp='2016-04-23T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we just make CLEANSTACK without WITNESS invalid, so such a change can never occur
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447000' id='464850'>
+<a class='timestamp' href='#464850'><time timestamp='2016-04-23T21:30:00Z'>21:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447060' id='464851'>
+<a class='timestamp' href='#464851'><time timestamp='2016-04-23T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: does BIP68+112+113 have a VB name?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447060' id='464852'>
+<a class='timestamp' href='#464852'><time timestamp='2016-04-23T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: csv
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447060' id='464853'>
+<a class='timestamp' href='#464853'><time timestamp='2016-04-23T21:31:00Z'>21:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+k
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447180' id='464854'>
+<a class='timestamp' href='#464854'><time timestamp='2016-04-23T21:33:00Z'>21:33</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+thanks for the explanation!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447180' id='464855'>
+<a class='timestamp' href='#464855'><time timestamp='2016-04-23T21:33:00Z'>21:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: am I correct in understanding that the block time itself is entirely unrelated to the meaning of bits?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447660' id='464856'>
+<a class='timestamp' href='#464856'><time timestamp='2016-04-23T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: the rules that apply to a block are purely a function of its ancestor block header
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447660' id='464857'>
+<a class='timestamp' href='#464857'><time timestamp='2016-04-23T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not of its own timestamp or version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461447840' id='464858'>
+<a class='timestamp' href='#464858'><time timestamp='2016-04-23T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+k
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448260' id='464859'>
+<a class='timestamp' href='#464859'><time timestamp='2016-04-23T21:51:00Z'>21:51</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wtf does this GCC thing mean: <a href="http://codepad.org/BfJgyPwQ" class="link" target="_blank">http://codepad.org/BfJgyPwQ</a> :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448440' id='464860'>
+<a class='timestamp' href='#464860'><time timestamp='2016-04-23T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: it&#x27;s pointing out that you should use MAX_VERSION_BITS_DEPLOYMENTS instead of MAX_VERSION_BITS_DEPLOYMENTS.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448440' id='464861'>
+<a class='timestamp' href='#464861'><time timestamp='2016-04-23T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+am I blind or something? those look the same to me :|
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448500' id='464862'>
+<a class='timestamp' href='#464862'><time timestamp='2016-04-23T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+different namespace?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448500' id='464863'>
+<a class='timestamp' href='#464863'><time timestamp='2016-04-23T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+aha that could be it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448500' id='464864'>
+<a class='timestamp' href='#464864'><time timestamp='2016-04-23T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+yup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461448500' id='464865'>
+<a class='timestamp' href='#464865'><time timestamp='2016-04-23T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449400' id='464866'>
+<a class='timestamp' href='#464866'><time timestamp='2016-04-23T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+luke-jr, why not version GBT separately from the block version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449400' id='464867'>
+<a class='timestamp' href='#464867'><time timestamp='2016-04-23T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: it doesn&#x27;t make sense to do so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449520' id='464868'>
+<a class='timestamp' href='#464868'><time timestamp='2016-04-23T22:12:00Z'>22:12</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+most of the time soft forks don’t require mining software changes though, so it would be a good way to signal that mining software needs to be upgraded
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449580' id='464869'>
+<a class='timestamp' href='#464869'><time timestamp='2016-04-23T22:13:00Z'>22:13</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+and in general mining software has no reason to care about the rules being enforced on the network since it assumes the template is valid anyways
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449580' id='464870'>
+<a class='timestamp' href='#464870'><time timestamp='2016-04-23T22:13:00Z'>22:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: well, previously, GBT had the version/force mutation for that, but nobody ever considered it worth using
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449640' id='464871'>
+<a class='timestamp' href='#464871'><time timestamp='2016-04-23T22:14:00Z'>22:14</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+luke-jr, so the mining software could actually enforce soft fork rules different from bitcoind?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449640' id='464872'>
+<a class='timestamp' href='#464872'><time timestamp='2016-04-23T22:14:00Z'>22:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the new BIP 9 stuff doesn&#x27;t really break that either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449640' id='464873'>
+<a class='timestamp' href='#464873'><time timestamp='2016-04-23T22:14:00Z'>22:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449640' id='464874'>
+<a class='timestamp' href='#464874'><time timestamp='2016-04-23T22:14:00Z'>22:14</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+what is the purpose of version/force mutation?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449700' id='464875'>
+<a class='timestamp' href='#464875'><time timestamp='2016-04-23T22:15:00Z'>22:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: tells clients to use the provided version despite their ignorance of its meaning
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449700' id='464876'>
+<a class='timestamp' href='#464876'><time timestamp='2016-04-23T22:15:00Z'>22:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so the server could look at what the client supports (in the GBT request), and decide it was close enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449700' id='464877'>
+<a class='timestamp' href='#464877'><time timestamp='2016-04-23T22:15:00Z'>22:15</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+oh, is that for GBT pooled mining?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461449820' id='464878'>
+<a class='timestamp' href='#464878'><time timestamp='2016-04-23T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+mutations are defined in BIP 23, yes, but GBT itself has no distinction between pools and bitcoind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450180' id='464879'>
+<a class='timestamp' href='#464879'><time timestamp='2016-04-23T22:23:00Z'>22:23</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+luke-jr, so that would allow say embedded GBT clients to mine on a pool without support for segwit or only soft forks that have no GBT format changes like CSV?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450240' id='464880'>
+<a class='timestamp' href='#464880'><time timestamp='2016-04-23T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Lightsword: the choice that miner clients have is choosing to vote for a deployment or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450240' id='464881'>
+<a class='timestamp' href='#464881'><time timestamp='2016-04-23T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not about rules that are actually enforced
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450240' id='464882'>
+<a class='timestamp' href='#464882'><time timestamp='2016-04-23T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: there is no way to support segwit in GBT clients unless the GBT client is aware of the segwit changes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450240' id='464883'>
+<a class='timestamp' href='#464883'><time timestamp='2016-04-23T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+those are set by the full node/server that has to accept them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450420' id='464884'>
+<a class='timestamp' href='#464884'><time timestamp='2016-04-23T22:27:00Z'>22:27</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+so the miners connecting to the pool would be able to modify their block version number to whatever they want?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450420' id='464885'>
+<a class='timestamp' href='#464885'><time timestamp='2016-04-23T22:27:00Z'>22:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if the server supports it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450600' id='464886'>
+<a class='timestamp' href='#464886'><time timestamp='2016-04-23T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: see <a href="https://github.com/bitcoin/bips/pull/365" class="link" target="_blank">https://github.com/bitcoin/bips/pull/365</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450600' id='464887'>
+<a class='timestamp' href='#464887'><time timestamp='2016-04-23T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+ok, well from a practical point of view why wouldn’t it make sense for GBT to be versioned separately from the block version so that mining clients can easially determine if they have to upgrade or if they can just use the provided block version as is?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450660' id='464888'>
+<a class='timestamp' href='#464888'><time timestamp='2016-04-23T22:31:00Z'>22:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: because that&#x27;s not a simple boolean question, and provides no benefits over how GBT presently supports it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450660' id='464889'>
+<a class='timestamp' href='#464889'><time timestamp='2016-04-23T22:31:00Z'>22:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the CSV deployment <b>*could*</b> have used version/force for old GBT clients, but it did not.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450780' id='464890'>
+<a class='timestamp' href='#464890'><time timestamp='2016-04-23T22:33:00Z'>22:33</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+I’m confused on what the purpose of the “name” field is, if miners have to be updated to recognize it why can’t they just decode the provided block version number and infer it themselves?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450840' id='464891'>
+<a class='timestamp' href='#464891'><time timestamp='2016-04-23T22:34:00Z'>22:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the block version number indicates the pending proposals, not the ones in effect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461450900' id='464892'>
+<a class='timestamp' href='#464892'><time timestamp='2016-04-23T22:35:00Z'>22:35</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+why would the mining software need to care about that specifically as opposed to just caring about whether it broke compatibility?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451080' id='464893'>
+<a class='timestamp' href='#464893'><time timestamp='2016-04-23T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: compatibility is only guaranteed with the known rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451140' id='464894'>
+<a class='timestamp' href='#464894'><time timestamp='2016-04-23T22:39:00Z'>22:39</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+luke-jr, but most soft fork rules are enforced by bitcoind by just not including transactions in the template, so in thsoe cases the GBT version would not need to be changed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451260' id='464895'>
+<a class='timestamp' href='#464895'><time timestamp='2016-04-23T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+am I missing something here? I don’t see why the GBT client would need to care about those types of rule changes since they are enforced by bitcoind simply excluding invalid transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451380' id='464896'>
+<a class='timestamp' href='#464896'><time timestamp='2016-04-23T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: eg, when the transactions and generation tx come from different servers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451680' id='464897'>
+<a class='timestamp' href='#464897'><time timestamp='2016-04-23T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+luke-jr, wouldn’t both of those be versioned? are you talking about a GBT client mining off of two different GBT sources at once?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451680' id='464898'>
+<a class='timestamp' href='#464898'><time timestamp='2016-04-23T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451740' id='464899'>
+<a class='timestamp' href='#464899'><time timestamp='2016-04-23T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+so wouldn’t the client be able to recognize that the GBT version from the transactions server and generation tx server are different?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451800' id='464900'>
+<a class='timestamp' href='#464900'><time timestamp='2016-04-23T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+…
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451800' id='464901'>
+<a class='timestamp' href='#464901'><time timestamp='2016-04-23T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+you&#x27;re suggesting they be the same
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461451980' id='464902'>
+<a class='timestamp' href='#464902'><time timestamp='2016-04-23T22:53:00Z'>22:53</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+luke-jr, have previous soft forks restricted generation transaction validity?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452040' id='464903'>
+<a class='timestamp' href='#464903'><time timestamp='2016-04-23T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Lightsword: by definition, all of them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452040' id='464904'>
+<a class='timestamp' href='#464904'><time timestamp='2016-04-23T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, generation transaction, sorry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452040' id='464905'>
+<a class='timestamp' href='#464905'><time timestamp='2016-04-23T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bip30 and bip34
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452040' id='464906'>
+<a class='timestamp' href='#464906'><time timestamp='2016-04-23T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452100' id='464907'>
+<a class='timestamp' href='#464907'><time timestamp='2016-04-23T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and bip141
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452100' id='464908'>
+<a class='timestamp' href='#464908'><time timestamp='2016-04-23T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+ok, but some don’t as well right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452160' id='464909'>
+<a class='timestamp' href='#464909'><time timestamp='2016-04-23T22:56:00Z'>22:56</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+like CSV and BIP66?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452220' id='464910'>
+<a class='timestamp' href='#464910'><time timestamp='2016-04-23T22:57:00Z'>22:57</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: GBT code exists which will merge transaction sets from multiple servers as well, if we want to get pedantic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452340' id='464911'>
+<a class='timestamp' href='#464911'><time timestamp='2016-04-23T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+basically what I’m thinking is that we should have a GBT version indicator that should change to signal to the miner that additional rules need to be enforced, but only for rules that aren’t simply enforced by the excluding the transaction from the template
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452400' id='464912'>
+<a class='timestamp' href='#464912'><time timestamp='2016-04-23T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+since the mining client doesn’t really need to care about a rule that is enforced simply by exclusion of a transaction
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452400' id='464913'>
+<a class='timestamp' href='#464913'><time timestamp='2016-04-23T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it might
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452520' id='464914'>
+<a class='timestamp' href='#464914'><time timestamp='2016-04-23T23:02:00Z'>23:02</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+in what sort of situation would that be?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452520' id='464915'>
+<a class='timestamp' href='#464915'><time timestamp='2016-04-23T23:02:00Z'>23:02</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+[22:57:03] &lt;luke-jr&gt; Lightsword: GBT code exists which will merge transaction sets from multiple servers as well, if we want to get pedantic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452580' id='464916'>
+<a class='timestamp' href='#464916'><time timestamp='2016-04-23T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+does anybody actually do that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452580' id='464917'>
+<a class='timestamp' href='#464917'><time timestamp='2016-04-23T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+dunno, doubt it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452640' id='464918'>
+<a class='timestamp' href='#464918'><time timestamp='2016-04-23T23:04:00Z'>23:04</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+I mean, merging transactions means you have to support a lot of consensus logic within the mining software itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452640' id='464919'>
+<a class='timestamp' href='#464919'><time timestamp='2016-04-23T23:04:00Z'>23:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+not much
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452700' id='464920'>
+<a class='timestamp' href='#464920'><time timestamp='2016-04-23T23:05:00Z'>23:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it also means you probably want a GBT that reports the entire mempool (or part of it), instead of something already tailored for a single block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452820' id='464921'>
+<a class='timestamp' href='#464921'><time timestamp='2016-04-23T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+perhaps a &quot;rules/force&quot; mutation would make sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452820' id='464922'>
+<a class='timestamp' href='#464922'><time timestamp='2016-04-23T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+then the server can evaluate if the client&#x27;s supported rules are sufficient and override that check
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452820' id='464923'>
+<a class='timestamp' href='#464923'><time timestamp='2016-04-23T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+since most mining software wouldn’t have the neccesary consensus logic to actually handle merging to begin with I would say it would be best to ignore that case for having a GBT version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452880' id='464924'>
+<a class='timestamp' href='#464924'><time timestamp='2016-04-23T23:08:00Z'>23:08</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+basically the issue right now is we don’t have a way to signal when mining software needs to upgrade or even likely needs to upgrade, at least for the most recent soft forks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461452940' id='464925'>
+<a class='timestamp' href='#464925'><time timestamp='2016-04-23T23:09:00Z'>23:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+&quot;version&quot; did that pre-BIP9, and &quot;rules&quot; does it with BIP 9
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453060' id='464926'>
+<a class='timestamp' href='#464926'><time timestamp='2016-04-23T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+if the signaling method gets false positives on telling the mining software that it needs to upgrade then people will ignore those rules, the problem with using rules the way you have it right now is that fairly often the miner doesn’t actually care about the rules since it’s simply enforced by exclusion of transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453120' id='464927'>
+<a class='timestamp' href='#464927'><time timestamp='2016-04-23T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+IMO we need a way to signal to the miner that they need to enforce a rule that is not simply enforced by transaction exclusion otherwise miners will outright ignore rules all together
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453120' id='464928'>
+<a class='timestamp' href='#464928'><time timestamp='2016-04-23T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+at their own risk
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453240' id='464929'>
+<a class='timestamp' href='#464929'><time timestamp='2016-04-23T23:14:00Z'>23:14</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+well if we have a soft fork that we know is enforced by transaction exclusion we should have a way to tell the mining client that they are ok as long as they are only including the transaction provided in the template
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453240' id='464930'>
+<a class='timestamp' href='#464930'><time timestamp='2016-04-23T23:14:00Z'>23:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ok, that&#x27;d be a &quot;rules/force&quot; mutation..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453300' id='464931'>
+<a class='timestamp' href='#464931'><time timestamp='2016-04-23T23:15:00Z'>23:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: ext filesystems have an extension mechanism that lists the enabled extensions in an FS in 3 classes 1) if you don&#x27;t know about this, you&#x27;re fine 2) if you don&#x27;t know about this, you can only mount ro 3) if you don&#x27;t know this, you can&#x27;t mount
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453300' id='464932'>
+<a class='timestamp' href='#464932'><time timestamp='2016-04-23T23:15:00Z'>23:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: perhaps the active rules can use a similar classification
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453360' id='464933'>
+<a class='timestamp' href='#464933'><time timestamp='2016-04-23T23:16:00Z'>23:16</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+I’m confused on how mutable actually works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453360' id='464934'>
+<a class='timestamp' href='#464934'><time timestamp='2016-04-23T23:16:00Z'>23:16</time></a>
+&lt;<span class='nick nick-4'> * sipa</span>&gt;
+doubts anyone uses mutable at all in GBT
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453420' id='464935'>
+<a class='timestamp' href='#464935'><time timestamp='2016-04-23T23:17:00Z'>23:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+server-side, mutable is typically static in practice, but the server could evaluate the client&#x27;s capabilities and set a rules/force to tell them they&#x27;re okay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464936'>
+<a class='timestamp' href='#464936'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think you&#x27;re overdesigning it, trying to cater to every possible use, without any real world demand
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464937'>
+<a class='timestamp' href='#464937'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+client-side, it tells the client what they&#x27;re allowed to do with the template
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464938'>
+<a class='timestamp' href='#464938'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: yes, GBT is overdesigned and should be thrown out, but first we&#x27;d need a new protocol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464939'>
+<a class='timestamp' href='#464939'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+well in practical sense bitcoind is the server and the stratum server is the client
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464940'>
+<a class='timestamp' href='#464940'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: you&#x27;re only thinking about your one use case.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464941'>
+<a class='timestamp' href='#464941'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+the use case that basically the entire network runs on though :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453480' id='464942'>
+<a class='timestamp' href='#464942'><time timestamp='2016-04-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the only one that matters
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453540' id='464943'>
+<a class='timestamp' href='#464943'><time timestamp='2016-04-23T23:19:00Z'>23:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+…
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453540' id='464944'>
+<a class='timestamp' href='#464944'><time timestamp='2016-04-23T23:19:00Z'>23:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+except the miners who don&#x27;t.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453540' id='464945'>
+<a class='timestamp' href='#464945'><time timestamp='2016-04-23T23:19:00Z'>23:19</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+which is almost certainly well below 1% of the network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453600' id='464946'>
+<a class='timestamp' href='#464946'><time timestamp='2016-04-23T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+hell, even eligius doesn’t allow GBT mining :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453600' id='464947'>
+<a class='timestamp' href='#464947'><time timestamp='2016-04-23T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so let&#x27;s favour the centralised miners abusing their position, at the expense of the 1% who actually care to solo mine?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453600' id='464948'>
+<a class='timestamp' href='#464948'><time timestamp='2016-04-23T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: yes it does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453600' id='464949'>
+<a class='timestamp' href='#464949'><time timestamp='2016-04-23T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+it just redirects to stratum last I checked
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453600' id='464950'>
+<a class='timestamp' href='#464950'><time timestamp='2016-04-23T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+you can disable the redirection
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453600' id='464951'>
+<a class='timestamp' href='#464951'><time timestamp='2016-04-23T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+does anybody actually do that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453660' id='464952'>
+<a class='timestamp' href='#464952'><time timestamp='2016-04-23T23:21:00Z'>23:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+no idea, ask wizkid057
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453660' id='464953'>
+<a class='timestamp' href='#464953'><time timestamp='2016-04-23T23:21:00Z'>23:21</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+ok, well IMO it’s better to design a signaling method that’s actually going to be useful in practice rather than just getting ignored like it is right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453720' id='464954'>
+<a class='timestamp' href='#464954'><time timestamp='2016-04-23T23:22:00Z'>23:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+anyone know what testnet blocks made csv change states?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453720' id='464955'>
+<a class='timestamp' href='#464955'><time timestamp='2016-04-23T23:22:00Z'>23:22</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+huh? i didn’t know it changed status
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453780' id='464956'>
+<a class='timestamp' href='#464956'><time timestamp='2016-04-23T23:23:00Z'>23:23</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+Much of that ignored stance comes from the undeserved reputational damage that luke&#x27;s suffered over the years, and the deliberate work that&#x27;s gone <b>*specifically*</b> into being contrarian.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453780' id='464957'>
+<a class='timestamp' href='#464957'><time timestamp='2016-04-23T23:23:00Z'>23:23</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+like, re-written and re-designed <b>*as a specific and incompatible alternative*</b> to things like GBT.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453840' id='464958'>
+<a class='timestamp' href='#464958'><time timestamp='2016-04-23T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: splitting the rules list up like sipa suggested sounds like a possible approach, but would require approximately the same code to implement as rules/force would
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453840' id='464959'>
+<a class='timestamp' href='#464959'><time timestamp='2016-04-23T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not sure what you mean by rules/force
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453840' id='464960'>
+<a class='timestamp' href='#464960'><time timestamp='2016-04-23T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: server evaluates the client&#x27;s supported rules, and tells it that it can safely ignore the rules it doesn&#x27;t know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453840' id='464961'>
+<a class='timestamp' href='#464961'><time timestamp='2016-04-23T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+midnightmagic, to be fair GBT is pretty much impractical for pooled mining
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453900' id='464962'>
+<a class='timestamp' href='#464962'><time timestamp='2016-04-23T23:25:00Z'>23:25</time></a>
+&lt;<span class='nick nick-4'> * midnightmagic</span>&gt;
+shrugs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453900' id='464963'>
+<a class='timestamp' href='#464963'><time timestamp='2016-04-23T23:25:00Z'>23:25</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+And instead of making GBT better or including it in a superset, people did other things.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453960' id='464964'>
+<a class='timestamp' href='#464964'><time timestamp='2016-04-23T23:26:00Z'>23:26</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+luke-jr, i&#x27;m some large % of testnet and running 73fc922ed64333d45f18d8a448f30cfa2ae0281e
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453960' id='464965'>
+<a class='timestamp' href='#464965'><time timestamp='2016-04-23T23:26:00Z'>23:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+midnightmagic: meh, GBT is fundamentally incompatible with sidechains, so it needs to be replaced anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453960' id='464966'>
+<a class='timestamp' href='#464966'><time timestamp='2016-04-23T23:26:00Z'>23:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+phantomcircuit: ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453960' id='464967'>
+<a class='timestamp' href='#464967'><time timestamp='2016-04-23T23:26:00Z'>23:26</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+midnightmagic, well that’s what happens when something doesn’t fit people’s needs and redesigning it is easier than trying to fix it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461453960' id='464968'>
+<a class='timestamp' href='#464968'><time timestamp='2016-04-23T23:26:00Z'>23:26</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+you asked about testnet and csv; i did not answer your question but did provide additional information
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454020' id='464969'>
+<a class='timestamp' href='#464969'><time timestamp='2016-04-23T23:27:00Z'>23:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+phantomcircuit: I don&#x27;t see an answer to my question &gt;_
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454020' id='464970'>
+<a class='timestamp' href='#464970'><time timestamp='2016-04-23T23:27:00Z'>23:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+&gt;_&lt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454020' id='464971'>
+<a class='timestamp' href='#464971'><time timestamp='2016-04-23T23:27:00Z'>23:27</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+luke-jr, i&#x27;m so helpful right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454020' id='464972'>
+<a class='timestamp' href='#464972'><time timestamp='2016-04-23T23:27:00Z'>23:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Lightsword: consider what you&#x27;re saying, that it&#x27;s impratical to send the miner the block they&#x27;re working on, once per block?  This should be setting off red alarm bells for you.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454080' id='464973'>
+<a class='timestamp' href='#464973'><time timestamp='2016-04-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, i think you need more specific nouns
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454080' id='464974'>
+<a class='timestamp' href='#464974'><time timestamp='2016-04-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+gmaxwell, when a “miner” is a server farm with 10k miners all directly connected to a pool…it’s going to be a problem in most cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454080' id='464975'>
+<a class='timestamp' href='#464975'><time timestamp='2016-04-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+(actually i think this entire conversation needs more specific nouns)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454080' id='464976'>
+<a class='timestamp' href='#464976'><time timestamp='2016-04-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+even if the block size is 50k
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454200' id='464977'>
+<a class='timestamp' href='#464977'><time timestamp='2016-04-23T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+it’s really a matter of what can send out the block update faster, miners aren’t likely to give up profit margin unless they have a really good reason to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454200' id='464978'>
+<a class='timestamp' href='#464978'><time timestamp='2016-04-23T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Lightsword: GBT isn&#x27;t a protocol for dispatching to random hardware. But at the same time having 50k tcp connections from devices at one site to a pool makes no sense either.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454200' id='464979'>
+<a class='timestamp' href='#464979'><time timestamp='2016-04-23T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, (switching topics) i&#x27;m finding the afl hang detection to be pretty annoying, it refuses to start a new run if a test case is even 1ms above the hang threshold... which means moving tests between a server and my laptop results in having to purge a bunch of tests (the server being much faster than my laptop)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454200' id='464980'>
+<a class='timestamp' href='#464980'><time timestamp='2016-04-23T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+any suggestion?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454260' id='464981'>
+<a class='timestamp' href='#464981'><time timestamp='2016-04-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+phantomcircuit: up your threshold on the laptop.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454260' id='464982'>
+<a class='timestamp' href='#464982'><time timestamp='2016-04-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+gmaxwell, well that’s the reason stratum happened, because it was desgined for dispatching to random hardware more or less :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454260' id='464983'>
+<a class='timestamp' href='#464983'><time timestamp='2016-04-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+No, it&#x27;s a crappy protocol for that too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454260' id='464984'>
+<a class='timestamp' href='#464984'><time timestamp='2016-04-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, it would be nice if it counted instructions instead but i assume that would be both harder and more expensive?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454320' id='464985'>
+<a class='timestamp' href='#464985'><time timestamp='2016-04-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+i thought x86 systems had performance counters that could efficiently do that though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454320' id='464986'>
+<a class='timestamp' href='#464986'><time timestamp='2016-04-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+phantomcircuit: rdtsc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454320' id='464987'>
+<a class='timestamp' href='#464987'><time timestamp='2016-04-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+gmaxwell, sure but it was better than GBT for that and there wasn’t an alternative people could choose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454320' id='464988'>
+<a class='timestamp' href='#464988'><time timestamp='2016-04-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+doesn&#x27;t count instructions, just clock cycles
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454320' id='464989'>
+<a class='timestamp' href='#464989'><time timestamp='2016-04-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-7'> bitcoinfr</span>&gt;
+.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454320' id='464990'>
+<a class='timestamp' href='#464990'><time timestamp='2016-04-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, that seems better actually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454380' id='464991'>
+<a class='timestamp' href='#464991'><time timestamp='2016-04-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+Lightsword: they explicitly ignored most of the feedback about their new design, and in at least one case, it was done in a <b>*trivially exploitable way.*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454380' id='464992'>
+<a class='timestamp' href='#464992'><time timestamp='2016-04-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and made no effort to collaborate with others already working on GBT
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454380' id='464993'>
+<a class='timestamp' href='#464993'><time timestamp='2016-04-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+but that&#x27;s history, and irrelevant to what we do in BIP 9
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454380' id='464994'>
+<a class='timestamp' href='#464994'><time timestamp='2016-04-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+which is something that needs to get wrapped up sooner rather than later so solo mining is practical again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454380' id='464995'>
+<a class='timestamp' href='#464995'><time timestamp='2016-04-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Lightsword: You&#x27;re suffering history rewrite in terms of the current state of the world, back when these protocols were created the world was very different than now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454560' id='464996'>
+<a class='timestamp' href='#464996'><time timestamp='2016-04-23T23:36:00Z'>23:36</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+was there much effort on either side to collaborate? at the time I thought luke was just arguing something along the lines of you shouldn’t use stratum you should use GBT instead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454740' id='464997'>
+<a class='timestamp' href='#464997'><time timestamp='2016-04-23T23:39:00Z'>23:39</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Lightsword: GBT was developed and revised over the course of a year or two, before stratum was even mentioned publicly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461454740' id='464998'>
+<a class='timestamp' href='#464998'><time timestamp='2016-04-23T23:39:00Z'>23:39</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+developed openly, with collaboration from multiple people
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461455580' id='464999'>
+<a class='timestamp' href='#464999'><time timestamp='2016-04-23T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+yes, lots of attempts at collaboration and unification.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1461455880' id='465000'>
+<a class='timestamp' href='#465000'><time timestamp='2016-04-23T23:58:00Z'>23:58</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+why does BOOST_FOREACH not work on UniValues? :&lt;
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

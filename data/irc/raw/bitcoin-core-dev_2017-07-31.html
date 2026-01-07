@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-07-31
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-07-31' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-06-30">&lt;</a><span class='header'>    July 2017     </span><a href="/bitcoin-core-dev/2017-08-31">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                   <a class="" href="/bitcoin-core-dev/2017-07-01">1</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-07-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-07-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-07-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-07-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-07-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-07-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-07-08">8</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-07-09">9</a> <a class="" href="/bitcoin-core-dev/2017-07-10">10</a> <a class="" href="/bitcoin-core-dev/2017-07-11">11</a> <a class="" href="/bitcoin-core-dev/2017-07-12">12</a> <a class="" href="/bitcoin-core-dev/2017-07-13">13</a> <a class="" href="/bitcoin-core-dev/2017-07-14">14</a> <a class="" href="/bitcoin-core-dev/2017-07-15">15</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-07-16">16</a> <a class="" href="/bitcoin-core-dev/2017-07-17">17</a> <a class="" href="/bitcoin-core-dev/2017-07-18">18</a> <a class="" href="/bitcoin-core-dev/2017-07-19">19</a> <a class="" href="/bitcoin-core-dev/2017-07-20">20</a> <a class="" href="/bitcoin-core-dev/2017-07-21">21</a> <a class="" href="/bitcoin-core-dev/2017-07-22">22</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-07-23">23</a> <a class="" href="/bitcoin-core-dev/2017-07-24">24</a> <a class="" href="/bitcoin-core-dev/2017-07-25">25</a> <a class="" href="/bitcoin-core-dev/2017-07-26">26</a> <a class="" href="/bitcoin-core-dev/2017-07-27">27</a> <a class="" href="/bitcoin-core-dev/2017-07-28">28</a> <a class="" href="/bitcoin-core-dev/2017-07-29">29</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-07-30">30</a> <a class="current" href="/bitcoin-core-dev/2017-07-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1501477260' id='561333'>
+<a class='timestamp' href='#561333'><time timestamp='2017-07-31T05:01:00Z'>05:01</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+if Bitcoin core is written in C++, why not support any kind of native interface directly (numbers as represented in memory going over tcp sockets as an RPC opposed to the serialised JSON RPC) ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477320' id='561334'>
+<a class='timestamp' href='#561334'><time timestamp='2017-07-31T05:02:00Z'>05:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+because either it exposes internal datastructures which are unstable and change from version to version to outside applications;  or it has to specify yet another encoding. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477380' id='561335'>
+<a class='timestamp' href='#561335'><time timestamp='2017-07-31T05:03:00Z'>05:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and we do already have a binary encoding for most thigns: use the p2p protocol.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477440' id='561336'>
+<a class='timestamp' href='#561336'><time timestamp='2017-07-31T05:04:00Z'>05:04</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+I mean&#x27;t like json but in a C struct
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477440' id='561337'>
+<a class='timestamp' href='#561337'><time timestamp='2017-07-31T05:04:00Z'>05:04</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+and not a char* but between applications you would include a .h file containing the structs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477620' id='561338'>
+<a class='timestamp' href='#561338'><time timestamp='2017-07-31T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+structs don&#x27;t have a well-defined serialization to bytes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477620' id='561339'>
+<a class='timestamp' href='#561339'><time timestamp='2017-07-31T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+on the same architecture they do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477620' id='561340'>
+<a class='timestamp' href='#561340'><time timestamp='2017-07-31T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+different architectures store them differently in memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477620' id='561341'>
+<a class='timestamp' href='#561341'><time timestamp='2017-07-31T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just a different compilation option may change them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477620' id='561342'>
+<a class='timestamp' href='#561342'><time timestamp='2017-07-31T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+yes, but why write bitcoin core in c++, a platform dependent language under many circumstances?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477680' id='561343'>
+<a class='timestamp' href='#561343'><time timestamp='2017-07-31T05:08:00Z'>05:08</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+additionally its often feasible to have multiple AMD64 machines which use the same format for C variables
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477680' id='561344'>
+<a class='timestamp' href='#561344'><time timestamp='2017-07-31T05:08:00Z'>05:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+efficiency, tight control over resource usage, high-level
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477740' id='561345'>
+<a class='timestamp' href='#561345'><time timestamp='2017-07-31T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+JSON is kind of cpu intensive to cast back and forth between native types you know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477740' id='561346'>
+<a class='timestamp' href='#561346'><time timestamp='2017-07-31T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+directly copying 4 bytes of memory is far cheaper
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477740' id='561347'>
+<a class='timestamp' href='#561347'><time timestamp='2017-07-31T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can use REST
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477740' id='561348'>
+<a class='timestamp' href='#561348'><time timestamp='2017-07-31T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+what is REST?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477740' id='561349'>
+<a class='timestamp' href='#561349'><time timestamp='2017-07-31T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+for some data with well-defined serialization, Bitcoin Core has a REST interface
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477740' id='561350'>
+<a class='timestamp' href='#561350'><time timestamp='2017-07-31T05:09:00Z'>05:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can fetch full blocks and transactions directly in binary network format over it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477800' id='561351'>
+<a class='timestamp' href='#561351'><time timestamp='2017-07-31T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+without having to send a bunch of ascii json around?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477800' id='561352'>
+<a class='timestamp' href='#561352'><time timestamp='2017-07-31T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+to avoid the JSON encoding/decoding overhead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477800' id='561353'>
+<a class='timestamp' href='#561353'><time timestamp='2017-07-31T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477800' id='561354'>
+<a class='timestamp' href='#561354'><time timestamp='2017-07-31T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but you still need a serialization/deserialization layer... it&#x27;s not just a struct that gets sent over the network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477800' id='561355'>
+<a class='timestamp' href='#561355'><time timestamp='2017-07-31T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+yes, but I&#x27;m looking for just that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477860' id='561356'>
+<a class='timestamp' href='#561356'><time timestamp='2017-07-31T05:11:00Z'>05:11</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+I assume I have 2 machines of identical architecture and the fastest means of transfering data is in native format
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477860' id='561357'>
+<a class='timestamp' href='#561357'><time timestamp='2017-07-31T05:11:00Z'>05:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/REST-interface.md" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/doc/REST-interface.md</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477860' id='561358'>
+<a class='timestamp' href='#561358'><time timestamp='2017-07-31T05:11:00Z'>05:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is no &#x27;native&#x27; format
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477860' id='561359'>
+<a class='timestamp' href='#561359'><time timestamp='2017-07-31T05:11:00Z'>05:11</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+a C int type is native by my definition
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477920' id='561360'>
+<a class='timestamp' href='#561360'><time timestamp='2017-07-31T05:12:00Z'>05:12</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+will look identical on 2 AMD64 machines
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477920' id='561361'>
+<a class='timestamp' href='#561361'><time timestamp='2017-07-31T05:12:00Z'>05:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what&#x27;s the native representation for a transaction?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477920' id='561362'>
+<a class='timestamp' href='#561362'><time timestamp='2017-07-31T05:12:00Z'>05:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it has a number of nested data structure of variable size
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477920' id='561363'>
+<a class='timestamp' href='#561363'><time timestamp='2017-07-31T05:12:00Z'>05:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+none of the interesting data in bitcoin is just an int or a simple arrays of them.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561364'>
+<a class='timestamp' href='#561364'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and as I said above, we do have a binary seralization of data: the p2p format.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561365'>
+<a class='timestamp' href='#561365'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+if you query for your balance, a float or double could work as a returned native type
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561366'>
+<a class='timestamp' href='#561366'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+all ready for anyone to use.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561367'>
+<a class='timestamp' href='#561367'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh jesus bitcoin amounts aren&#x27;t natively floating point.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561368'>
+<a class='timestamp' href='#561368'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+one should generally not use floating point when dealing with money.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561369'>
+<a class='timestamp' href='#561369'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bryyan: the cost of computing the balance is orders of magnitude larger than running a json deserializers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501477980' id='561370'>
+<a class='timestamp' href='#561370'><time timestamp='2017-07-31T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+you know, floating point has a certain number of digits of accuracy, just don&#x27;t go too far
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478040' id='561371'>
+<a class='timestamp' href='#561371'><time timestamp='2017-07-31T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+I don&#x27;t think we&#x27;re talking about the same thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478040' id='561372'>
+<a class='timestamp' href='#561372'><time timestamp='2017-07-31T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478100' id='561373'>
+<a class='timestamp' href='#561373'><time timestamp='2017-07-31T05:15:00Z'>05:15</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+in a native binary (such as bitcoind) certain instructions are applied to do math with integers and floating point types, the format of those values in memory are the native types
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478160' id='561374'>
+<a class='timestamp' href='#561374'><time timestamp='2017-07-31T05:16:00Z'>05:16</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+pretty printed json is like 64 bytes to represent a 4-byte int
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478160' id='561375'>
+<a class='timestamp' href='#561375'><time timestamp='2017-07-31T05:16:00Z'>05:16</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+very slow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478220' id='561376'>
+<a class='timestamp' href='#561376'><time timestamp='2017-07-31T05:17:00Z'>05:17</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+additional information is transfered over the network when keeping a header file with bitcoind and with the RPC client containing C macros which resolve to short 2-byte sequences for calls, and structs for reciving will take up far less thoroughput
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478280' id='561377'>
+<a class='timestamp' href='#561377'><time timestamp='2017-07-31T05:18:00Z'>05:18</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+and after the word network there should be a comma I meant to put
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478280' id='561378'>
+<a class='timestamp' href='#561378'><time timestamp='2017-07-31T05:18:00Z'>05:18</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+if you&#x27;ve written programs in C you would know what I&#x27;m talking about
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478700' id='561379'>
+<a class='timestamp' href='#561379'><time timestamp='2017-07-31T05:25:00Z'>05:25</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+bryyan: how about create software and find the RPC api as a bottleneck before you look to optimize it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478760' id='561380'>
+<a class='timestamp' href='#561380'><time timestamp='2017-07-31T05:26:00Z'>05:26</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+for one thing, C doesn&#x27;t handle JSON very well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478760' id='561381'>
+<a class='timestamp' href='#561381'><time timestamp='2017-07-31T05:26:00Z'>05:26</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+although thats more of a side problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478880' id='561382'>
+<a class='timestamp' href='#561382'><time timestamp='2017-07-31T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+bryyan, the question you want to be asking yourself right now is
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501478880' id='561383'>
+<a class='timestamp' href='#561383'><time timestamp='2017-07-31T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+BUT WHY
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501479000' id='561384'>
+<a class='timestamp' href='#561384'><time timestamp='2017-07-31T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+largely because I plan to make an operating system, and JSON puts in wayyy to much computational overhead compared to even a native-type conversion service
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501479000' id='561385'>
+<a class='timestamp' href='#561385'><time timestamp='2017-07-31T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+you can convert endianness, format, and signing polarity far quicker then serialising and de-serialising some json
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501479060' id='561386'>
+<a class='timestamp' href='#561386'><time timestamp='2017-07-31T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Go away earlygrey.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501479300' id='561387'>
+<a class='timestamp' href='#561387'><time timestamp='2017-07-31T05:35:00Z'>05:35</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+you could probably process 10s of requests in native format by the time a single JSON request completes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501479300' id='561388'>
+<a class='timestamp' href='#561388'><time timestamp='2017-07-31T05:35:00Z'>05:35</time></a>
+&lt;<span class='nick nick-13'> bryyan</span>&gt;
+maybe even 100s with a well-optimized binary
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501482360' id='561389'>
+<a class='timestamp' href='#561389'><time timestamp='2017-07-31T06:26:00Z'>06:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+bryyan: jansson handles JSON good enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501483920' id='561390'>
+<a class='timestamp' href='#561390'><time timestamp='2017-07-31T06:52:00Z'>06:52</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+luke-jr: did you see he is making an operating system?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501483980' id='561391'>
+<a class='timestamp' href='#561391'><time timestamp='2017-07-31T06:53:00Z'>06:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa opened pull request #10958: Update to latest Bitcoin patches for LevelDB (master...20170731_leveldb) <a href="https://github.com/bitcoin/bitcoin/pull/10958" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10958</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501486380' id='561392'>
+<a class='timestamp' href='#561392'><time timestamp='2017-07-31T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+jnewbery: The issue is that the last commit of #10853 conflicts with other pulls tagged for 0.15
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501486380' id='561393'>
+<a class='timestamp' href='#561393'><time timestamp='2017-07-31T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10853" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10853</a> | [tests] Fix RPC failure testing (again) by jnewbery · Pull Request #10853 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501486380' id='561394'>
+<a class='timestamp' href='#561394'><time timestamp='2017-07-31T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+At this point I&#x27;d prefer if we didn&#x27;t force a rebase on tagged pulls
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501486800' id='561395'>
+<a class='timestamp' href='#561395'><time timestamp='2017-07-31T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+MarcoFalke: I&#x27;m happy for 10853 to wait until after rc1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501486800' id='561396'>
+<a class='timestamp' href='#561396'><time timestamp='2017-07-31T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+Unless you want it before, in which case I&#x27;ll split it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501486980' id='561397'>
+<a class='timestamp' href='#561397'><time timestamp='2017-07-31T07:43:00Z'>07:43</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Fine, let&#x27;s defer it for now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501487040' id='561398'>
+<a class='timestamp' href='#561398'><time timestamp='2017-07-31T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-13'> Oscillate</span>&gt;
+Hi,     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501487100' id='561399'>
+<a class='timestamp' href='#561399'><time timestamp='2017-07-31T07:45:00Z'>07:45</time></a>
+&lt;<span class='nick nick-13'> Oscillate</span>&gt;
+New to bitcoin here, can somebody tell me if the split is neccecary fot bitcoin hardfork ??
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501487100' id='561400'>
+<a class='timestamp' href='#561400'><time timestamp='2017-07-31T07:45:00Z'>07:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Oscillate: #bitcoin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501487100' id='561401'>
+<a class='timestamp' href='#561401'><time timestamp='2017-07-31T07:45:00Z'>07:45</time></a>
+&lt;<span class='nick nick-13'> Oscillate</span>&gt;
+for*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501487160' id='561402'>
+<a class='timestamp' href='#561402'><time timestamp='2017-07-31T07:46:00Z'>07:46</time></a>
+&lt;<span class='nick nick-13'> Oscillate</span>&gt;
+thank you sipa 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501487820' id='561403'>
+<a class='timestamp' href='#561403'><time timestamp='2017-07-31T07:57:00Z'>07:57</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: can I get access to bitcoin-devwiki? seems github is picky about pushing changes via git/ssh :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501488720' id='561404'>
+<a class='timestamp' href='#561404'><time timestamp='2017-07-31T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+copypa;ted for no,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501490700' id='561405'>
+<a class='timestamp' href='#561405'><time timestamp='2017-07-31T08:45:00Z'>08:45</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+Hmmm, <a href="https://botbot.me/freenode/bitcoin-core-dev/" class="link" target="_blank">https://botbot.me/freenode/bitcoin-core-dev/</a> seems to have a gap between <a href="https://botbot.me/freenode/bitcoin-core-dev/2017-07-28/?msg=89162968&amp;page=1" class="link" target="_blank">https://botbot.me/freenode/bitcoin-core-dev/2017-07-28/?msg=89162968&amp;page=1</a> and <a href="https://botbot.me/freenode/bitcoin-core-dev/2017-07-31/?msg=89185019&amp;page=1" class="link" target="_blank">https://botbot.me/freenode/bitcoin-core-dev/2017-07-31/?msg=89185019&amp;page=1</a> . Are there any other public archives?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501490760' id='561406'>
+<a class='timestamp' href='#561406'><time timestamp='2017-07-31T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+(I have my own logs, but it&#x27;s useful to be able to send a URL)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501490820' id='561407'>
+<a class='timestamp' href='#561407'><time timestamp='2017-07-31T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/70888a39c43a...2a50b11586a2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/70888a39c43a...2a50b11586a2</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501490820' id='561408'>
+<a class='timestamp' href='#561408'><time timestamp='2017-07-31T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9a8b054 Gregory Maxwell: Update defaultAssumeValid according to release-process.md....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501490820' id='561409'>
+<a class='timestamp' href='#561409'><time timestamp='2017-07-31T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2a50b11 Wladimir J. van der Laan: Merge #10945: Update defaultAssumeValid according to release-process.md....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501490820' id='561410'>
+<a class='timestamp' href='#561410'><time timestamp='2017-07-31T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10945: Update defaultAssumeValid according to release-process.md. (master...201707-update-assumevalid) <a href="https://github.com/bitcoin/bitcoin/pull/10945" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10945</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501493700' id='561411'>
+<a class='timestamp' href='#561411'><time timestamp='2017-07-31T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/2a50b11586a2...df3a6f4ee4e2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/2a50b11586a2...df3a6f4ee4e2</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501493700' id='561412'>
+<a class='timestamp' href='#561412'><time timestamp='2017-07-31T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f0acedd Wladimir J. van der Laan: p2p: Hardcoded seeds update pre-0.15 branch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501493700' id='561413'>
+<a class='timestamp' href='#561413'><time timestamp='2017-07-31T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master df3a6f4 Wladimir J. van der Laan: Merge #10948: p2p: Hardcoded seeds update pre-0.15 branch...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501493760' id='561414'>
+<a class='timestamp' href='#561414'><time timestamp='2017-07-31T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10948: p2p: Hardcoded seeds update pre-0.15 branch (master...2017_07_seeds_update) <a href="https://github.com/bitcoin/bitcoin/pull/10948" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10948</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501495380' id='561415'>
+<a class='timestamp' href='#561415'><time timestamp='2017-07-31T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/df3a6f4ee4e2...af563971fcbe" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/df3a6f4ee4e2...af563971fcbe</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501495380' id='561416'>
+<a class='timestamp' href='#561416'><time timestamp='2017-07-31T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master bdd5543 Alex Morcos: Clarify help message for -discardfee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501495380' id='561417'>
+<a class='timestamp' href='#561417'><time timestamp='2017-07-31T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master af56397 Wladimir J. van der Laan: Merge #10949: Clarify help message for -discardfee...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501495440' id='561418'>
+<a class='timestamp' href='#561418'><time timestamp='2017-07-31T10:04:00Z'>10:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10949: Clarify help message for -discardfee (master...betterhelp) <a href="https://github.com/bitcoin/bitcoin/pull/10949" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10949</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501496700' id='561419'>
+<a class='timestamp' href='#561419'><time timestamp='2017-07-31T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to master: <a href="https://github.com/bitcoin/bitcoin/commit/42307c4bf363d695c68a65ba7cbf8d6790079abf" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/42307c4bf363d695c68a65ba7cbf8d6790079abf</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501496700' id='561420'>
+<a class='timestamp' href='#561420'><time timestamp='2017-07-31T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 42307c4 Wladimir J. van der Laan: qt: Periodic translations update...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501497120' id='561421'>
+<a class='timestamp' href='#561421'><time timestamp='2017-07-31T10:32:00Z'>10:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10961: Improve readability of DecodeBase58Check(...) (master...DecodeBase58Check-cleanup) <a href="https://github.com/bitcoin/bitcoin/pull/10961" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10961</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501513500' id='561422'>
+<a class='timestamp' href='#561422'><time timestamp='2017-07-31T15:05:00Z'>15:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10963: [bench] Restore format state of cout after printing with std::fixed/setprecision (master...restore-format-state-of-cout) <a href="https://github.com/bitcoin/bitcoin/pull/10963" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10963</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501514640' id='561423'>
+<a class='timestamp' href='#561423'><time timestamp='2017-07-31T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10964: Pass SendCoinsRecipient (208 bytes) and CConnman::Options (168 bytes) by reference (master...pass-big-parameters-by-reference) <a href="https://github.com/bitcoin/bitcoin/pull/10964" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10964</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501517100' id='561424'>
+<a class='timestamp' href='#561424'><time timestamp='2017-07-31T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+#8330 could get a merge, tbh, its a free few-10s-of-k memory win
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501517100' id='561425'>
+<a class='timestamp' href='#561425'><time timestamp='2017-07-31T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8330" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8330</a> | Structure Packing Optimizations in C{,Mutable}Transaction by JeremyRubin · Pull Request #8330 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501523460' id='561426'>
+<a class='timestamp' href='#561426'><time timestamp='2017-07-31T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10965: Use the noexcept specifier (C++11) instead of deprecated throw() (master...noexcept) <a href="https://github.com/bitcoin/bitcoin/pull/10965" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10965</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501527000' id='561427'>
+<a class='timestamp' href='#561427'><time timestamp='2017-07-31T18:50:00Z'>18:50</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+whoever runs the doxygen site at dev.visucore.com needs to update their ssl cert. it expired this morning and I can&#x27;t access it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501527060' id='561428'>
+<a class='timestamp' href='#561428'><time timestamp='2017-07-31T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+wumpus: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501527180' id='561429'>
+<a class='timestamp' href='#561429'><time timestamp='2017-07-31T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+It is issued by let&#x27;s encrypt... I thought the point of that CA was that such updates are automatically done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501528740' id='561430'>
+<a class='timestamp' href='#561430'><time timestamp='2017-07-31T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: they have automated the procedure for renewal to almost nothing, but there is stipl some script you need to run (potentially in a cronjob)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501528740' id='561431'>
+<a class='timestamp' href='#561431'><time timestamp='2017-07-31T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1501537200' id='561432'>
+<a class='timestamp' href='#561432'><time timestamp='2017-07-31T21:40:00Z'>21:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag opened pull request #10966: Add walletnotify functional test (master...2017-07-walletnotify-functional-test) <a href="https://github.com/bitcoin/bitcoin/pull/10966" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10966</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

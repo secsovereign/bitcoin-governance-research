@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-01-13
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-01-13' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:22 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-12-13">&lt;</a><span class='header'>   January 2018   </span><a href="/bitcoin-core-dev/2018-02-13">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2018-01-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-01-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-01-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-01-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-01-09">9</a> <a class="" href="/bitcoin-core-dev/2018-01-10">10</a> <a class="" href="/bitcoin-core-dev/2018-01-11">11</a> <a class="" href="/bitcoin-core-dev/2018-01-12">12</a> <a class="current" href="/bitcoin-core-dev/2018-01-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-01-14">14</a> <a class="" href="/bitcoin-core-dev/2018-01-15">15</a> <a class="" href="/bitcoin-core-dev/2018-01-16">16</a> <a class="" href="/bitcoin-core-dev/2018-01-17">17</a> <a class="" href="/bitcoin-core-dev/2018-01-18">18</a> <a class="" href="/bitcoin-core-dev/2018-01-19">19</a> <a class="" href="/bitcoin-core-dev/2018-01-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-01-21">21</a> <a class="" href="/bitcoin-core-dev/2018-01-22">22</a> <a class="" href="/bitcoin-core-dev/2018-01-23">23</a> <a class="" href="/bitcoin-core-dev/2018-01-24">24</a> <a class="" href="/bitcoin-core-dev/2018-01-25">25</a> <a class="" href="/bitcoin-core-dev/2018-01-26">26</a> <a class="" href="/bitcoin-core-dev/2018-01-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-01-28">28</a> <a class="" href="/bitcoin-core-dev/2018-01-29">29</a> <a class="" href="/bitcoin-core-dev/2018-01-30">30</a> <a class="" href="/bitcoin-core-dev/2018-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1515831780' id='593875'>
+<a class='timestamp' href='#593875'><time timestamp='2018-01-13T08:23:00Z'>08:23</time></a>
+&lt;<span class='nick nick-14'> Lauda</span>&gt;
+@jonasschnelli Mind telling me how the bech32 cut off in the GUI receive tab? I just tried it on Windows with the version I used to test GUI support, and it looks fine to me(?).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515833040' id='593876'>
+<a class='timestamp' href='#593876'><time timestamp='2018-01-13T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+cfields: did you try modifying the qsort implementation in the libc to assert if the comparison function ever returns equal, then recompiling gcc and seeing if it asserts?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515835500' id='593877'>
+<a class='timestamp' href='#593877'><time timestamp='2018-01-13T09:25:00Z'>09:25</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, or just LD_PRELOAD a qsort replacement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515835620' id='593878'>
+<a class='timestamp' href='#593878'><time timestamp='2018-01-13T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+that would be too easy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515836460' id='593879'>
+<a class='timestamp' href='#593879'><time timestamp='2018-01-13T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: my assumption was that cfields wants to fix GCC.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515836640' id='593880'>
+<a class='timestamp' href='#593880'><time timestamp='2018-01-13T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, LD_PRELOAD could be enough to see if the assert triggers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515836760' id='593881'>
+<a class='timestamp' href='#593881'><time timestamp='2018-01-13T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+ponders how to fix his wallet; IsMine isn&#x27;t returning true for BIP17 stuff way back when :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515836820' id='593882'>
+<a class='timestamp' href='#593882'><time timestamp='2018-01-13T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+reckon it&#x27;d work to add the few BIP17 stuffs watch-only scripts?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515854100' id='593883'>
+<a class='timestamp' href='#593883'><time timestamp='2018-01-13T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/b7450cdbd89a...45cf8a03cb57" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b7450cdbd89a...45cf8a03cb57</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515854100' id='593884'>
+<a class='timestamp' href='#593884'><time timestamp='2018-01-13T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 648bdc8 Jan Sarenik: Trivial: Fix #include sys/fcntl.h to just fcntl.h (without sys/)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515854100' id='593885'>
+<a class='timestamp' href='#593885'><time timestamp='2018-01-13T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 45cf8a0 MarcoFalke: Merge #12168: Trivial: Fix #include sys/fcntl.h to just fcntl.h (without sys/)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515854160' id='593886'>
+<a class='timestamp' href='#593886'><time timestamp='2018-01-13T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12168: Trivial: Fix #include sys/fcntl.h to just fcntl.h (without sys/) (master...jasan/fcntl.h) <a href="https://github.com/bitcoin/bitcoin/pull/12168" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12168</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515858960' id='593887'>
+<a class='timestamp' href='#593887'><time timestamp='2018-01-13T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] mruddy opened pull request #12177: trivial: fix address_type help text of getnewaddress and getrawchangeaddress (master...trivial1) <a href="https://github.com/bitcoin/bitcoin/pull/12177" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12177</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515869100' id='593888'>
+<a class='timestamp' href='#593888'><time timestamp='2018-01-13T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-9'> donaloconnor</span>&gt;
+quick question: I&#x27;ve noticed in many places we pass uint256 by value to functions etc. If there&#x27;s no particular reason then I don&#x27;t mind doing a PR to fix these
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515870000' id='593889'>
+<a class='timestamp' href='#593889'><time timestamp='2018-01-13T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-3'> Stefani</span>&gt;
+HODL!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515872400' id='593890'>
+<a class='timestamp' href='#593890'><time timestamp='2018-01-13T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Is there any reason why we shouldn&#x27;t parse out particular elements of a script in validation.cpp? And then reject if that element isn&#x27;t &#x27;valid&#x27; like we do with locktime/sequence
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515872640' id='593891'>
+<a class='timestamp' href='#593891'><time timestamp='2018-01-13T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+?     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515872880' id='593892'>
+<a class='timestamp' href='#593892'><time timestamp='2018-01-13T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+sipa: Let&#x27;s say <b>*theoretically*</b> there is op code that says this script can&#x27;t be spent unless a block&#x27;s POW is <b>*higher*</b> than the what the network wide difficulty is. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515872940' id='593893'>
+<a class='timestamp' href='#593893'><time timestamp='2018-01-13T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+we don&#x27;t have a field on the tx that can easily indicate this no? So if we parsed out a script argument we would be able to achieve this?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515873000' id='593894'>
+<a class='timestamp' href='#593894'><time timestamp='2018-01-13T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+this example off of the top my head isn&#x27;t this great the more i think about it..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515879840' id='593895'>
+<a class='timestamp' href='#593895'><time timestamp='2018-01-13T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+gmaxwell: yes, that&#x27;s one of the ways I narrowed it down. I did if (cmp(a,b) == 0) assert(memcmp(a,b,size) == 0);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515879900' id='593896'>
+<a class='timestamp' href='#593896'><time timestamp='2018-01-13T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+gmaxwell: problem with that is that there are lots of cases where there&#x27;s some useless component that makes the memcmp fail, but it otherwise wouldn&#x27;t be used after the sort. So lots of false-positives.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515879900' id='593897'>
+<a class='timestamp' href='#593897'><time timestamp='2018-01-13T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+but in that case, technically the cmp is still busted.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515880080' id='593898'>
+<a class='timestamp' href='#593898'><time timestamp='2018-01-13T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ossifrage: LD_PRELOAD is actually how I first narrowed down qsort as the culprit. I hacked up musl libc, adding in only certain objects to a shared lib, then used LD_PRELOAD to shove it in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1515880080' id='593899'>
+<a class='timestamp' href='#593899'><time timestamp='2018-01-13T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+it gets tricky when you&#x27;re preloading a different libc, though :p
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-05-05
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-05-05' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:24 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-04-05">&lt;</a><span class='header'>     May 2017     </span><a href="/bitcoin-core-dev/2017-06-05">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2017-05-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-05-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-05-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-05-04">4</a>  <a class="current" href="/bitcoin-core-dev/2017-05-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-05-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-05-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-05-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-05-09">9</a> <a class="" href="/bitcoin-core-dev/2017-05-10">10</a> <a class="" href="/bitcoin-core-dev/2017-05-11">11</a> <a class="" href="/bitcoin-core-dev/2017-05-12">12</a> <a class="" href="/bitcoin-core-dev/2017-05-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-05-14">14</a> <a class="" href="/bitcoin-core-dev/2017-05-15">15</a> <a class="" href="/bitcoin-core-dev/2017-05-16">16</a> <a class="" href="/bitcoin-core-dev/2017-05-17">17</a> <a class="" href="/bitcoin-core-dev/2017-05-18">18</a> <a class="" href="/bitcoin-core-dev/2017-05-19">19</a> <a class="" href="/bitcoin-core-dev/2017-05-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-05-21">21</a> <a class="" href="/bitcoin-core-dev/2017-05-22">22</a> <a class="" href="/bitcoin-core-dev/2017-05-23">23</a> <a class="" href="/bitcoin-core-dev/2017-05-24">24</a> <a class="" href="/bitcoin-core-dev/2017-05-25">25</a> <a class="" href="/bitcoin-core-dev/2017-05-26">26</a> <a class="" href="/bitcoin-core-dev/2017-05-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-05-28">28</a> <a class="" href="/bitcoin-core-dev/2017-05-29">29</a> <a class="" href="/bitcoin-core-dev/2017-05-30">30</a> <a class="" href="/bitcoin-core-dev/2017-05-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1493943120' id='544301'>
+<a class='timestamp' href='#544301'><time timestamp='2017-05-05T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it seems that my system univalue returns a temporary, and for some reason Core is including that instead of the embedded univalue :|
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943180' id='544302'>
+<a class='timestamp' href='#544302'><time timestamp='2017-05-05T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+Not sure how &quot;garbage collection&quot; works with std::string.  Does that line make a string array on the stack or is it allocated in heap?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943240' id='544303'>
+<a class='timestamp' href='#544303'><time timestamp='2017-05-05T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: c++ has no garbage collection
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943240' id='544304'>
+<a class='timestamp' href='#544304'><time timestamp='2017-05-05T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+when the variable goes out of scope, it is destroyed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943240' id='544305'>
+<a class='timestamp' href='#544305'><time timestamp='2017-05-05T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+what is supposed to add src/univalue/include/ to the include path? it&#x27;s not there..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943300' id='544306'>
+<a class='timestamp' href='#544306'><time timestamp='2017-05-05T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: and strings are always allocated on the heap (in practice), but that&#x27;s not relevant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943300' id='544307'>
+<a class='timestamp' href='#544307'><time timestamp='2017-05-05T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: there is no refcounting for references
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943360' id='544308'>
+<a class='timestamp' href='#544308'><time timestamp='2017-05-05T00:16:00Z'>00:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+some c++ standard libraries implement refcounting for strings internally, but that still only works with different <u>_string_</u> objects with the same content, not multiple references to the same one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943360' id='544309'>
+<a class='timestamp' href='#544309'><time timestamp='2017-05-05T00:16:00Z'>00:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oh, system univalue is used by default, as expected, ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943420' id='544310'>
+<a class='timestamp' href='#544310'><time timestamp='2017-05-05T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so I guess options are: 1) require newer univalue to use system, or 2) rewrite this code to work either way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943480' id='544311'>
+<a class='timestamp' href='#544311'><time timestamp='2017-05-05T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it&#x27;s probably slightly optimised to do num 2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943480' id='544312'>
+<a class='timestamp' href='#544312'><time timestamp='2017-05-05T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+is it valid to assign the return std::string temporary to a reference? or is G++ just extra tolerant?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943480' id='544313'>
+<a class='timestamp' href='#544313'><time timestamp='2017-05-05T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&#x27;system univalue&#x27; dear lord, why would that exist? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943480' id='544314'>
+<a class='timestamp' href='#544314'><time timestamp='2017-05-05T00:18:00Z'>00:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+const std::string&amp; account_param = request.params[0].get_str();
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943540' id='544315'>
+<a class='timestamp' href='#544315'><time timestamp='2017-05-05T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: because that&#x27;s the right way to do libraries
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943540' id='544316'>
+<a class='timestamp' href='#544316'><time timestamp='2017-05-05T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: it is valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943540' id='544317'>
+<a class='timestamp' href='#544317'><time timestamp='2017-05-05T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(i commented on the PR)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943600' id='544318'>
+<a class='timestamp' href='#544318'><time timestamp='2017-05-05T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+sipa: yea thought so... &quot;it&#x27;s taking a pointer to a temporary&quot;, not sure why you used the word &quot;temporary&quot; there because if allocated on the heap, its not temporary in any way.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943600' id='544319'>
+<a class='timestamp' href='#544319'><time timestamp='2017-05-05T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+which PR?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943600' id='544320'>
+<a class='timestamp' href='#544320'><time timestamp='2017-05-05T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+praxeology: it&#x27;s not. if there&#x27;s no &quot;new&quot;, it&#x27;s not on the heap
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943600' id='544321'>
+<a class='timestamp' href='#544321'><time timestamp='2017-05-05T00:20:00Z'>00:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: if it were actually a library and not some unmaintained code dump that only we use... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943660' id='544322'>
+<a class='timestamp' href='#544322'><time timestamp='2017-05-05T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+luke-jr: are you sure there is no &quot;new&quot; deeper in the library?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943660' id='544323'>
+<a class='timestamp' href='#544323'><time timestamp='2017-05-05T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: &#x27;heap&#x27; and &#x27;stack&#x27; don&#x27;t exist in the C++ spec, they&#x27;re implementation details
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943660' id='544324'>
+<a class='timestamp' href='#544324'><time timestamp='2017-05-05T00:21:00Z'>00:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: &#x27;temporary&#x27; however exists in the spec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943720' id='544325'>
+<a class='timestamp' href='#544325'><time timestamp='2017-05-05T00:22:00Z'>00:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: a temporary is the result of an expression that returns something by-value, and isn&#x27;t assigned to a variable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943720' id='544326'>
+<a class='timestamp' href='#544326'><time timestamp='2017-05-05T00:22:00Z'>00:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr opened pull request #10341: rpc/wallet: Workaround older UniValue which returns a std::string temporary for get_str (master...rpcwallet_uv_workaround) <a href="https://github.com/bitcoin/bitcoin/pull/10341" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10341</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943780' id='544327'>
+<a class='timestamp' href='#544327'><time timestamp='2017-05-05T00:23:00Z'>00:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+praxeology: in practice, the std::string is allocated on the stack, but the string object itself allocates the string/length data on the heap
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943840' id='544328'>
+<a class='timestamp' href='#544328'><time timestamp='2017-05-05T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but again, that doesn&#x27;t matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943840' id='544329'>
+<a class='timestamp' href='#544329'><time timestamp='2017-05-05T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the compiler may even optimize part out and not have such objects hit memory at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943900' id='544330'>
+<a class='timestamp' href='#544330'><time timestamp='2017-05-05T00:25:00Z'>00:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what matters is that it&#x27;s returning an object and not storing it in a variable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943960' id='544331'>
+<a class='timestamp' href='#544331'><time timestamp='2017-05-05T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+Hm, yea I guess somehow with the automatic out-of scope clearing/freeing/deleting of the actual data... you need to assign the std::string to a stack variable for the duration you want it to exist
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943960' id='544332'>
+<a class='timestamp' href='#544332'><time timestamp='2017-05-05T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, you don&#x27;t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493943960' id='544333'>
+<a class='timestamp' href='#544333'><time timestamp='2017-05-05T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s what i just pointed out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944020' id='544334'>
+<a class='timestamp' href='#544334'><time timestamp='2017-05-05T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can take a reference to a temporary, and in that case, the lifetime of the temporary is automatically extended as long as the reference exists
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944020' id='544335'>
+<a class='timestamp' href='#544335'><time timestamp='2017-05-05T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but that&#x27;s done by static analysis by the compiler, not by reference counting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944080' id='544336'>
+<a class='timestamp' href='#544336'><time timestamp='2017-05-05T00:28:00Z'>00:28</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+its returning an object that becomes part of stack, but in order for that to happen you need to assign the object to a variable that exists in the stack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944080' id='544337'>
+<a class='timestamp' href='#544337'><time timestamp='2017-05-05T00:28:00Z'>00:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+stop talking about stacks, that doesn&#x27;t matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944200' id='544338'>
+<a class='timestamp' href='#544338'><time timestamp='2017-05-05T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+ok, scope somehow.  but that is less clear to me how such works...  I guess we don&#x27;t have to discuss it here, I can look into it  myself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944560' id='544339'>
+<a class='timestamp' href='#544339'><time timestamp='2017-05-05T00:36:00Z'>00:36</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+const std::string* account = nullptr;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944620' id='544340'>
+<a class='timestamp' href='#544340'><time timestamp='2017-05-05T00:37:00Z'>00:37</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+woops sorry I&#x27;ll leave you guys alone now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493944620' id='544341'>
+<a class='timestamp' href='#544341'><time timestamp='2017-05-05T00:37:00Z'>00:37</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+puts praxeology on the stack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948040' id='544342'>
+<a class='timestamp' href='#544342'><time timestamp='2017-05-05T01:34:00Z'>01:34</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+sipa: &quot;its modifying rng_state, protected by the lock&quot; --- I suppose, for an RNG, racing memcpy of random data isn&#x27;t as much an issue? :D haha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948160' id='544343'>
+<a class='timestamp' href='#544343'><time timestamp='2017-05-05T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it&#x27;s very much an issue, as it could cause arbritary corruption.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948160' id='544344'>
+<a class='timestamp' href='#544344'><time timestamp='2017-05-05T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+gmaxwell: would it could corruption outside of rng_state though?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948160' id='544345'>
+<a class='timestamp' href='#544345'><time timestamp='2017-05-05T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948220' id='544346'>
+<a class='timestamp' href='#544346'><time timestamp='2017-05-05T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+OK, then yes, issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948220' id='544347'>
+<a class='timestamp' href='#544347'><time timestamp='2017-05-05T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, I was just being stupid and thought that was the copy into the output too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948340' id='544348'>
+<a class='timestamp' href='#544348'><time timestamp='2017-05-05T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+gmaxwell: ooi, what could I lookup to understand the implications of that, I wasn&#x27;t aware it could cause arbitrary corruption
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948340' id='544349'>
+<a class='timestamp' href='#544349'><time timestamp='2017-05-05T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+dcousens: in C/C++ the compiler is allowed to assume that it has exclusive access to any variable it writes to in a scope for the duration of it (the technical guarentee is more complicated and I don&#x27;t fully understand it, but this approximation is enough).  So the compiler could do optimizations like temporarily store the stack pointer into memory that it knows it&#x27;s going to later overwrite.  t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948340' id='544350'>
+<a class='timestamp' href='#544350'><time timestamp='2017-05-05T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+hen copy it back out again before overwriting it. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948340' id='544351'>
+<a class='timestamp' href='#544351'><time timestamp='2017-05-05T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+gmaxwell: answered as I asked
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948400' id='544352'>
+<a class='timestamp' href='#544352'><time timestamp='2017-05-05T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+cheers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948400' id='544353'>
+<a class='timestamp' href='#544353'><time timestamp='2017-05-05T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Its very rare for it to <u>_in practice_</u> cause arbritary corruption, but it&#x27;s not unheared of.. intel&#x27;s compiler is a little more prone to crazy stunts that expose things like that than GCC is, but presumably future versions of GCC will keep getting smarter until nothing runs. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493948400' id='544354'>
+<a class='timestamp' href='#544354'><time timestamp='2017-05-05T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+ha     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493964000' id='544355'>
+<a class='timestamp' href='#544355'><time timestamp='2017-05-05T06:00:00Z'>06:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+&lt;*highlight&gt;[22:47:52] &lt;BlueMatt:#bitcoin-core-dev&gt; jonasschnelli: you might kill me for #10340, sorry :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493964000' id='544356'>
+<a class='timestamp' href='#544356'><time timestamp='2017-05-05T06:00:00Z'>06:00</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10340" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10340</a> | Add harmless missing cs_wallet lock in qt CoinControlDialog by TheBlueMatt · Pull Request #10340 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493964000' id='544357'>
+<a class='timestamp' href='#544357'><time timestamp='2017-05-05T06:00:00Z'>06:00</time></a>
+&lt;<span class='nick nick-12'> * jonasschnelli</span>&gt;
+looking at 10340
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493964120' id='544358'>
+<a class='timestamp' href='#544358'><time timestamp='2017-05-05T06:02:00Z'>06:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BlueMatt: seems reasonable to me (10340)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493970540' id='544359'>
+<a class='timestamp' href='#544359'><time timestamp='2017-05-05T07:49:00Z'>07:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BlueMatt: Ah.. know I now why you mentioned &quot; you might kill me&quot;. Massive layer violation.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493989860' id='544360'>
+<a class='timestamp' href='#544360'><time timestamp='2017-05-05T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jtimon closed pull request #10119: Util: Remove ArgsManager wrappers: (master...0.14-args-wrappers) <a href="https://github.com/bitcoin/bitcoin/pull/10119" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10119</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493990760' id='544361'>
+<a class='timestamp' href='#544361'><time timestamp='2017-05-05T13:26:00Z'>13:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Collecting stats over CScheduler with a interval of 2000ms (TBD), would it still make sense to collect a timestamp per sample of is CScheduler in general precise enough so we can calculate (index-of-sample * 2000ms) == timeoffset?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493991060' id='544362'>
+<a class='timestamp' href='#544362'><time timestamp='2017-05-05T13:31:00Z'>13:31</time></a>
+&lt;<span class='nick nick-4'> rafalcpp</span>&gt;
+dcousens: with any UB in c++, anything can happen. In theory a race condition in some debug code, could make your node start mining dogecoin instead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493991120' id='544363'>
+<a class='timestamp' href='#544363'><time timestamp='2017-05-05T13:32:00Z'>13:32</time></a>
+&lt;<span class='nick nick-3'> dcousens</span>&gt;
+rafalcpp: haha, I suppose I was simply affirming it was U/B,  not just a product of something else I&#x27;d missed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493991300' id='544364'>
+<a class='timestamp' href='#544364'><time timestamp='2017-05-05T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #10342: [tests] Improve mempool_persist test (master...improve_wait_until_test) <a href="https://github.com/bitcoin/bitcoin/pull/10342" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10342</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493991360' id='544365'>
+<a class='timestamp' href='#544365'><time timestamp='2017-05-05T13:36:00Z'>13:36</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Is there a way to have two local regtest node share the same chain, while having different wallets? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493991600' id='544366'>
+<a class='timestamp' href='#544366'><time timestamp='2017-05-05T13:40:00Z'>13:40</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Chris_Stewart_5, this is #bitcoin question, but yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994300' id='544367'>
+<a class='timestamp' href='#544367'><time timestamp='2017-05-05T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+jonasschnelli: ehh, I didnt feel like making needless copies of everything 3 times
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994300' id='544368'>
+<a class='timestamp' href='#544368'><time timestamp='2017-05-05T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but i can do that if you prefer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994360' id='544369'>
+<a class='timestamp' href='#544369'><time timestamp='2017-05-05T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BlueMatt: I don&#x27;t like accessing the wallet&#x27;s insides from outside of walletmodel. We can make an exception,... but I guess ryanofsky has to do more work in case we want process sep.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994420' id='544370'>
+<a class='timestamp' href='#544370'><time timestamp='2017-05-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well we can merge ryanofsky&#x27;s pr first and then maybe extend it even further and never expose COutput outside of wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994420' id='544371'>
+<a class='timestamp' href='#544371'><time timestamp='2017-05-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+ultimately we should move towards ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994420' id='544372'>
+<a class='timestamp' href='#544372'><time timestamp='2017-05-05T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. Thats a good point. For intermediate steps, I think it&#x27;s fine.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994480' id='544373'>
+<a class='timestamp' href='#544373'><time timestamp='2017-05-05T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I mean I&#x27;m more than happy to not take 10340 yet and do the real fix, as long as we get it in for 0.15
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994480' id='544374'>
+<a class='timestamp' href='#544374'><time timestamp='2017-05-05T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+it shouldnt be /too/ hard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994540' id='544375'>
+<a class='timestamp' href='#544375'><time timestamp='2017-05-05T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+my pr that stops using coutput/cwallettx (#10244) is ready, just needs review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493994540' id='544376'>
+<a class='timestamp' href='#544376'><time timestamp='2017-05-05T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10244" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10244</a> | [qt] Add abstraction layer for accessing node and wallet functionality from gui by ryanofsky · Pull Request #10244 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493995500' id='544377'>
+<a class='timestamp' href='#544377'><time timestamp='2017-05-05T14:45:00Z'>14:45</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh, heh, missed that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493995500' id='544378'>
+<a class='timestamp' href='#544378'><time timestamp='2017-05-05T14:45:00Z'>14:45</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+k, will review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493995560' id='544379'>
+<a class='timestamp' href='#544379'><time timestamp='2017-05-05T14:46:00Z'>14:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt closed pull request #10340: Add harmless missing cs_wallet lock in qt CoinControlDialog (master...2017-05-fix-mapwallet-zap-runtime) <a href="https://github.com/bitcoin/bitcoin/pull/10340" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10340</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1493999940' id='544380'>
+<a class='timestamp' href='#544380'><time timestamp='2017-05-05T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10343: Remove redundant on-the-same-line-repetition of type names (DRY): RepeatedTypeName foo = static_cast&lt;RepeatedTypeName&gt;(bar) (master...auto) <a href="https://github.com/bitcoin/bitcoin/pull/10343" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10343</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494003960' id='544381'>
+<a class='timestamp' href='#544381'><time timestamp='2017-05-05T17:06:00Z'>17:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #10344: [tests] Fix abandonconflict.py intermittency (master...fix_abandon_conflict) <a href="https://github.com/bitcoin/bitcoin/pull/10344" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10344</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005520' id='544382'>
+<a class='timestamp' href='#544382'><time timestamp='2017-05-05T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: really? per-txout ends with a smaller dbcache? that&#x27;s (marginally) surprising to me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005580' id='544383'>
+<a class='timestamp' href='#544383'><time timestamp='2017-05-05T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: likewise
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005640' id='544384'>
+<a class='timestamp' href='#544384'><time timestamp='2017-05-05T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: in my memory the master dbcache usage for a full reindex was around 4GB or so, but apparently i haven&#x27;t done one in a very long time...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005640' id='544385'>
+<a class='timestamp' href='#544385'><time timestamp='2017-05-05T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+heh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005640' id='544386'>
+<a class='timestamp' href='#544386'><time timestamp='2017-05-05T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-16'> * BlueMatt</span>&gt;
+would be curious to see the results of default-dbcache-on-tmpfs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005940' id='544387'>
+<a class='timestamp' href='#544387'><time timestamp='2017-05-05T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+jtimon: do you feel so inclined to redo #9494 with scripted-diff?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005940' id='544388'>
+<a class='timestamp' href='#544388'><time timestamp='2017-05-05T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9494" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9494</a> | Introduce an ArgsManager class encapsulating cs_args, mapArgs and mapMultiArgs by jtimon · Pull Request #9494 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494005940' id='544389'>
+<a class='timestamp' href='#544389'><time timestamp='2017-05-05T17:39:00Z'>17:39</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+it would be kinda nice, though I&#x27;d understand if you dont want to redo it at this point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494006660' id='544390'>
+<a class='timestamp' href='#544390'><time timestamp='2017-05-05T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+BlueMatt: yeah, for some parts of it it would make a lot of sense. I think I may have broke something in the last edit from what travis said. I will fix that and will s/argsGlobal/gArgs/ and see if I can move some parts to scripte-diff without much effort
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494006720' id='544391'>
+<a class='timestamp' href='#544391'><time timestamp='2017-05-05T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sounds good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494006720' id='544392'>
+<a class='timestamp' href='#544392'><time timestamp='2017-05-05T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+cool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494006780' id='544393'>
+<a class='timestamp' href='#544393'><time timestamp='2017-05-05T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+BlueMatt: in the meantime #8855 remains very easy to review :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494006780' id='544394'>
+<a class='timestamp' href='#544394'><time timestamp='2017-05-05T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8855" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8855</a> | Use a proper factory for creating chainparams by jtimon · Pull Request #8855 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009420' id='544395'>
+<a class='timestamp' href='#544395'><time timestamp='2017-05-05T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+heh, sipa, I was about to PR <a href="https://github.com/bitcoin/bitcoin/commit/64d45d0fc3b6f7669d0f2c24bca3beaa37cec0b3" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/64d45d0fc3b6f7669d0f2c24bca3beaa37cec0b3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009420' id='544396'>
+<a class='timestamp' href='#544396'><time timestamp='2017-05-05T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+(and <a href="https://github.com/bitcoin/bitcoin/commit/5e03232a5dcc4674c620187f67163dc462fbafd1)" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/5e03232a5dcc4674c620187f67163dc462fbafd1)</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009540' id='544397'>
+<a class='timestamp' href='#544397'><time timestamp='2017-05-05T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: ha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009540' id='544398'>
+<a class='timestamp' href='#544398'><time timestamp='2017-05-05T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+RandAddSeedSleepSanity has no return statement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009540' id='544399'>
+<a class='timestamp' href='#544399'><time timestamp='2017-05-05T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sounds very random.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009540' id='544400'>
+<a class='timestamp' href='#544400'><time timestamp='2017-05-05T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh, well, i never said i had gotten a chance to test it yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009600' id='544401'>
+<a class='timestamp' href='#544401'><time timestamp='2017-05-05T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: it seems a waste to call GetPerformanceCounter and <b>*not*</b> go ahead and add it to our random state
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009660' id='544402'>
+<a class='timestamp' href='#544402'><time timestamp='2017-05-05T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: how about we add that after #10338 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009660' id='544403'>
+<a class='timestamp' href='#544403'><time timestamp='2017-05-05T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10338" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10338</a> | Maintain state across GetStrongRandBytes calls by sipa · Pull Request #10338 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009720' id='544404'>
+<a class='timestamp' href='#544404'><time timestamp='2017-05-05T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: initially it was built on both, but right now everything is pushed into openssl&#x27;s prng state, so...meh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494009960' id='544405'>
+<a class='timestamp' href='#544405'><time timestamp='2017-05-05T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: like this? <a href="https://github.com/bitcoin/bitcoin/pull/10322/commits/999021ea0c6fce6dcef1ff05514c983e60ddc7eb" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10322/commits/999021ea0c6fce6dcef1ff05514c983e60ddc7eb</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494010020' id='544406'>
+<a class='timestamp' href='#544406'><time timestamp='2017-05-05T18:47:00Z'>18:47</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sipa: sure! RandAddSeed() also memory_cleanse()s, but I dont think thats actually useful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011700' id='544407'>
+<a class='timestamp' href='#544407'><time timestamp='2017-05-05T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+hmm... CScheduler seems to be innacurate. I&#x27;ve set up scheduler.scheduleEvery(fn,2000) (every 2000ms)... I often get a callback with a delta of 10 seconds between each other...  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011700' id='544408'>
+<a class='timestamp' href='#544408'><time timestamp='2017-05-05T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+huh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011700' id='544409'>
+<a class='timestamp' href='#544409'><time timestamp='2017-05-05T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+thats...not good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011760' id='544410'>
+<a class='timestamp' href='#544410'><time timestamp='2017-05-05T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I need to look into it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011820' id='544411'>
+<a class='timestamp' href='#544411'><time timestamp='2017-05-05T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+jonasschnelli: which version? cfields fixed something with sub-second precision not too long ago
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011820' id='544412'>
+<a class='timestamp' href='#544412'><time timestamp='2017-05-05T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+but i believe the symptom was high cpu usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011820' id='544413'>
+<a class='timestamp' href='#544413'><time timestamp='2017-05-05T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Hmm.. my Laptop runs pretty quite... i&#x27;ll investigate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494011880' id='544414'>
+<a class='timestamp' href='#544414'><time timestamp='2017-05-05T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+running in LLDB shoudln&#x27;t cause such high offsets (i&#x27;m not halting the process)¨
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012000' id='544415'>
+<a class='timestamp' href='#544415'><time timestamp='2017-05-05T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BlueMatt: What if another Scheduler task requires a couple of seconds to complete? (not familiar with the internals of the Scheduler)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012000' id='544416'>
+<a class='timestamp' href='#544416'><time timestamp='2017-05-05T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+sure, that could cause it, but the only thing in scheduler is wallet flush, really
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012060' id='544417'>
+<a class='timestamp' href='#544417'><time timestamp='2017-05-05T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+hmm... I&#x27;m not sure if that is the right approach for collecting stats... well,.. at least I have to add a timestamp then to each sample
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012060' id='544418'>
+<a class='timestamp' href='#544418'><time timestamp='2017-05-05T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+hmm?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012120' id='544419'>
+<a class='timestamp' href='#544419'><time timestamp='2017-05-05T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: you&#x27;ll have a timestamp on each sample regardless
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012120' id='544420'>
+<a class='timestamp' href='#544420'><time timestamp='2017-05-05T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: You mean I should have one per sample?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012120' id='544421'>
+<a class='timestamp' href='#544421'><time timestamp='2017-05-05T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012120' id='544422'>
+<a class='timestamp' href='#544422'><time timestamp='2017-05-05T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can&#x27;t guarantee that you&#x27;ll always be able to gather any statistic at any given point in time at that accuracy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012120' id='544423'>
+<a class='timestamp' href='#544423'><time timestamp='2017-05-05T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-16'> * BlueMatt</span>&gt;
+has no idea wtf is going on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012120' id='544424'>
+<a class='timestamp' href='#544424'><time timestamp='2017-05-05T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. I just removed it when I switch to useing CScheduler.. but I guess your right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544425'>
+<a class='timestamp' href='#544425'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+BlueMatt: jonas is gather statistics
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544426'>
+<a class='timestamp' href='#544426'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+stats for what?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544427'>
+<a class='timestamp' href='#544427'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+every 2 seconds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544428'>
+<a class='timestamp' href='#544428'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BlueMatt: my stats collector PR (== mempool graph)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544429'>
+<a class='timestamp' href='#544429'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i assume things like memory usage, bandwidth, ...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544430'>
+<a class='timestamp' href='#544430'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+ohoh, that one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544431'>
+<a class='timestamp' href='#544431'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+For now it does only collect mempool data..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012180' id='544432'>
+<a class='timestamp' href='#544432'><time timestamp='2017-05-05T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but it would be trivial to expand it for bandwidth, etc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012240' id='544433'>
+<a class='timestamp' href='#544433'><time timestamp='2017-05-05T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: you think it&#x27;s worth keeping a int64 for the starttime and only uint32 deltas per sample?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012240' id='544434'>
+<a class='timestamp' href='#544434'><time timestamp='2017-05-05T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well if people want to start seriously using the scheduler we can give it another thread
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012300' id='544435'>
+<a class='timestamp' href='#544435'><time timestamp='2017-05-05T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: i assume your resolution is never less than a second
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012300' id='544436'>
+<a class='timestamp' href='#544436'><time timestamp='2017-05-05T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: in that case you can use int32 for the starttime and int16 for the deltas :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012360' id='544437'>
+<a class='timestamp' href='#544437'><time timestamp='2017-05-05T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: I have now different precision levels and I wanted to keep it absolute per sample... but,... I can&#x27;t remember why I have damned the idea of deltaes between samples..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012420' id='544438'>
+<a class='timestamp' href='#544438'><time timestamp='2017-05-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. I guess this would work now that I run over the Schedular (rather then collect &quot;on event&quot;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012420' id='544439'>
+<a class='timestamp' href='#544439'><time timestamp='2017-05-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+using absolute time and data is certainly easier... you can just delete entries to reduce resolution over time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012420' id='544440'>
+<a class='timestamp' href='#544440'><time timestamp='2017-05-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but uses more memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012420' id='544441'>
+<a class='timestamp' href='#544441'><time timestamp='2017-05-05T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But still strange that sometimes the Scheduler fires the 2000ms interval after 10000ms (its an inaccuracy of x5)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012480' id='544442'>
+<a class='timestamp' href='#544442'><time timestamp='2017-05-05T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that does not sound normal and should be investigated regardless
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012480' id='544443'>
+<a class='timestamp' href='#544443'><time timestamp='2017-05-05T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;re sure this is not due to lock contention on main or mempool, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012540' id='544444'>
+<a class='timestamp' href='#544444'><time timestamp='2017-05-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Some sample output of a 2000ms scheduler:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012540' id='544445'>
+<a class='timestamp' href='#544445'><time timestamp='2017-05-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+<a href="https://0bin.net/paste/HXqOTrnFkRzwECHA#8D9wGGWTFJwNZ1vkcQqarVAawSDdZZtENrMBPKeQcYu" class="link" target="_blank">https://0bin.net/paste/HXqOTrnFkRzwECHA#8D9wGGWTFJwNZ1vkcQqarVAawSDdZZtENrMBPKeQcYu</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012540' id='544446'>
+<a class='timestamp' href='#544446'><time timestamp='2017-05-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8</a> | RPC command to sign text with wallet private key · Issue #8 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012540' id='544447'>
+<a class='timestamp' href='#544447'><time timestamp='2017-05-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+No,... it does only lock a new cs_stats
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012540' id='544448'>
+<a class='timestamp' href='#544448'><time timestamp='2017-05-05T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The mempool obtain it&#x27;s own atomic caches in my current working branch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494012660' id='544449'>
+<a class='timestamp' href='#544449'><time timestamp='2017-05-05T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Although I run with the GUI... but shoudln&#x27;t make any different. It&#x27;s a calm regtest peer anyways
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014100' id='544450'>
+<a class='timestamp' href='#544450'><time timestamp='2017-05-05T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sdaftuar opened pull request #10345: [P2P] Timeout for headers sync (master...2017-05-timeout-headers-sync) <a href="https://github.com/bitcoin/bitcoin/pull/10345" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10345</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014580' id='544451'>
+<a class='timestamp' href='#544451'><time timestamp='2017-05-05T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-15'> paveljanik</span>&gt;
+BTW mempool - &quot;standard&quot; nodes are now running with ~300MB mempools...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014580' id='544452'>
+<a class='timestamp' href='#544452'><time timestamp='2017-05-05T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+paveljanik: yep,   &quot;mempoolminfee&quot;: 0.00002822
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014640' id='544453'>
+<a class='timestamp' href='#544453'><time timestamp='2017-05-05T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+hurray, system is back to a healthy state. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014640' id='544454'>
+<a class='timestamp' href='#544454'><time timestamp='2017-05-05T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-15'> paveljanik</span>&gt;
+not so often tested/run code parts are now being tested :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014640' id='544455'>
+<a class='timestamp' href='#544455'><time timestamp='2017-05-05T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: +1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014640' id='544456'>
+<a class='timestamp' href='#544456'><time timestamp='2017-05-05T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+what was happening before?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014640' id='544457'>
+<a class='timestamp' href='#544457'><time timestamp='2017-05-05T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I missed all the excitement it seems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014640' id='544458'>
+<a class='timestamp' href='#544458'><time timestamp='2017-05-05T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+instagibbs: nah just for the last couple months we were riding at the minimum mempoolminfee... everything was getting confirmed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494014700' id='544459'>
+<a class='timestamp' href='#544459'><time timestamp='2017-05-05T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+RIP sub-sat/byte confirms
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494015180' id='544460'>
+<a class='timestamp' href='#544460'><time timestamp='2017-05-05T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-13'> * paveljanik</span>&gt;
+going to test dump/load mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494018360' id='544461'>
+<a class='timestamp' href='#544461'><time timestamp='2017-05-05T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10346: Use range-based for loops (C++11) when looping over vector elements (master...range-based-for-loops) <a href="https://github.com/bitcoin/bitcoin/pull/10346" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10346</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494019320' id='544462'>
+<a class='timestamp' href='#544462'><time timestamp='2017-05-05T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift closed pull request #10346: Use range-based for loops (C++11) when looping over vector elements (master...range-based-for-loops) <a href="https://github.com/bitcoin/bitcoin/pull/10346" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10346</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494020220' id='544463'>
+<a class='timestamp' href='#544463'><time timestamp='2017-05-05T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10347: Use range-based for loops (C++11) when looping over vector elements (master...range-based-for-loops) <a href="https://github.com/bitcoin/bitcoin/pull/10347" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10347</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021840' id='544464'>
+<a class='timestamp' href='#544464'><time timestamp='2017-05-05T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, odd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021840' id='544465'>
+<a class='timestamp' href='#544465'><time timestamp='2017-05-05T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+my bitcoind running patches to accept anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021840' id='544466'>
+<a class='timestamp' href='#544466'><time timestamp='2017-05-05T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+is still   &quot;mempoolminfee&quot;: 0.00000000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021840' id='544467'>
+<a class='timestamp' href='#544467'><time timestamp='2017-05-05T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+  &quot;usage&quot;: 294825248,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021840' id='544468'>
+<a class='timestamp' href='#544468'><time timestamp='2017-05-05T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+  &quot;mempoolminfee&quot;: 0.00001801
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021900' id='544469'>
+<a class='timestamp' href='#544469'><time timestamp='2017-05-05T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+  &quot;usage&quot;: 298733328,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021900' id='544470'>
+<a class='timestamp' href='#544470'><time timestamp='2017-05-05T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+oh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021900' id='544471'>
+<a class='timestamp' href='#544471'><time timestamp='2017-05-05T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+it&#x27;s because i have maxmempool set to like infinity also
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021900' id='544472'>
+<a class='timestamp' href='#544472'><time timestamp='2017-05-05T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+derp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494021960' id='544473'>
+<a class='timestamp' href='#544473'><time timestamp='2017-05-05T22:06:00Z'>22:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+lol     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022020' id='544474'>
+<a class='timestamp' href='#544474'><time timestamp='2017-05-05T22:07:00Z'>22:07</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+so it&#x27;s just on the edge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022860' id='544475'>
+<a class='timestamp' href='#544475'><time timestamp='2017-05-05T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+phantomcircuit: yea, well because most of your peers are limiting to 3MB its rare that your mempool ever gets much above 3mb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022860' id='544476'>
+<a class='timestamp' href='#544476'><time timestamp='2017-05-05T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+whether you limit or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022860' id='544477'>
+<a class='timestamp' href='#544477'><time timestamp='2017-05-05T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+3MB ??
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022860' id='544478'>
+<a class='timestamp' href='#544478'><time timestamp='2017-05-05T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+300?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022860' id='544479'>
+<a class='timestamp' href='#544479'><time timestamp='2017-05-05T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+oh, yes, 300
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022920' id='544480'>
+<a class='timestamp' href='#544480'><time timestamp='2017-05-05T22:22:00Z'>22:22</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+BlueMatt, i have peers that are before any kind of mempool limiting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022920' id='544481'>
+<a class='timestamp' href='#544481'><time timestamp='2017-05-05T22:22:00Z'>22:22</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022920' id='544482'>
+<a class='timestamp' href='#544482'><time timestamp='2017-05-05T22:22:00Z'>22:22</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+well their peers :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1494022980' id='544483'>
+<a class='timestamp' href='#544483'><time timestamp='2017-05-05T22:23:00Z'>22:23</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+even my 200-connection bitcoind seednode has only 307MB of txn
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

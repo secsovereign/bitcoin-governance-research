@@ -1,0 +1,2576 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2016-03-23
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2016-03-23' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2016-02-23">&lt;</a><span class='header'>    March 2016    </span><a href="/bitcoin-core-dev/2016-04-23">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;       <a class="" href="/bitcoin-core-dev/2016-03-01">1</a>  <a class="" href="/bitcoin-core-dev/2016-03-02">2</a>  <a class="" href="/bitcoin-core-dev/2016-03-03">3</a>  <a class="" href="/bitcoin-core-dev/2016-03-04">4</a>  <a class="" href="/bitcoin-core-dev/2016-03-05">5</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2016-03-06">6</a>  <a class="" href="/bitcoin-core-dev/2016-03-07">7</a>  <a class="" href="/bitcoin-core-dev/2016-03-08">8</a>  <a class="" href="/bitcoin-core-dev/2016-03-09">9</a> <a class="" href="/bitcoin-core-dev/2016-03-10">10</a> <a class="" href="/bitcoin-core-dev/2016-03-11">11</a> <a class="" href="/bitcoin-core-dev/2016-03-12">12</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-03-13">13</a> <a class="" href="/bitcoin-core-dev/2016-03-14">14</a> <a class="" href="/bitcoin-core-dev/2016-03-15">15</a> <a class="" href="/bitcoin-core-dev/2016-03-16">16</a> <a class="" href="/bitcoin-core-dev/2016-03-17">17</a> <a class="" href="/bitcoin-core-dev/2016-03-18">18</a> <a class="" href="/bitcoin-core-dev/2016-03-19">19</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-03-20">20</a> <a class="" href="/bitcoin-core-dev/2016-03-21">21</a> <a class="" href="/bitcoin-core-dev/2016-03-22">22</a> <a class="current" href="/bitcoin-core-dev/2016-03-23">23</a> <a class="" href="/bitcoin-core-dev/2016-03-24">24</a> <a class="" href="/bitcoin-core-dev/2016-03-25">25</a> <a class="" href="/bitcoin-core-dev/2016-03-26">26</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-03-27">27</a> <a class="" href="/bitcoin-core-dev/2016-03-28">28</a> <a class="" href="/bitcoin-core-dev/2016-03-29">29</a> <a class="" href="/bitcoin-core-dev/2016-03-30">30</a> <a class="" href="/bitcoin-core-dev/2016-03-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1458715320' id='457824'>
+<a class='timestamp' href='#457824'><time timestamp='2016-03-23T06:42:00Z'>06:42</time></a>
+&lt;<span class='nick nick-7'> fanatid</span>&gt;
+Hey to all, can somebody explain, why BIP66 not checks that R or S more than 33 bytes (but checks that total length can&#x27;t be more than 73 bytes)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458715320' id='457825'>
+<a class='timestamp' href='#457825'><time timestamp='2016-03-23T06:42:00Z'>06:42</time></a>
+&lt;<span class='nick nick-7'> fanatid</span>&gt;
+for example this (in hex) will be valid for BIP66: 3044021458a2f39bd87f0000000506030000000000050603022c402dde9afe7f0000010000000100000004000000040000000000000000000000000000000a00000000000000 but invalid for secp256k1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458715380' id='457826'>
+<a class='timestamp' href='#457826'><time timestamp='2016-03-23T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-7'> fanatid</span>&gt;
+question on github: <a href="https://github.com/bitcoin/bitcoin/pull/5713#issuecomment-197715788" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/5713#issuecomment-197715788</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716160' id='457827'>
+<a class='timestamp' href='#457827'><time timestamp='2016-03-23T06:56:00Z'>06:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: it&#x27;s just a minimal subset of rules that are sufficient to make parsing easy, but don&#x27;t guarantee that it&#x27;s valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716160' id='457828'>
+<a class='timestamp' href='#457828'><time timestamp='2016-03-23T06:56:00Z'>06:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: there are more arbitrary restrictions that could have been included
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716220' id='457829'>
+<a class='timestamp' href='#457829'><time timestamp='2016-03-23T06:57:00Z'>06:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: for example, checking that the R or S integer is less than the secp256k1 curve order (which would rule out some 33-byte values)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716280' id='457830'>
+<a class='timestamp' href='#457830'><time timestamp='2016-03-23T06:58:00Z'>06:58</time></a>
+&lt;<span class='nick nick-7'> fanatid</span>&gt;
+I understand that there are not all restrictions, it&#x27;s just very strange to see that BIP66 checks total length, but not checks r|s length
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716280' id='457831'>
+<a class='timestamp' href='#457831'><time timestamp='2016-03-23T06:58:00Z'>06:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: or you could go as far as checking that R is a valid secp256k1 X coordinate mod the order
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716340' id='457832'>
+<a class='timestamp' href='#457832'><time timestamp='2016-03-23T06:59:00Z'>06:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: adding that would not have added anything; the total length check is included because otherwise the rest of the bip66 code would have needed to be able to deal with &gt;1-byte length descriptors
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716520' id='457833'>
+<a class='timestamp' href='#457833'><time timestamp='2016-03-23T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in retrospect, maybe we could have added length restrictions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716520' id='457834'>
+<a class='timestamp' href='#457834'><time timestamp='2016-03-23T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it doesn&#x27;t matter much, and the rules are as they are
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716520' id='457835'>
+<a class='timestamp' href='#457835'><time timestamp='2016-03-23T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-7'> fanatid</span>&gt;
+sipa: thank you, can you paste answer in github issue? (or I can do this, if you busy)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716580' id='457836'>
+<a class='timestamp' href='#457836'><time timestamp='2016-03-23T07:03:00Z'>07:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if we&#x27;d change it again, i would argue that signatures have to be valid, or &quot;&quot;; anything else results in a failed script execution
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716820' id='457837'>
+<a class='timestamp' href='#457837'><time timestamp='2016-03-23T07:07:00Z'>07:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and i do plan to propose a 64-byte Schnorr signature based scheme after segwit at some point, but that doesn&#x27;t affect existing signature parsing of course
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716820' id='457838'>
+<a class='timestamp' href='#457838'><time timestamp='2016-03-23T07:07:00Z'>07:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: there was some discussion about this precise issue before, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458716820' id='457839'>
+<a class='timestamp' href='#457839'><time timestamp='2016-03-23T07:07:00Z'>07:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanatid: probably on the ML or the BIP pr itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458720120' id='457840'>
+<a class='timestamp' href='#457840'><time timestamp='2016-03-23T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-12'> GitHub82</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/c946a15075ba...490064111f86" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/c946a15075ba...490064111f86</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458720120' id='457841'>
+<a class='timestamp' href='#457841'><time timestamp='2016-03-23T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-12'> GitHub82</span>&gt;
+bitcoin/master bb16c88 João Barbosa: Prevent multiple calls to CWallet::AvailableCoins
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458720120' id='457842'>
+<a class='timestamp' href='#457842'><time timestamp='2016-03-23T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-12'> GitHub82</span>&gt;
+bitcoin/master 4900641 Wladimir J. van der Laan: Merge #7649: Prevent multiple calls to CWallet::AvailableCoins...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458720120' id='457843'>
+<a class='timestamp' href='#457843'><time timestamp='2016-03-23T08:02:00Z'>08:02</time></a>
+&lt;<span class='nick nick-4'> GitHub173</span>&gt;
+[bitcoin] laanwj closed pull request #7649: Prevent multiple calls to CWallet::AvailableCoins (master...enhancement/prevent-multiple-calls-availablecoins) <a href="https://github.com/bitcoin/bitcoin/pull/7649" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7649</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458728880' id='457844'>
+<a class='timestamp' href='#457844'><time timestamp='2016-03-23T10:28:00Z'>10:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;m shocked how many people still use windows xp, and even run bitcoin nodes on it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729120' id='457845'>
+<a class='timestamp' href='#457845'><time timestamp='2016-03-23T10:32:00Z'>10:32</time></a>
+&lt;<span class='nick nick-6'> ajweutr</span>&gt;
+I&#x27;m shocked how many people still use windows.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729180' id='457846'>
+<a class='timestamp' href='#457846'><time timestamp='2016-03-23T10:33:00Z'>10:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well okay but how can you rationalize running internet-connected software on something that will get no security updates anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729360' id='457847'>
+<a class='timestamp' href='#457847'><time timestamp='2016-03-23T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+running internet-connected <b>*wallet*</b> software
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729360' id='457848'>
+<a class='timestamp' href='#457848'><time timestamp='2016-03-23T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s like signing a general &#x27;yes I want to be part of your botnet&#x27; waiver
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729360' id='457849'>
+<a class='timestamp' href='#457849'><time timestamp='2016-03-23T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well they claim not to use the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729780' id='457850'>
+<a class='timestamp' href='#457850'><time timestamp='2016-03-23T10:43:00Z'>10:43</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+wumpus: there are hundreds of thousands of ATMs around the world still running Windows XP...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458729840' id='457851'>
+<a class='timestamp' href='#457851'><time timestamp='2016-03-23T10:44:00Z'>10:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+absurd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458730620' id='457852'>
+<a class='timestamp' href='#457852'><time timestamp='2016-03-23T10:57:00Z'>10:57</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+wumpus: as if a node has any value besides security
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458731160' id='457853'>
+<a class='timestamp' href='#457853'><time timestamp='2016-03-23T11:06:00Z'>11:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the thing is, the last thing I want is to discourage people from running a node, but they should also understand that we can&#x27;t devote much time to supporting a 15 year old OS that was abandoned by the vendor
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458731280' id='457854'>
+<a class='timestamp' href='#457854'><time timestamp='2016-03-23T11:08:00Z'>11:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in other news: i now run bitcoin core on my phonr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458731340' id='457855'>
+<a class='timestamp' href='#457855'><time timestamp='2016-03-23T11:09:00Z'>11:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*phone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458731700' id='457856'>
+<a class='timestamp' href='#457856'><time timestamp='2016-03-23T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+wumpus: given that XP has been EOL for years now, should we be supporting it at all? Basically, the OS is insecure.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458731700' id='457857'>
+<a class='timestamp' href='#457857'><time timestamp='2016-03-23T11:15:00Z'>11:15</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+sipa: are you using Abcore?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458731820' id='457858'>
+<a class='timestamp' href='#457858'><time timestamp='2016-03-23T11:17:00Z'>11:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+btcdrak: yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458733260' id='457859'>
+<a class='timestamp' href='#457859'><time timestamp='2016-03-23T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa: cool :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458733260' id='457860'>
+<a class='timestamp' href='#457860'><time timestamp='2016-03-23T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+intdrak: I&#x27;d expected so, but see the response to the issue where I dare proposing dropping support for windows xp and older: <a href="https://github.com/bitcoin/bitcoin/issues/7681" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/7681</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458733320' id='457861'>
+<a class='timestamp' href='#457861'><time timestamp='2016-03-23T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+apparently release 0.12.0 is already unstable on wxp, it appears due to some msvcrt.dll issue. If that doesn&#x27;t get resolved, we have to make it official and drop support for it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458733620' id='457862'>
+<a class='timestamp' href='#457862'><time timestamp='2016-03-23T11:47:00Z'>11:47</time></a>
+&lt;<span class='nick nick-5'> GitHub103</span>&gt;
+[bitcoin] laanwj opened pull request #7737: devtools: make github-merge.py use py3 (master...2016_03_python_3_github_merge) <a href="https://github.com/bitcoin/bitcoin/pull/7737" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7737</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734340' id='457863'>
+<a class='timestamp' href='#457863'><time timestamp='2016-03-23T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+wumpus: I dont think the comment in #7681 is true. There is <u>_unofficial support_</u> from a 3rd party dev called &quot;harkaz&quot;. There is no official support for XP, it&#x27;s EOL.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734340' id='457864'>
+<a class='timestamp' href='#457864'><time timestamp='2016-03-23T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+wumpus: sauce <a href="http://www.ryanvm.net/forum/viewtopic.php?t=10321" class="link" target="_blank">http://www.ryanvm.net/forum/viewtopic.php?t=10321</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734520' id='457865'>
+<a class='timestamp' href='#457865'><time timestamp='2016-03-23T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in any case I didn&#x27;t even give a date or milestone, and still people reply like that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734580' id='457866'>
+<a class='timestamp' href='#457866'><time timestamp='2016-03-23T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+a third party releasing a service pack? seems legit...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734580' id='457867'>
+<a class='timestamp' href='#457867'><time timestamp='2016-03-23T12:03:00Z'>12:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: it&#x27;s two people...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734760' id='457868'>
+<a class='timestamp' href='#457868'><time timestamp='2016-03-23T12:06:00Z'>12:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yeah...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734820' id='457869'>
+<a class='timestamp' href='#457869'><time timestamp='2016-03-23T12:07:00Z'>12:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+maybe I&#x27;m unduly worried, it was more about the speed at which those replies came in, apparently it&#x27;s another useless thing people feel very strongly about
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458734940' id='457870'>
+<a class='timestamp' href='#457870'><time timestamp='2016-03-23T12:09:00Z'>12:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in any case if anyone actually wants to support bitcoin core on XP, be my guest, you&#x27;re welcome, but don&#x27;t simply expect it from others
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735120' id='457871'>
+<a class='timestamp' href='#457871'><time timestamp='2016-03-23T12:12:00Z'>12:12</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+wumpus: I think your response is reasonable: try to fix it now, and remove support from 0.13 in any case.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735180' id='457872'>
+<a class='timestamp' href='#457872'><time timestamp='2016-03-23T12:13:00Z'>12:13</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+and if it cant be fixed, too bad.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735240' id='457873'>
+<a class='timestamp' href='#457873'><time timestamp='2016-03-23T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/490064111f86...909b72b10b4d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/490064111f86...909b72b10b4d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735240' id='457874'>
+<a class='timestamp' href='#457874'><time timestamp='2016-03-23T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+bitcoin/master 5fd2318 fanquake: [Depends] Miniupnpc 1.9.20160209...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735240' id='457875'>
+<a class='timestamp' href='#457875'><time timestamp='2016-03-23T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+bitcoin/master c85f475 fanquake: [Depends] Latest config.guess &amp; config.sub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735240' id='457876'>
+<a class='timestamp' href='#457876'><time timestamp='2016-03-23T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+bitcoin/master 909b72b Wladimir J. van der Laan: Merge #7710: [Depends] Bump miniupnpc and config.guess+sub...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735240' id='457877'>
+<a class='timestamp' href='#457877'><time timestamp='2016-03-23T12:14:00Z'>12:14</time></a>
+&lt;<span class='nick nick-6'> GitHub55</span>&gt;
+[bitcoin] laanwj closed pull request #7710: [Depends] Bump miniupnpc and config.guess+sub (master...depends-02) <a href="https://github.com/bitcoin/bitcoin/pull/7710" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7710</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735420' id='457878'>
+<a class='timestamp' href='#457878'><time timestamp='2016-03-23T12:17:00Z'>12:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735900' id='457879'>
+<a class='timestamp' href='#457879'><time timestamp='2016-03-23T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/909b72b10b4d...e2ebd259fbe8" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/909b72b10b4d...e2ebd259fbe8</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735900' id='457880'>
+<a class='timestamp' href='#457880'><time timestamp='2016-03-23T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+bitcoin/master fe00ca7 Andrew C: Create generatetoaddress rpc...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735900' id='457881'>
+<a class='timestamp' href='#457881'><time timestamp='2016-03-23T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+bitcoin/master d5c5c71 Andrew C: RPC tests for generatetoaddress...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735900' id='457882'>
+<a class='timestamp' href='#457882'><time timestamp='2016-03-23T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+bitcoin/master e2ebd25 Wladimir J. van der Laan: Merge #7671: [RPC] Add generatetoaddress rpc to mine to an address...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458735900' id='457883'>
+<a class='timestamp' href='#457883'><time timestamp='2016-03-23T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-15'> GitHub149</span>&gt;
+[bitcoin] laanwj closed pull request #7671: [RPC] Add generatetoaddress rpc to mine to an address (master...generate-to-addr) <a href="https://github.com/bitcoin/bitcoin/pull/7671" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7671</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736140' id='457884'>
+<a class='timestamp' href='#457884'><time timestamp='2016-03-23T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+intdrak: is &quot;3rd party unofficial support&quot; significantly different from a Linux distro fork in this regard?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736140' id='457885'>
+<a class='timestamp' href='#457885'><time timestamp='2016-03-23T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+(not that I think we need to support XP. if nobody cares enough to fix it, it can go bye-bye)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736140' id='457886'>
+<a class='timestamp' href='#457886'><time timestamp='2016-03-23T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Luke-Jr: that&#x27;s a good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736200' id='457887'>
+<a class='timestamp' href='#457887'><time timestamp='2016-03-23T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+did they legally take over the support from microsoft?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736200' id='457888'>
+<a class='timestamp' href='#457888'><time timestamp='2016-03-23T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if so, I suppose it&#x27;s comparable, if not, it&#x27;s something completely different
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736200' id='457889'>
+<a class='timestamp' href='#457889'><time timestamp='2016-03-23T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Luke-Jr: i think that the fact that most of the code is closed source does make a quantitave different, but it&#x27;s fuzzy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736260' id='457890'>
+<a class='timestamp' href='#457890'><time timestamp='2016-03-23T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in any case it isn&#x27;t any reason to influence our decision about supporting it or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736260' id='457891'>
+<a class='timestamp' href='#457891'><time timestamp='2016-03-23T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+someone needs to step up to support it, if not, it&#x27;s done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736260' id='457892'>
+<a class='timestamp' href='#457892'><time timestamp='2016-03-23T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+sipa: they can&#x27;t identify unfixed bugs maybe, but they could in theory backport or identify unbackportable stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736320' id='457893'>
+<a class='timestamp' href='#457893'><time timestamp='2016-03-23T12:32:00Z'>12:32</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+wumpus: from a security perspective, I don&#x27;t know why the legalities would matter. but I agree it isn&#x27;t very relevant.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736380' id='457894'>
+<a class='timestamp' href='#457894'><time timestamp='2016-03-23T12:33:00Z'>12:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+Luke-Jr: well I think from a security perspective, for a closed source OS, microsoft&#x27;s blessing is very imporant. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736440' id='457895'>
+<a class='timestamp' href='#457895'><time timestamp='2016-03-23T12:34:00Z'>12:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and you can&#x27;t support a closed source OS if you don&#x27;t know what is going on behind the scenes, if you don&#x27;t have access to internal documents and source code etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736500' id='457896'>
+<a class='timestamp' href='#457896'><time timestamp='2016-03-23T12:35:00Z'>12:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+you were comparing it to a linux distro fork where everything happens in the open - taking over support for a close source product is very different
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736560' id='457897'>
+<a class='timestamp' href='#457897'><time timestamp='2016-03-23T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, i think that in theory you can say that a linux distro without any official support is not different from an unofficially supported windows os
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736560' id='457898'>
+<a class='timestamp' href='#457898'><time timestamp='2016-03-23T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but in practice, it&#x27;s a huge difference; closed source is one, but also the fact that linux distros do more just packaging of work done by other projects
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736620' id='457899'>
+<a class='timestamp' href='#457899'><time timestamp='2016-03-23T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+you can&#x27;t really continue someone elses&#x27; development with closed source software... or what, reverse engineer, use a hex editor?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736620' id='457900'>
+<a class='timestamp' href='#457900'><time timestamp='2016-03-23T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+windows unsupported probably means that there are components in the OS on which <u>_nobody_</u> is even working anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458736680' id='457901'>
+<a class='timestamp' href='#457901'><time timestamp='2016-03-23T12:38:00Z'>12:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+would you claim that makes <b>*no*</b> difference from a security perspective?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740100' id='457902'>
+<a class='timestamp' href='#457902'><time timestamp='2016-03-23T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: i&#x27;m not going to be around for the meeting tomorrow.  but would have been nice if we&#x27;d made more progress on our action items for last week.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740100' id='457903'>
+<a class='timestamp' href='#457903'><time timestamp='2016-03-23T13:35:00Z'>13:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+whats the best way to get a few volunteers to review these backports so we can start RC&#x27;s for the CSV soft fork?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740160' id='457904'>
+<a class='timestamp' href='#457904'><time timestamp='2016-03-23T13:36:00Z'>13:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t have an answer to that, unfortunately
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740160' id='457905'>
+<a class='timestamp' href='#457905'><time timestamp='2016-03-23T13:36:00Z'>13:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+getting people to review things is very hard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740220' id='457906'>
+<a class='timestamp' href='#457906'><time timestamp='2016-03-23T13:37:00Z'>13:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+you could try spamming it here a few times, or on twitter, or wherever
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740280' id='457907'>
+<a class='timestamp' href='#457907'><time timestamp='2016-03-23T13:38:00Z'>13:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ideally, people that care about backports at all would spend work reviewing what is backported to their favorite version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740280' id='457908'>
+<a class='timestamp' href='#457908'><time timestamp='2016-03-23T13:38:00Z'>13:38</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think we should be a bit more willing to ask specific contributors (who would be appropriate for the PR) when its something high priority like this that we all agree is holding up progress (to some degree)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740340' id='457909'>
+<a class='timestamp' href='#457909'><time timestamp='2016-03-23T13:39:00Z'>13:39</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sure, you can always @ people and ping them in the PR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740520' id='457910'>
+<a class='timestamp' href='#457910'><time timestamp='2016-03-23T13:42:00Z'>13:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it tends to work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740580' id='457911'>
+<a class='timestamp' href='#457911'><time timestamp='2016-03-23T13:43:00Z'>13:43</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+morcos, asking <b>*specific*</b> people probably works better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740580' id='457912'>
+<a class='timestamp' href='#457912'><time timestamp='2016-03-23T13:43:00Z'>13:43</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+&quot;Someone call 911&quot; vs &quot;You call 911&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458740640' id='457913'>
+<a class='timestamp' href='#457913'><time timestamp='2016-03-23T13:44:00Z'>13:44</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+(911 being US emergency number)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741240' id='457914'>
+<a class='timestamp' href='#457914'><time timestamp='2016-03-23T13:54:00Z'>13:54</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+luke-jr: sipa: I think it&#x27;s completely different. MS Windows is closed source, so I&#x27;m not sure how he can be providing reliable support - certainly no way to audit it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741240' id='457915'>
+<a class='timestamp' href='#457915'><time timestamp='2016-03-23T13:54:00Z'>13:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, i agree that in practice is completely different
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741300' id='457916'>
+<a class='timestamp' href='#457916'><time timestamp='2016-03-23T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but the criterion is not whether or not there is a official support (because many linux distros have no official support whatsoever), but whether the available support is sufficient
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741360' id='457917'>
+<a class='timestamp' href='#457917'><time timestamp='2016-03-23T13:56:00Z'>13:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+any linux distribution worth its salt at least has security upgrades
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741480' id='457918'>
+<a class='timestamp' href='#457918'><time timestamp='2016-03-23T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, agree completely - i was just arguing semantics
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741480' id='457919'>
+<a class='timestamp' href='#457919'><time timestamp='2016-03-23T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sorry :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741480' id='457920'>
+<a class='timestamp' href='#457920'><time timestamp='2016-03-23T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+morcos: I have been hassling people in private to do reviews. I&#x27;ll go bang on a few more doors
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458741600' id='457921'>
+<a class='timestamp' href='#457921'><time timestamp='2016-03-23T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+as for official support, yea, for Ubuntu, Redhat, etc you can get some kind of support contract, doubt that&#x27;s possible for the smaller ones
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742140' id='457922'>
+<a class='timestamp' href='#457922'><time timestamp='2016-03-23T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-4'> GitHub144</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/e2ebd259fbe8...3bdc583b3f07" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/e2ebd259fbe8...3bdc583b3f07</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742140' id='457923'>
+<a class='timestamp' href='#457923'><time timestamp='2016-03-23T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-4'> GitHub144</span>&gt;
+bitcoin/master 68d4282 Alex Morcos: Fix calculation of balances and available coins....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742140' id='457924'>
+<a class='timestamp' href='#457924'><time timestamp='2016-03-23T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-4'> GitHub144</span>&gt;
+bitcoin/master 3bdc583 Wladimir J. van der Laan: Merge #7715: Fix calculation of balances and available coins....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742140' id='457925'>
+<a class='timestamp' href='#457925'><time timestamp='2016-03-23T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-2'> GitHub191</span>&gt;
+[bitcoin] laanwj closed pull request #7715: Fix calculation of balances and available coins. (master...fixconflicts_take2) <a href="https://github.com/bitcoin/bitcoin/pull/7715" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7715</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742140' id='457926'>
+<a class='timestamp' href='#457926'><time timestamp='2016-03-23T14:09:00Z'>14:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+morcos: the other option, of course, is to just start merging stuff :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742320' id='457927'>
+<a class='timestamp' href='#457927'><time timestamp='2016-03-23T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-9'> GitHub160</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/19866c1ffcb860bc2980e00e956685b9a8f96529" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/19866c1ffcb860bc2980e00e956685b9a8f96529</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742320' id='457928'>
+<a class='timestamp' href='#457928'><time timestamp='2016-03-23T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-9'> GitHub160</span>&gt;
+bitcoin/0.12 19866c1 Alex Morcos: Fix calculation of balances and available coins....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742320' id='457929'>
+<a class='timestamp' href='#457929'><time timestamp='2016-03-23T14:12:00Z'>14:12</time></a>
+&lt;<span class='nick nick-1'> intdrak</span>&gt;
+I would assume the backports are relatively straightforward to review.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742560' id='457930'>
+<a class='timestamp' href='#457930'><time timestamp='2016-03-23T14:16:00Z'>14:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if there are to be any bounties in the bitcoin core project ever it&#x27;d be for reviewing code, that&#x27;s by far the most difficult thing to motivate people to do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742740' id='457931'>
+<a class='timestamp' href='#457931'><time timestamp='2016-03-23T14:19:00Z'>14:19</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+Well the PRs people need to review are #7648, #7543 and #7716
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742860' id='457932'>
+<a class='timestamp' href='#457932'><time timestamp='2016-03-23T14:21:00Z'>14:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+some projects have a bot that automatically picks a random reviewer from some list for a PR when it&#x27;s finished, is that maybe an idea? :p <a href="https://github.com/maidsafe/safe_ffi/pull/45" class="link" target="_blank">https://github.com/maidsafe/safe_ffi/pull/45</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742920' id='457933'>
+<a class='timestamp' href='#457933'><time timestamp='2016-03-23T14:22:00Z'>14:22</time></a>
+&lt;<span class='nick nick-1'> sipa_</span>&gt;
+at google there was a policy that you pick an appropriate reviewer yourself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742920' id='457934'>
+<a class='timestamp' href='#457934'><time timestamp='2016-03-23T14:22:00Z'>14:22</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+hrm. offer a bounty and the winner is decided by the the merge commit hash :-P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742920' id='457935'>
+<a class='timestamp' href='#457935'><time timestamp='2016-03-23T14:22:00Z'>14:22</time></a>
+&lt;<span class='nick nick-1'> sipa_</span>&gt;
+btcdrak: you can grind commit hashes :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458742980' id='457936'>
+<a class='timestamp' href='#457936'><time timestamp='2016-03-23T14:23:00Z'>14:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well for some PRs it&#x27;s pretty straightforward who should review it, e.g. cfields for build system changes, for others not so much
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743040' id='457937'>
+<a class='timestamp' href='#457937'><time timestamp='2016-03-23T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+another option would be to put some time pressure behind it, post a date in the PR, if no comments by then it will be merged as-is
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743040' id='457938'>
+<a class='timestamp' href='#457938'><time timestamp='2016-03-23T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+#7648 is pretty straight forward and it&#x27;s got lots of RPC tests to verify behaviour.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743040' id='457939'>
+<a class='timestamp' href='#457939'><time timestamp='2016-03-23T14:24:00Z'>14:24</time></a>
+&lt;<span class='nick nick-1'> sipa_</span>&gt;
+wumpus: ouch!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743100' id='457940'>
+<a class='timestamp' href='#457940'><time timestamp='2016-03-23T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-1'> sipa_</span>&gt;
+(i generally agree that trying to provide fast feedback on PRs is something to aim for... but automatic merging may be a bridge too far)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743100' id='457941'>
+<a class='timestamp' href='#457941'><time timestamp='2016-03-23T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa_: just throwing out ideas I&#x27;ve seen in other projects, not saying it&#x27;s a good idea :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743160' id='457942'>
+<a class='timestamp' href='#457942'><time timestamp='2016-03-23T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it also depends on the kind of change, I tend to merge pure tests changes semi-automatically, obviously we don&#x27;t want that for consensus changes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743220' id='457943'>
+<a class='timestamp' href='#457943'><time timestamp='2016-03-23T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+I think the only solution is more staff.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743280' id='457944'>
+<a class='timestamp' href='#457944'><time timestamp='2016-03-23T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+we could incentives reviews by adding btc-micropayment to contributors that commented a tested ACK (&lt;githash&gt; of later merged PR ... :) <b>*duck*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743340' id='457945'>
+<a class='timestamp' href='#457945'><time timestamp='2016-03-23T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I&#x27;m pretty sure we would get a lot of (untested) tested ACKs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743340' id='457946'>
+<a class='timestamp' href='#457946'><time timestamp='2016-03-23T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+yeah ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743340' id='457947'>
+<a class='timestamp' href='#457947'><time timestamp='2016-03-23T14:29:00Z'>14:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: yea you&#x27;d have to require an extensive testing report in that case, to be sure someone actually did the work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743400' id='457948'>
+<a class='timestamp' href='#457948'><time timestamp='2016-03-23T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+need some kind of &quot;proof of review, proof of test&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743400' id='457949'>
+<a class='timestamp' href='#457949'><time timestamp='2016-03-23T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: and that&#x27;s probably not as far as people are willing to go for a micropayment :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743400' id='457950'>
+<a class='timestamp' href='#457950'><time timestamp='2016-03-23T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Right. He needs to calculate a sha256 of the random chosen words of the change source-code. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743400' id='457951'>
+<a class='timestamp' href='#457951'><time timestamp='2016-03-23T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-1'> sipa_</span>&gt;
+or you could encourage PRs to have a hash of a message that reveals something the author believes a reviewer should notice, and you can get a bounty for correctly finding it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743400' id='457952'>
+<a class='timestamp' href='#457952'><time timestamp='2016-03-23T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+you&#x27;d have to introduce a couple of bugs on purpose to see if people picked up on it to know if they really looked properly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743580' id='457953'>
+<a class='timestamp' href='#457953'><time timestamp='2016-03-23T14:33:00Z'>14:33</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think we should not treat all PR&#x27;s equally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743640' id='457954'>
+<a class='timestamp' href='#457954'><time timestamp='2016-03-23T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+for some PR&#x27;s the lack of reviewers is the signal as to whether or not its somethign we want to merge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743640' id='457955'>
+<a class='timestamp' href='#457955'><time timestamp='2016-03-23T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but for other PR&#x27;s we&#x27;ve agreed a priori that we want the functionality or fix and its just a matter of ensuring the code has been reviewed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743640' id='457956'>
+<a class='timestamp' href='#457956'><time timestamp='2016-03-23T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+its the second case that i think we need to work on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743640' id='457957'>
+<a class='timestamp' href='#457957'><time timestamp='2016-03-23T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and on the other side, some people actually do get review comments but then delay indefinitely in taking them into account <b>*cough*</b> rebroad <b>*cough*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743640' id='457958'>
+<a class='timestamp' href='#457958'><time timestamp='2016-03-23T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+maybe we should try to have a deadline on concept ack/nacks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743700' id='457959'>
+<a class='timestamp' href='#457959'><time timestamp='2016-03-23T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i know for example that i&#x27;ll sometimes get caught up in a streak of coding and not doing enough reviewing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743700' id='457960'>
+<a class='timestamp' href='#457960'><time timestamp='2016-03-23T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+and i certainly wouldn&#x27;t mind if there were PR&#x27;s that were in the second category that i got pinged on if they were in my wheelhouse
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743700' id='457961'>
+<a class='timestamp' href='#457961'><time timestamp='2016-03-23T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but what i don&#x27;t want is every random PR for someone to assign it to me to review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743760' id='457962'>
+<a class='timestamp' href='#457962'><time timestamp='2016-03-23T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+absolutely not all PRs should be treated equally, that&#x27;s also certainly not what is happening, things that garner no interest are closed after a while
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743760' id='457963'>
+<a class='timestamp' href='#457963'><time timestamp='2016-03-23T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so i think putting it entirely in the hands of the PR author isn&#x27;t maybe right...  but perhaps some of the senior project people could say to the author, hey, please ping a few reviewers for this code, we&#x27;d like to get it merged
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743760' id='457964'>
+<a class='timestamp' href='#457964'><time timestamp='2016-03-23T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i dont know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743820' id='457965'>
+<a class='timestamp' href='#457965'><time timestamp='2016-03-23T14:37:00Z'>14:37</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+for #7648 how many reviewers do we need?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743820' id='457966'>
+<a class='timestamp' href='#457966'><time timestamp='2016-03-23T14:37:00Z'>14:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+well as said, for some PRs it&#x27;s clear who should be pinged for them, e.g. if there is some complicated mempool change I&#x27;ll be sure to ping you morcos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743880' id='457967'>
+<a class='timestamp' href='#457967'><time timestamp='2016-03-23T14:38:00Z'>14:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but for a backport it&#x27;s not nearly as clear cut
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743940' id='457968'>
+<a class='timestamp' href='#457968'><time timestamp='2016-03-23T14:39:00Z'>14:39</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+7648 looks good at this point, and 7543 is fairly trivial if you trust 7648.  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743940' id='457969'>
+<a class='timestamp' href='#457969'><time timestamp='2016-03-23T14:39:00Z'>14:39</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+7716 on the other hand is a problem.  the 0.11 backport.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743940' id='457970'>
+<a class='timestamp' href='#457970'><time timestamp='2016-03-23T14:39:00Z'>14:39</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think thats always going to be a problem going back a version, i mean who is the poor sap who is going to review the segwit backport
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458743940' id='457971'>
+<a class='timestamp' href='#457971'><time timestamp='2016-03-23T14:39:00Z'>14:39</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes #7648 looks good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744000' id='457972'>
+<a class='timestamp' href='#457972'><time timestamp='2016-03-23T14:40:00Z'>14:40</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+btcdrak: you&#x27;ve introduced a new blockchain historical video media extension in #7648? <b>*ducks*</b> &quot;BIP113 Media Time Past.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744060' id='457973'>
+<a class='timestamp' href='#457973'><time timestamp='2016-03-23T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+my favorite is btcdrak&#x27;s insistence on the acronym TDB
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744120' id='457974'>
+<a class='timestamp' href='#457974'><time timestamp='2016-03-23T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-13'> helo</span>&gt;
+soon we will communicate using only acronyms &lt;3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744180' id='457975'>
+<a class='timestamp' href='#457975'><time timestamp='2016-03-23T14:43:00Z'>14:43</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+ACK OR GTFO!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744180' id='457976'>
+<a class='timestamp' href='#457976'><time timestamp='2016-03-23T14:43:00Z'>14:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744300' id='457977'>
+<a class='timestamp' href='#457977'><time timestamp='2016-03-23T14:45:00Z'>14:45</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: would be nice to add first commit from <a href="https://github.com/bitcoin/bitcoin/pull/7707" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7707</a> as well, just commented on PR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744360' id='457978'>
+<a class='timestamp' href='#457978'><time timestamp='2016-03-23T14:46:00Z'>14:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+morcos: sure, though usually we merge the master pull first before backporting anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744420' id='457979'>
+<a class='timestamp' href='#457979'><time timestamp='2016-03-23T14:47:00Z'>14:47</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+wumpus: ahahaha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744420' id='457980'>
+<a class='timestamp' href='#457980'><time timestamp='2016-03-23T14:47:00Z'>14:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in this case, that it&#x27;s a combination of a GUI change and a non-GUI change (which should be backported) complicates the process, otoh it&#x27;s just one line so here goes..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744420' id='457981'>
+<a class='timestamp' href='#457981'><time timestamp='2016-03-23T14:47:00Z'>14:47</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+wumpus: yeah, thats why i didn&#x27;t ACK that commit earlier, i was going to review the whole PR, but i&#x27;ve run out of time to do that (going out of town).  but you could merge that commit into master and just make jonas rebase
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744420' id='457982'>
+<a class='timestamp' href='#457982'><time timestamp='2016-03-23T14:47:00Z'>14:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes good idea, I&#x27;ll do that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744420' id='457983'>
+<a class='timestamp' href='#457983'><time timestamp='2016-03-23T14:47:00Z'>14:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+morcos, wumpus: should I open a PR with the non-gui oneliner against master and 0.12?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744480' id='457984'>
+<a class='timestamp' href='#457984'><time timestamp='2016-03-23T14:48:00Z'>14:48</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: I was just going to do that, but sure go ahead :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744480' id='457985'>
+<a class='timestamp' href='#457985'><time timestamp='2016-03-23T14:48:00Z'>14:48</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+okay... give me couple of minutes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744660' id='457986'>
+<a class='timestamp' href='#457986'><time timestamp='2016-03-23T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-15'> GitHub38</span>&gt;
+[bitcoin] jonasschnelli opened pull request #7739: [Wallet][RPC] add abandoned status to listtransactions (master...2016/03/aba_rpc) <a href="https://github.com/bitcoin/bitcoin/pull/7739" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7739</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744660' id='457987'>
+<a class='timestamp' href='#457987'><time timestamp='2016-03-23T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-16'> GitHub56</span>&gt;
+[bitcoin] jonasschnelli opened pull request #7740: [0.12 BP] [Wallet][RPC] add abandoned status to listtransactions (0.12...2016/03/aba_rpc_012) <a href="https://github.com/bitcoin/bitcoin/pull/7740" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7740</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458744660' id='457988'>
+<a class='timestamp' href='#457988'><time timestamp='2016-03-23T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: done <a href="https://github.com/bitcoin/bitcoin/pull/7739" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7739</a> and <a href="https://github.com/bitcoin/bitcoin/pull/7740" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7740</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458745140' id='457989'>
+<a class='timestamp' href='#457989'><time timestamp='2016-03-23T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Anyone interested in reviewing my p2p-authentication and encryption BIP before submitting to the ML?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458745140' id='457990'>
+<a class='timestamp' href='#457990'><time timestamp='2016-03-23T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+<a href="https://github.com/bitcoin/bips/compare/master...jonasschnelli:2016/03/auth_enc?expand=1" class="link" target="_blank">https://github.com/bitcoin/bips/compare/master...jonasschnelli:2016/03/auth_enc?expand=1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747000' id='457991'>
+<a class='timestamp' href='#457991'><time timestamp='2016-03-23T15:30:00Z'>15:30</time></a>
+&lt;<span class='nick nick-3'> GitHub102</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3bdc583b3f07...09a079e6484a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3bdc583b3f07...09a079e6484a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747000' id='457992'>
+<a class='timestamp' href='#457992'><time timestamp='2016-03-23T15:30:00Z'>15:30</time></a>
+&lt;<span class='nick nick-3'> GitHub102</span>&gt;
+bitcoin/master 263de3d Jonas Schnelli: [Wallet][RPC] add abandoned status to listtransactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747000' id='457993'>
+<a class='timestamp' href='#457993'><time timestamp='2016-03-23T15:30:00Z'>15:30</time></a>
+&lt;<span class='nick nick-3'> GitHub102</span>&gt;
+bitcoin/master 09a079e Wladimir J. van der Laan: Merge #7739: [Wallet][RPC] add abandoned status to listtransactions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747000' id='457994'>
+<a class='timestamp' href='#457994'><time timestamp='2016-03-23T15:30:00Z'>15:30</time></a>
+&lt;<span class='nick nick-16'> GitHub61</span>&gt;
+[bitcoin] laanwj closed pull request #7739: [Wallet][RPC] add abandoned status to listtransactions (master...2016/03/aba_rpc) <a href="https://github.com/bitcoin/bitcoin/pull/7739" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7739</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747060' id='457995'>
+<a class='timestamp' href='#457995'><time timestamp='2016-03-23T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-10'> GitHub170</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/7ffc2bd9439b2ad4da653583f7e57915980522a3" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/7ffc2bd9439b2ad4da653583f7e57915980522a3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747060' id='457996'>
+<a class='timestamp' href='#457996'><time timestamp='2016-03-23T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-10'> GitHub170</span>&gt;
+bitcoin/0.12 7ffc2bd Jonas Schnelli: [Wallet][RPC] add abandoned status to listtransactions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747120' id='457997'>
+<a class='timestamp' href='#457997'><time timestamp='2016-03-23T15:32:00Z'>15:32</time></a>
+&lt;<span class='nick nick-11'> GitHub140</span>&gt;
+[bitcoin] laanwj closed pull request #7740: [0.12 BP] [Wallet][RPC] add abandoned status to listtransactions (0.12...2016/03/aba_rpc_012) <a href="https://github.com/bitcoin/bitcoin/pull/7740" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7740</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747240' id='457998'>
+<a class='timestamp' href='#457998'><time timestamp='2016-03-23T15:34:00Z'>15:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747660' id='457999'>
+<a class='timestamp' href='#457999'><time timestamp='2016-03-23T15:41:00Z'>15:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: you should also approach warren about this ,he was very interested in this, maybe he can drum op some more reviewers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458747720' id='458000'>
+<a class='timestamp' href='#458000'><time timestamp='2016-03-23T15:42:00Z'>15:42</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Yes. He show interest at the conference in Cambridge. Ping warren.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748020' id='458001'>
+<a class='timestamp' href='#458001'><time timestamp='2016-03-23T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: btw I didn&#x27;t discover yet what the proposed layering is, but you should always encrypt-then-mac (verify mac before decryptiong), not mac-then-encrypt (eg have the message autehntication behind/inside the encryption)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748080' id='458002'>
+<a class='timestamp' href='#458002'><time timestamp='2016-03-23T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Yes. I agree. But the authentication scheme is ECDSA bases. IMO the auth itself is encrypted.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748140' id='458003'>
+<a class='timestamp' href='#458003'><time timestamp='2016-03-23T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: and the proposed Auth does what &quot;certificates&quot; do in SSH. They ensure that the remote party sill possesses the private key (=identity).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748140' id='458004'>
+<a class='timestamp' href='#458004'><time timestamp='2016-03-23T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: ok, but I suppose you never have enc(auth( 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748140' id='458005'>
+<a class='timestamp' href='#458005'><time timestamp='2016-03-23T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: then it&#x27;s good
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748200' id='458006'>
+<a class='timestamp' href='#458006'><time timestamp='2016-03-23T15:50:00Z'>15:50</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. No enc(auth()). Enc itself has no MITM protection.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748440' id='458007'>
+<a class='timestamp' href='#458007'><time timestamp='2016-03-23T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: so encryption and authentication is optional per message? I think the latter is risky, can&#x27;t a MITMer insert a non-authenticated message inside the stream?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748500' id='458008'>
+<a class='timestamp' href='#458008'><time timestamp='2016-03-23T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I think once authentication is initiated, every message should be authenticated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748500' id='458009'>
+<a class='timestamp' href='#458009'><time timestamp='2016-03-23T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748500' id='458010'>
+<a class='timestamp' href='#458010'><time timestamp='2016-03-23T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;m not sure that should hold for encryption, though there is a point to do so: it makes traffic analysis harder, more haystack to search for needles in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748500' id='458011'>
+<a class='timestamp' href='#458011'><time timestamp='2016-03-23T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: I&#x27;m not sure if it would make sense to encrypt blocks. Why would it be risky?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748560' id='458012'>
+<a class='timestamp' href='#458012'><time timestamp='2016-03-23T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: yeah agreed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748560' id='458013'>
+<a class='timestamp' href='#458013'><time timestamp='2016-03-23T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: but why would you not encrypt everything?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748620' id='458014'>
+<a class='timestamp' href='#458014'><time timestamp='2016-03-23T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(i have not looked at your bips) i think it should be a single authentication+encryption extension that is either off or on; if the identity of the peer is not known, a randomly generated key is used, otherwise a known key is used
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748620' id='458015'>
+<a class='timestamp' href='#458015'><time timestamp='2016-03-23T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: (once encryption is established, I mean)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748620' id='458016'>
+<a class='timestamp' href='#458016'><time timestamp='2016-03-23T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+You could encrypt everything. Its just not a requirement in the BIP. It depends on the resources you have.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748620' id='458017'>
+<a class='timestamp' href='#458017'><time timestamp='2016-03-23T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+resources for encryption decryption are neglible compared to block processing, even deserialization
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748680' id='458018'>
+<a class='timestamp' href='#458018'><time timestamp='2016-03-23T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. I agree.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748680' id='458019'>
+<a class='timestamp' href='#458019'><time timestamp='2016-03-23T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and if you don&#x27;t want to encrypt, fine, don&#x27;t establish it, it&#x27;s an optional extension :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748680' id='458020'>
+<a class='timestamp' href='#458020'><time timestamp='2016-03-23T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: I have wrote two separate BIPs because auth could also make sense for non-encrypted coms.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748800' id='458021'>
+<a class='timestamp' href='#458021'><time timestamp='2016-03-23T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: if i would redesign bitcoin p2p it would always be authenticated and always encrypted
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748800' id='458022'>
+<a class='timestamp' href='#458022'><time timestamp='2016-03-23T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Yes. It is probably bad if partial traffic will be unencrypted after enc-init.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748800' id='458023'>
+<a class='timestamp' href='#458023'><time timestamp='2016-03-23T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, authentication without encryption is iseful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748800' id='458024'>
+<a class='timestamp' href='#458024'><time timestamp='2016-03-23T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but if you&#x27;re going through the trouble of proposing a change, i think you should immediately go all the way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748800' id='458025'>
+<a class='timestamp' href='#458025'><time timestamp='2016-03-23T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: Agree. But there is a problem with the identity management (MITM).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748860' id='458026'>
+<a class='timestamp' href='#458026'><time timestamp='2016-03-23T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+First time you connect to a trusted node, you might want to ensure it is the correct identity (preshared key over a different chan).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748860' id='458027'>
+<a class='timestamp' href='#458027'><time timestamp='2016-03-23T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that problem always exists for authentivation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748860' id='458028'>
+<a class='timestamp' href='#458028'><time timestamp='2016-03-23T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: yes, the same problem as ssh basically, you may want to verify the remote fingerprint
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748860' id='458029'>
+<a class='timestamp' href='#458029'><time timestamp='2016-03-23T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+whether or not you make encryption mandatory is indepebdent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748920' id='458030'>
+<a class='timestamp' href='#458030'><time timestamp='2016-03-23T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748920' id='458031'>
+<a class='timestamp' href='#458031'><time timestamp='2016-03-23T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Yes. The enc BIP i wrote does verify the fingerprint (base58c(ripemd160(sha256(pubkey))).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748980' id='458032'>
+<a class='timestamp' href='#458032'><time timestamp='2016-03-23T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Okay. I might want to add that to the BIP: once encryption is initialized, unencrypted traffic would lead to a disconnect and lost of the enc session.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748980' id='458033'>
+<a class='timestamp' href='#458033'><time timestamp='2016-03-23T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: but that&#x27;s somewhat of a UI issue, how to show the fingerprint and make the user verify it, before storing it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748980' id='458034'>
+<a class='timestamp' href='#458034'><time timestamp='2016-03-23T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;ll read it later... the hardest problem imho is how do you not reveal your identity to those who do nkt already know it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748980' id='458035'>
+<a class='timestamp' href='#458035'><time timestamp='2016-03-23T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748980' id='458036'>
+<a class='timestamp' href='#458036'><time timestamp='2016-03-23T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: Yes. I left that open in the BIP. Most easiest solution would be to just NOT connect if the fingerprint not matches the prev./prestored once
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458748980' id='458037'>
+<a class='timestamp' href='#458037'><time timestamp='2016-03-23T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes I think that makes sense: once the connection chooses encryption or authentication, all traffic from then on should stick to it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749040' id='458038'>
+<a class='timestamp' href='#458038'><time timestamp='2016-03-23T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: Yes. That is a different problem not addresses in the BIP(s)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749040' id='458039'>
+<a class='timestamp' href='#458039'><time timestamp='2016-03-23T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: You might also like the idea of the SHA256 context that hashes all the comms to identify missing ENC messages. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749040' id='458040'>
+<a class='timestamp' href='#458040'><time timestamp='2016-03-23T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: I don&#x27;t think it&#x27;s a different problem, in that the wrong crypto design makes it impossible to avoid having both sides broadcasting a persistant identity.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749100' id='458041'>
+<a class='timestamp' href='#458041'><time timestamp='2016-03-23T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+in any case props to jonasschnelli for starting work on this, I&#x27;m sure this won&#x27;t be finalized in one day, but initiative matters
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749160' id='458042'>
+<a class='timestamp' href='#458042'><time timestamp='2016-03-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: I mean you could do the same as SSH does. Ask the user if when he first connect to a unknown node (fingerprint), store the fingerprint and warn/reject connecting to changed fingerprints.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749160' id='458043'>
+<a class='timestamp' href='#458043'><time timestamp='2016-03-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, i think we need this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749160' id='458044'>
+<a class='timestamp' href='#458044'><time timestamp='2016-03-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: that means a node must reveal its fingerprint
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749160' id='458045'>
+<a class='timestamp' href='#458045'><time timestamp='2016-03-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: that is the opposite of what we want.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749160' id='458046'>
+<a class='timestamp' href='#458046'><time timestamp='2016-03-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that would lead to a trivial... eh... fingerprinting attack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749160' id='458047'>
+<a class='timestamp' href='#458047'><time timestamp='2016-03-23T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But maybe there is some clever method to spread identities over Addrman? Not sure although.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749220' id='458048'>
+<a class='timestamp' href='#458048'><time timestamp='2016-03-23T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: what sipa and I are referring to is that we don&#x27;t want bitcoin nodes sending data that distinguishes them (esp passively) from other nodes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749220' id='458049'>
+<a class='timestamp' href='#458049'><time timestamp='2016-03-23T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s something i&#x27;ve suggested in the past, but i&#x27;m not sure anymore that&#x27;s a good idea
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749280' id='458050'>
+<a class='timestamp' href='#458050'><time timestamp='2016-03-23T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: right. Thats why I proposed only fingerprint possibilities to connecting node AFTER they have successfully authed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749280' id='458051'>
+<a class='timestamp' href='#458051'><time timestamp='2016-03-23T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how can you authenticate without knowing who you&#x27;re authenticating to?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749280' id='458052'>
+<a class='timestamp' href='#458052'><time timestamp='2016-03-23T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(i should shut up and read the bip)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749340' id='458053'>
+<a class='timestamp' href='#458053'><time timestamp='2016-03-23T16:09:00Z'>16:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: the remote node would only reveal its identity if it accepts the auth (already know the pubkey / preshared).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749340' id='458054'>
+<a class='timestamp' href='#458054'><time timestamp='2016-03-23T16:09:00Z'>16:09</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: remote node checks pubkey (might ask the node op. to allow access), then reveal its pubkey, etc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749400' id='458055'>
+<a class='timestamp' href='#458055'><time timestamp='2016-03-23T16:10:00Z'>16:10</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Fingerprinting would only be possible for &quot;authorized_peers&quot;.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458749400' id='458056'>
+<a class='timestamp' href='#458056'><time timestamp='2016-03-23T16:10:00Z'>16:10</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+BIP is here if you want to read it: <a href="https://github.com/bitcoin/bips/compare/master...jonasschnelli:2016/03/auth_enc?expand=1" class="link" target="_blank">https://github.com/bitcoin/bips/compare/master...jonasschnelli:2016/03/auth_enc?expand=1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458751320' id='458057'>
+<a class='timestamp' href='#458057'><time timestamp='2016-03-23T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-6'> GitHub198</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/09a079e6484a...e5c35119e967" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/09a079e6484a...e5c35119e967</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458751320' id='458058'>
+<a class='timestamp' href='#458058'><time timestamp='2016-03-23T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-6'> GitHub198</span>&gt;
+bitcoin/master df9e923 João Barbosa: Fix lockunspents help message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458751320' id='458059'>
+<a class='timestamp' href='#458059'><time timestamp='2016-03-23T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-6'> GitHub198</span>&gt;
+bitcoin/master e5c3511 Wladimir J. van der Laan: Merge #7646: Fix lockunspent help message...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458751320' id='458060'>
+<a class='timestamp' href='#458060'><time timestamp='2016-03-23T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-10'> GitHub139</span>&gt;
+[bitcoin] laanwj closed pull request #7646: Fix lockunspent help message (master...support/fix-lockunspent-help-message) <a href="https://github.com/bitcoin/bitcoin/pull/7646" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7646</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458752400' id='458061'>
+<a class='timestamp' href='#458061'><time timestamp='2016-03-23T17:00:00Z'>17:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: not sure i discussed in the conversation above, but it&#x27;s not clear from your BIP if the auth message carries the typical message header as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458752400' id='458062'>
+<a class='timestamp' href='#458062'><time timestamp='2016-03-23T17:00:00Z'>17:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(as a prefix i mean, in addition to the wrapped one)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458757620' id='458063'>
+<a class='timestamp' href='#458063'><time timestamp='2016-03-23T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: I would normally expect this to work so that evey (supporting) conenction was mac/encrypted with ephemeral keys; and then inside that channel, varrious bits of authentiction may or may not happen. This way that even if the auth is deanonymizing it would only be so for an acive attacker; also all communication then ends up private from a global passive observer, even if there are n
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458757620' id='458064'>
+<a class='timestamp' href='#458064'><time timestamp='2016-03-23T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+o auth credientials available.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458757800' id='458065'>
+<a class='timestamp' href='#458065'><time timestamp='2016-03-23T18:30:00Z'>18:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+as far as the auth goes, I think for bitcoin symmetric mutual auth is not really a perfect fit; -- often the connection-accepting side wants to know that their resources are not being wasted by sybils, but don&#x27;t really care who it is otherwise... and clients want to know they&#x27;re talking to the host they expect, but really don&#x27;t want it to know who they are.   The exception is basically when you 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458757800' id='458066'>
+<a class='timestamp' href='#458066'><time timestamp='2016-03-23T18:30:00Z'>18:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+have your own trusted peers, in which case symmetric auth is probably fine. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758700' id='458067'>
+<a class='timestamp' href='#458067'><time timestamp='2016-03-23T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: hmm... IIRC I wrote in both bips that the wrapped messages also contains the HDR.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758760' id='458068'>
+<a class='timestamp' href='#458068'><time timestamp='2016-03-23T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: yes, but it&#x27;s not clear if that&#x27;s in addition to, or instead of, the normal header
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758760' id='458069'>
+<a class='timestamp' href='#458069'><time timestamp='2016-03-23T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-12'> * jonasschnelli</span>&gt;
+is processing gmaxwell answer (takes couple of minutes)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758760' id='458070'>
+<a class='timestamp' href='#458070'><time timestamp='2016-03-23T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: thanks... will clarify that in the BIP.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758820' id='458071'>
+<a class='timestamp' href='#458071'><time timestamp='2016-03-23T18:47:00Z'>18:47</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: note that imo if the answer is &quot;instead of&quot;, that would likely be an issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758940' id='458072'>
+<a class='timestamp' href='#458072'><time timestamp='2016-03-23T18:49:00Z'>18:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: both messages (container and the wrapped message) would have valid message headers. This would make sense I guess?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458758940' id='458073'>
+<a class='timestamp' href='#458073'><time timestamp='2016-03-23T18:49:00Z'>18:49</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: perfect, thanks for clarifying :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759060' id='458074'>
+<a class='timestamp' href='#458074'><time timestamp='2016-03-23T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: i would expect any authentication information to be sent instead of the 4-byte checksum there is now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759120' id='458075'>
+<a class='timestamp' href='#458075'><time timestamp='2016-03-23T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: Yes. But IMO its most straightforward to wrap an existing command. No changes in the message / header processing would be required.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759180' id='458076'>
+<a class='timestamp' href='#458076'><time timestamp='2016-03-23T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The &quot;enc&quot; message wrapper would provide the encryption checksum (for AES IV).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759240' id='458077'>
+<a class='timestamp' href='#458077'><time timestamp='2016-03-23T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s oretty inefficient
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759240' id='458078'>
+<a class='timestamp' href='#458078'><time timestamp='2016-03-23T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: You mean the message wrapper approach? Its basically a &quot;header&quot; for the message-with-a-header... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759240' id='458079'>
+<a class='timestamp' href='#458079'><time timestamp='2016-03-23T18:54:00Z'>18:54</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: i was thinking the same thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759300' id='458080'>
+<a class='timestamp' href='#458080'><time timestamp='2016-03-23T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I kinda like the wrapping approach. It reflects and optional encryption layer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759300' id='458081'>
+<a class='timestamp' href='#458081'><time timestamp='2016-03-23T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and it&#x27;s abit naive to think you don&#x27;t need tovchange existing procesng; you&#x27;re not going to implement encryptiin for every command separately anyway, so you&#x27;ll want to do it generically
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759300' id='458082'>
+<a class='timestamp' href='#458082'><time timestamp='2016-03-23T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+And does resect an easy implementation (not sure if this is an argument though)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759360' id='458083'>
+<a class='timestamp' href='#458083'><time timestamp='2016-03-23T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it results in lots of digital signatures, which is very slow. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759360' id='458084'>
+<a class='timestamp' href='#458084'><time timestamp='2016-03-23T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(sorry for typing, edge)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759360' id='458085'>
+<a class='timestamp' href='#458085'><time timestamp='2016-03-23T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: hmm actually though, that means 2 possible header sizes. that&#x27;s kinda nasty for parsing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759360' id='458086'>
+<a class='timestamp' href='#458086'><time timestamp='2016-03-23T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+No...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759360' id='458087'>
+<a class='timestamp' href='#458087'><time timestamp='2016-03-23T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+You have a message type &quot;enc&quot; that has a data set that contain a &quot;normal&quot; message (lets say a &quot;version&quot; message).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759360' id='458088'>
+<a class='timestamp' href='#458088'><time timestamp='2016-03-23T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+cfields: implement it as a layer in between tcp and messages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759420' id='458089'>
+<a class='timestamp' href='#458089'><time timestamp='2016-03-23T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759420' id='458090'>
+<a class='timestamp' href='#458090'><time timestamp='2016-03-23T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The &quot;enc&quot; message has its own normal message p2p header, then some encryption relevant data (hash / iv, maybe the same), then the wrappen &quot;version&quot; message header&amp;data.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759420' id='458091'>
+<a class='timestamp' href='#458091'><time timestamp='2016-03-23T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sipa: could do, sure, but i&#x27;m not sure it&#x27;s worth the added complexity?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759480' id='458092'>
+<a class='timestamp' href='#458092'><time timestamp='2016-03-23T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+So you could pare the enc message with the standard process message function, then decrypt, and process the wrapped command with the same logic.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759480' id='458093'>
+<a class='timestamp' href='#458093'><time timestamp='2016-03-23T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+cfields: what sipa suggests seems most natural to me, you could think of it is a secure socket layer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759540' id='458094'>
+<a class='timestamp' href='#458094'><time timestamp='2016-03-23T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: so an inv becomes goes from 60 bytes to 112 bytes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759540' id='458095'>
+<a class='timestamp' href='#458095'><time timestamp='2016-03-23T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I have also though about adding the encryption on a different layer But, because I also want to do the implementation, I was looking for something that can be implemented easily. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759600' id='458096'>
+<a class='timestamp' href='#458096'><time timestamp='2016-03-23T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or if you add a digital signature, 33 even more
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759600' id='458097'>
+<a class='timestamp' href='#458097'><time timestamp='2016-03-23T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: Yes. That&#x27;s why I though enc should be optional by message.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759600' id='458098'>
+<a class='timestamp' href='#458098'><time timestamp='2016-03-23T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+We could remove the message header from the submessage though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759600' id='458099'>
+<a class='timestamp' href='#458099'><time timestamp='2016-03-23T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: as i said, i disagree with that- ideally we move to a form where everything is just encrypted imho
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759600' id='458100'>
+<a class='timestamp' href='#458100'><time timestamp='2016-03-23T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: enc does not use DSA. Auth does.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759660' id='458101'>
+<a class='timestamp' href='#458101'><time timestamp='2016-03-23T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well yes, but you shoukd have both
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759660' id='458102'>
+<a class='timestamp' href='#458102'><time timestamp='2016-03-23T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*should
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759660' id='458103'>
+<a class='timestamp' href='#458103'><time timestamp='2016-03-23T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+You mean signing the encrypted message?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759660' id='458104'>
+<a class='timestamp' href='#458104'><time timestamp='2016-03-23T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: the way you&#x27;re doing authentication provides both authentication and non-repudiation. The latter is sometimes useful, but usually not--- the cost of it though is a really massive overhead compared to plain authentication.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759660' id='458105'>
+<a class='timestamp' href='#458105'><time timestamp='2016-03-23T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+gmaxwell: hmm, seems jonasschnelli and I are thinking in terms of individual opt-in messages, and you and sipa are thinking in terms of the entire stream.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759720' id='458106'>
+<a class='timestamp' href='#458106'><time timestamp='2016-03-23T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m fine with doing it per message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759720' id='458107'>
+<a class='timestamp' href='#458107'><time timestamp='2016-03-23T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s certainly easier
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759720' id='458108'>
+<a class='timestamp' href='#458108'><time timestamp='2016-03-23T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but it shouldn&#x27;t have such high overhead
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759720' id='458109'>
+<a class='timestamp' href='#458109'><time timestamp='2016-03-23T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+cfields: working with the entire stream makes it easier to avoid attacks from selective dropping and replay. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759720' id='458110'>
+<a class='timestamp' href='#458110'><time timestamp='2016-03-23T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: I agree. We might want to optimize the overhead.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759780' id='458111'>
+<a class='timestamp' href='#458111'><time timestamp='2016-03-23T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and doing a dsa verify per message would be a noticible CPU load... and provides no particular value over a more traditional authentication scheme.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759780' id='458112'>
+<a class='timestamp' href='#458112'><time timestamp='2016-03-23T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Somehow i kinda likes to dual approach (encrypted and unencrypted messages) because of its CPU and bandwidth optimizations. I don&#x27;t see a big value in encrypting blocks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759840' id='458113'>
+<a class='timestamp' href='#458113'><time timestamp='2016-03-23T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: Right. I only proposes DSA for a one-time-auth to initiate the enc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759840' id='458114'>
+<a class='timestamp' href='#458114'><time timestamp='2016-03-23T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: using the more private approach shouldn&#x27;t be more expensive :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759840' id='458115'>
+<a class='timestamp' href='#458115'><time timestamp='2016-03-23T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+auth is stateless (no session), enc initiate a session.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759840' id='458116'>
+<a class='timestamp' href='#458116'><time timestamp='2016-03-23T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: encryption does not provide authenticity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759840' id='458117'>
+<a class='timestamp' href='#458117'><time timestamp='2016-03-23T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Also one gain of an encrypted transport would be being able to reduce network attack surface to just &#x27;trusted&#x27; peers, which mixing things cannot achieve.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759840' id='458118'>
+<a class='timestamp' href='#458118'><time timestamp='2016-03-23T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you <b>*need*</b> authentication for all data sent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759900' id='458119'>
+<a class='timestamp' href='#458119'><time timestamp='2016-03-23T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+otherwise there may he attacks where an attacker modifies the stream
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759900' id='458120'>
+<a class='timestamp' href='#458120'><time timestamp='2016-03-23T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: For that purpose i have added the SHA256 context that starts with the authentication response.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759900' id='458121'>
+<a class='timestamp' href='#458121'><time timestamp='2016-03-23T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-12'> * jonasschnelli</span>&gt;
+needs to go afk soon.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759900' id='458122'>
+<a class='timestamp' href='#458122'><time timestamp='2016-03-23T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: standard encrypted transport, if done with a fast cipher/authentication can run with near memcpy speeds, it wouldn&#x27;t necessarily make more than a negligible performance impact. And eventually there should be no whole &#x27;blocks&#x27; sent except for history catchup.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759960' id='458123'>
+<a class='timestamp' href='#458123'><time timestamp='2016-03-23T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: +1 agree.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458759960' id='458124'>
+<a class='timestamp' href='#458124'><time timestamp='2016-03-23T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Well,.. right. Once encryption is initiated it should cover everything. Agree.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760020' id='458125'>
+<a class='timestamp' href='#458125'><time timestamp='2016-03-23T19:07:00Z'>19:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I try to find a more optimized message format (wrapper)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760020' id='458126'>
+<a class='timestamp' href='#458126'><time timestamp='2016-03-23T19:07:00Z'>19:07</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but mind sipas contant time AES pr. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760140' id='458127'>
+<a class='timestamp' href='#458127'><time timestamp='2016-03-23T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so, e.g. if we had something that initilized at handshake with ephemeral keys, then inside that identity-auth may or may not happen.-- so then a passive observer wouldn&#x27;t even learn if you were using auth or not. (esp if where auth isn&#x27;t used if we insert a dummy message of the same size)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760260' id='458128'>
+<a class='timestamp' href='#458128'><time timestamp='2016-03-23T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: my enc proposal uses ephemeral keys (ECDH) and right, with preshared key, an observer would not notice the auth (only the enc).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760260' id='458129'>
+<a class='timestamp' href='#458129'><time timestamp='2016-03-23T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;m not sure that we&#x27;d want to use AES for the normal connections; just because without hardware support, timing attack immune AES is not very fast.  This is why chacha20-poly1305 is now in TLS and SSH; to be used on the many hosts where AES-GCM is slow.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760320' id='458130'>
+<a class='timestamp' href='#458130'><time timestamp='2016-03-23T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+typical advice to encrypt first, and then put a mac on the encrypted form
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760320' id='458131'>
+<a class='timestamp' href='#458131'><time timestamp='2016-03-23T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I need to go afk. Happy to discuss that more in detail later. Thanks for the feedback, also happy to get feedback on the bitcoin-dev mail.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760500' id='458132'>
+<a class='timestamp' href='#458132'><time timestamp='2016-03-23T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The encrypted structure you have is not MACed, so junk can be injected into the stream. Internally authed messages wouldn&#x27;t suffer from that becuase they&#x27;re signed... but this kind of structure ends up with attacks where you corrupt some data and then learn something about the content based on if the far end changes its behavior or not.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760560' id='458133'>
+<a class='timestamp' href='#458133'><time timestamp='2016-03-23T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+One thing to keep in mind is that the word &#x27;authenticate&#x27; has an overloaded meaning.  It can mean the function of a keyed mac to make sure that the data is data created by someone knowing a particular secret.  Or it can mean to establish that the party you are communicating with is the party you think you are (that there is no MITM). Sometimes we use some of the same tools for these things, usua
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760560' id='458134'>
+<a class='timestamp' href='#458134'><time timestamp='2016-03-23T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+lly not.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760620' id='458135'>
+<a class='timestamp' href='#458135'><time timestamp='2016-03-23T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so regardless of what is done with identity-authentication; the outer transport should be using authenticated-encryption, so that any corruption is immediately rejected before any further application processing which might reveal information about the state of the encrypted stream.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760680' id='458136'>
+<a class='timestamp' href='#458136'><time timestamp='2016-03-23T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+amusingly, since we already use this sha256 based &quot;checksum&quot;, a switch to an authenticated/encrypted transport might actually make the network communications faster.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458760680' id='458137'>
+<a class='timestamp' href='#458137'><time timestamp='2016-03-23T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(if it were faster than the sha256)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458761580' id='458138'>
+<a class='timestamp' href='#458138'><time timestamp='2016-03-23T19:33:00Z'>19:33</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+gmaxwell: heh, good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775080' id='458139'>
+<a class='timestamp' href='#458139'><time timestamp='2016-03-23T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-7'> BCB</span>&gt;
+Any idea why bitcoin 0.12 would be disconnection from an ipv6 addy with &quot;socket recv error Connection reset by peer (104)&quot; after receiving pong message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775320' id='458140'>
+<a class='timestamp' href='#458140'><time timestamp='2016-03-23T23:22:00Z'>23:22</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+BCB: the only reason can be that the network layer actually returned a &quot;Connection reset by peer&quot; error...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775380' id='458141'>
+<a class='timestamp' href='#458141'><time timestamp='2016-03-23T23:23:00Z'>23:23</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+the most likely reason for which is that the remote side actually disconnected
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775380' id='458142'>
+<a class='timestamp' href='#458142'><time timestamp='2016-03-23T23:23:00Z'>23:23</time></a>
+&lt;<span class='nick nick-7'> BCB</span>&gt;
+sipax: what is the x in your nic?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775440' id='458143'>
+<a class='timestamp' href='#458143'><time timestamp='2016-03-23T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-7'> BCB</span>&gt;
+sipax so the remote side will just reconnect?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775440' id='458144'>
+<a class='timestamp' href='#458144'><time timestamp='2016-03-23T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+i don&#x27;t know whether it will; only that based on the information you&#x27;ve given me, it seems that it does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775680' id='458145'>
+<a class='timestamp' href='#458145'><time timestamp='2016-03-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+hm. so I have a node that was offline for a week throwing &quot;Bitcoin is downloading blocks&quot; -- it&#x27;s not caught up, and yet it shows no blocks inflight on any peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775680' id='458146'>
+<a class='timestamp' href='#458146'><time timestamp='2016-03-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-7'> BCB</span>&gt;
+* looks at logs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775680' id='458147'>
+<a class='timestamp' href='#458147'><time timestamp='2016-03-23T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and synced_blocks/synced_headers is -1 on every peer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775740' id='458148'>
+<a class='timestamp' href='#458148'><time timestamp='2016-03-23T23:29:00Z'>23:29</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+gmaxwell: how long has the node been up?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775740' id='458149'>
+<a class='timestamp' href='#458149'><time timestamp='2016-03-23T23:29:00Z'>23:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+45 minutes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775740' id='458150'>
+<a class='timestamp' href='#458150'><time timestamp='2016-03-23T23:29:00Z'>23:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh sorry 15 minutes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775800' id='458151'>
+<a class='timestamp' href='#458151'><time timestamp='2016-03-23T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+i&#x27;ve seen that before, but it always resolved itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775800' id='458152'>
+<a class='timestamp' href='#458152'><time timestamp='2016-03-23T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+first connection was 23:15:25.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775860' id='458153'>
+<a class='timestamp' href='#458153'><time timestamp='2016-03-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and this is a checkout of 0.12 from a few minutes before it started.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775860' id='458154'>
+<a class='timestamp' href='#458154'><time timestamp='2016-03-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+wait until there&#x27;s been a new block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775860' id='458155'>
+<a class='timestamp' href='#458155'><time timestamp='2016-03-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+(we should still investigate, but if it resolves on itself on the first block, i&#x27;m not so worried)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775860' id='458156'>
+<a class='timestamp' href='#458156'><time timestamp='2016-03-23T23:31:00Z'>23:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sure, I don&#x27;t care if this particular host is delayed.. but what data would be useful to resolve the bug?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775920' id='458157'>
+<a class='timestamp' href='#458157'><time timestamp='2016-03-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think I&#x27;ve been block inved while this was up.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775920' id='458158'>
+<a class='timestamp' href='#458158'><time timestamp='2016-03-23T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+was this after ending a reindex?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775980' id='458159'>
+<a class='timestamp' href='#458159'><time timestamp='2016-03-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+or maybe a lengthy activating best chain?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775980' id='458160'>
+<a class='timestamp' href='#458160'><time timestamp='2016-03-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+no. host cleanly shut itself down a week ago due to out of space (my debug lot made it to &gt;100GB)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458775980' id='458161'>
+<a class='timestamp' href='#458161'><time timestamp='2016-03-23T23:33:00Z'>23:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it came up, connected two block,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776040' id='458162'>
+<a class='timestamp' href='#458162'><time timestamp='2016-03-23T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(402971 and 402972) and then hasn&#x27;t made progress.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776040' id='458163'>
+<a class='timestamp' href='#458163'><time timestamp='2016-03-23T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+2016-03-23 23:20:48 got inv: block 000000000000000000342cb0954d2b28c5c41fe0d1afa6a262ac0cef29394c28  new peer=21
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776040' id='458164'>
+<a class='timestamp' href='#458164'><time timestamp='2016-03-23T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+2016-03-23 23:20:48 sending: getheaders (997 bytes) peer=21
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776040' id='458165'>
+<a class='timestamp' href='#458165'><time timestamp='2016-03-23T23:34:00Z'>23:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+2016-03-23 23:20:48 getheaders (402972) 000000000000000000342cb0954d2b28c5c41fe0d1afa6a262ac0cef29394c28 to peer=21
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776100' id='458166'>
+<a class='timestamp' href='#458166'><time timestamp='2016-03-23T23:35:00Z'>23:35</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+looks like that peer may have not responded to that getheaders.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776160' id='458167'>
+<a class='timestamp' href='#458167'><time timestamp='2016-03-23T23:36:00Z'>23:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+that peer claims 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776160' id='458168'>
+<a class='timestamp' href='#458168'><time timestamp='2016-03-23T23:36:00Z'>23:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+    &quot;subver&quot;: &quot;/Satoshi:0.11.2/&quot;,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776160' id='458169'>
+<a class='timestamp' href='#458169'><time timestamp='2016-03-23T23:36:00Z'>23:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+    &quot;startingheight&quot;: 402972,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776160' id='458170'>
+<a class='timestamp' href='#458170'><time timestamp='2016-03-23T23:36:00Z'>23:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+which is my height, my guess is that it&#x27;s a fake node that just reflects whatever my starting height is.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776340' id='458171'>
+<a class='timestamp' href='#458171'><time timestamp='2016-03-23T23:39:00Z'>23:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and just ignored the getheaders request.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776460' id='458172'>
+<a class='timestamp' href='#458172'><time timestamp='2016-03-23T23:41:00Z'>23:41</time></a>
+&lt;<span class='nick nick-7'> BCB</span>&gt;
+gmaxwell: won&#x27;t a misbehaving node be disconnected?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776520' id='458173'>
+<a class='timestamp' href='#458173'><time timestamp='2016-03-23T23:42:00Z'>23:42</time></a>
+&lt;<span class='nick nick-12'> sipax</span>&gt;
+BCB: in some cases where it&#x27;s detectable...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776520' id='458174'>
+<a class='timestamp' href='#458174'><time timestamp='2016-03-23T23:42:00Z'>23:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+BCB: impossible.  <u>_some_</u> kinds of very specific, detectable misbehavior will get things disconnected; but other kinds cannot be reliably detected.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776580' id='458175'>
+<a class='timestamp' href='#458175'><time timestamp='2016-03-23T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-7'> BCB</span>&gt;
+what&#x27;s the ip
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776640' id='458176'>
+<a class='timestamp' href='#458176'><time timestamp='2016-03-23T23:44:00Z'>23:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipax: okay the initial wedge is because the first thing to connect to my node was my local p2pool daemon, which can&#x27;t usefully reply
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776640' id='458177'>
+<a class='timestamp' href='#458177'><time timestamp='2016-03-23T23:44:00Z'>23:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+2016-03-23 23:15:25 initial getheaders (402971) to peer=1 (startheight:0)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776640' id='458178'>
+<a class='timestamp' href='#458178'><time timestamp='2016-03-23T23:44:00Z'>23:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the wedge would have resolved when peer=21 offered me that block, but peer=21 didn&#x27;t reply to the getheaders (as I&#x27;m in IBD, and so headers fetched instead of pulling it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458776700' id='458179'>
+<a class='timestamp' href='#458179'><time timestamp='2016-03-23T23:45:00Z'>23:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so someone with a fake node that relays blocks but doesn&#x27;t conform to the protocol more generally seems to be unintentionally prolonging the wedge. I expect it will resolve when another peer offers me a block first.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1458777540' id='458180'>
+<a class='timestamp' href='#458180'><time timestamp='2016-03-23T23:59:00Z'>23:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+as predicted, it unwedged.
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

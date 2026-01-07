@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-03-06
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-03-06' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:22 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-02-06">&lt;</a><span class='header'>    March 2018    </span><a href="/bitcoin-core-dev/2018-04-06">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2018-03-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-03-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-03-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-03-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-03-05">5</a>  <a class="current" href="/bitcoin-core-dev/2018-03-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-03-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-03-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-03-09">9</a> <a class="" href="/bitcoin-core-dev/2018-03-10">10</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-03-11">11</a> <a class="" href="/bitcoin-core-dev/2018-03-12">12</a> <a class="" href="/bitcoin-core-dev/2018-03-13">13</a> <a class="" href="/bitcoin-core-dev/2018-03-14">14</a> <a class="" href="/bitcoin-core-dev/2018-03-15">15</a> <a class="" href="/bitcoin-core-dev/2018-03-16">16</a> <a class="" href="/bitcoin-core-dev/2018-03-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-03-18">18</a> <a class="" href="/bitcoin-core-dev/2018-03-19">19</a> <a class="" href="/bitcoin-core-dev/2018-03-20">20</a> <a class="" href="/bitcoin-core-dev/2018-03-21">21</a> <a class="" href="/bitcoin-core-dev/2018-03-22">22</a> <a class="" href="/bitcoin-core-dev/2018-03-23">23</a> <a class="" href="/bitcoin-core-dev/2018-03-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-03-25">25</a> <a class="" href="/bitcoin-core-dev/2018-03-26">26</a> <a class="" href="/bitcoin-core-dev/2018-03-27">27</a> <a class="" href="/bitcoin-core-dev/2018-03-28">28</a> <a class="" href="/bitcoin-core-dev/2018-03-29">29</a> <a class="" href="/bitcoin-core-dev/2018-03-30">30</a> <a class="" href="/bitcoin-core-dev/2018-03-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1520301060' id='602660'>
+<a class='timestamp' href='#602660'><time timestamp='2018-03-06T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+When starting Core for the first time, there is an option about where to put the data directory. It seems like that would be a good time to ask about a few other options, such as pruning and dbcache size, and create a .conf file with those settings.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520301120' id='602661'>
+<a class='timestamp' href='#602661'><time timestamp='2018-03-06T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+The settings can be adjusted through the GUI after the program starts, but it needs to be restarted from them take effect...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520302560' id='602662'>
+<a class='timestamp' href='#602662'><time timestamp='2018-03-06T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+CubicEarths: Knots already does the pruning bit, FWIW
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520302620' id='602663'>
+<a class='timestamp' href='#602663'><time timestamp='2018-03-06T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+would be nice to get it merged, but review is slow..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520302620' id='602664'>
+<a class='timestamp' href='#602664'><time timestamp='2018-03-06T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(the pending PR step is #11082)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520302620' id='602665'>
+<a class='timestamp' href='#602665'><time timestamp='2018-03-06T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11082" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11082</a> | Add new bitcoin_rw.conf file that is used for settings modified by this software itself by luke-jr · Pull Request #11082 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520304480' id='602666'>
+<a class='timestamp' href='#602666'><time timestamp='2018-03-06T02:48:00Z'>02:48</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+luke-jr: yeah. I was mainly thinking about the settings that a) are relevant to initial syncing and b) need restarting to activate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520304780' id='602667'>
+<a class='timestamp' href='#602667'><time timestamp='2018-03-06T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+It was good to see so many Pull Requests merged and closed today.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520304840' id='602668'>
+<a class='timestamp' href='#602668'><time timestamp='2018-03-06T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jerryldh opened pull request #12609: 陈独秀同志，你请讲！ (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/12609" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12609</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520304840' id='602669'>
+<a class='timestamp' href='#602669'><time timestamp='2018-03-06T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-16'> * Randolf</span>&gt;
+laughs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520304900' id='602670'>
+<a class='timestamp' href='#602670'><time timestamp='2018-03-06T02:55:00Z'>02:55</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jerryldh closed pull request #12609: 陈独秀同志，你请讲！ (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/12609" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12609</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520305020' id='602671'>
+<a class='timestamp' href='#602671'><time timestamp='2018-03-06T02:57:00Z'>02:57</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+The changed file in that Chinese Pull Request seemed to be about creating a fork of Bitcoin and then changing just one line of code.  Closing it without merging was the correct decision.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520309280' id='602672'>
+<a class='timestamp' href='#602672'><time timestamp='2018-03-06T04:08:00Z'>04:08</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I&#x27;m trying to track down a QT UI bug. The 0.16.0 release is fine, but what I build from the head as the problem. Where can I find the exact config options used to make the release binaries?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520309340' id='602673'>
+<a class='timestamp' href='#602673'><time timestamp='2018-03-06T04:09:00Z'>04:09</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+ossifrage: ./configure --help
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520309460' id='602674'>
+<a class='timestamp' href='#602674'><time timestamp='2018-03-06T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+ken2812221, I know how to use configure, but I don&#x27;t know what is used to build the release builds, the ldd output for the release binary is fairly minimal, but my build is huge (60 vs 18)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520309760' id='602675'>
+<a class='timestamp' href='#602675'><time timestamp='2018-03-06T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+you can take a look at contrib/gitian-descriptors/gitian-*.yml ,this is the script for release build
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520310600' id='602676'>
+<a class='timestamp' href='#602676'><time timestamp='2018-03-06T04:30:00Z'>04:30</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+ken2812221, thanks, building with the config options from gitian (doubt it is going to help, most likely a local qt problem)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520313840' id='602677'>
+<a class='timestamp' href='#602677'><time timestamp='2018-03-06T05:24:00Z'>05:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli opened pull request #12610: Multiwallet for the GUI (master...2018/03/multiwallet) <a href="https://github.com/bitcoin/bitcoin/pull/12610" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12610</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520314920' id='602678'>
+<a class='timestamp' href='#602678'><time timestamp='2018-03-06T05:42:00Z'>05:42</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ossifrage: see my answer on the issue...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520314980' id='602679'>
+<a class='timestamp' href='#602679'><time timestamp='2018-03-06T05:43:00Z'>05:43</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ossifrage: the release builds use the dependency compile environment (check the depends/ folder)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520314980' id='602680'>
+<a class='timestamp' href='#602680'><time timestamp='2018-03-06T05:43:00Z'>05:43</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+&quot;relesse builds&quot; == &quot;official binaries&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520314980' id='602681'>
+<a class='timestamp' href='#602681'><time timestamp='2018-03-06T05:43:00Z'>05:43</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Most stuff is linked static there... Qt5.7 is used and linked static (you won&#x27;t see it in ldd)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520315160' id='602682'>
+<a class='timestamp' href='#602682'><time timestamp='2018-03-06T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+jonasschnelli, I&#x27;m using qt5.9.4 (fedora27)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520315220' id='602683'>
+<a class='timestamp' href='#602683'><time timestamp='2018-03-06T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ossifrage: and you have the issue when compiling against qt5.9.4?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520315220' id='602684'>
+<a class='timestamp' href='#602684'><time timestamp='2018-03-06T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+please doublecheck with ldd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520315460' id='602685'>
+<a class='timestamp' href='#602685'><time timestamp='2018-03-06T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Yeah the debug peer list column resize thing is with 5.9.4 (Can&#x27;t verify with ldd, because I did a &#x27;make clean&#x27;, building the 0.16.0 tag)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520315580' id='602686'>
+<a class='timestamp' href='#602686'><time timestamp='2018-03-06T05:53:00Z'>05:53</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Yup libQt5Core.so -&gt; libQt5Core.so.5 -&gt; libQt5Core.so.5.9.4
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520320620' id='602687'>
+<a class='timestamp' href='#602687'><time timestamp='2018-03-06T07:17:00Z'>07:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ossifrage: your having the issue with Qt5.9.4 only? But not with the static Qt5.7 from our depends build... strange
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520320620' id='602688'>
+<a class='timestamp' href='#602688'><time timestamp='2018-03-06T07:17:00Z'>07:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+txindex: is there a reason why we do not allow -txindex with -prune?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520320680' id='602689'>
+<a class='timestamp' href='#602689'><time timestamp='2018-03-06T07:18:00Z'>07:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Example: you only interested to index stuff &gt; 1.1.2017 (I know hard with the current MB based prune target)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520320860' id='602690'>
+<a class='timestamp' href='#602690'><time timestamp='2018-03-06T07:21:00Z'>07:21</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+The problem is not specific to the head, it also happens with the 0.16.0 tag (using qt5.9.4). I haven&#x27;t gotten the depends to build, need to try again later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520321040' id='602691'>
+<a class='timestamp' href='#602691'><time timestamp='2018-03-06T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ossifrage: its probably very likely that you will your column issue with older tags
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520321100' id='602692'>
+<a class='timestamp' href='#602692'><time timestamp='2018-03-06T07:25:00Z'>07:25</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+jonasschnelli, yup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520326620' id='602693'>
+<a class='timestamp' href='#602693'><time timestamp='2018-03-06T08:57:00Z'>08:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #12611: consensus: Use safer casting in IsValidSignatureEncoding(...) (master...safer-casting-in-IsValidSignatureEncoding) <a href="https://github.com/bitcoin/bitcoin/pull/12611" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12611</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520333940' id='602694'>
+<a class='timestamp' href='#602694'><time timestamp='2018-03-06T10:59:00Z'>10:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+coredev.tech is currently down due to server hardware issue, sry for the bad timing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520334060' id='602695'>
+<a class='timestamp' href='#602695'><time timestamp='2018-03-06T11:01:00Z'>11:01</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+broken CPU fan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520334120' id='602696'>
+<a class='timestamp' href='#602696'><time timestamp='2018-03-06T11:02:00Z'>11:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+which was just fixed... so nm, it&#x27;s running again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520345100' id='602697'>
+<a class='timestamp' href='#602697'><time timestamp='2018-03-06T14:05:00Z'>14:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to master: <a href="https://github.com/bitcoin/bitcoin/commit/7deba93bdc76616011a9f493cbc203d60084416f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/7deba93bdc76616011a9f493cbc203d60084416f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520345100' id='602698'>
+<a class='timestamp' href='#602698'><time timestamp='2018-03-06T14:05:00Z'>14:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7deba93 Wladimir J. van der Laan: test: Update trust git root...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520345280' id='602699'>
+<a class='timestamp' href='#602699'><time timestamp='2018-03-06T14:08:00Z'>14:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: thanks for fixing!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520346900' id='602700'>
+<a class='timestamp' href='#602700'><time timestamp='2018-03-06T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #12606: [depends] Revert &quot;ccache 3.4.1&quot; (master...Mf1803-dependsCCache) <a href="https://github.com/bitcoin/bitcoin/pull/12606" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12606</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520348220' id='602701'>
+<a class='timestamp' href='#602701'><time timestamp='2018-03-06T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ken2812221 opened pull request #12615: doc: SIGNER can contains space inside now. (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/12615" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12615</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520349420' id='602702'>
+<a class='timestamp' href='#602702'><time timestamp='2018-03-06T15:17:00Z'>15:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag opened pull request #12616: Set modal overlay hide button as default (master...2018-03-modaloverlay) <a href="https://github.com/bitcoin/bitcoin/pull/12616" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12616</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520350080' id='602703'>
+<a class='timestamp' href='#602703'><time timestamp='2018-03-06T15:28:00Z'>15:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/7deba93bdc76...9903537750ac" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/7deba93bdc76...9903537750ac</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520350080' id='602704'>
+<a class='timestamp' href='#602704'><time timestamp='2018-03-06T15:28:00Z'>15:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 741f017 Evan Klitzke: Add DynamicMemoryUsage() to LevelDB...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520350080' id='602705'>
+<a class='timestamp' href='#602705'><time timestamp='2018-03-06T15:28:00Z'>15:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9903537 Wladimir J. van der Laan: Merge #12604: Add DynamicMemoryUsage() to CDBWrapper to estimate LevelDB memory use...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520350140' id='602706'>
+<a class='timestamp' href='#602706'><time timestamp='2018-03-06T15:29:00Z'>15:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12604: Add DynamicMemoryUsage() to CDBWrapper to estimate LevelDB memory use (master...leveldb_memory) <a href="https://github.com/bitcoin/bitcoin/pull/12604" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12604</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520355840' id='602707'>
+<a class='timestamp' href='#602707'><time timestamp='2018-03-06T17:04:00Z'>17:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #11653: [RPC] Add utility getsignaturehash (master...getsignaturehash) <a href="https://github.com/bitcoin/bitcoin/pull/11653" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11653</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520355960' id='602708'>
+<a class='timestamp' href='#602708'><time timestamp='2018-03-06T17:06:00Z'>17:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #10980: [Refactor] Decouple CKeyStore from CWatchOnlyStore (master...decouplewatchonly) <a href="https://github.com/bitcoin/bitcoin/pull/10980" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10980</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520356140' id='602709'>
+<a class='timestamp' href='#602709'><time timestamp='2018-03-06T17:09:00Z'>17:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #9728: Can create External HD wallet with -externalhd (master...watchonlyhd) <a href="https://github.com/bitcoin/bitcoin/pull/9728" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9728</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520356200' id='602710'>
+<a class='timestamp' href='#602710'><time timestamp='2018-03-06T17:10:00Z'>17:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #9991: listreceivedbyaddress Filter Address (master...listreceivedbyaddress-filtered) <a href="https://github.com/bitcoin/bitcoin/pull/9991" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9991</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520356320' id='602711'>
+<a class='timestamp' href='#602711'><time timestamp='2018-03-06T17:12:00Z'>17:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #10202: [Wallet] FundRawTransaction can fund a transaction with preset inputs found in the CoinView (master...fundrawtransaction) <a href="https://github.com/bitcoin/bitcoin/pull/10202" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10202</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520356380' id='602712'>
+<a class='timestamp' href='#602712'><time timestamp='2018-03-06T17:13:00Z'>17:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #10216: [Wallet] FundRawTransaction can accept pre-set inputs whose parent is not yet broadcasted (master...fundrawtransaction2) <a href="https://github.com/bitcoin/bitcoin/pull/10216" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10216</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520357160' id='602713'>
+<a class='timestamp' href='#602713'><time timestamp='2018-03-06T17:26:00Z'>17:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier closed pull request #11666: [RPC] Add utility signinput (master...signinput) <a href="https://github.com/bitcoin/bitcoin/pull/11666" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11666</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520357520' id='602714'>
+<a class='timestamp' href='#602714'><time timestamp='2018-03-06T17:32:00Z'>17:32</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+wumpus, *: what do people think about changing the merge script to add &quot;Acked-By: ...&quot; credits for reviewers in the merge commit, or similar?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520357580' id='602715'>
+<a class='timestamp' href='#602715'><time timestamp='2018-03-06T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-4'> xyxxy</span>&gt;
+have there been any notable articles or papers published pertaining to a security code review of bitcoin core?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520357760' id='602716'>
+<a class='timestamp' href='#602716'><time timestamp='2018-03-06T17:36:00Z'>17:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj opened pull request #12617: gui: Show messages as text not html (master...2018_03_gui_textbox) <a href="https://github.com/bitcoin/bitcoin/pull/12617" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12617</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358480' id='602717'>
+<a class='timestamp' href='#602717'><time timestamp='2018-03-06T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9903537750ac...1f9349129d57" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9903537750ac...1f9349129d57</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358480' id='602718'>
+<a class='timestamp' href='#602718'><time timestamp='2018-03-06T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e2b2e48 Ken Lee: doc: SIGNER can contains space inside now....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358480' id='602719'>
+<a class='timestamp' href='#602719'><time timestamp='2018-03-06T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1f93491 Wladimir J. van der Laan: Merge #12615: doc: allow for SIGNER containing spaces...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358540' id='602720'>
+<a class='timestamp' href='#602720'><time timestamp='2018-03-06T17:49:00Z'>17:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12615: doc: allow for SIGNER containing spaces (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/12615" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12615</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358720' id='602721'>
+<a class='timestamp' href='#602721'><time timestamp='2018-03-06T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/1f9349129d57...cff95a63250e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/1f9349129d57...cff95a63250e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358720' id='602722'>
+<a class='timestamp' href='#602722'><time timestamp='2018-03-06T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cfdd895 João Barbosa: qt: Set modal overlay hide button as default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358720' id='602723'>
+<a class='timestamp' href='#602723'><time timestamp='2018-03-06T17:52:00Z'>17:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cff95a6 Wladimir J. van der Laan: Merge #12616: Set modal overlay hide button as default...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358780' id='602724'>
+<a class='timestamp' href='#602724'><time timestamp='2018-03-06T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+xyxxy: look at the eclipse attacks on bitcoin&#x27;s peer to peer network paper
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358780' id='602725'>
+<a class='timestamp' href='#602725'><time timestamp='2018-03-06T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12616: Set modal overlay hide button as default (master...2018-03-modaloverlay) <a href="https://github.com/bitcoin/bitcoin/pull/12616" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12616</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520358780' id='602726'>
+<a class='timestamp' href='#602726'><time timestamp='2018-03-06T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+for example
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359020' id='602727'>
+<a class='timestamp' href='#602727'><time timestamp='2018-03-06T17:57:00Z'>17:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+aj: yeah, I&#x27;ve seen that in Linux I think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359080' id='602728'>
+<a class='timestamp' href='#602728'><time timestamp='2018-03-06T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+aj: not sure how to go about that, though; automatically scanning all replies for &quot;ACK&quot; seems vulnerable to false positives.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359080' id='602729'>
+<a class='timestamp' href='#602729'><time timestamp='2018-03-06T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+aj: would be easier if everyone used the github &#x27;approve&#x27; button
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359080' id='602730'>
+<a class='timestamp' href='#602730'><time timestamp='2018-03-06T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but giving reviewers more credit is a nice idea in itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359140' id='602731'>
+<a class='timestamp' href='#602731'><time timestamp='2018-03-06T17:59:00Z'>17:59</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+wumpus: scanning replies for ACK &lt;commitid&gt; should be pretty safe from false positives
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359380' id='602732'>
+<a class='timestamp' href='#602732'><time timestamp='2018-03-06T18:03:00Z'>18:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/cff95a63250e...d74b01db0c13" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/cff95a63250e...d74b01db0c13</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359380' id='602733'>
+<a class='timestamp' href='#602733'><time timestamp='2018-03-06T18:03:00Z'>18:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 6058766 Michał Zabielski: Remove deprecated PyZMQ call from Python ZMQ example...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359380' id='602734'>
+<a class='timestamp' href='#602734'><time timestamp='2018-03-06T18:03:00Z'>18:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d74b01d Wladimir J. van der Laan: Merge #12588: [Utils] Remove deprecated PyZMQ call from Python ZMQ example...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359440' id='602735'>
+<a class='timestamp' href='#602735'><time timestamp='2018-03-06T18:04:00Z'>18:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12588: [Utils] Remove deprecated PyZMQ call from Python ZMQ example (master...zmq_example_fix) <a href="https://github.com/bitcoin/bitcoin/pull/12588" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12588</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359560' id='602736'>
+<a class='timestamp' href='#602736'><time timestamp='2018-03-06T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ajtowns closed pull request #10996: Add per-network config file network.conf (master...netconf) <a href="https://github.com/bitcoin/bitcoin/pull/10996" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10996</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359620' id='602737'>
+<a class='timestamp' href='#602737'><time timestamp='2018-03-06T18:07:00Z'>18:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] JeremyRubin closed pull request #9938: Lock-Free CheckQueue (master...PR-lockfree-checkqueue) <a href="https://github.com/bitcoin/bitcoin/pull/9938" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9938</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359980' id='602738'>
+<a class='timestamp' href='#602738'><time timestamp='2018-03-06T18:13:00Z'>18:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] instagibbs closed pull request #11545: [wallet] Support CMV signing of 17~20 key template (master...20of20) <a href="https://github.com/bitcoin/bitcoin/pull/11545" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11545</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520359980' id='602739'>
+<a class='timestamp' href='#602739'><time timestamp='2018-03-06T18:13:00Z'>18:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] NicolasDorier reopened pull request #9991: listreceivedbyaddress Filter Address (master...listreceivedbyaddress-filtered) <a href="https://github.com/bitcoin/bitcoin/pull/9991" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9991</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360040' id='602740'>
+<a class='timestamp' href='#602740'><time timestamp='2018-03-06T18:14:00Z'>18:14</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+fanquake: please add &quot;Needs release notes&quot; label to #11120
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360040' id='602741'>
+<a class='timestamp' href='#602741'><time timestamp='2018-03-06T18:14:00Z'>18:14</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11120" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11120</a> | [RPC] verifytxoutproof returns object including blockhash by instagibbs · Pull Request #11120 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360100' id='602742'>
+<a class='timestamp' href='#602742'><time timestamp='2018-03-06T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+promag: the PR is still open, it&#x27;s preferable if the author adds to the release notes themselves
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360100' id='602743'>
+<a class='timestamp' href='#602743'><time timestamp='2018-03-06T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&#x27;needs release notes&#x27; tag is really for PRs which that was forgotten
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360460' id='602744'>
+<a class='timestamp' href='#602744'><time timestamp='2018-03-06T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ajtowns closed pull request #10994: Add option to avoid warning on certain network upgrades (master...ignore-vbits) <a href="https://github.com/bitcoin/bitcoin/pull/10994" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10994</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360460' id='602745'>
+<a class='timestamp' href='#602745'><time timestamp='2018-03-06T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/d74b01db0c13...bc679829e2d3" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/d74b01db0c13...bc679829e2d3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360460' id='602746'>
+<a class='timestamp' href='#602746'><time timestamp='2018-03-06T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 937bf43 fanquake: Use std::thread::hardware_concurrency, instead of Boost, to determine available cores
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360460' id='602747'>
+<a class='timestamp' href='#602747'><time timestamp='2018-03-06T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master bc67982 Wladimir J. van der Laan: Merge #10271: Use std::thread::hardware_concurrency, instead of Boost, to determine available cores...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520360520' id='602748'>
+<a class='timestamp' href='#602748'><time timestamp='2018-03-06T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10271: Use std::thread::hardware_concurrency, instead of Boost, to determine available cores (master...replace-boost-getnumcores) <a href="https://github.com/bitcoin/bitcoin/pull/10271" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10271</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520361960' id='602749'>
+<a class='timestamp' href='#602749'><time timestamp='2018-03-06T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] eklitzke opened pull request #12618: Set SCHED_BATCH priority on the loadblk thread. (master...sched_batch) <a href="https://github.com/bitcoin/bitcoin/pull/12618" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12618</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362260' id='602750'>
+<a class='timestamp' href='#602750'><time timestamp='2018-03-06T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/bc679829e2d3...765a3ebb0268" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/bc679829e2d3...765a3ebb0268</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362260' id='602751'>
+<a class='timestamp' href='#602751'><time timestamp='2018-03-06T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8f79226 fanquake: depends: zeromq 4.2.3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362260' id='602752'>
+<a class='timestamp' href='#602752'><time timestamp='2018-03-06T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 13a399a Cory Fields: depends: patch pthread_set_name_np out of zeromq
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362260' id='602753'>
+<a class='timestamp' href='#602753'><time timestamp='2018-03-06T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 765a3eb Wladimir J. van der Laan: Merge #11986: [depends] zeromq 4.2.3...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362320' id='602754'>
+<a class='timestamp' href='#602754'><time timestamp='2018-03-06T18:52:00Z'>18:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #11986: [depends] zeromq 4.2.3 (master...zeromq-4-2-3) <a href="https://github.com/bitcoin/bitcoin/pull/11986" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11986</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362680' id='602755'>
+<a class='timestamp' href='#602755'><time timestamp='2018-03-06T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+Here is the bandwidth chart from my recent sync - <a href="https://pasteboard.co/HaGmNtt.png" class="link" target="_blank">https://pasteboard.co/HaGmNtt.png</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362680' id='602756'>
+<a class='timestamp' href='#602756'><time timestamp='2018-03-06T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+I was connecting to a single node over my lan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362800' id='602757'>
+<a class='timestamp' href='#602757'><time timestamp='2018-03-06T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+CubicEarths: kinda weird looking? cpu or disk bound in the middle?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362860' id='602758'>
+<a class='timestamp' href='#602758'><time timestamp='2018-03-06T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+The graph stops around Jan 2018. I restarted and it is currently processing about 2 blocks / second again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362920' id='602759'>
+<a class='timestamp' href='#602759'><time timestamp='2018-03-06T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+oh, right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520362980' id='602760'>
+<a class='timestamp' href='#602760'><time timestamp='2018-03-06T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+I was asleep when it was doing that - but 6gb dbcache, 1tb empty ssd, 2015 i5-processor (laptop)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520363040' id='602761'>
+<a class='timestamp' href='#602761'><time timestamp='2018-03-06T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+And that first drop off - that was about 12 hours into the sync
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364120' id='602762'>
+<a class='timestamp' href='#602762'><time timestamp='2018-03-06T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/765a3ebb0268...f13d756cdd94" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/765a3ebb0268...f13d756cdd94</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364120' id='602763'>
+<a class='timestamp' href='#602763'><time timestamp='2018-03-06T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cfaac2a murrayn: Add build support for &#x27;gprof&#x27; profiling.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364120' id='602764'>
+<a class='timestamp' href='#602764'><time timestamp='2018-03-06T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f13d756 Wladimir J. van der Laan: Merge #12373: Build: Add build support for profiling....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364120' id='602765'>
+<a class='timestamp' href='#602765'><time timestamp='2018-03-06T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12373: Build: Add build support for profiling. (master...profiling) <a href="https://github.com/bitcoin/bitcoin/pull/12373" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12373</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364420' id='602766'>
+<a class='timestamp' href='#602766'><time timestamp='2018-03-06T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/f13d756cdd94...20e3b9a485fd" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/f13d756cdd94...20e3b9a485fd</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364420' id='602767'>
+<a class='timestamp' href='#602767'><time timestamp='2018-03-06T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 6fbc098 Wladimir J. van der Laan: gui: Show messages as text not html...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364420' id='602768'>
+<a class='timestamp' href='#602768'><time timestamp='2018-03-06T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 20e3b9a Wladimir J. van der Laan: Merge #12617: gui: Show messages as text not html...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520364480' id='602769'>
+<a class='timestamp' href='#602769'><time timestamp='2018-03-06T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12617: gui: Show messages as text not html (master...2018_03_gui_textbox) <a href="https://github.com/bitcoin/bitcoin/pull/12617" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12617</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520365500' id='602770'>
+<a class='timestamp' href='#602770'><time timestamp='2018-03-06T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] theuni closed pull request #9566: threading: use std::chrono for timestamps (master...nuke-boost-chrono2) <a href="https://github.com/bitcoin/bitcoin/pull/9566" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9566</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520367900' id='602771'>
+<a class='timestamp' href='#602771'><time timestamp='2018-03-06T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+CubicEarths, trimmed empty or just no files in the file system?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520367960' id='602772'>
+<a class='timestamp' href='#602772'><time timestamp='2018-03-06T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] kallewoof opened pull request #12619: Give hint about gitian not able to download (master...patch-2) <a href="https://github.com/bitcoin/bitcoin/pull/12619" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12619</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368080' id='602773'>
+<a class='timestamp' href='#602773'><time timestamp='2018-03-06T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+The SSD? It just has Ubuntu on it - and I just remembered - a 200GB partition. But it has about 700GB of free space, so there shouldn&#x27;t be issues related to the drive full or fragmented
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368080' id='602774'>
+<a class='timestamp' href='#602774'><time timestamp='2018-03-06T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag opened pull request #12620: Remove TransactionTableModel::TxIDRole (master...2018-03-remove-txidrole) <a href="https://github.com/bitcoin/bitcoin/pull/12620" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12620</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368200' id='602775'>
+<a class='timestamp' href='#602775'><time timestamp='2018-03-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+CubicEarths, the SSD itself can be fragmented or out of erased blocks, but I doubt it could be so bad to show up on your graph
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368260' id='602776'>
+<a class='timestamp' href='#602776'><time timestamp='2018-03-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+CubicEarths, assuming your SSD supports trim you can run fstrim before running tests like that to reduce the impact of the SSD stalling
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368320' id='602777'>
+<a class='timestamp' href='#602777'><time timestamp='2018-03-06T20:32:00Z'>20:32</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+interesting. The ssd is new, btw
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368620' id='602778'>
+<a class='timestamp' href='#602778'><time timestamp='2018-03-06T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/20e3b9a485fd...a36834f10b80" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/20e3b9a485fd...a36834f10b80</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368620' id='602779'>
+<a class='timestamp' href='#602779'><time timestamp='2018-03-06T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master e68172e Ethan Heilman: Add test-before-evict discipline to addrman...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368620' id='602780'>
+<a class='timestamp' href='#602780'><time timestamp='2018-03-06T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master a36834f Wladimir J. van der Laan: Merge #9037: net: Add test-before-evict discipline to addrman...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520368800' id='602781'>
+<a class='timestamp' href='#602781'><time timestamp='2018-03-06T20:40:00Z'>20:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] promag opened pull request #12621: Avoid querying unnecessary model data when filtering transactions (master...2018-03-transaction-filter-avoid-querying) <a href="https://github.com/bitcoin/bitcoin/pull/12621" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12621</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369160' id='602782'>
+<a class='timestamp' href='#602782'><time timestamp='2018-03-06T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a36834f10b80...85424d79eded" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a36834f10b80...85424d79eded</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369160' id='602783'>
+<a class='timestamp' href='#602783'><time timestamp='2018-03-06T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b7cd08b James O&#x27;Beirne: Add documentation to PeerLogicValidation interface and related functions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369160' id='602784'>
+<a class='timestamp' href='#602784'><time timestamp='2018-03-06T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 85424d7 Wladimir J. van der Laan: Merge #12603: [docs] PeerLogicValidation interface...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369220' id='602785'>
+<a class='timestamp' href='#602785'><time timestamp='2018-03-06T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12603: [docs] PeerLogicValidation interface (master...jamesob/2018-03-peerlogicvalidation-doc) <a href="https://github.com/bitcoin/bitcoin/pull/12603" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12603</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369640' id='602786'>
+<a class='timestamp' href='#602786'><time timestamp='2018-03-06T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj opened pull request #12622: net: Correct addrman logging (master...2018_03_addrman_log_fixup) <a href="https://github.com/bitcoin/bitcoin/pull/12622" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12622</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369760' id='602787'>
+<a class='timestamp' href='#602787'><time timestamp='2018-03-06T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/85424d79eded...b7c8812ad0c2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/85424d79eded...b7c8812ad0c2</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369760' id='602788'>
+<a class='timestamp' href='#602788'><time timestamp='2018-03-06T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 22b4aae Karl-Johan Alm: [arith_uint256] Avoid unnecessary this-copy using prefix operator
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369760' id='602789'>
+<a class='timestamp' href='#602789'><time timestamp='2018-03-06T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b7c8812 Wladimir J. van der Laan: Merge #12564: [arith_uint256] Avoid unnecessary this-copy using prefix operator...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520369760' id='602790'>
+<a class='timestamp' href='#602790'><time timestamp='2018-03-06T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12564: [arith_uint256] Avoid unnecessary this-copy using prefix operator (master...optim-arith_uint256-operator-dec) <a href="https://github.com/bitcoin/bitcoin/pull/12564" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12564</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370540' id='602791'>
+<a class='timestamp' href='#602791'><time timestamp='2018-03-06T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/b7c8812ad0c2...12ac2f0d7129" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b7c8812ad0c2...12ac2f0d7129</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370540' id='602792'>
+<a class='timestamp' href='#602792'><time timestamp='2018-03-06T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c5be37e Dan Bolser: doc: Mention configure without wallet in FreeBSD instructions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370540' id='602793'>
+<a class='timestamp' href='#602793'><time timestamp='2018-03-06T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 12ac2f0 Wladimir J. van der Laan: Merge #12581: doc: Mention configure without wallet in FreeBSD instructions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370540' id='602794'>
+<a class='timestamp' href='#602794'><time timestamp='2018-03-06T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12581: doc: Mention configure without wallet in FreeBSD instructions (0.16...patch-3) <a href="https://github.com/bitcoin/bitcoin/pull/12581" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12581</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370900' id='602795'>
+<a class='timestamp' href='#602795'><time timestamp='2018-03-06T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/12ac2f0d7129...cd5e4381d46d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/12ac2f0d7129...cd5e4381d46d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370900' id='602796'>
+<a class='timestamp' href='#602796'><time timestamp='2018-03-06T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fc44cb1 Conor Scott: [RPC] Add list of child transactions to verbose output of getrawmempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370900' id='602797'>
+<a class='timestamp' href='#602797'><time timestamp='2018-03-06T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1dfb4e7 Conor Scott: [Tests] Check output of parent/child tx list from getrawmempool, getmempooldescendants, getmempoolancestors, and REST interface
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370900' id='602798'>
+<a class='timestamp' href='#602798'><time timestamp='2018-03-06T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cd5e438 Wladimir J. van der Laan: Merge #12479: RPC: Add child transactions to getrawmempool verbose output...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370960' id='602799'>
+<a class='timestamp' href='#602799'><time timestamp='2018-03-06T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12479: RPC: Add child transactions to getrawmempool verbose output (master...getrawmempool_descendent_pointers) <a href="https://github.com/bitcoin/bitcoin/pull/12479" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12479</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520370960' id='602800'>
+<a class='timestamp' href='#602800'><time timestamp='2018-03-06T21:16:00Z'>21:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12622: net: Correct addrman logging (master...2018_03_addrman_log_fixup) <a href="https://github.com/bitcoin/bitcoin/pull/12622" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12622</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520371080' id='602801'>
+<a class='timestamp' href='#602801'><time timestamp='2018-03-06T21:18:00Z'>21:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12519: Net: Pass MSG_MORE flag when sending non-final network messages (master...MSG_MORE) <a href="https://github.com/bitcoin/bitcoin/pull/12519" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12519</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520372160' id='602802'>
+<a class='timestamp' href='#602802'><time timestamp='2018-03-06T21:36:00Z'>21:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/e1d6e2af6d89...9fb3898c3fb0" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/e1d6e2af6d89...9fb3898c3fb0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520372160' id='602803'>
+<a class='timestamp' href='#602803'><time timestamp='2018-03-06T21:36:00Z'>21:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f506c0a Sjors Provoost: [qt] send: Clear All also resets coin control options
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520372160' id='602804'>
+<a class='timestamp' href='#602804'><time timestamp='2018-03-06T21:36:00Z'>21:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9fb3898 Wladimir J. van der Laan: Merge #12432: [qt] send: Clear All also resets coin control options...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520372220' id='602805'>
+<a class='timestamp' href='#602805'><time timestamp='2018-03-06T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12432: [qt] send: Clear All also resets coin control options (master...2018/02/qt-send-clear-all-coin-control) <a href="https://github.com/bitcoin/bitcoin/pull/12432" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12432</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520373540' id='602806'>
+<a class='timestamp' href='#602806'><time timestamp='2018-03-06T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;ve added meshcollider to the team that&#x27;s able to open/close issues and add/remove labels to issues, so that he can help there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374200' id='602807'>
+<a class='timestamp' href='#602807'><time timestamp='2018-03-06T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9fb3898c3fb0...14475e2dcdc8" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9fb3898c3fb0...14475e2dcdc8</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374200' id='602808'>
+<a class='timestamp' href='#602808'><time timestamp='2018-03-06T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 40b17f5 Sjors Provoost: [scripts] lint-whitespace: use perl instead of grep -P...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374200' id='602809'>
+<a class='timestamp' href='#602809'><time timestamp='2018-03-06T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 14475e2 Wladimir J. van der Laan: Merge #12097: [scripts] lint-whitespace: use perl instead of grep -P...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374200' id='602810'>
+<a class='timestamp' href='#602810'><time timestamp='2018-03-06T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12097: [scripts] lint-whitespace: use perl instead of grep -P (master...lint-whitespace-no-grep-P) <a href="https://github.com/bitcoin/bitcoin/pull/12097" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12097</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374620' id='602811'>
+<a class='timestamp' href='#602811'><time timestamp='2018-03-06T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/14475e2dcdc8...17c44b208f1c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/14475e2dcdc8...17c44b208f1c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374620' id='602812'>
+<a class='timestamp' href='#602812'><time timestamp='2018-03-06T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8dbf740 Sjors Provoost: [scripts] lint-whitespace: check last N commits or unstaged changes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374620' id='602813'>
+<a class='timestamp' href='#602813'><time timestamp='2018-03-06T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 17c44b2 Wladimir J. van der Laan: Merge #12098: [scripts] lint-whitespace: add param to check last N commits...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520374680' id='602814'>
+<a class='timestamp' href='#602814'><time timestamp='2018-03-06T22:18:00Z'>22:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12098: [scripts] lint-whitespace: add param to check last N commits (master...lint-whitespace-n-commits) <a href="https://github.com/bitcoin/bitcoin/pull/12098" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12098</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377080' id='602815'>
+<a class='timestamp' href='#602815'><time timestamp='2018-03-06T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/17c44b208f1c...29088b14ee4b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/17c44b208f1c...29088b14ee4b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377080' id='602816'>
+<a class='timestamp' href='#602816'><time timestamp='2018-03-06T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 5f8cc0d Richard Kiss: Add a test for large tx output scripts with segwit input.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377080' id='602817'>
+<a class='timestamp' href='#602817'><time timestamp='2018-03-06T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 29088b1 Wladimir J. van der Laan: Merge #12600: Add a test for large tx output scripts with segwit input....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377080' id='602818'>
+<a class='timestamp' href='#602818'><time timestamp='2018-03-06T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12600: Add a test for large tx output scripts with segwit input. (master...feature/segwit_big_txout_script) <a href="https://github.com/bitcoin/bitcoin/pull/12600" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12600</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377800' id='602819'>
+<a class='timestamp' href='#602819'><time timestamp='2018-03-06T23:10:00Z'>23:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 5 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/29088b14ee4b...b225010a808d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/29088b14ee4b...b225010a808d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377800' id='602820'>
+<a class='timestamp' href='#602820'><time timestamp='2018-03-06T23:10:00Z'>23:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 32e69fa Pieter Wuille: Replace CBitcoinSecret with {Encode,Decode}Secret
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377800' id='602821'>
+<a class='timestamp' href='#602821'><time timestamp='2018-03-06T23:10:00Z'>23:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ebfe217 Pieter Wuille: Stop using CBase58Data for ext keys
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377800' id='602822'>
+<a class='timestamp' href='#602822'><time timestamp='2018-03-06T23:10:00Z'>23:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 119b0f8 Pieter Wuille: Split key_io (address/key encodings) off from base58
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520377800' id='602823'>
+<a class='timestamp' href='#602823'><time timestamp='2018-03-06T23:10:00Z'>23:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #11372: Address encoding cleanup (master...201709_addr_cleanup) <a href="https://github.com/bitcoin/bitcoin/pull/11372" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11372</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520378820' id='602824'>
+<a class='timestamp' href='#602824'><time timestamp='2018-03-06T23:27:00Z'>23:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #12625: depends: biplist 1.0.3 (master...biplist-1-0-3) <a href="https://github.com/bitcoin/bitcoin/pull/12625" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12625</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520379000' id='602825'>
+<a class='timestamp' href='#602825'><time timestamp='2018-03-06T23:30:00Z'>23:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] EthanHeilman opened pull request #12626: Limit the number of IPs addrman learns from each DNS seeder (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/12626" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12626</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1520379780' id='602826'>
+<a class='timestamp' href='#602826'><time timestamp='2018-03-06T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #12627: qa: Fix some tests to work on native windows (master...Mf1803-qaWindowsTests) <a href="https://github.com/bitcoin/bitcoin/pull/12627" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12627</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

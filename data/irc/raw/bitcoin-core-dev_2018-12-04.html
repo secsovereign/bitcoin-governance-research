@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-12-04
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-12-04' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-11-04">&lt;</a><span class='header'>  December 2018   </span><a href="/bitcoin-core-dev/2019-01-04">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                   <a class="" href="/bitcoin-core-dev/2018-12-01">1</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-12-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-12-03">3</a>  <a class="current" href="/bitcoin-core-dev/2018-12-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-12-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-12-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-12-07">7</a>  8  &#x000A; 9 <a class="" href="/bitcoin-core-dev/2018-12-10">10</a> <a class="" href="/bitcoin-core-dev/2018-12-11">11</a> <a class="" href="/bitcoin-core-dev/2018-12-12">12</a> <a class="" href="/bitcoin-core-dev/2018-12-13">13</a> <a class="" href="/bitcoin-core-dev/2018-12-14">14</a> <a class="" href="/bitcoin-core-dev/2018-12-15">15</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-12-16">16</a> <a class="" href="/bitcoin-core-dev/2018-12-17">17</a> <a class="" href="/bitcoin-core-dev/2018-12-18">18</a> <a class="" href="/bitcoin-core-dev/2018-12-19">19</a> <a class="" href="/bitcoin-core-dev/2018-12-20">20</a> <a class="" href="/bitcoin-core-dev/2018-12-21">21</a> <a class="" href="/bitcoin-core-dev/2018-12-22">22</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-12-23">23</a> <a class="" href="/bitcoin-core-dev/2018-12-24">24</a> <a class="" href="/bitcoin-core-dev/2018-12-25">25</a> <a class="" href="/bitcoin-core-dev/2018-12-26">26</a> <a class="" href="/bitcoin-core-dev/2018-12-27">27</a> <a class="" href="/bitcoin-core-dev/2018-12-28">28</a> <a class="" href="/bitcoin-core-dev/2018-12-29">29</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-12-30">30</a> <a class="" href="/bitcoin-core-dev/2018-12-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1543890960' id='643528'>
+<a class='timestamp' href='#643528'><time timestamp='2018-12-04T02:36:00Z'>02:36</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+is there a document or a cohesive policy on how exceptions are used in Core? I am refactoring stuff out of RPC handlers so it can be used in the GUI, and it throws exceptions with descriptive text for the RPC server to return.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543890960' id='643529'>
+<a class='timestamp' href='#643529'><time timestamp='2018-12-04T02:36:00Z'>02:36</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+and I&#x27;m not sure what to do with them. I can convert them to more generic exceptions, but I assume throwing exceptions out into UI code would do something bad.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891380' id='643530'>
+<a class='timestamp' href='#643530'><time timestamp='2018-12-04T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+bitcoind uses whatever libsnappy that&#x27;s provided through the host system yes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891380' id='643531'>
+<a class='timestamp' href='#643531'><time timestamp='2018-12-04T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+libsnappy being a dependency of leveldb.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891500' id='643532'>
+<a class='timestamp' href='#643532'><time timestamp='2018-12-04T02:45:00Z'>02:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+bitcoind doesn&#x27;t use libsnappy at all.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891680' id='643533'>
+<a class='timestamp' href='#643533'><time timestamp='2018-12-04T02:48:00Z'>02:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+mryandao: no, our own fork of leveldb has libsnappy support disabled to simplify dependencies
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891680' id='643534'>
+<a class='timestamp' href='#643534'><time timestamp='2018-12-04T02:48:00Z'>02:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you build against system leveldb, it will still disable libsnappy at runtime
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891680' id='643535'>
+<a class='timestamp' href='#643535'><time timestamp='2018-12-04T02:48:00Z'>02:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(also because libsnappy hurt performance for us IIRC)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543891740' id='643536'>
+<a class='timestamp' href='#643536'><time timestamp='2018-12-04T02:49:00Z'>02:49</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+ah thank you for that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543898280' id='643537'>
+<a class='timestamp' href='#643537'><time timestamp='2018-12-04T04:38:00Z'>04:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] dongcarl opened pull request #14864: test: Run scripted-diff in subshell (master...2018-12-unset-commit-script-check) <a href="https://github.com/bitcoin/bitcoin/pull/14864" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14864</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543898580' id='643538'>
+<a class='timestamp' href='#643538'><time timestamp='2018-12-04T04:43:00Z'>04:43</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Looking at our shell scripts... I see a lot of fragile syntax that shellcheck would pick up on. Is it an acceptable PR to refactor those scripts to conform to shell script best pratices?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543899180' id='643539'>
+<a class='timestamp' href='#643539'><time timestamp='2018-12-04T04:53:00Z'>04:53</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+dongcarl: maybe step 1 is to propose a change to the coding guidelines to use shellcheck as a linter for shell scripts?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543899360' id='643540'>
+<a class='timestamp' href='#643540'><time timestamp='2018-12-04T04:56:00Z'>04:56</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Seems like lint-shell.sh already does so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543899420' id='643541'>
+<a class='timestamp' href='#643541'><time timestamp='2018-12-04T04:57:00Z'>04:57</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Just some warnings are disabled
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905300' id='643542'>
+<a class='timestamp' href='#643542'><time timestamp='2018-12-04T06:35:00Z'>06:35</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+What currently happens if I get tx INV, send GETDATA and never hear a TX back from that peer?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905360' id='643543'>
+<a class='timestamp' href='#643543'><time timestamp='2018-12-04T06:36:00Z'>06:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+who is &#x27;i&#x27;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905420' id='643544'>
+<a class='timestamp' href='#643544'><time timestamp='2018-12-04T06:37:00Z'>06:37</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+A Bitcoin core node :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905540' id='643545'>
+<a class='timestamp' href='#643545'><time timestamp='2018-12-04T06:39:00Z'>06:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you mean what does bitcoin core do if it doesn&#x27;t hear back from a tx getdata request?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905540' id='643546'>
+<a class='timestamp' href='#643546'><time timestamp='2018-12-04T06:39:00Z'>06:39</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+Yeah, I&#x27;m missing the part of code where waiting for a TX message time-outs or something
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905600' id='643547'>
+<a class='timestamp' href='#643547'><time timestamp='2018-12-04T06:40:00Z'>06:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is a 2 minute timeout, and then permit asking another peer afaik
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905660' id='643548'>
+<a class='timestamp' href='#643548'><time timestamp='2018-12-04T06:41:00Z'>06:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gleb: see the logic at the bottom of void CNode::AskFor(const CInv&amp; inv)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905660' id='643549'>
+<a class='timestamp' href='#643549'><time timestamp='2018-12-04T06:41:00Z'>06:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+lol bottom of void.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905780' id='643550'>
+<a class='timestamp' href='#643550'><time timestamp='2018-12-04T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+Got it, for some reason I thought that if a node sends one GETDATA, it won&#x27;t send the second one after the same INV from another peer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905780' id='643551'>
+<a class='timestamp' href='#643551'><time timestamp='2018-12-04T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+That would be highly susceptible :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905840' id='643552'>
+<a class='timestamp' href='#643552'><time timestamp='2018-12-04T06:44:00Z'>06:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+right there is a delay... the logic is a bit dumb but sufficient.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905840' id='643553'>
+<a class='timestamp' href='#643553'><time timestamp='2018-12-04T06:44:00Z'>06:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+e.g. it can&#x27;t handle the case that it asks and gets disconnected except by waiting for the timeout...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905900' id='643554'>
+<a class='timestamp' href='#643554'><time timestamp='2018-12-04T06:45:00Z'>06:45</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+gmaxwell: wait, but if a node gets 2 INVs at the same, it will send 2 GETDATAs, right? (from different peers)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543905960' id='643555'>
+<a class='timestamp' href='#643555'><time timestamp='2018-12-04T06:46:00Z'>06:46</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+2 INVs with the same hash at the same time*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906200' id='643556'>
+<a class='timestamp' href='#643556'><time timestamp='2018-12-04T06:50:00Z'>06:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gleb: no.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906200' id='643557'>
+<a class='timestamp' href='#643557'><time timestamp='2018-12-04T06:50:00Z'>06:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well depending on what you mean at the same time.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906260' id='643558'>
+<a class='timestamp' href='#643558'><time timestamp='2018-12-04T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the will only send one getdata unless someone times out.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906260' id='643559'>
+<a class='timestamp' href='#643559'><time timestamp='2018-12-04T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+which of the two peer gets it depends whos inv the node processed first.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906320' id='643560'>
+<a class='timestamp' href='#643560'><time timestamp='2018-12-04T06:52:00Z'>06:52</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+I can censor propagation of your txs then? Once I see your tx in the network, I can start INVing everybody about it and not give TX. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906380' id='643561'>
+<a class='timestamp' href='#643561'><time timestamp='2018-12-04T06:53:00Z'>06:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gleb: for two minutes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906380' id='643562'>
+<a class='timestamp' href='#643562'><time timestamp='2018-12-04T06:53:00Z'>06:53</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+And if I have 2 IPs then for 4 minutes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906380' id='643563'>
+<a class='timestamp' href='#643563'><time timestamp='2018-12-04T06:53:00Z'>06:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+potentially.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906440' id='643564'>
+<a class='timestamp' href='#643564'><time timestamp='2018-12-04T06:54:00Z'>06:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(another way the handling is dumb, after timeout the available offers should be considered in random order.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906440' id='643565'>
+<a class='timestamp' href='#643565'><time timestamp='2018-12-04T06:54:00Z'>06:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906680' id='643566'>
+<a class='timestamp' href='#643566'><time timestamp='2018-12-04T06:58:00Z'>06:58</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+gmaxwell: If I start attacking early enough, that won&#x27;t significantly increase the cost of an attack, because only few nodes will be INVing it along with me.  You can think that relay happens &quot;in waves&quot; (just as bitconnect)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906860' id='643567'>
+<a class='timestamp' href='#643567'><time timestamp='2018-12-04T07:01:00Z'>07:01</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+hmm, that&#x27;s kind of bad for lightning unilateral channel closes, isn&#x27;t it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906920' id='643568'>
+<a class='timestamp' href='#643568'><time timestamp='2018-12-04T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+the attacker already knows the txid before you ever start broadcasting it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906920' id='643569'>
+<a class='timestamp' href='#643569'><time timestamp='2018-12-04T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+so they can start poisoning the network before they even start the attack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906920' id='643570'>
+<a class='timestamp' href='#643570'><time timestamp='2018-12-04T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+(it still seems like a nearly-infeasible amount of broadcast spam, which would be detected immediately and network-wide)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543906980' id='643571'>
+<a class='timestamp' href='#643571'><time timestamp='2018-12-04T07:03:00Z'>07:03</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+If a botnet is 10k nodes and starts before 10% of the nodes knew about a tx, I expect us easily to get 10 minutes delay. It&#x27;s a very cheap attack in terms of traffic, and requires very trivial mimicking of BTC protocol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543907040' id='643572'>
+<a class='timestamp' href='#643572'><time timestamp='2018-12-04T07:04:00Z'>07:04</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+I&#x27;m saying even IF we implement the trick gmaxwell mentioned (random selection of next peer). If not, it&#x27;s cheap to delay a transaction forever.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543907220' id='643573'>
+<a class='timestamp' href='#643573'><time timestamp='2018-12-04T07:07:00Z'>07:07</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but since such an attack would be very obvious to everyone, it wouldn&#x27;t be hard to get consensus to fix it permanently soon after. So it would really only work once.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543907280' id='643574'>
+<a class='timestamp' href='#643574'><time timestamp='2018-12-04T07:08:00Z'>07:08</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+(And there are probably more profitable things you can do with a 10k node botnet.)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543907700' id='643575'>
+<a class='timestamp' href='#643575'><time timestamp='2018-12-04T07:15:00Z'>07:15</time></a>
+&lt;<span class='nick nick-16'> ujjwalt</span>&gt;
+Hey, I’m new here and I want to start developing Bitcoin apps. I have basic idea about the protocol - enough to understand how the system largely works (keys, basic crypto etc) but where and how do I start if I want to make an app around this. I have a full node running now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543908120' id='643576'>
+<a class='timestamp' href='#643576'><time timestamp='2018-12-04T07:22:00Z'>07:22</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+harding: &quot; I suggested connecting over SPV to a single node that the user trusted.&quot;... Then if your trusted node go down, your service go down with it. And what is the advantage of doing it at all? If you have a trusted node, just run getutxosetinfo on both side and you have proof my utxoset has the same UTXOs as your trusted node
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543908900' id='643577'>
+<a class='timestamp' href='#643577'><time timestamp='2018-12-04T07:35:00Z'>07:35</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+This no TX timeout thing also may cause topology inference attacks (similar to &quot;doublespending topology inference&quot; from FC18). 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543909140' id='643578'>
+<a class='timestamp' href='#643578'><time timestamp='2018-12-04T07:39:00Z'>07:39</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+I acknowledge that alternative solutions might be more harmful than the issue I&#x27;m bringing up, just thought it&#x27;s worth mentioning here.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543911600' id='643579'>
+<a class='timestamp' href='#643579'><time timestamp='2018-12-04T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/c62b15118997...64fc7c0c1b17" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/c62b15118997...64fc7c0c1b17</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543911600' id='643580'>
+<a class='timestamp' href='#643580'><time timestamp='2018-12-04T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1c28feb João Barbosa: qt: Remove hidden columns in coin control dialog
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543911600' id='643581'>
+<a class='timestamp' href='#643581'><time timestamp='2018-12-04T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 64fc7c0 Jonas Schnelli: Merge #14828: qt: Remove hidden columns in coin control dialog...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543911660' id='643582'>
+<a class='timestamp' href='#643582'><time timestamp='2018-12-04T08:21:00Z'>08:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #14828: qt: Remove hidden columns in coin control dialog (master...2018-11-coincontroldialog) <a href="https://github.com/bitcoin/bitcoin/pull/14828" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14828</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543915560' id='643583'>
+<a class='timestamp' href='#643583'><time timestamp='2018-12-04T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gleb: you can&#x27;t get forever even without what I suggested.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543915560' id='643584'>
+<a class='timestamp' href='#643584'><time timestamp='2018-12-04T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you can get two minutes per dishonest peer, at any hop.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543915800' id='643585'>
+<a class='timestamp' href='#643585'><time timestamp='2018-12-04T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+kallewoof: around?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543917360' id='643586'>
+<a class='timestamp' href='#643586'><time timestamp='2018-12-04T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+Why do the wallet signal handlers need the main lock?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543917360' id='643587'>
+<a class='timestamp' href='#643587'><time timestamp='2018-12-04T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+ryanofsky: ^ any idea?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543917420' id='643588'>
+<a class='timestamp' href='#643588'><time timestamp='2018-12-04T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+stevenroose: I sent you DM&#x27;s FYI.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543917780' id='643589'>
+<a class='timestamp' href='#643589'><time timestamp='2018-12-04T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] AkioNak opened pull request #14866: Improve property evaluation way in bitcoin.conf (master...includeconf_eval_at_its_position) <a href="https://github.com/bitcoin/bitcoin/pull/14866" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14866</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919340' id='643590'>
+<a class='timestamp' href='#643590'><time timestamp='2018-12-04T10:29:00Z'>10:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/64fc7c0c1b17...0257062e50ca" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/64fc7c0c1b17...0257062e50ca</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919340' id='643591'>
+<a class='timestamp' href='#643591'><time timestamp='2018-12-04T10:29:00Z'>10:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2012d4d Gregory Sanders: Add CScriptNum decode python implementation in functional suite
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919340' id='643592'>
+<a class='timestamp' href='#643592'><time timestamp='2018-12-04T10:29:00Z'>10:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 0257062 Wladimir J. van der Laan: Merge #14816: Add CScriptNum decode python implementation in functional suite...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919400' id='643593'>
+<a class='timestamp' href='#643593'><time timestamp='2018-12-04T10:30:00Z'>10:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14816: Add CScriptNum decode python implementation in functional suite (master...functional_cscriptnum_decode) <a href="https://github.com/bitcoin/bitcoin/pull/14816" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14816</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919460' id='643594'>
+<a class='timestamp' href='#643594'><time timestamp='2018-12-04T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/0257062e50ca...8f1753b298f1" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/0257062e50ca...8f1753b298f1</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919460' id='643595'>
+<a class='timestamp' href='#643595'><time timestamp='2018-12-04T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 6c6ee8a Chakib Benziane: Less confusing documentation for `torpassword`...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919460' id='643596'>
+<a class='timestamp' href='#643596'><time timestamp='2018-12-04T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8f1753b Wladimir J. van der Laan: Merge #14804: docs: Less confusing documentation for `torpassword`...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919460' id='643597'>
+<a class='timestamp' href='#643597'><time timestamp='2018-12-04T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14804: docs: Less confusing documentation for `torpassword` (master...rebased-squashed-14609) <a href="https://github.com/bitcoin/bitcoin/pull/14804" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14804</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919700' id='643598'>
+<a class='timestamp' href='#643598'><time timestamp='2018-12-04T10:35:00Z'>10:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/8f1753b298f1...c789add6fcc9" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8f1753b298f1...c789add6fcc9</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919700' id='643599'>
+<a class='timestamp' href='#643599'><time timestamp='2018-12-04T10:35:00Z'>10:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4674610 João Barbosa: Log env path in BerkeleyEnvironment::Flush
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919700' id='643600'>
+<a class='timestamp' href='#643600'><time timestamp='2018-12-04T10:35:00Z'>10:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c789add Wladimir J. van der Laan: Merge #14760: Log env path in BerkeleyEnvironment::Flush...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919760' id='643601'>
+<a class='timestamp' href='#643601'><time timestamp='2018-12-04T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+sipa, meshcollider, perhaps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543919760' id='643602'>
+<a class='timestamp' href='#643602'><time timestamp='2018-12-04T10:36:00Z'>10:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14760: Log env path in BerkeleyEnvironment::Flush (master...2018-11-logmultienvflush) <a href="https://github.com/bitcoin/bitcoin/pull/14760" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14760</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543920120' id='643603'>
+<a class='timestamp' href='#643603'><time timestamp='2018-12-04T10:42:00Z'>10:42</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+stevenroose: can you point me to an example of what you mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543920420' id='643604'>
+<a class='timestamp' href='#643604'><time timestamp='2018-12-04T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/c789add6fcc9...42653570373d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/c789add6fcc9...42653570373d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543920420' id='643605'>
+<a class='timestamp' href='#643605'><time timestamp='2018-12-04T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master af1ed20 Craig Younkins: Fix broken Gmane URLs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543920420' id='643606'>
+<a class='timestamp' href='#643606'><time timestamp='2018-12-04T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4265357 Wladimir J. van der Laan: Merge #14848: docs: Fix broken Gmane URL in security-check.py...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543920480' id='643607'>
+<a class='timestamp' href='#643607'><time timestamp='2018-12-04T10:48:00Z'>10:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14848: docs: Fix broken Gmane URL in security-check.py (master...fix-gmane-urls) <a href="https://github.com/bitcoin/bitcoin/pull/14848" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14848</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543922760' id='643608'>
+<a class='timestamp' href='#643608'><time timestamp='2018-12-04T11:26:00Z'>11:26</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+kanzure: you here?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543922760' id='643609'>
+<a class='timestamp' href='#643609'><time timestamp='2018-12-04T11:26:00Z'>11:26</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+we have a wallet question and I hear you use the wallet a lot :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543922820' id='643610'>
+<a class='timestamp' href='#643610'><time timestamp='2018-12-04T11:27:00Z'>11:27</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+Does Core&#x27;s wallet (officially) support using it from a multi-threaded user?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543923360' id='643611'>
+<a class='timestamp' href='#643611'><time timestamp='2018-12-04T11:36:00Z'>11:36</time></a>
+&lt;<span class='nick nick-3'> phwalkr</span>&gt;
+Where can I find a multi input tx building example? I have tried libbitcoin and bitcoin core and found nothing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543924260' id='643612'>
+<a class='timestamp' href='#643612'><time timestamp='2018-12-04T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+phwalkr: with the RPC?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543924680' id='643613'>
+<a class='timestamp' href='#643613'><time timestamp='2018-12-04T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/42653570373d...88445889f1b3" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/42653570373d...88445889f1b3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543924680' id='643614'>
+<a class='timestamp' href='#643614'><time timestamp='2018-12-04T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8042bbf Zain Iqbal Allarakhia: p2p: allow p2ptimeout to be configurable, speed up slow test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543924680' id='643615'>
+<a class='timestamp' href='#643615'><time timestamp='2018-12-04T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 48b37db Zain Iqbal Allarakhia: make peertimeout a debug argument, remove error message translation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543924680' id='643616'>
+<a class='timestamp' href='#643616'><time timestamp='2018-12-04T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8844588 Wladimir J. van der Laan: Merge #14733: P2P: Make peer timeout configurable, speed up very slow test and ensure correct code path tested....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543924740' id='643617'>
+<a class='timestamp' href='#643617'><time timestamp='2018-12-04T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14733: P2P: Make peer timeout configurable, speed up very slow test and ensure correct code path tested. (master...p2ptimeout) <a href="https://github.com/bitcoin/bitcoin/pull/14733" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14733</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543925280' id='643618'>
+<a class='timestamp' href='#643618'><time timestamp='2018-12-04T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/88445889f1b3...abbf4be181e0" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/88445889f1b3...abbf4be181e0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543925280' id='643619'>
+<a class='timestamp' href='#643619'><time timestamp='2018-12-04T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f3cf95f Carl Dong: tests: Modify rpc_bind to conform to #14532 behaviour....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543925280' id='643620'>
+<a class='timestamp' href='#643620'><time timestamp='2018-12-04T12:08:00Z'>12:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master abbf4be Wladimir J. van der Laan: Merge #14861: tests: Modify rpc_bind to conform to #14532 behaviour....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543925340' id='643621'>
+<a class='timestamp' href='#643621'><time timestamp='2018-12-04T12:09:00Z'>12:09</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14861: tests: Modify rpc_bind to conform to #14532 behaviour. (master...2018-12-fix-rpc-bind-tests) <a href="https://github.com/bitcoin/bitcoin/pull/14861" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14861</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543925820' id='643622'>
+<a class='timestamp' href='#643622'><time timestamp='2018-12-04T12:17:00Z'>12:17</time></a>
+&lt;<span class='nick nick-3'> phwalkr</span>&gt;
+stevenroose: found it here: <a href="https://github.com/libbitcoin/libbitcoin/wiki/Sighash-and-TX-Signing" class="link" target="_blank">https://github.com/libbitcoin/libbitcoin/wiki/Sighash-and-TX-Signing</a> Thanks anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543927200' id='643623'>
+<a class='timestamp' href='#643623'><time timestamp='2018-12-04T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/abbf4be181e0...86ff0413bb8f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/abbf4be181e0...86ff0413bb8f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543927200' id='643624'>
+<a class='timestamp' href='#643624'><time timestamp='2018-12-04T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b14948e Amir Abrams: Remove duplicate libconsensus linking in test make...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543927200' id='643625'>
+<a class='timestamp' href='#643625'><time timestamp='2018-12-04T12:40:00Z'>12:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 86ff041 Wladimir J. van der Laan: Merge #14840: Remove duplicate libconsensus linking in test make...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543927260' id='643626'>
+<a class='timestamp' href='#643626'><time timestamp='2018-12-04T12:41:00Z'>12:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14840: Remove duplicate libconsensus linking in test make (master...patch-4) <a href="https://github.com/bitcoin/bitcoin/pull/14840" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14840</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543928040' id='643627'>
+<a class='timestamp' href='#643627'><time timestamp='2018-12-04T12:54:00Z'>12:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj opened pull request #14869: scripts: Add trusted key for Samuel Dobson (master...2018_12_meshcollider) <a href="https://github.com/bitcoin/bitcoin/pull/14869" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14869</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543931640' id='643628'>
+<a class='timestamp' href='#643628'><time timestamp='2018-12-04T13:54:00Z'>13:54</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+stevenroose: i&#x27;m actually not sure.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543931640' id='643629'>
+<a class='timestamp' href='#643629'><time timestamp='2018-12-04T13:54:00Z'>13:54</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+stevenroose: are you asking &quot;can i make multiple rpc requests from other processes and threads?&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543932000' id='643630'>
+<a class='timestamp' href='#643630'><time timestamp='2018-12-04T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+kanzure: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543932060' id='643631'>
+<a class='timestamp' href='#643631'><time timestamp='2018-12-04T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+well, individual calls are obvious, if you do createrawtransaction and before you can fund, sign and send it, another thread does the same, of course that will fail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543932060' id='643632'>
+<a class='timestamp' href='#643632'><time timestamp='2018-12-04T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+but more like, f.e. if you fire two sendtoaddress calls at the same time, will they try to spend the same utxos?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543932060' id='643633'>
+<a class='timestamp' href='#643633'><time timestamp='2018-12-04T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+it appears that sendtoaddress is doing this safely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543932120' id='643634'>
+<a class='timestamp' href='#643634'><time timestamp='2018-12-04T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+so question would be if the interface claims to be safe for this in all calls
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543932120' id='643635'>
+<a class='timestamp' href='#643635'><time timestamp='2018-12-04T14:02:00Z'>14:02</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+or if it says you should not use it concurrently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543933020' id='643636'>
+<a class='timestamp' href='#643636'><time timestamp='2018-12-04T14:17:00Z'>14:17</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+stevenroose: i wouldn&#x27;t expect concurrent use to work. for createrawtransaction/fundrawtransaction if you&#x27;re planning multiple transactions then usually i&#x27;ve found i need to plan them separately outside of bitcoind.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543933680' id='643637'>
+<a class='timestamp' href='#643637'><time timestamp='2018-12-04T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+yeah for createraw/fundraw/signraw/sendraw I understand
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543933680' id='643638'>
+<a class='timestamp' href='#643638'><time timestamp='2018-12-04T14:28:00Z'>14:28</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+but ok we fixed our issue in elements and have an approach similar to sendaddress, so we should be at least as concurrency-safe as sendtoaddress which is enough :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543934400' id='643639'>
+<a class='timestamp' href='#643639'><time timestamp='2018-12-04T14:40:00Z'>14:40</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+hebasto: ping
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543934520' id='643640'>
+<a class='timestamp' href='#643640'><time timestamp='2018-12-04T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+regarding #14854, can you detail your steps to see if I can reproduce?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543934520' id='643641'>
+<a class='timestamp' href='#643641'><time timestamp='2018-12-04T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14854" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14854</a> | qt: Cleanup SplashScreen class by hebasto · Pull Request #14854 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543935060' id='643642'>
+<a class='timestamp' href='#643642'><time timestamp='2018-12-04T14:51:00Z'>14:51</time></a>
+&lt;<span class='nick nick-2'> gleb</span>&gt;
+gmaxwell: Yes, 2 minutes per dishonest hop, but adding a new peer to a node is trivial and cheap. Anyway, perhaps I should allocate some time and try inferring the topology  :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543938540' id='643643'>
+<a class='timestamp' href='#643643'><time timestamp='2018-12-04T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+<a href="https://ci.appveyor.com/project/DrahtBot/bitcoin/builds/20762709" class="link" target="_blank">https://ci.appveyor.com/project/DrahtBot/bitcoin/builds/20762709</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543938540' id='643644'>
+<a class='timestamp' href='#643644'><time timestamp='2018-12-04T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+another connection problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543942440' id='643645'>
+<a class='timestamp' href='#643645'><time timestamp='2018-12-04T16:54:00Z'>16:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+stevenroose: you can ask fundrawtx to lock the selected utxos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543942680' id='643646'>
+<a class='timestamp' href='#643646'><time timestamp='2018-12-04T16:58:00Z'>16:58</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+sipa: oooh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543942740' id='643647'>
+<a class='timestamp' href='#643647'><time timestamp='2018-12-04T16:59:00Z'>16:59</time></a>
+&lt;<span class='nick nick-7'> stevenroose</span>&gt;
+that&#x27;s cool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543942800' id='643648'>
+<a class='timestamp' href='#643648'><time timestamp='2018-12-04T17:00:00Z'>17:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is also lockunspent that control the set of locked utxos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543944660' id='643649'>
+<a class='timestamp' href='#643649'><time timestamp='2018-12-04T17:31:00Z'>17:31</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+promag: here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543944780' id='643650'>
+<a class='timestamp' href='#643650'><time timestamp='2018-12-04T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+promag: my steps are the same as described in #7718
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543944780' id='643651'>
+<a class='timestamp' href='#643651'><time timestamp='2018-12-04T17:33:00Z'>17:33</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/7718" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/7718</a> | Verifying blocks window stays open after the main GUI appears · Issue #7718 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1543944960' id='643652'>
+<a class='timestamp' href='#643652'><time timestamp='2018-12-04T17:36:00Z'>17:36</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+promag: similar is here <a href="https://stackoverflow.com/questions/44286102/minimize-to-tray-on-macosx" class="link" target="_blank">https://stackoverflow.com/questions/44286102/minimize-to-tray-on-macosx</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

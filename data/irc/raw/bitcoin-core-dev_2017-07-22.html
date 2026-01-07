@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-07-22
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-07-22' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:24 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-06-22">&lt;</a><span class='header'>    July 2017     </span><a href="/bitcoin-core-dev/2017-08-22">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                   <a class="" href="/bitcoin-core-dev/2017-07-01">1</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-07-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-07-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-07-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-07-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-07-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-07-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-07-08">8</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-07-09">9</a> <a class="" href="/bitcoin-core-dev/2017-07-10">10</a> <a class="" href="/bitcoin-core-dev/2017-07-11">11</a> <a class="" href="/bitcoin-core-dev/2017-07-12">12</a> <a class="" href="/bitcoin-core-dev/2017-07-13">13</a> <a class="" href="/bitcoin-core-dev/2017-07-14">14</a> <a class="" href="/bitcoin-core-dev/2017-07-15">15</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-07-16">16</a> <a class="" href="/bitcoin-core-dev/2017-07-17">17</a> <a class="" href="/bitcoin-core-dev/2017-07-18">18</a> <a class="" href="/bitcoin-core-dev/2017-07-19">19</a> <a class="" href="/bitcoin-core-dev/2017-07-20">20</a> <a class="" href="/bitcoin-core-dev/2017-07-21">21</a> <a class="current" href="/bitcoin-core-dev/2017-07-22">22</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-07-23">23</a> <a class="" href="/bitcoin-core-dev/2017-07-24">24</a> <a class="" href="/bitcoin-core-dev/2017-07-25">25</a> <a class="" href="/bitcoin-core-dev/2017-07-26">26</a> <a class="" href="/bitcoin-core-dev/2017-07-27">27</a> <a class="" href="/bitcoin-core-dev/2017-07-28">28</a> <a class="" href="/bitcoin-core-dev/2017-07-29">29</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-07-30">30</a> <a class="" href="/bitcoin-core-dev/2017-07-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1500689460' id='559974'>
+<a class='timestamp' href='#559974'><time timestamp='2017-07-22T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: BIP148&#x27;s patch is only larger for safety and unit tests. it&#x27;s much smaller than BIP91 without those.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689580' id='559975'>
+<a class='timestamp' href='#559975'><time timestamp='2017-07-22T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+given the short time period and risk of splitting up enforcement too much, I currently favour just deployment of BIP148 as-is. not perfect, but I think it&#x27;s the least-risky all things considered
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689580' id='559976'>
+<a class='timestamp' href='#559976'><time timestamp='2017-07-22T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: well it does things like preferential peering, for example.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689580' id='559977'>
+<a class='timestamp' href='#559977'><time timestamp='2017-07-22T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+right, that&#x27;s what I mean (partly)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689640' id='559978'>
+<a class='timestamp' href='#559978'><time timestamp='2017-07-22T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+fortunately, not ALL users need that, only some
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689640' id='559979'>
+<a class='timestamp' href='#559979'><time timestamp='2017-07-22T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the banning-old-nodes part is probably a bigger deal, but the same applies there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689700' id='559980'>
+<a class='timestamp' href='#559980'><time timestamp='2017-07-22T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+as-is has the now-we-have-three-forks problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689700' id='559981'>
+<a class='timestamp' href='#559981'><time timestamp='2017-07-22T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+essentially it&#x27;s uasfsegwit 0.3 vs 1.0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689760' id='559982'>
+<a class='timestamp' href='#559982'><time timestamp='2017-07-22T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: less likely than if 30% run BIP148-adapted-to-BIP91, 30% run BIP148-as-is, and 40% run non-BIP148
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689760' id='559983'>
+<a class='timestamp' href='#559983'><time timestamp='2017-07-22T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+no?     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689760' id='559984'>
+<a class='timestamp' href='#559984'><time timestamp='2017-07-22T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+at least if it&#x27;s simply BIP148 or non-BIP148, <b>*users*</b> will be on one or the other
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689820' id='559985'>
+<a class='timestamp' href='#559985'><time timestamp='2017-07-22T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: no, because presumably there are foolish people running btc1.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689820' id='559986'>
+<a class='timestamp' href='#559986'><time timestamp='2017-07-22T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+not that many?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500689880' id='559987'>
+<a class='timestamp' href='#559987'><time timestamp='2017-07-22T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+no, but we can&#x27;t tell for sure.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500690000' id='559988'>
+<a class='timestamp' href='#559988'><time timestamp='2017-07-22T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+seems the binary choice (plus btc1) is only <b>*at worst*</b> equivalent to the trinary choice, and at best, an improvement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500690000' id='559989'>
+<a class='timestamp' href='#559989'><time timestamp='2017-07-22T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+too many people disagree with the adjusted-BIP148 it seems, to reduce to a binary choice there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500690360' id='559990'>
+<a class='timestamp' href='#559990'><time timestamp='2017-07-22T02:26:00Z'>02:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+am I missing something still?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500691860' id='559991'>
+<a class='timestamp' href='#559991'><time timestamp='2017-07-22T02:51:00Z'>02:51</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+gmaxwell: what do you want to do? just stick w/ the current release?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693240' id='559992'>
+<a class='timestamp' href='#559992'><time timestamp='2017-07-22T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+If pools have direct connected to eachother and are also on FIBRE, isnt that enough to mitigate the problems without trying to deploy something in &lt;24 hours?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693360' id='559993'>
+<a class='timestamp' href='#559993'><time timestamp='2017-07-22T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+btcdrak: the worst case scenario is  that someone will make a non-segwit signalling block (very likely) and then half of the miners will accept it (not actually enforcing BIP 91) and the other half will reject it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693480' id='559994'>
+<a class='timestamp' href='#559994'><time timestamp='2017-07-22T03:18:00Z'>03:18</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+which would then potentially result in the longest valid chain (as appearing to current bitcoin core clients) to swap back and forth between the chain w/ the non-segwit-signal chain and the all segwit-signal chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693480' id='559995'>
+<a class='timestamp' href='#559995'><time timestamp='2017-07-22T03:18:00Z'>03:18</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+I&#x27;ve asked several pools and based on what they say at least, much more than 51% of the hashrate is running BIP91 enforcement code either btc1 or segsignal. They understand they must enforce the rule.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693600' id='559996'>
+<a class='timestamp' href='#559996'><time timestamp='2017-07-22T03:20:00Z'>03:20</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+I agree this situation is ideal. If BIP91 had the same activation date as BIP148 it could have piggypacked and there would be significant node enforcement. But in 24 hours, I dont see how we can make this better at all. Asking exchanges et al to run a quick untested patch (by Core&#x27;s standards) for what doesnt seem like an emergency (at least to me), seems irresponsible.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693660' id='559997'>
+<a class='timestamp' href='#559997'><time timestamp='2017-07-22T03:21:00Z'>03:21</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+s/is idea/isn&#x27;t ideal/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693780' id='559998'>
+<a class='timestamp' href='#559998'><time timestamp='2017-07-22T03:23:00Z'>03:23</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+btcdrak: I agree that bitcoincore.org / etc people should definitely not ask people to run BIP 91 enforcing software, or even recommend it.  They might just want to create a BIP 91 or 148 release just to satisfy demand
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693840' id='559999'>
+<a class='timestamp' href='#559999'><time timestamp='2017-07-22T03:24:00Z'>03:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+btcdrak: without enforcement, you lose full node security
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693900' id='560000'>
+<a class='timestamp' href='#560000'><time timestamp='2017-07-22T03:25:00Z'>03:25</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+But for exchanges, established businesses etc, i think they should just stick to 0.14.2 for now... and then if there actually is a lasting split, then wait for replay attack prevention to be tested and released
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693900' id='560001'>
+<a class='timestamp' href='#560001'><time timestamp='2017-07-22T03:25:00Z'>03:25</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+luke-jr: what do you mean you lose full node security?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693960' id='560002'>
+<a class='timestamp' href='#560002'><time timestamp='2017-07-22T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+you are still fully verifying the money supply
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693960' id='560003'>
+<a class='timestamp' href='#560003'><time timestamp='2017-07-22T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+praxeology: full node security means you enforce ALL the rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693960' id='560004'>
+<a class='timestamp' href='#560004'><time timestamp='2017-07-22T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+all of your own rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693960' id='560005'>
+<a class='timestamp' href='#560005'><time timestamp='2017-07-22T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+anything less than all, is effectively nothing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500693960' id='560006'>
+<a class='timestamp' href='#560006'><time timestamp='2017-07-22T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: i disagree with that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694020' id='560007'>
+<a class='timestamp' href='#560007'><time timestamp='2017-07-22T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+BIP91 rules are not/never were my rules.  I only heard about it yesterday when I was checking up on BIP 148 status
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694020' id='560008'>
+<a class='timestamp' href='#560008'><time timestamp='2017-07-22T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(especially if you&#x27;re not doing anything based on low confirmation count)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694020' id='560009'>
+<a class='timestamp' href='#560009'><time timestamp='2017-07-22T03:27:00Z'>03:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+praxeology: yet if you don&#x27;t enforce it, you lose security
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694080' id='560010'>
+<a class='timestamp' href='#560010'><time timestamp='2017-07-22T03:28:00Z'>03:28</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+luke-jr: only for low confirmation count, only over about the next 2 weeks, and only if there is a near 50% split on bip 91 enforcement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694080' id='560011'>
+<a class='timestamp' href='#560011'><time timestamp='2017-07-22T03:28:00Z'>03:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: if you&#x27;re trusting miners, that&#x27;s pSPV, not full node. or do you mean something else?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694140' id='560012'>
+<a class='timestamp' href='#560012'><time timestamp='2017-07-22T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: yes, you&#x27;re trusting them for some rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694200' id='560013'>
+<a class='timestamp' href='#560013'><time timestamp='2017-07-22T03:30:00Z'>03:30</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+how is some any different from all, practically speaking?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694200' id='560014'>
+<a class='timestamp' href='#560014'><time timestamp='2017-07-22T03:30:00Z'>03:30</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+One only need enforce rules that oneself cares about
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694200' id='560015'>
+<a class='timestamp' href='#560015'><time timestamp='2017-07-22T03:30:00Z'>03:30</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+if others enforce more rules, it does not matter to you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694260' id='560016'>
+<a class='timestamp' href='#560016'><time timestamp='2017-07-22T03:31:00Z'>03:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+praxeology: it does, because if the unenforced rule is violated, the entire block is invalid, even if you were personally okay with it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694260' id='560017'>
+<a class='timestamp' href='#560017'><time timestamp='2017-07-22T03:31:00Z'>03:31</time></a>
+&lt;<span class='nick nick-3'> praxeology</span>&gt;
+its only a short term problem w/ orphaning blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694320' id='560018'>
+<a class='timestamp' href='#560018'><time timestamp='2017-07-22T03:32:00Z'>03:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: maybe you&#x27;re ok with spv security for incoming payments, but still want to help make sure miners cannot inflate the currency supply
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694320' id='560019'>
+<a class='timestamp' href='#560019'><time timestamp='2017-07-22T03:32:00Z'>03:32</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hm     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694800' id='560020'>
+<a class='timestamp' href='#560020'><time timestamp='2017-07-22T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+My general view is that the more we think the miners are going to properly enforce BIP91, the more we want to make a patch/release that does so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694800' id='560021'>
+<a class='timestamp' href='#560021'><time timestamp='2017-07-22T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+B/c that means the more sure we are that it is the actual rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500694800' id='560022'>
+<a class='timestamp' href='#560022'><time timestamp='2017-07-22T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+If we think there might be all kinds of shenanigans, maybe we just want to stay clear of these rushed consenus chicken games
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500701460' id='560023'>
+<a class='timestamp' href='#560023'><time timestamp='2017-07-22T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jamesob opened pull request #10903: Add configuration files for a Docker-based development environment (master...docker) <a href="https://github.com/bitcoin/bitcoin/pull/10903" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10903</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500701820' id='560024'>
+<a class='timestamp' href='#560024'><time timestamp='2017-07-22T05:37:00Z'>05:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+btcdrak: as morcos says, -- we think non SW signaling blocks will be orphaned... not everyone can stop transacting for most of the weekend...  to avoid losses they need to either wait an unreasonable amount of confirmations or enforce the rules that (in their best estimation) the network will enforce.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500713040' id='560025'>
+<a class='timestamp' href='#560025'><time timestamp='2017-07-22T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/420238d3103a...0c173a15ca1b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/420238d3103a...0c173a15ca1b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500713040' id='560026'>
+<a class='timestamp' href='#560026'><time timestamp='2017-07-22T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 44eb9d4 Jonas Schnelli: [QA] Avoid running multiwallet.py twice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500713040' id='560027'>
+<a class='timestamp' href='#560027'><time timestamp='2017-07-22T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 0c173a1 MarcoFalke: Merge #10893: [QA] Avoid running multiwallet.py twice...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500713100' id='560028'>
+<a class='timestamp' href='#560028'><time timestamp='2017-07-22T08:45:00Z'>08:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #10893: [QA] Avoid running multiwallet.py twice (master...2017/07/fix_mw_test) <a href="https://github.com/bitcoin/bitcoin/pull/10893" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10893</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500720720' id='560029'>
+<a class='timestamp' href='#560029'><time timestamp='2017-07-22T10:52:00Z'>10:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] corebob opened pull request #10907: Prefer iterators arrow operator over iterator dereference (master...20170722-refactor-arrow-1) <a href="https://github.com/bitcoin/bitcoin/pull/10907" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10907</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500723300' id='560030'>
+<a class='timestamp' href='#560030'><time timestamp='2017-07-22T11:35:00Z'>11:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Astrali opened pull request #10908: pls review (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/10908" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10908</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500723840' id='560031'>
+<a class='timestamp' href='#560031'><time timestamp='2017-07-22T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #10908: pls review (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/10908" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10908</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500736980' id='560032'>
+<a class='timestamp' href='#560032'><time timestamp='2017-07-22T15:23:00Z'>15:23</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+It seems importaddress does not track properly bare segwit scriptPubKey.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500737040' id='560033'>
+<a class='timestamp' href='#560033'><time timestamp='2017-07-22T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-7'> NicolasDorier</span>&gt;
+Is it expected? If not will try to find the root cause
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500737940' id='560034'>
+<a class='timestamp' href='#560034'><time timestamp='2017-07-22T15:39:00Z'>15:39</time></a>
+&lt;<span class='nick nick-16'> amosbird</span>&gt;
+hello
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500737940' id='560035'>
+<a class='timestamp' href='#560035'><time timestamp='2017-07-22T15:39:00Z'>15:39</time></a>
+&lt;<span class='nick nick-16'> amosbird</span>&gt;
+can anyone help me with this compilation error ? <a href="https://la.wentropy.com/oEcj" class="link" target="_blank">https://la.wentropy.com/oEcj</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500737940' id='560036'>
+<a class='timestamp' href='#560036'><time timestamp='2017-07-22T15:39:00Z'>15:39</time></a>
+&lt;<span class='nick nick-16'> amosbird</span>&gt;
+it&#x27;s in centos 7
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500739980' id='560037'>
+<a class='timestamp' href='#560037'><time timestamp='2017-07-22T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+NicolasDorier: by bare segwit, you mean not embedded in p2sh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740100' id='560038'>
+<a class='timestamp' href='#560038'><time timestamp='2017-07-22T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+NicolasDorier: you may need to use importpubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740160' id='560039'>
+<a class='timestamp' href='#560039'><time timestamp='2017-07-22T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+NicolasDorier: there is extra protection for segwit outputs to not accidentally treat uncompressed pubkeys as ismine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740820' id='560040'>
+<a class='timestamp' href='#560040'><time timestamp='2017-07-22T16:27:00Z'>16:27</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+you&#x27;re lacking the some boost code files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740880' id='560041'>
+<a class='timestamp' href='#560041'><time timestamp='2017-07-22T16:28:00Z'>16:28</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+you have the headers therefor you can compile
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740880' id='560042'>
+<a class='timestamp' href='#560042'><time timestamp='2017-07-22T16:28:00Z'>16:28</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+but the .cpp is missing, so it can&#x27;t link
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740880' id='560043'>
+<a class='timestamp' href='#560043'><time timestamp='2017-07-22T16:28:00Z'>16:28</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+basically boost::thread related libs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740940' id='560044'>
+<a class='timestamp' href='#560044'><time timestamp='2017-07-22T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+either that or you don&#x27;t have the libraries installed at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740940' id='560045'>
+<a class='timestamp' href='#560045'><time timestamp='2017-07-22T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+and can&#x27;t link to them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740940' id='560046'>
+<a class='timestamp' href='#560046'><time timestamp='2017-07-22T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+did you run the configure script?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500740940' id='560047'>
+<a class='timestamp' href='#560047'><time timestamp='2017-07-22T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-9'> goatpig</span>&gt;
+it should have warned you of missing boost packages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500742440' id='560048'>
+<a class='timestamp' href='#560048'><time timestamp='2017-07-22T16:54:00Z'>16:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] keystrike opened pull request #10911: Typo in optionsdialog.ui (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/10911" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10911</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1500761040' id='560049'>
+<a class='timestamp' href='#560049'><time timestamp='2017-07-22T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #10912: [tests] Remove incorrect memory_cleanse(…) call in crypto_tests.cpp (master...arrays-are-not-pointers) <a href="https://github.com/bitcoin/bitcoin/pull/10912" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10912</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

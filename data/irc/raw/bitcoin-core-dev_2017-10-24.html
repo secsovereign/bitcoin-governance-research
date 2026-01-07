@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-10-24
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-10-24' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-09-24">&lt;</a><span class='header'>   October 2017   </span><a href="/bitcoin-core-dev/2017-11-24">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2017-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-10-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-10-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-10-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-10-09">9</a> <a class="" href="/bitcoin-core-dev/2017-10-10">10</a> <a class="" href="/bitcoin-core-dev/2017-10-11">11</a> <a class="" href="/bitcoin-core-dev/2017-10-12">12</a> <a class="" href="/bitcoin-core-dev/2017-10-13">13</a> <a class="" href="/bitcoin-core-dev/2017-10-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-10-15">15</a> <a class="" href="/bitcoin-core-dev/2017-10-16">16</a> <a class="" href="/bitcoin-core-dev/2017-10-17">17</a> <a class="" href="/bitcoin-core-dev/2017-10-18">18</a> <a class="" href="/bitcoin-core-dev/2017-10-19">19</a> <a class="" href="/bitcoin-core-dev/2017-10-20">20</a> <a class="" href="/bitcoin-core-dev/2017-10-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-10-22">22</a> <a class="" href="/bitcoin-core-dev/2017-10-23">23</a> <a class="current" href="/bitcoin-core-dev/2017-10-24">24</a> <a class="" href="/bitcoin-core-dev/2017-10-25">25</a> <a class="" href="/bitcoin-core-dev/2017-10-26">26</a> <a class="" href="/bitcoin-core-dev/2017-10-27">27</a> <a class="" href="/bitcoin-core-dev/2017-10-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-10-29">29</a> <a class="" href="/bitcoin-core-dev/2017-10-30">30</a> <a class="" href="/bitcoin-core-dev/2017-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1508812500' id='576217'>
+<a class='timestamp' href='#576217'><time timestamp='2017-10-24T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+hey, my bitcoind just crashed while its processing datadir, i attached gdb to the process and saw the following system call.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508812500' id='576218'>
+<a class='timestamp' href='#576218'><time timestamp='2017-10-24T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+__pthread_disable_asynccancel () at ../sysdeps/unix/sysv/linux/x86_64/cancellation.S:88
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508812500' id='576219'>
+<a class='timestamp' href='#576219'><time timestamp='2017-10-24T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+88../sysdeps/unix/sysv/linux/x86_64/cancellation.S: No such file or directory.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508812500' id='576220'>
+<a class='timestamp' href='#576220'><time timestamp='2017-10-24T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+is this the right place to report this?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508813340' id='576221'>
+<a class='timestamp' href='#576221'><time timestamp='2017-10-24T02:49:00Z'>02:49</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+mryandao: make an issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508813520' id='576222'>
+<a class='timestamp' href='#576222'><time timestamp='2017-10-24T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+ok     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508813520' id='576223'>
+<a class='timestamp' href='#576223'><time timestamp='2017-10-24T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-3'> mryandao</span>&gt;
+i&#x27;ll run bitcoind again and see if crashes again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508826240' id='576224'>
+<a class='timestamp' href='#576224'><time timestamp='2017-10-24T06:24:00Z'>06:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+in #11534, is there a reason to use connect time rather than highest node id?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508826240' id='576225'>
+<a class='timestamp' href='#576225'><time timestamp='2017-10-24T06:24:00Z'>06:24</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11534" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11534</a> | Evict outbound peers if tip is stale by sdaftuar · Pull Request #11534 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508826300' id='576226'>
+<a class='timestamp' href='#576226'><time timestamp='2017-10-24T06:25:00Z'>06:25</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+node ID should be monotone and increasing, so it should if anything be a better latest peer criteria than connect time.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508845740' id='576227'>
+<a class='timestamp' href='#576227'><time timestamp='2017-10-24T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+gmaxwell: thanks, that sounds better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508845740' id='576228'>
+<a class='timestamp' href='#576228'><time timestamp='2017-10-24T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+gmaxwell: i thought of another problem with that patch, that i&#x27;m not sure how to best address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508845800' id='576229'>
+<a class='timestamp' href='#576229'><time timestamp='2017-10-24T11:50:00Z'>11:50</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+it seems suboptimal to disconnect a peer that hasn&#x27;t been connected very long -- eg perhaps your tip is stale, but the peer you&#x27;re choosing to evict is one you just connected to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508845860' id='576230'>
+<a class='timestamp' href='#576230'><time timestamp='2017-10-24T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sdaftuar: years ago i experimented with a outbound connection rotation system, which kicked just based on chances that depend on connection time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508845860' id='576231'>
+<a class='timestamp' href='#576231'><time timestamp='2017-10-24T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+or, perhaps your network was down for a few hours (say, you&#x27;re running on a laptop) and then when you start up, you detect a stale tip -- so you immediately flag one of your initial 8 peers for eviction, for basically no good reason
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508845920' id='576232'>
+<a class='timestamp' href='#576232'><time timestamp='2017-10-24T11:52:00Z'>11:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i believe a good approach was (by simulations, but i&#x27;ve lost all the code so it&#x27;s hard to reproduce) to make the chance to disconnect proportional to time_connected^-0.8 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846040' id='576233'>
+<a class='timestamp' href='#576233'><time timestamp='2017-10-24T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sdaftuar: well if we&#x27;re considering something like peer rotation anyway (at least, i am), then occasionally randomly disconnecting someone for no reason isn&#x27;t too bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846040' id='576234'>
+<a class='timestamp' href='#576234'><time timestamp='2017-10-24T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+sipa: i haven&#x27;t given a ton of thought to how to measure success/failure of general-purpose algorithms like that...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846040' id='576235'>
+<a class='timestamp' href='#576235'><time timestamp='2017-10-24T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+at least if it only happens occasionally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846100' id='576236'>
+<a class='timestamp' href='#576236'><time timestamp='2017-10-24T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+ah, ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846100' id='576237'>
+<a class='timestamp' href='#576237'><time timestamp='2017-10-24T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+well, i think my PR won&#x27;t behave *terribly*, under the assumption that it&#x27;s okay for an occasional spurious disconnect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846100' id='576238'>
+<a class='timestamp' href='#576238'><time timestamp='2017-10-24T11:55:00Z'>11:55</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+though it could certainly use testing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846160' id='576239'>
+<a class='timestamp' href='#576239'><time timestamp='2017-10-24T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and in general, your most recent connection is the least likely peer to be your best
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846160' id='576240'>
+<a class='timestamp' href='#576240'><time timestamp='2017-10-24T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+right, agreed.  i think my PR does have an edge-case bug, where eg your first peer could be the one disconnected (in the situation where your network is down, then comes back up, and you briefly have just one peer that is fully connected--
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846160' id='576241'>
+<a class='timestamp' href='#576241'><time timestamp='2017-10-24T11:56:00Z'>11:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so if we&#x27;re aiming for simplicity, i don&#x27;t think it&#x27;ll be terrible under any circumstances
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846220' id='576242'>
+<a class='timestamp' href='#576242'><time timestamp='2017-10-24T11:57:00Z'>11:57</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+it could be flagged for eviction)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846280' id='576243'>
+<a class='timestamp' href='#576243'><time timestamp='2017-10-24T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i was considering another approach to the same problem, where i just connect outbound to a 9th peer when the tip looks like it might be stale, and then at some point after that disconnect one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846280' id='576244'>
+<a class='timestamp' href='#576244'><time timestamp='2017-10-24T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+with the idea that if no new info was learned from the 9th, then it should be the one disconnected
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846280' id='576245'>
+<a class='timestamp' href='#576245'><time timestamp='2017-10-24T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i think that approach has the advantage of (a) being able to trigger more often, because it seems safer to connect to an extra peer than disconnect an existing one, so you can test for stale-ness with less conservatism
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846340' id='576246'>
+<a class='timestamp' href='#576246'><time timestamp='2017-10-24T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846340' id='576247'>
+<a class='timestamp' href='#576247'><time timestamp='2017-10-24T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+and (b) it seems like the outbound peer selection logic will perform better if you connect to a new peer before disconnecting an old peer (due to the netgroup diversity requirement? if i  understand it right)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508846340' id='576248'>
+<a class='timestamp' href='#576248'><time timestamp='2017-10-24T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+but i haven&#x27;t quite worked out the implementation details yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508847600' id='576249'>
+<a class='timestamp' href='#576249'><time timestamp='2017-10-24T12:20:00Z'>12:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ryanofsky opened pull request #11552: Improve wallet-accounts test (master...pr/acctt) <a href="https://github.com/bitcoin/bitcoin/pull/11552" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11552</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508853300' id='576250'>
+<a class='timestamp' href='#576250'><time timestamp='2017-10-24T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jtimon: hmm, googling old issues doesn&#x27;t seem like there&#x27;s much consensus on changing RPC from decimal BTC values? #9855 was the most recent i saw, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508853300' id='576251'>
+<a class='timestamp' href='#576251'><time timestamp='2017-10-24T13:55:00Z'>13:55</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/9855" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/9855</a> | RPC: Use integer satoshis instead BTC with decimals by jtimon · Pull Request #9855 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508853420' id='576252'>
+<a class='timestamp' href='#576252'><time timestamp='2017-10-24T13:57:00Z'>13:57</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+perhaps that&#x27;s a good topic for the next meeting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508853420' id='576253'>
+<a class='timestamp' href='#576253'><time timestamp='2017-10-24T13:57:00Z'>13:57</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+it was my understanding that everybody considered using BTC instead of satoshis a mistake, but perhaps it&#x27;s just me and I&#x27;m just assuming the opinions of others
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508853600' id='576254'>
+<a class='timestamp' href='#576254'><time timestamp='2017-10-24T14:00:00Z'>14:00</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jtimon: if i&#x27;m understanding what they&#x27;re saying, sipa and wumpus seem to think string vs number is more important than btc vs satoshi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508853660' id='576255'>
+<a class='timestamp' href='#576255'><time timestamp='2017-10-24T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jtimon: <a href="https://github.com/bitcoin/bitcoin/pull/3759/commits/f3f8460fe51be719231612a921dd37af638df46a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/3759/commits/f3f8460fe51be719231612a921dd37af638df46a</a> seems like a good idea to me?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508862840' id='576256'>
+<a class='timestamp' href='#576256'><time timestamp='2017-10-24T16:34:00Z'>16:34</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+aj: I also tried <a href="https://github.com/bitcoin/bitcoin/pull/9855" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9855</a> but it wasn&#x27;t very well received
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508862900' id='576257'>
+<a class='timestamp' href='#576257'><time timestamp='2017-10-24T16:35:00Z'>16:35</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+also I think string vs numbers is more important when you have decimals. for integer satoshis I don&#x27;t think anyone has a problem with them being numbers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508862900' id='576258'>
+<a class='timestamp' href='#576258'><time timestamp='2017-10-24T16:35:00Z'>16:35</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+perhaps I&#x27;m wrong there too, not sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508862960' id='576259'>
+<a class='timestamp' href='#576259'><time timestamp='2017-10-24T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+but for the getblockstats pr, I really think using integer satoshis is the right thing to do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508862960' id='576260'>
+<a class='timestamp' href='#576260'><time timestamp='2017-10-24T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+or the best option
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508864520' id='576261'>
+<a class='timestamp' href='#576261'><time timestamp='2017-10-24T17:02:00Z'>17:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Varunram opened pull request #11553: [P2P] Throw Warning if -peerbloomfilters is enabled (master...peerfilters) <a href="https://github.com/bitcoin/bitcoin/pull/11553" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11553</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508864580' id='576262'>
+<a class='timestamp' href='#576262'><time timestamp='2017-10-24T17:03:00Z'>17:03</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+Hey guys! This is my first PR, please pardon me if I&#x27;ve done something wrong or haven&#x27;t abided by any rules. Looking forward to your comments :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508868720' id='576263'>
+<a class='timestamp' href='#576263'><time timestamp='2017-10-24T18:12:00Z'>18:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt opened pull request #11554: Sanity-check script sizes in bitcoin-tx (master...2017-10-bitcoin-tx-script-sizes) <a href="https://github.com/bitcoin/bitcoin/pull/11554" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11554</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508868840' id='576264'>
+<a class='timestamp' href='#576264'><time timestamp='2017-10-24T18:14:00Z'>18:14</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+Varunram: heh, thanks for the pr, though sadly I dont think we can do that yet :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508868900' id='576265'>
+<a class='timestamp' href='#576265'><time timestamp='2017-10-24T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+Varunram: note that the -peerbloomfilters option is mostly to prevent dos issues for nodes which cannot take the potential latency increases, and not to encourage people to stop providing bloom filters until we have a viable alternative :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869080' id='576266'>
+<a class='timestamp' href='#576266'><time timestamp='2017-10-24T18:18:00Z'>18:18</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+BlueMatt: haha, no worries :) I was going through the issues with &quot;good first issue&quot; labels on them and this seemed to be a good place to start. And yeah, we certainly don&#x27;t want people to stop providing bloom filters, that would take a hit on SPV clients as a whole
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869140' id='576267'>
+<a class='timestamp' href='#576267'><time timestamp='2017-10-24T18:19:00Z'>18:19</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+heh, yea, maybe we should be better about tags...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869140' id='576268'>
+<a class='timestamp' href='#576268'><time timestamp='2017-10-24T18:19:00Z'>18:19</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+someone should probably remove the &quot;good first issue&quot; tag there....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869140' id='576269'>
+<a class='timestamp' href='#576269'><time timestamp='2017-10-24T18:19:00Z'>18:19</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+I&#x27;ll rummage through the issues repo and contribute something more useful, meanwhile do I close the PR or?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869200' id='576270'>
+<a class='timestamp' href='#576270'><time timestamp='2017-10-24T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+I mean you dont have to, but it&#x27;ll sit for 6/12 months if you dont &quot;waiting on someone to add a viable alternative&quot;....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869200' id='576271'>
+<a class='timestamp' href='#576271'><time timestamp='2017-10-24T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+I had a slight notion that it might be controversial, but gave it a shot (yolo lol)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869200' id='576272'>
+<a class='timestamp' href='#576272'><time timestamp='2017-10-24T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+so probably easier to...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869260' id='576273'>
+<a class='timestamp' href='#576273'><time timestamp='2017-10-24T18:21:00Z'>18:21</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+got it, thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869500' id='576274'>
+<a class='timestamp' href='#576274'><time timestamp='2017-10-24T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Varunram closed pull request #11553: [P2P] Throw Warning if -peerbloomfilters is enabled (master...peerfilters) <a href="https://github.com/bitcoin/bitcoin/pull/11553" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11553</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508869740' id='576275'>
+<a class='timestamp' href='#576275'><time timestamp='2017-10-24T18:29:00Z'>18:29</time></a>
+&lt;<span class='nick nick-6'> jb55</span>&gt;
+seconded on adding more good first issue tags, I&#x27;m also interested in getting my feet wet..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508873820' id='576276'>
+<a class='timestamp' href='#576276'><time timestamp='2017-10-24T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: sorry for the late review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508873880' id='576277'>
+<a class='timestamp' href='#576277'><time timestamp='2017-10-24T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+wonders why dns seeder added a second copy of the service bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875140' id='576278'>
+<a class='timestamp' href='#576278'><time timestamp='2017-10-24T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+dnsseed.bitcoin.dashjr.org is now servicebit-filter-enabled
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875140' id='576279'>
+<a class='timestamp' href='#576279'><time timestamp='2017-10-24T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: thanks for taking a look!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875200' id='576280'>
+<a class='timestamp' href='#576280'><time timestamp='2017-10-24T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: don&#x27;t kill me for that last comment... I know 11534 was my suggestion :\
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875320' id='576281'>
+<a class='timestamp' href='#576281'><time timestamp='2017-10-24T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+no problem, thanks for thinking about it.  not sure if you saw the scrollback, but i&#x27;m actually working on an alternate implementation where we&#x27;d add a new peer first, and then figure out who to disconnect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875320' id='576282'>
+<a class='timestamp' href='#576282'><time timestamp='2017-10-24T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i <b>*think*</b> that will turn out to be simpler... but the code isn&#x27;t done yet, so too early for me to be sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875320' id='576283'>
+<a class='timestamp' href='#576283'><time timestamp='2017-10-24T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+testing this stuff is all awful of course :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875440' id='576284'>
+<a class='timestamp' href='#576284'><time timestamp='2017-10-24T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+anyway i think #11490 is closer to done, so i&#x27;ll address your comments there and hopefully we can get some final acks soon
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875440' id='576285'>
+<a class='timestamp' href='#576285'><time timestamp='2017-10-24T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11490" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11490</a> | Disconnect from outbound peers with bad headers chains by sdaftuar · Pull Request #11490 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875440' id='576286'>
+<a class='timestamp' href='#576286'><time timestamp='2017-10-24T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+no, i didn&#x27;t see that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875440' id='576287'>
+<a class='timestamp' href='#576287'><time timestamp='2017-10-24T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+reading
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875620' id='576288'>
+<a class='timestamp' href='#576288'><time timestamp='2017-10-24T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sdaftuar: I like adding a new peer first; then we won&#x27;t potentially spend a long time with one fewer peer. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875620' id='576289'>
+<a class='timestamp' href='#576289'><time timestamp='2017-10-24T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I see. The idea being that you may disconnect a node just to connect to his neighbor. But if you have a new connection first, you can make a better decision
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875680' id='576290'>
+<a class='timestamp' href='#576290'><time timestamp='2017-10-24T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: yeah.  i don&#x27;t know how compelling that reasoning is, but that plus not being able to be more aggressive about checking whether your tip is stale both seem like good reasons
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508875680' id='576291'>
+<a class='timestamp' href='#576291'><time timestamp='2017-10-24T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+and what gmaxwell said ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508876460' id='576292'>
+<a class='timestamp' href='#576292'><time timestamp='2017-10-24T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+this was, fwiw, how I always envisioned outbound rotation working, temporarily allowing one extra peer, then deciding which one to axe after you&#x27;ve talked to the new one.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878560' id='576293'>
+<a class='timestamp' href='#576293'><time timestamp='2017-10-24T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: so should i let #11534 rest until you&#x27;ve tried out your new approach?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878560' id='576294'>
+<a class='timestamp' href='#576294'><time timestamp='2017-10-24T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11534" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11534</a> | Evict outbound peers if tip is stale by sdaftuar · Pull Request #11534 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878620' id='576295'>
+<a class='timestamp' href='#576295'><time timestamp='2017-10-24T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: yeah maybe give me another day or so to try to get a new approach working, and then we can compare and see which looks more viable?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878620' id='576296'>
+<a class='timestamp' href='#576296'><time timestamp='2017-10-24T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ok, np
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878620' id='576297'>
+<a class='timestamp' href='#576297'><time timestamp='2017-10-24T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+so you don&#x27;t waste your time on an approach we abandon
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878740' id='576298'>
+<a class='timestamp' href='#576298'><time timestamp='2017-10-24T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+also, if our p2p was more spec&#x27;d out, I&#x27;d grumpily ask for a bip for #11490. But I guess it&#x27;s not worth it since we already make a bunch of assumptions.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878740' id='576299'>
+<a class='timestamp' href='#576299'><time timestamp='2017-10-24T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11490" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11490</a> | Disconnect from outbound peers with bad headers chains by sdaftuar · Pull Request #11490 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878800' id='576300'>
+<a class='timestamp' href='#576300'><time timestamp='2017-10-24T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i&#x27;m not averse to documentation, but do you think it needs a bip?  i feel like peer selection is something that doesn&#x27;t really require coordination across implementations
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878860' id='576301'>
+<a class='timestamp' href='#576301'><time timestamp='2017-10-24T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+nah, i don&#x27;t think it&#x27;s really needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878920' id='576302'>
+<a class='timestamp' href='#576302'><time timestamp='2017-10-24T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+not the peer selection though, the &quot;you must send MAX_HEADERS_RESULTS or be disconnected&quot; rule.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878920' id='576303'>
+<a class='timestamp' href='#576303'><time timestamp='2017-10-24T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+oh, i forgot about that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878980' id='576304'>
+<a class='timestamp' href='#576304'><time timestamp='2017-10-24T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+We alrady have a requirement for the max results, since our headers syncinc chaining depends on it, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508878980' id='576305'>
+<a class='timestamp' href='#576305'><time timestamp='2017-10-24T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+gmaxwell: yeah, that&#x27;s basically how i looked at it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508879040' id='576306'>
+<a class='timestamp' href='#576306'><time timestamp='2017-10-24T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i think matt observed that if we added a one-off getheaders message (eg with a hashstop) before we&#x27;d completed chain sync from a peer for some reason, then that would interact badly with the new logic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508879040' id='576307'>
+<a class='timestamp' href='#576307'><time timestamp='2017-10-24T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+since it&#x27;s automatic outbound only it wouldn&#x27;t harm monitoring tools or such that don&#x27;t really implement the protocol correctly.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508879040' id='576308'>
+<a class='timestamp' href='#576308'><time timestamp='2017-10-24T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+but we don&#x27;t do that...  and i don&#x27;t know why we would
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508879100' id='576309'>
+<a class='timestamp' href='#576309'><time timestamp='2017-10-24T21:05:00Z'>21:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ah, so it does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508880720' id='576310'>
+<a class='timestamp' href='#576310'><time timestamp='2017-10-24T21:32:00Z'>21:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sdaftuar: another point why its important that we don&#x27;t evict half our outbound peers in 11490.  Consider, say there is a new softfork we don&#x27;t know about. At the moment, a chain violating it is a block ahead.  We don&#x27;t want the non-upgraded network to completely partition the upgraded network, because eventually the upgraded network will get ahead and we will switch to it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508880720' id='576311'>
+<a class='timestamp' href='#576311'><time timestamp='2017-10-24T21:32:00Z'>21:32</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+gmaxwell: great point.  i should add a comment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508880780' id='576312'>
+<a class='timestamp' href='#576312'><time timestamp='2017-10-24T21:33:00Z'>21:33</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+hmm, do you think protecting the first 4 who give us headers is reasonable then?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508880840' id='576313'>
+<a class='timestamp' href='#576313'><time timestamp='2017-10-24T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+(afk, back later)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508881020' id='576314'>
+<a class='timestamp' href='#576314'><time timestamp='2017-10-24T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+google translate appears to think #11555 is the guy asking how to create his own altcoin....someone wanna close it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508881020' id='576315'>
+<a class='timestamp' href='#576315'><time timestamp='2017-10-24T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11555" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11555</a> | ПОМОГИТЕ!!!!!!! · Issue #11555 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508881140' id='576316'>
+<a class='timestamp' href='#576316'><time timestamp='2017-10-24T21:39:00Z'>21:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sdaftuar: yes, probably.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508881140' id='576317'>
+<a class='timestamp' href='#576317'><time timestamp='2017-10-24T21:39:00Z'>21:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sdaftuar: to be fair on my point, inbound connections would heal the partition, but I feel better if we can justify the behavior even in the impossible network of only hosts with outbound connections.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508882280' id='576318'>
+<a class='timestamp' href='#576318'><time timestamp='2017-10-24T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+BlueMatt: heh I like his/Google&#x27;s phrasing, &quot;altcoin come alive and go free swimming&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508882700' id='576319'>
+<a class='timestamp' href='#576319'><time timestamp='2017-10-24T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+does anyone have a good way to reproduce slow RPC behaviour? all I can think of at the moment is continually resyncing which doesn&#x27;t seem like a good idea for my poor SSD. perhaps running a seperate thread that hits RPC with heavy queries over and over?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508884500' id='576320'>
+<a class='timestamp' href='#576320'><time timestamp='2017-10-24T22:35:00Z'>22:35</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jtimon: i think the drawback for numbers vs strings is that even without a decimal point, &quot;integers&quot; are treated as doubles in javascript which makes it ambiguous at best in json generally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508884680' id='576321'>
+<a class='timestamp' href='#576321'><time timestamp='2017-10-24T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+some json implementations manage to use floats for numbers too! :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508884680' id='576322'>
+<a class='timestamp' href='#576322'><time timestamp='2017-10-24T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+aj: yeah, perhaps all data in getblocksstats should be returned as strings, I still prefer satoshis over in BTC in that case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508884860' id='576323'>
+<a class='timestamp' href='#576323'><time timestamp='2017-10-24T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-6'> jb55</span>&gt;
+I find myself using sed to wrap numbers in strings before I process them with jq...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508885160' id='576324'>
+<a class='timestamp' href='#576324'><time timestamp='2017-10-24T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+gmaxwell: so what do you think should be done for <a href="https://github.com/bitcoin/bitcoin/pull/10757" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10757</a> ? all string satoshis, all string BTC ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508885460' id='576325'>
+<a class='timestamp' href='#576325'><time timestamp='2017-10-24T22:51:00Z'>22:51</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+with that PR, I&#x27;m also kind of stuck with testing...I need to add at least one segwit tx to test some of the functionality, but some size and feerate functionality is currently not being tested due to sigs not being deterministic in size,I thought about putting hardcoded private keys in the test, but nobody confirmed that it makes any sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508885940' id='576326'>
+<a class='timestamp' href='#576326'><time timestamp='2017-10-24T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-6'> jb55</span>&gt;
+jtimon: wouldn&#x27;t it make more sense to just to dump N verbose blocks and build analysis tools externally? I guess that would be a bit slower...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508886240' id='576327'>
+<a class='timestamp' href='#576327'><time timestamp='2017-10-24T23:04:00Z'>23:04</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+jb55: mhmm, I&#x27;m talking about the tests, but yeah, didn&#x27;t thought about that...hardcoded blocks should do the trick and additionally also solve any potential concern with coin selection being non deterministic too, in case more complex tests are needed in the future. Great suggestion, now I feel bad about not thinking about it myself, but good about you not waiting for me to discover that possibility on my own
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508886480' id='576328'>
+<a class='timestamp' href='#576328'><time timestamp='2017-10-24T23:08:00Z'>23:08</time></a>
+&lt;<span class='nick nick-6'> jb55</span>&gt;
+just came to mind because I was trying to write a script that gave me the average block times the other day...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508886780' id='576329'>
+<a class='timestamp' href='#576329'><time timestamp='2017-10-24T23:13:00Z'>23:13</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+are there any other tests that use hardcoded blocks that I can copy from ? I guess the answer is no since <a href="https://github.com/bitcoin/bitcoin/pull/8994" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/8994</a> which changes the genesis block for all functional tests is passing, but it was recently brought to my attention that  hardcoding txs (including coinbases) should be enough even to construct a compatible even with a hf that completely changes the proof of work rules from genesis 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508886780' id='576330'>
+<a class='timestamp' href='#576330'><time timestamp='2017-10-24T23:13:00Z'>23:13</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+block (such as regtest/custom)  [isn&#x27;t rusty around? it was him who reminded me in a completely unrelated conversation, I vaguely remind having known this before, or perhaps was just a deja vu]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508886960' id='576331'>
+<a class='timestamp' href='#576331'><time timestamp='2017-10-24T23:16:00Z'>23:16</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+or perhaps it&#x27;s been too long since last time I tried the extended tests (including pruning)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508886960' id='576332'>
+<a class='timestamp' href='#576332'><time timestamp='2017-10-24T23:16:00Z'>23:16</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+(for that PR)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1508887140' id='576333'>
+<a class='timestamp' href='#576333'><time timestamp='2017-10-24T23:19:00Z'>23:19</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+I&#x27;ll stop overtly and subconsciously review begging now...
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

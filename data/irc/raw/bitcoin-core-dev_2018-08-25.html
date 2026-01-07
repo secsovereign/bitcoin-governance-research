@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-08-25
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-08-25' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-07-25">&lt;</a><span class='header'>   August 2018    </span><a href="/bitcoin-core-dev/2018-09-25">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2018-08-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-08-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-08-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-08-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-08-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-08-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-08-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-08-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-08-09">9</a> <a class="" href="/bitcoin-core-dev/2018-08-10">10</a> <a class="" href="/bitcoin-core-dev/2018-08-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-12">12</a> <a class="" href="/bitcoin-core-dev/2018-08-13">13</a> <a class="" href="/bitcoin-core-dev/2018-08-14">14</a> <a class="" href="/bitcoin-core-dev/2018-08-15">15</a> <a class="" href="/bitcoin-core-dev/2018-08-16">16</a> <a class="" href="/bitcoin-core-dev/2018-08-17">17</a> <a class="" href="/bitcoin-core-dev/2018-08-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-19">19</a> <a class="" href="/bitcoin-core-dev/2018-08-20">20</a> <a class="" href="/bitcoin-core-dev/2018-08-21">21</a> <a class="" href="/bitcoin-core-dev/2018-08-22">22</a> <a class="" href="/bitcoin-core-dev/2018-08-23">23</a> <a class="" href="/bitcoin-core-dev/2018-08-24">24</a> <a class="current" href="/bitcoin-core-dev/2018-08-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-26">26</a> <a class="" href="/bitcoin-core-dev/2018-08-27">27</a> <a class="" href="/bitcoin-core-dev/2018-08-28">28</a> <a class="" href="/bitcoin-core-dev/2018-08-29">29</a> <a class="" href="/bitcoin-core-dev/2018-08-30">30</a> <a class="" href="/bitcoin-core-dev/2018-08-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1535155200' id='627376'>
+<a class='timestamp' href='#627376'><time timestamp='2018-08-25T00:00:00Z'>00:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+right. well there is also no need to discard bytes from K_2 but it does that too. the performance hit is especially gratitious for lengths.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535155440' id='627377'>
+<a class='timestamp' href='#627377'><time timestamp='2018-08-25T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: oh geesh, for every message we do <u>_another_</u> chacha20 run to derrive the poly key.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535155500' id='627378'>
+<a class='timestamp' href='#627378'><time timestamp='2018-08-25T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so encrypting a single small message requires 3 runs of the chacha20 function, one to encrypt the length, one to establsh the poly1305 key, and one to encrypt the payload.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535155560' id='627379'>
+<a class='timestamp' href='#627379'><time timestamp='2018-08-25T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+this seems pants on head stupid.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535155620' id='627380'>
+<a class='timestamp' href='#627380'><time timestamp='2018-08-25T00:07:00Z'>00:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The polykey needs to be per packet for poly1305&#x27;s requirements, so I suppose it&#x27;s only throwing out 32 bytes of chacha output.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535156040' id='627381'>
+<a class='timestamp' href='#627381'><time timestamp='2018-08-25T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+<a href="https://www.ietf.org/mail-archive/web/secsh/current/msg01224.html" class="link" target="_blank">https://www.ietf.org/mail-archive/web/secsh/current/msg01224.html</a>  seems other people have suggested combining the poly1305 chacha block with the length encryption.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535156040' id='627382'>
+<a class='timestamp' href='#627382'><time timestamp='2018-08-25T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and it seems that they didn&#x27;t so that you could just use a RFC5116 implementation of it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535156040' id='627383'>
+<a class='timestamp' href='#627383'><time timestamp='2018-08-25T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-2'> * gmaxwell</span>&gt;
+cries
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535156640' id='627384'>
+<a class='timestamp' href='#627384'><time timestamp='2018-08-25T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+So encrypting a 12 byte message will run on the order of 109 cycles/byte... which means that for small messages a straighforward implementation of AES-GCM would likely be faster, even on hardware without AES instructions.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535156640' id='627385'>
+<a class='timestamp' href='#627385'><time timestamp='2018-08-25T00:24:00Z'>00:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(109 cycles/byte for the chacha20 part alone)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535157060' id='627386'>
+<a class='timestamp' href='#627386'><time timestamp='2018-08-25T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: but what is the average message length for us?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535157240' id='627387'>
+<a class='timestamp' href='#627387'><time timestamp='2018-08-25T00:34:00Z'>00:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it seems we don&#x27;t keep stats on message counts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535160240' id='627388'>
+<a class='timestamp' href='#627388'><time timestamp='2018-08-25T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: hmm?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535160240' id='627389'>
+<a class='timestamp' href='#627389'><time timestamp='2018-08-25T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: if qt&#x27;s copy is missing the files that need patching, what&#x27;s to patch?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162100' id='627390'>
+<a class='timestamp' href='#627390'><time timestamp='2018-08-25T01:55:00Z'>01:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+cfields: libpng has optimisations for ARM and POWER in separate files missing in Qt, but Qt&#x27;s copy of the normal files still tries to link them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162220' id='627391'>
+<a class='timestamp' href='#627391'><time timestamp='2018-08-25T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: armhf/aarch64 build fine, what&#x27;s different about power?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162280' id='627392'>
+<a class='timestamp' href='#627392'><time timestamp='2018-08-25T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+cfields: I don&#x27;t know how ARM works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162280' id='627393'>
+<a class='timestamp' href='#627393'><time timestamp='2018-08-25T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(not arguing, just trying to understand)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162340' id='627394'>
+<a class='timestamp' href='#627394'><time timestamp='2018-08-25T01:59:00Z'>01:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: anyway, breaking out libpng is fine with me. IIRC I didn&#x27;t do that because it requires zlib, as does qt, so that would&#x27;ve meant 2 copies of zlib. But we&#x27;ve since broken zlib out anyway I believe.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162400' id='627395'>
+<a class='timestamp' href='#627395'><time timestamp='2018-08-25T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162460' id='627396'>
+<a class='timestamp' href='#627396'><time timestamp='2018-08-25T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: while you&#x27;re at it, feel free to flip -qt-jpeg to -disable-jpeg too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162460' id='627397'>
+<a class='timestamp' href='#627397'><time timestamp='2018-08-25T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+something like those options, anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162460' id='627398'>
+<a class='timestamp' href='#627398'><time timestamp='2018-08-25T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+I think we&#x27;ve had no need for jpegs for a long time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162640' id='627399'>
+<a class='timestamp' href='#627399'><time timestamp='2018-08-25T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+did we ever? O.o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535162700' id='627400'>
+<a class='timestamp' href='#627400'><time timestamp='2018-08-25T02:05:00Z'>02:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+pretty sure we had some at some point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535163000' id='627401'>
+<a class='timestamp' href='#627401'><time timestamp='2018-08-25T02:10:00Z'>02:10</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+‰/w 39
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535163060' id='627402'>
+<a class='timestamp' href='#627402'><time timestamp='2018-08-25T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: <a href="https://github.com/bitcoin/bitcoin/commit/f9124587ccea723dbd743e3877a7071fbb6c5732" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/f9124587ccea723dbd743e3877a7071fbb6c5732</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535163120' id='627403'>
+<a class='timestamp' href='#627403'><time timestamp='2018-08-25T02:12:00Z'>02:12</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+0.8, heh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535163360' id='627404'>
+<a class='timestamp' href='#627404'><time timestamp='2018-08-25T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: the most common message by far is transaction inv.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535163480' id='627405'>
+<a class='timestamp' href='#627405'><time timestamp='2018-08-25T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: it&#x27;s just so weird that it uses 3 chacha runs, the poly1305 run has 32 bytes totally unused.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535169660' id='627406'>
+<a class='timestamp' href='#627406'><time timestamp='2018-08-25T04:01:00Z'>04:01</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+wait, so Bitcoin has the tendency to print (256 &amp; 160bit) hashes in <b>*reverse*</b> order, right - block hashes, transaction hashes and merkle root hashes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535169720' id='627407'>
+<a class='timestamp' href='#627407'><time timestamp='2018-08-25T04:02:00Z'>04:02</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+What about pubkey hashes (20B), pubkeys (32B) and signatures (64B) -   are those printed in normal or reverse byte order?    so, I have a P2SH pubkey script, say.  in there is a 20B hash of my redeemscript, right.  when I use Bitcoin Core&#x27;s script disassembly function, will it print that hash in byte or normal order?   i mean there is an outer extent to what Core prints in reverse order - for instance, binary transaction dumps (in hex) are in 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535169720' id='627408'>
+<a class='timestamp' href='#627408'><time timestamp='2018-08-25T04:02:00Z'>04:02</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+<b>*normal*</b> order, not reverse.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535169960' id='627409'>
+<a class='timestamp' href='#627409'><time timestamp='2018-08-25T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Jmabsd: that&#x27;s just printing the bytes one by one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170020' id='627410'>
+<a class='timestamp' href='#627410'><time timestamp='2018-08-25T04:07:00Z'>04:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s only when a hash is interested as a number the printing gets reversed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170020' id='627411'>
+<a class='timestamp' href='#627411'><time timestamp='2018-08-25T04:07:00Z'>04:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because the bytes are interpreted as little-endian number, but then printed in big endian for human consumption (humans want to see numbers in big endian)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170020' id='627412'>
+<a class='timestamp' href='#627412'><time timestamp='2018-08-25T04:07:00Z'>04:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but a script is a number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170080' id='627413'>
+<a class='timestamp' href='#627413'><time timestamp='2018-08-25T04:08:00Z'>04:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+isn&#x27;t*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170080' id='627414'>
+<a class='timestamp' href='#627414'><time timestamp='2018-08-25T04:08:00Z'>04:08</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+gotcha.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170080' id='627415'>
+<a class='timestamp' href='#627415'><time timestamp='2018-08-25T04:08:00Z'>04:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*indeed, isn&#x27;t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170260' id='627416'>
+<a class='timestamp' href='#627416'><time timestamp='2018-08-25T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+aha. so let&#x27;s see - if you print a hex dump of a signature (71/72/73B), that&#x27;s not a hash and hence printed in normal order
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170260' id='627417'>
+<a class='timestamp' href='#627417'><time timestamp='2018-08-25T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+a P2SH hash, for instance when printing the disassembly of a P2SH pubkey script - will the 20B hash there be printed in reverse ordeR?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170320' id='627418'>
+<a class='timestamp' href='#627418'><time timestamp='2018-08-25T04:12:00Z'>04:12</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+also if a pubkey (32B) is printed out, could that ever be in reverse order?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170380' id='627419'>
+<a class='timestamp' href='#627419'><time timestamp='2018-08-25T04:13:00Z'>04:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+why don&#x27;t you just try it and see? -.-
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170440' id='627420'>
+<a class='timestamp' href='#627420'><time timestamp='2018-08-25T04:14:00Z'>04:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Jmabsd: pubkeys are not 32 bytes, and they&#x27;re not hashes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170500' id='627421'>
+<a class='timestamp' href='#627421'><time timestamp='2018-08-25T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+sipa: so the hex printer for other byte structures are never printed in reverse orders.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170500' id='627422'>
+<a class='timestamp' href='#627422'><time timestamp='2018-08-25T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170500' id='627423'>
+<a class='timestamp' href='#627423'><time timestamp='2018-08-25T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+only for things that are internally treated as numbers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170500' id='627424'>
+<a class='timestamp' href='#627424'><time timestamp='2018-08-25T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+but.. a P2SH 20B hash, that&#x27;s a hash right. for printing purposes, is it considered a hash or a byte blob?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170500' id='627425'>
+<a class='timestamp' href='#627425'><time timestamp='2018-08-25T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+nope!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170500' id='627426'>
+<a class='timestamp' href='#627426'><time timestamp='2018-08-25T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because the printer cannot know it is a hash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170560' id='627427'>
+<a class='timestamp' href='#627427'><time timestamp='2018-08-25T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;d need to execute the script to know it is treated as such
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170560' id='627428'>
+<a class='timestamp' href='#627428'><time timestamp='2018-08-25T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the script opcode is just &quot;put some bytes on the stack&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170620' id='627429'>
+<a class='timestamp' href='#627429'><time timestamp='2018-08-25T04:17:00Z'>04:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so, not reversed there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170860' id='627430'>
+<a class='timestamp' href='#627430'><time timestamp='2018-08-25T04:21:00Z'>04:21</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+(sorry disconnect)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170860' id='627431'>
+<a class='timestamp' href='#627431'><time timestamp='2018-08-25T04:21:00Z'>04:21</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+last, &gt; interesting. except for the HD wallet root seed (160b=20B), there is no instance ever where a 20B hash e.g. in P2SH pubkeyscript, is printed in reverse order. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535170860' id='627432'>
+<a class='timestamp' href='#627432'><time timestamp='2018-08-25T04:21:00Z'>04:21</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+&gt; sipa, right and when getting a disassembly printout in Bitcoin Core and related tools, those 20B:s are printed in normal order
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535177760' id='627433'>
+<a class='timestamp' href='#627433'><time timestamp='2018-08-25T06:16:00Z'>06:16</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+the proper way to phrase Core&#x27;s reversing policy is something like, &quot;any hash that is not part of another binary blob or produced as script data, is hex-serialized in reverse byte order.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535177820' id='627434'>
+<a class='timestamp' href='#627434'><time timestamp='2018-08-25T06:17:00Z'>06:17</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+i&#x27;d hope any hash values introduced in the future will not be reversed though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535178360' id='627435'>
+<a class='timestamp' href='#627435'><time timestamp='2018-08-25T06:26:00Z'>06:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t see why not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535178360' id='627436'>
+<a class='timestamp' href='#627436'><time timestamp='2018-08-25T06:26:00Z'>06:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we&#x27;ve always treated hash outputs as numbers and printed them as such
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535178360' id='627437'>
+<a class='timestamp' href='#627437'><time timestamp='2018-08-25T06:26:00Z'>06:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if byte swapping is the hardest problem to deal with, i&#x27;m not very worried :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535229540' id='627438'>
+<a class='timestamp' href='#627438'><time timestamp='2018-08-25T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+re: memory usage increase: preliminary bisections are in and MarcoFalke and I are betting it&#x27;s the leveldb changes. <a href="https://i.imgur.com/8aXRzwe.png" class="link" target="_blank">https://i.imgur.com/8aXRzwe.png</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535229720' id='627439'>
+<a class='timestamp' href='#627439'><time timestamp='2018-08-25T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jamesob: wait. how are we measuring memory usage in that benchmark?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535229720' id='627440'>
+<a class='timestamp' href='#627440'><time timestamp='2018-08-25T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+gmaxwell: time -f %M (ie resident set size)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230140' id='627441'>
+<a class='timestamp' href='#627441'><time timestamp='2018-08-25T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+<a href="https://github.com/chaincodelabs/bitcoinperf/blob/master/runner/main.py#L659-L668" class="link" target="_blank">https://github.com/chaincodelabs/bitcoinperf/blob/master/runner/main.py#L659-L668</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230380' id='627442'>
+<a class='timestamp' href='#627442'><time timestamp='2018-08-25T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so every mmap causes 150 kB RSS increase? :s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230440' id='627443'>
+<a class='timestamp' href='#627443'><time timestamp='2018-08-25T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+no because we&#x27;re not actually using the new maximum.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230440' id='627444'>
+<a class='timestamp' href='#627444'><time timestamp='2018-08-25T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(I mean not using all of)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230440' id='627445'>
+<a class='timestamp' href='#627445'><time timestamp='2018-08-25T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+aha.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230440' id='627446'>
+<a class='timestamp' href='#627446'><time timestamp='2018-08-25T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+So even MOAR.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230500' id='627447'>
+<a class='timestamp' href='#627447'><time timestamp='2018-08-25T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+which is suspect
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230500' id='627448'>
+<a class='timestamp' href='#627448'><time timestamp='2018-08-25T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+mmap by default will prefetch mapped pages into memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230500' id='627449'>
+<a class='timestamp' href='#627449'><time timestamp='2018-08-25T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+by default, 31 4kB blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230500' id='627450'>
+<a class='timestamp' href='#627450'><time timestamp='2018-08-25T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh interesting. but those pages are clean they&#x27;ll just get evicted, they really shouldn&#x27;t be counted bt RSS :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230620' id='627451'>
+<a class='timestamp' href='#627451'><time timestamp='2018-08-25T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so MADV_RANDOM
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230620' id='627452'>
+<a class='timestamp' href='#627452'><time timestamp='2018-08-25T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230620' id='627453'>
+<a class='timestamp' href='#627453'><time timestamp='2018-08-25T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+madvice(MADV_DONTNEED) will disable the reading entirely
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230680' id='627454'>
+<a class='timestamp' href='#627454'><time timestamp='2018-08-25T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which may be useful to diagnose the issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230680' id='627455'>
+<a class='timestamp' href='#627455'><time timestamp='2018-08-25T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+(for those following along at home: <a href="https://github.com/bitcoin/bitcoin/pull/13925/files)" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13925/files)</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230740' id='627456'>
+<a class='timestamp' href='#627456'><time timestamp='2018-08-25T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Also setting the maximum maps really low, like..2  might be interesting.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230920' id='627457'>
+<a class='timestamp' href='#627457'><time timestamp='2018-08-25T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+but if this is the problem, MADV_RANDOM is probably the fix to the extent that its an actual problem at all.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230920' id='627458'>
+<a class='timestamp' href='#627458'><time timestamp='2018-08-25T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Though we should do a reindex benchmark to make sure MADV_RANDOM doesn&#x27;t hurt performance.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535230980' id='627459'>
+<a class='timestamp' href='#627459'><time timestamp='2018-08-25T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+PSA: if after the latest merge you get a linker error &quot;/usr/local/include/boost/smart_ptr/shared_ptr.hpp:728: undefined reference to `translationInterface&quot;, you need to do a &#x27;make clean&#x27; and re-do the make and it will work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231040' id='627460'>
+<a class='timestamp' href='#627460'><time timestamp='2018-08-25T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: is there a reason the gitian linux yml has g++-riscv64-linux-gnu as a dep? seems to pull in GCC 7 when we&#x27;re using GCC 8 now?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231040' id='627461'>
+<a class='timestamp' href='#627461'><time timestamp='2018-08-25T21:04:00Z'>21:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: if `make clean` ever fixes something, that means there&#x27;s a bug in the build system :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627462'>
+<a class='timestamp' href='#627462'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell, jamesob: LMDB uses MADV_RANDOM it seems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627463'>
+<a class='timestamp' href='#627463'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(though its design is different, i don&#x27;t know their access patterns)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627464'>
+<a class='timestamp' href='#627464'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+luke-jr: yes, it must be missing some changes in dependency detection between source and header files (another one is if you change something in univalue, it won&#x27;t detect it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627465'>
+<a class='timestamp' href='#627465'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jamesob: try this:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627466'>
+<a class='timestamp' href='#627466'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+         void* base = mmap(NULL, size, PROT_READ, MAP_SHARED, fd, 0);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627467'>
+<a class='timestamp' href='#627467'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+         if (base != MAP_FAILED) {
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231160' id='627468'>
+<a class='timestamp' href='#627468'><time timestamp='2018-08-25T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
++          madvise(base, size, MADV_DONTNEED);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231220' id='627469'>
+<a class='timestamp' href='#627469'><time timestamp='2018-08-25T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in src/leveldb/util/env_posix.cc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231220' id='627470'>
+<a class='timestamp' href='#627470'><time timestamp='2018-08-25T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(and/or MADV_RANDOM)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231220' id='627471'>
+<a class='timestamp' href='#627471'><time timestamp='2018-08-25T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+luke-jr: it pulls in both gcc 7 and 8, I think that&#x27;s necessary due to some strangeness with the packages (some symlink will only exist when g++-riscv64-linux-gnu is also installed)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231220' id='627472'>
+<a class='timestamp' href='#627472'><time timestamp='2018-08-25T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+DONTNEED sounds wrong?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231220' id='627473'>
+<a class='timestamp' href='#627473'><time timestamp='2018-08-25T21:07:00Z'>21:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: ah, weird
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231280' id='627474'>
+<a class='timestamp' href='#627474'><time timestamp='2018-08-25T21:08:00Z'>21:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+luke-jr: you might be able to get around it, but I noticed and tried as well and ran into a dead end
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231280' id='627475'>
+<a class='timestamp' href='#627475'><time timestamp='2018-08-25T21:08:00Z'>21:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: to diagnoze
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231280' id='627476'>
+<a class='timestamp' href='#627476'><time timestamp='2018-08-25T21:08:00Z'>21:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: it would be interesting to see what the effect on RSS is with DONTNEED, to have an idea to what extent our memory usage is due to mmap caching
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231340' id='627477'>
+<a class='timestamp' href='#627477'><time timestamp='2018-08-25T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+sipa: giving it a shot now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231340' id='627478'>
+<a class='timestamp' href='#627478'><time timestamp='2018-08-25T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+luke-jr: at least it&#x27;s not MADV_HWPOISON!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231400' id='627479'>
+<a class='timestamp' href='#627479'><time timestamp='2018-08-25T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231460' id='627480'>
+<a class='timestamp' href='#627480'><time timestamp='2018-08-25T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It&#x27;s plausable to me that MADV_RANDOM will help performance or at least be neutral. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231460' id='627481'>
+<a class='timestamp' href='#627481'><time timestamp='2018-08-25T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, to me too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231460' id='627482'>
+<a class='timestamp' href='#627482'><time timestamp='2018-08-25T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+our access pattern is more or less random
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231520' id='627483'>
+<a class='timestamp' href='#627483'><time timestamp='2018-08-25T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I don&#x27;t recall now, though I know I researched this before... does leveldb&#x27;s bisection interpolate assuming keys are uniform and that their values are uniformly sized or does it plain bisect?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231520' id='627484'>
+<a class='timestamp' href='#627484'><time timestamp='2018-08-25T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(except in the rare times it&#x27;s iterating over the whole utxo set in order, like when computing statistics)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231580' id='627485'>
+<a class='timestamp' href='#627485'><time timestamp='2018-08-25T21:13:00Z'>21:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+esp in the case of plain bisection, prefetching is a bad behavior.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231580' id='627486'>
+<a class='timestamp' href='#627486'><time timestamp='2018-08-25T21:13:00Z'>21:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231700' id='627487'>
+<a class='timestamp' href='#627487'><time timestamp='2018-08-25T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: there is an index at the end of each ldb file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535231700' id='627488'>
+<a class='timestamp' href='#627488'><time timestamp='2018-08-25T21:15:00Z'>21:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i assume it bisects in that index in a naive way, but i&#x27;m not sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535232060' id='627489'>
+<a class='timestamp' href='#627489'><time timestamp='2018-08-25T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+sipa: bench is running; we&#x27;ll know how your change works in about six hours
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535232120' id='627490'>
+<a class='timestamp' href='#627490'><time timestamp='2018-08-25T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jamesob: awesome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535232120' id='627491'>
+<a class='timestamp' href='#627491'><time timestamp='2018-08-25T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hm, I think I will regret relatime when I try to prune gitian caches
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

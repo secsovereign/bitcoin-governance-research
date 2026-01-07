@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-08-26
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-08-26' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-07-26">&lt;</a><span class='header'>   August 2018    </span><a href="/bitcoin-core-dev/2018-09-26">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2018-08-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-08-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-08-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-08-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-08-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-08-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-08-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-08-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-08-09">9</a> <a class="" href="/bitcoin-core-dev/2018-08-10">10</a> <a class="" href="/bitcoin-core-dev/2018-08-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-12">12</a> <a class="" href="/bitcoin-core-dev/2018-08-13">13</a> <a class="" href="/bitcoin-core-dev/2018-08-14">14</a> <a class="" href="/bitcoin-core-dev/2018-08-15">15</a> <a class="" href="/bitcoin-core-dev/2018-08-16">16</a> <a class="" href="/bitcoin-core-dev/2018-08-17">17</a> <a class="" href="/bitcoin-core-dev/2018-08-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-19">19</a> <a class="" href="/bitcoin-core-dev/2018-08-20">20</a> <a class="" href="/bitcoin-core-dev/2018-08-21">21</a> <a class="" href="/bitcoin-core-dev/2018-08-22">22</a> <a class="" href="/bitcoin-core-dev/2018-08-23">23</a> <a class="" href="/bitcoin-core-dev/2018-08-24">24</a> <a class="" href="/bitcoin-core-dev/2018-08-25">25</a>  &#x000A;<a class="current" href="/bitcoin-core-dev/2018-08-26">26</a> <a class="" href="/bitcoin-core-dev/2018-08-27">27</a> <a class="" href="/bitcoin-core-dev/2018-08-28">28</a> <a class="" href="/bitcoin-core-dev/2018-08-29">29</a> <a class="" href="/bitcoin-core-dev/2018-08-30">30</a> <a class="" href="/bitcoin-core-dev/2018-08-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1535242500' id='627492'>
+<a class='timestamp' href='#627492'><time timestamp='2018-08-26T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: ah that might have been why I didn&#x27;t bother trying to make it interpolate-- the seeks are in an index.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251080' id='627493'>
+<a class='timestamp' href='#627493'><time timestamp='2018-08-26T02:38:00Z'>02:38</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+sipa gmaxwell: mem usage increase is for sure the leveldb change (<a href="https://i.imgur.com/yMHJI37.png)" class="link" target="_blank">https://i.imgur.com/yMHJI37.png)</a> and sipa&#x27;s change didn&#x27;t change the elevated usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251140' id='627494'>
+<a class='timestamp' href='#627494'><time timestamp='2018-08-26T02:39:00Z'>02:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jamesob: so it&#x27;s still elevated with my patch?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251140' id='627495'>
+<a class='timestamp' href='#627495'><time timestamp='2018-08-26T02:39:00Z'>02:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or it&#x27;s not elevated anymore?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251200' id='627496'>
+<a class='timestamp' href='#627496'><time timestamp='2018-08-26T02:40:00Z'>02:40</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+still elevated :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251260' id='627497'>
+<a class='timestamp' href='#627497'><time timestamp='2018-08-26T02:41:00Z'>02:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+might want to make a microbenchmar to figure out if its mmap behavior or something  else in leveldb.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251320' id='627498'>
+<a class='timestamp' href='#627498'><time timestamp='2018-08-26T02:42:00Z'>02:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+also because it&#x27;ll be easier to expirement (e.g. see if MAP_NORESERVE does anything) when we don&#x27;t have to wait 5 hours.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251320' id='627499'>
+<a class='timestamp' href='#627499'><time timestamp='2018-08-26T02:42:00Z'>02:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+just a loop to mmap all the files in a directory then sleep 30 seconds should test the earlier hypothesis.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251380' id='627500'>
+<a class='timestamp' href='#627500'><time timestamp='2018-08-26T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+gmaxwell: yup, agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535251380' id='627501'>
+<a class='timestamp' href='#627501'><time timestamp='2018-08-26T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+will write if I have time tomorrow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535255580' id='627502'>
+<a class='timestamp' href='#627502'><time timestamp='2018-08-26T03:53:00Z'>03:53</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+It seems like MADV_RANDOM is useful if there is less locality to the reads then the size of the prefetch window, but I was under the impression that the prefetch is triggered by the pagefault and not by the mmap() so you actually have to do reads to get the extra pages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535260440' id='627503'>
+<a class='timestamp' href='#627503'><time timestamp='2018-08-26T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+was there a point to <a href="https://github.com/bitcoin-core/leveldb/pull/19" class="link" target="_blank">https://github.com/bitcoin-core/leveldb/pull/19</a> considering we limit leveldb to 1000 open files anyway?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535260740' id='627504'>
+<a class='timestamp' href='#627504'><time timestamp='2018-08-26T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: mmap&#x27;ed files aren&#x27;t kept open after creating the mapping
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535260740' id='627505'>
+<a class='timestamp' href='#627505'><time timestamp='2018-08-26T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so they don&#x27;t count towards the 1000 files limit iirc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535261040' id='627506'>
+<a class='timestamp' href='#627506'><time timestamp='2018-08-26T05:24:00Z'>05:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: but we increased the file limit to 1000 <b>*because*</b> mmaps didn&#x27;t count toward the fd limit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535261040' id='627507'>
+<a class='timestamp' href='#627507'><time timestamp='2018-08-26T05:24:00Z'>05:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the limit I&#x27;m talking about is max_open_files, not ulimit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535261700' id='627508'>
+<a class='timestamp' href='#627508'><time timestamp='2018-08-26T05:35:00Z'>05:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: yes, but there is a separate mmap limit it seems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535263980' id='627509'>
+<a class='timestamp' href='#627509'><time timestamp='2018-08-26T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: max_open_files effectively limits the number of mmaps too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535263980' id='627510'>
+<a class='timestamp' href='#627510'><time timestamp='2018-08-26T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+so it seems like the LevelDB mmap limit change is effectively a no-op since we keep the 1000 max_open_files limit :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264040' id='627511'>
+<a class='timestamp' href='#627511'><time timestamp='2018-08-26T06:14:00Z'>06:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: it&#x27;s very much not a no op change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264100' id='627512'>
+<a class='timestamp' href='#627512'><time timestamp='2018-08-26T06:15:00Z'>06:15</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: how does it have an effect?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264100' id='627513'>
+<a class='timestamp' href='#627513'><time timestamp='2018-08-26T06:15:00Z'>06:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it causes more mmaps to be open, and less files. you can see this easily with lsof.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264160' id='627514'>
+<a class='timestamp' href='#627514'><time timestamp='2018-08-26T06:16:00Z'>06:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the mmap limit is enforced by NewRandomAccessFile, which is only ever called by TableCache which enforces the max_open_files limit :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264160' id='627515'>
+<a class='timestamp' href='#627515'><time timestamp='2018-08-26T06:16:00Z'>06:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Well I&#x27;m not telling you what the source code says, I&#x27;m telling you what it does. :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264160' id='627516'>
+<a class='timestamp' href='#627516'><time timestamp='2018-08-26T06:16:00Z'>06:16</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+is there a bug in the LRU cache stuff? :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264280' id='627517'>
+<a class='timestamp' href='#627517'><time timestamp='2018-08-26T06:18:00Z'>06:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: is there an easy way to reproduce what you observe?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535264340' id='627518'>
+<a class='timestamp' href='#627518'><time timestamp='2018-08-26T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, start a node up no connect, with and without the change and lsof it and look at the number of mmaped files. you might need to crank checkblocks up a bit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535267700' id='627519'>
+<a class='timestamp' href='#627519'><time timestamp='2018-08-26T07:15:00Z'>07:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+0.17.0rc2 binaries up <a href="https://bitcoincore.org/bin/bitcoin-core-0.17.0/test.rc2/" class="link" target="_blank">https://bitcoincore.org/bin/bitcoin-core-0.17.0/test.rc2/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535269800' id='627520'>
+<a class='timestamp' href='#627520'><time timestamp='2018-08-26T07:50:00Z'>07:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+luke-jr: the only reason that the change to num files was acceptable is because leveldb, at least the version in our tree, doesn&#x27;t actually keep more files open (on platforms with mmap) see also <a href="https://github.com/bitcoin/bitcoin/pull/12495#issuecomment-377228329" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12495#issuecomment-377228329</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535269980' id='627521'>
+<a class='timestamp' href='#627521'><time timestamp='2018-08-26T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: cannot reproduce with -checkblocks=10000 :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535269980' id='627522'>
+<a class='timestamp' href='#627522'><time timestamp='2018-08-26T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: I understand that. I just don&#x27;t understand why increase the mmap-specific limit, without increasing the num files limit that is required for any mmap
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535269980' id='627523'>
+<a class='timestamp' href='#627523'><time timestamp='2018-08-26T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+we will never have more than 1001 mmaps because the files limit is 1000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535270640' id='627524'>
+<a class='timestamp' href='#627524'><time timestamp='2018-08-26T08:04:00Z'>08:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+--I don&#x27;t think mappings into closed files count against the open files ulimit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535270940' id='627525'>
+<a class='timestamp' href='#627525'><time timestamp='2018-08-26T08:09:00Z'>08:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: luke&#x27;s point is that internally in leveldb, the mmapped files count towards the open file limit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271000' id='627526'>
+<a class='timestamp' href='#627526'><time timestamp='2018-08-26T08:10:00Z'>08:10</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but we increased leveldb&#x27;s limit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271060' id='627527'>
+<a class='timestamp' href='#627527'><time timestamp='2018-08-26T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+though to be honest I&#x27;m completely confused now with all the different limites, how they interact, and how they&#x27;re supposed to interact
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271060' id='627528'>
+<a class='timestamp' href='#627528'><time timestamp='2018-08-26T08:11:00Z'>08:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: yeah...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271120' id='627529'>
+<a class='timestamp' href='#627529'><time timestamp='2018-08-26T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+given all the confusion about this, I&#x27;m starting to think it might be better to revert these changes, I like understanding things even if it means not getting every last possible % of performance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271120' id='627530'>
+<a class='timestamp' href='#627530'><time timestamp='2018-08-26T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so there is a configurable leveldb max open files limit (which is 1000), and a mmap limit (which is hardcoded to 1000, but we raised it to 4096)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271120' id='627531'>
+<a class='timestamp' href='#627531'><time timestamp='2018-08-26T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and seemingly it now relies on all kinds of undocumented behavior
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271120' id='627532'>
+<a class='timestamp' href='#627532'><time timestamp='2018-08-26T08:12:00Z'>08:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke says (i haven&#x27;t verified) that mmapped files count towards that limit... which is inconsistent with our observations
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271180' id='627533'>
+<a class='timestamp' href='#627533'><time timestamp='2018-08-26T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m just clarifying my understanding as there seems to be some confusion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271180' id='627534'>
+<a class='timestamp' href='#627534'><time timestamp='2018-08-26T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271180' id='627535'>
+<a class='timestamp' href='#627535'><time timestamp='2018-08-26T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+right if we revert though we should revert both changes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271180' id='627536'>
+<a class='timestamp' href='#627536'><time timestamp='2018-08-26T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271180' id='627537'>
+<a class='timestamp' href='#627537'><time timestamp='2018-08-26T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I wouldn&#x27;t oppose doing that for 0.17.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271180' id='627538'>
+<a class='timestamp' href='#627538'><time timestamp='2018-08-26T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+both? what other chanfe?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271240' id='627539'>
+<a class='timestamp' href='#627539'><time timestamp='2018-08-26T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i saw the mmap increaee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271240' id='627540'>
+<a class='timestamp' href='#627540'><time timestamp='2018-08-26T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: the fd count change and the mmap limit change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271300' id='627541'>
+<a class='timestamp' href='#627541'><time timestamp='2018-08-26T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+first FD count was increased with an argument that basically it wouldn&#x27;t use more FDs due to using mmap.  But then we found out that actually when it hit the mmap limit, it started actually using more FDs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271300' id='627542'>
+<a class='timestamp' href='#627542'><time timestamp='2018-08-26T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+#12495 and <a href="https://github.com/bitcoin-core/leveldb/pull/19" class="link" target="_blank">https://github.com/bitcoin-core/leveldb/pull/19</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271300' id='627543'>
+<a class='timestamp' href='#627543'><time timestamp='2018-08-26T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12495" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12495</a> | Increase LevelDB max_open_files by eklitzke · Pull Request #12495 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271360' id='627544'>
+<a class='timestamp' href='#627544'><time timestamp='2018-08-26T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Since the lack of mmaps is probably also bad for performance (though I don&#x27;t think anyone benchmarked specifically for that), it seemed like it made sense to increase mmaps rather than revert the fd count change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271360' id='627545'>
+<a class='timestamp' href='#627545'><time timestamp='2018-08-26T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271360' id='627546'>
+<a class='timestamp' href='#627546'><time timestamp='2018-08-26T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&quot;By default LevelDB will only mmap() up to 1000 ldb files for reading and then fall back
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271360' id='627547'>
+<a class='timestamp' href='#627547'><time timestamp='2018-08-26T08:16:00Z'>08:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+to using file desciptors.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271420' id='627548'>
+<a class='timestamp' href='#627548'><time timestamp='2018-08-26T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that pull 19 is <b>*supposed*</b> to change that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271420' id='627549'>
+<a class='timestamp' href='#627549'><time timestamp='2018-08-26T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(from 1000 to 4096, which is still an arbitrary value) -- maybe luke-jr is using a system leveldb?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271420' id='627550'>
+<a class='timestamp' href='#627550'><time timestamp='2018-08-26T08:17:00Z'>08:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+where did we increase the FDs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271480' id='627551'>
+<a class='timestamp' href='#627551'><time timestamp='2018-08-26T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+didn&#x27;t that happen in #12495?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271480' id='627552'>
+<a class='timestamp' href='#627552'><time timestamp='2018-08-26T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12495" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12495</a> | Increase LevelDB max_open_files by eklitzke · Pull Request #12495 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271480' id='627553'>
+<a class='timestamp' href='#627553'><time timestamp='2018-08-26T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t know anymore, sorry, should probably get coffee
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271480' id='627554'>
+<a class='timestamp' href='#627554'><time timestamp='2018-08-26T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+wumpus: 12495, as you say.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271540' id='627555'>
+<a class='timestamp' href='#627555'><time timestamp='2018-08-26T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271540' id='627556'>
+<a class='timestamp' href='#627556'><time timestamp='2018-08-26T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271540' id='627557'>
+<a class='timestamp' href='#627557'><time timestamp='2018-08-26T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we were using 64 files only before
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271540' id='627558'>
+<a class='timestamp' href='#627558'><time timestamp='2018-08-26T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but using 1000 there seems pretty standard practice; it&#x27;s leveldb&#x27;s own default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271540' id='627559'>
+<a class='timestamp' href='#627559'><time timestamp='2018-08-26T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: not for this testing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271540' id='627560'>
+<a class='timestamp' href='#627560'><time timestamp='2018-08-26T08:19:00Z'>08:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa: correct
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271600' id='627561'>
+<a class='timestamp' href='#627561'><time timestamp='2018-08-26T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: after increasing it, we were using a lot more file descriptors. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271600' id='627562'>
+<a class='timestamp' href='#627562'><time timestamp='2018-08-26T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: but in any case, for testing this, I&#x27;m changing the 4096 back to 1000, and can&#x27;t get LDB to use a fd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271600' id='627563'>
+<a class='timestamp' href='#627563'><time timestamp='2018-08-26T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: are you using some system leveldb?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271600' id='627564'>
+<a class='timestamp' href='#627564'><time timestamp='2018-08-26T08:20:00Z'>08:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: like I said, not for this; but in any case, it would be the same 1000 mmaps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271660' id='627565'>
+<a class='timestamp' href='#627565'><time timestamp='2018-08-26T08:21:00Z'>08:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: dunno why it didn&#x27;t reproduce for you, I saw leveldb using FDs, after using 1000 maps... and not anymore after increasing the map limit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271660' id='627566'>
+<a class='timestamp' href='#627566'><time timestamp='2018-08-26T08:21:00Z'>08:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627567'>
+<a class='timestamp' href='#627567'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa also saw it using fd&#x27;s on his node.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627568'>
+<a class='timestamp' href='#627568'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+testnet or mainnet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627569'>
+<a class='timestamp' href='#627569'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+mainnet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627570'>
+<a class='timestamp' href='#627570'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+mainnet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627571'>
+<a class='timestamp' href='#627571'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I wonder if that&#x27;s why. :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627572'>
+<a class='timestamp' href='#627572'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+testnet probably doesn&#x27;t have enough ldb files.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627573'>
+<a class='timestamp' href='#627573'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535271720' id='627574'>
+<a class='timestamp' href='#627574'><time timestamp='2018-08-26T08:22:00Z'>08:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+how large is testnet&#x27;s utxo set?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535272500' id='627575'>
+<a class='timestamp' href='#627575'><time timestamp='2018-08-26T08:35:00Z'>08:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&quot;disk_size&quot;: 1025042445, as of height 1384188 (it is at 1392776 now, don&#x27;t know how much it changed since then)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535273280' id='627576'>
+<a class='timestamp' href='#627576'><time timestamp='2018-08-26T08:48:00Z'>08:48</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hopefully I won&#x27;t &quot;damage&quot; my mainnet .bitcoin trying this.. :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535273340' id='627577'>
+<a class='timestamp' href='#627577'><time timestamp='2018-08-26T08:49:00Z'>08:49</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(I still run 0.13 wallets from time to time)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535273400' id='627578'>
+<a class='timestamp' href='#627578'><time timestamp='2018-08-26T08:50:00Z'>08:50</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+looks like the UTXO db upgrade isn&#x27;t triggering it, at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535274240' id='627579'>
+<a class='timestamp' href='#627579'><time timestamp='2018-08-26T09:04:00Z'>09:04</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+facepalms. After UTXO upgrade, it says I need to reindex &gt;_&lt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535274600' id='627580'>
+<a class='timestamp' href='#627580'><time timestamp='2018-08-26T09:10:00Z'>09:10</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+does it say why / give an error message? the whole point of the utxo upgrade would be to not reindex, unless it fails
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535274660' id='627581'>
+<a class='timestamp' href='#627581'><time timestamp='2018-08-26T09:11:00Z'>09:11</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+If you&#x27;re traveling and stuck with a slow laptop, the following gist lets you compile remotely and then connect via SSH tunnel: <a href="https://gist.github.com/Sjors/fda9b601e9464f61332ac6490f487c0a" class="link" target="_blank">https://gist.github.com/Sjors/fda9b601e9464f61332ac6490f487c0a</a> (improvements welcome)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275560' id='627582'>
+<a class='timestamp' href='#627582'><time timestamp='2018-08-26T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: nit: you could pass NO_UPNP to the depends build instead of --with-miniupnpc=no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275560' id='627583'>
+<a class='timestamp' href='#627583'><time timestamp='2018-08-26T09:26:00Z'>09:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+not that libminiupnp takes long to compile
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275620' id='627584'>
+<a class='timestamp' href='#627584'><time timestamp='2018-08-26T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+wumpus: thanks, in this case it&#x27;s probably easier to keep the configure line flexible.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275680' id='627585'>
+<a class='timestamp' href='#627585'><time timestamp='2018-08-26T09:28:00Z'>09:28</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I first tried copying bitcoind over and just running it locally but that resulted in a world of pain, probably because the two systems aren&#x27;t perfectly identical.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275680' id='627586'>
+<a class='timestamp' href='#627586'><time timestamp='2018-08-26T09:28:00Z'>09:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes copying executables between linux systems is fraught with problems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275740' id='627587'>
+<a class='timestamp' href='#627587'><time timestamp='2018-08-26T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It&#x27;s works fine with c-lightning though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275740' id='627588'>
+<a class='timestamp' href='#627588'><time timestamp='2018-08-26T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+though it should work with depends and the glibc compat enabled
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275740' id='627589'>
+<a class='timestamp' href='#627589'><time timestamp='2018-08-26T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I tried with depends as well, haven&#x27;t tried glibc compat, might try that next time. But this also prevents me from accidentally syncing the chain over 4G.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275800' id='627590'>
+<a class='timestamp' href='#627590'><time timestamp='2018-08-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+-static-libstdc++ helps as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275800' id='627591'>
+<a class='timestamp' href='#627591'><time timestamp='2018-08-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(but only if all c++ dependencies are static, which is the case with a depends build but not otherwise)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275920' id='627592'>
+<a class='timestamp' href='#627592'><time timestamp='2018-08-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+then you end up with an executable that is as-good-as-static and it should be portable to non-ancient linux versions with the same CPU architecture
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535275980' id='627593'>
+<a class='timestamp' href='#627593'><time timestamp='2018-08-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+of course, that&#x27;s the theory, there are still some things that can interfere for example if glibc is built with different options (I vaguely remember redhat and some security/hardening flag), or the target platform has a different libc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535276100' id='627594'>
+<a class='timestamp' href='#627594'><time timestamp='2018-08-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+this is one reason they came up with &quot;snap&quot;s which are executables that essentially carry around part of the system dependencies with them in a container
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535276100' id='627595'>
+<a class='timestamp' href='#627595'><time timestamp='2018-08-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(along with some security/isolation features)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535276100' id='627596'>
+<a class='timestamp' href='#627596'><time timestamp='2018-08-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Being able to run locally is especially useful for QT, and with the multiprocess stuff it would be nice to run bitcoind remote and QT locally.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535276160' id='627597'>
+<a class='timestamp' href='#627597'><time timestamp='2018-08-26T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+aanyhow if your two systems have the same release of the same distro, and are at the same update level, it should work too, that&#x27;s probably easiest for most...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535277000' id='627598'>
+<a class='timestamp' href='#627598'><time timestamp='2018-08-26T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: I reflink&#x27;d the blocks/ and chainstate/ dirs to a new datadir. I&#x27;m guessing that simply wasn&#x27;t sufficient somehow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535277240' id='627599'>
+<a class='timestamp' href='#627599'><time timestamp='2018-08-26T09:54:00Z'>09:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oh well, I&#x27;ll let it sync overnight and see if it hits the breakpoint
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535277300' id='627600'>
+<a class='timestamp' href='#627600'><time timestamp='2018-08-26T09:55:00Z'>09:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+env_posix.cc:379 if anyone else who can reproduce it wants to try
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535277300' id='627601'>
+<a class='timestamp' href='#627601'><time timestamp='2018-08-26T09:55:00Z'>09:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(if you hit it, maybe see if you can work out why it got there..)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535282580' id='627602'>
+<a class='timestamp' href='#627602'><time timestamp='2018-08-26T11:23:00Z'>11:23</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Any volunteer for making a PR based on this commit? <a href="https://github.com/bitcoin/bitcoin/commit/a9db3dada0119c183d16627805e90c4dbca05c6a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/a9db3dada0119c183d16627805e90c4dbca05c6a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535282580' id='627603'>
+<a class='timestamp' href='#627603'><time timestamp='2018-08-26T11:23:00Z'>11:23</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I left it out of my rebase #13937 because I&#x27;d rather not touch thread stuff.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535282580' id='627604'>
+<a class='timestamp' href='#627604'><time timestamp='2018-08-26T11:23:00Z'>11:23</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13937" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13937</a> | Track best-possible-headers (TheBlueMatt) by Sjors · Pull Request #13937 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535285160' id='627605'>
+<a class='timestamp' href='#627605'><time timestamp='2018-08-26T12:06:00Z'>12:06</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Never mind, that&#x27;s already been done in #13023
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535285160' id='627606'>
+<a class='timestamp' href='#627606'><time timestamp='2018-08-26T12:06:00Z'>12:06</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13023" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13023</a> | Fix some concurrency issues in ActivateBestChain() by skeees · Pull Request #13023 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535292360' id='627607'>
+<a class='timestamp' href='#627607'><time timestamp='2018-08-26T14:06:00Z'>14:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: heh, I was tired last night; the reason it needed a reindex (or I guess re-IBD) seems to be that I named the blocks directory &quot;newblocks&quot; XD
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535292360' id='627608'>
+<a class='timestamp' href='#627608'><time timestamp='2018-08-26T14:06:00Z'>14:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+err, &quot;tmpblocks&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535300040' id='627609'>
+<a class='timestamp' href='#627609'><time timestamp='2018-08-26T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+BIP157 doesn&#x27;t currently have an open PR does it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535300280' id='627610'>
+<a class='timestamp' href='#627610'><time timestamp='2018-08-26T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Chris_Stewart_5, <a href="https://github.com/bitcoin/bitcoin/pull/13144" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13144</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535300760' id='627611'>
+<a class='timestamp' href='#627611'><time timestamp='2018-08-26T16:26:00Z'>16:26</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+instagibbs: So that is just a refactor PR to make it easier to implement BIP157 right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535301360' id='627612'>
+<a class='timestamp' href='#627612'><time timestamp='2018-08-26T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+doh wrong one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535301360' id='627613'>
+<a class='timestamp' href='#627613'><time timestamp='2018-08-26T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+one sec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535301360' id='627614'>
+<a class='timestamp' href='#627614'><time timestamp='2018-08-26T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+Chris_Stewart_5, merged two hours ago, didnt see that <a href="https://github.com/bitcoin/bitcoin/pull/12254" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12254</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535301420' id='627615'>
+<a class='timestamp' href='#627615'><time timestamp='2018-08-26T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+nothing open after that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535301420' id='627616'>
+<a class='timestamp' href='#627616'><time timestamp='2018-08-26T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Hmm, is that only BIP158 though? I don&#x27;t think that BIP158 includes any p2p networking stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535301420' id='627617'>
+<a class='timestamp' href='#627617'><time timestamp='2018-08-26T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+BIP157 seems to have the semantics for that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535308080' id='627618'>
+<a class='timestamp' href='#627618'><time timestamp='2018-08-26T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-13'> jimpo</span>&gt;
+Chris_Stewart_5: No, I&#x27;m working on the next PR towards BIP 157 support
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535308080' id='627619'>
+<a class='timestamp' href='#627619'><time timestamp='2018-08-26T18:28:00Z'>18:28</time></a>
+&lt;<span class='nick nick-13'> jimpo</span>&gt;
+Which is building filter indexes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535308740' id='627620'>
+<a class='timestamp' href='#627620'><time timestamp='2018-08-26T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+gmaxwell: PIR? Without a PIR method of fetching blocks, use of this is still toxic to user privacy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535308980' id='627621'>
+<a class='timestamp' href='#627621'><time timestamp='2018-08-26T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Chris_Stewart_5: anything that doesn&#x27;t fetch all blocks will leak some information, inevitably
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535309100' id='627622'>
+<a class='timestamp' href='#627622'><time timestamp='2018-08-26T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+What is the acronym? PIR -- i&#x27;m guessing it is not Passive Infrared Sensor hah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535309220' id='627623'>
+<a class='timestamp' href='#627623'><time timestamp='2018-08-26T18:47:00Z'>18:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+private information retrieval
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535310180' id='627624'>
+<a class='timestamp' href='#627624'><time timestamp='2018-08-26T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+jimpo: These test vectors seem to be a dead link <a href="https://github.com/bitcoin/bips/blob/master/bip-0158.mediawiki#appendix-c-test-vectors" class="link" target="_blank">https://github.com/bitcoin/bips/blob/master/bip-0158.mediawiki#appendix-c-test-vectors</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535310180' id='627625'>
+<a class='timestamp' href='#627625'><time timestamp='2018-08-26T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+at least the first link
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535314560' id='627626'>
+<a class='timestamp' href='#627626'><time timestamp='2018-08-26T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-13'> jimpo</span>&gt;
+Oh, thanks, will open a PR to fix that. Need to add a test block anyway.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535314620' id='627627'>
+<a class='timestamp' href='#627627'><time timestamp='2018-08-26T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+Thanks! 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322480' id='627628'>
+<a class='timestamp' href='#627628'><time timestamp='2018-08-26T22:28:00Z'>22:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: sipa: wumpus: sync&#x27;d up to 341411 and still no non-mmap opens from LDB..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322540' id='627629'>
+<a class='timestamp' href='#627629'><time timestamp='2018-08-26T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322540' id='627630'>
+<a class='timestamp' href='#627630'><time timestamp='2018-08-26T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what does that mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322540' id='627631'>
+<a class='timestamp' href='#627631'><time timestamp='2018-08-26T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+341411 is a long time ago.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322600' id='627632'>
+<a class='timestamp' href='#627632'><time timestamp='2018-08-26T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: he&#x27;s trying to reproduce the behavior ossifrage, you, and I saw where leveldb would hit the mmap limit and start using more FDs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322600' id='627633'>
+<a class='timestamp' href='#627633'><time timestamp='2018-08-26T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;ll only exceed 1000 files/mmaps once you&#x27;re above ~2GB UTXO set size
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322600' id='627634'>
+<a class='timestamp' href='#627634'><time timestamp='2018-08-26T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as each file is 2MB ish
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322660' id='627635'>
+<a class='timestamp' href='#627635'><time timestamp='2018-08-26T22:31:00Z'>22:31</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322720' id='627636'>
+<a class='timestamp' href='#627636'><time timestamp='2018-08-26T22:32:00Z'>22:32</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+pmap 24199 | grep \.ldb | wc -l    == 1894    (for a node up ~26 days)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322840' id='627637'>
+<a class='timestamp' href='#627637'><time timestamp='2018-08-26T22:34:00Z'>22:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: so you&#x27;ll need to get to somewhere in 2017 at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322900' id='627638'>
+<a class='timestamp' href='#627638'><time timestamp='2018-08-26T22:35:00Z'>22:35</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+retries the UTXO upgrade, this time with the blocks dir named correctly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322900' id='627639'>
+<a class='timestamp' href='#627639'><time timestamp='2018-08-26T22:35:00Z'>22:35</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+That includes the txindex and the chainstate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535322960' id='627640'>
+<a class='timestamp' href='#627640'><time timestamp='2018-08-26T22:36:00Z'>22:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ossifrage: per database; txindex and chainstate are separate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323020' id='627641'>
+<a class='timestamp' href='#627641'><time timestamp='2018-08-26T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+has anyone just tried making a dummy program that mmaps a couple thousand files to see what the RES shows up as?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323200' id='627642'>
+<a class='timestamp' href='#627642'><time timestamp='2018-08-26T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+is having a larger resident size really an issue, you only get those pages if memory is available, the os should evict them right quick under memory pressure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323200' id='627643'>
+<a class='timestamp' href='#627643'><time timestamp='2018-08-26T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+presumably, indeed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323260' id='627644'>
+<a class='timestamp' href='#627644'><time timestamp='2018-08-26T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it may be just an methodology problem, what rss doesn&#x27;t exactly corresponds to what we care about
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323260' id='627645'>
+<a class='timestamp' href='#627645'><time timestamp='2018-08-26T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: if thats actually the case, thing things are fine.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323380' id='627646'>
+<a class='timestamp' href='#627646'><time timestamp='2018-08-26T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and if so we probably need to figure out how to start tracking &quot;total dirty pages&quot; or something.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323440' id='627647'>
+<a class='timestamp' href='#627647'><time timestamp='2018-08-26T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+leveldb only uses mmap for reading, so the dirty pages from all the maps should be 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323440' id='627648'>
+<a class='timestamp' href='#627648'><time timestamp='2018-08-26T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Right.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323440' id='627649'>
+<a class='timestamp' href='#627649'><time timestamp='2018-08-26T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+personally, I only look at ps&#x27;s &quot;size&quot; metric
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323500' id='627650'>
+<a class='timestamp' href='#627650'><time timestamp='2018-08-26T22:45:00Z'>22:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+       size        SIZE      approximate amount of swap space that would be required if the process were to dirty all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323500' id='627651'>
+<a class='timestamp' href='#627651'><time timestamp='2018-08-26T22:45:00Z'>22:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+                             writable pages and then be swapped out.  This number is very rough!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323500' id='627652'>
+<a class='timestamp' href='#627652'><time timestamp='2018-08-26T22:45:00Z'>22:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: so to catch you up. We have infrastructure that benchmarks the software regularly and charts performance... so we find out if some commit accidentally hurts performance.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323560' id='627653'>
+<a class='timestamp' href='#627653'><time timestamp='2018-08-26T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: we noticed around the time of the 0.17 feature freeze that the claimed memory usage suddenly went up 20%!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323560' id='627654'>
+<a class='timestamp' href='#627654'><time timestamp='2018-08-26T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+during the week where a lot of last minute stuff got merged.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323560' id='627655'>
+<a class='timestamp' href='#627655'><time timestamp='2018-08-26T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Bisection turned up your change to increase the leveldb maps count.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323560' id='627656'>
+<a class='timestamp' href='#627656'><time timestamp='2018-08-26T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, where does the claimed memory measurement come from?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323620' id='627657'>
+<a class='timestamp' href='#627657'><time timestamp='2018-08-26T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Thats what we&#x27;re trying to determine. after finding out that mmap automatically pages in some of the file tried madvising DONTNEED all the maps, but that didn&#x27;t seem to fix it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323680' id='627658'>
+<a class='timestamp' href='#627658'><time timestamp='2018-08-26T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It might well be that the increased usage is totally fictional... that it&#x27;s just counting paged-in non-dirty pages.... and they&#x27;re not real memory pressure and we don&#x27;t need to worry about them.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323680' id='627659'>
+<a class='timestamp' href='#627659'><time timestamp='2018-08-26T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I&#x27;m writing a mmap() test case out of morbid curiosity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323740' id='627660'>
+<a class='timestamp' href='#627660'><time timestamp='2018-08-26T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Or maybe, though we haven&#x27;t spotted it yet, leveldb is using 200kb of god knows what per open map. :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323740' id='627661'>
+<a class='timestamp' href='#627661'><time timestamp='2018-08-26T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Meanwhile, luke-jr went and read more of the leveldb code and believes that it can&#x27;t have more mmaps open than the FD limit, and so he thinks the mmap increase should be a noop.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323800' id='627662'>
+<a class='timestamp' href='#627662'><time timestamp='2018-08-26T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(which it clearly isn&#x27;t, but it would be good if everyone was on the same page about how leveldb works)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535323980' id='627663'>
+<a class='timestamp' href='#627663'><time timestamp='2018-08-26T22:53:00Z'>22:53</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I currently have 992 chainstate ldb files mapped and 859 txindex and 43 blocks/indexes ldb files, but it took a fairly long uptime for the original problem to show up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324400' id='627664'>
+<a class='timestamp' href='#627664'><time timestamp='2018-08-26T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I don&#x27;t see much of a change between the htop reported RES size between mapping 1 txindex ldb file and mmaping all 2041 of them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324400' id='627665'>
+<a class='timestamp' href='#627665'><time timestamp='2018-08-26T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gmaxwell: well, I can reproduce it now, but I haven&#x27;t figure out why yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324400' id='627666'>
+<a class='timestamp' href='#627666'><time timestamp='2018-08-26T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+(but I never read from the map)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324520' id='627667'>
+<a class='timestamp' href='#627667'><time timestamp='2018-08-26T23:02:00Z'>23:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: k? try reading like, the last byte of them or something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324520' id='627668'>
+<a class='timestamp' href='#627668'><time timestamp='2018-08-26T23:02:00Z'>23:02</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+The VIRT line goes up as expected but RES stays fairly small
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324580' id='627669'>
+<a class='timestamp' href='#627669'><time timestamp='2018-08-26T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm, is everyone reproducing this using txindex?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324640' id='627670'>
+<a class='timestamp' href='#627670'><time timestamp='2018-08-26T23:04:00Z'>23:04</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, yeah that caused the RES size to approach the VIRT size (read the last byte)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324700' id='627671'>
+<a class='timestamp' href='#627671'><time timestamp='2018-08-26T23:05:00Z'>23:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: &quot;it can&#x27;t have more mmaps open than the FD limit&quot; -&gt; s/FD limit/max_open_files setting/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324700' id='627672'>
+<a class='timestamp' href='#627672'><time timestamp='2018-08-26T23:05:00Z'>23:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+now, try MADV_RANDOM ? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324700' id='627673'>
+<a class='timestamp' href='#627673'><time timestamp='2018-08-26T23:05:00Z'>23:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324700' id='627674'>
+<a class='timestamp' href='#627674'><time timestamp='2018-08-26T23:05:00Z'>23:05</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I read the last byte, so I&#x27;m not sure what it would prefetch :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324760' id='627675'>
+<a class='timestamp' href='#627675'><time timestamp='2018-08-26T23:06:00Z'>23:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;m guessing that it&#x27;s prefetching the whole thing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324760' id='627676'>
+<a class='timestamp' href='#627676'><time timestamp='2018-08-26T23:06:00Z'>23:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+andytoshi: HI!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324820' id='627677'>
+<a class='timestamp' href='#627677'><time timestamp='2018-08-26T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+gmaxwell: hiya, sorry, my server shit out this morning .. i have no idea why, the logs show everything clear, but it was apparently completely locked up even to a local terminal user
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324820' id='627678'>
+<a class='timestamp' href='#627678'><time timestamp='2018-08-26T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+so i called my dad to hard-boot it and it seems ok now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324820' id='627679'>
+<a class='timestamp' href='#627679'><time timestamp='2018-08-26T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+MADV_RANDOM didn&#x27;t seem to change the bump in RES caused by reading last byte
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535324940' id='627680'>
+<a class='timestamp' href='#627680'><time timestamp='2018-08-26T23:09:00Z'>23:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: saddness.  ... so run pmap on the process, and see how many dirty pages it says you have, presumably like none.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325120' id='627681'>
+<a class='timestamp' href='#627681'><time timestamp='2018-08-26T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: mmap is only used in leveldb for read-only files; none should ever be dirty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325120' id='627682'>
+<a class='timestamp' href='#627682'><time timestamp='2018-08-26T23:12:00Z'>23:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Interesting, there are only 41.3 BTC stored in bare multisig outputs, but there are 410k of them in total.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325180' id='627683'>
+<a class='timestamp' href='#627683'><time timestamp='2018-08-26T23:13:00Z'>23:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: I know but I also would have expected that increasing the mmap limit wouldn&#x27;t have increased RES. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325180' id='627684'>
+<a class='timestamp' href='#627684'><time timestamp='2018-08-26T23:13:00Z'>23:13</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+One sec, I might have screwed up...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325240' id='627685'>
+<a class='timestamp' href='#627685'><time timestamp='2018-08-26T23:14:00Z'>23:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;m going to suggest we start charting the total dirty pages from pmap... and not worry about RES...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325240' id='627686'>
+<a class='timestamp' href='#627686'><time timestamp='2018-08-26T23:14:00Z'>23:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it looks like the mmap limit is global
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325480' id='627687'>
+<a class='timestamp' href='#627687'><time timestamp='2018-08-26T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Okay, it looks like MADV_RANDOM isn&#x27;t helping, but just reading the last byte does cause the RES size to jump quite a bit (but I&#x27;m not sure how much I expect it to go up)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325480' id='627688'>
+<a class='timestamp' href='#627688'><time timestamp='2018-08-26T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+at least 1 page per file?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325480' id='627689'>
+<a class='timestamp' href='#627689'><time timestamp='2018-08-26T23:18:00Z'>23:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, 1 page per file is expected
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325660' id='627690'>
+<a class='timestamp' href='#627690'><time timestamp='2018-08-26T23:21:00Z'>23:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I expect that 1 page per file is what you should get, which is a modest amount of memory.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325660' id='627691'>
+<a class='timestamp' href='#627691'><time timestamp='2018-08-26T23:21:00Z'>23:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+in bitcoin we&#x27;re seeing an increase of hundreds of meg.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325660' id='627692'>
+<a class='timestamp' href='#627692'><time timestamp='2018-08-26T23:21:00Z'>23:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+way more than one page per file.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535325780' id='627693'>
+<a class='timestamp' href='#627693'><time timestamp='2018-08-26T23:23:00Z'>23:23</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+When reading the first byte, MAD_RANDOM does decrease the RES usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535326080' id='627694'>
+<a class='timestamp' href='#627694'><time timestamp='2018-08-26T23:28:00Z'>23:28</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Even with MADV_RANDOM, it would depend entirely on how many pages are faulted in by ldb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535326620' id='627695'>
+<a class='timestamp' href='#627695'><time timestamp='2018-08-26T23:37:00Z'>23:37</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Err, it looks like for me it is prefetching ~64K
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535326980' id='627696'>
+<a class='timestamp' href='#627696'><time timestamp='2018-08-26T23:43:00Z'>23:43</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+64K with MADV_RANDOM?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327040' id='627697'>
+<a class='timestamp' href='#627697'><time timestamp='2018-08-26T23:44:00Z'>23:44</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I think I might be suffering from previous state problems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327100' id='627698'>
+<a class='timestamp' href='#627698'><time timestamp='2018-08-26T23:45:00Z'>23:45</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Okay, dropping the cache and madv_random does seem to only read 4K for most of the files mapped (some have more for some odd reason)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327220' id='627699'>
+<a class='timestamp' href='#627699'><time timestamp='2018-08-26T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh interesting, so, if you cause the files to be paged in, then start a program with madv_random it will reflect higher res becuase you mmaped files that were already in cache?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327220' id='627700'>
+<a class='timestamp' href='#627700'><time timestamp='2018-08-26T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Yeah, without MADV_RANDOM all the files have 64K RES when I read the 1st byte
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327220' id='627701'>
+<a class='timestamp' href='#627701'><time timestamp='2018-08-26T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+echo 3 &gt; /proc/sys/vm/drop_caches     between runs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327220' id='627702'>
+<a class='timestamp' href='#627702'><time timestamp='2018-08-26T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Yeah I was getting confusing results until I realized that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327220' id='627703'>
+<a class='timestamp' href='#627703'><time timestamp='2018-08-26T23:47:00Z'>23:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Cool so also we might not have seen the effects of MADV_RANDOM when testing with actual leveldb due to that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327280' id='627704'>
+<a class='timestamp' href='#627704'><time timestamp='2018-08-26T23:48:00Z'>23:48</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Depends heavily on the specific hardware yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327280' id='627705'>
+<a class='timestamp' href='#627705'><time timestamp='2018-08-26T23:48:00Z'>23:48</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+But drop_caches is a mighty big hammer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327340' id='627706'>
+<a class='timestamp' href='#627706'><time timestamp='2018-08-26T23:49:00Z'>23:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sure, just in terms of &quot;huh why did MADV_RANDOM seem to do nothing&quot;... now we know.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327400' id='627707'>
+<a class='timestamp' href='#627707'><time timestamp='2018-08-26T23:50:00Z'>23:50</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+I suspect the minimum amount read without MADV_RANDOM depends on things like the filesystem and the underlying block device
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327460' id='627708'>
+<a class='timestamp' href='#627708'><time timestamp='2018-08-26T23:51:00Z'>23:51</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Like reading 1 page with a SSD is no big deal vs 1 page with a RAID5 md array
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327700' id='627709'>
+<a class='timestamp' href='#627709'><time timestamp='2018-08-26T23:55:00Z'>23:55</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+Any ideas how much leveldb actually reads at a time?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327760' id='627710'>
+<a class='timestamp' href='#627710'><time timestamp='2018-08-26T23:56:00Z'>23:56</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+It would have to touch at least some of the index and then the actual data it wants to read
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535327820' id='627711'>
+<a class='timestamp' href='#627711'><time timestamp='2018-08-26T23:57:00Z'>23:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it does a bisection search in the index and then I think it only reads the record of interest.
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

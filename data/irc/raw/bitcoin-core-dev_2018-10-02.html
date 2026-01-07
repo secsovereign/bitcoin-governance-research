@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-10-02
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-10-02' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-09-02">&lt;</a><span class='header'>   October 2018   </span><a href="/bitcoin-core-dev/2018-11-02">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2018-10-01">1</a>  <a class="current" href="/bitcoin-core-dev/2018-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-10-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-10-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-10-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-10-09">9</a> <a class="" href="/bitcoin-core-dev/2018-10-10">10</a> <a class="" href="/bitcoin-core-dev/2018-10-11">11</a> <a class="" href="/bitcoin-core-dev/2018-10-12">12</a> <a class="" href="/bitcoin-core-dev/2018-10-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-14">14</a> <a class="" href="/bitcoin-core-dev/2018-10-15">15</a> <a class="" href="/bitcoin-core-dev/2018-10-16">16</a> <a class="" href="/bitcoin-core-dev/2018-10-17">17</a> <a class="" href="/bitcoin-core-dev/2018-10-18">18</a> <a class="" href="/bitcoin-core-dev/2018-10-19">19</a> <a class="" href="/bitcoin-core-dev/2018-10-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-21">21</a> <a class="" href="/bitcoin-core-dev/2018-10-22">22</a> <a class="" href="/bitcoin-core-dev/2018-10-23">23</a> <a class="" href="/bitcoin-core-dev/2018-10-24">24</a> <a class="" href="/bitcoin-core-dev/2018-10-25">25</a> <a class="" href="/bitcoin-core-dev/2018-10-26">26</a> <a class="" href="/bitcoin-core-dev/2018-10-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-28">28</a> <a class="" href="/bitcoin-core-dev/2018-10-29">29</a> <a class="" href="/bitcoin-core-dev/2018-10-30">30</a> <a class="" href="/bitcoin-core-dev/2018-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1538460780' id='632841'>
+<a class='timestamp' href='#632841'><time timestamp='2018-10-02T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+achow101: is it intended to be the case that PSBTs always end with 0x00 (separator after the last map), or that it is always omitted, or that it is optional?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538460780' id='632842'>
+<a class='timestamp' href='#632842'><time timestamp='2018-10-02T06:13:00Z'>06:13</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+the BIP reads like it should be mandatory, but I noticed Core is inconsistent about it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538460840' id='632843'>
+<a class='timestamp' href='#632843'><time timestamp='2018-10-02T06:14:00Z'>06:14</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+(or sipa or whoever else has an opinion :-) )
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538465160' id='632844'>
+<a class='timestamp' href='#632844'><time timestamp='2018-10-02T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields. macOS 0.17.0 detached signature is available <a href="https://github.com/bitcoin-core/bitcoin-detached-sigs/pull/17" class="link" target="_blank">https://github.com/bitcoin-core/bitcoin-detached-sigs/pull/17</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538467980' id='632845'>
+<a class='timestamp' href='#632845'><time timestamp='2018-10-02T08:13:00Z'>08:13</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+gwillen: good question; some people are travelling, if you don&#x27;t get a response here, please create an issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538468040' id='632846'>
+<a class='timestamp' href='#632846'><time timestamp='2018-10-02T08:14:00Z'>08:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli yay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538469120' id='632847'>
+<a class='timestamp' href='#632847'><time timestamp='2018-10-02T08:32:00Z'>08:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and yes, the tests are sort of heavy, if you find that many functional tests fail on your system (esp. related to timeouts) it&#x27;s a good suggestion to run with parallelism of one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538469240' id='632848'>
+<a class='timestamp' href='#632848'><time timestamp='2018-10-02T08:34:00Z'>08:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gwillen: no strong opinion, but agree it should be clear and consistent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538471160' id='632849'>
+<a class='timestamp' href='#632849'><time timestamp='2018-10-02T09:06:00Z'>09:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+promag: sorry,.. haven&#x27;t followed the discussion... what needs update there: <a href="https://github.com/bitcoin/bitcoin/pull/12653#issuecomment-426202288" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12653#issuecomment-426202288</a>?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538471220' id='632850'>
+<a class='timestamp' href='#632850'><time timestamp='2018-10-02T09:07:00Z'>09:07</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+IIUC block index is not affected by -blocksdir
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538471340' id='632851'>
+<a class='timestamp' href='#632851'><time timestamp='2018-10-02T09:09:00Z'>09:09</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jonasschnelli: gArgs.IsArgSet(&quot;-blocksdir&quot;) ? GetDataDir() / &quot;blocks&quot; / &quot;index&quot; : GetBlocksDir() / &quot;index&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538471460' id='632852'>
+<a class='timestamp' href='#632852'><time timestamp='2018-10-02T09:11:00Z'>09:11</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+promag: I see. Done. thanks.-
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538471460' id='632853'>
+<a class='timestamp' href='#632853'><time timestamp='2018-10-02T09:11:00Z'>09:11</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+np
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538471460' id='632854'>
+<a class='timestamp' href='#632854'><time timestamp='2018-10-02T09:11:00Z'>09:11</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+ty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538487060' id='632855'>
+<a class='timestamp' href='#632855'><time timestamp='2018-10-02T13:31:00Z'>13:31</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+gwillen: it should end in a 0x00. that was also my read of the BIP, and it&#x27;s also the only way to unambiguously parse a PSBT from a stream that might have other data coming down the line
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538488320' id='632856'>
+<a class='timestamp' href='#632856'><time timestamp='2018-10-02T13:52:00Z'>13:52</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: it should end in 0x00
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538488320' id='632857'>
+<a class='timestamp' href='#632857'><time timestamp='2018-10-02T13:52:00Z'>13:52</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+how is core inconsistent about it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538488320' id='632858'>
+<a class='timestamp' href='#632858'><time timestamp='2018-10-02T13:52:00Z'>13:52</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I believe there&#x27;s even a test vector for this. a parser should reject a psbt if it doesn&#x27;t end in 0x00
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538494980' id='632859'>
+<a class='timestamp' href='#632859'><time timestamp='2018-10-02T15:43:00Z'>15:43</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538494980' id='632860'>
+<a class='timestamp' href='#632860'><time timestamp='2018-10-02T15:43:00Z'>15:43</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+gitian builders: detached sigs for v0.17.0 are pushed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538504280' id='632861'>
+<a class='timestamp' href='#632861'><time timestamp='2018-10-02T18:18:00Z'>18:18</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, lots of the tests seem to be racey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538504280' id='632862'>
+<a class='timestamp' href='#632862'><time timestamp='2018-10-02T18:18:00Z'>18:18</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+the zmq ones especially
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538504520' id='632863'>
+<a class='timestamp' href='#632863'><time timestamp='2018-10-02T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+phantomcircuit: yes i&#x27;s true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538504580' id='632864'>
+<a class='timestamp' href='#632864'><time timestamp='2018-10-02T18:23:00Z'>18:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+although I think that has improved
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538504580' id='632865'>
+<a class='timestamp' href='#632865'><time timestamp='2018-10-02T18:23:00Z'>18:23</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+there&#x27;s one test that simply fails on very slow systems but I don&#x27;t remember which one right now, but the others pass even under very crappy circumstances
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538504640' id='632866'>
+<a class='timestamp' href='#632866'><time timestamp='2018-10-02T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(counting only the non-extended tests)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538505180' id='632867'>
+<a class='timestamp' href='#632867'><time timestamp='2018-10-02T18:33:00Z'>18:33</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, running &quot;test_runner.py&quot; with small changes to the timing of networking logic makes them fail randomly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538505300' id='632868'>
+<a class='timestamp' href='#632868'><time timestamp='2018-10-02T18:35:00Z'>18:35</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+andytoshi: achow101: ok, let me double-check and then try to create a minimal example of when core creates one that does not end in 0x00
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538505480' id='632869'>
+<a class='timestamp' href='#632869'><time timestamp='2018-10-02T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+crap, okay, what happened is that I dropped a character from the end of a PSBT string while copy-pasting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538505480' id='632870'>
+<a class='timestamp' href='#632870'><time timestamp='2018-10-02T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+and decodepsbt still accepted it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538505540' id='632871'>
+<a class='timestamp' href='#632871'><time timestamp='2018-10-02T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+as does finalizepsbt
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509440' id='632872'>
+<a class='timestamp' href='#632872'><time timestamp='2018-10-02T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+does core have a fuzz-testing harness? might be worthwhile to try round-tripping these
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509620' id='632873'>
+<a class='timestamp' href='#632873'><time timestamp='2018-10-02T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+andytoshi: yes, test_bitcoin_fuzzy.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509680' id='632874'>
+<a class='timestamp' href='#632874'><time timestamp='2018-10-02T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+phantomcircuit: ok... any idea which specific messages cause the problem? what kind of failures?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509680' id='632875'>
+<a class='timestamp' href='#632875'><time timestamp='2018-10-02T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, the zmq ones especially fail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509740' id='632876'>
+<a class='timestamp' href='#632876'><time timestamp='2018-10-02T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+the getzmqnotifications fails
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509740' id='632877'>
+<a class='timestamp' href='#632877'><time timestamp='2018-10-02T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+which im sure is just a race
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509740' id='632878'>
+<a class='timestamp' href='#632878'><time timestamp='2018-10-02T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+it&#x27;s hard to diagnose cause they tend to work on my laptop but not on travis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538509740' id='632879'>
+<a class='timestamp' href='#632879'><time timestamp='2018-10-02T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+maybe i need a slower test system
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538510760' id='632880'>
+<a class='timestamp' href='#632880'><time timestamp='2018-10-02T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if it&#x27;s just zmq I&#x27;m not <b>*too*</b> worried
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538510820' id='632881'>
+<a class='timestamp' href='#632881'><time timestamp='2018-10-02T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+and apparently, feature_notifications
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538510820' id='632882'>
+<a class='timestamp' href='#632882'><time timestamp='2018-10-02T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+with too much parallelism everything explodes cause we run out of local ports to bind to but that&#x27;s not really something to easily fix
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538510880' id='632883'>
+<a class='timestamp' href='#632883'><time timestamp='2018-10-02T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+gwillen: base64 has some padding characters at the end of the string if it isn&#x27;t some specifc length (a multiple of some number I can&#x27;t remember). Core&#x27;s implementation of base64 drops those padding characters and then decodes. you&#x27;re probably dropping a padding char which is thus being ignored
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538510880' id='632884'>
+<a class='timestamp' href='#632884'><time timestamp='2018-10-02T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+the padding is the = characters you see at the end of base64 strings.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511060' id='632885'>
+<a class='timestamp' href='#632885'><time timestamp='2018-10-02T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+achow101: the character in question is an A, which is 0, so while it&#x27;s not padding I can imagine there could be ambiguity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511120' id='632886'>
+<a class='timestamp' href='#632886'><time timestamp='2018-10-02T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+hmm. can you give me a psbt that should be wrong but decodes fine?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511120' id='632887'>
+<a class='timestamp' href='#632887'><time timestamp='2018-10-02T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+if we&#x27;re using padding consistently, we should possibly refuse to decode truncated base64
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511120' id='632888'>
+<a class='timestamp' href='#632888'><time timestamp='2018-10-02T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+i.e. base64 that&#x27;s not a multiple of four bytes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511120' id='632889'>
+<a class='timestamp' href='#632889'><time timestamp='2018-10-02T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+achow101: cHNidP8BAHMCAAAAAbiWoY6pOQepFsEGhUPXaulX9rvye2NH+NrdlAHg+WgpAQAAAAD/////AkBLTAAAAAAAF6kUqWwXCcLM5BN2zoNqMNT5qMlIi7+HQEtMAAAAAAAXqRSVF/in2XNxAlN1OSxkyp0z+Wtg2YcAAAAAAAEBIBNssgAAAAAAF6kUamsvautR8hRlMRY6OKNTx03DK96HAQcXFgAUo8u1LWpHprjt/uENAwBpGZD0UH0BCGsCRzBEAiAONfH3DYiw67ZbylrsxCF/XXpVwyWBRgofyRbPslzvwgIgIKCsWw5sHSIPh1icNvcVLZLHWj6NA7Dk+4Os2pOnMbQBIQPGStfYHPtyhpV7zIWtn0Q4GXv5gK1zy/tnJ+cBXu4iiwABABYAFMwmJQEz+HDpBEEabxJ5PogPsqZRAAEAFg
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511120' id='632890'>
+<a class='timestamp' href='#632890'><time timestamp='2018-10-02T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+er, sorry, cHNidP8BAHMCAAAAAbiWoY6pOQepFsEGhUPXaulX9rvye2NH+NrdlAHg+WgpAQAAAAD/////AkBLTAAAAAAAF6kUqWwXCcLM5BN2zoNqMNT5qMlIi7+HQEtMAAAAAAAXqRSVF/in2XNxAlN1OSxkyp0z+Wtg2YcAAAAAAAEBIBNssgAAAAAAF6kUamsvautR8hRlMRY6OKNTx03DK96HAQcXFgAUo8u1LWpHprjt/uENAwBpGZD0UH0BCGsCRzBEAiAONfH3DYiw67ZbylrsxCF/XXpVwyWBRgofyRbPslzvwgIgIKCsWw5sHSIPh1icNvcVLZLHWj6NA7Dk+4Os2pOnMbQBIQPGStfYHPtyhpV7zIWtn0Q4GXv5gK1zy/tnJ+cBXu4iiwABABYAFMwmJQEz+HDpBEEabxJ5PogPsqZRAAEAF
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511180' id='632891'>
+<a class='timestamp' href='#632891'><time timestamp='2018-10-02T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+hm, that may be too long for IRC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511180' id='632892'>
+<a class='timestamp' href='#632892'><time timestamp='2018-10-02T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+probably
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511180' id='632893'>
+<a class='timestamp' href='#632893'><time timestamp='2018-10-02T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+achow101: <a href="https://0bin.net/paste/e70Ze5n2HJSSHuF1#tPS6iIwRHdEOmHx85Yo3Ueaos6ERjdrHbLUFW8Z63Dg" class="link" target="_blank">https://0bin.net/paste/e70Ze5n2HJSSHuF1#tPS6iIwRHdEOmHx85Yo3Ueaos6ERjdrHbLUFW8Z63Dg</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511180' id='632894'>
+<a class='timestamp' href='#632894'><time timestamp='2018-10-02T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+decodes with or without the final A
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511180' id='632895'>
+<a class='timestamp' href='#632895'><time timestamp='2018-10-02T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+without, it&#x27;s technically invalid if you want a properly-padded base64 string
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511240' id='632896'>
+<a class='timestamp' href='#632896'><time timestamp='2018-10-02T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but if I add an = for padding it still decodes even though it should be missing the 0 at the end
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511240' id='632897'>
+<a class='timestamp' href='#632897'><time timestamp='2018-10-02T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+ok, i&#x27;ll take a look
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511360' id='632898'>
+<a class='timestamp' href='#632898'><time timestamp='2018-10-02T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+yeah, i see why that happens. can I use this psbt as a test vector?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511480' id='632899'>
+<a class='timestamp' href='#632899'><time timestamp='2018-10-02T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+phantomcircuit: supporting UNIX sockets would be nice, I had PRs for that once
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511540' id='632900'>
+<a class='timestamp' href='#632900'><time timestamp='2018-10-02T20:19:00Z'>20:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it made the tests do RPC over UNIX sockets
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511600' id='632901'>
+<a class='timestamp' href='#632901'><time timestamp='2018-10-02T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+idea was to do the same for the P2P connections between the nodes, which would make the tests completely self-contained
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511600' id='632902'>
+<a class='timestamp' href='#632902'><time timestamp='2018-10-02T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but... just one of the many of my projects I lost track of
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538511660' id='632903'>
+<a class='timestamp' href='#632903'><time timestamp='2018-10-02T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+wouldn&#x27;t even need any TCP ports anymore, besides for network binding specific tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538514600' id='632904'>
+<a class='timestamp' href='#632904'><time timestamp='2018-10-02T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, indeed that would be an improvement here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538514600' id='632905'>
+<a class='timestamp' href='#632905'><time timestamp='2018-10-02T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+a pretty significant one actually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538514600' id='632906'>
+<a class='timestamp' href='#632906'><time timestamp='2018-10-02T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+but yeah priorities
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538514660' id='632907'>
+<a class='timestamp' href='#632907'><time timestamp='2018-10-02T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: hmm, we accept base64 with the == at the end missing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538515320' id='632908'>
+<a class='timestamp' href='#632908'><time timestamp='2018-10-02T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+achow101: yes, you can use it as a test vector, it&#x27;s tesnet with coins from some random faucet and freshly-generated addresses
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538515320' id='632909'>
+<a class='timestamp' href='#632909'><time timestamp='2018-10-02T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+sipa: it seems so, I think it would make sense to not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538515320' id='632910'>
+<a class='timestamp' href='#632910'><time timestamp='2018-10-02T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+in which case there are two separate issues here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538515380' id='632911'>
+<a class='timestamp' href='#632911'><time timestamp='2018-10-02T21:23:00Z'>21:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gwillen: agree; the RFC cited says padding is required; i tgink we should require it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516220' id='632912'>
+<a class='timestamp' href='#632912'><time timestamp='2018-10-02T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+hm, is there someone in here who is familiar with the QT stuff and QT Creator / QT Designer? Particularly on a mac?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516280' id='632913'>
+<a class='timestamp' href='#632913'><time timestamp='2018-10-02T21:38:00Z'>21:38</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I followed the intstructions in the OS X build docs for opening the project in QT Creator, but by default it was unable to see a bunch of headers and I had to add some lines to bitcoin-qt.include to make it avoid drowning everything in red squiggly underlines
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516460' id='632914'>
+<a class='timestamp' href='#632914'><time timestamp='2018-10-02T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, lots of things accept base64 without the padding
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632915'>
+<a class='timestamp' href='#632915'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+gwillen: I don&#x27;t think anyone opens the project in qt creator anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632916'>
+<a class='timestamp' href='#632916'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+ha, ok, the build instructions still suggest it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632917'>
+<a class='timestamp' href='#632917'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I assume QT Designer is still necessary to edit the forms
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632918'>
+<a class='timestamp' href='#632918'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(besides for editing the gui forms)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632919'>
+<a class='timestamp' href='#632919'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but I guess you can use it standalone?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632920'>
+<a class='timestamp' href='#632920'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+<b>*nods*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516520' id='632921'>
+<a class='timestamp' href='#632921'><time timestamp='2018-10-02T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+the fact that I need to edit the gui forms is the only reason I bothered
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538516580' id='632922'>
+<a class='timestamp' href='#632922'><time timestamp='2018-10-02T21:43:00Z'>21:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+correct, you can use qt designer standalone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538517120' id='632923'>
+<a class='timestamp' href='#632923'><time timestamp='2018-10-02T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+phantomcircuit: there are multiple base64, some with padding, some without, some mandatory; i wouldn&#x27;t mind having picked another spec,but the BIP chose one, so we should stick to it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538517180' id='632924'>
+<a class='timestamp' href='#632924'><time timestamp='2018-10-02T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, ah interesting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538517180' id='632925'>
+<a class='timestamp' href='#632925'><time timestamp='2018-10-02T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+yeah it doesn&#x27;t really matter to me and that seems logical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538517600' id='632926'>
+<a class='timestamp' href='#632926'><time timestamp='2018-10-02T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+lol 0.16.3 installed on windows is stuck at &quot;done loading&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538517780' id='632927'>
+<a class='timestamp' href='#632927'><time timestamp='2018-10-02T22:03:00Z'>22:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hmm, rfc 3548 does not require padding at decode time, only when encoding
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538521860' id='632928'>
+<a class='timestamp' href='#632928'><time timestamp='2018-10-02T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wumpus, like i cant explain how the last commit on #14336 would fix the previous ci failures
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1538521860' id='632929'>
+<a class='timestamp' href='#632929'><time timestamp='2018-10-02T23:11:00Z'>23:11</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14336" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14336</a> | net: implement poll by pstratem · Pull Request #14336 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

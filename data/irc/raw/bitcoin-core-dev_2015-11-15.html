@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2015-11-15
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2015-11-15' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2015-10-15">&lt;</a><span class='header'>  November 2015   </span><a href="/bitcoin-core-dev/2015-12-15">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2015-11-01">1</a>  <a class="" href="/bitcoin-core-dev/2015-11-02">2</a>  <a class="" href="/bitcoin-core-dev/2015-11-03">3</a>  <a class="" href="/bitcoin-core-dev/2015-11-04">4</a>  <a class="" href="/bitcoin-core-dev/2015-11-05">5</a>  <a class="" href="/bitcoin-core-dev/2015-11-06">6</a>  <a class="" href="/bitcoin-core-dev/2015-11-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2015-11-08">8</a>  <a class="" href="/bitcoin-core-dev/2015-11-09">9</a> <a class="" href="/bitcoin-core-dev/2015-11-10">10</a> <a class="" href="/bitcoin-core-dev/2015-11-11">11</a> <a class="" href="/bitcoin-core-dev/2015-11-12">12</a> <a class="" href="/bitcoin-core-dev/2015-11-13">13</a> <a class="" href="/bitcoin-core-dev/2015-11-14">14</a>  &#x000A;<a class="current" href="/bitcoin-core-dev/2015-11-15">15</a> <a class="" href="/bitcoin-core-dev/2015-11-16">16</a> <a class="" href="/bitcoin-core-dev/2015-11-17">17</a> <a class="" href="/bitcoin-core-dev/2015-11-18">18</a> <a class="" href="/bitcoin-core-dev/2015-11-19">19</a> <a class="" href="/bitcoin-core-dev/2015-11-20">20</a> <a class="" href="/bitcoin-core-dev/2015-11-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2015-11-22">22</a> <a class="" href="/bitcoin-core-dev/2015-11-23">23</a> <a class="" href="/bitcoin-core-dev/2015-11-24">24</a> <a class="" href="/bitcoin-core-dev/2015-11-25">25</a> <a class="" href="/bitcoin-core-dev/2015-11-26">26</a> <a class="" href="/bitcoin-core-dev/2015-11-27">27</a> <a class="" href="/bitcoin-core-dev/2015-11-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2015-11-29">29</a> <a class="" href="/bitcoin-core-dev/2015-11-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1447546080' id='437227'>
+<a class='timestamp' href='#437227'><time timestamp='2015-11-15T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so at devcore one of the things I talked about was some analysis taken from monitoring miners and mining pools. Someone collected data from all accessible stratum endpoints over several months
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546200' id='437228'>
+<a class='timestamp' href='#437228'><time timestamp='2015-11-15T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and from it I can extract data like how much time from the first pool working on extending block X was it until the 2nd, 3rd, ... nth pool.  Taking the time after the first pool to reach half the pools, fit a linear model reasonably well.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546200' id='437229'>
+<a class='timestamp' href='#437229'><time timestamp='2015-11-15T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+cool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546260' id='437230'>
+<a class='timestamp' href='#437230'><time timestamp='2015-11-15T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh yea you weren&#x27;t there when I presented on this.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546320' id='437231'>
+<a class='timestamp' href='#437231'><time timestamp='2015-11-15T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I tried all sorts of different analysis approaches, including including factors for in china or not, pool origin, etc. but there really aren&#x27;t enough blocks (esp from smaller miners) to say much of statistical significance.  But size, did.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546320' id='437232'>
+<a class='timestamp' href='#437232'><time timestamp='2015-11-15T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Model that R comes up with for that is:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546320' id='437233'>
+<a class='timestamp' href='#437233'><time timestamp='2015-11-15T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+20:40 &lt;gmaxwell&gt; (Intercept) 2.491e+00  2.674e-01   9.318   &lt;2e-16 <b>***</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546320' id='437234'>
+<a class='timestamp' href='#437234'><time timestamp='2015-11-15T00:12:00Z'>00:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+20:40 &lt;gmaxwell&gt; size        1.106e-05  4.025e-07  27.474   &lt;2e-16 <b>***</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546380' id='437235'>
+<a class='timestamp' href='#437235'><time timestamp='2015-11-15T00:13:00Z'>00:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+which means a 2.491 second constant delay, plus 732kbit/sec. (1/1.106*10^-5*8)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546500' id='437236'>
+<a class='timestamp' href='#437236'><time timestamp='2015-11-15T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+interestingly, plugging this into an orphaning calculation vs the subsidy---- suggests that the final byte of the block should have a feerate of ((((e^(-1/600*(2.491+((1000000)/90415.91)))))*25)-(((e^(-1/600*(2.491+((1000001)/90415.91)))))*25))*1000 = .00045054 BTC per 1000 bytes, or otherwise you&#x27;re losing money just considering the subsidy.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546500' id='437237'>
+<a class='timestamp' href='#437237'><time timestamp='2015-11-15T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Though reality is not that simple, because of hashpower distribution dynamics, large miners don&#x27;t really care if it takes small miners a long time to get their blocks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546620' id='437238'>
+<a class='timestamp' href='#437238'><time timestamp='2015-11-15T00:17:00Z'>00:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so, take with a metric ton of salt, but I thought it was interesting that these figures are in roughly this magnitude.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447546980' id='437239'>
+<a class='timestamp' href='#437239'><time timestamp='2015-11-15T00:23:00Z'>00:23</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+definitely interesting. mostly aligns with my guesstimation of miner+network behavior.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547160' id='437240'>
+<a class='timestamp' href='#437240'><time timestamp='2015-11-15T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+This way of looking it has some surprising results, but I think correct-- e.g. if you decrease the fixed delay then you actually want a <u>_higher_</u> feerate for the last byte of the block for it to break even.  because of the exponentially decreasing slope of the orphaning rate as you move away from 0 latency.  1 byte of extra delay makes more of a difference if your base delay is lower.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547340' id='437241'>
+<a class='timestamp' href='#437241'><time timestamp='2015-11-15T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+to reach half the pools... weighted by hashrate?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547340' id='437242'>
+<a class='timestamp' href='#437242'><time timestamp='2015-11-15T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, not weighed; thats what I was trying to talk about with my &quot;not that simple&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547340' id='437243'>
+<a class='timestamp' href='#437243'><time timestamp='2015-11-15T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547340' id='437244'>
+<a class='timestamp' href='#437244'><time timestamp='2015-11-15T00:29:00Z'>00:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hard to do with data that spans several months
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547400' id='437245'>
+<a class='timestamp' href='#437245'><time timestamp='2015-11-15T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+because of that the information is a bit more informative about equality/fairness than it is about the economics of fees.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547400' id='437246'>
+<a class='timestamp' href='#437246'><time timestamp='2015-11-15T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Though it&#x27;s an interesting question if the network should be relaying transactions with fees so low that only very large hashpower consolidations could mine them except at a loss.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547460' id='437247'>
+<a class='timestamp' href='#437247'><time timestamp='2015-11-15T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+also it suggests a framework for setting minimum feerates which are independant of bitcoin&#x27;s price-- though dependant on communications efficiency, which is perhaps no better. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447547880' id='437248'>
+<a class='timestamp' href='#437248'><time timestamp='2015-11-15T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The reason I went to go crunch the numbers into a feerate is that I was thinking about what the minimum really should be.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548120' id='437249'>
+<a class='timestamp' href='#437249'><time timestamp='2015-11-15T00:42:00Z'>00:42</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+gmaxwell: I really like what you wrote on -wizards after I parted last time about why people don&#x27;t treat solo mining as gambling.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548180' id='437250'>
+<a class='timestamp' href='#437250'><time timestamp='2015-11-15T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+I really think you are right that it is a user-experience issue, not an economic issue.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548180' id='437251'>
+<a class='timestamp' href='#437251'><time timestamp='2015-11-15T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+If some state lottery offered a scheme where you subscribed and then it would run in the background and eventually someday maybe it would pop up and give you money, 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548180' id='437252'>
+<a class='timestamp' href='#437252'><time timestamp='2015-11-15T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+I think that would be a stinkier.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548180' id='437253'>
+<a class='timestamp' href='#437253'><time timestamp='2015-11-15T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+a stinker.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548180' id='437254'>
+<a class='timestamp' href='#437254'><time timestamp='2015-11-15T00:43:00Z'>00:43</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+ I mean, nobody would play.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548240' id='437255'>
+<a class='timestamp' href='#437255'><time timestamp='2015-11-15T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+Instead, you get the build-up-and-anticipation-and-reveal cycle, like scratching off the silver coating to reveal the numbers beneath and find out if you won.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548240' id='437256'>
+<a class='timestamp' href='#437256'><time timestamp='2015-11-15T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-5'> jgarzik</span>&gt;
+...maybe this is -wizards material ;p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548240' id='437257'>
+<a class='timestamp' href='#437257'><time timestamp='2015-11-15T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+If that&#x27;s right, you could add lottery UX on top of mining, by giving people a button that they can push and then it let ....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548240' id='437258'>
+<a class='timestamp' href='#437258'><time timestamp='2015-11-15T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+WRONG CHAMN
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548240' id='437259'>
+<a class='timestamp' href='#437259'><time timestamp='2015-11-15T00:44:00Z'>00:44</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+Thanks, jg.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548300' id='437260'>
+<a class='timestamp' href='#437260'><time timestamp='2015-11-15T00:45:00Z'>00:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s a contraction of &quot;wrong chan&quot; and &quot;damn&quot; ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548300' id='437261'>
+<a class='timestamp' href='#437261'><time timestamp='2015-11-15T00:45:00Z'>00:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Well it&#x27;s also a bit #bitcoin-core-dev too, in that I think it would be useful if work were done in the GUI to make mining fun, ... but probably more than that is just speculation :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548360' id='437262'>
+<a class='timestamp' href='#437262'><time timestamp='2015-11-15T00:46:00Z'>00:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hmm, if only we had some sort of hash-within-range unlockable scripts, where a block&#x27;s coinbase is assigned to, so you can postfacto determine who gets it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447548420' id='437263'>
+<a class='timestamp' href='#437263'><time timestamp='2015-11-15T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+then you could buy a range of hashes from a miner
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447554360' id='437264'>
+<a class='timestamp' href='#437264'><time timestamp='2015-11-15T02:26:00Z'>02:26</time></a>
+&lt;<span class='nick nick-16'> GitHub184</span>&gt;
+[bitcoin] morcos opened pull request #7020: Implement helper class for CTxMemPoolEntry constructor (master...EntryHelper) <a href="https://github.com/bitcoin/bitcoin/pull/7020" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7020</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447557000' id='437265'>
+<a class='timestamp' href='#437265'><time timestamp='2015-11-15T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+sipa: is there a purpose for such a construct?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560420' id='437266'>
+<a class='timestamp' href='#437266'><time timestamp='2015-11-15T04:07:00Z'>04:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+::sigh:: libpng security firedrill.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560540' id='437267'>
+<a class='timestamp' href='#437267'><time timestamp='2015-11-15T04:09:00Z'>04:09</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+was there a real risk for us?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560600' id='437268'>
+<a class='timestamp' href='#437268'><time timestamp='2015-11-15T04:10:00Z'>04:10</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+(only PNGs we ever use are our own, right?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560660' id='437269'>
+<a class='timestamp' href='#437269'><time timestamp='2015-11-15T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-11'> CodeShark_</span>&gt;
+are you referring to <a href="https://www.cvedetails.com/cve/CVE-2015-8126/" class="link" target="_blank">https://www.cvedetails.com/cve/CVE-2015-8126/</a> ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560660' id='437270'>
+<a class='timestamp' href='#437270'><time timestamp='2015-11-15T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yes, not a risk for us but we&#x27;ll probably get asked to update when people notice bitcoin-qt links it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560720' id='437271'>
+<a class='timestamp' href='#437271'><time timestamp='2015-11-15T04:12:00Z'>04:12</time></a>
+&lt;<span class='nick nick-11'> CodeShark_</span>&gt;
+we don&#x27;t use libpng with any user or network supplied data directly, do we?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560780' id='437272'>
+<a class='timestamp' href='#437272'><time timestamp='2015-11-15T04:13:00Z'>04:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+FWIW, I&#x27;ve unsubscribed from bitcoin-dev mailing list.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560840' id='437273'>
+<a class='timestamp' href='#437273'><time timestamp='2015-11-15T04:14:00Z'>04:14</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+sigh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447560900' id='437274'>
+<a class='timestamp' href='#437274'><time timestamp='2015-11-15T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Luke-Jr: no biggie, it&#x27;s just still very low SNR.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447561080' id='437275'>
+<a class='timestamp' href='#437275'><time timestamp='2015-11-15T04:18:00Z'>04:18</time></a>
+&lt;<span class='nick nick-11'> CodeShark_</span>&gt;
+oh well...I guess the value of the list tanks even further
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447564380' id='437276'>
+<a class='timestamp' href='#437276'><time timestamp='2015-11-15T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+FWIW, I figured out why the CLTV tests failed on 0.11.2: <a href="https://github.com/bitcoin/bitcoin/pull/6523#issuecomment-156782660" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6523#issuecomment-156782660</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447564440' id='437277'>
+<a class='timestamp' href='#437277'><time timestamp='2015-11-15T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+(Nothing to worry about)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565160' id='437278'>
+<a class='timestamp' href='#437278'><time timestamp='2015-11-15T05:26:00Z'>05:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Luke-Jr: I think your request translates to &quot;please don&#x27;t write software in python&quot; :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565220' id='437279'>
+<a class='timestamp' href='#437279'><time timestamp='2015-11-15T05:27:00Z'>05:27</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+gmaxwell: well, C++ has most of the same problems in this regard, and the same solutions work in Python
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565220' id='437280'>
+<a class='timestamp' href='#437280'><time timestamp='2015-11-15T05:27:00Z'>05:27</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+(eg, renaming the function)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565220' id='437281'>
+<a class='timestamp' href='#437281'><time timestamp='2015-11-15T05:27:00Z'>05:27</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+not sure python is the cause of the problem here. taking same value type but treating differently seems like sort of thing you would catch while grepping for the callers, or checking whether your function previously had different meaning..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565220' id='437282'>
+<a class='timestamp' href='#437282'><time timestamp='2015-11-15T05:27:00Z'>05:27</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+actually, Python has an additional option: it could be made to reject unnamed parameters, so the caller must explicitly specify height=N
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565280' id='437283'>
+<a class='timestamp' href='#437283'><time timestamp='2015-11-15T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+kanzure: in this case, it was breaking a backport
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565280' id='437284'>
+<a class='timestamp' href='#437284'><time timestamp='2015-11-15T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+kanzure: CLTV tests were written <b>*after*</b> this change, and when I went to use them with 0.11.2, it silently behaved differently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565340' id='437285'>
+<a class='timestamp' href='#437285'><time timestamp='2015-11-15T05:29:00Z'>05:29</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+was there a test failure that caught this?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565400' id='437286'>
+<a class='timestamp' href='#437286'><time timestamp='2015-11-15T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+the test failed as a result
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447565520' id='437287'>
+<a class='timestamp' href='#437287'><time timestamp='2015-11-15T05:32:00Z'>05:32</time></a>
+&lt;<span class='nick nick-4'> * Luke-Jr</span>&gt;
+wonders if he&#x27;s the only one who tried to run the CLTV tests against 0.11  :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447596240' id='437288'>
+<a class='timestamp' href='#437288'><time timestamp='2015-11-15T14:04:00Z'>14:04</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Luke-Jr: oh interesting. i thought i&#x27;d run all the RPC tests, but hadn&#x27;t noticed that the CLTV tests were not added to the extended tests list.  we should probably add them.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447596240' id='437289'>
+<a class='timestamp' href='#437289'><time timestamp='2015-11-15T14:04:00Z'>14:04</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+(for 0.11 that is)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447618140' id='437290'>
+<a class='timestamp' href='#437290'><time timestamp='2015-11-15T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+oh heh, that really is annoying.  turns out this was already broken once in the opposite direction, and sdaftuar fixed it in master 3 weeks ago.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447618200' id='437291'>
+<a class='timestamp' href='#437291'><time timestamp='2015-11-15T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but Luke-Jr the version of the cltv rpc test in 0.11 should work with 0.11?  did you manually run the new one against it instead of the one in the branch/tag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447618260' id='437292'>
+<a class='timestamp' href='#437292'><time timestamp='2015-11-15T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+morcos: IIRC I was backporting a newer test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447618320' id='437293'>
+<a class='timestamp' href='#437293'><time timestamp='2015-11-15T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+well either way, at least as of now, the version in 0.11 has the old meaning of the arguments and works, and the version in master has the new meaning and works.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447618920' id='437294'>
+<a class='timestamp' href='#437294'><time timestamp='2015-11-15T20:22:00Z'>20:22</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Oh so I think I was confused.  sendFreeTransactions is defaulted off for both QT and bitcoind?  those damn QT config settings always confuse me.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447621380' id='437295'>
+<a class='timestamp' href='#437295'><time timestamp='2015-11-15T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-1'> GitHub64</span>&gt;
+[bitcoin] morcos opened pull request #7021: add bip65 tests to rpc-tests.sh -extended (in 0.11 branch) (0.11...11rpcfixups) <a href="https://github.com/bitcoin/bitcoin/pull/7021" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7021</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447621800' id='437296'>
+<a class='timestamp' href='#437296'><time timestamp='2015-11-15T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-15'> GitHub84</span>&gt;
+[bitcoin] morcos opened pull request #7022: Change default block priority size to 0 (master...defaultPrioritySize) <a href="https://github.com/bitcoin/bitcoin/pull/7022" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7022</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447622220' id='437297'>
+<a class='timestamp' href='#437297'><time timestamp='2015-11-15T21:17:00Z'>21:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+gmaxwell: heh, funny, I hadnt even read scrollback and did a similar calculation for the relay network:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447622220' id='437298'>
+<a class='timestamp' href='#437298'><time timestamp='2015-11-15T21:17:00Z'>21:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+if you model the relay network as a pipe from the first node to receive any given block to the last node which will receive that block, it has an effective throughput of ~512kbps in the best case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1447622220' id='437299'>
+<a class='timestamp' href='#437299'><time timestamp='2015-11-15T21:17:00Z'>21:17</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+so thats about right
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

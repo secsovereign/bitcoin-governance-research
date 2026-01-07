@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-07-29
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-07-29' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:18 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-06-29">&lt;</a><span class='header'>    July 2020     </span><a href="/bitcoin-core-dev/2020-08-29">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2020-07-01">1</a>  2  3  4  &#x000A; <a class="" href="/bitcoin-core-dev/2020-07-05">5</a>  <a class="" href="/bitcoin-core-dev/2020-07-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-07-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-07-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-07-09">9</a> <a class="" href="/bitcoin-core-dev/2020-07-10">10</a> <a class="" href="/bitcoin-core-dev/2020-07-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-07-12">12</a> <a class="" href="/bitcoin-core-dev/2020-07-13">13</a> <a class="" href="/bitcoin-core-dev/2020-07-14">14</a> <a class="" href="/bitcoin-core-dev/2020-07-15">15</a> <a class="" href="/bitcoin-core-dev/2020-07-16">16</a> <a class="" href="/bitcoin-core-dev/2020-07-17">17</a> <a class="" href="/bitcoin-core-dev/2020-07-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-07-19">19</a> <a class="" href="/bitcoin-core-dev/2020-07-20">20</a> <a class="" href="/bitcoin-core-dev/2020-07-21">21</a> <a class="" href="/bitcoin-core-dev/2020-07-22">22</a> <a class="" href="/bitcoin-core-dev/2020-07-23">23</a> <a class="" href="/bitcoin-core-dev/2020-07-24">24</a> <a class="" href="/bitcoin-core-dev/2020-07-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-07-26">26</a> <a class="" href="/bitcoin-core-dev/2020-07-27">27</a> <a class="" href="/bitcoin-core-dev/2020-07-28">28</a> <a class="current" href="/bitcoin-core-dev/2020-07-29">29</a> <a class="" href="/bitcoin-core-dev/2020-07-30">30</a> <a class="" href="/bitcoin-core-dev/2020-07-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1595980800' id='396797'>
+<a class='timestamp' href='#396797'><time timestamp='2020-07-29T00:00:00Z'>00:00</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+well, i dunno, the wtxidrelay code was originally written before the 0.20 branchoff, so backporting shouldn&#x27;t be terrible, but it&#x27;s a much bigger change than i think necessary, so just wanted to mention other alternatives
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595980860' id='396798'>
+<a class='timestamp' href='#396798'><time timestamp='2020-07-29T00:01:00Z'>00:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s probably independently useful to make AreInputsStandard reject WITNESS_UNKNOWN- it&#x27;s not a semantics change as such spends are rejected by the script verifier anyway, but it&#x27;d make that happen before script execution is triggered
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595980980' id='396799'>
+<a class='timestamp' href='#396799'><time timestamp='2020-07-29T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jnewbery has a draft backport of wtxid relay already fwiw
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981040' id='396800'>
+<a class='timestamp' href='#396800'><time timestamp='2020-07-29T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yeah i agree with that. if we did make that change, that would help with the transaction-change case that came up in wtxid-relay review, i think ariard flagged it. ie a taproot transaction has a child transaction, that causes pre-taproot nodes to redownlaod the parent (as a txid) repeatedly, only to reject
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981040' id='396801'>
+<a class='timestamp' href='#396801'><time timestamp='2020-07-29T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+transaction-chain*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981100' id='396802'>
+<a class='timestamp' href='#396802'><time timestamp='2020-07-29T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981100' id='396803'>
+<a class='timestamp' href='#396803'><time timestamp='2020-07-29T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i missed that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981280' id='396804'>
+<a class='timestamp' href='#396804'><time timestamp='2020-07-29T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+if we are serious about backporting, we should get your follow on pr merged too, as i guess we&#x27;d wnat to backport that as well?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981280' id='396805'>
+<a class='timestamp' href='#396805'><time timestamp='2020-07-29T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i have a PR that conflicts with yours and would make the backport worse if it were merged first
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981400' id='396806'>
+<a class='timestamp' href='#396806'><time timestamp='2020-07-29T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+oh, jnewbery pr&#x27;d already #19606
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595981400' id='396807'>
+<a class='timestamp' href='#396807'><time timestamp='2020-07-29T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19606" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19606</a> | Backport wtxid relay to v0.20 by jnewbery · Pull Request #19606 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595991840' id='396808'>
+<a class='timestamp' href='#396808'><time timestamp='2020-07-29T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #19617: doc: Clang 8 or later is required with FORCE_USE_SYSTEM_CLANG (master...note_that_clang_8_is_required_with_force_system_clang) <a href="https://github.com/bitcoin/bitcoin/pull/19617" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19617</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595994000' id='396809'>
+<a class='timestamp' href='#396809'><time timestamp='2020-07-29T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] TheBlueMatt closed pull request #15481: Restrict timestamp when mining a diff-adjustment block to prev-600 (master...2019-02-600s-gbt) <a href="https://github.com/bitcoin/bitcoin/pull/15481" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15481</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595996940' id='396810'>
+<a class='timestamp' href='#396810'><time timestamp='2020-07-29T04:29:00Z'>04:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #19518: Simplify IsFinalTx logic. (master...IsFinalTx) <a href="https://github.com/bitcoin/bitcoin/pull/19518" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19518</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1595999940' id='396811'>
+<a class='timestamp' href='#396811'><time timestamp='2020-07-29T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+did gmax&#x27;s github get hacked?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596000120' id='396812'>
+<a class='timestamp' href='#396812'><time timestamp='2020-07-29T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+no I think he&#x27;s just goofin&#x27; while doing mutation testing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596000180' id='396813'>
+<a class='timestamp' href='#396813'><time timestamp='2020-07-29T05:23:00Z'>05:23</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+half of it seemed incomprehensible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596000660' id='396814'>
+<a class='timestamp' href='#396814'><time timestamp='2020-07-29T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+maybe gmax&#x27;s brain got snowcrashed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596001860' id='396815'>
+<a class='timestamp' href='#396815'><time timestamp='2020-07-29T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: pretty sure it&#x27;s him :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002040' id='396816'>
+<a class='timestamp' href='#396816'><time timestamp='2020-07-29T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 5 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a41ae6805338...2f71a1ea3566" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a41ae6805338...2f71a1ea3566</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002040' id='396817'>
+<a class='timestamp' href='#396817'><time timestamp='2020-07-29T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b223111 James O&#x27;Beirne: txdb: add CCoinsViewDB::ChangeCacheSize
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002040' id='396818'>
+<a class='timestamp' href='#396818'><time timestamp='2020-07-29T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f36aaa6 James O&#x27;Beirne: Add CChainState::ResizeCoinsCaches
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002040' id='396819'>
+<a class='timestamp' href='#396819'><time timestamp='2020-07-29T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8ac3ef4 James O&#x27;Beirne: add ChainstateManager::MaybeRebalanceCaches()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002100' id='396820'>
+<a class='timestamp' href='#396820'><time timestamp='2020-07-29T05:55:00Z'>05:55</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #18637: coins: allow cache resize after init (master...2020-04-au.cache-resize) <a href="https://github.com/bitcoin/bitcoin/pull/18637" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/18637</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002880' id='396821'>
+<a class='timestamp' href='#396821'><time timestamp='2020-07-29T06:08:00Z'>06:08</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+#19590 haz acks by jonasschnelli, vasild and theStack if anyone iz inna mergin mood
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596002880' id='396822'>
+<a class='timestamp' href='#396822'><time timestamp='2020-07-29T06:08:00Z'>06:08</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/19590" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/19590</a> | p2p, refactor: add `CInv` transaction message helpers; use in net processing by jonatack · Pull Request #19590 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596005460' id='396823'>
+<a class='timestamp' href='#396823'><time timestamp='2020-07-29T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-12'> Kiminuo</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/pull/17977#issuecomment-665415974" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/17977#issuecomment-665415974</a> - playful mood?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596021180' id='396824'>
+<a class='timestamp' href='#396824'><time timestamp='2020-07-29T11:13:00Z'>11:13</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+achow101, 1337 h4x3d maeb3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596022320' id='396825'>
+<a class='timestamp' href='#396825'><time timestamp='2020-07-29T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/2f71a1ea3566...a76ccb01b964" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/2f71a1ea3566...a76ccb01b964</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596022320' id='396826'>
+<a class='timestamp' href='#396826'><time timestamp='2020-07-29T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 100c64a Vasil Dimov: net: document `enum Network`
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596022320' id='396827'>
+<a class='timestamp' href='#396827'><time timestamp='2020-07-29T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master bcfebb6 Vasil Dimov: net: save the network type explicitly in CNetAddr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596022320' id='396828'>
+<a class='timestamp' href='#396828'><time timestamp='2020-07-29T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master a76ccb0 Wladimir J. van der Laan: Merge #19534: net: save the network type explicitly in CNetAddr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596022320' id='396829'>
+<a class='timestamp' href='#396829'><time timestamp='2020-07-29T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #19534: net: save the network type explicitly in CNetAddr (master...explicit_network_type_in_CNetAddr) <a href="https://github.com/bitcoin/bitcoin/pull/19534" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19534</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596028860' id='396830'>
+<a class='timestamp' href='#396830'><time timestamp='2020-07-29T13:21:00Z'>13:21</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ryanofsky opened pull request #19619: Remove wallet.dat path handling from wallet.cpp, rpcwallet.cpp (master...pr/path) <a href="https://github.com/bitcoin/bitcoin/pull/19619" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19619</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596029040' id='396831'>
+<a class='timestamp' href='#396831'><time timestamp='2020-07-29T13:24:00Z'>13:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] instagibbs closed pull request #19520: refactor: Rename signal TransactionRemovedFromMempool to better describe behavior (master...not_block) <a href="https://github.com/bitcoin/bitcoin/pull/19520" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19520</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596034380' id='396832'>
+<a class='timestamp' href='#396832'><time timestamp='2020-07-29T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a76ccb01b964...400f45ec9bab" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a76ccb01b964...400f45ec9bab</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596034380' id='396833'>
+<a class='timestamp' href='#396833'><time timestamp='2020-07-29T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2e9e637 fanquake: build: add -Wl,-z,separate-code to hardening flags
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596034380' id='396834'>
+<a class='timestamp' href='#396834'><time timestamp='2020-07-29T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 65d0f1a Wladimir J. van der Laan: devtools: Add security check for separate_code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596034380' id='396835'>
+<a class='timestamp' href='#396835'><time timestamp='2020-07-29T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 400f45e Wladimir J. van der Laan: Merge #19525: build: add -Wl,-z,separate-code to hardening flags
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596034440' id='396836'>
+<a class='timestamp' href='#396836'><time timestamp='2020-07-29T14:54:00Z'>14:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #19525: build: add -Wl,-z,separate-code to hardening flags (master...z_separate_code) <a href="https://github.com/bitcoin/bitcoin/pull/19525" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19525</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596037080' id='396837'>
+<a class='timestamp' href='#396837'><time timestamp='2020-07-29T15:38:00Z'>15:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sdaftuar opened pull request #19620: Add txids with non-standard inputs to reject filter (master...2020-07-reject-unknown-wit) <a href="https://github.com/bitcoin/bitcoin/pull/19620" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19620</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596038640' id='396838'>
+<a class='timestamp' href='#396838'><time timestamp='2020-07-29T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+achow101, he&#x27;s been very amused by <a href="https://github.com/openai/gpt-3" class="link" target="_blank">https://github.com/openai/gpt-3</a> recently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596039840' id='396839'>
+<a class='timestamp' href='#396839'><time timestamp='2020-07-29T16:24:00Z'>16:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 6 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/400f45ec9bab...8db23349fe9b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/400f45ec9bab...8db23349fe9b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596039840' id='396840'>
+<a class='timestamp' href='#396840'><time timestamp='2020-07-29T16:24:00Z'>16:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 65fb880 Andrew Chow: Combine BerkeleyEnvironment::Verify into BerkeleyDatabase::Verify
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596039840' id='396841'>
+<a class='timestamp' href='#396841'><time timestamp='2020-07-29T16:24:00Z'>16:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4fe4b3b Andrew Chow: walletdb: track database file use as m_refcount within BerkeleyDatabase
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596039840' id='396842'>
+<a class='timestamp' href='#396842'><time timestamp='2020-07-29T16:24:00Z'>16:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d86efab Andrew Chow: walletdb: Move Db-&gt;open to BerkeleyDatabase::Open
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596039900' id='396843'>
+<a class='timestamp' href='#396843'><time timestamp='2020-07-29T16:25:00Z'>16:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #19335: wallet: Cleanup and separate BerkeleyDatabase and BerkeleyBatch (master...bdb-cleanup-refactors) <a href="https://github.com/bitcoin/bitcoin/pull/19335" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19335</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596042300' id='396844'>
+<a class='timestamp' href='#396844'><time timestamp='2020-07-29T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+taproot implementation review meeting in #bitcoin-core-pr-review now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596043380' id='396845'>
+<a class='timestamp' href='#396845'><time timestamp='2020-07-29T17:23:00Z'>17:23</time></a>
+&lt;<span class='nick nick-16'> CubicEarth</span>&gt;
+wumpus: channel seems empty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596043440' id='396846'>
+<a class='timestamp' href='#396846'><time timestamp='2020-07-29T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s #bitcoin-core-pr-reviews
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596043440' id='396847'>
+<a class='timestamp' href='#396847'><time timestamp='2020-07-29T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+with an s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596043440' id='396848'>
+<a class='timestamp' href='#396848'><time timestamp='2020-07-29T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh sorry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596043440' id='396849'>
+<a class='timestamp' href='#396849'><time timestamp='2020-07-29T17:24:00Z'>17:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+see <a href="https://bitcoincore.reviews/" class="link" target="_blank">https://bitcoincore.reviews/</a> 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596043500' id='396850'>
+<a class='timestamp' href='#396850'><time timestamp='2020-07-29T17:25:00Z'>17:25</time></a>
+&lt;<span class='nick nick-16'> CubicEarth</span>&gt;
+thanks :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596044400' id='396851'>
+<a class='timestamp' href='#396851'><time timestamp='2020-07-29T17:40:00Z'>17:40</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+sorry for the stupidly verbose channel name!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596052500' id='396852'>
+<a class='timestamp' href='#396852'><time timestamp='2020-07-29T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ariard opened pull request #19621: [RFC] Package-relay : sender-initiated (master...2020-07-sender-package-relay-poc) <a href="https://github.com/bitcoin/bitcoin/pull/19621" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19621</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596056520' id='396853'>
+<a class='timestamp' href='#396853'><time timestamp='2020-07-29T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #19622: build: Drop ancient hack in gitian-linux descriptor (master...200729-multilib) <a href="https://github.com/bitcoin/bitcoin/pull/19622" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19622</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062100' id='396854'>
+<a class='timestamp' href='#396854'><time timestamp='2020-07-29T22:35:00Z'>22:35</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+sipa: do we have a p2p version such that we can inform peers we only want to receive txs without any v1 inputs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062220' id='396855'>
+<a class='timestamp' href='#396855'><time timestamp='2020-07-29T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jeremyrubin: in general there is no way to negotiate relay policy with peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062220' id='396856'>
+<a class='timestamp' href='#396856'><time timestamp='2020-07-29T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and we in general have no knowledge about it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062220' id='396857'>
+<a class='timestamp' href='#396857'><time timestamp='2020-07-29T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the only exceptions are (1) segwit, which introduced a p2p change along with a consensus change and (2) bip133 feefilter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062280' id='396858'>
+<a class='timestamp' href='#396858'><time timestamp='2020-07-29T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as far as i know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062280' id='396859'>
+<a class='timestamp' href='#396859'><time timestamp='2020-07-29T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Why not do this? Would save a lot of bandwidth right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062340' id='396860'>
+<a class='timestamp' href='#396860'><time timestamp='2020-07-29T22:39:00Z'>22:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well conceptually it&#x27;s pretty strange, as the protocol cannot provide any guarantees about relay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062340' id='396861'>
+<a class='timestamp' href='#396861'><time timestamp='2020-07-29T22:39:00Z'>22:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+nodes are free to choose whatever rules
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062400' id='396862'>
+<a class='timestamp' href='#396862'><time timestamp='2020-07-29T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Is it though? feefilter is similar right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062400' id='396863'>
+<a class='timestamp' href='#396863'><time timestamp='2020-07-29T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so i&#x27;d feel uncomfortable with trying to do this explicitly... but for common cases it may make sense (not as a way to try to predict the full policy, but a &quot;heads up: i&#x27;m not interesting in transactions with property X&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062520' id='396864'>
+<a class='timestamp' href='#396864'><time timestamp='2020-07-29T22:42:00Z'>22:42</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+yeah i think we could make/backport an inputfilter message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062520' id='396865'>
+<a class='timestamp' href='#396865'><time timestamp='2020-07-29T22:42:00Z'>22:42</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+and you can add a couple useful ones, e.g. witness version, tapleaf version. Anything that is O(1) to answer about a txn you have
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062520' id='396866'>
+<a class='timestamp' href='#396866'><time timestamp='2020-07-29T22:42:00Z'>22:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m not sure it&#x27;s needed post wtxidrelay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062580' id='396867'>
+<a class='timestamp' href='#396867'><time timestamp='2020-07-29T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Well with wtxid relay you still get hit with 1 initial tx broadcast of something you don&#x27;t want
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062580' id='396868'>
+<a class='timestamp' href='#396868'><time timestamp='2020-07-29T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062580' id='396869'>
+<a class='timestamp' href='#396869'><time timestamp='2020-07-29T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but that&#x27;s rate limited by the total confirmation rate of the network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062640' id='396870'>
+<a class='timestamp' href='#396870'><time timestamp='2020-07-29T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the upper bound isn&#x27;t changed by receiving and rejecting things that the network will eventually confirm, as long as it doesn&#x27;t scale with the number of peers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062700' id='396871'>
+<a class='timestamp' href='#396871'><time timestamp='2020-07-29T22:45:00Z'>22:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(and bandwidth per connection can already be trivially DoS&#x27;ed; the solution to that is measuring it, and slowing down processing if exceeded)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062760' id='396872'>
+<a class='timestamp' href='#396872'><time timestamp='2020-07-29T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+:shrugs:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062820' id='396873'>
+<a class='timestamp' href='#396873'><time timestamp='2020-07-29T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+my point is: this won&#x27;t change per-connection bandwidth in attack scenarios
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062820' id='396874'>
+<a class='timestamp' href='#396874'><time timestamp='2020-07-29T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the goal should be avoided network-wide bandwidth waste by honest nodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062820' id='396875'>
+<a class='timestamp' href='#396875'><time timestamp='2020-07-29T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I think it does actually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062880' id='396876'>
+<a class='timestamp' href='#396876'><time timestamp='2020-07-29T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Because it gives you a better justification to ban a node
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062880' id='396877'>
+<a class='timestamp' href='#396877'><time timestamp='2020-07-29T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+sending you lots of e.g. v3 stuff you can&#x27;t handle and silently reject
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596062880' id='396878'>
+<a class='timestamp' href='#396878'><time timestamp='2020-07-29T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there will always things you can&#x27;t negotiate, e.g. sending transactions with unknown parents
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063000' id='396879'>
+<a class='timestamp' href='#396879'><time timestamp='2020-07-29T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and sure, you could set some rate limit on those... but even then, would it be ok if suddenly the entire network would start being bombared with orphans at whatever that limit it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063000' id='396880'>
+<a class='timestamp' href='#396880'><time timestamp='2020-07-29T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+my view is that we shouldn&#x27;t bother with setting explicit limits on &quot;how&quot; misbehaving a peer is allowed to be; instead we should track how many resources we&#x27;re spending on behalf of some peer, and if our aggregate resource usage is too high, throttle the worst ones
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063060' id='396881'>
+<a class='timestamp' href='#396881'><time timestamp='2020-07-29T22:51:00Z'>22:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but - that&#x27;s about attack cases - we should absolutely make p2p affordances to avoid wasting work just through honest nodes behaving correctly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063060' id='396882'>
+<a class='timestamp' href='#396882'><time timestamp='2020-07-29T22:51:00Z'>22:51</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+but specifically if we&#x27;re looking at what we can backport easily to old node versions, allowing a witnessversion filter message would be relatively small to implement the logic to disconnect peers who don&#x27;t respect it for backport
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063120' id='396883'>
+<a class='timestamp' href='#396883'><time timestamp='2020-07-29T22:52:00Z'>22:52</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+and only new nodes need to implement the logic around not forwarding it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063120' id='396884'>
+<a class='timestamp' href='#396884'><time timestamp='2020-07-29T22:52:00Z'>22:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and i believe - but am willing to be convinced otherwise - that wtxidrelay actually already fixes the asymptotic behavior there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063120' id='396885'>
+<a class='timestamp' href='#396885'><time timestamp='2020-07-29T22:52:00Z'>22:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we can go further to improve the constant factors a bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063120' id='396886'>
+<a class='timestamp' href='#396886'><time timestamp='2020-07-29T22:52:00Z'>22:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but i&#x27;m not sure that&#x27;s worth the effort
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063120' id='396887'>
+<a class='timestamp' href='#396887'><time timestamp='2020-07-29T22:52:00Z'>22:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and if so, to what extent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063180' id='396888'>
+<a class='timestamp' href='#396888'><time timestamp='2020-07-29T22:53:00Z'>22:53</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I think it depends on the model
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063180' id='396889'>
+<a class='timestamp' href='#396889'><time timestamp='2020-07-29T22:53:00Z'>22:53</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I think it&#x27;s still possible to get all your peers to relay something to you per-input spent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063180' id='396890'>
+<a class='timestamp' href='#396890'><time timestamp='2020-07-29T22:53:00Z'>22:53</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+and a rule banning v1 would make this impossible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063240' id='396891'>
+<a class='timestamp' href='#396891'><time timestamp='2020-07-29T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if they&#x27;re honest peers, they&#x27;ll never send you more on average than what can be confirmed by the network (modulo some RBF/expiration epsilon, which have economic incentives against)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063300' id='396892'>
+<a class='timestamp' href='#396892'><time timestamp='2020-07-29T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so sure, maybe 95% of what peers send you you cannot accept if you&#x27;re too far behind, but the total won&#x27;t be much different from what you&#x27;d be processing in case nobody was using future feature and all those transactions were acceptable to you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063300' id='396893'>
+<a class='timestamp' href='#396893'><time timestamp='2020-07-29T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+So let&#x27;s say I gossip to the network simultaneously N different txns spending an input X, and assume they spread uniformly. Every peer will attempt to relay a different txn to you right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063360' id='396894'>
+<a class='timestamp' href='#396894'><time timestamp='2020-07-29T22:56:00Z'>22:56</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I guess this is true even without v1/v0?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063420' id='396895'>
+<a class='timestamp' href='#396895'><time timestamp='2020-07-29T22:57:00Z'>22:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah - and arguably that&#x27;s an attack already
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063420' id='396896'>
+<a class='timestamp' href='#396896'><time timestamp='2020-07-29T22:57:00Z'>22:57</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Ah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063420' id='396897'>
+<a class='timestamp' href='#396897'><time timestamp='2020-07-29T22:57:00Z'>22:57</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+but it&#x27;s not an attack <b>*by your peers*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063420' id='396898'>
+<a class='timestamp' href='#396898'><time timestamp='2020-07-29T22:57:00Z'>22:57</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it&#x27;s by a third party somewhere
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063420' id='396899'>
+<a class='timestamp' href='#396899'><time timestamp='2020-07-29T22:57:00Z'>22:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, that&#x27;s fair
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063480' id='396900'>
+<a class='timestamp' href='#396900'><time timestamp='2020-07-29T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but as soon as you&#x27;re a few steps removed from the attacker, the only nodes who&#x27;ll end up processing more than 1 version are those on borders of &quot;equal propagation speed&quot; partitions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063480' id='396901'>
+<a class='timestamp' href='#396901'><time timestamp='2020-07-29T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(well, plus 1 version that ends up in a block)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063540' id='396902'>
+<a class='timestamp' href='#396902'><time timestamp='2020-07-29T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I guess the general fix for this would be some sort of input tracking relay system
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063540' id='396903'>
+<a class='timestamp' href='#396903'><time timestamp='2020-07-29T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+where you know which inputs your peer&#x27;s mempool is spending, and what feerate they&#x27;re getting
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063600' id='396904'>
+<a class='timestamp' href='#396904'><time timestamp='2020-07-29T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+And decide to relay or not based on that basis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063600' id='396905'>
+<a class='timestamp' href='#396905'><time timestamp='2020-07-29T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Some bigger notion of understanding conflicts I guess.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1596063660' id='396906'>
+<a class='timestamp' href='#396906'><time timestamp='2020-07-29T23:01:00Z'>23:01</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Then if you ever see something you don&#x27;t like for a given input, you can tell your peers you don&#x27;t want it. Seems complex tho
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

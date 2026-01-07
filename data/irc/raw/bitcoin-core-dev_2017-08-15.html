@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-08-15
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-08-15' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-07-15">&lt;</a><span class='header'>   August 2017    </span><a href="/bitcoin-core-dev/2017-09-15">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;       <a class="" href="/bitcoin-core-dev/2017-08-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-08-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-08-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-08-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-08-05">5</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-08-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-08-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-08-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-08-09">9</a> <a class="" href="/bitcoin-core-dev/2017-08-10">10</a> <a class="" href="/bitcoin-core-dev/2017-08-11">11</a> <a class="" href="/bitcoin-core-dev/2017-08-12">12</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-08-13">13</a> <a class="" href="/bitcoin-core-dev/2017-08-14">14</a> <a class="current" href="/bitcoin-core-dev/2017-08-15">15</a> <a class="" href="/bitcoin-core-dev/2017-08-16">16</a> <a class="" href="/bitcoin-core-dev/2017-08-17">17</a> <a class="" href="/bitcoin-core-dev/2017-08-18">18</a> <a class="" href="/bitcoin-core-dev/2017-08-19">19</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-08-20">20</a> <a class="" href="/bitcoin-core-dev/2017-08-21">21</a> <a class="" href="/bitcoin-core-dev/2017-08-22">22</a> <a class="" href="/bitcoin-core-dev/2017-08-23">23</a> <a class="" href="/bitcoin-core-dev/2017-08-24">24</a> <a class="" href="/bitcoin-core-dev/2017-08-25">25</a> <a class="" href="/bitcoin-core-dev/2017-08-26">26</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-08-27">27</a> <a class="" href="/bitcoin-core-dev/2017-08-28">28</a> <a class="" href="/bitcoin-core-dev/2017-08-29">29</a> <a class="" href="/bitcoin-core-dev/2017-08-30">30</a> <a class="" href="/bitcoin-core-dev/2017-08-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1502772720' id='563963'>
+<a class='timestamp' href='#563963'><time timestamp='2017-08-15T04:52:00Z'>04:52</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+Hey... I worked out a small speedup to initial blockchain load from bootstrap.dat (and likely rescan operations)... If you&#x27;re interested it would be best implemented as a separate thread in the bitcoin node...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502772720' id='563964'>
+<a class='timestamp' href='#563964'><time timestamp='2017-08-15T04:52:00Z'>04:52</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+<a href="https://gist.github.com/dermoth/b5462462d9edc69f6de79abcfcd017d5" class="link" target="_blank">https://gist.github.com/dermoth/b5462462d9edc69f6de79abcfcd017d5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502772840' id='563965'>
+<a class='timestamp' href='#563965'><time timestamp='2017-08-15T04:54:00Z'>04:54</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+the details are in comments, but basically I ensure each blockfile is loaded in OS cache before bitcoin-qt opens them while rescanning the whole blockchain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502773920' id='563966'>
+<a class='timestamp' href='#563966'><time timestamp='2017-08-15T05:12:00Z'>05:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+dermoth: did you benchmark it? did it help?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774220' id='563967'>
+<a class='timestamp' href='#563967'><time timestamp='2017-08-15T05:17:00Z'>05:17</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+the percent per hour went from around 4 to 7... nothing really scientific
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774280' id='563968'>
+<a class='timestamp' href='#563968'><time timestamp='2017-08-15T05:18:00Z'>05:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+wumpus: I was looking at the rc1 release notes and I see there isn&#x27;t a list of commits in it... are we dropping them or are they just not there yet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774340' id='563969'>
+<a class='timestamp' href='#563969'><time timestamp='2017-08-15T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+but I know it&#x27;s not going to spend much time on IO for the SSD, so the slowness comes manly from reading blocks.... There&#x27;s a couple other things loading those disks too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774340' id='563970'>
+<a class='timestamp' href='#563970'><time timestamp='2017-08-15T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+wumpus: (and do you need help with them)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774340' id='563971'>
+<a class='timestamp' href='#563971'><time timestamp='2017-08-15T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+I just thought I&#x27;d share...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774340' id='563972'>
+<a class='timestamp' href='#563972'><time timestamp='2017-08-15T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Thanks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774520' id='563973'>
+<a class='timestamp' href='#563973'><time timestamp='2017-08-15T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: i assume the final list of commits will only be added when final
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774520' id='563974'>
+<a class='timestamp' href='#563974'><time timestamp='2017-08-15T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and iirc wumpus has some tooling for that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502774640' id='563975'>
+<a class='timestamp' href='#563975'><time timestamp='2017-08-15T05:24:00Z'>05:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+OK. It&#x27;s the best part of the release notes (IMO) :) so I just wanted to make sure we weren&#x27;t losing it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502775000' id='563976'>
+<a class='timestamp' href='#563976'><time timestamp='2017-08-15T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+timed two days&#x27;s import times each without and with the script running... without: Jan 15-16: 73s; Jan 16-17: 71s; -- with: Jan 18-19: 58s, Jan 19-20: 67s
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502775060' id='563977'>
+<a class='timestamp' href='#563977'><time timestamp='2017-08-15T05:31:00Z'>05:31</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+not a big diff indeed, but does speed up a bit at least on my setup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502775120' id='563978'>
+<a class='timestamp' href='#563978'><time timestamp='2017-08-15T05:32:00Z'>05:32</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+that&#x27;s blocks from January this year...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502775480' id='563979'>
+<a class='timestamp' href='#563979'><time timestamp='2017-08-15T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+ugh, it&#x27;s ionice not schedtool I should have been using :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502775660' id='563980'>
+<a class='timestamp' href='#563980'><time timestamp='2017-08-15T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-5'> dermoth</span>&gt;
+ionice -c 3 &lt;command&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502779380' id='563981'>
+<a class='timestamp' href='#563981'><time timestamp='2017-08-15T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+gmaxwell: yes, I&#x27;ll add that in later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502779440' id='563982'>
+<a class='timestamp' href='#563982'><time timestamp='2017-08-15T06:44:00Z'>06:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the only thing I&#x27;ve done is sync from the wiki, and then I had to get a list of names from git too, as crediting only the people mentioned on the wiki was a bit strange
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502780820' id='563983'>
+<a class='timestamp' href='#563983'><time timestamp='2017-08-15T07:07:00Z'>07:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] zhiweiwong96 opened pull request #11051: Test branch (master...testBranch) <a href="https://github.com/bitcoin/bitcoin/pull/11051" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11051</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502781300' id='563984'>
+<a class='timestamp' href='#563984'><time timestamp='2017-08-15T07:15:00Z'>07:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #11051: Test branch (master...testBranch) <a href="https://github.com/bitcoin/bitcoin/pull/11051" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11051</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502781960' id='563985'>
+<a class='timestamp' href='#563985'><time timestamp='2017-08-15T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-7'> arowser</span>&gt;
+Hi, if exists a place that can download the dbg file that split from the released bitcoin core ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782260' id='563986'>
+<a class='timestamp' href='#563986'><time timestamp='2017-08-15T07:31:00Z'>07:31</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+arowser: dbg? You mean the debug symbols?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782260' id='563987'>
+<a class='timestamp' href='#563987'><time timestamp='2017-08-15T07:31:00Z'>07:31</time></a>
+&lt;<span class='nick nick-7'> arowser</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782260' id='563988'>
+<a class='timestamp' href='#563988'><time timestamp='2017-08-15T07:31:00Z'>07:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+AFAIK no one hosts that - they&#x27;re huge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782380' id='563989'>
+<a class='timestamp' href='#563989'><time timestamp='2017-08-15T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+arowser: for which version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782380' id='563990'>
+<a class='timestamp' href='#563990'><time timestamp='2017-08-15T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-7'> arowser</span>&gt;
+0.14.2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782440' id='563991'>
+<a class='timestamp' href='#563991'><time timestamp='2017-08-15T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+hmm. I have those locally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782440' id='563992'>
+<a class='timestamp' href='#563992'><time timestamp='2017-08-15T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t have them at the moment (they&#x27;re easy to build though)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782500' id='563993'>
+<a class='timestamp' href='#563993'><time timestamp='2017-08-15T07:35:00Z'>07:35</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+is there a command line way to put release assets on github? I can upload mine to github, but I&#x27;m away from that computer right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782560' id='563994'>
+<a class='timestamp' href='#563994'><time timestamp='2017-08-15T07:36:00Z'>07:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+there might be a way through the API
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782560' id='563995'>
+<a class='timestamp' href='#563995'><time timestamp='2017-08-15T07:36:00Z'>07:36</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+bleh. the API is a mess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782620' id='563996'>
+<a class='timestamp' href='#563996'><time timestamp='2017-08-15T07:37:00Z'>07:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that might be, but it&#x27;s the way to do website things though e.g. a command line tool. Easier at least than reverse-engineering what the website does...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782800' id='563997'>
+<a class='timestamp' href='#563997'><time timestamp='2017-08-15T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #10752: Use quoted form when including primitives/transaction.h and wallet/wallet.h (master...transaction-h) <a href="https://github.com/bitcoin/bitcoin/pull/10752" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10752</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782860' id='563998'>
+<a class='timestamp' href='#563998'><time timestamp='2017-08-15T07:41:00Z'>07:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] JennHorng opened pull request #11052: Jennhorng dev (master...jennhorng-dev) <a href="https://github.com/bitcoin/bitcoin/pull/11052" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11052</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502782920' id='563999'>
+<a class='timestamp' href='#563999'><time timestamp='2017-08-15T07:42:00Z'>07:42</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #11052: Jennhorng dev (master...jennhorng-dev) <a href="https://github.com/bitcoin/bitcoin/pull/11052" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11052</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502783880' id='564000'>
+<a class='timestamp' href='#564000'><time timestamp='2017-08-15T07:58:00Z'>07:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+<a href="https://developer.github.com/v3/repos/releases/#upload-a-release-asset" class="link" target="_blank">https://developer.github.com/v3/repos/releases/#upload-a-release-asset</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502785620' id='564001'>
+<a class='timestamp' href='#564001'><time timestamp='2017-08-15T08:27:00Z'>08:27</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+arowser: <a href="https://github.com/achow101/bitcoin/releases/tag/v0.14.2" class="link" target="_blank">https://github.com/achow101/bitcoin/releases/tag/v0.14.2</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502787060' id='564002'>
+<a class='timestamp' href='#564002'><time timestamp='2017-08-15T08:51:00Z'>08:51</time></a>
+&lt;<span class='nick nick-7'> arowser</span>&gt;
+achow101:  thank you, downloading...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502787720' id='564003'>
+<a class='timestamp' href='#564003'><time timestamp='2017-08-15T09:02:00Z'>09:02</time></a>
+&lt;<span class='nick nick-7'> arowser</span>&gt;
+wumus: its not easy to me if not use gitian-builder, and my gitian-builder is broker now :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502788500' id='564004'>
+<a class='timestamp' href='#564004'><time timestamp='2017-08-15T09:15:00Z'>09:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+arowser, achow101, wumpus: would those *-debug.tar.gz files do the job: <a href="https://bitcoin.jonasschnelli.ch/build/177" class="link" target="_blank">https://bitcoin.jonasschnelli.ch/build/177</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502788500' id='564005'>
+<a class='timestamp' href='#564005'><time timestamp='2017-08-15T09:15:00Z'>09:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(its 0.14.1)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502788500' id='564006'>
+<a class='timestamp' href='#564006'><time timestamp='2017-08-15T09:15:00Z'>09:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(its 0.14.2)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502791140' id='564007'>
+<a class='timestamp' href='#564007'><time timestamp='2017-08-15T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+arowser: I meant it&#x27;s easy for me, and I&#x27;d have built them if achow101 and jonasschnelli hadn&#x27;t jump in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502791200' id='564008'>
+<a class='timestamp' href='#564008'><time timestamp='2017-08-15T10:00:00Z'>10:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810100' id='564009'>
+<a class='timestamp' href='#564009'><time timestamp='2017-08-15T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+MarcoFalke: is nc something we could use in tests?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810100' id='564010'>
+<a class='timestamp' href='#564010'><time timestamp='2017-08-15T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Sorry, what is nc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810100' id='564011'>
+<a class='timestamp' href='#564011'><time timestamp='2017-08-15T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+netcat
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810160' id='564012'>
+<a class='timestamp' href='#564012'><time timestamp='2017-08-15T15:16:00Z'>15:16</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+The tests should run on windows as well, so I don&#x27;t think this would be possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810160' id='564013'>
+<a class='timestamp' href='#564013'><time timestamp='2017-08-15T15:16:00Z'>15:16</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810220' id='564014'>
+<a class='timestamp' href='#564014'><time timestamp='2017-08-15T15:17:00Z'>15:17</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+the idea is to avoid files, have the blocknotify script write to a socket, then read it from python
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810460' id='564015'>
+<a class='timestamp' href='#564015'><time timestamp='2017-08-15T15:21:00Z'>15:21</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+oh wait. I am sure blocknotify.py is unlikely to pass on native windows, due to echo.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810460' id='564016'>
+<a class='timestamp' href='#564016'><time timestamp='2017-08-15T15:21:00Z'>15:21</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+So my objection is invalid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810700' id='564017'>
+<a class='timestamp' href='#564017'><time timestamp='2017-08-15T15:25:00Z'>15:25</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Though, I am not convinced this warrants the extra dependency. It should be doable with just files.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502810940' id='564018'>
+<a class='timestamp' href='#564018'><time timestamp='2017-08-15T15:29:00Z'>15:29</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+we can also ship util scripts to be used in these tests?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502811240' id='564019'>
+<a class='timestamp' href='#564019'><time timestamp='2017-08-15T15:34:00Z'>15:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+There should be no &quot;loose&quot; scripts hanging around. You can extend ./test_framework/util.py with helper functions.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502811420' id='564020'>
+<a class='timestamp' href='#564020'><time timestamp='2017-08-15T15:37:00Z'>15:37</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812020' id='564021'>
+<a class='timestamp' href='#564021'><time timestamp='2017-08-15T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj opened pull request #11053: refactor: Make all #includes relative to project root (master...2017_08_includes_absolute) <a href="https://github.com/bitcoin/bitcoin/pull/11053" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11053</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812080' id='564022'>
+<a class='timestamp' href='#564022'><time timestamp='2017-08-15T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/140de14a1222...3841aaf05963" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/140de14a1222...3841aaf05963</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812080' id='564023'>
+<a class='timestamp' href='#564023'><time timestamp='2017-08-15T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f4c3d2c Gregory Maxwell: Enable disablesafemode by default....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812080' id='564024'>
+<a class='timestamp' href='#564024'><time timestamp='2017-08-15T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3841aaf Wladimir J. van der Laan: Merge #11008: Enable disablesafemode by default....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812140' id='564025'>
+<a class='timestamp' href='#564025'><time timestamp='2017-08-15T15:49:00Z'>15:49</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #11008: Enable disablesafemode by default. (master...no-safe-mode) <a href="https://github.com/bitcoin/bitcoin/pull/11008" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11008</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812320' id='564026'>
+<a class='timestamp' href='#564026'><time timestamp='2017-08-15T15:52:00Z'>15:52</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+^ does this require mention in the release notes for 0.16?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812560' id='564027'>
+<a class='timestamp' href='#564027'><time timestamp='2017-08-15T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+oh already listed: #11054 :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812560' id='564028'>
+<a class='timestamp' href='#564028'><time timestamp='2017-08-15T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #11055: getreceivedbyaddress should return error if called with address not owned by the wallet (master...getreceivedbyaddress_error) <a href="https://github.com/bitcoin/bitcoin/pull/11055" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11055</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502812680' id='564029'>
+<a class='timestamp' href='#564029'><time timestamp='2017-08-15T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11054" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11054</a> | TODO for release notes 0.16.0 · Issue #11054 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502815140' id='564030'>
+<a class='timestamp' href='#564030'><time timestamp='2017-08-15T16:39:00Z'>16:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: i think #7522 broke version detection for gitian. v0.15.0rc1 binaries show -dirty :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502815200' id='564031'>
+<a class='timestamp' href='#564031'><time timestamp='2017-08-15T16:40:00Z'>16:40</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+imo that&#x27;s no big deal for rc1. I&#x27;ll try to track down the issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502815200' id='564032'>
+<a class='timestamp' href='#564032'><time timestamp='2017-08-15T16:40:00Z'>16:40</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: ^^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502815260' id='564033'>
+<a class='timestamp' href='#564033'><time timestamp='2017-08-15T16:41:00Z'>16:41</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502815320' id='564034'>
+<a class='timestamp' href='#564034'><time timestamp='2017-08-15T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: i&#x27;m just assuming 7522 is what did it, as I can&#x27;t think of what else might&#x27;ve changed in that regard
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502815440' id='564035'>
+<a class='timestamp' href='#564035'><time timestamp='2017-08-15T16:44:00Z'>16:44</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/7522" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/7522</a> | Bugfix: Only use git for build info if the repository is actually the right one by luke-jr · Pull Request #7522 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502818140' id='564036'>
+<a class='timestamp' href='#564036'><time timestamp='2017-08-15T17:29:00Z'>17:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] instagibbs opened pull request #11056: disable jni in builds (master...disablejni) <a href="https://github.com/bitcoin/bitcoin/pull/11056" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11056</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502819640' id='564037'>
+<a class='timestamp' href='#564037'><time timestamp='2017-08-15T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+luke-jr: will you kill me if i suggest simply reverting 7522? the fixes that i see require moving several things around
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502820540' id='564038'>
+<a class='timestamp' href='#564038'><time timestamp='2017-08-15T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+could someone give 11049 a kick
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502821320' id='564039'>
+<a class='timestamp' href='#564039'><time timestamp='2017-08-15T18:22:00Z'>18:22</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+instagibbs: done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502822700' id='564040'>
+<a class='timestamp' href='#564040'><time timestamp='2017-08-15T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3841aaf05963...64e66bb26288" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3841aaf05963...64e66bb26288</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502822700' id='564041'>
+<a class='timestamp' href='#564041'><time timestamp='2017-08-15T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d3d946a practicalswift: Pass SendCoinsRecipient (208 bytes) by const reference
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502822700' id='564042'>
+<a class='timestamp' href='#564042'><time timestamp='2017-08-15T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 64e66bb Jonas Schnelli: Merge #10964: Pass SendCoinsRecipient (208 bytes) by reference...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502822700' id='564043'>
+<a class='timestamp' href='#564043'><time timestamp='2017-08-15T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #10964: Pass SendCoinsRecipient (208 bytes) by reference (master...pass-big-parameters-by-reference) <a href="https://github.com/bitcoin/bitcoin/pull/10964" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10964</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502823300' id='564044'>
+<a class='timestamp' href='#564044'><time timestamp='2017-08-15T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Just catching up the last 1 week on mainnet with 0.15.0rc1 and the GUI is very responsive... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502824620' id='564045'>
+<a class='timestamp' href='#564045'><time timestamp='2017-08-15T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+gitian builders: v0.15.0rc1 detached sigs have been pushed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502825460' id='564046'>
+<a class='timestamp' href='#564046'><time timestamp='2017-08-15T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/64e66bb26288...ae47724687a7" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/64e66bb26288...ae47724687a7</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502825460' id='564047'>
+<a class='timestamp' href='#564047'><time timestamp='2017-08-15T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 03bc719 Karl-Johan Alm: [wallet] Close DB on error.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502825460' id='564048'>
+<a class='timestamp' href='#564048'><time timestamp='2017-08-15T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ae47724 Jonas Schnelli: Merge #11017: [wallet] Close DB on error....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502825520' id='564049'>
+<a class='timestamp' href='#564049'><time timestamp='2017-08-15T19:32:00Z'>19:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #11017: [wallet] Close DB on error. (master...close-dbenv) <a href="https://github.com/bitcoin/bitcoin/pull/11017" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11017</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502825640' id='564050'>
+<a class='timestamp' href='#564050'><time timestamp='2017-08-15T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #10989: RPC: Restore backward compatibility, in multiwallet mode (master...multiwallet_rpccompat) <a href="https://github.com/bitcoin/bitcoin/pull/10989" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10989</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827440' id='564051'>
+<a class='timestamp' href='#564051'><time timestamp='2017-08-15T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+cfields_: 7522 is a bug fix. it should not be reverted.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827440' id='564052'>
+<a class='timestamp' href='#564052'><time timestamp='2017-08-15T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+unless you have a better fix, I guess.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827740' id='564053'>
+<a class='timestamp' href='#564053'><time timestamp='2017-08-15T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+luke-jr: suggestions for fixing the issue, then? Setting GIT_DIR in the gitian script throws off &#x27;git diff&#x27; in a way that i don&#x27;t really understand
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827800' id='564054'>
+<a class='timestamp' href='#564054'><time timestamp='2017-08-15T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+probably the best way, would be to have the tarball-source build with the version we want, and don&#x27;t rely on git at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827800' id='564055'>
+<a class='timestamp' href='#564055'><time timestamp='2017-08-15T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+maybe that&#x27;s already the case, and we should just drop GIT_DIR?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827860' id='564056'>
+<a class='timestamp' href='#564056'><time timestamp='2017-08-15T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+luke-jr: agreed, but i think it&#x27;s too late for those types of changes for 0.15
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827920' id='564057'>
+<a class='timestamp' href='#564057'><time timestamp='2017-08-15T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+what happens if we just drop GIT_DIR right now?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827920' id='564058'>
+<a class='timestamp' href='#564058'><time timestamp='2017-08-15T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+pretty sure it ends up with unknown version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827920' id='564059'>
+<a class='timestamp' href='#564059'><time timestamp='2017-08-15T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+:/     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827980' id='564060'>
+<a class='timestamp' href='#564060'><time timestamp='2017-08-15T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+does that mean building from the source tarball is similarly broken?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502827980' id='564061'>
+<a class='timestamp' href='#564061'><time timestamp='2017-08-15T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+hmm, probably
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828040' id='564062'>
+<a class='timestamp' href='#564062'><time timestamp='2017-08-15T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+checking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828400' id='564063'>
+<a class='timestamp' href='#564063'><time timestamp='2017-08-15T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+&quot;Bitcoin Core Daemon version v0.15.0.0-g252ca9c&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828460' id='564064'>
+<a class='timestamp' href='#564064'><time timestamp='2017-08-15T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I guess that&#x27;s what we want?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828520' id='564065'>
+<a class='timestamp' href='#564065'><time timestamp='2017-08-15T20:22:00Z'>20:22</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+well the tag would be ideal, but i don&#x27;t think it&#x27;s different from before
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828580' id='564066'>
+<a class='timestamp' href='#564066'><time timestamp='2017-08-15T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+what&#x27;s broken is the tag detection when building from git because the work-tree check now fails
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828580' id='564067'>
+<a class='timestamp' href='#564067'><time timestamp='2017-08-15T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+IMO we should have it so the result is the same as building from the source tarball, and if that isn&#x27;t what is ideal, we should fix that so it is  ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828640' id='564068'>
+<a class='timestamp' href='#564068'><time timestamp='2017-08-15T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+er, that&#x27;s not right. I think that works, but &#x27;git diff&#x27; thinks there are extra files dirtying things up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828640' id='564069'>
+<a class='timestamp' href='#564069'><time timestamp='2017-08-15T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the work-tree check <b>*should*</b> fail in gitian, since gitian doesn&#x27;t build from git
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828640' id='564070'>
+<a class='timestamp' href='#564070'><time timestamp='2017-08-15T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+it builds from a workdir that&#x27;s part of the git tree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828700' id='564071'>
+<a class='timestamp' href='#564071'><time timestamp='2017-08-15T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it&#x27;s not part of the git tree..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828700' id='564072'>
+<a class='timestamp' href='#564072'><time timestamp='2017-08-15T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it just happens to be in a directory below the git tree&#x27;s root
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828700' id='564073'>
+<a class='timestamp' href='#564073'><time timestamp='2017-08-15T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+it builds in a subdir of the repo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828700' id='564074'>
+<a class='timestamp' href='#564074'><time timestamp='2017-08-15T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828700' id='564075'>
+<a class='timestamp' href='#564075'><time timestamp='2017-08-15T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+sorry, work-tree has a specific meaning in this discussion :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828760' id='564076'>
+<a class='timestamp' href='#564076'><time timestamp='2017-08-15T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+one that isn&#x27;t met by what we&#x27;re doing there ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828820' id='564077'>
+<a class='timestamp' href='#564077'><time timestamp='2017-08-15T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+yea, we need to change the gitian layout and embed the version into the tarball. But I&#x27;d really not do all that at this stage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828880' id='564078'>
+<a class='timestamp' href='#564078'><time timestamp='2017-08-15T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+&quot;v0.15.0.0-g252ca9c&quot; seems fine until we do?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502828940' id='564079'>
+<a class='timestamp' href='#564079'><time timestamp='2017-08-15T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-3'> cfields_</span>&gt;
+luke-jr: it&#x27;s what shows on the splash screen. All other stable versions have had the correct (tag) string.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502829180' id='564080'>
+<a class='timestamp' href='#564080'><time timestamp='2017-08-15T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+a simple hacky workaround would be to have gitian make a build.h file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502833080' id='564081'>
+<a class='timestamp' href='#564081'><time timestamp='2017-08-15T21:38:00Z'>21:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/ae47724687a7...85aec87b11ec" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/ae47724687a7...85aec87b11ec</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502833080' id='564082'>
+<a class='timestamp' href='#564082'><time timestamp='2017-08-15T21:38:00Z'>21:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7897338 John Newbery: [tests] Introduce TestNode...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502833080' id='564083'>
+<a class='timestamp' href='#564083'><time timestamp='2017-08-15T21:38:00Z'>21:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 85aec87 MarcoFalke: Merge #10711: [tests] Introduce TestNode...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502833080' id='564084'>
+<a class='timestamp' href='#564084'><time timestamp='2017-08-15T21:38:00Z'>21:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #10711: [tests] Introduce TestNode (master...testnode2) <a href="https://github.com/bitcoin/bitcoin/pull/10711" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10711</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836380' id='564085'>
+<a class='timestamp' href='#564085'><time timestamp='2017-08-15T22:33:00Z'>22:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/85aec87b11ec...d7be7b39fa10" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/85aec87b11ec...d7be7b39fa10</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836380' id='564086'>
+<a class='timestamp' href='#564086'><time timestamp='2017-08-15T22:33:00Z'>22:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master f42fc1d klemens: doc: spelling fixes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836380' id='564087'>
+<a class='timestamp' href='#564087'><time timestamp='2017-08-15T22:33:00Z'>22:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d7be7b3 MarcoFalke: Merge #10705: Trivial: spelling fixes...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836380' id='564088'>
+<a class='timestamp' href='#564088'><time timestamp='2017-08-15T22:33:00Z'>22:33</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #10705: Trivial: spelling fixes (master...feature/spelling) <a href="https://github.com/bitcoin/bitcoin/pull/10705" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10705</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836800' id='564089'>
+<a class='timestamp' href='#564089'><time timestamp='2017-08-15T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/d7be7b39fa10...4fb258666147" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/d7be7b39fa10...4fb258666147</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836800' id='564090'>
+<a class='timestamp' href='#564090'><time timestamp='2017-08-15T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9d5e98f practicalswift: Fix typos.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836800' id='564091'>
+<a class='timestamp' href='#564091'><time timestamp='2017-08-15T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4fb2586 MarcoFalke: Merge #10956: Fix typos...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502836860' id='564092'>
+<a class='timestamp' href='#564092'><time timestamp='2017-08-15T22:41:00Z'>22:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #10956: Fix typos (master...typos-201708) <a href="https://github.com/bitcoin/bitcoin/pull/10956" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10956</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502837400' id='564093'>
+<a class='timestamp' href='#564093'><time timestamp='2017-08-15T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/4fb258666147...636694127534" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/4fb258666147...636694127534</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502837400' id='564094'>
+<a class='timestamp' href='#564094'><time timestamp='2017-08-15T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 41f3e84 MeshCollider: Fix inconsistencies and grammar in various files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502837400' id='564095'>
+<a class='timestamp' href='#564095'><time timestamp='2017-08-15T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1d8df01 MeshCollider: Fix MD formatting in REST-interface.md and spelling mistake in...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502837400' id='564096'>
+<a class='timestamp' href='#564096'><time timestamp='2017-08-15T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 6366941 MarcoFalke: Merge #10680: Fix inconsistencies and grammar in various files...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502837400' id='564097'>
+<a class='timestamp' href='#564097'><time timestamp='2017-08-15T22:50:00Z'>22:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #10680: Fix inconsistencies and grammar in various files (master...fix_typos_and_inconsistencies) <a href="https://github.com/bitcoin/bitcoin/pull/10680" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/10680</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502839920' id='564098'>
+<a class='timestamp' href='#564098'><time timestamp='2017-08-15T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/636694127534...7db65c363a0c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/636694127534...7db65c363a0c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502839920' id='564099'>
+<a class='timestamp' href='#564099'><time timestamp='2017-08-15T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 08f71c2 Gregory Maxwell: [Trivial] Add a comment on the use of prevector in script.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502839920' id='564100'>
+<a class='timestamp' href='#564100'><time timestamp='2017-08-15T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7db65c3 MarcoFalke: Merge #11011: [Trivial] Add a comment on the use of prevector in script....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1502839920' id='564101'>
+<a class='timestamp' href='#564101'><time timestamp='2017-08-15T23:32:00Z'>23:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #11011: [Trivial] Add a comment on the use of prevector in script. (master...201708-prevector-comment) <a href="https://github.com/bitcoin/bitcoin/pull/11011" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11011</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

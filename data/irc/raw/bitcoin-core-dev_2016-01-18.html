@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2016-01-18
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2016-01-18' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2015-12-18">&lt;</a><span class='header'>   January 2016   </span><a href="/bitcoin-core-dev/2016-02-18">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                1  <a class="" href="/bitcoin-core-dev/2016-01-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2016-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2016-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2016-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2016-01-06">6</a>  <a class="" href="/bitcoin-core-dev/2016-01-07">7</a>  <a class="" href="/bitcoin-core-dev/2016-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2016-01-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-10">10</a> <a class="" href="/bitcoin-core-dev/2016-01-11">11</a> <a class="" href="/bitcoin-core-dev/2016-01-12">12</a> <a class="" href="/bitcoin-core-dev/2016-01-13">13</a> <a class="" href="/bitcoin-core-dev/2016-01-14">14</a> <a class="" href="/bitcoin-core-dev/2016-01-15">15</a> <a class="" href="/bitcoin-core-dev/2016-01-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-17">17</a> <a class="current" href="/bitcoin-core-dev/2016-01-18">18</a> <a class="" href="/bitcoin-core-dev/2016-01-19">19</a> <a class="" href="/bitcoin-core-dev/2016-01-20">20</a> <a class="" href="/bitcoin-core-dev/2016-01-21">21</a> <a class="" href="/bitcoin-core-dev/2016-01-22">22</a> <a class="" href="/bitcoin-core-dev/2016-01-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-24">24</a> <a class="" href="/bitcoin-core-dev/2016-01-25">25</a> <a class="" href="/bitcoin-core-dev/2016-01-26">26</a> <a class="" href="/bitcoin-core-dev/2016-01-27">27</a> <a class="" href="/bitcoin-core-dev/2016-01-28">28</a> <a class="" href="/bitcoin-core-dev/2016-01-29">29</a> <a class="" href="/bitcoin-core-dev/2016-01-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1453084980' id='448893'>
+<a class='timestamp' href='#448893'><time timestamp='2016-01-18T02:43:00Z'>02:43</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+what are ANCESTOR/DESCENDANT limits? My tx failed the test.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085160' id='448894'>
+<a class='timestamp' href='#448894'><time timestamp='2016-01-18T02:46:00Z'>02:46</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+wangchun: starting in 0.12, there are limits on the length of unconfirmed transaction chains.  &quot;ancestors&quot; refers to all the unconfirmed transactions that a given transaction depends on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085160' id='448895'>
+<a class='timestamp' href='#448895'><time timestamp='2016-01-18T02:46:00Z'>02:46</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+wangchun: &quot;descendants&quot; refer to the unconfirmed transactions that depend on a given one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085220' id='448896'>
+<a class='timestamp' href='#448896'><time timestamp='2016-01-18T02:47:00Z'>02:47</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+these limits apply to mempool acceptance of new transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085220' id='448897'>
+<a class='timestamp' href='#448897'><time timestamp='2016-01-18T02:47:00Z'>02:47</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+default is 25/25 if i remember correctly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085280' id='448898'>
+<a class='timestamp' href='#448898'><time timestamp='2016-01-18T02:48:00Z'>02:48</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+sdaftuar: my tx has only one ancestor, but it is refused
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085340' id='448899'>
+<a class='timestamp' href='#448899'><time timestamp='2016-01-18T02:49:00Z'>02:49</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+sdaftuar: which limit should I increase?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085400' id='448900'>
+<a class='timestamp' href='#448900'><time timestamp='2016-01-18T02:50:00Z'>02:50</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+that can&#x27;t be the ancestor/descendant limits unless you manually overrode the default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085400' id='448901'>
+<a class='timestamp' href='#448901'><time timestamp='2016-01-18T02:50:00Z'>02:50</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+what&#x27;s the exact error?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085460' id='448902'>
+<a class='timestamp' href='#448902'><time timestamp='2016-01-18T02:51:00Z'>02:51</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+too-long-mempool-chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085520' id='448903'>
+<a class='timestamp' href='#448903'><time timestamp='2016-01-18T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+oh, it could be the size of the transaction i suppose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085520' id='448904'>
+<a class='timestamp' href='#448904'><time timestamp='2016-01-18T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+how big is it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085520' id='448905'>
+<a class='timestamp' href='#448905'><time timestamp='2016-01-18T02:52:00Z'>02:52</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+sdaftuar: I was trying to send another tx which only has one vin = b28fe214a938921dcbf39146b806ab954c77f81e0b58ac4e4d8c5e9f21a308fa:0 but it has about 5000 vouts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085580' id='448906'>
+<a class='timestamp' href='#448906'><time timestamp='2016-01-18T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+at the time I was trying to send, b28fe214a938921dcbf39146b806ab954c77f81e0b58ac4e4d8c5e9f21a308fa hasn&#x27;t been confirmed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085580' id='448907'>
+<a class='timestamp' href='#448907'><time timestamp='2016-01-18T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+wangchun: ok, yes i forgot to mention that in addition to limits on the number of ancestors and descendants, there are also limits on the size of a transaction including ancestors and size of a transaction including descendants
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085640' id='448908'>
+<a class='timestamp' href='#448908'><time timestamp='2016-01-18T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+I already raised standard tx size limit to 500kb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085640' id='448909'>
+<a class='timestamp' href='#448909'><time timestamp='2016-01-18T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+so should i increase these new limits too?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085640' id='448910'>
+<a class='timestamp' href='#448910'><time timestamp='2016-01-18T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yes, you can try -limitancestorsize=500 and -limitdescendantsize=500
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085640' id='448911'>
+<a class='timestamp' href='#448911'><time timestamp='2016-01-18T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+those values are interpreted as kb
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085640' id='448912'>
+<a class='timestamp' href='#448912'><time timestamp='2016-01-18T02:54:00Z'>02:54</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+and default to 101
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085700' id='448913'>
+<a class='timestamp' href='#448913'><time timestamp='2016-01-18T02:55:00Z'>02:55</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+the tx itself is counted in ancestor/descendant size?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085700' id='448914'>
+<a class='timestamp' href='#448914'><time timestamp='2016-01-18T02:55:00Z'>02:55</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+ancestor or descendant?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085700' id='448915'>
+<a class='timestamp' href='#448915'><time timestamp='2016-01-18T02:55:00Z'>02:55</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i would bump both to be safe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085760' id='448916'>
+<a class='timestamp' href='#448916'><time timestamp='2016-01-18T02:56:00Z'>02:56</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i&#x27;m double-checking the calculation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085820' id='448917'>
+<a class='timestamp' href='#448917'><time timestamp='2016-01-18T02:57:00Z'>02:57</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+both numbers include the transaction itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085880' id='448918'>
+<a class='timestamp' href='#448918'><time timestamp='2016-01-18T02:58:00Z'>02:58</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+so if it has one unconfirmed parent, make sure that you set -limitancestorsize to be large enough for both transactions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453085880' id='448919'>
+<a class='timestamp' href='#448919'><time timestamp='2016-01-18T02:58:00Z'>02:58</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+sdaftuar: ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453087740' id='448920'>
+<a class='timestamp' href='#448920'><time timestamp='2016-01-18T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-16'> GitHub3</span>&gt;
+[bitcoin] sdaftuar opened pull request #7367: Mention mempool chain limits in release notes (0.12...update-release-notes) <a href="https://github.com/bitcoin/bitcoin/pull/7367" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7367</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453090920' id='448921'>
+<a class='timestamp' href='#448921'><time timestamp='2016-01-18T04:22:00Z'>04:22</time></a>
+&lt;<span class='nick nick-6'> GitHub55</span>&gt;
+[bitcoin] sdaftuar opened pull request #7368: [Tests] Eliminate race condition in mempool_packages.py (master...fix-package-test) <a href="https://github.com/bitcoin/bitcoin/pull/7368" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7368</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453094100' id='448922'>
+<a class='timestamp' href='#448922'><time timestamp='2016-01-18T05:15:00Z'>05:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wangchun, why are you trying to send 5000 vouts? that seems like a lot
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453097400' id='448923'>
+<a class='timestamp' href='#448923'><time timestamp='2016-01-18T06:10:00Z'>06:10</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+morcos, did you work on improving the utxo caching setup to avoid clearing it on flush?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453101840' id='448924'>
+<a class='timestamp' href='#448924'><time timestamp='2016-01-18T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+.whois cfields cfields 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453101840' id='448925'>
+<a class='timestamp' href='#448925'><time timestamp='2016-01-18T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+er
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453101840' id='448926'>
+<a class='timestamp' href='#448926'><time timestamp='2016-01-18T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+sorry
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453102740' id='448927'>
+<a class='timestamp' href='#448927'><time timestamp='2016-01-18T07:39:00Z'>07:39</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+phantomcircuit: daily payout
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453102800' id='448928'>
+<a class='timestamp' href='#448928'><time timestamp='2016-01-18T07:40:00Z'>07:40</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wangchun, you dont have a minimum payout amount of &gt; $1 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453103520' id='448929'>
+<a class='timestamp' href='#448929'><time timestamp='2016-01-18T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+phantomcircuit: our threshold is 0.001 BTC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453103520' id='448930'>
+<a class='timestamp' href='#448930'><time timestamp='2016-01-18T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+that about ¥2.51
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453103580' id='448931'>
+<a class='timestamp' href='#448931'><time timestamp='2016-01-18T07:53:00Z'>07:53</time></a>
+&lt;<span class='nick nick-12'> wangchun</span>&gt;
+s/that/that&#x27;s/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453104300' id='448932'>
+<a class='timestamp' href='#448932'><time timestamp='2016-01-18T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+wangchun, not even enough to buy a candy bar :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453108860' id='448933'>
+<a class='timestamp' href='#448933'><time timestamp='2016-01-18T09:21:00Z'>09:21</time></a>
+&lt;<span class='nick nick-11'> adnn_</span>&gt;
+The Classic fork will be successful. This is looking like the end.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109220' id='448934'>
+<a class='timestamp' href='#448934'><time timestamp='2016-01-18T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-1'> GitHub91</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/fd9356ba4eb5...f2cf071e702f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/fd9356ba4eb5...f2cf071e702f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109220' id='448935'>
+<a class='timestamp' href='#448935'><time timestamp='2016-01-18T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-1'> GitHub91</span>&gt;
+bitcoin/master 4d10d2e Suhas Daftuar: Eliminate race condition in mempool_packages test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109220' id='448936'>
+<a class='timestamp' href='#448936'><time timestamp='2016-01-18T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-1'> GitHub91</span>&gt;
+bitcoin/master f2cf071 Wladimir J. van der Laan: Merge pull request #7368...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109220' id='448937'>
+<a class='timestamp' href='#448937'><time timestamp='2016-01-18T09:27:00Z'>09:27</time></a>
+&lt;<span class='nick nick-10'> GitHub95</span>&gt;
+[bitcoin] laanwj closed pull request #7368: [Tests] Eliminate race condition in mempool_packages.py (master...fix-package-test) <a href="https://github.com/bitcoin/bitcoin/pull/7368" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7368</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109400' id='448938'>
+<a class='timestamp' href='#448938'><time timestamp='2016-01-18T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-3'> GitHub135</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/1488fc8eac3ab8ed58d84c6bd61b5295b01de295" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/1488fc8eac3ab8ed58d84c6bd61b5295b01de295</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109400' id='448939'>
+<a class='timestamp' href='#448939'><time timestamp='2016-01-18T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-3'> GitHub135</span>&gt;
+bitcoin/0.12 1488fc8 Suhas Daftuar: Eliminate race condition in mempool_packages test...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109400' id='448940'>
+<a class='timestamp' href='#448940'><time timestamp='2016-01-18T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-2'> GitHub191</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/f2cf071e702f...2350ab28fb8c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/f2cf071e702f...2350ab28fb8c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109400' id='448941'>
+<a class='timestamp' href='#448941'><time timestamp='2016-01-18T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-2'> GitHub191</span>&gt;
+bitcoin/master bd34174 Prayag Verma: Update license year range to 2016
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109400' id='448942'>
+<a class='timestamp' href='#448942'><time timestamp='2016-01-18T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-2'> GitHub191</span>&gt;
+bitcoin/master 2350ab2 Wladimir J. van der Laan: Merge pull request #7363...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109400' id='448943'>
+<a class='timestamp' href='#448943'><time timestamp='2016-01-18T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-8'> GitHub8</span>&gt;
+[bitcoin] laanwj closed pull request #7363: Update license year range to 2016 (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/7363" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7363</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109460' id='448944'>
+<a class='timestamp' href='#448944'><time timestamp='2016-01-18T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-8'> GitHub8</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/098fcb56945fa6e445f8585890cf935825ffd079" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/098fcb56945fa6e445f8585890cf935825ffd079</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109460' id='448945'>
+<a class='timestamp' href='#448945'><time timestamp='2016-01-18T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-8'> GitHub8</span>&gt;
+bitcoin/0.12 098fcb5 Prayag Verma: Update license year range to 2016...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109520' id='448946'>
+<a class='timestamp' href='#448946'><time timestamp='2016-01-18T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-3'> GitHub12</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/098fcb56945f...8b7a0f88cb91" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/098fcb56945f...8b7a0f88cb91</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109520' id='448947'>
+<a class='timestamp' href='#448947'><time timestamp='2016-01-18T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-3'> GitHub12</span>&gt;
+bitcoin/0.12 2e552b0 Suhas Daftuar: Mention mempool chain limits in release notes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109520' id='448948'>
+<a class='timestamp' href='#448948'><time timestamp='2016-01-18T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-3'> GitHub12</span>&gt;
+bitcoin/0.12 8b7a0f8 Wladimir J. van der Laan: Merge pull request #7367...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109520' id='448949'>
+<a class='timestamp' href='#448949'><time timestamp='2016-01-18T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-4'> GitHub144</span>&gt;
+[bitcoin] laanwj closed pull request #7367: Mention mempool chain limits in release notes (0.12...update-release-notes) <a href="https://github.com/bitcoin/bitcoin/pull/7367" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7367</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109760' id='448950'>
+<a class='timestamp' href='#448950'><time timestamp='2016-01-18T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-11'> GitHub121</span>&gt;
+[bitcoin] laanwj closed pull request #7347: Release notes about mining code changes (0.12...rnfixes2) <a href="https://github.com/bitcoin/bitcoin/pull/7347" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7347</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109760' id='448951'>
+<a class='timestamp' href='#448951'><time timestamp='2016-01-18T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-12'> GitHub21</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/8b7a0f88cb91...b0cb0556737b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8b7a0f88cb91...b0cb0556737b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109760' id='448952'>
+<a class='timestamp' href='#448952'><time timestamp='2016-01-18T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-12'> GitHub21</span>&gt;
+bitcoin/0.12 5cacb8f Alex Morcos: Add comment about mining changes and more about priority
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109760' id='448953'>
+<a class='timestamp' href='#448953'><time timestamp='2016-01-18T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-12'> GitHub21</span>&gt;
+bitcoin/0.12 b0cb055 Wladimir J. van der Laan: Merge pull request #7347...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109820' id='448954'>
+<a class='timestamp' href='#448954'><time timestamp='2016-01-18T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> GitHub94</span>&gt;
+[bitcoin] laanwj pushed 8 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/b0cb0556737b...1709cc5cb0e5" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b0cb0556737b...1709cc5cb0e5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109820' id='448955'>
+<a class='timestamp' href='#448955'><time timestamp='2016-01-18T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-11'> GitHub50</span>&gt;
+[bitcoin] laanwj closed pull request #7338: Backports for 0.12.0 (updated to e289807) (0.12...backports-for-0.12.0) <a href="https://github.com/bitcoin/bitcoin/pull/7338" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7338</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109820' id='448956'>
+<a class='timestamp' href='#448956'><time timestamp='2016-01-18T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> GitHub94</span>&gt;
+bitcoin/0.12 6092ff2 Suriyaa Kudo: Set link from http:// to https://...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109820' id='448957'>
+<a class='timestamp' href='#448957'><time timestamp='2016-01-18T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> GitHub94</span>&gt;
+bitcoin/0.12 6307beb Patrick Strateman: Note that reviewers should mention the commit hash of the commits they reviewed....
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109820' id='448958'>
+<a class='timestamp' href='#448958'><time timestamp='2016-01-18T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> GitHub94</span>&gt;
+bitcoin/0.12 6191a9b Jonas Schnelli: [RPC-Tests] add option to run rpc test over QT clients...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109940' id='448959'>
+<a class='timestamp' href='#448959'><time timestamp='2016-01-18T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-7'> GitHub33</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/1709cc5cb0e5...d04525a065ae" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/1709cc5cb0e5...d04525a065ae</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109940' id='448960'>
+<a class='timestamp' href='#448960'><time timestamp='2016-01-18T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-7'> GitHub33</span>&gt;
+bitcoin/0.12 fa8c497 MarcoFalke: [doc] backwards-compatibility issues due to chainstate obfuscation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109940' id='448961'>
+<a class='timestamp' href='#448961'><time timestamp='2016-01-18T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-11'> GitHub168</span>&gt;
+[bitcoin] laanwj closed pull request #7345: [0.12]  Add backwards-compatibility issues (chainstate obfuscation) to release notes (0.12...Mf1601-docObfuscation) <a href="https://github.com/bitcoin/bitcoin/pull/7345" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7345</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453109940' id='448962'>
+<a class='timestamp' href='#448962'><time timestamp='2016-01-18T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-7'> GitHub33</span>&gt;
+bitcoin/0.12 d04525a Wladimir J. van der Laan: Merge pull request #7345...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110060' id='448963'>
+<a class='timestamp' href='#448963'><time timestamp='2016-01-18T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-2'> GitHub153</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/2350ab28fb8c...a8bd616fea62" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/2350ab28fb8c...a8bd616fea62</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110060' id='448964'>
+<a class='timestamp' href='#448964'><time timestamp='2016-01-18T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-2'> GitHub153</span>&gt;
+bitcoin/master 9d263bd Chris Wheeler: Typo fixes in comments
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110060' id='448965'>
+<a class='timestamp' href='#448965'><time timestamp='2016-01-18T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-2'> GitHub153</span>&gt;
+bitcoin/master a8bd616 Wladimir J. van der Laan: Merge pull request #7329...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110060' id='448966'>
+<a class='timestamp' href='#448966'><time timestamp='2016-01-18T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-3'> GitHub44</span>&gt;
+[bitcoin] laanwj closed pull request #7329: Trivial: fix typo (master...typofix) <a href="https://github.com/bitcoin/bitcoin/pull/7329" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7329</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110300' id='448967'>
+<a class='timestamp' href='#448967'><time timestamp='2016-01-18T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> GitHub182</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a8bd616fea62...5e00147838b0" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a8bd616fea62...5e00147838b0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110300' id='448968'>
+<a class='timestamp' href='#448968'><time timestamp='2016-01-18T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> GitHub182</span>&gt;
+bitcoin/master 0331aa3 calebogden: Fixing typos on security-check.py and torcontrol.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110300' id='448969'>
+<a class='timestamp' href='#448969'><time timestamp='2016-01-18T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> GitHub182</span>&gt;
+bitcoin/master 5e00147 Wladimir J. van der Laan: Merge pull request #7313...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110300' id='448970'>
+<a class='timestamp' href='#448970'><time timestamp='2016-01-18T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-9'> GitHub58</span>&gt;
+[bitcoin] laanwj closed pull request #7313: [trivial] fixing multiple typos (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/7313" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7313</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110360' id='448971'>
+<a class='timestamp' href='#448971'><time timestamp='2016-01-18T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-14'> GitHub151</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/5e00147838b0...3ec5bb0a6e2c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/5e00147838b0...3ec5bb0a6e2c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110360' id='448972'>
+<a class='timestamp' href='#448972'><time timestamp='2016-01-18T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-14'> GitHub151</span>&gt;
+bitcoin/master 7777994 MarcoFalke: [qa] Fix pyton syntax in rpc tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110360' id='448973'>
+<a class='timestamp' href='#448973'><time timestamp='2016-01-18T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-14'> GitHub151</span>&gt;
+bitcoin/master 3ec5bb0 Wladimir J. van der Laan: Merge pull request #7335...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110360' id='448974'>
+<a class='timestamp' href='#448974'><time timestamp='2016-01-18T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-15'> GitHub161</span>&gt;
+[bitcoin] laanwj closed pull request #7335: [qa] Fix pyton syntax in rpc tests (master...Mf1601-rpcSyntax) <a href="https://github.com/bitcoin/bitcoin/pull/7335" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7335</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110420' id='448975'>
+<a class='timestamp' href='#448975'><time timestamp='2016-01-18T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-6'> GitHub0</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/d8b062d752838aa0d7141355a1341768d4c4064c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/d8b062d752838aa0d7141355a1341768d4c4064c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110420' id='448976'>
+<a class='timestamp' href='#448976'><time timestamp='2016-01-18T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-6'> GitHub0</span>&gt;
+bitcoin/0.12 d8b062d MarcoFalke: [qa] Fix pyton syntax in rpc tests...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110600' id='448977'>
+<a class='timestamp' href='#448977'><time timestamp='2016-01-18T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-6'> GitHub88</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3ec5bb0a6e2c...b8f485c47284" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3ec5bb0a6e2c...b8f485c47284</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110600' id='448978'>
+<a class='timestamp' href='#448978'><time timestamp='2016-01-18T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-6'> GitHub88</span>&gt;
+bitcoin/master fa4f4b6 MarcoFalke: Add clang-format-diff.py from the LLVM svn...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110600' id='448979'>
+<a class='timestamp' href='#448979'><time timestamp='2016-01-18T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-6'> GitHub88</span>&gt;
+bitcoin/master fa074a6 MarcoFalke: [contrib] Prepare clang-format-diff for usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110600' id='448980'>
+<a class='timestamp' href='#448980'><time timestamp='2016-01-18T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-6'> GitHub88</span>&gt;
+bitcoin/master b8f485c Wladimir J. van der Laan: Merge pull request #7304...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110600' id='448981'>
+<a class='timestamp' href='#448981'><time timestamp='2016-01-18T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-15'> GitHub71</span>&gt;
+[bitcoin] laanwj closed pull request #7304: [contrib] Add clang-format-diff.py (master...Mf1601-clang-format-diff) <a href="https://github.com/bitcoin/bitcoin/pull/7304" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7304</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110960' id='448982'>
+<a class='timestamp' href='#448982'><time timestamp='2016-01-18T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-15'> GitHub156</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/b8f485c47284...d3dfc6d7e18e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/b8f485c47284...d3dfc6d7e18e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110960' id='448983'>
+<a class='timestamp' href='#448983'><time timestamp='2016-01-18T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-15'> GitHub156</span>&gt;
+bitcoin/master fa1cb1a MarcoFalke: [qa] Test walletpassphrase timeout
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110960' id='448984'>
+<a class='timestamp' href='#448984'><time timestamp='2016-01-18T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-15'> GitHub156</span>&gt;
+bitcoin/master d3dfc6d Wladimir J. van der Laan: Merge pull request #7320...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110960' id='448985'>
+<a class='timestamp' href='#448985'><time timestamp='2016-01-18T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-6'> GitHub88</span>&gt;
+[bitcoin] laanwj closed pull request #7320: [qa] Test walletpassphrase timeout (master...Mf1601-rpcWalletPass) <a href="https://github.com/bitcoin/bitcoin/pull/7320" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7320</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453110960' id='448986'>
+<a class='timestamp' href='#448986'><time timestamp='2016-01-18T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-12'> GitHub119</span>&gt;
+[bitcoin] laanwj closed pull request #7060: build: Make networking work inside LXC builder in gitian-building.md (master...2015_11_gitian_building) <a href="https://github.com/bitcoin/bitcoin/pull/7060" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7060</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453111020' id='448987'>
+<a class='timestamp' href='#448987'><time timestamp='2016-01-18T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-9'> GitHub39</span>&gt;
+[bitcoin] laanwj reopened pull request #7060: build: Make networking work inside LXC builder in gitian-building.md (master...2015_11_gitian_building) <a href="https://github.com/bitcoin/bitcoin/pull/7060" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7060</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453112520' id='448988'>
+<a class='timestamp' href='#448988'><time timestamp='2016-01-18T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-14'> GitHub69</span>&gt;
+[bitcoin] laanwj pushed 5 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/d3dfc6d7e18e...c851d8d71b2e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/d3dfc6d7e18e...c851d8d71b2e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453112520' id='448989'>
+<a class='timestamp' href='#448989'><time timestamp='2016-01-18T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-14'> GitHub69</span>&gt;
+bitcoin/master fac11ea MarcoFalke: [init] Fix error message of maxtxfee invalid amount
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453112520' id='448990'>
+<a class='timestamp' href='#448990'><time timestamp='2016-01-18T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-14'> GitHub69</span>&gt;
+bitcoin/master fa6ab96 MarcoFalke: [init] Add missing help for args
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453112520' id='448991'>
+<a class='timestamp' href='#448991'><time timestamp='2016-01-18T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-14'> GitHub69</span>&gt;
+bitcoin/master faa572a MarcoFalke: [init] Help Msg: Use Params(CBaseChainParams::MAIN)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453112520' id='448992'>
+<a class='timestamp' href='#448992'><time timestamp='2016-01-18T10:22:00Z'>10:22</time></a>
+&lt;<span class='nick nick-9'> GitHub129</span>&gt;
+[bitcoin] laanwj closed pull request #7290:  [init] Add missing help for args  (master...Mf1601-doc) <a href="https://github.com/bitcoin/bitcoin/pull/7290" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7290</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453114560' id='448993'>
+<a class='timestamp' href='#448993'><time timestamp='2016-01-18T10:56:00Z'>10:56</time></a>
+&lt;<span class='nick nick-15'> GitHub71</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/c851d8d71b2e...47c5ed19f3ba" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/c851d8d71b2e...47c5ed19f3ba</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453114560' id='448994'>
+<a class='timestamp' href='#448994'><time timestamp='2016-01-18T10:56:00Z'>10:56</time></a>
+&lt;<span class='nick nick-15'> GitHub71</span>&gt;
+bitcoin/master 64360f1 Wladimir J. van der Laan: Make max tip age an option instead of chainparam...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453114560' id='448995'>
+<a class='timestamp' href='#448995'><time timestamp='2016-01-18T10:56:00Z'>10:56</time></a>
+&lt;<span class='nick nick-15'> GitHub71</span>&gt;
+bitcoin/master 47c5ed1 Wladimir J. van der Laan: Merge pull request #7208...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453114560' id='448996'>
+<a class='timestamp' href='#448996'><time timestamp='2016-01-18T10:56:00Z'>10:56</time></a>
+&lt;<span class='nick nick-10'> GitHub60</span>&gt;
+[bitcoin] laanwj closed pull request #7208: Make max tip age an option instead of chainparam (master...2015_12_maxtipage) <a href="https://github.com/bitcoin/bitcoin/pull/7208" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7208</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453115460' id='448997'>
+<a class='timestamp' href='#448997'><time timestamp='2016-01-18T11:11:00Z'>11:11</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: I don&#x27;t suppose you have any clue why the OS X gitian build is failing so spectacularly?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453115460' id='448998'>
+<a class='timestamp' href='#448998'><time timestamp='2016-01-18T11:11:00Z'>11:11</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+michagogo. 0.11.2 works fine?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453115520' id='448999'>
+<a class='timestamp' href='#448999'><time timestamp='2016-01-18T11:12:00Z'>11:12</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Yep, I build 0.11.2 on this setup and 0.12.0rc1 windows and Linux are fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453115520' id='449000'>
+<a class='timestamp' href='#449000'><time timestamp='2016-01-18T11:12:00Z'>11:12</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+And fanquake also had the same failure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453115520' id='449001'>
+<a class='timestamp' href='#449001'><time timestamp='2016-01-18T11:12:00Z'>11:12</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+built*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116000' id='449002'>
+<a class='timestamp' href='#449002'><time timestamp='2016-01-18T11:20:00Z'>11:20</time></a>
+&lt;<span class='nick nick-11'> GitHub177</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/47c5ed19f3ba...ae20172941ff" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/47c5ed19f3ba...ae20172941ff</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116000' id='449003'>
+<a class='timestamp' href='#449003'><time timestamp='2016-01-18T11:20:00Z'>11:20</time></a>
+&lt;<span class='nick nick-11'> GitHub177</span>&gt;
+bitcoin/master 94bdd71 Gregory Sanders: Added help text for chainwork value
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116000' id='449004'>
+<a class='timestamp' href='#449004'><time timestamp='2016-01-18T11:20:00Z'>11:20</time></a>
+&lt;<span class='nick nick-11'> GitHub177</span>&gt;
+bitcoin/master ae20172 Wladimir J. van der Laan: Merge pull request #7232...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116000' id='449005'>
+<a class='timestamp' href='#449005'><time timestamp='2016-01-18T11:20:00Z'>11:20</time></a>
+&lt;<span class='nick nick-9'> GitHub101</span>&gt;
+[bitcoin] laanwj closed pull request #7232: [RPC] getblock: Added help text for chainwork value (master...getblockhelp) <a href="https://github.com/bitcoin/bitcoin/pull/7232" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7232</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116060' id='449006'>
+<a class='timestamp' href='#449006'><time timestamp='2016-01-18T11:21:00Z'>11:21</time></a>
+&lt;<span class='nick nick-16'> GitHub56</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/c0d2382170962ecae72fd90d4830fcadd4c2ed30" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/c0d2382170962ecae72fd90d4830fcadd4c2ed30</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116060' id='449007'>
+<a class='timestamp' href='#449007'><time timestamp='2016-01-18T11:21:00Z'>11:21</time></a>
+&lt;<span class='nick nick-16'> GitHub56</span>&gt;
+bitcoin/0.12 c0d2382 Gregory Sanders: Added help text for chainwork value...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116240' id='449008'>
+<a class='timestamp' href='#449008'><time timestamp='2016-01-18T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-4'> GitHub54</span>&gt;
+[bitcoin] laanwj pushed 4 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/ae20172941ff...e4e77ee55d8a" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/ae20172941ff...e4e77ee55d8a</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116240' id='449009'>
+<a class='timestamp' href='#449009'><time timestamp='2016-01-18T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-4'> GitHub54</span>&gt;
+bitcoin/master 16d4fce James O&#x27;Beirne: Add assert_is_hex_string and assert_is_hash_string to RPC test utils.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116240' id='449010'>
+<a class='timestamp' href='#449010'><time timestamp='2016-01-18T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-4'> GitHub54</span>&gt;
+bitcoin/master 4745636 James O&#x27;Beirne: Add RPC documentation for getblockheader[chainwork].
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116240' id='449011'>
+<a class='timestamp' href='#449011'><time timestamp='2016-01-18T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-4'> GitHub54</span>&gt;
+bitcoin/master 135d6ec James O&#x27;Beirne: Add RPC tests for getblockheader.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116240' id='449012'>
+<a class='timestamp' href='#449012'><time timestamp='2016-01-18T11:24:00Z'>11:24</time></a>
+&lt;<span class='nick nick-3'> GitHub73</span>&gt;
+[bitcoin] laanwj closed pull request #7194: Fix help, add RPC tests for getblockheader (master...test_getblockheader) <a href="https://github.com/bitcoin/bitcoin/pull/7194" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7194</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116360' id='449013'>
+<a class='timestamp' href='#449013'><time timestamp='2016-01-18T11:26:00Z'>11:26</time></a>
+&lt;<span class='nick nick-3'> GitHub99</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/351ffd8482ff812e6b464c870bb4b0bff85e3884" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/351ffd8482ff812e6b464c870bb4b0bff85e3884</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116360' id='449014'>
+<a class='timestamp' href='#449014'><time timestamp='2016-01-18T11:26:00Z'>11:26</time></a>
+&lt;<span class='nick nick-3'> GitHub99</span>&gt;
+bitcoin/0.12 351ffd8 James O&#x27;Beirne: Fix help, add RPC tests for getblockheader...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116360' id='449015'>
+<a class='timestamp' href='#449015'><time timestamp='2016-01-18T11:26:00Z'>11:26</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: Yeah, that&#x27;s not it. It&#x27;s the build itself that&#x27;s crashing and burning, not the signer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116420' id='449016'>
+<a class='timestamp' href='#449016'><time timestamp='2016-01-18T11:27:00Z'>11:27</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+It looks like it might be happening at the qt stage -- deps build seems fine until that point, but then something breaks in a really weird way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116720' id='449017'>
+<a class='timestamp' href='#449017'><time timestamp='2016-01-18T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Can you downgrade gitian-builder to something older (e.g. 29c406e1174) and test again?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116720' id='449018'>
+<a class='timestamp' href='#449018'><time timestamp='2016-01-18T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+(Needs new base images)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116780' id='449019'>
+<a class='timestamp' href='#449019'><time timestamp='2016-01-18T11:33:00Z'>11:33</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+MarcoFalke, it&#x27;s just the OSX build that is failing, if it was a base image problem wouldn&#x27;t all the builds fail?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116840' id='449020'>
+<a class='timestamp' href='#449020'><time timestamp='2016-01-18T11:34:00Z'>11:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+wumpus have you been using the latest gitian builder version for the OSX build?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116840' id='449021'>
+<a class='timestamp' href='#449021'><time timestamp='2016-01-18T11:34:00Z'>11:34</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+ michagogo: no, no clue, I had some problems with LXC myself hence <a href="https://github.com/bitcoin/bitcoin/pull/7060" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7060</a> , but haven&#x27;t heard anyone else about it (and shouldn&#x27;t be macosx specific either)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116840' id='449022'>
+<a class='timestamp' href='#449022'><time timestamp='2016-01-18T11:34:00Z'>11:34</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+MarcoFalke, yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453116840' id='449023'>
+<a class='timestamp' href='#449023'><time timestamp='2016-01-18T11:34:00Z'>11:34</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+but I use KVM, not LXC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117080' id='449024'>
+<a class='timestamp' href='#449024'><time timestamp='2016-01-18T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: fanquake was having the same issue, also using LXC, and also only on the OS X build
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117140' id='449025'>
+<a class='timestamp' href='#449025'><time timestamp='2016-01-18T11:39:00Z'>11:39</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+so yes I also have issues with LXC all the time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117260' id='449026'>
+<a class='timestamp' href='#449026'><time timestamp='2016-01-18T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: and also, that PR is for networking, I&#x27;m preseeding the cache as mentioned in release-process
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117260' id='449027'>
+<a class='timestamp' href='#449027'><time timestamp='2016-01-18T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: idk, it mostly works for me, until something weird happens like this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117260' id='449028'>
+<a class='timestamp' href='#449028'><time timestamp='2016-01-18T11:41:00Z'>11:41</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Definitely not &quot;all the time&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117320' id='449029'>
+<a class='timestamp' href='#449029'><time timestamp='2016-01-18T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+the PR is not only networking, it also adds some packages that I needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117320' id='449030'>
+<a class='timestamp' href='#449030'><time timestamp='2016-01-18T11:42:00Z'>11:42</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+(or maybe those are only networking related, I dunno)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117380' id='449031'>
+<a class='timestamp' href='#449031'><time timestamp='2016-01-18T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+do you have a log of what goes wrong?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117380' id='449032'>
+<a class='timestamp' href='#449032'><time timestamp='2016-01-18T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+ca-certificates is definitely only networking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117380' id='449033'>
+<a class='timestamp' href='#449033'><time timestamp='2016-01-18T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+that&#x27;s toget the deps over https
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117380' id='449034'>
+<a class='timestamp' href='#449034'><time timestamp='2016-01-18T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+and, er...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117380' id='449035'>
+<a class='timestamp' href='#449035'><time timestamp='2016-01-18T11:43:00Z'>11:43</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+the image should already have *python*... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117440' id='449036'>
+<a class='timestamp' href='#449036'><time timestamp='2016-01-18T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+yeah, it&#x27;s in scrollback
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117440' id='449037'>
+<a class='timestamp' href='#449037'><time timestamp='2016-01-18T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+one sec
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117500' id='449038'>
+<a class='timestamp' href='#449038'><time timestamp='2016-01-18T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: so somehow build.log is being truncated:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117500' id='449039'>
+<a class='timestamp' href='#449039'><time timestamp='2016-01-18T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+<a href="https://www.dropbox.com/s/9jqnexeyvb0u1g6/build2.log?dl=0" class="link" target="_blank">https://www.dropbox.com/s/9jqnexeyvb0u1g6/build2.log?dl=0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117560' id='449040'>
+<a class='timestamp' href='#449040'><time timestamp='2016-01-18T11:46:00Z'>11:46</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+I used `script` to capture a tailf of the log: <a href="https://www.dropbox.com/s/uwdejt9rczbywuq/macbuild.log?dl=0" class="link" target="_blank">https://www.dropbox.com/s/uwdejt9rczbywuq/macbuild.log?dl=0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117740' id='449041'>
+<a class='timestamp' href='#449041'><time timestamp='2016-01-18T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+/usr/bin/env: python: No such file or directory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117740' id='449042'>
+<a class='timestamp' href='#449042'><time timestamp='2016-01-18T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+make: <b>***</b> [dist/Bitcoin-Qt.app/Contents/MacOS/Bitcoin-Qt] Error 127
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117740' id='449043'>
+<a class='timestamp' href='#449043'><time timestamp='2016-01-18T11:49:00Z'>11:49</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+what did you say about python? :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117860' id='449044'>
+<a class='timestamp' href='#449044'><time timestamp='2016-01-18T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+...what.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117860' id='449045'>
+<a class='timestamp' href='#449045'><time timestamp='2016-01-18T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+I don&#x27;t think python is part of the LXC image at all, and it&#x27;s necesary for macosx build
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117860' id='449046'>
+<a class='timestamp' href='#449046'><time timestamp='2016-01-18T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+um.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117920' id='449047'>
+<a class='timestamp' href='#449047'><time timestamp='2016-01-18T11:52:00Z'>11:52</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+What changed between 0.11 and 0.12 to make it necessary?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117920' id='449048'>
+<a class='timestamp' href='#449048'><time timestamp='2016-01-18T11:52:00Z'>11:52</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+one sec, lemme run on-target dpkg -l | grep python
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117920' id='449049'>
+<a class='timestamp' href='#449049'><time timestamp='2016-01-18T11:52:00Z'>11:52</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+... or maybe it&#x27;s just not part of the LXC iimage as &#x27;python&#x27;, but e.g. python2? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117920' id='449050'>
+<a class='timestamp' href='#449050'><time timestamp='2016-01-18T11:52:00Z'>11:52</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+in most places we explicitly call it python2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117980' id='449051'>
+<a class='timestamp' href='#449051'><time timestamp='2016-01-18T11:53:00Z'>11:53</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+but I don&#x27;t think that&#x27;s the problem, package &#x27;python&#x27; installs python 2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117980' id='449052'>
+<a class='timestamp' href='#449052'><time timestamp='2016-01-18T11:53:00Z'>11:53</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+<a href="http://paste.ubuntu.com/14566590/" class="link" target="_blank">http://paste.ubuntu.com/14566590/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453117980' id='449053'>
+<a class='timestamp' href='#449053'><time timestamp='2016-01-18T11:53:00Z'>11:53</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Looks like we only have python3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453118040' id='449054'>
+<a class='timestamp' href='#449054'><time timestamp='2016-01-18T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+But that leaves 2 questions. First, why is it only needed for OS X and not for Linux or Windows?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453118040' id='449055'>
+<a class='timestamp' href='#449055'><time timestamp='2016-01-18T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+And second, why is it required in 0.12 when it isn&#x27;t in 0.11?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453118040' id='449056'>
+<a class='timestamp' href='#449056'><time timestamp='2016-01-18T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+The descriptor diff doesn&#x27;t look like it could be related
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453118040' id='449057'>
+<a class='timestamp' href='#449057'><time timestamp='2016-01-18T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-12'> * michagogo</span>&gt;
+checks the depends/ diff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453118220' id='449058'>
+<a class='timestamp' href='#449058'><time timestamp='2016-01-18T11:57:00Z'>11:57</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Okay, lets try...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453118280' id='449059'>
+<a class='timestamp' href='#449059'><time timestamp='2016-01-18T11:58:00Z'>11:58</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: btw, why does that PR add python to all the descriptors?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453122420' id='449060'>
+<a class='timestamp' href='#449060'><time timestamp='2016-01-18T13:07:00Z'>13:07</time></a>
+&lt;<span class='nick nick-13'> GitHub176</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7370: [0.12] Doc: Wallet &amp; Pruning  (0.12...Mf1601-docWalletPrune) <a href="https://github.com/bitcoin/bitcoin/pull/7370" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7370</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453123560' id='449061'>
+<a class='timestamp' href='#449061'><time timestamp='2016-01-18T13:26:00Z'>13:26</time></a>
+&lt;<span class='nick nick-8'> GitHub152</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7371: [0.12] backports (0.12...Mf1601-012Backports) <a href="https://github.com/bitcoin/bitcoin/pull/7371" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7371</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453126380' id='449062'>
+<a class='timestamp' href='#449062'><time timestamp='2016-01-18T14:13:00Z'>14:13</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+michagogo, never narrowed it down further
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453126740' id='449063'>
+<a class='timestamp' href='#449063'><time timestamp='2016-01-18T14:19:00Z'>14:19</time></a>
+&lt;<span class='nick nick-10'> GitHub126</span>&gt;
+[bitcoin] laanwj closed pull request #7360: Fix osslsigncode patch url (master...doc-fix) <a href="https://github.com/bitcoin/bitcoin/pull/7360" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7360</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453126860' id='449064'>
+<a class='timestamp' href='#449064'><time timestamp='2016-01-18T14:21:00Z'>14:21</time></a>
+&lt;<span class='nick nick-15'> GitHub27</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7372: Trivial: [qa] wallet: Print maintenance (master...Mf1601-qaWalletPrint) <a href="https://github.com/bitcoin/bitcoin/pull/7372" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7372</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127100' id='449065'>
+<a class='timestamp' href='#449065'><time timestamp='2016-01-18T14:25:00Z'>14:25</time></a>
+&lt;<span class='nick nick-4'> GitHub186</span>&gt;
+[bitcoin] sdaftuar opened pull request #7373: [Tests] Fix error in blockchain.py introduced in merge (master...fix-blockchain-py) <a href="https://github.com/bitcoin/bitcoin/pull/7373" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7373</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127400' id='449066'>
+<a class='timestamp' href='#449066'><time timestamp='2016-01-18T14:30:00Z'>14:30</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+travis is overheating. Could someone nuke <a href="https://travis-ci.org/bitcoin/bitcoin/builds/103104813" class="link" target="_blank">https://travis-ci.org/bitcoin/bitcoin/builds/103104813</a> &amp; <a href="https://travis-ci.org/bitcoin/bitcoin/builds/103103829" class="link" target="_blank">https://travis-ci.org/bitcoin/bitcoin/builds/103103829</a> ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127640' id='449067'>
+<a class='timestamp' href='#449067'><time timestamp='2016-01-18T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+or maybe just cancel  all running pulls other than the one from sdaftuar. They will fail anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127640' id='449068'>
+<a class='timestamp' href='#449068'><time timestamp='2016-01-18T14:34:00Z'>14:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+wumpus ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127700' id='449069'>
+<a class='timestamp' href='#449069'><time timestamp='2016-01-18T14:35:00Z'>14:35</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+is there a big red button to just cancel everything?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127760' id='449070'>
+<a class='timestamp' href='#449070'><time timestamp='2016-01-18T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+idk
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453127820' id='449071'>
+<a class='timestamp' href='#449071'><time timestamp='2016-01-18T14:37:00Z'>14:37</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+It is only the 4 running on <a href="https://travis-ci.org/bitcoin/bitcoin/pull_requests" class="link" target="_blank">https://travis-ci.org/bitcoin/bitcoin/pull_requests</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453128060' id='449072'>
+<a class='timestamp' href='#449072'><time timestamp='2016-01-18T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+cool, travis has a command line tool 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453128120' id='449073'>
+<a class='timestamp' href='#449073'><time timestamp='2016-01-18T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Nice, but you canceled <a href="https://travis-ci.org/bitcoin/bitcoin/builds/103118874" class="link" target="_blank">https://travis-ci.org/bitcoin/bitcoin/builds/103118874</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453128120' id='449074'>
+<a class='timestamp' href='#449074'><time timestamp='2016-01-18T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+This one should run ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453128120' id='449075'>
+<a class='timestamp' href='#449075'><time timestamp='2016-01-18T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+or get merged
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453128120' id='449076'>
+<a class='timestamp' href='#449076'><time timestamp='2016-01-18T14:42:00Z'>14:42</time></a>
+&lt;<span class='nick nick-11'>@wumpus</span>&gt;
+yes I&#x27;m cancelling everything, as said
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453129260' id='449077'>
+<a class='timestamp' href='#449077'><time timestamp='2016-01-18T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-9'> GitHub101</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/e4e77ee55d8a...e2ed57e61e44" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/e4e77ee55d8a...e2ed57e61e44</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453129260' id='449078'>
+<a class='timestamp' href='#449078'><time timestamp='2016-01-18T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-9'> GitHub101</span>&gt;
+bitcoin/master 4a04879 Suhas Daftuar: Fix error in blockchain.py introduced in merge
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453129260' id='449079'>
+<a class='timestamp' href='#449079'><time timestamp='2016-01-18T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-9'> GitHub101</span>&gt;
+bitcoin/master e2ed57e Wladimir J. van der Laan: Merge pull request #7373...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453129260' id='449080'>
+<a class='timestamp' href='#449080'><time timestamp='2016-01-18T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-16'> GitHub56</span>&gt;
+[bitcoin] laanwj closed pull request #7373: [Tests] Fix error in blockchain.py introduced in merge (master...fix-blockchain-py) <a href="https://github.com/bitcoin/bitcoin/pull/7373" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7373</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453129320' id='449081'>
+<a class='timestamp' href='#449081'><time timestamp='2016-01-18T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-14'> GitHub166</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/51af87f0786d3a0c9fbff84a9648781138ab84c3" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/51af87f0786d3a0c9fbff84a9648781138ab84c3</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453129320' id='449082'>
+<a class='timestamp' href='#449082'><time timestamp='2016-01-18T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-14'> GitHub166</span>&gt;
+bitcoin/0.12 51af87f Suhas Daftuar: Fix error in blockchain.py introduced in merge...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453130640' id='449083'>
+<a class='timestamp' href='#449083'><time timestamp='2016-01-18T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/e2ed57e61e44...21376af183ff" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/e2ed57e61e44...21376af183ff</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453130640' id='449084'>
+<a class='timestamp' href='#449084'><time timestamp='2016-01-18T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/master facd288 MarcoFalke: [qa] wallet: Print maintenance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453130640' id='449085'>
+<a class='timestamp' href='#449085'><time timestamp='2016-01-18T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/master 21376af Wladimir J. van der Laan: Merge pull request #7372...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453130640' id='449086'>
+<a class='timestamp' href='#449086'><time timestamp='2016-01-18T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-11'> GitHub182</span>&gt;
+[bitcoin] laanwj closed pull request #7372: Trivial: [qa] wallet: Print maintenance (master...Mf1601-qaWalletPrint) <a href="https://github.com/bitcoin/bitcoin/pull/7372" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7372</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131060' id='449087'>
+<a class='timestamp' href='#449087'><time timestamp='2016-01-18T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-13'> GitHub117</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/51af87f0786d...cda064caa13e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/51af87f0786d...cda064caa13e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131060' id='449088'>
+<a class='timestamp' href='#449088'><time timestamp='2016-01-18T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-13'> GitHub117</span>&gt;
+bitcoin/0.12 fa31133 MarcoFalke: [Doc] Wallet &amp; Pruning
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131060' id='449089'>
+<a class='timestamp' href='#449089'><time timestamp='2016-01-18T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-10'> GitHub95</span>&gt;
+[bitcoin] laanwj closed pull request #7370: [0.12] Doc: Wallet &amp; Pruning  (0.12...Mf1601-docWalletPrune) <a href="https://github.com/bitcoin/bitcoin/pull/7370" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7370</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131060' id='449090'>
+<a class='timestamp' href='#449090'><time timestamp='2016-01-18T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-13'> GitHub117</span>&gt;
+bitcoin/0.12 cda064c Wladimir J. van der Laan: Merge pull request #7370...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131720' id='449091'>
+<a class='timestamp' href='#449091'><time timestamp='2016-01-18T15:42:00Z'>15:42</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+FYI, I&#x27;ve been running 0.12RC1 and maxuploadtarget appears to be working.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131780' id='449092'>
+<a class='timestamp' href='#449092'><time timestamp='2016-01-18T15:43:00Z'>15:43</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+I think thats a great improvement over the previous QOS setup I had.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131840' id='449093'>
+<a class='timestamp' href='#449093'><time timestamp='2016-01-18T15:44:00Z'>15:44</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+but maxuploadtarget isn&#x27;t doing qos
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453131900' id='449094'>
+<a class='timestamp' href='#449094'><time timestamp='2016-01-18T15:45:00Z'>15:45</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+Its not, but my goal is to limit it to ~50 GB per month. I don&#x27;t really care about bursts very much.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453132260' id='449095'>
+<a class='timestamp' href='#449095'><time timestamp='2016-01-18T15:51:00Z'>15:51</time></a>
+&lt;<span class='nick nick-8'> GitHub190</span>&gt;
+[bitcoin] sdaftuar reopened pull request #7222: [WIP] RPC: Indicate which transactions are signaling opt-in RBF (master...add-optin-info) <a href="https://github.com/bitcoin/bitcoin/pull/7222" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7222</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453137900' id='449096'>
+<a class='timestamp' href='#449096'><time timestamp='2016-01-18T17:25:00Z'>17:25</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+can we get <b>*explicit*</b> ACKs on #7300? otherwise someone has to go make sure the authors actually contributed the code themselves :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453138440' id='449097'>
+<a class='timestamp' href='#449097'><time timestamp='2016-01-18T17:34:00Z'>17:34</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+Luke-Jr, only sipa is missing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453138500' id='449098'>
+<a class='timestamp' href='#449098'><time timestamp='2016-01-18T17:35:00Z'>17:35</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+need to ping when back online
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453140960' id='449099'>
+<a class='timestamp' href='#449099'><time timestamp='2016-01-18T18:16:00Z'>18:16</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+MarcoFalke: lots of people just posted stupid &quot;ACK everything I contribute&quot; which doesn&#x27;t really help
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453140960' id='449100'>
+<a class='timestamp' href='#449100'><time timestamp='2016-01-18T18:16:00Z'>18:16</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+because git doesn&#x27;t track who contributed things, only who wrote them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453141200' id='449101'>
+<a class='timestamp' href='#449101'><time timestamp='2016-01-18T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-7'> MarcoFalke</span>&gt;
+They are legally responsible if they commit copyfraud, how is this our problem? Or asking the other way: How would it help us to get &quot;explicit ACKs&quot; in case a copyfraud is detected and legally pursued?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453146480' id='449102'>
+<a class='timestamp' href='#449102'><time timestamp='2016-01-18T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-9'> GitHub58</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7374: [init] Rework transaction fee warnings (master...Mf1601-init-fee-warn) <a href="https://github.com/bitcoin/bitcoin/pull/7374" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7374</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453149180' id='449103'>
+<a class='timestamp' href='#449103'><time timestamp='2016-01-18T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+MarcoFalke: it&#x27;s not copyfraud necessarily
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453149180' id='449104'>
+<a class='timestamp' href='#449104'><time timestamp='2016-01-18T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+MarcoFalke: what if I PR some code from your repo, for example?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453149180' id='449105'>
+<a class='timestamp' href='#449105'><time timestamp='2016-01-18T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+MarcoFalke: you didn&#x27;t contribute it, but you wrote it and git attributes it to you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453152780' id='449106'>
+<a class='timestamp' href='#449106'><time timestamp='2016-01-18T21:33:00Z'>21:33</time></a>
+&lt;<span class='nick nick-3'> GitHub73</span>&gt;
+[bitcoin] toby opened pull request #7376: Payments: Allow zero value OP_RETURN in PaymentRequests (master...zeropayments) <a href="https://github.com/bitcoin/bitcoin/pull/7376" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7376</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453155000' id='449107'>
+<a class='timestamp' href='#449107'><time timestamp='2016-01-18T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+wumpus: btw, I can confirm that adding python to the os x descriptor fixes it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453157880' id='449108'>
+<a class='timestamp' href='#449108'><time timestamp='2016-01-18T22:58:00Z'>22:58</time></a>
+&lt;<span class='nick nick-13'> lpersona</span>&gt;
+quick question for devs as I was reviewing the 0.12 RC: has the combination of auto setting the min relay fee and RBF enabled a possible attack vector?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453157940' id='449109'>
+<a class='timestamp' href='#449109'><time timestamp='2016-01-18T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-13'> lpersona</span>&gt;
+I&#x27;ve posted the concern here and want to see if this possibility was considered before doing further research: <a href="https://www.reddit.com/r/Bitcoin/comments/41kaxq/autosetting_min_relay_fee_rbf_possible_attack/" class="link" target="_blank">https://www.reddit.com/r/Bitcoin/comments/41kaxq/autosetting_min_relay_fee_rbf_possible_attack/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453159440' id='449110'>
+<a class='timestamp' href='#449110'><time timestamp='2016-01-18T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+lpersona: replied there
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

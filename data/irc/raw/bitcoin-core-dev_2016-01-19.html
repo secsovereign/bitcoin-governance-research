@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2016-01-19
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2016-01-19' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2015-12-19">&lt;</a><span class='header'>   January 2016   </span><a href="/bitcoin-core-dev/2016-02-19">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                1  <a class="" href="/bitcoin-core-dev/2016-01-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2016-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2016-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2016-01-05">5</a>  <a class="" href="/bitcoin-core-dev/2016-01-06">6</a>  <a class="" href="/bitcoin-core-dev/2016-01-07">7</a>  <a class="" href="/bitcoin-core-dev/2016-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2016-01-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-10">10</a> <a class="" href="/bitcoin-core-dev/2016-01-11">11</a> <a class="" href="/bitcoin-core-dev/2016-01-12">12</a> <a class="" href="/bitcoin-core-dev/2016-01-13">13</a> <a class="" href="/bitcoin-core-dev/2016-01-14">14</a> <a class="" href="/bitcoin-core-dev/2016-01-15">15</a> <a class="" href="/bitcoin-core-dev/2016-01-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-17">17</a> <a class="" href="/bitcoin-core-dev/2016-01-18">18</a> <a class="current" href="/bitcoin-core-dev/2016-01-19">19</a> <a class="" href="/bitcoin-core-dev/2016-01-20">20</a> <a class="" href="/bitcoin-core-dev/2016-01-21">21</a> <a class="" href="/bitcoin-core-dev/2016-01-22">22</a> <a class="" href="/bitcoin-core-dev/2016-01-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-24">24</a> <a class="" href="/bitcoin-core-dev/2016-01-25">25</a> <a class="" href="/bitcoin-core-dev/2016-01-26">26</a> <a class="" href="/bitcoin-core-dev/2016-01-27">27</a> <a class="" href="/bitcoin-core-dev/2016-01-28">28</a> <a class="" href="/bitcoin-core-dev/2016-01-29">29</a> <a class="" href="/bitcoin-core-dev/2016-01-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1453163520' id='449111'>
+<a class='timestamp' href='#449111'><time timestamp='2016-01-19T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+lpersona: the way rbf works is that a new transaction must pay more in total fee than all the transactions it evicts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453163760' id='449112'>
+<a class='timestamp' href='#449112'><time timestamp='2016-01-19T00:36:00Z'>00:36</time></a>
+&lt;<span class='nick nick-13'> lpersona</span>&gt;
+sdaftuar: tks - i&#x27;m trying to find on the code where the sum of descendant fees is kept to be used by RBF, and also check if it&#x27;s only for immediate descendants or if it keeps the entire tree of descendants - is it part of txmempool?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453163820' id='449113'>
+<a class='timestamp' href='#449113'><time timestamp='2016-01-19T00:37:00Z'>00:37</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+in main.cpp, see AcceptToMemoryPoolWorker
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453163880' id='449114'>
+<a class='timestamp' href='#449114'><time timestamp='2016-01-19T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+while each transaction in the mempool caches its fee with descendants, for RBF purposes we walk the descendants of all the transactions that are conflicted, so that we don&#x27;t double count
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453163880' id='449115'>
+<a class='timestamp' href='#449115'><time timestamp='2016-01-19T00:38:00Z'>00:38</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+(ie in situations where a child transaction has 2 parents, both of which are being replaced)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453165920' id='449116'>
+<a class='timestamp' href='#449116'><time timestamp='2016-01-19T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: around?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166160' id='449117'>
+<a class='timestamp' href='#449117'><time timestamp='2016-01-19T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166280' id='449118'>
+<a class='timestamp' href='#449118'><time timestamp='2016-01-19T01:18:00Z'>01:18</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+if you have a few minutes i was hoping to get some help with a build issue i&#x27;m having in #7222
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166280' id='449119'>
+<a class='timestamp' href='#449119'><time timestamp='2016-01-19T01:18:00Z'>01:18</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+(sorry to bother you with this, i&#x27;m sure i&#x27;m doing something silly)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166340' id='449120'>
+<a class='timestamp' href='#449120'><time timestamp='2016-01-19T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: sure. looking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166340' id='449121'>
+<a class='timestamp' href='#449121'><time timestamp='2016-01-19T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+somehow i broke the qt build when i took some code out of rpcblockchain.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166400' id='449122'>
+<a class='timestamp' href='#449122'><time timestamp='2016-01-19T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: do you see the error locally too? or just on travis?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166400' id='449123'>
+<a class='timestamp' href='#449123'><time timestamp='2016-01-19T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yeah i see it locally as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166400' id='449124'>
+<a class='timestamp' href='#449124'><time timestamp='2016-01-19T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i added a new file, policy/rbf.h and policy/rbf.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166460' id='449125'>
+<a class='timestamp' href='#449125'><time timestamp='2016-01-19T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+the functions added were previously used in both rpcblockchain.cpp and wallet/rpcwallet.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166460' id='449126'>
+<a class='timestamp' href='#449126'><time timestamp='2016-01-19T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+and linking was fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166460' id='449127'>
+<a class='timestamp' href='#449127'><time timestamp='2016-01-19T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+when i deleted the code that invoked it from rpcblockchain.cpp, linking bitcoin-qt broke
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166460' id='449128'>
+<a class='timestamp' href='#449128'><time timestamp='2016-01-19T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i assume i screwed up the makefile?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166520' id='449129'>
+<a class='timestamp' href='#449129'><time timestamp='2016-01-19T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ah, some dependency thing then. i&#x27;ll pull it down and build
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166520' id='449130'>
+<a class='timestamp' href='#449130'><time timestamp='2016-01-19T01:22:00Z'>01:22</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: probably created some circular dep
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166640' id='449131'>
+<a class='timestamp' href='#449131'><time timestamp='2016-01-19T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+ah, ok if the makefile is fine, then i can probably track down my circular dependency.  &lt;embarrassed&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166760' id='449132'>
+<a class='timestamp' href='#449132'><time timestamp='2016-01-19T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: nm, not that. i don&#x27;t see where it was moved from (different commit?), but looks like you need rbf.cpp in a lib other than _server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166820' id='449133'>
+<a class='timestamp' href='#449133'><time timestamp='2016-01-19T01:27:00Z'>01:27</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yeah i force pushed (too quickly it seems!), blew away the commit where it was building
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166820' id='449134'>
+<a class='timestamp' href='#449134'><time timestamp='2016-01-19T01:27:00Z'>01:27</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+is there a simple fix to the Makefile?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453166880' id='449135'>
+<a class='timestamp' href='#449135'><time timestamp='2016-01-19T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+building now. i&#x27;m not familiar with what&#x27;s changing here, so i&#x27;ll have to poke around for a min
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453167360' id='449136'>
+<a class='timestamp' href='#449136'><time timestamp='2016-01-19T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+hmm, moving policy/rbf.cpp from libbitoin_server to libbitcoin_wallet appears to make the build work, with the wallet and without
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453167540' id='449137'>
+<a class='timestamp' href='#449137'><time timestamp='2016-01-19T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: right, i&#x27;m seeing the same. so turns out there is a circular dep between wallet and server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453167600' id='449138'>
+<a class='timestamp' href='#449138'><time timestamp='2016-01-19T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+ah, is that something i introduced?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453167600' id='449139'>
+<a class='timestamp' href='#449139'><time timestamp='2016-01-19T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+hmm, maybe not circular. bitcoind links with the order jumbled around...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453167600' id='449140'>
+<a class='timestamp' href='#449140'><time timestamp='2016-01-19T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+let me see if everything links this way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168320' id='449141'>
+<a class='timestamp' href='#449141'><time timestamp='2016-01-19T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: still trying to understand. i don&#x27;t see how this is altering the wallet&#x27;s deps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168320' id='449142'>
+<a class='timestamp' href='#449142'><time timestamp='2016-01-19T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+well, rpcwallet.cpp depends on policy/rbf.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168380' id='449143'>
+<a class='timestamp' href='#449143'><time timestamp='2016-01-19T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+and nothing else does now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168380' id='449144'>
+<a class='timestamp' href='#449144'><time timestamp='2016-01-19T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: yea, but wallet depends on tons of other stuff from server
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168380' id='449145'>
+<a class='timestamp' href='#449145'><time timestamp='2016-01-19T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+somehow does that cause libbitcoin_server to optimize it out?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168380' id='449146'>
+<a class='timestamp' href='#449146'><time timestamp='2016-01-19T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(unless i&#x27;m missing somehting obvious?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168440' id='449147'>
+<a class='timestamp' href='#449147'><time timestamp='2016-01-19T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+no, that&#x27;s what i understand too!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168500' id='449148'>
+<a class='timestamp' href='#449148'><time timestamp='2016-01-19T01:55:00Z'>01:55</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+is it crazy for me to put policy/rbf.cpp in libbitcoin_wallet?  it looks funny, though it seems to work...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168800' id='449149'>
+<a class='timestamp' href='#449149'><time timestamp='2016-01-19T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: mm, i&#x27;d prefer to figure out what make it different
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168800' id='449150'>
+<a class='timestamp' href='#449150'><time timestamp='2016-01-19T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+still poking
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453168860' id='449151'>
+<a class='timestamp' href='#449151'><time timestamp='2016-01-19T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+i see what you mean about the library order being different for qt than for bitcoind
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169040' id='449152'>
+<a class='timestamp' href='#449152'><time timestamp='2016-01-19T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+if i rearrange the library order for qt, i think that also solves the problem.  testing a bit more
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169040' id='449153'>
+<a class='timestamp' href='#449153'><time timestamp='2016-01-19T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+well the wallet order is tangled anyway. worth fixing even without this issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169280' id='449154'>
+<a class='timestamp' href='#449154'><time timestamp='2016-01-19T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+no, looks like that change i made to the qt build didn&#x27;t actually fix it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169460' id='449155'>
+<a class='timestamp' href='#449155'><time timestamp='2016-01-19T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+heh, built with a stale .a? i did that :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169460' id='449156'>
+<a class='timestamp' href='#449156'><time timestamp='2016-01-19T02:11:00Z'>02:11</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yeah i think so :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169580' id='449157'>
+<a class='timestamp' href='#449157'><time timestamp='2016-01-19T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+uh, i&#x27;m not sure how i overlooked this.  bitcoind also doesn&#x27;t compile. this qt stuff is a red herring.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169580' id='449158'>
+<a class='timestamp' href='#449158'><time timestamp='2016-01-19T02:13:00Z'>02:13</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+er
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169640' id='449159'>
+<a class='timestamp' href='#449159'><time timestamp='2016-01-19T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+bitcoind doesn&#x27;t link i mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169700' id='449160'>
+<a class='timestamp' href='#449160'><time timestamp='2016-01-19T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sdaftuar, git clean -fdx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169700' id='449161'>
+<a class='timestamp' href='#449161'><time timestamp='2016-01-19T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: right. it was the same on travis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169700' id='449162'>
+<a class='timestamp' href='#449162'><time timestamp='2016-01-19T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+i&#x27;ve been playing with bitcoind here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169700' id='449163'>
+<a class='timestamp' href='#449163'><time timestamp='2016-01-19T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: i&#x27;m pretty sure this is building up to a facepalm. i just don&#x27;t see what sets this apart.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453169880' id='449164'>
+<a class='timestamp' href='#449164'><time timestamp='2016-01-19T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+rpcwallet locks cs_main ffs. it&#x27;s obviously not a new dep.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170540' id='449165'>
+<a class='timestamp' href='#449165'><time timestamp='2016-01-19T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: ok, here we go
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170600' id='449166'>
+<a class='timestamp' href='#449166'><time timestamp='2016-01-19T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: solution?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170660' id='449167'>
+<a class='timestamp' href='#449167'><time timestamp='2016-01-19T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: yes. let me build clean before i spout more dumb stuff though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170660' id='449168'>
+<a class='timestamp' href='#449168'><time timestamp='2016-01-19T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: ok, you were right a long time ago
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170660' id='449169'>
+<a class='timestamp' href='#449169'><time timestamp='2016-01-19T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+when i said i probably did something silly?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170660' id='449170'>
+<a class='timestamp' href='#449170'><time timestamp='2016-01-19T02:31:00Z'>02:31</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+:)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170720' id='449171'>
+<a class='timestamp' href='#449171'><time timestamp='2016-01-19T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+&lt;sdaftuar&gt; somehow does that cause libbitcoin_server to optimize it out?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170720' id='449172'>
+<a class='timestamp' href='#449172'><time timestamp='2016-01-19T02:32:00Z'>02:32</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+looks like if an object isn&#x27;t use at all in the lib, it&#x27;ll leave it out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170780' id='449173'>
+<a class='timestamp' href='#449173'><time timestamp='2016-01-19T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+which also doesn&#x27;t make any sense, but one step at a time :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170780' id='449174'>
+<a class='timestamp' href='#449174'><time timestamp='2016-01-19T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+wow, okay. i really don&#x27;t understand computers, because i would have thought that the whole point was you don&#x27;t know if something linking against your library might use it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170780' id='449175'>
+<a class='timestamp' href='#449175'><time timestamp='2016-01-19T02:33:00Z'>02:33</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+if(!OptInRBF(CTransaction())) return false;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170840' id='449176'>
+<a class='timestamp' href='#449176'><time timestamp='2016-01-19T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+throw that in main.cpp somewhere, and it&#x27;ll link
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170840' id='449177'>
+<a class='timestamp' href='#449177'><time timestamp='2016-01-19T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+hm.  so where does that leave us?  are we building the libraries the wrong way somehow?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170840' id='449178'>
+<a class='timestamp' href='#449178'><time timestamp='2016-01-19T02:34:00Z'>02:34</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+er, fix the func name. I nuked the &quot;Signal&quot; cause i thought the preprocessor might&#x27;ve been screwing with it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170900' id='449179'>
+<a class='timestamp' href='#449179'><time timestamp='2016-01-19T02:35:00Z'>02:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: still investigating.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453170960' id='449180'>
+<a class='timestamp' href='#449180'><time timestamp='2016-01-19T02:36:00Z'>02:36</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+oh interesting, somehow referencing just one function must pull in teh whole file?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453171320' id='449181'>
+<a class='timestamp' href='#449181'><time timestamp='2016-01-19T02:42:00Z'>02:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: still not making any sense. playing around.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453173240' id='449182'>
+<a class='timestamp' href='#449182'><time timestamp='2016-01-19T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: i&#x27;m going to call it a night soon.  i&#x27;ve pushed up a temporary hack (just moved rbf.cpp -&gt; libbitcoin_wallet) to make travis happy for now while we figure out the right way to solve this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453173240' id='449183'>
+<a class='timestamp' href='#449183'><time timestamp='2016-01-19T03:14:00Z'>03:14</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+cfields: Thanks for diving into this, sorry if I sucked away your evening!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453173300' id='449184'>
+<a class='timestamp' href='#449184'><time timestamp='2016-01-19T03:15:00Z'>03:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+sdaftuar: np. i&#x27;m not sure there&#x27;s much of a fix. our libs don&#x27;t work how libs usually do, they&#x27;re all inter-connected...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453173360' id='449185'>
+<a class='timestamp' href='#449185'><time timestamp='2016-01-19T03:16:00Z'>03:16</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+they&#x27;re supposed to be listed from most to least dependent, and the linker makes a note of what syms are needed along the way...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453173480' id='449186'>
+<a class='timestamp' href='#449186'><time timestamp='2016-01-19T03:18:00Z'>03:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+but in our case, they need eachother. so there&#x27;s no ordering where the linker can sanely mark unresolved deps along the way. i suppose we just happen to be inter-connected enough to trick it into working :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453173480' id='449187'>
+<a class='timestamp' href='#449187'><time timestamp='2016-01-19T03:18:00Z'>03:18</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+that is more than a little disturbing :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175040' id='449188'>
+<a class='timestamp' href='#449188'><time timestamp='2016-01-19T03:44:00Z'>03:44</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+I think I found a bug with the RC&#x27;s Banned peers display.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175100' id='449189'>
+<a class='timestamp' href='#449189'><time timestamp='2016-01-19T03:45:00Z'>03:45</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+I had a peer that was supposed to be unbanned about an hour ago, but it is still showing up there.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175100' id='449190'>
+<a class='timestamp' href='#449190'><time timestamp='2016-01-19T03:45:00Z'>03:45</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+Should I report this as an issue on github?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175100' id='449191'>
+<a class='timestamp' href='#449191'><time timestamp='2016-01-19T03:45:00Z'>03:45</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+PRab: probably
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175160' id='449192'>
+<a class='timestamp' href='#449192'><time timestamp='2016-01-19T03:46:00Z'>03:46</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+I wonder if it doesn&#x27;t refresh until the gui is closed and reopened. Testing...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175160' id='449193'>
+<a class='timestamp' href='#449193'><time timestamp='2016-01-19T03:46:00Z'>03:46</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+Nope, still there.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453175340' id='449194'>
+<a class='timestamp' href='#449194'><time timestamp='2016-01-19T03:49:00Z'>03:49</time></a>
+&lt;<span class='nick nick-8'> PRab</span>&gt;
+I think I got the relevant details in <a href="https://github.com/bitcoin/bitcoin/issues/7377" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/7377</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453192920' id='449195'>
+<a class='timestamp' href='#449195'><time timestamp='2016-01-19T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-4'> GitHub199</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/21376af183ff...668906fcf27b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/21376af183ff...668906fcf27b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453192920' id='449196'>
+<a class='timestamp' href='#449196'><time timestamp='2016-01-19T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-4'> GitHub199</span>&gt;
+bitcoin/master fada0c9 MarcoFalke: [travis] Fail when documentation is outdated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453192920' id='449197'>
+<a class='timestamp' href='#449197'><time timestamp='2016-01-19T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-4'> GitHub199</span>&gt;
+bitcoin/master faeda0e MarcoFalke: [travis] Run contrib/devtools/check-doc.py early
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453192920' id='449198'>
+<a class='timestamp' href='#449198'><time timestamp='2016-01-19T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-4'> GitHub199</span>&gt;
+bitcoin/master 668906f Wladimir J. van der Laan: Merge pull request #7280...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453192920' id='449199'>
+<a class='timestamp' href='#449199'><time timestamp='2016-01-19T08:42:00Z'>08:42</time></a>
+&lt;<span class='nick nick-13'> GitHub66</span>&gt;
+[bitcoin] laanwj closed pull request #7280: [travis] Fail when documentation is outdated (master...MarcoFalke-2015-travisDoc) <a href="https://github.com/bitcoin/bitcoin/pull/7280" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7280</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453194900' id='449200'>
+<a class='timestamp' href='#449200'><time timestamp='2016-01-19T09:15:00Z'>09:15</time></a>
+&lt;<span class='nick nick-12'> GitHub40</span>&gt;
+[bitcoin] laanwj opened pull request #7378: devtools: replace github-merge with python version (master...2016_01_python_github_merge) <a href="https://github.com/bitcoin/bitcoin/pull/7378" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7378</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453202940' id='449201'>
+<a class='timestamp' href='#449201'><time timestamp='2016-01-19T11:29:00Z'>11:29</time></a>
+&lt;<span class='nick nick-12'> GitHub178</span>&gt;
+[bitcoin] jtimon closed pull request #6597: Chainparams: Don&#x27;t check the genesis block (master...chainparams-genesis-no-check-0.12.99) <a href="https://github.com/bitcoin/bitcoin/pull/6597" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6597</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453204740' id='449202'>
+<a class='timestamp' href='#449202'><time timestamp='2016-01-19T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-5'> GitHub134</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/668906fcf27b...3b43cad9d059" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/668906fcf27b...3b43cad9d059</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453204740' id='449203'>
+<a class='timestamp' href='#449203'><time timestamp='2016-01-19T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-5'> GitHub134</span>&gt;
+bitcoin/master 39a525c ptschip: Do not download transactions during inital sync
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453204740' id='449204'>
+<a class='timestamp' href='#449204'><time timestamp='2016-01-19T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-5'> GitHub134</span>&gt;
+bitcoin/master 3b43cad Wladimir J. van der Laan: Merge pull request #7164: Do not download transactions during initial blockchain sync...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453204740' id='449205'>
+<a class='timestamp' href='#449205'><time timestamp='2016-01-19T11:59:00Z'>11:59</time></a>
+&lt;<span class='nick nick-9'> GitHub58</span>&gt;
+[bitcoin] laanwj closed pull request #7164: Do not download transactions during initial blockchain sync (master...tx_getdata) <a href="https://github.com/bitcoin/bitcoin/pull/7164" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7164</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206180' id='449206'>
+<a class='timestamp' href='#449206'><time timestamp='2016-01-19T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-8'> GitHub104</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3b43cad9d059...f9fd4c288484" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3b43cad9d059...f9fd4c288484</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206180' id='449207'>
+<a class='timestamp' href='#449207'><time timestamp='2016-01-19T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-8'> GitHub104</span>&gt;
+bitcoin/master fd83615 Peter Todd: Improve CheckInputs() comment about sig verification
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206180' id='449208'>
+<a class='timestamp' href='#449208'><time timestamp='2016-01-19T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-8'> GitHub104</span>&gt;
+bitcoin/master f9fd4c2 Wladimir J. van der Laan: Merge pull request #7281: Improve CheckInputs() comment about sig verification...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206180' id='449209'>
+<a class='timestamp' href='#449209'><time timestamp='2016-01-19T12:23:00Z'>12:23</time></a>
+&lt;<span class='nick nick-16'> GitHub3</span>&gt;
+[bitcoin] laanwj closed pull request #7281: Improve CheckInputs() comment about sig verification (master...2016-01-improve-checkinputs-comment) <a href="https://github.com/bitcoin/bitcoin/pull/7281" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7281</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206420' id='449210'>
+<a class='timestamp' href='#449210'><time timestamp='2016-01-19T12:27:00Z'>12:27</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sdaftuar: I&#x27;m not sure I quite understand why rbf.cpp should be part of the wallet - does it use any wallet functions?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206540' id='449211'>
+<a class='timestamp' href='#449211'><time timestamp='2016-01-19T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I understand it&#x27;s only used in the wallet, but having it in policy then linking it only into the wallet is a bit strange
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206540' id='449212'>
+<a class='timestamp' href='#449212'><time timestamp='2016-01-19T12:29:00Z'>12:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields, what circular dependency is this? we should get rid of it 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206600' id='449213'>
+<a class='timestamp' href='#449213'><time timestamp='2016-01-19T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+come on, this linker behavior can&#x27;t be so random we have to do something random to make a problem seem to go away
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206660' id='449214'>
+<a class='timestamp' href='#449214'><time timestamp='2016-01-19T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;ll take a look...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206720' id='449215'>
+<a class='timestamp' href='#449215'><time timestamp='2016-01-19T12:32:00Z'>12:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+also I don&#x27;t understand why github says #7222 has &#x27;conflicts that need to be resolved&#x27;, even though travis apparently builds it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453206960' id='449216'>
+<a class='timestamp' href='#449216'><time timestamp='2016-01-19T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I don&#x27;t think server can depend on the wallet in any way, if we do a --disable-wallet build the wallet library won&#x27;t even be built
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453207620' id='449217'>
+<a class='timestamp' href='#449217'><time timestamp='2016-01-19T12:47:00Z'>12:47</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh it does - the problem is that the RPC calls for the wallet are referenced from libbitcoin_server. this may be solved by something like #7307, which moves the registration of the wallet RPC calls to the wallet itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453207680' id='449218'>
+<a class='timestamp' href='#449218'><time timestamp='2016-01-19T12:48:00Z'>12:48</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and that&#x27;s only part of it, there are other parts of e.g. init.cpp which are part of the server and make direct calls into the wallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453207800' id='449219'>
+<a class='timestamp' href='#449219'><time timestamp='2016-01-19T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+basically, we need to get rid of all #ifdef ENABLE_WALLET code in bitcoin_server library
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453207800' id='449220'>
+<a class='timestamp' href='#449220'><time timestamp='2016-01-19T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that&#x27;s too much for 0.12 backport so I agree on sdaftuar &#x27;s intermediate &quot;hack&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453208940' id='449221'>
+<a class='timestamp' href='#449221'><time timestamp='2016-01-19T13:09:00Z'>13:09</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+wumpus: thanks for taking a look.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453208940' id='449222'>
+<a class='timestamp' href='#449222'><time timestamp='2016-01-19T13:09:00Z'>13:09</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+wumpus: will look at the new merge conflicts (was clean when i last pushed)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209000' id='449223'>
+<a class='timestamp' href='#449223'><time timestamp='2016-01-19T13:10:00Z'>13:10</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh sorry if I broke your pull
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209060' id='449224'>
+<a class='timestamp' href='#449224'><time timestamp='2016-01-19T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+seems a conflict in listtransactions.py
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209060' id='449225'>
+<a class='timestamp' href='#449225'><time timestamp='2016-01-19T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209060' id='449226'>
+<a class='timestamp' href='#449226'><time timestamp='2016-01-19T13:11:00Z'>13:11</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+hmm
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209120' id='449227'>
+<a class='timestamp' href='#449227'><time timestamp='2016-01-19T13:12:00Z'>13:12</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+oh yeah the mocktime thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209120' id='449228'>
+<a class='timestamp' href='#449228'><time timestamp='2016-01-19T13:12:00Z'>13:12</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+in #7164
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209120' id='449229'>
+<a class='timestamp' href='#449229'><time timestamp='2016-01-19T13:12:00Z'>13:12</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209240' id='449230'>
+<a class='timestamp' href='#449230'><time timestamp='2016-01-19T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+should be easy to resolve
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209240' id='449231'>
+<a class='timestamp' href='#449231'><time timestamp='2016-01-19T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(add-add conflict)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209240' id='449232'>
+<a class='timestamp' href='#449232'><time timestamp='2016-01-19T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+yep agreed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209300' id='449233'>
+<a class='timestamp' href='#449233'><time timestamp='2016-01-19T13:15:00Z'>13:15</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+just want to make sure the 0.12 backport will be clean before i push
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453209540' id='449234'>
+<a class='timestamp' href='#449234'><time timestamp='2016-01-19T13:19:00Z'>13:19</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+ok when i fix the issue and try to cherrypick to 0.12, i get a conflict to resolve.  it&#x27;s easy to fix, but would it better to open a second PR for the 0.12 branch which is clean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453210200' id='449235'>
+<a class='timestamp' href='#449235'><time timestamp='2016-01-19T13:30:00Z'>13:30</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+ah, if i just move my new method to further down in the file, then no conflict in 0.12.  i&#x27;ll just do that for simplicity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453215180' id='449236'>
+<a class='timestamp' href='#449236'><time timestamp='2016-01-19T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Is it possible to be invited to the bitcoincore slack channel?  Is relevant dev discussion happening there or is it essentially all here?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453217160' id='449237'>
+<a class='timestamp' href='#449237'><time timestamp='2016-01-19T15:26:00Z'>15:26</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Slack?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453217700' id='449238'>
+<a class='timestamp' href='#449238'><time timestamp='2016-01-19T15:35:00Z'>15:35</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+bitcoincore.slack.com (no invitation required)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453218060' id='449239'>
+<a class='timestamp' href='#449239'><time timestamp='2016-01-19T15:41:00Z'>15:41</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+bsm117532, mostly a community outreach deal. CEOs, press, others actually idle there now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453218180' id='449240'>
+<a class='timestamp' href='#449240'><time timestamp='2016-01-19T15:43:00Z'>15:43</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Ok thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453218420' id='449241'>
+<a class='timestamp' href='#449241'><time timestamp='2016-01-19T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+instagibbs: It looks like I can&#x27;t log into bitcoincore.slack.com without an invitation.  But not so concerned about it, the last thing I need is another chat I have to pay attention to!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453218420' id='449242'>
+<a class='timestamp' href='#449242'><time timestamp='2016-01-19T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+What is that, who uses it, and what for?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453218480' id='449243'>
+<a class='timestamp' href='#449243'><time timestamp='2016-01-19T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Let&#x27;s just use IRC. ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453218960' id='449244'>
+<a class='timestamp' href='#449244'><time timestamp='2016-01-19T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+michagogo, &quot;mostly a community outreach deal. CEOs, press, others actually idle there now&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453221720' id='449245'>
+<a class='timestamp' href='#449245'><time timestamp='2016-01-19T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+bsm117532: you can get an invitation from <a href="https://slack.bitcoincore.org" class="link" target="_blank">https://slack.bitcoincore.org</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453221780' id='449246'>
+<a class='timestamp' href='#449246'><time timestamp='2016-01-19T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+instagibbs: it&#x27;s also for Bitcoin Core community to gather
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453221780' id='449247'>
+<a class='timestamp' href='#449247'><time timestamp='2016-01-19T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+it&#x27;s not a replacement for IRC or developer collaboration though, that remains in IRC.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453221780' id='449248'>
+<a class='timestamp' href='#449248'><time timestamp='2016-01-19T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+^^ that&#x27;s what I meant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453222140' id='449249'>
+<a class='timestamp' href='#449249'><time timestamp='2016-01-19T16:49:00Z'>16:49</time></a>
+&lt;<span class='nick nick-16'> bsm117532</span>&gt;
+Thanks btcdrak.  Looked briefly, this looks like it&#x27;s probably about as useful as the #bitcoin IRC channel (very low signal/noise, no serious dev discussion)...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453226040' id='449250'>
+<a class='timestamp' href='#449250'><time timestamp='2016-01-19T17:54:00Z'>17:54</time></a>
+&lt;<span class='nick nick-15'> GitHub38</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7380: [qa] Disable salvagewallet check (master...Mf1601-qaDisableSalvagewalletCheck) <a href="https://github.com/bitcoin/bitcoin/pull/7380" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7380</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453226700' id='449251'>
+<a class='timestamp' href='#449251'><time timestamp='2016-01-19T18:05:00Z'>18:05</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: thanks for having a look. yes, of course fixing the real dependency issue is the way to go :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453227060' id='449252'>
+<a class='timestamp' href='#449252'><time timestamp='2016-01-19T18:11:00Z'>18:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Freeking malloc in glibc on linux calls open on files in proc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453229820' id='449253'>
+<a class='timestamp' href='#449253'><time timestamp='2016-01-19T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-15'> GitHub27</span>&gt;
+[bitcoin] MarcoFalke closed pull request #7380: [qa] Disable salvagewallet check (master...Mf1601-qaDisableSalvagewalletCheck) <a href="https://github.com/bitcoin/bitcoin/pull/7380" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7380</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453230900' id='449254'>
+<a class='timestamp' href='#449254'><time timestamp='2016-01-19T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+cfields: just checking, you saw that wumpus figured out the fix, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453230900' id='449255'>
+<a class='timestamp' href='#449255'><time timestamp='2016-01-19T19:15:00Z'>19:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+michagogo: the gitian issue, you mean?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453230960' id='449256'>
+<a class='timestamp' href='#449256'><time timestamp='2016-01-19T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453230960' id='449257'>
+<a class='timestamp' href='#449257'><time timestamp='2016-01-19T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+(at the cost of a non-matching in hash)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453230960' id='449258'>
+<a class='timestamp' href='#449258'><time timestamp='2016-01-19T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+michagogo: yea, i saw. did&#x27;t look into it, though. I guess lxc doesn&#x27;t install python but kvm does, somehow?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231020' id='449259'>
+<a class='timestamp' href='#449259'><time timestamp='2016-01-19T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+It would seem so.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231020' id='449260'>
+<a class='timestamp' href='#449260'><time timestamp='2016-01-19T19:17:00Z'>19:17</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+weird
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231080' id='449261'>
+<a class='timestamp' href='#449261'><time timestamp='2016-01-19T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+i suppose we should put it in the descriptor then. obviously it&#x27;s needed, even if it happens to be pulled in by something else already
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231080' id='449262'>
+<a class='timestamp' href='#449262'><time timestamp='2016-01-19T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+I guess it boils down to debootstrap vs pxc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231080' id='449263'>
+<a class='timestamp' href='#449263'><time timestamp='2016-01-19T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+lxc*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231140' id='449264'>
+<a class='timestamp' href='#449264'><time timestamp='2016-01-19T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Yeah, I wonder what changed from 0.11 to 0.2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231140' id='449265'>
+<a class='timestamp' href='#449265'><time timestamp='2016-01-19T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+0.12*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231140' id='449266'>
+<a class='timestamp' href='#449266'><time timestamp='2016-01-19T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+michagogo: does trusty only install python3 by default, maybe?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231140' id='449267'>
+<a class='timestamp' href='#449267'><time timestamp='2016-01-19T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(or default to it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231140' id='449268'>
+<a class='timestamp' href='#449268'><time timestamp='2016-01-19T19:19:00Z'>19:19</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+If so, kvm should also fail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231200' id='449269'>
+<a class='timestamp' href='#449269'><time timestamp='2016-01-19T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+And I don&#x27;t think they&#x27;re there yet. IIRC I saw on the MLs that they&#x27;re working on removing it from the default packages in xenial...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231200' id='449270'>
+<a class='timestamp' href='#449270'><time timestamp='2016-01-19T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+michagogo: i was thinking part of the kvm install switched the default somehow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231200' id='449271'>
+<a class='timestamp' href='#449271'><time timestamp='2016-01-19T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+but yea, that doesn&#x27;t really make sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231260' id='449272'>
+<a class='timestamp' href='#449272'><time timestamp='2016-01-19T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+the question is really what does debootstrap do different from vmbuilder
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231260' id='449273'>
+<a class='timestamp' href='#449273'><time timestamp='2016-01-19T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+And yeah, <a href="https://wiki.ubuntu.com/Python" class="link" target="_blank">https://wiki.ubuntu.com/Python</a> confirms. Under &quot;Plans for 16.04&quot;: UOS for Xenial had a session on the removal of Python 2.7 from the default images/seeds. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231440' id='449274'>
+<a class='timestamp' href='#449274'><time timestamp='2016-01-19T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231800' id='449275'>
+<a class='timestamp' href='#449275'><time timestamp='2016-01-19T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+so there are 3 real questions. 1) why does debootstrap not install python? 2) what changed from 0.11 to 0.12? and 3) why does this only affect OS X?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453231800' id='449276'>
+<a class='timestamp' href='#449276'><time timestamp='2016-01-19T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+cfields: I&#x27;m trying to add a depends pkg for qtsvg, and I have it with a dependencies on qt, but how do I get qmake? :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232100' id='449277'>
+<a class='timestamp' href='#449277'><time timestamp='2016-01-19T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+michagogo: unsure on all counts :\
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232100' id='449278'>
+<a class='timestamp' href='#449278'><time timestamp='2016-01-19T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: yuck, what&#x27;s qtsvg for?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232100' id='449279'>
+<a class='timestamp' href='#449279'><time timestamp='2016-01-19T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+cfields: I want to make the icons SVG only? :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232100' id='449280'>
+<a class='timestamp' href='#449280'><time timestamp='2016-01-19T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: isn&#x27;t that just a config switch for the qt build?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232100' id='449281'>
+<a class='timestamp' href='#449281'><time timestamp='2016-01-19T19:35:00Z'>19:35</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+to enable the svg module?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232160' id='449282'>
+<a class='timestamp' href='#449282'><time timestamp='2016-01-19T19:36:00Z'>19:36</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+no, qtsvg is the svg module
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232220' id='449283'>
+<a class='timestamp' href='#449283'><time timestamp='2016-01-19T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: right. ./configure ... -svg
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232220' id='449284'>
+<a class='timestamp' href='#449284'><time timestamp='2016-01-19T19:37:00Z'>19:37</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+…
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232340' id='449285'>
+<a class='timestamp' href='#449285'><time timestamp='2016-01-19T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: oh, i see the confusion, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232340' id='449286'>
+<a class='timestamp' href='#449286'><time timestamp='2016-01-19T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: we grab the modules, put them in place, then tell qt&#x27;s main configure which ones to build
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232400' id='449287'>
+<a class='timestamp' href='#449287'><time timestamp='2016-01-19T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+cfields: yuck? :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232400' id='449288'>
+<a class='timestamp' href='#449288'><time timestamp='2016-01-19T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+why can&#x27;t packages use their dependencies?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449289'>
+<a class='timestamp' href='#449289'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: shrug, it never seemed to work well for me to try to split it into native/target builds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449290'>
+<a class='timestamp' href='#449290'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+oh!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449291'>
+<a class='timestamp' href='#449291'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+you&#x27;re welcome to give it a shot, of course :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449292'>
+<a class='timestamp' href='#449292'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+so I need to depend on native too, makes sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449293'>
+<a class='timestamp' href='#449293'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+So the answer is to add ..qtsvg....tar.gz to the qt package file list, and then add the configure flag?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449294'>
+<a class='timestamp' href='#449294'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: yea, the tools are native, but qt doesn&#x27;t make it easy to <u>_just_</u> build the native parts. so in the end, it&#x27;s easier to just build it all in one go
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232460' id='449295'>
+<a class='timestamp' href='#449295'><time timestamp='2016-01-19T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+eh, but there&#x27;s no native-qt pkg
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232520' id='449296'>
+<a class='timestamp' href='#449296'><time timestamp='2016-01-19T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: what michagogo said. see qttranslations as an example
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232520' id='449297'>
+<a class='timestamp' href='#449297'><time timestamp='2016-01-19T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+cfields: that&#x27;s ugly though :&lt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232520' id='449298'>
+<a class='timestamp' href='#449298'><time timestamp='2016-01-19T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: very.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232580' id='449299'>
+<a class='timestamp' href='#449299'><time timestamp='2016-01-19T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: maybe they&#x27;ve fixed it up lately and you&#x27;ll have better luck these days splitting it up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232580' id='449300'>
+<a class='timestamp' href='#449300'><time timestamp='2016-01-19T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+:|
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232580' id='449301'>
+<a class='timestamp' href='#449301'><time timestamp='2016-01-19T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+so how would I get access to qmake?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232580' id='449302'>
+<a class='timestamp' href='#449302'><time timestamp='2016-01-19T19:43:00Z'>19:43</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: you&#x27;d have to create a native package for just qmake/rcc/etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232640' id='449303'>
+<a class='timestamp' href='#449303'><time timestamp='2016-01-19T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+eh, nothing else already uses qmake?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232640' id='449304'>
+<a class='timestamp' href='#449304'><time timestamp='2016-01-19T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+then add that as a dependency to the child package
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232640' id='449305'>
+<a class='timestamp' href='#449305'><time timestamp='2016-01-19T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: no, only qt internally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232700' id='449306'>
+<a class='timestamp' href='#449306'><time timestamp='2016-01-19T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+i c
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232700' id='449307'>
+<a class='timestamp' href='#449307'><time timestamp='2016-01-19T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: see protobuf as an example of native/target split
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232760' id='449308'>
+<a class='timestamp' href='#449308'><time timestamp='2016-01-19T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+nah, if you and Gentoo both couldn&#x27;t figure it out, I&#x27;ll give up and go the qttranslations route
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232760' id='449309'>
+<a class='timestamp' href='#449309'><time timestamp='2016-01-19T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: heh, they do it the same way?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232820' id='449310'>
+<a class='timestamp' href='#449310'><time timestamp='2016-01-19T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+no, but they don&#x27;t make qmake available independently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232820' id='449311'>
+<a class='timestamp' href='#449311'><time timestamp='2016-01-19T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: from what i could tell last time, trying to build just the native tools was painful, as well as trying to force the rest of the build stuff to use an out-of-tree qmake/rcc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453232880' id='449312'>
+<a class='timestamp' href='#449312'><time timestamp='2016-01-19T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: they probably make lots of assumptions that the versions being built are the ones used to compile the rest. kinda understandable.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453234380' id='449313'>
+<a class='timestamp' href='#449313'><time timestamp='2016-01-19T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+//home/ubuntu/cache/common/qttools-opensource-src-5.5.0.tar.gz: OK
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453234380' id='449314'>
+<a class='timestamp' href='#449314'><time timestamp='2016-01-19T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+tar: /home/ubuntu/cache/common/qtsvg-opensource-src-5.5.0.tar.gz: Cannot open: No such file or directory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453234380' id='449315'>
+<a class='timestamp' href='#449315'><time timestamp='2016-01-19T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+cfields: any idea why it wasn&#x27;t fetched? :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453234500' id='449316'>
+<a class='timestamp' href='#449316'><time timestamp='2016-01-19T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: not without seeing what you changed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453236540' id='449317'>
+<a class='timestamp' href='#449317'><time timestamp='2016-01-19T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+cfields: <a href="http://codepad.org/dioh3N8s" class="link" target="_blank">http://codepad.org/dioh3N8s</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453237200' id='449318'>
+<a class='timestamp' href='#449318'><time timestamp='2016-01-19T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: looks ok to me...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453237200' id='449319'>
+<a class='timestamp' href='#449319'><time timestamp='2016-01-19T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+Luke-Jr: though i just noticed, our hash-check isn&#x27;t actually working there. we need to change those &quot;echo foo &gt; bar&quot; to &quot;echo foo &gt;&gt; bar&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453237200' id='449320'>
+<a class='timestamp' href='#449320'><time timestamp='2016-01-19T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+only the last one&#x27;s getting hashed :\
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1453237260' id='449321'>
+<a class='timestamp' href='#449321'><time timestamp='2016-01-19T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+:/
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

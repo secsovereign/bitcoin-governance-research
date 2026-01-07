@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2020-10-16
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2020-10-16' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:17 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2020-09-16">&lt;</a><span class='header'>   October 2020   </span><a href="/bitcoin-core-dev/2020-11-16">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2020-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2020-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2020-10-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2020-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2020-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2020-10-06">6</a>  <a class="" href="/bitcoin-core-dev/2020-10-07">7</a>  <a class="" href="/bitcoin-core-dev/2020-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2020-10-09">9</a> <a class="" href="/bitcoin-core-dev/2020-10-10">10</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-10-11">11</a> <a class="" href="/bitcoin-core-dev/2020-10-12">12</a> <a class="" href="/bitcoin-core-dev/2020-10-13">13</a> <a class="" href="/bitcoin-core-dev/2020-10-14">14</a> <a class="" href="/bitcoin-core-dev/2020-10-15">15</a> <a class="current" href="/bitcoin-core-dev/2020-10-16">16</a> <a class="" href="/bitcoin-core-dev/2020-10-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-10-18">18</a> <a class="" href="/bitcoin-core-dev/2020-10-19">19</a> <a class="" href="/bitcoin-core-dev/2020-10-20">20</a> <a class="" href="/bitcoin-core-dev/2020-10-21">21</a> <a class="" href="/bitcoin-core-dev/2020-10-22">22</a> <a class="" href="/bitcoin-core-dev/2020-10-23">23</a> <a class="" href="/bitcoin-core-dev/2020-10-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2020-10-25">25</a> <a class="" href="/bitcoin-core-dev/2020-10-26">26</a> <a class="" href="/bitcoin-core-dev/2020-10-27">27</a> <a class="" href="/bitcoin-core-dev/2020-10-28">28</a> <a class="" href="/bitcoin-core-dev/2020-10-29">29</a> <a class="" href="/bitcoin-core-dev/2020-10-30">30</a> <a class="" href="/bitcoin-core-dev/2020-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1602812100' id='408832'>
+<a class='timestamp' href='#408832'><time timestamp='2020-10-16T01:35:00Z'>01:35</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: hmm, wouldn&#x27;t it be better to have AreInputsStandard() return false for taproot spends prior to taproot actually activating? could pass down currentBlockScriptVerifyFlags to do that, I think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812340' id='408833'>
+<a class='timestamp' href='#408833'><time timestamp='2020-10-16T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+aj: there is no script validation flag that will reject a valid taproot spend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812400' id='408834'>
+<a class='timestamp' href='#408834'><time timestamp='2020-10-16T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+one could be added, but that&#x27;s a bit invasive... i&#x27;d rather do it through policy/policy.cpp alone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812460' id='408835'>
+<a class='timestamp' href='#408835'><time timestamp='2020-10-16T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+aj: and yes, i suggest that (a) before activation is defined: creation is allowed, spending is not (b) while defined but unactivated: neither is allowed (c) when active, both are allowed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812460' id='408836'>
+<a class='timestamp' href='#408836'><time timestamp='2020-10-16T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+an alternative - if we don&#x27;t care about the theft protection - is making (b) identical to (a)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812520' id='408837'>
+<a class='timestamp' href='#408837'><time timestamp='2020-10-16T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: oh... maybe it was too early in the morning when i read what you were saying then, that sounds great
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812520' id='408838'>
+<a class='timestamp' href='#408838'><time timestamp='2020-10-16T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and looking at implementation... (a) can easily be extended to &quot;any situation in which it will never activate&quot;, including when it has failed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812640' id='408839'>
+<a class='timestamp' href='#408839'><time timestamp='2020-10-16T01:44:00Z'>01:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+one downside to have (a) and (b) have different behavior is that it introduces a trivial relay policy difference between nodes-with-activation and nodes-without-activation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812640' id='408840'>
+<a class='timestamp' href='#408840'><time timestamp='2020-10-16T01:44:00Z'>01:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so if that&#x27;s a concern, it should just be: whenever not active: creating allowed, spending not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812700' id='408841'>
+<a class='timestamp' href='#408841'><time timestamp='2020-10-16T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+there&#x27;ll be a relay policy difference between (a) and (c) and (b)/(c) are the same nodes, so that seems fine?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812700' id='408842'>
+<a class='timestamp' href='#408842'><time timestamp='2020-10-16T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right, but we can expect that by the time activation happens, many nodes will have activation included
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812760' id='408843'>
+<a class='timestamp' href='#408843'><time timestamp='2020-10-16T01:46:00Z'>01:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so it&#x27;s a synchronized event rather than dependent on upgrade time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812880' id='408844'>
+<a class='timestamp' href='#408844'><time timestamp='2020-10-16T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Is anyone else seeing a number of the functional tests fail? <a href="https://gist.github.com/fanquake/f3df509a6f810a104b97a38753ef7a5a" class="link" target="_blank">https://gist.github.com/fanquake/f3df509a6f810a104b97a38753ef7a5a</a> 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812880' id='408845'>
+<a class='timestamp' href='#408845'><time timestamp='2020-10-16T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Wondering if I&#x27;ve got some local issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602812880' id='408846'>
+<a class='timestamp' href='#408846'><time timestamp='2020-10-16T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+maybe make (b) while defined and in LOCKED_IN neither is allowed, would make it mostly safe and synchronised?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602813000' id='408847'>
+<a class='timestamp' href='#408847'><time timestamp='2020-10-16T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hmm, just have the theft protection while locked in and not yet activated?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602813000' id='408848'>
+<a class='timestamp' href='#408848'><time timestamp='2020-10-16T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+sipa: yeah. so people spending to taproot a little early are protected
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602813060' id='408849'>
+<a class='timestamp' href='#408849'><time timestamp='2020-10-16T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+a little protected anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602818760' id='408850'>
+<a class='timestamp' href='#408850'><time timestamp='2020-10-16T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+Seems there is at least some unwanted interaction between #20080 and the functional tests. Unclear why Travis / tests don&#x27;t seem to be failing for anyone else: <a href="https://github.com/bitcoin/bitcoin/pull/20080#issuecomment-709708344" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20080#issuecomment-709708344</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602818760' id='408851'>
+<a class='timestamp' href='#408851'><time timestamp='2020-10-16T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/20080" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/20080</a> | Strip any trailing `/` in -datadir path by hebasto · Pull Request #20080 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602819240' id='408852'>
+<a class='timestamp' href='#408852'><time timestamp='2020-10-16T03:34:00Z'>03:34</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+promag_: I made <a href="https://github.com/bitcoin/bitcoin/pull/13746" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/13746</a> a few years ago. Closed it due to lack of interest, though, but it seems similar to what you&#x27;re saying.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602819360' id='408853'>
+<a class='timestamp' href='#408853'><time timestamp='2020-10-16T03:36:00Z'>03:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+#13746
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602819360' id='408854'>
+<a class='timestamp' href='#408854'><time timestamp='2020-10-16T03:36:00Z'>03:36</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13746" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13746</a> | -masterdatadir for datadir bootstrapping by kallewoof · Pull Request #13746 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602819480' id='408855'>
+<a class='timestamp' href='#408855'><time timestamp='2020-10-16T03:38:00Z'>03:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] riyasingh0799 opened pull request #20164: [test] undo truncation of digits in btc amount (master...rpc-testmempoolaccept-fee) <a href="https://github.com/bitcoin/bitcoin/pull/20164" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20164</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602821160' id='408856'>
+<a class='timestamp' href='#408856'><time timestamp='2020-10-16T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9ad7cd2887ab...cbb5f3a2d584" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9ad7cd2887ab...cbb5f3a2d584</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602821160' id='408857'>
+<a class='timestamp' href='#408857'><time timestamp='2020-10-16T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cccc752 MarcoFalke: rpc: Properly deserialize txs with witness before signing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602821160' id='408858'>
+<a class='timestamp' href='#408858'><time timestamp='2020-10-16T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3333077 MarcoFalke: rpc: Adjust witness-tx deserialize error message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602821160' id='408859'>
+<a class='timestamp' href='#408859'><time timestamp='2020-10-16T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cbb5f3a fanquake: Merge #19836: rpc: Properly deserialize txs with witness before signing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602821160' id='408860'>
+<a class='timestamp' href='#408860'><time timestamp='2020-10-16T04:06:00Z'>04:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #19836: rpc: Properly deserialize txs with witness before signing (master...2008-rpcDeserTxsWitness) <a href="https://github.com/bitcoin/bitcoin/pull/19836" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19836</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602822180' id='408861'>
+<a class='timestamp' href='#408861'><time timestamp='2020-10-16T04:23:00Z'>04:23</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa opened pull request #20165: Only relay Taproot spends if next block has it active (master...202010_taproot_policy) <a href="https://github.com/bitcoin/bitcoin/pull/20165" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20165</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602822540' id='408862'>
+<a class='timestamp' href='#408862'><time timestamp='2020-10-16T04:29:00Z'>04:29</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake opened pull request #20166: [0.20] Backports (0.20...more_020_backports) <a href="https://github.com/bitcoin/bitcoin/pull/20166" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20166</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823080' id='408863'>
+<a class='timestamp' href='#408863'><time timestamp='2020-10-16T04:38:00Z'>04:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #20091: doc: reflect the current status of Tor support. (master...pr-351-doc) <a href="https://github.com/bitcoin/bitcoin/pull/20091" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20091</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823500' id='408864'>
+<a class='timestamp' href='#408864'><time timestamp='2020-10-16T04:45:00Z'>04:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: hmm, I wonder if, ideally, we would wait 100 blocks after activation to relay them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823560' id='408865'>
+<a class='timestamp' href='#408865'><time timestamp='2020-10-16T04:46:00Z'>04:46</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+similar to coinbase spends
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823860' id='408866'>
+<a class='timestamp' href='#408866'><time timestamp='2020-10-16T04:51:00Z'>04:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: what would that protect against?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823860' id='408867'>
+<a class='timestamp' href='#408867'><time timestamp='2020-10-16T04:51:00Z'>04:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #19635: param: add bool parameter -ephemeraltoronion to generate ephemeral tor addreses (master...ephemeral-tor-onion) <a href="https://github.com/bitcoin/bitcoin/pull/19635" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19635</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823920' id='408868'>
+<a class='timestamp' href='#408868'><time timestamp='2020-10-16T04:52:00Z'>04:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: reorgs invalidating them with a miner theft
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823920' id='408869'>
+<a class='timestamp' href='#408869'><time timestamp='2020-10-16T04:52:00Z'>04:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: downstream of the actual taproot spend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823920' id='408870'>
+<a class='timestamp' href='#408870'><time timestamp='2020-10-16T04:52:00Z'>04:52</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ie, a taproot spend is similar to a coinbase in that it can be claimed by any miner before the activation block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823980' id='408871'>
+<a class='timestamp' href='#408871'><time timestamp='2020-10-16T04:53:00Z'>04:53</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+luke-jr: provided the pay-to-taproot tx has block height locktime, that&#x27;s fine though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602823980' id='408872'>
+<a class='timestamp' href='#408872'><time timestamp='2020-10-16T04:53:00Z'>04:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: that argument would apply to creation of outputs, not spending them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824040' id='408873'>
+<a class='timestamp' href='#408873'><time timestamp='2020-10-16T04:54:00Z'>04:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+aj: oh, that&#x27;s true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824040' id='408874'>
+<a class='timestamp' href='#408874'><time timestamp='2020-10-16T04:54:00Z'>04:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm, might have been interesting to have a consensus rule that taproot spends need a locktime after the activation height/time; probably also not worth the additional effort tho
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824040' id='408875'>
+<a class='timestamp' href='#408875'><time timestamp='2020-10-16T04:54:00Z'>04:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+actually, that doesn&#x27;t work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824100' id='408876'>
+<a class='timestamp' href='#408876'><time timestamp='2020-10-16T04:55:00Z'>04:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+because that rule wouldn&#x27;t exist before activation either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824100' id='408877'>
+<a class='timestamp' href='#408877'><time timestamp='2020-10-16T04:55:00Z'>04:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824100' id='408878'>
+<a class='timestamp' href='#408878'><time timestamp='2020-10-16T04:55:00Z'>04:55</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm… maybe it would anyway? since it&#x27;d be an invalid taproot spend normally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824160' id='408879'>
+<a class='timestamp' href='#408879'><time timestamp='2020-10-16T04:56:00Z'>04:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oh well, could just as well be a &quot;wallets should do this&quot; best practice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602824220' id='408880'>
+<a class='timestamp' href='#408880'><time timestamp='2020-10-16T04:57:00Z'>04:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #19419: wallet: let Listwalletdir do not iterate through our blocksdata. (master...wallet_351) <a href="https://github.com/bitcoin/bitcoin/pull/19419" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19419</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602829680' id='408881'>
+<a class='timestamp' href='#408881'><time timestamp='2020-10-16T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #20164: [test] undo truncation of digits in btc amount (master...rpc-testmempoolaccept-fee) <a href="https://github.com/bitcoin/bitcoin/pull/20164" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20164</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602831720' id='408882'>
+<a class='timestamp' href='#408882'><time timestamp='2020-10-16T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/cbb5f3a2d584...82d3596dfe4e" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/cbb5f3a2d584...82d3596dfe4e</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602831720' id='408883'>
+<a class='timestamp' href='#408883'><time timestamp='2020-10-16T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 5669642 Pieter Wuille: docs: mention BIPs 340-342 in doc/bips.md
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602831720' id='408884'>
+<a class='timestamp' href='#408884'><time timestamp='2020-10-16T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1d22300 Pieter Wuille: Address functional test nits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602831720' id='408885'>
+<a class='timestamp' href='#408885'><time timestamp='2020-10-16T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 82d3596 fanquake: Merge #20161: Minor Taproot follow-ups
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602831720' id='408886'>
+<a class='timestamp' href='#408886'><time timestamp='2020-10-16T07:02:00Z'>07:02</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake merged pull request #20161: Minor Taproot follow-ups (master...202010_taproot_followup) <a href="https://github.com/bitcoin/bitcoin/pull/20161" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20161</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834240' id='408887'>
+<a class='timestamp' href='#408887'><time timestamp='2020-10-16T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+fanquake: is /private dir a travis artefact?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834240' id='408888'>
+<a class='timestamp' href='#408888'><time timestamp='2020-10-16T07:44:00Z'>07:44</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+hebasto: no that is on my macOS machine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834300' id='408889'>
+<a class='timestamp' href='#408889'><time timestamp='2020-10-16T07:45:00Z'>07:45</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+ok, going to reproduce on macOS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834420' id='408890'>
+<a class='timestamp' href='#408890'><time timestamp='2020-10-16T07:47:00Z'>07:47</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+fanquake: looks like kind of sandboxing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834480' id='408891'>
+<a class='timestamp' href='#408891'><time timestamp='2020-10-16T07:48:00Z'>07:48</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+hebasto: possibly, however I haven&#x27;t looked further yet. Just noticed that the issue started occurring with the introduction of fs::canonical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834600' id='408892'>
+<a class='timestamp' href='#408892'><time timestamp='2020-10-16T07:50:00Z'>07:50</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+fanquake: <a href="https://apple.stackexchange.com/questions/1043/why-is-tmp-a-symlink-to-private-tmp" class="link" target="_blank">https://apple.stackexchange.com/questions/1043/why-is-tmp-a-symlink-to-private-tmp</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602834840' id='408893'>
+<a class='timestamp' href='#408893'><time timestamp='2020-10-16T07:54:00Z'>07:54</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+hebasto: I see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602839520' id='408894'>
+<a class='timestamp' href='#408894'><time timestamp='2020-10-16T09:12:00Z'>09:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 4 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/82d3596dfe4e...2947ae6f85d4" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/82d3596dfe4e...2947ae6f85d4</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602839520' id='408895'>
+<a class='timestamp' href='#408895'><time timestamp='2020-10-16T09:12:00Z'>09:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fa64892 MarcoFalke: signet: Fix uninitialized read in validation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602839520' id='408896'>
+<a class='timestamp' href='#408896'><time timestamp='2020-10-16T09:12:00Z'>09:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fa729cd MarcoFalke: doc: Move assumed-values doxygen comments to header
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602839520' id='408897'>
+<a class='timestamp' href='#408897'><time timestamp='2020-10-16T09:12:00Z'>09:12</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fa723e3 MarcoFalke: Initialize default-initialized uint256 consensus params to zero explicitly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602839580' id='408898'>
+<a class='timestamp' href='#408898'><time timestamp='2020-10-16T09:13:00Z'>09:13</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #20035: signet: Fix uninitialized read in validation (master...2009-signetUninitRead) <a href="https://github.com/bitcoin/bitcoin/pull/20035" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20035</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602839940' id='408899'>
+<a class='timestamp' href='#408899'><time timestamp='2020-10-16T09:19:00Z'>09:19</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+fanquake: thanks for pointing out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602840840' id='408900'>
+<a class='timestamp' href='#408900'><time timestamp='2020-10-16T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+When taproot (signet) wallet and descriptor support? :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602840960' id='408901'>
+<a class='timestamp' href='#408901'><time timestamp='2020-10-16T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Ohh.. I forgot about the fact we don&#x27;t actually have wallet support. But people can still play with btcdeb I guess.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602841380' id='408902'>
+<a class='timestamp' href='#408902'><time timestamp='2020-10-16T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+You can make raw transactions and send them with your own node.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602841500' id='408903'>
+<a class='timestamp' href='#408903'><time timestamp='2020-10-16T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/2947ae6f85d4...cb21d864c52b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/2947ae6f85d4...cb21d864c52b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602841500' id='408904'>
+<a class='timestamp' href='#408904'><time timestamp='2020-10-16T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 1df2cd1 Luke Dashjr: QA: blocktools: Accept block template to create_block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602841500' id='408905'>
+<a class='timestamp' href='#408905'><time timestamp='2020-10-16T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d438d60 Luke Dashjr: QA: Use GBT to get block versions correct
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602841500' id='408906'>
+<a class='timestamp' href='#408906'><time timestamp='2020-10-16T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master cb21d86 MarcoFalke: Merge #19401: QA: Use GBT to get block versions correct
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602841560' id='408907'>
+<a class='timestamp' href='#408907'><time timestamp='2020-10-16T09:46:00Z'>09:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #19401: QA: Use GBT to get block versions correct (master...qa_blockvers) <a href="https://github.com/bitcoin/bitcoin/pull/19401" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/19401</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602843780' id='408908'>
+<a class='timestamp' href='#408908'><time timestamp='2020-10-16T10:23:00Z'>10:23</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+provoostenator: that too yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602845220' id='408909'>
+<a class='timestamp' href='#408909'><time timestamp='2020-10-16T10:47:00Z'>10:47</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+please consider GUI repo pulls for 0.21.0 -- <a href="https://github.com/users/hebasto/projects/5" class="link" target="_blank">https://github.com/users/hebasto/projects/5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602845280' id='408910'>
+<a class='timestamp' href='#408910'><time timestamp='2020-10-16T10:48:00Z'>10:48</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+wumpus: MarcoFalke: promag: provoostenator: luke-jr: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602845520' id='408911'>
+<a class='timestamp' href='#408911'><time timestamp='2020-10-16T10:52:00Z'>10:52</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+jonasschnelli: ^^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602847920' id='408912'>
+<a class='timestamp' href='#408912'><time timestamp='2020-10-16T11:32:00Z'>11:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #20167: test: Add test for -blockversion (master...2010-testBlockversion) <a href="https://github.com/bitcoin/bitcoin/pull/20167" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20167</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602849060' id='408913'>
+<a class='timestamp' href='#408913'><time timestamp='2020-10-16T11:51:00Z'>11:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #20168: contrib: Fix gen_key_io_test_vectors.py imports (master...2010-contribTestGen) <a href="https://github.com/bitcoin/bitcoin/pull/20168" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20168</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602850260' id='408914'>
+<a class='timestamp' href='#408914'><time timestamp='2020-10-16T12:11:00Z'>12:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/cb21d864c52b...9e8d2bd076d7" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/cb21d864c52b...9e8d2bd076d7</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602850260' id='408915'>
+<a class='timestamp' href='#408915'><time timestamp='2020-10-16T12:11:00Z'>12:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 0d9d2a1 Jonas Schnelli: Only update the updateSmartFeeLabel once in sync
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602850260' id='408916'>
+<a class='timestamp' href='#408916'><time timestamp='2020-10-16T12:11:00Z'>12:11</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9e8d2bd MarcoFalke: Merge bitcoin-core/gui#97: Relax GUI freezes during IBD (when using wallet...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602852840' id='408917'>
+<a class='timestamp' href='#408917'><time timestamp='2020-10-16T12:54:00Z'>12:54</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #20169: Taproot follow-up: Make ComputeEntrySchnorr and ComputeEntryECDSA const to clarify contract (master...const-ComputeEntrySchnorr) <a href="https://github.com/bitcoin/bitcoin/pull/20169" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20169</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602863640' id='408918'>
+<a class='timestamp' href='#408918'><time timestamp='2020-10-16T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+I don&#x27;t seem to be able to kick jobs on Travis anymore; can someone rerun <a href="https://travis-ci.org/github/bitcoin/bitcoin/jobs/736379874" class="link" target="_blank">https://travis-ci.org/github/bitcoin/bitcoin/jobs/736379874</a> for me?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602863700' id='408919'>
+<a class='timestamp' href='#408919'><time timestamp='2020-10-16T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+jamesob: done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602863700' id='408920'>
+<a class='timestamp' href='#408920'><time timestamp='2020-10-16T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+hebasto: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602863700' id='408921'>
+<a class='timestamp' href='#408921'><time timestamp='2020-10-16T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+try to log off/on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602863760' id='408922'>
+<a class='timestamp' href='#408922'><time timestamp='2020-10-16T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+ah yep, that did it. thanks again hebasto
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602863820' id='408923'>
+<a class='timestamp' href='#408923'><time timestamp='2020-10-16T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-14'> hebasto</span>&gt;
+yw
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602866880' id='408924'>
+<a class='timestamp' href='#408924'><time timestamp='2020-10-16T16:48:00Z'>16:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ariard opened pull request #20171: Add functional test test_txid_inv_delay (master...2020-10-txid-delay-test) <a href="https://github.com/bitcoin/bitcoin/pull/20171" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20171</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1602881760' id='408925'>
+<a class='timestamp' href='#408925'><time timestamp='2020-10-16T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #20172: rpc, net: Expose connections_onion_only in getnetworkinfo RPC output (master...201016-tor) <a href="https://github.com/bitcoin/bitcoin/pull/20172" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/20172</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

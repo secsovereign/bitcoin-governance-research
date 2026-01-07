@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-09-10
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-09-10' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-08-10">&lt;</a><span class='header'>  September 2018  </span><a href="/bitcoin-core-dev/2018-10-10">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                   <a class="" href="/bitcoin-core-dev/2018-09-01">1</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-09-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-09-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-09-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-09-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-09-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-09-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-09-08">8</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-09-09">9</a> <a class="current" href="/bitcoin-core-dev/2018-09-10">10</a> <a class="" href="/bitcoin-core-dev/2018-09-11">11</a> <a class="" href="/bitcoin-core-dev/2018-09-12">12</a> <a class="" href="/bitcoin-core-dev/2018-09-13">13</a> <a class="" href="/bitcoin-core-dev/2018-09-14">14</a> <a class="" href="/bitcoin-core-dev/2018-09-15">15</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-09-16">16</a> <a class="" href="/bitcoin-core-dev/2018-09-17">17</a> <a class="" href="/bitcoin-core-dev/2018-09-18">18</a> <a class="" href="/bitcoin-core-dev/2018-09-19">19</a> <a class="" href="/bitcoin-core-dev/2018-09-20">20</a> <a class="" href="/bitcoin-core-dev/2018-09-21">21</a> <a class="" href="/bitcoin-core-dev/2018-09-22">22</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-09-23">23</a> <a class="" href="/bitcoin-core-dev/2018-09-24">24</a> 25 <a class="" href="/bitcoin-core-dev/2018-09-26">26</a> <a class="" href="/bitcoin-core-dev/2018-09-27">27</a> <a class="" href="/bitcoin-core-dev/2018-09-28">28</a> <a class="" href="/bitcoin-core-dev/2018-09-29">29</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-09-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1536537720' id='629701'>
+<a class='timestamp' href='#629701'><time timestamp='2018-09-10T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Hi all, would like to learn about how the p2p code in bitcoind is structured... I&#x27;m guessing src/net* are the files to look at, but I can&#x27;t find an &quot;entry point&quot; that handles and initiates TCP connections, could someone point me to the right place?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536537720' id='629702'>
+<a class='timestamp' href='#629702'><time timestamp='2018-09-10T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+ProcessMessage is where the magic happens. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536537780' id='629703'>
+<a class='timestamp' href='#629703'><time timestamp='2018-09-10T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+echeveria: I&#x27;m also seeing that CConnman is also important?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536537900' id='629704'>
+<a class='timestamp' href='#629704'><time timestamp='2018-09-10T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+echeveria: ProcessMessage is message processing, not network code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536537900' id='629705'>
+<a class='timestamp' href='#629705'><time timestamp='2018-09-10T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Is... ProcessMessage a 1300-line function?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536537960' id='629706'>
+<a class='timestamp' href='#629706'><time timestamp='2018-09-10T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536537960' id='629707'>
+<a class='timestamp' href='#629707'><time timestamp='2018-09-10T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+dongcarl: look at CConnman::ThreadSocketHandler, etc. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538020' id='629708'>
+<a class='timestamp' href='#629708'><time timestamp='2018-09-10T00:07:00Z'>00:07</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Ahhhh... anything other than CConnman?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538020' id='629709'>
+<a class='timestamp' href='#629709'><time timestamp='2018-09-10T00:07:00Z'>00:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+echeveria: almost
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538080' id='629710'>
+<a class='timestamp' href='#629710'><time timestamp='2018-09-10T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+socket handling deals with connections that are already open
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538080' id='629711'>
+<a class='timestamp' href='#629711'><time timestamp='2018-09-10T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+sipa: can we go back to 0.1 where things make sense? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538080' id='629712'>
+<a class='timestamp' href='#629712'><time timestamp='2018-09-10T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+echeveria: they didn&#x27;t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538080' id='629713'>
+<a class='timestamp' href='#629713'><time timestamp='2018-09-10T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or did you really prefer having the wallet code mixed with the network code and gui calls in main.cpp?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538140' id='629714'>
+<a class='timestamp' href='#629714'><time timestamp='2018-09-10T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dongcarl: most basic is probably ConnectSocketDirectly in netbase.cpp
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538200' id='629715'>
+<a class='timestamp' href='#629715'><time timestamp='2018-09-10T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dongcarl: then CConnman::ConnectNode is higher level
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538200' id='629716'>
+<a class='timestamp' href='#629716'><time timestamp='2018-09-10T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+then OpenNetworkConnection on top of that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538260' id='629717'>
+<a class='timestamp' href='#629717'><time timestamp='2018-09-10T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+sipa: still fascinating that it worked at all. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538440' id='629718'>
+<a class='timestamp' href='#629718'><time timestamp='2018-09-10T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+I didn&#x27;t like the interleaved logic, but I found the old code to be extremely legible.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538440' id='629719'>
+<a class='timestamp' href='#629719'><time timestamp='2018-09-10T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+hey at least bitcoin doesn&#x27;t make HTTP requests using raw sockets now. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538440' id='629720'>
+<a class='timestamp' href='#629720'><time timestamp='2018-09-10T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+ThreadOpenConnections -&gt; OpenNetworkConnection -&gt; ConnectNode -&gt; ConnectSocketDirectly ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536538500' id='629721'>
+<a class='timestamp' href='#629721'><time timestamp='2018-09-10T00:15:00Z'>00:15</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+and Start -&gt; ThreadOpenConnections ofc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539160' id='629722'>
+<a class='timestamp' href='#629722'><time timestamp='2018-09-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+midnightmagic: i agree, it was readable... or at least so it seemed until i tried to figure out how the wallet ever learned a particular output was being spent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539160' id='629723'>
+<a class='timestamp' href='#629723'><time timestamp='2018-09-10T00:26:00Z'>00:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+midnightmagic: turns out there was a callback from the script execution code into the wallet...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539220' id='629724'>
+<a class='timestamp' href='#629724'><time timestamp='2018-09-10T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but sure, things have gotten a lot more complicated since
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539220' id='629725'>
+<a class='timestamp' href='#629725'><time timestamp='2018-09-10T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the code also does a lot more
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539400' id='629726'>
+<a class='timestamp' href='#629726'><time timestamp='2018-09-10T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+sipa: I don&#x27;t think it&#x27;s more complicated in the comprehension sense, just..  harder to navigate with my preferred terminal tools is all. cscope is required (for me) now due to the logic spreading across multiple files. I don&#x27;t think it&#x27;s a problem, just I think peeps take some other types of tools for granted these days I guess. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539520' id='629727'>
+<a class='timestamp' href='#629727'><time timestamp='2018-09-10T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+Looking into libconsensus as well... I&#x27;m wondering if the API detailed in <a href="https://github.com/bitcoin/bitcoin/issues/6714" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/6714</a> still holds... Seems like jtimon and NicolasDorier did a bunch of work that&#x27;s been closed due to inactivity?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539520' id='629728'>
+<a class='timestamp' href='#629728'><time timestamp='2018-09-10T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+sipa: tangentially, you ever detail your dev tools anywhere?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536539640' id='629729'>
+<a class='timestamp' href='#629729'><time timestamp='2018-09-10T00:34:00Z'>00:34</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+midnightmagic: SuperCoder 2000 ofc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536540420' id='629730'>
+<a class='timestamp' href='#629730'><time timestamp='2018-09-10T00:47:00Z'>00:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+midnightmagic: i only use git grep and mcedit :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536540480' id='629731'>
+<a class='timestamp' href='#629731'><time timestamp='2018-09-10T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dongcarl: i don&#x27;t think the libconsensus api ever changed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536540480' id='629732'>
+<a class='timestamp' href='#629732'><time timestamp='2018-09-10T00:48:00Z'>00:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+apart from the addition of tx amounts for segwit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536540660' id='629733'>
+<a class='timestamp' href='#629733'><time timestamp='2018-09-10T00:51:00Z'>00:51</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+sipa: Is there a particular reason why there was lack of interest in the PRs?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536540900' id='629734'>
+<a class='timestamp' href='#629734'><time timestamp='2018-09-10T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dongcarl: lack of agreement on approach, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536541020' id='629735'>
+<a class='timestamp' href='#629735'><time timestamp='2018-09-10T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and refactorings that keep going on for a long time are annoying to other contributors
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536541080' id='629736'>
+<a class='timestamp' href='#629736'><time timestamp='2018-09-10T00:58:00Z'>00:58</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+sipa: are the conversations/discussions recorded somehwere?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536541140' id='629737'>
+<a class='timestamp' href='#629737'><time timestamp='2018-09-10T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-5'> midnightmagic</span>&gt;
+sipa: lol dangit. I forgot you do the same sort of thing I do.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536541260' id='629738'>
+<a class='timestamp' href='#629738'><time timestamp='2018-09-10T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dongcarl: irc and github...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536541500' id='629739'>
+<a class='timestamp' href='#629739'><time timestamp='2018-09-10T01:05:00Z'>01:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+dongcarl: but really, there just wasn&#x27;t enough momenentum i think - those kinds of changes need many people to agree on a plan first
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536541980' id='629740'>
+<a class='timestamp' href='#629740'><time timestamp='2018-09-10T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-11'> dongcarl</span>&gt;
+sipa: Makes sense... Would Tokyo be a good place to talk about this?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536542580' id='629741'>
+<a class='timestamp' href='#629741'><time timestamp='2018-09-10T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+maybe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536542820' id='629742'>
+<a class='timestamp' href='#629742'><time timestamp='2018-09-10T01:27:00Z'>01:27</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+Hey, I&#x27;m able to reproduce this on both Debian jessie and Debian stretch - <a href="https://github.com/bitcoin/bitcoin/issues/8749" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8749</a> - any of you run into it yet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536542880' id='629743'>
+<a class='timestamp' href='#629743'><time timestamp='2018-09-10T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+libboost 1.62.0.1 packages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536543300' id='629744'>
+<a class='timestamp' href='#629744'><time timestamp='2018-09-10T01:35:00Z'>01:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jarthur: have you tried reinstalling the boost packages?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536543360' id='629745'>
+<a class='timestamp' href='#629745'><time timestamp='2018-09-10T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+make sure they&#x27;re all the same version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536543360' id='629746'>
+<a class='timestamp' href='#629746'><time timestamp='2018-09-10T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you have a locally installed version, point the configure script to it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536543780' id='629747'>
+<a class='timestamp' href='#629747'><time timestamp='2018-09-10T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+sipa: using the apt packages. Will double check all the versions now. One thing I did was install the libs first, then the -dev packages.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536543900' id='629748'>
+<a class='timestamp' href='#629748'><time timestamp='2018-09-10T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+also try clearing your config cache
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536543900' id='629749'>
+<a class='timestamp' href='#629749'><time timestamp='2018-09-10T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+&quot;git clear -dfx&quot; wipes everything not committed in the source tree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536544080' id='629750'>
+<a class='timestamp' href='#629750'><time timestamp='2018-09-10T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+Using the source tgz
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536544140' id='629751'>
+<a class='timestamp' href='#629751'><time timestamp='2018-09-10T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in that case, delete the build dir and extract again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536544140' id='629752'>
+<a class='timestamp' href='#629752'><time timestamp='2018-09-10T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(but you should really consider building from git, if you do it repeatedly)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536544680' id='629753'>
+<a class='timestamp' href='#629753'><time timestamp='2018-09-10T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+sipa: confirmed all libboost pkgs show same version. Re-extracted, autogenned and such. Maybe it&#x27;s an issue with using --no-install-recommends when installing the libbost-*-dev pkgs. Doing this for a large-scale docker deployment, so keeping things minimal.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536544920' id='629754'>
+<a class='timestamp' href='#629754'><time timestamp='2018-09-10T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+s/libbost/libboost/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536548460' id='629755'>
+<a class='timestamp' href='#629755'><time timestamp='2018-09-10T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+sipa: yea, seeing it on Ubuntu as well. If we didn&#x27;t need libboost-program-options-dev before, maybe this is a new autogen macro issue. Looked back at old debs and never saw libboost-program-options-dev being pulled in as a dep or recommends.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536549900' id='629756'>
+<a class='timestamp' href='#629756'><time timestamp='2018-09-10T03:25:00Z'>03:25</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+jarthur: libboost-program-options-dev is no longer required since #13482
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536549900' id='629757'>
+<a class='timestamp' href='#629757'><time timestamp='2018-09-10T03:25:00Z'>03:25</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13482" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13482</a> | Remove boost::program_options dependency by ken2812221 · Pull Request #13482 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536549960' id='629758'>
+<a class='timestamp' href='#629758'><time timestamp='2018-09-10T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-7'> Dizzle</span>&gt;
+ken2812221: yep, you&#x27;re so right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536549960' id='629759'>
+<a class='timestamp' href='#629759'><time timestamp='2018-09-10T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-7'> Dizzle</span>&gt;
+thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536549960' id='629760'>
+<a class='timestamp' href='#629760'><time timestamp='2018-09-10T03:26:00Z'>03:26</time></a>
+&lt;<span class='nick nick-5'> jarthur</span>&gt;
+ty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557520' id='629761'>
+<a class='timestamp' href='#629761'><time timestamp='2018-09-10T05:32:00Z'>05:32</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+How do the recoverable ecsda signatures differ from the regular ones aside from the recid + compressed prefix byte?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557820' id='629762'>
+<a class='timestamp' href='#629762'><time timestamp='2018-09-10T05:37:00Z'>05:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557820' id='629763'>
+<a class='timestamp' href='#629763'><time timestamp='2018-09-10T05:37:00Z'>05:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+they&#x27;re literally a normal signature + recid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557820' id='629764'>
+<a class='timestamp' href='#629764'><time timestamp='2018-09-10T05:37:00Z'>05:37</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Great! Thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557880' id='629765'>
+<a class='timestamp' href='#629765'><time timestamp='2018-09-10T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+also, don&#x27;t use them :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557880' id='629766'>
+<a class='timestamp' href='#629766'><time timestamp='2018-09-10T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+I&#x27;m writing a BIP for the sign|verifymessage proposal from ML from awhile back. How would the verifier extract pubkey?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557880' id='629767'>
+<a class='timestamp' href='#629767'><time timestamp='2018-09-10T05:38:00Z'>05:38</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
++if not using recoverable sig
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557940' id='629768'>
+<a class='timestamp' href='#629768'><time timestamp='2018-09-10T05:39:00Z'>05:39</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Just brute force it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557940' id='629769'>
+<a class='timestamp' href='#629769'><time timestamp='2018-09-10T05:39:00Z'>05:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the script based stuff?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557940' id='629770'>
+<a class='timestamp' href='#629770'><time timestamp='2018-09-10T05:39:00Z'>05:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+script doesn&#x27;t have any recoverable sigs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557940' id='629771'>
+<a class='timestamp' href='#629771'><time timestamp='2018-09-10T05:39:00Z'>05:39</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Was gonna just say &quot;include a 1 byte &#x27;flags&#x27; whose lower 2 bits are the recid and upper 6 bits reserved for future flags&quot;. Yeah.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536557940' id='629772'>
+<a class='timestamp' href='#629772'><time timestamp='2018-09-10T05:39:00Z'>05:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that makes no sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629773'>
+<a class='timestamp' href='#629773'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Because you can just brute force it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629774'>
+<a class='timestamp' href='#629774'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+they whole point is that you can just reuse script
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629775'>
+<a class='timestamp' href='#629775'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629776'>
+<a class='timestamp' href='#629776'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the signature can literally just be a witness
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629777'>
+<a class='timestamp' href='#629777'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which for a p2wpkh output contains a pubkey+sig
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629778'>
+<a class='timestamp' href='#629778'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Doh. Yeah.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558000' id='629779'>
+<a class='timestamp' href='#629779'><time timestamp='2018-09-10T05:40:00Z'>05:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s a bit longer, but meh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558060' id='629780'>
+<a class='timestamp' href='#629780'><time timestamp='2018-09-10T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+I got things mixed up. I somehow assumed I needed the pubkey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558060' id='629781'>
+<a class='timestamp' href='#629781'><time timestamp='2018-09-10T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s super flexible, and you don&#x27;t need any script modifications at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536558060' id='629782'>
+<a class='timestamp' href='#629782'><time timestamp='2018-09-10T05:41:00Z'>05:41</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+Yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536564600' id='629783'>
+<a class='timestamp' href='#629783'><time timestamp='2018-09-10T07:30:00Z'>07:30</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Not sure how much people rely on the &quot;mark as resolved&quot; feature on Github, but I&#x27;ve already seen it vandalized at least once by drive-by-resolvers.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536564840' id='629784'>
+<a class='timestamp' href='#629784'><time timestamp='2018-09-10T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I didn&#x27;t even know such a feature existed, it&#x27;s curious that it allows for drive-by-resolvers and not only the opener to resolve it as on most sites
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536566100' id='629785'>
+<a class='timestamp' href='#629785'><time timestamp='2018-09-10T07:55:00Z'>07:55</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+I was afraid to touch it. Anyone can resolve anything? That sounds broken
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536569760' id='629786'>
+<a class='timestamp' href='#629786'><time timestamp='2018-09-10T08:56:00Z'>08:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cannot find anything about this feature online
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536569820' id='629787'>
+<a class='timestamp' href='#629787'><time timestamp='2018-09-10T08:57:00Z'>08:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: how would one (hypothetically speaking) go and abuse this feature?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536573120' id='629788'>
+<a class='timestamp' href='#629788'><time timestamp='2018-09-10T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Marking a comment as resolved hides the thread for other reviewers by default. So basically you should always unfold them to see if you agree a comment was addressed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536573180' id='629789'>
+<a class='timestamp' href='#629789'><time timestamp='2018-09-10T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It&#x27;s a rather stupid feature IMO, only the person raising an issue should be able to mark it as resolved, if anyone.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536575460' id='629790'>
+<a class='timestamp' href='#629790'><time timestamp='2018-09-10T10:31:00Z'>10:31</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+provoostenator: repo owners being able to makes sense too... i keep getting worried about misclicking on those buttons when reading reviews now :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536604920' id='629791'>
+<a class='timestamp' href='#629791'><time timestamp='2018-09-10T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+um am i the only person getting importmulti rpc test failure on master, &quot;bytes_to_hex_str&quot; not defined?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1536604980' id='629792'>
+<a class='timestamp' href='#629792'><time timestamp='2018-09-10T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+ok fixed just a bit ago, nvm
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

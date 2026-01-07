@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2019-01-26
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2019-01-26' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:20 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-12-26">&lt;</a><span class='header'>   January 2019   </span><a href="/bitcoin-core-dev/2019-02-26">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;       <a class="" href="/bitcoin-core-dev/2019-01-01">1</a>  <a class="" href="/bitcoin-core-dev/2019-01-02">2</a>  <a class="" href="/bitcoin-core-dev/2019-01-03">3</a>  <a class="" href="/bitcoin-core-dev/2019-01-04">4</a>  <a class="" href="/bitcoin-core-dev/2019-01-05">5</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2019-01-06">6</a>  <a class="" href="/bitcoin-core-dev/2019-01-07">7</a>  <a class="" href="/bitcoin-core-dev/2019-01-08">8</a>  <a class="" href="/bitcoin-core-dev/2019-01-09">9</a> <a class="" href="/bitcoin-core-dev/2019-01-10">10</a> <a class="" href="/bitcoin-core-dev/2019-01-11">11</a> <a class="" href="/bitcoin-core-dev/2019-01-12">12</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-01-13">13</a> <a class="" href="/bitcoin-core-dev/2019-01-14">14</a> <a class="" href="/bitcoin-core-dev/2019-01-15">15</a> <a class="" href="/bitcoin-core-dev/2019-01-16">16</a> <a class="" href="/bitcoin-core-dev/2019-01-17">17</a> <a class="" href="/bitcoin-core-dev/2019-01-18">18</a> <a class="" href="/bitcoin-core-dev/2019-01-19">19</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-01-20">20</a> <a class="" href="/bitcoin-core-dev/2019-01-21">21</a> <a class="" href="/bitcoin-core-dev/2019-01-22">22</a> <a class="" href="/bitcoin-core-dev/2019-01-23">23</a> <a class="" href="/bitcoin-core-dev/2019-01-24">24</a> <a class="" href="/bitcoin-core-dev/2019-01-25">25</a> <a class="current" href="/bitcoin-core-dev/2019-01-26">26</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-01-27">27</a> <a class="" href="/bitcoin-core-dev/2019-01-28">28</a> <a class="" href="/bitcoin-core-dev/2019-01-29">29</a> <a class="" href="/bitcoin-core-dev/2019-01-30">30</a> <a class="" href="/bitcoin-core-dev/2019-01-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1548477240' id='650444'>
+<a class='timestamp' href='#650444'><time timestamp='2019-01-26T04:34:00Z'>04:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: if we use an encoding for the checksum which maps all hex characters + punctuation into the same &quot;high 5bits&quot; of the 2-symbol encoding, we essentially can ignore the 1-char-2-symbol-error blowup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548477300' id='650445'>
+<a class='timestamp' href='#650445'><time timestamp='2019-01-26T04:35:00Z'>04:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as everything else (uppercase characters, lowcase above f) only occurs inside base58 things, which have additional protection already
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548477540' id='650446'>
+<a class='timestamp' href='#650446'><time timestamp='2019-01-26T04:39:00Z'>04:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: nice! 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548479160' id='650447'>
+<a class='timestamp' href='#650447'><time timestamp='2019-01-26T05:06:00Z'>05:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: in theory a gf(25) code would suffice for this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548479220' id='650448'>
+<a class='timestamp' href='#650448'><time timestamp='2019-01-26T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we have exactly 25 characters that occur &quot;unprotected&quot; i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548479220' id='650449'>
+<a class='timestamp' href='#650449'><time timestamp='2019-01-26T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+()[]*/,&#x27;0123456789abcdefh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548479280' id='650450'>
+<a class='timestamp' href='#650450'><time timestamp='2019-01-26T05:08:00Z'>05:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though base32 is a bit easier to implement :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548481980' id='650451'>
+<a class='timestamp' href='#650451'><time timestamp='2019-01-26T05:53:00Z'>05:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: and just alias the other characters near uniformly down to the unprotected ones?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548482040' id='650452'>
+<a class='timestamp' href='#650452'><time timestamp='2019-01-26T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+You don&#x27;t want ()[]*/,&#x27; in the checksum so you&#x27;d want to have alternative ones for those.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548482040' id='650453'>
+<a class='timestamp' href='#650453'><time timestamp='2019-01-26T05:54:00Z'>05:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+e.g. the checksum&#x27;s charset would be different from the rest.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548484980' id='650454'>
+<a class='timestamp' href='#650454'><time timestamp='2019-01-26T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: you can expand all data characters into two symbols
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548484980' id='650455'>
+<a class='timestamp' href='#650455'><time timestamp='2019-01-26T06:43:00Z'>06:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you just don&#x27;t care about cases where the second one differs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548485040' id='650456'>
+<a class='timestamp' href='#650456'><time timestamp='2019-01-26T06:44:00Z'>06:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and indeed, for the checksum we can just use the bech32 charset
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487920' id='650457'>
+<a class='timestamp' href='#650457'><time timestamp='2019-01-26T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+sipa while testing #15250, I saw a single failure like <a href="https://gist.github.com/fanquake/c34aef5f4adc02d6bffec4143dcf08bc" class="link" target="_blank">https://gist.github.com/fanquake/c34aef5f4adc02d6bffec4143dcf08bc</a>, but haven&#x27;t been able to reproduce. Any thoughts?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487980' id='650458'>
+<a class='timestamp' href='#650458'><time timestamp='2019-01-26T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/15250" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/15250</a> | Use RdSeed when available, and reduce RdRand load by sipa · Pull Request #15250 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487980' id='650459'>
+<a class='timestamp' href='#650459'><time timestamp='2019-01-26T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+I see you&#x27;ve pushed new changes, so may no longer be relevant.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487980' id='650460'>
+<a class='timestamp' href='#650460'><time timestamp='2019-01-26T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanquake: what kind of failure?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487980' id='650461'>
+<a class='timestamp' href='#650461'><time timestamp='2019-01-26T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487980' id='650462'>
+<a class='timestamp' href='#650462'><time timestamp='2019-01-26T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fanquake: yes, that should be fixed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548487980' id='650463'>
+<a class='timestamp' href='#650463'><time timestamp='2019-01-26T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell just pointed that out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548488040' id='650464'>
+<a class='timestamp' href='#650464'><time timestamp='2019-01-26T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+sipa ok, thanks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548495360' id='650465'>
+<a class='timestamp' href='#650465'><time timestamp='2019-01-26T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Sounds sipa: like you have 7 characters to spare then, let&#x27;s bike shed! (&quot;-&quot;, &quot;;&quot; and &quot;$&quot;, &quot;%&quot;, &quot;&amp;&quot;, etc would be good for future extensions)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548495540' id='650466'>
+<a class='timestamp' href='#650466'><time timestamp='2019-01-26T09:39:00Z'>09:39</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+For example ranges normally don&#x27;t make sense in descriptors, but one might have a setup with hardened derivations and only a limited range of hot private keys.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548495600' id='650467'>
+<a class='timestamp' href='#650467'><time timestamp='2019-01-26T09:40:00Z'>09:40</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+A future extension could support ranges that reason, so it&#x27;s nice to have room for &quot;-&quot; in the checksum mechanism.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548496740' id='650468'>
+<a class='timestamp' href='#650468'><time timestamp='2019-01-26T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+those sound okay, though % and &amp; are less likely to survive being passed around on the web, and get mangled in html documents...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548496800' id='650469'>
+<a class='timestamp' href='#650469'><time timestamp='2019-01-26T10:00:00Z'>10:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+# is another candidate.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548496860' id='650470'>
+<a class='timestamp' href='#650470'><time timestamp='2019-01-26T10:01:00Z'>10:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+or ! (not very shell friendly, though # isn&#x27;t perfect in that respect either)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548496860' id='650471'>
+<a class='timestamp' href='#650471'><time timestamp='2019-01-26T10:01:00Z'>10:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+| is a fine character too.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548498840' id='650472'>
+<a class='timestamp' href='#650472'><time timestamp='2019-01-26T10:34:00Z'>10:34</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+gmaxwell: maybe not a big concer, but &quot;!&quot; is absolute bitch to use in cli/bash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548500760' id='650473'>
+<a class='timestamp' href='#650473'><time timestamp='2019-01-26T11:06:00Z'>11:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] d3spwn opened pull request #15268: doc: suggest using timeoutstopsec in systemd file during IBD (master...systemd-tweaks) <a href="https://github.com/bitcoin/bitcoin/pull/15268" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15268</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548517680' id='650474'>
+<a class='timestamp' href='#650474'><time timestamp='2019-01-26T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+&quot;$&quot; is also not ideal in shell, so yeah, being html and bash friendly adds some constraints.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548524880' id='650475'>
+<a class='timestamp' href='#650475'><time timestamp='2019-01-26T17:48:00Z'>17:48</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #15270: Pull leveldb subtree (master...Mf1901-subtreeLeveldb) <a href="https://github.com/bitcoin/bitcoin/pull/15270" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15270</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548525480' id='650476'>
+<a class='timestamp' href='#650476'><time timestamp='2019-01-26T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, ; will get escaped as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548529200' id='650477'>
+<a class='timestamp' href='#650477'><time timestamp='2019-01-26T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/ab46fe6ec1b3...b78f6c61c452" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/ab46fe6ec1b3...b78f6c61c452</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548529200' id='650478'>
+<a class='timestamp' href='#650478'><time timestamp='2019-01-26T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2434ab5 Ben Woosley: Scripts and tools: Fix devtools/copyright_header.py to always honor exclusions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548529200' id='650479'>
+<a class='timestamp' href='#650479'><time timestamp='2019-01-26T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ad5e5a1 Ben Woosley: Scripts and tools: Drop no-longer-relevant copyright holder names...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548529200' id='650480'>
+<a class='timestamp' href='#650480'><time timestamp='2019-01-26T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master b78f6c6 MarcoFalke: Merge #15258: Scripts and tools: Fix devtools/copyright_header.py to always honor exclusions...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548529260' id='650481'>
+<a class='timestamp' href='#650481'><time timestamp='2019-01-26T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #15258: Scripts and tools: Fix devtools/copyright_header.py to always honor exclusions (master...copyright-header-abs) <a href="https://github.com/bitcoin/bitcoin/pull/15258" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15258</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548535200' id='650482'>
+<a class='timestamp' href='#650482'><time timestamp='2019-01-26T20:40:00Z'>20:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: for codes with length &gt;24000 (about what we&#x27;d need for something containing 100 xpubs), 7 characters for distance 4, 10 characters for distance 5
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548535380' id='650483'>
+<a class='timestamp' href='#650483'><time timestamp='2019-01-26T20:43:00Z'>20:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(this is algebraice distance, i can&#x27;t analyze things exhaustively for this length)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548535980' id='650484'>
+<a class='timestamp' href='#650484'><time timestamp='2019-01-26T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(and 1 character for distance 2, 4 characters for distance 3)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548536220' id='650485'>
+<a class='timestamp' href='#650485'><time timestamp='2019-01-26T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think 7 characters is fine; it will detect any 3 errors within the &quot;basic 32 characters&quot; or 1 error in and 1 error out, and has a random fail chance of less than 1 in 34 billion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548536760' id='650486'>
+<a class='timestamp' href='#650486'><time timestamp='2019-01-26T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+actually, we can have a conversion that maps 2 characters to 3 symbols, increasing the maximum length
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548536880' id='650487'>
+<a class='timestamp' href='#650487'><time timestamp='2019-01-26T21:08:00Z'>21:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, or even 3 characters to 4 symbols
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548536940' id='650488'>
+<a class='timestamp' href='#650488'><time timestamp='2019-01-26T21:09:00Z'>21:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you can partition all non-whitespace ascii characters into 3 groups of 32 each, and then encode 3 group numbers into 5 bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548537000' id='650489'>
+<a class='timestamp' href='#650489'><time timestamp='2019-01-26T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+you can exaust analyize to pick between codes for shorter lengths, so you should do that once you&#x27;ve found parameters that are okay for the longer lengths.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548537060' id='650490'>
+<a class='timestamp' href='#650490'><time timestamp='2019-01-26T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548537060' id='650491'>
+<a class='timestamp' href='#650491'><time timestamp='2019-01-26T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+though up to what length?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548537060' id='650492'>
+<a class='timestamp' href='#650492'><time timestamp='2019-01-26T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(and at least pick a code that doesn&#x27;t have a threshold effect hump-- which is less of an issue for longer lengths anyways)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548537060' id='650493'>
+<a class='timestamp' href='#650493'><time timestamp='2019-01-26T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I dunno, you&#x27;ve got a bunch of descriptor examples.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1548537120' id='650494'>
+<a class='timestamp' href='#650494'><time timestamp='2019-01-26T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+2 of 3 multisigs are probably interesting.
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

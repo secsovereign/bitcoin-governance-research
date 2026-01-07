@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2016-02-03
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2016-02-03' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:27 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2016-01-03">&lt;</a><span class='header'>  February 2016   </span><a href="/bitcoin-core-dev/2016-03-03">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2016-02-01">1</a>  <a class="" href="/bitcoin-core-dev/2016-02-02">2</a>  <a class="current" href="/bitcoin-core-dev/2016-02-03">3</a>  <a class="" href="/bitcoin-core-dev/2016-02-04">4</a>  <a class="" href="/bitcoin-core-dev/2016-02-05">5</a>  <a class="" href="/bitcoin-core-dev/2016-02-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2016-02-07">7</a>  <a class="" href="/bitcoin-core-dev/2016-02-08">8</a>  <a class="" href="/bitcoin-core-dev/2016-02-09">9</a> <a class="" href="/bitcoin-core-dev/2016-02-10">10</a> <a class="" href="/bitcoin-core-dev/2016-02-11">11</a> <a class="" href="/bitcoin-core-dev/2016-02-12">12</a> <a class="" href="/bitcoin-core-dev/2016-02-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-02-14">14</a> <a class="" href="/bitcoin-core-dev/2016-02-15">15</a> <a class="" href="/bitcoin-core-dev/2016-02-16">16</a> <a class="" href="/bitcoin-core-dev/2016-02-17">17</a> <a class="" href="/bitcoin-core-dev/2016-02-18">18</a> <a class="" href="/bitcoin-core-dev/2016-02-19">19</a> <a class="" href="/bitcoin-core-dev/2016-02-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-02-21">21</a> <a class="" href="/bitcoin-core-dev/2016-02-22">22</a> <a class="" href="/bitcoin-core-dev/2016-02-23">23</a> <a class="" href="/bitcoin-core-dev/2016-02-24">24</a> <a class="" href="/bitcoin-core-dev/2016-02-25">25</a> <a class="" href="/bitcoin-core-dev/2016-02-26">26</a> <a class="" href="/bitcoin-core-dev/2016-02-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2016-02-28">28</a> <a class="" href="/bitcoin-core-dev/2016-02-29">29</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1454464680' id='450563'>
+<a class='timestamp' href='#450563'><time timestamp='2016-02-03T01:58:00Z'>01:58</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Ylbam: It&#x27;s a very minor point.  The idea is that if there is a transaction that is in your wallet but is not in your mempool because it is sequence locked and not yet final according to BIP 68 there is currently no indication through the UI that this is WHY it is not in your mempool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454464740' id='450564'>
+<a class='timestamp' href='#450564'><time timestamp='2016-02-03T01:59:00Z'>01:59</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+It&#x27;s a very unusual circumstance as of right now anyway, because you can&#x27;t get a tx in your wallet that is sequence locked and not final in the first place unless it happened by virtue or a reorg (it was previously final and is now not)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454464800' id='450565'>
+<a class='timestamp' href='#450565'><time timestamp='2016-02-03T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+The only reason I mentioned it is the old version of the BIP 68 implementation in #6312 did make an attempt to display this information in that rare case, but I removed it and saved if for a later improvement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454469780' id='450566'>
+<a class='timestamp' href='#450566'><time timestamp='2016-02-03T03:23:00Z'>03:23</time></a>
+&lt;<span class='nick nick-12'> gavink</span>&gt;
+tangent: do you think core should maintain a place for binaries and source to easily be downloaded, so it&#x27;s easier to write guides, and show control of what core is doing? would linking to bitcoin.org in a guide for bitcoincore.org be ok? (i am looking at writing some guides for running nodes on the core website) thank you
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454469840' id='450567'>
+<a class='timestamp' href='#450567'><time timestamp='2016-02-03T03:24:00Z'>03:24</time></a>
+&lt;<span class='nick nick-12'> gavink</span>&gt;
+i suppose sourceforge hosts binaries
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454470080' id='450568'>
+<a class='timestamp' href='#450568'><time timestamp='2016-02-03T03:28:00Z'>03:28</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jtimon, &quot;UpdateTip&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454470320' id='450569'>
+<a class='timestamp' href='#450569'><time timestamp='2016-02-03T03:32:00Z'>03:32</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+gavink: SF has not been used in years
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454470320' id='450570'>
+<a class='timestamp' href='#450570'><time timestamp='2016-02-03T03:32:00Z'>03:32</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+I agree we should move downloads to the bitcoincore.org domain though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454470620' id='450571'>
+<a class='timestamp' href='#450571'><time timestamp='2016-02-03T03:37:00Z'>03:37</time></a>
+&lt;<span class='nick nick-12'> gavink</span>&gt;
+yes i know about SF. Is your server prepared for extra load? I will ask the web collaborators then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454470860' id='450572'>
+<a class='timestamp' href='#450572'><time timestamp='2016-02-03T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+gavink: the idea is to put bitcoincore.org on the same server currently hosting bitcoin.org (the server is not itself bitcoin.org&#x27;s)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454470920' id='450573'>
+<a class='timestamp' href='#450573'><time timestamp='2016-02-03T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-12'> gavink</span>&gt;
+right ok thanks, i&#x27;ll see if i can help facilitate this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491740' id='450574'>
+<a class='timestamp' href='#450574'><time timestamp='2016-02-03T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-9'> GitHub129</span>&gt;
+[bitcoin] laanwj pushed 5 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/fd13fe7ca01b...5fd95b4490a9" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/fd13fe7ca01b...5fd95b4490a9</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491740' id='450575'>
+<a class='timestamp' href='#450575'><time timestamp='2016-02-03T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-9'> GitHub129</span>&gt;
+bitcoin/master 77b55a0 Luke Dashjr: Rename permitrbf to replacebyfee...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491740' id='450576'>
+<a class='timestamp' href='#450576'><time timestamp='2016-02-03T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-9'> GitHub129</span>&gt;
+bitcoin/master d65dee9 Luke Dashjr: Accept replacebyfee=opt-in for turning on opt-in RBF...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491740' id='450577'>
+<a class='timestamp' href='#450577'><time timestamp='2016-02-03T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-9'> GitHub129</span>&gt;
+bitcoin/master 3b66e54 Luke Dashjr: Simplify check for replacebyfee=opt-in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491740' id='450578'>
+<a class='timestamp' href='#450578'><time timestamp='2016-02-03T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-13'> GitHub93</span>&gt;
+[bitcoin] laanwj closed pull request #7431: Rename permitrbf to mempoolreplacement and provide minimal string-list forward compatibility (needs 0.12 backport) (master...permitrbf_rename) <a href="https://github.com/bitcoin/bitcoin/pull/7431" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7431</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491800' id='450579'>
+<a class='timestamp' href='#450579'><time timestamp='2016-02-03T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+[bitcoin] laanwj pushed 7 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/86755bc85a86...c76bfff11e38" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/86755bc85a86...c76bfff11e38</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491800' id='450580'>
+<a class='timestamp' href='#450580'><time timestamp='2016-02-03T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/0.12 1205f87 Luke Dashjr: Rename permitrbf to replacebyfee...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491800' id='450581'>
+<a class='timestamp' href='#450581'><time timestamp='2016-02-03T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/0.12 e8d19ab Luke Dashjr: Accept replacebyfee=opt-in for turning on opt-in RBF...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491800' id='450582'>
+<a class='timestamp' href='#450582'><time timestamp='2016-02-03T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/0.12 5f456a6 Luke Dashjr: Simplify check for replacebyfee=opt-in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491800' id='450583'>
+<a class='timestamp' href='#450583'><time timestamp='2016-02-03T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-16'> GitHub94</span>&gt;
+[bitcoin] laanwj closed pull request #7440: [0.12] Rename permitrbf to mempoolreplacement and provide minimal string-list forward compatibility (0.12...permitrbf_rename-0.12.x) <a href="https://github.com/bitcoin/bitcoin/pull/7440" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7440</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491920' id='450584'>
+<a class='timestamp' href='#450584'><time timestamp='2016-02-03T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-12'> GitHub21</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to 0.12: <a href="https://github.com/bitcoin/bitcoin/commit/294f4320a246e453a0509c82b4112b2a5203dd81" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/294f4320a246e453a0509c82b4112b2a5203dd81</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454491920' id='450585'>
+<a class='timestamp' href='#450585'><time timestamp='2016-02-03T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-12'> GitHub21</span>&gt;
+bitcoin/0.12 294f432 MarcoFalke: [qt] Peertable: Increase SUBVERSION_COLUMN_WIDTH...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454492040' id='450586'>
+<a class='timestamp' href='#450586'><time timestamp='2016-02-03T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-15'> GitHub38</span>&gt;
+[bitcoin] laanwj closed pull request #7405: [0.12] Backports (0.12...Mf1601-012Backports) <a href="https://github.com/bitcoin/bitcoin/pull/7405" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7405</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454493540' id='450587'>
+<a class='timestamp' href='#450587'><time timestamp='2016-02-03T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to 0.12: <a href="https://github.com/bitcoin/bitcoin/compare/294f4320a246...b1f031d43520" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/294f4320a246...b1f031d43520</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454493540' id='450588'>
+<a class='timestamp' href='#450588'><time timestamp='2016-02-03T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/0.12 a7939f8 Wladimir J. van der Laan: doc: update release notes for rc3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454493540' id='450589'>
+<a class='timestamp' href='#450589'><time timestamp='2016-02-03T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+bitcoin/0.12 b1f031d Wladimir J. van der Laan: qt: translations update pre-rc3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454493600' id='450590'>
+<a class='timestamp' href='#450590'><time timestamp='2016-02-03T10:00:00Z'>10:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+going to tag rc3...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454493780' id='450591'>
+<a class='timestamp' href='#450591'><time timestamp='2016-02-03T10:03:00Z'>10:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ * [new tag]         v0.12.0rc3 -&gt; v0.12.0rc3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454496600' id='450592'>
+<a class='timestamp' href='#450592'><time timestamp='2016-02-03T10:50:00Z'>10:50</time></a>
+&lt;<span class='nick nick-6'> btcdrak</span>&gt;
+\o/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454499000' id='450593'>
+<a class='timestamp' href='#450593'><time timestamp='2016-02-03T11:30:00Z'>11:30</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/5fd95b4490a9...4cdbd4255b94" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/5fd95b4490a9...4cdbd4255b94</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454499000' id='450594'>
+<a class='timestamp' href='#450594'><time timestamp='2016-02-03T11:30:00Z'>11:30</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+bitcoin/master 2f19905 Peter Todd: Improve block validity/ConnectBlock() comments...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454499000' id='450595'>
+<a class='timestamp' href='#450595'><time timestamp='2016-02-03T11:30:00Z'>11:30</time></a>
+&lt;<span class='nick nick-16'> GitHub138</span>&gt;
+bitcoin/master 4cdbd42 Wladimir J. van der Laan: Merge #7444: Improve block validity/ConnectBlock() comments...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454499000' id='450596'>
+<a class='timestamp' href='#450596'><time timestamp='2016-02-03T11:30:00Z'>11:30</time></a>
+&lt;<span class='nick nick-8'> GitHub133</span>&gt;
+[bitcoin] laanwj closed pull request #7444: Improve block validity/ConnectBlock() comments (master...2016-01-improve-block-validity-comments) <a href="https://github.com/bitcoin/bitcoin/pull/7444" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7444</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454500920' id='450597'>
+<a class='timestamp' href='#450597'><time timestamp='2016-02-03T12:02:00Z'>12:02</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+phantomcircuit: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454501040' id='450598'>
+<a class='timestamp' href='#450598'><time timestamp='2016-02-03T12:04:00Z'>12:04</time></a>
+&lt;<span class='nick nick-13'> jtimon</span>&gt;
+is it planned that we also always have 3 release candidates or is just coincidence?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502240' id='450599'>
+<a class='timestamp' href='#450599'><time timestamp='2016-02-03T12:24:00Z'>12:24</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/4cdbd4255b94...eb331794a22b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/4cdbd4255b94...eb331794a22b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502240' id='450600'>
+<a class='timestamp' href='#450600'><time timestamp='2016-02-03T12:24:00Z'>12:24</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+bitcoin/master dbb89dc Suhas Daftuar: Eliminate unnecessary call to CheckBlock...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502240' id='450601'>
+<a class='timestamp' href='#450601'><time timestamp='2016-02-03T12:24:00Z'>12:24</time></a>
+&lt;<span class='nick nick-11'> GitHub116</span>&gt;
+bitcoin/master eb33179 Wladimir J. van der Laan: Merge #7225: Eliminate unnecessary call to CheckBlock...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502240' id='450602'>
+<a class='timestamp' href='#450602'><time timestamp='2016-02-03T12:24:00Z'>12:24</time></a>
+&lt;<span class='nick nick-13'> GitHub183</span>&gt;
+[bitcoin] laanwj closed pull request #7225: Eliminate unnecessary call to CheckBlock (master...eliminate-extra-checkblock) <a href="https://github.com/bitcoin/bitcoin/pull/7225" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7225</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502300' id='450603'>
+<a class='timestamp' href='#450603'><time timestamp='2016-02-03T12:25:00Z'>12:25</time></a>
+&lt;<span class='nick nick-3'> GitHub99</span>&gt;
+[bitcoin] laanwj closed pull request #7291: Add CNetAddr and CService tests demonstrating constructor differences (master...cservice) <a href="https://github.com/bitcoin/bitcoin/pull/7291" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7291</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502360' id='450604'>
+<a class='timestamp' href='#450604'><time timestamp='2016-02-03T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-7'> GitHub65</span>&gt;
+[bitcoin] laanwj closed pull request #6819: WIP: force zeromq to work with static linking+mingw (master...zeromq-mingw) <a href="https://github.com/bitcoin/bitcoin/pull/6819" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/6819</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454502660' id='450605'>
+<a class='timestamp' href='#450605'><time timestamp='2016-02-03T12:31:00Z'>12:31</time></a>
+&lt;<span class='nick nick-2'> GitHub105</span>&gt;
+[bitcoin] laanwj closed pull request #7339: Support building without libevent (master...opt_libevent) <a href="https://github.com/bitcoin/bitcoin/pull/7339" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7339</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454504220' id='450606'>
+<a class='timestamp' href='#450606'><time timestamp='2016-02-03T12:57:00Z'>12:57</time></a>
+&lt;<span class='nick nick-13'> GitHub18</span>&gt;
+[bitcoin] zander opened pull request #7460: Make internal (core) errors show up in the Qt client. (0.12...propagateAlert12) <a href="https://github.com/bitcoin/bitcoin/pull/7460" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7460</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454504220' id='450607'>
+<a class='timestamp' href='#450607'><time timestamp='2016-02-03T12:57:00Z'>12:57</time></a>
+&lt;<span class='nick nick-11'> GitHub50</span>&gt;
+[bitcoin] zander opened pull request #7461: Make internal (core) errors show up in the Qt client. (master...propagateAlert) <a href="https://github.com/bitcoin/bitcoin/pull/7461" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7461</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454504520' id='450608'>
+<a class='timestamp' href='#450608'><time timestamp='2016-02-03T13:02:00Z'>13:02</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+I just opened those two; not sure what &quot;Wladimir J. van der Laan&quot;&#x27;s nick is. Nothing stands out.. But if you have questions about those MRs, ping me :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454504640' id='450609'>
+<a class='timestamp' href='#450609'><time timestamp='2016-02-03T13:04:00Z'>13:04</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&lt;-
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454504940' id='450610'>
+<a class='timestamp' href='#450610'><time timestamp='2016-02-03T13:09:00Z'>13:09</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505240' id='450611'>
+<a class='timestamp' href='#450611'><time timestamp='2016-02-03T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+zander: re: #7461, as the 0 .12 and master change is pretty much the same, there is not really a need to open two pulls, just filing it to master and stating that it needs backport to 0.12 is enough; this makes sure that there is only one place per &#x27;issue&#x27; to review/comment instead of multiple (which has led to confusion)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505360' id='450612'>
+<a class='timestamp' href='#450612'><time timestamp='2016-02-03T13:16:00Z'>13:16</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+wumpus: Ok, my logic was that I had to test it before sumitting a backport MR. But fine, either way.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505420' id='450613'>
+<a class='timestamp' href='#450613'><time timestamp='2016-02-03T13:17:00Z'>13:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+zander: yes that&#x27;s reasonable, it&#x27;s just that the github way of working doesn&#x27;t really work very well with multiple branches
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505480' id='450614'>
+<a class='timestamp' href='#450614'><time timestamp='2016-02-03T13:18:00Z'>13:18</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+fair enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505480' id='450615'>
+<a class='timestamp' href='#450615'><time timestamp='2016-02-03T13:18:00Z'>13:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+PRs are pretty much discussion topics, so having two with the same topic will confuse people (like me, thinking it is a duplicate)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505480' id='450616'>
+<a class='timestamp' href='#450616'><time timestamp='2016-02-03T13:18:00Z'>13:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+or what you could also do is post a link to a 0.12 branch,and say you&#x27;ve already backported it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505540' id='450617'>
+<a class='timestamp' href='#450617'><time timestamp='2016-02-03T13:19:00Z'>13:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+anyhow I&#x27;ll now just rename one [0.12] but it will get out of hand if we have two pulls for every single thing :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505780' id='450618'>
+<a class='timestamp' href='#450618'><time timestamp='2016-02-03T13:23:00Z'>13:23</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+whatever works for you :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505780' id='450619'>
+<a class='timestamp' href='#450619'><time timestamp='2016-02-03T13:23:00Z'>13:23</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+I just want to make it as smooth as possible for you.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505840' id='450620'>
+<a class='timestamp' href='#450620'><time timestamp='2016-02-03T13:24:00Z'>13:24</time></a>
+&lt;<span class='nick nick-7'> zander</span>&gt;
+It would be really nice to get this into the next release since any forking stuff going on needs to be shown to the user.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454505900' id='450621'>
+<a class='timestamp' href='#450621'><time timestamp='2016-02-03T13:25:00Z'>13:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, makes sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454511180' id='450622'>
+<a class='timestamp' href='#450622'><time timestamp='2016-02-03T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-11'> GitHub168</span>&gt;
+[bitcoin] zander closed pull request #7460: [0.12] Make internal (core) errors show up in the Qt client. (0.12...propagateAlert12) <a href="https://github.com/bitcoin/bitcoin/pull/7460" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7460</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454514900' id='450623'>
+<a class='timestamp' href='#450623'><time timestamp='2016-02-03T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-1'> OxADADA</span>&gt;
+TIL wumpus is Waldimir.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454514960' id='450624'>
+<a class='timestamp' href='#450624'><time timestamp='2016-02-03T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-1'> OxADADA</span>&gt;
+my nick would be 0xADADA if IRC supported nicks starting with 0 :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454515260' id='450625'>
+<a class='timestamp' href='#450625'><time timestamp='2016-02-03T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-13'> gijensen</span>&gt;
+I&#x27;ve been wondering this whole time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454515260' id='450626'>
+<a class='timestamp' href='#450626'><time timestamp='2016-02-03T16:01:00Z'>16:01</time></a>
+&lt;<span class='nick nick-13'> gijensen</span>&gt;
+(about your nick I mean)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454515320' id='450627'>
+<a class='timestamp' href='#450627'><time timestamp='2016-02-03T16:02:00Z'>16:02</time></a>
+&lt;<span class='nick nick-1'> OxADADA</span>&gt;
+gijensen: everyone does ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454516040' id='450628'>
+<a class='timestamp' href='#450628'><time timestamp='2016-02-03T16:14:00Z'>16:14</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: wrt win signing for rc3/final, creating the new cert will revoke the previous one. Previous releases are timestamped, so I don&#x27;t believe they should be affected.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454516100' id='450629'>
+<a class='timestamp' href='#450629'><time timestamp='2016-02-03T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: would you prefer to use a new key for rc3 and risk problems with older releases, or stick with the old key and risk issues with win7+ ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518260' id='450630'>
+<a class='timestamp' href='#450630'><time timestamp='2016-02-03T16:51:00Z'>16:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+OxADADA: hah, yes, last time I tried to type your nick I tried 0&lt;tab&gt;, and wondered why nothing would come upr
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518260' id='450631'>
+<a class='timestamp' href='#450631'><time timestamp='2016-02-03T16:51:00Z'>16:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: ouch. does that mean all previous releases will stop working on windows?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518320' id='450632'>
+<a class='timestamp' href='#450632'><time timestamp='2016-02-03T16:52:00Z'>16:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: or does it just mean that nothing new can be signed with those keys?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518320' id='450633'>
+<a class='timestamp' href='#450633'><time timestamp='2016-02-03T16:52:00Z'>16:52</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: since they&#x27;re timestamped, they&#x27;re <u>_supposed to_</u> remain valid as long as the timestamp falls before the revocation time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518320' id='450634'>
+<a class='timestamp' href='#450634'><time timestamp='2016-02-03T16:52:00Z'>16:52</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+but i can&#x27;t attest to that working as described, could only hope
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518380' id='450635'>
+<a class='timestamp' href='#450635'><time timestamp='2016-02-03T16:53:00Z'>16:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+cfields: ok, let&#x27;s use the new key for rc3. If this screws up it doesn&#x27;t really matter if it happens now or for final it&#x27;d be a disaster in both cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518380' id='450636'>
+<a class='timestamp' href='#450636'><time timestamp='2016-02-03T16:53:00Z'>16:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and unavoidable too, unfortunately. I guess we could re-sign old releases but bleh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518440' id='450637'>
+<a class='timestamp' href='#450637'><time timestamp='2016-02-03T16:54:00Z'>16:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I hoep you&#x27;re right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518500' id='450638'>
+<a class='timestamp' href='#450638'><time timestamp='2016-02-03T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+heh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518500' id='450639'>
+<a class='timestamp' href='#450639'><time timestamp='2016-02-03T16:55:00Z'>16:55</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+well, I&#x27;ve for sure always timestamped previous releases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518560' id='450640'>
+<a class='timestamp' href='#450640'><time timestamp='2016-02-03T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+(as long as i&#x27;ve been doing them, anyway)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518620' id='450641'>
+<a class='timestamp' href='#450641'><time timestamp='2016-02-03T16:57:00Z'>16:57</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+wumpus: we also have the option of changing the name/org for the key while we&#x27;re at it. Would you prefer to try to change to Bitcoin Core, or keep all else the same?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518620' id='450642'>
+<a class='timestamp' href='#450642'><time timestamp='2016-02-03T16:57:00Z'>16:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+can you just choose that name? sure, yes I&#x27;d like it to be Bitcoin Core
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454518740' id='450643'>
+<a class='timestamp' href='#450643'><time timestamp='2016-02-03T16:59:00Z'>16:59</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+yea. Not sure what verification mechanisms it triggers. I&#x27;m nervous to go any further because I want to ensure that the old one isn&#x27;t revoked yet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454522220' id='450644'>
+<a class='timestamp' href='#450644'><time timestamp='2016-02-03T17:57:00Z'>17:57</time></a>
+&lt;<span class='nick nick-5'> Tasoshi</span>&gt;
+congrats gmaxwell on raising 55 million dollars
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454522220' id='450645'>
+<a class='timestamp' href='#450645'><time timestamp='2016-02-03T17:57:00Z'>17:57</time></a>
+&lt;<span class='nick nick-5'> Tasoshi</span>&gt;
+how do you plan on spending them?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454531400' id='450646'>
+<a class='timestamp' href='#450646'><time timestamp='2016-02-03T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-1'> OxADADA</span>&gt;
+Tasoshi: If they&#x27;re smart, they&#x27;ll prove their value as a modern startup company and buy a Foosball or Table Tennis. If they&#x27;re &quot;oldschool&quot; they&#x27;ll prove it by buying Aeron chairs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454531460' id='450647'>
+<a class='timestamp' href='#450647'><time timestamp='2016-02-03T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-1'> OxADADA</span>&gt;
+all the kewl startups must do this, by law.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454531460' id='450648'>
+<a class='timestamp' href='#450648'><time timestamp='2016-02-03T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-3'> * OxADADA</span>&gt;
+scoffs at Taek (WHERE IS YOUR FOOSBALL TABL!?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454536200' id='450649'>
+<a class='timestamp' href='#450649'><time timestamp='2016-02-03T21:50:00Z'>21:50</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+Hey folks, we&#x27;re setting up continuous integration for the Zcash project, including running tests in response to PRs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454537160' id='450650'>
+<a class='timestamp' href='#450650'><time timestamp='2016-02-03T22:06:00Z'>22:06</time></a>
+&lt;<span class='nick nick-2'> Luke-Jr</span>&gt;
+zooko: cool. Core has done that for a long time ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454537160' id='450651'>
+<a class='timestamp' href='#450651'><time timestamp='2016-02-03T22:06:00Z'>22:06</time></a>
+&lt;<span class='nick nick-9'> GitHub47</span>&gt;
+[bitcoin] wangchun opened pull request #7464: Opt-in RBF must be strictly enabled or disabled before GBT can be called (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/7464" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7464</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454537400' id='450652'>
+<a class='timestamp' href='#450652'><time timestamp='2016-02-03T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+Luke-Jr: with travis-ci, right? Yeah.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454537400' id='450653'>
+<a class='timestamp' href='#450653'><time timestamp='2016-02-03T22:10:00Z'>22:10</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+Luke-Jr: one thing that I hope to add soonish is an ARMv8 buildslave. &quot;Soonish&quot; meaning a matter of weeks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454537460' id='450654'>
+<a class='timestamp' href='#450654'><time timestamp='2016-02-03T22:11:00Z'>22:11</time></a>
+&lt;<span class='nick nick-7'> zooko</span>&gt;
+Luke-Jr: anyway, let me know if you have some desired for testing/measurement/CI that might overlap with mine.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454540580' id='450655'>
+<a class='timestamp' href='#450655'><time timestamp='2016-02-03T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-3'> GitHub135</span>&gt;
+[bitcoin] MarcoFalke opened pull request #7465: [doc] Update release-process.md (master...Mf1601-releaseProc) <a href="https://github.com/bitcoin/bitcoin/pull/7465" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/7465</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1454542500' id='450656'>
+<a class='timestamp' href='#450656'><time timestamp='2016-02-03T23:35:00Z'>23:35</time></a>
+&lt;<span class='nick nick-4'> kanzure</span>&gt;
+release-process.md says <a href="https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch" class="link" target="_blank">https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch</a> but bitcoincore.org now redirects this to dev.bitcoincore.org perhaps the release-process.md document should be updated? does anyone care about this detail?
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

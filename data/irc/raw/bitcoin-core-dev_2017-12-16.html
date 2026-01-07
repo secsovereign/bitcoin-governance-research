@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-12-16
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-12-16' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-11-16">&lt;</a><span class='header'>  December 2017   </span><a href="/bitcoin-core-dev/2018-01-16">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;                <a class="" href="/bitcoin-core-dev/2017-12-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-12-02">2</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-12-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-12-04">4</a>  <a class="" href="/bitcoin-core-dev/2017-12-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-12-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-12-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-12-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-12-09">9</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-10">10</a> <a class="" href="/bitcoin-core-dev/2017-12-11">11</a> <a class="" href="/bitcoin-core-dev/2017-12-12">12</a> <a class="" href="/bitcoin-core-dev/2017-12-13">13</a> <a class="" href="/bitcoin-core-dev/2017-12-14">14</a> <a class="" href="/bitcoin-core-dev/2017-12-15">15</a> <a class="current" href="/bitcoin-core-dev/2017-12-16">16</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-17">17</a> <a class="" href="/bitcoin-core-dev/2017-12-18">18</a> <a class="" href="/bitcoin-core-dev/2017-12-19">19</a> <a class="" href="/bitcoin-core-dev/2017-12-20">20</a> <a class="" href="/bitcoin-core-dev/2017-12-21">21</a> <a class="" href="/bitcoin-core-dev/2017-12-22">22</a> <a class="" href="/bitcoin-core-dev/2017-12-23">23</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-24">24</a> <a class="" href="/bitcoin-core-dev/2017-12-25">25</a> <a class="" href="/bitcoin-core-dev/2017-12-26">26</a> <a class="" href="/bitcoin-core-dev/2017-12-27">27</a> <a class="" href="/bitcoin-core-dev/2017-12-28">28</a> <a class="" href="/bitcoin-core-dev/2017-12-29">29</a> <a class="" href="/bitcoin-core-dev/2017-12-30">30</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-12-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1513390980' id='587999'>
+<a class='timestamp' href='#587999'><time timestamp='2017-12-16T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+in wallet/db.cpp in VerifyEnvironment(), if opening the environment fails the first time then the database env is moved to a backup and opening is retried... can someone explain what situation moving it would help in?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513390980' id='588000'>
+<a class='timestamp' href='#588000'><time timestamp='2017-12-16T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/blob/master/src/wallet/db.cpp#L272-L290" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/wallet/db.cpp#L272-L290</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513391880' id='588001'>
+<a class='timestamp' href='#588001'><time timestamp='2017-12-16T02:38:00Z'>02:38</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: looks like you introduced it in #2558, could you give me a bit of info :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513391880' id='588002'>
+<a class='timestamp' href='#588002'><time timestamp='2017-12-16T02:38:00Z'>02:38</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/2558" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/2558</a> | Some database/-related recovery improvements by sipa · Pull Request #2558 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398300' id='588003'>
+<a class='timestamp' href='#588003'><time timestamp='2017-12-16T04:25:00Z'>04:25</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+Hi friends, I am new to blockchain, I am learning its internal.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398300' id='588004'>
+<a class='timestamp' href='#588004'><time timestamp='2017-12-16T04:25:00Z'>04:25</time></a>
+&lt;<span class='nick nick-16'> * Randolf</span>&gt;
+congratulates freeark1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398360' id='588005'>
+<a class='timestamp' href='#588005'><time timestamp='2017-12-16T04:26:00Z'>04:26</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we&#x27;ve all been there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398420' id='588006'>
+<a class='timestamp' href='#588006'><time timestamp='2017-12-16T04:27:00Z'>04:27</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+Wecome Randolf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398420' id='588007'>
+<a class='timestamp' href='#588007'><time timestamp='2017-12-16T04:27:00Z'>04:27</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+welcome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398480' id='588008'>
+<a class='timestamp' href='#588008'><time timestamp='2017-12-16T04:28:00Z'>04:28</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+freeark1:  Thanks.  Which area(s) of Bitcoin interests you the most?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398480' id='588009'>
+<a class='timestamp' href='#588009'><time timestamp='2017-12-16T04:28:00Z'>04:28</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+...from a core-development standpoint.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398600' id='588010'>
+<a class='timestamp' href='#588010'><time timestamp='2017-12-16T04:30:00Z'>04:30</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+I propose to create a system in which hard core developers get their earning directly rather outsourcing entities eat up major chunk.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398780' id='588011'>
+<a class='timestamp' href='#588011'><time timestamp='2017-12-16T04:33:00Z'>04:33</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+doesn&#x27;t comphrehend this proposal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398780' id='588012'>
+<a class='timestamp' href='#588012'><time timestamp='2017-12-16T04:33:00Z'>04:33</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+If some people co-operate me I will bring blockchain theme everywhere. Hard-working people are exploited by smart people. And hard-working people are understood to be stupid.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398840' id='588013'>
+<a class='timestamp' href='#588013'><time timestamp='2017-12-16T04:34:00Z'>04:34</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+that&#x27;s a societal problem, not a Bitcoin problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398900' id='588014'>
+<a class='timestamp' href='#588014'><time timestamp='2017-12-16T04:35:00Z'>04:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+this is very off topic here, this is a channel for development of the code of the bitcoin core software; I&#x27;d suggest to take it to #bitcoin.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398900' id='588015'>
+<a class='timestamp' href='#588015'><time timestamp='2017-12-16T04:35:00Z'>04:35</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+ok     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398960' id='588016'>
+<a class='timestamp' href='#588016'><time timestamp='2017-12-16T04:36:00Z'>04:36</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+just one sentence.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513398960' id='588017'>
+<a class='timestamp' href='#588017'><time timestamp='2017-12-16T04:36:00Z'>04:36</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+one sentence in #bitcoin, please ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513399020' id='588018'>
+<a class='timestamp' href='#588018'><time timestamp='2017-12-16T04:37:00Z'>04:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+feel free to listen in here to learn about the development, but this is not the place for wild project ideas but very specific ones
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513401240' id='588019'>
+<a class='timestamp' href='#588019'><time timestamp='2017-12-16T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-12'> ryanofsky</span>&gt;
+meshcollider, it&#x27;s only renaming the database log directory, not the actual database file. this might help if something is wrong with the transaction logs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513406880' id='588020'>
+<a class='timestamp' href='#588020'><time timestamp='2017-12-16T06:48:00Z'>06:48</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Oh,... there is a significant mem leak in rescan-chainstate!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513406940' id='588021'>
+<a class='timestamp' href='#588021'><time timestamp='2017-12-16T06:49:00Z'>06:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+*reindex
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513406940' id='588022'>
+<a class='timestamp' href='#588022'><time timestamp='2017-12-16T06:49:00Z'>06:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+-bash: fork: Cannot allocate memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513406940' id='588023'>
+<a class='timestamp' href='#588023'><time timestamp='2017-12-16T06:49:00Z'>06:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(can&#x27;t even kill bitcoind)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513407000' id='588024'>
+<a class='timestamp' href='#588024'><time timestamp='2017-12-16T06:50:00Z'>06:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: #11824?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513407000' id='588025'>
+<a class='timestamp' href='#588025'><time timestamp='2017-12-16T06:50:00Z'>06:50</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11824" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11824</a> | Block ActivateBestChain to empty validationinterface queue by TheBlueMatt · Pull Request #11824 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513407060' id='588026'>
+<a class='timestamp' href='#588026'><time timestamp='2017-12-16T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+happend on my with headless debian only running bitcoind (only installed bitcoind after debian 9 minimal), machine has 32 GB DDR4 RAM / AMD Ryzen 7 1700X
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513407060' id='588027'>
+<a class='timestamp' href='#588027'><time timestamp='2017-12-16T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: Yes, let me test that... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513410600' id='588028'>
+<a class='timestamp' href='#588028'><time timestamp='2017-12-16T07:50:00Z'>07:50</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] valentinewallace opened pull request #11915: Qt: Reflect correct dbcache value in options panel. (master...dbcache_gui_fix) <a href="https://github.com/bitcoin/bitcoin/pull/11915" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11915</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413360' id='588029'>
+<a class='timestamp' href='#588029'><time timestamp='2017-12-16T08:36:00Z'>08:36</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+jonasschnelli: do you still maintain testnet-seed.bitcoin.jonasschnelli.ch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413420' id='588030'>
+<a class='timestamp' href='#588030'><time timestamp='2017-12-16T08:37:00Z'>08:37</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+it&#x27;s in chainparams.cpp but i haven&#x27;t been getting any dns responses from that seed (the testnet seeds work), which is why i as,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413780' id='588031'>
+<a class='timestamp' href='#588031'><time timestamp='2017-12-16T08:43:00Z'>08:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+indeed, it gives no results at the moment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413780' id='588032'>
+<a class='timestamp' href='#588032'><time timestamp='2017-12-16T08:43:00Z'>08:43</time></a>
+&lt;<span class='nick nick-11'> towertorony</span>&gt;
+hello. why is the maj function used by bitcoin in src code with a simple | (or) not with an xor?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413780' id='588033'>
+<a class='timestamp' href='#588033'><time timestamp='2017-12-16T08:43:00Z'>08:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what do you mean with &quot;the testnet seeds work&quot;; the seeder by jonasschnelli you&#x27;re referring to is a testnet seed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413780' id='588034'>
+<a class='timestamp' href='#588034'><time timestamp='2017-12-16T08:43:00Z'>08:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+eck: ^
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413840' id='588035'>
+<a class='timestamp' href='#588035'><time timestamp='2017-12-16T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-11'> towertorony</span>&gt;
+that is in sha256...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413840' id='588036'>
+<a class='timestamp' href='#588036'><time timestamp='2017-12-16T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+towertorony: they&#x27;re identical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413840' id='588037'>
+<a class='timestamp' href='#588037'><time timestamp='2017-12-16T08:44:00Z'>08:44</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+sorry, typo, the seeds from petertodd.org and bluematt.me respond, but not the seed from jonasschnelli.me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413900' id='588038'>
+<a class='timestamp' href='#588038'><time timestamp='2017-12-16T08:45:00Z'>08:45</time></a>
+&lt;<span class='nick nick-11'> towertorony</span>&gt;
+how? xor is 1 if both inputs have same bits. or is 1 if at least one input is 1?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413960' id='588039'>
+<a class='timestamp' href='#588039'><time timestamp='2017-12-16T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Maj(x,y,z) is either &quot;(x &amp; y) ^ (y &amp; z) ^ (z &amp; x)&quot; or &quot;z ^ (x &amp; (y ^ z))&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413960' id='588040'>
+<a class='timestamp' href='#588040'><time timestamp='2017-12-16T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+eh     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413960' id='588041'>
+<a class='timestamp' href='#588041'><time timestamp='2017-12-16T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Maj(x,y,z) is either &quot;(x &amp; y) ^ (y &amp; z) ^ (z &amp; x)&quot; or &quot;(x &amp; y) | (z &amp; (x | y))&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413960' id='588042'>
+<a class='timestamp' href='#588042'><time timestamp='2017-12-16T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-11'> towertorony</span>&gt;
+xor 1 if inputs different bits...sorry, 0 otherwise. or is zero only if both are 0?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413960' id='588043'>
+<a class='timestamp' href='#588043'><time timestamp='2017-12-16T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+seed.bitcoin.sipa.be gives me no results either at the moment, btw 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513413960' id='588044'>
+<a class='timestamp' href='#588044'><time timestamp='2017-12-16T08:46:00Z'>08:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+find me an input for which the two give a different results
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414020' id='588045'>
+<a class='timestamp' href='#588045'><time timestamp='2017-12-16T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-11'> towertorony</span>&gt;
+ok i will look into your explanation, sepa. thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414020' id='588046'>
+<a class='timestamp' href='#588046'><time timestamp='2017-12-16T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+towertorony: it&#x27;s not just swapping out a xor for an or; it&#x27;s a totally different expression that just happens to be equivalent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414020' id='588047'>
+<a class='timestamp' href='#588047'><time timestamp='2017-12-16T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and the one used is only 4 bitwise operations, instead of 5
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414020' id='588048'>
+<a class='timestamp' href='#588048'><time timestamp='2017-12-16T08:47:00Z'>08:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so it&#x27;s faster
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414080' id='588049'>
+<a class='timestamp' href='#588049'><time timestamp='2017-12-16T08:48:00Z'>08:48</time></a>
+&lt;<span class='nick nick-11'> towertorony</span>&gt;
+i realized that the orig eqn uses a compliment of x...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414080' id='588050'>
+<a class='timestamp' href='#588050'><time timestamp='2017-12-16T08:48:00Z'>08:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: heh, indeed i&#x27;m not seeing any dns requests come in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414140' id='588051'>
+<a class='timestamp' href='#588051'><time timestamp='2017-12-16T08:49:00Z'>08:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+fixed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414140' id='588052'>
+<a class='timestamp' href='#588052'><time timestamp='2017-12-16T08:49:00Z'>08:49</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+would be if there was a notification system that monitors the dns seeds, and sends out a mail or IRC message or such if they&#x27;re unreachable for a while
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414200' id='588053'>
+<a class='timestamp' href='#588053'><time timestamp='2017-12-16T08:50:00Z'>08:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+my port forwarding firewall rule got erased somehow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414200' id='588054'>
+<a class='timestamp' href='#588054'><time timestamp='2017-12-16T08:50:00Z'>08:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yep yours works again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414260' id='588055'>
+<a class='timestamp' href='#588055'><time timestamp='2017-12-16T08:51:00Z'>08:51</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+since jonas&#x27; seed is down, there are only two seeds for testnet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414320' id='588056'>
+<a class='timestamp' href='#588056'><time timestamp='2017-12-16T08:52:00Z'>08:52</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+not a huge deal if it&#x27;s temporary, but something to be aware fo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414320' id='588057'>
+<a class='timestamp' href='#588057'><time timestamp='2017-12-16T08:52:00Z'>08:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+towertorony: it helps to realize what the Maj function is doing: if a bit is set in 2 or 3 out of the inputs, the result is 1; if it&#x27;s only set in 0 or 1 of the inputs, the result is 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414320' id='588058'>
+<a class='timestamp' href='#588058'><time timestamp='2017-12-16T08:52:00Z'>08:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+eck: I&#x27;m sure it&#x27;s just a matter of restarting it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513414320' id='588059'>
+<a class='timestamp' href='#588059'><time timestamp='2017-12-16T08:52:00Z'>08:52</time></a>
+&lt;<span class='nick nick-14'> eck</span>&gt;
+that&#x27;s what i suspect/hope as well
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513417620' id='588060'>
+<a class='timestamp' href='#588060'><time timestamp='2017-12-16T09:47:00Z'>09:47</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+An easy to learn resource for blockchain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513417740' id='588061'>
+<a class='timestamp' href='#588061'><time timestamp='2017-12-16T09:49:00Z'>09:49</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+bitcoin-dev development process, am I need to fork bitcoin github repo?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513418040' id='588062'>
+<a class='timestamp' href='#588062'><time timestamp='2017-12-16T09:54:00Z'>09:54</time></a>
+&lt;<span class='nick nick-13'> brats</span>&gt;
+hi     where could download bitcoin core logo and other material?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513418040' id='588063'>
+<a class='timestamp' href='#588063'><time timestamp='2017-12-16T09:54:00Z'>09:54</time></a>
+&lt;<span class='nick nick-13'> brats</span>&gt;
+from which site?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513418700' id='588064'>
+<a class='timestamp' href='#588064'><time timestamp='2017-12-16T10:05:00Z'>10:05</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/tree/master/src/qt/res/icons" class="link" target="_blank">https://github.com/bitcoin/bitcoin/tree/master/src/qt/res/icons</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513418760' id='588065'>
+<a class='timestamp' href='#588065'><time timestamp='2017-12-16T10:06:00Z'>10:06</time></a>
+&lt;<span class='nick nick-10'> freeark1</span>&gt;
+@brats, <a href="https://github.com/bitcoin/bitcoin/tree/master/src/qt/res/icons" class="link" target="_blank">https://github.com/bitcoin/bitcoin/tree/master/src/qt/res/icons</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513419840' id='588066'>
+<a class='timestamp' href='#588066'><time timestamp='2017-12-16T10:24:00Z'>10:24</time></a>
+&lt;<span class='nick nick-2'> breds</span>&gt;
+could someone tell me where to download bitcoin node logo and other material ??
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513419900' id='588067'>
+<a class='timestamp' href='#588067'><time timestamp='2017-12-16T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+breds: he freeark1 literally just posted above... <a href="https://github.com/bitcoin/bitcoin/tree/master/src/qt/res/icons" class="link" target="_blank">https://github.com/bitcoin/bitcoin/tree/master/src/qt/res/icons</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513419900' id='588068'>
+<a class='timestamp' href='#588068'><time timestamp='2017-12-16T10:25:00Z'>10:25</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+breds: please use #bitcoin for questions like that, not this channel
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513419960' id='588069'>
+<a class='timestamp' href='#588069'><time timestamp='2017-12-16T10:26:00Z'>10:26</time></a>
+&lt;<span class='nick nick-2'> breds</span>&gt;
+thnx  ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513427400' id='588070'>
+<a class='timestamp' href='#588070'><time timestamp='2017-12-16T12:30:00Z'>12:30</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] flack opened pull request #11916: Typo fix (master...patch-3) <a href="https://github.com/bitcoin/bitcoin/pull/11916" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11916</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513430820' id='588071'>
+<a class='timestamp' href='#588071'><time timestamp='2017-12-16T13:27:00Z'>13:27</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+What&#x27;s involved with setting up a testnet DNS seed and what&#x27;s the worst that can happen if I do that? Happy to try.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513431240' id='588072'>
+<a class='timestamp' href='#588072'><time timestamp='2017-12-16T13:34:00Z'>13:34</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Found this: <a href="https://github.com/sipa/bitcoin-seeder" class="link" target="_blank">https://github.com/sipa/bitcoin-seeder</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513434660' id='588073'>
+<a class='timestamp' href='#588073'><time timestamp='2017-12-16T14:31:00Z'>14:31</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Here we go: seed.testnet.bitcoin.sprovoost.nl   - runs on EC2, I don&#x27;t know if that&#x27;s good enough for testnet (if you&#x27;re seeing A 66.111... you need to wait a bit)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513435020' id='588074'>
+<a class='timestamp' href='#588074'><time timestamp='2017-12-16T14:37:00Z'>14:37</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Privacy wise, I wonder how much Amazon can see, vs. e.g. running it on a physical machine in a data center in some country with proper privacy laws, not owned by a US company, etc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513435080' id='588075'>
+<a class='timestamp' href='#588075'><time timestamp='2017-12-16T14:38:00Z'>14:38</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+Provoostenator: nice!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513435260' id='588076'>
+<a class='timestamp' href='#588076'><time timestamp='2017-12-16T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+ah yes still gives 66.111 here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513435260' id='588077'>
+<a class='timestamp' href='#588077'><time timestamp='2017-12-16T14:41:00Z'>14:41</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+And it&#x27;s mainnet :-) let me fix that...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513435980' id='588078'>
+<a class='timestamp' href='#588078'><time timestamp='2017-12-16T14:53:00Z'>14:53</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+wumpus: domI understand it well that to run a seed node you need no registering of it? E.g. I saw built in dnse seeds in sources, but this sounds different. A dynamic seed dns network perhaps?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436040' id='588079'>
+<a class='timestamp' href='#588079'><time timestamp='2017-12-16T14:54:00Z'>14:54</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+by registering I mean to write to a developer to list it somewhere
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436040' id='588080'>
+<a class='timestamp' href='#588080'><time timestamp='2017-12-16T14:54:00Z'>14:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+Sentineo: I don&#x27;t see what advantage another level of indirection would have
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436160' id='588081'>
+<a class='timestamp' href='#588081'><time timestamp='2017-12-16T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+not suggesting anything ... asking ;) I do run some full nodes ooen to the public. To be a seed node is it enough to just run the tool in sipa&#x27;s repo linked above?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436160' id='588082'>
+<a class='timestamp' href='#588082'><time timestamp='2017-12-16T14:56:00Z'>14:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+Sentineo: privacy is also of important so people adding a DNS seed have to agree to some terms (<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/dnsseed-policy.md)" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/doc/dnsseed-policy.md)</a>, which is a manual step before merging them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436220' id='588083'>
+<a class='timestamp' href='#588083'><time timestamp='2017-12-16T14:57:00Z'>14:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and a commitment to running it for fairly long term
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436280' id='588084'>
+<a class='timestamp' href='#588084'><time timestamp='2017-12-16T14:58:00Z'>14:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+these are entry points to the network so they have to be hardcoded. It&#x27;s not great, but it&#x27;s the fastest bootstrapping mechanism. THere is also an automatic one, that is used when falling back (e.g. DNS seeds unreachable). This is a hardcoded list of reliable nodes that is updated every version.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436340' id='588085'>
+<a class='timestamp' href='#588085'><time timestamp='2017-12-16T14:59:00Z'>14:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+these are generally unreliable, as they&#x27;re just nodes and no one committed to kepeing them up, so it takes longer to get connected to the network in that way, and once it found working nodes it asks them for more addresses and goes from there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436400' id='588086'>
+<a class='timestamp' href='#588086'><time timestamp='2017-12-16T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and it skips the DNS seeds if at startup it already has reliable peers in peers.dat
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436400' id='588087'>
+<a class='timestamp' href='#588087'><time timestamp='2017-12-16T15:00:00Z'>15:00</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+yep, I saw that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513436940' id='588088'>
+<a class='timestamp' href='#588088'><time timestamp='2017-12-16T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+wumpus: so what is the process to become one? First run the bitcoin-seeder tool? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437000' id='588089'>
+<a class='timestamp' href='#588089'><time timestamp='2017-12-16T15:10:00Z'>15:10</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, basically wahat Provoostenator did, just create one, then make a PR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437120' id='588090'>
+<a class='timestamp' href='#588090'><time timestamp='2017-12-16T15:12:00Z'>15:12</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+cool, ty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437180' id='588091'>
+<a class='timestamp' href='#588091'><time timestamp='2017-12-16T15:13:00Z'>15:13</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+I&#x27;ll make a PR as well. What&#x27;s the &quot;servicebits filtering&quot; about?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437300' id='588092'>
+<a class='timestamp' href='#588092'><time timestamp='2017-12-16T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+nodes can request to know only about nodes that provide certain service bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437300' id='588093'>
+<a class='timestamp' href='#588093'><time timestamp='2017-12-16T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+like network, bloom, witness etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437300' id='588094'>
+<a class='timestamp' href='#588094'><time timestamp='2017-12-16T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+this is useful for getting segwit peers, basically
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437300' id='588095'>
+<a class='timestamp' href='#588095'><time timestamp='2017-12-16T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437360' id='588096'>
+<a class='timestamp' href='#588096'><time timestamp='2017-12-16T15:16:00Z'>15:16</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+What would be the rationale for setting that false, e.g. BlueMatt: vSeeds.emplace_back(&quot;testnet-seed.bluematt.me&quot;, false);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437480' id='588097'>
+<a class='timestamp' href='#588097'><time timestamp='2017-12-16T15:18:00Z'>15:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if your dns seed runs software that doesn&#x27;t support it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437540' id='588098'>
+<a class='timestamp' href='#588098'><time timestamp='2017-12-16T15:19:00Z'>15:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+not acceptable for new ones I&#x27;d say
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437540' id='588099'>
+<a class='timestamp' href='#588099'><time timestamp='2017-12-16T15:19:00Z'>15:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that&#x27;s just the way that old dnsseeds were grandfathered in when the filtering was introduced
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513437600' id='588100'>
+<a class='timestamp' href='#588100'><time timestamp='2017-12-16T15:20:00Z'>15:20</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+I&#x27;m just running bitcoin-seeder with the default settings, not sure if I need to pass anything using the -w flag: <a href="https://github.com/sipa/bitcoin-seeder/blob/master/main.cpp#L51" class="link" target="_blank">https://github.com/sipa/bitcoin-seeder/blob/master/main.cpp#L51</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513439640' id='588101'>
+<a class='timestamp' href='#588101'><time timestamp='2017-12-16T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+Provoostenator: could you please ping me the PR # once you have it? So I can use it as a reference?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441200' id='588102'>
+<a class='timestamp' href='#588102'><time timestamp='2017-12-16T16:20:00Z'>16:20</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+Sentineo: #11917
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441200' id='588103'>
+<a class='timestamp' href='#588103'><time timestamp='2017-12-16T16:20:00Z'>16:20</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11917" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11917</a> | Add testnet DNS seed: seed.testnet.bitcoin.sprovoost.nl by Sjors · Pull Request #11917 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441200' id='588104'>
+<a class='timestamp' href='#588104'><time timestamp='2017-12-16T16:20:00Z'>16:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Sjors opened pull request #11917: Add testnet DNS seed:  seed.testnet.bitcoin.sprovoost.nl (master...testnet-dns-seed-sjors) <a href="https://github.com/bitcoin/bitcoin/pull/11917" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11917</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441200' id='588105'>
+<a class='timestamp' href='#588105'><time timestamp='2017-12-16T16:20:00Z'>16:20</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+(oh, the PR bot works again...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441260' id='588106'>
+<a class='timestamp' href='#588106'><time timestamp='2017-12-16T16:21:00Z'>16:21</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+ty!     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441320' id='588107'>
+<a class='timestamp' href='#588107'><time timestamp='2017-12-16T16:22:00Z'>16:22</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+You may want to wait to see the feedback I get before making your own PR.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513441440' id='588108'>
+<a class='timestamp' href='#588108'><time timestamp='2017-12-16T16:24:00Z'>16:24</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+yep, that is my plan Provoostenator basically to not waste core people&#x27;s time.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513442340' id='588109'>
+<a class='timestamp' href='#588109'><time timestamp='2017-12-16T16:39:00Z'>16:39</time></a>
+&lt;<span class='nick nick-7'> Provoostenator</span>&gt;
+From: <a href="https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery#DNS_Addresses" class="link" target="_blank">https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery#DNS_Addresses</a> &quot;The client uses public web services which return the information to determine its own external, routable IP address&quot;. Isn&#x27;t that outdated info?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513444920' id='588110'>
+<a class='timestamp' href='#588110'><time timestamp='2017-12-16T17:22:00Z'>17:22</time></a>
+&lt;<span class='nick nick-4'> BlueMatt</span>&gt;
+Provoostenator: note that the boolean goes away in #11512 (which fixes 0.16 bugs, so will land for it)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513444920' id='588111'>
+<a class='timestamp' href='#588111'><time timestamp='2017-12-16T17:22:00Z'>17:22</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11512" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11512</a> | Use GetDesireableServiceFlags in seeds, dnsseeds, fixing static seed adding by TheBlueMatt · Pull Request #11512 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513446780' id='588112'>
+<a class='timestamp' href='#588112'><time timestamp='2017-12-16T17:53:00Z'>17:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #11918: fees: Remove fallbackfee default (master...Mf1712-NoFallBackFee) <a href="https://github.com/bitcoin/bitcoin/pull/11918" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11918</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513449600' id='588113'>
+<a class='timestamp' href='#588113'><time timestamp='2017-12-16T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/df7181952436...62fdf9b07087" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/df7181952436...62fdf9b07087</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513449600' id='588114'>
+<a class='timestamp' href='#588114'><time timestamp='2017-12-16T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 58c909d flack: Typo fix
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513449600' id='588115'>
+<a class='timestamp' href='#588115'><time timestamp='2017-12-16T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 62fdf9b MarcoFalke: Merge #11916: Typo fix...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1513449660' id='588116'>
+<a class='timestamp' href='#588116'><time timestamp='2017-12-16T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #11916: Typo fix (master...patch-3) <a href="https://github.com/bitcoin/bitcoin/pull/11916" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11916</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

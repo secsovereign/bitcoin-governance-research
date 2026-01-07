@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-02-26
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-02-26' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:22 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-01-26">&lt;</a><span class='header'>  February 2018   </span><a href="/bitcoin-core-dev/2018-03-26">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;             <a class="" href="/bitcoin-core-dev/2018-02-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-02-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-02-03">3</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-02-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-02-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-02-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-02-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-02-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-02-09">9</a> <a class="" href="/bitcoin-core-dev/2018-02-10">10</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-02-11">11</a> <a class="" href="/bitcoin-core-dev/2018-02-12">12</a> <a class="" href="/bitcoin-core-dev/2018-02-13">13</a> <a class="" href="/bitcoin-core-dev/2018-02-14">14</a> <a class="" href="/bitcoin-core-dev/2018-02-15">15</a> <a class="" href="/bitcoin-core-dev/2018-02-16">16</a> <a class="" href="/bitcoin-core-dev/2018-02-17">17</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-02-18">18</a> <a class="" href="/bitcoin-core-dev/2018-02-19">19</a> <a class="" href="/bitcoin-core-dev/2018-02-20">20</a> <a class="" href="/bitcoin-core-dev/2018-02-21">21</a> <a class="" href="/bitcoin-core-dev/2018-02-22">22</a> <a class="" href="/bitcoin-core-dev/2018-02-23">23</a> <a class="" href="/bitcoin-core-dev/2018-02-24">24</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-02-25">25</a> <a class="current" href="/bitcoin-core-dev/2018-02-26">26</a> <a class="" href="/bitcoin-core-dev/2018-02-27">27</a> <a class="" href="/bitcoin-core-dev/2018-02-28">28</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1519605000' id='601522'>
+<a class='timestamp' href='#601522'><time timestamp='2018-02-26T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-7'> eklitzke</span>&gt;
+it&#x27;s on my todo list, i have a systemtap script that hooks into the kernel events that update the process file descriptor tables
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605000' id='601523'>
+<a class='timestamp' href='#601523'><time timestamp='2018-02-26T00:30:00Z'>00:30</time></a>
+&lt;<span class='nick nick-7'> eklitzke</span>&gt;
+i want to use that to find the places where bitcoind creates file descriptors but doesn&#x27;t track that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605060' id='601524'>
+<a class='timestamp' href='#601524'><time timestamp='2018-02-26T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+eklitzke: the main reason we have FD limits at all is due to the use of select in the networking code.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605060' id='601525'>
+<a class='timestamp' href='#601525'><time timestamp='2018-02-26T00:31:00Z'>00:31</time></a>
+&lt;<span class='nick nick-7'> eklitzke</span>&gt;
+so i don&#x27;t quite understand what is the situation where you would get 1024 network sockets in your bitcoin process
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605120' id='601526'>
+<a class='timestamp' href='#601526'><time timestamp='2018-02-26T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+There is a fairly simple patch to use poll instead which has been delayed for a very long time now out of a desire to instead wait until a bigger rewrite.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605120' id='601527'>
+<a class='timestamp' href='#601527'><time timestamp='2018-02-26T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+eklitzke: select will not work if any fd number is over 1023... not just if there are more network sockets.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605120' id='601528'>
+<a class='timestamp' href='#601528'><time timestamp='2018-02-26T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-7'> eklitzke</span>&gt;
+ah, right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605120' id='601529'>
+<a class='timestamp' href='#601529'><time timestamp='2018-02-26T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+because it&#x27;s implemented as a bitmap.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605120' id='601530'>
+<a class='timestamp' href='#601530'><time timestamp='2018-02-26T00:32:00Z'>00:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well a constant size bitmap. :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519605180' id='601531'>
+<a class='timestamp' href='#601531'><time timestamp='2018-02-26T00:33:00Z'>00:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so we get fd pressure from all angles, multiple leveldbs, rpc, network, block files, etc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519608840' id='601532'>
+<a class='timestamp' href='#601532'><time timestamp='2018-02-26T01:34:00Z'>01:34</time></a>
+&lt;<span class='nick nick-8'> Admun</span>&gt;
+admin
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519608900' id='601533'>
+<a class='timestamp' href='#601533'><time timestamp='2018-02-26T01:35:00Z'>01:35</time></a>
+&lt;<span class='nick nick-8'> Admun</span>&gt;
+operation/sathoschi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519608900' id='601534'>
+<a class='timestamp' href='#601534'><time timestamp='2018-02-26T01:35:00Z'>01:35</time></a>
+&lt;<span class='nick nick-8'> Admun</span>&gt;
+franklin!!!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519609980' id='601535'>
+<a class='timestamp' href='#601535'><time timestamp='2018-02-26T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-11'> pierre_rochard</span>&gt;
+Any success stories of experimenting with the core codebase using Jupyter + xeus-cling? ( <a href="https://blog.jupyter.org/interactive-workflows-for-c-with-jupyter-fe9b54227d92" class="link" target="_blank">https://blog.jupyter.org/interactive-workflows-for-c-with-jupyter-fe9b54227d92</a> )
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622040' id='601536'>
+<a class='timestamp' href='#601536'><time timestamp='2018-02-26T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+does the bitcoin: uri scheme work ok with segwit addresses?  i sent a payment with it and the actual transfer goes to a different address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622100' id='601537'>
+<a class='timestamp' href='#601537'><time timestamp='2018-02-26T05:15:00Z'>05:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it should work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622100' id='601538'>
+<a class='timestamp' href='#601538'><time timestamp='2018-02-26T05:15:00Z'>05:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what software and version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622220' id='601539'>
+<a class='timestamp' href='#601539'><time timestamp='2018-02-26T05:17:00Z'>05:17</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+bitcoin core v0.15.1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622280' id='601540'>
+<a class='timestamp' href='#601540'><time timestamp='2018-02-26T05:18:00Z'>05:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and do you mean a p2sh address or a native one? (3... or bc1...?)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622280' id='601541'>
+<a class='timestamp' href='#601541'><time timestamp='2018-02-26T05:18:00Z'>05:18</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+the address parameter is set to a segwit (3) address, but it also has a r parameter.  reading it looks like it just ignores what that address is and fetches info from the r parameter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622340' id='601542'>
+<a class='timestamp' href='#601542'><time timestamp='2018-02-26T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+this is to a coinbase.com merchant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622340' id='601543'>
+<a class='timestamp' href='#601543'><time timestamp='2018-02-26T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+who created the URI?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622340' id='601544'>
+<a class='timestamp' href='#601544'><time timestamp='2018-02-26T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+they say they didnt receive the payment so it looks like coinbase is messed up then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622340' id='601545'>
+<a class='timestamp' href='#601545'><time timestamp='2018-02-26T05:19:00Z'>05:19</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+its from one of those &#x27;pay with coinbase.com&#x27; buttons
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622400' id='601546'>
+<a class='timestamp' href='#601546'><time timestamp='2018-02-26T05:20:00Z'>05:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+hmm, no idea what the r= stands for
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622460' id='601547'>
+<a class='timestamp' href='#601547'><time timestamp='2018-02-26T05:21:00Z'>05:21</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+<a href="https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki" class="link" target="_blank">https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622520' id='601548'>
+<a class='timestamp' href='#601548'><time timestamp='2018-02-26T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, bip72
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622520' id='601549'>
+<a class='timestamp' href='#601549'><time timestamp='2018-02-26T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+payment rpotocol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519622520' id='601550'>
+<a class='timestamp' href='#601550'><time timestamp='2018-02-26T05:22:00Z'>05:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, bitcoin core will prefer using the payment protocol over the raw address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519623780' id='601551'>
+<a class='timestamp' href='#601551'><time timestamp='2018-02-26T05:43:00Z'>05:43</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+and theres not really an easy way to decode the paymentrequest either.  god what a headache to send a simple payment
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519623840' id='601552'>
+<a class='timestamp' href='#601552'><time timestamp='2018-02-26T05:44:00Z'>05:44</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+j0hnson2412: <a href="https://github.com/achow101/payment-proto-interface" class="link" target="_blank">https://github.com/achow101/payment-proto-interface</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519623960' id='601553'>
+<a class='timestamp' href='#601553'><time timestamp='2018-02-26T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+j0hnson2412: you can also just drop the r= clause
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519623960' id='601554'>
+<a class='timestamp' href='#601554'><time timestamp='2018-02-26T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+yeah this is gonna take me another 10 hours to install python and figure it all out
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519623960' id='601555'>
+<a class='timestamp' href='#601555'><time timestamp='2018-02-26T05:46:00Z'>05:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(but you&#x27;d pay again, of course)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624020' id='601556'>
+<a class='timestamp' href='#601556'><time timestamp='2018-02-26T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+j0hnson2412: there&#x27;s prebuilt packages: <a href="https://github.com/achow101/payment-proto-interface/releases" class="link" target="_blank">https://github.com/achow101/payment-proto-interface/releases</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624020' id='601557'>
+<a class='timestamp' href='#601557'><time timestamp='2018-02-26T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+they shouldn&#x27;t need python installed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624020' id='601558'>
+<a class='timestamp' href='#601558'><time timestamp='2018-02-26T05:47:00Z'>05:47</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+their releases are broken, they won&#x27;t even run
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624080' id='601559'>
+<a class='timestamp' href='#601559'><time timestamp='2018-02-26T05:48:00Z'>05:48</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+how do they not run (note that&#x27;s my project)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624080' id='601560'>
+<a class='timestamp' href='#601560'><time timestamp='2018-02-26T05:48:00Z'>05:48</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+other people have been able to use them
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624260' id='601561'>
+<a class='timestamp' href='#601561'><time timestamp='2018-02-26T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+<a href="https://cdn.pbrd.co/images/H9nNc1r.png" class="link" target="_blank">https://cdn.pbrd.co/images/H9nNc1r.png</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624260' id='601562'>
+<a class='timestamp' href='#601562'><time timestamp='2018-02-26T05:51:00Z'>05:51</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+i probably now have malware from this too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624380' id='601563'>
+<a class='timestamp' href='#601563'><time timestamp='2018-02-26T05:53:00Z'>05:53</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+well if that&#x27;s how you feel about it, guess I&#x27;ll stop trying to help then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519624560' id='601564'>
+<a class='timestamp' href='#601564'><time timestamp='2018-02-26T05:56:00Z'>05:56</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+you need to statically link your stuff, linux one doesnt run either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519626600' id='601565'>
+<a class='timestamp' href='#601565'><time timestamp='2018-02-26T06:30:00Z'>06:30</time></a>
+&lt;<span class='nick nick-1'> bramc</span>&gt;
+Hey everybody
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519626900' id='601566'>
+<a class='timestamp' href='#601566'><time timestamp='2018-02-26T06:35:00Z'>06:35</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+bramc: hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519627020' id='601567'>
+<a class='timestamp' href='#601567'><time timestamp='2018-02-26T06:37:00Z'>06:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] kallewoof opened pull request #12537: [arith_uint256] Make it safe to use &quot;self&quot; in operators (master...uint-safe-self-op) <a href="https://github.com/bitcoin/bitcoin/pull/12537" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12537</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519627500' id='601568'>
+<a class='timestamp' href='#601568'><time timestamp='2018-02-26T06:45:00Z'>06:45</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+finally got the bitcoin script extracted from the paymentdetails, but it&#x27;s in some weird python mix of ascii and escaped octal..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519627500' id='601569'>
+<a class='timestamp' href='#601569'><time timestamp='2018-02-26T06:45:00Z'>06:45</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+&quot;v\251\024*\375\005\177\323Y\374\034\030\013\027}\005\361\264\031\030gG\032\210\254&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519627860' id='601570'>
+<a class='timestamp' href='#601570'><time timestamp='2018-02-26T06:51:00Z'>06:51</time></a>
+&lt;<span class='nick nick-8'> j0hnson2412</span>&gt;
+all this work to figure out why a billion dollar payment gateway with no contact doesn&#x27;t work, bitcoin is the future
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519628580' id='601571'>
+<a class='timestamp' href='#601571'><time timestamp='2018-02-26T07:03:00Z'>07:03</time></a>
+&lt;<span class='nick nick-11'> kallewoof</span>&gt;
+j0hnson2412: It is probably binary. The ascii are probably just coincidence.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519628700' id='601572'>
+<a class='timestamp' href='#601572'><time timestamp='2018-02-26T07:05:00Z'>07:05</time></a>
+&lt;<span class='nick nick-1'> bramc</span>&gt;
+Python will include printables verbatim without escaping
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519635240' id='601573'>
+<a class='timestamp' href='#601573'><time timestamp='2018-02-26T08:54:00Z'>08:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+j0hnson2412: this might help if you&#x27;re interacting with the payment protocol manually <a href="https://github.com/achow101/payment-proto-interface" class="link" target="_blank">https://github.com/achow101/payment-proto-interface</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519635240' id='601574'>
+<a class='timestamp' href='#601574'><time timestamp='2018-02-26T08:54:00Z'>08:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+oh, I see someone posted that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519636080' id='601575'>
+<a class='timestamp' href='#601575'><time timestamp='2018-02-26T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+and yes the forced adoption of the payment protocol by bitpay etc has been a letdown, many wallets don&#x27;t have a BIP70 implementation, some don&#x27;t work properly, there&#x27;s problems with cloudflare and tor when fetching the requests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519636140' id='601576'>
+<a class='timestamp' href='#601576'><time timestamp='2018-02-26T09:09:00Z'>09:09</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+last time I tried to pay something using bitpay I had to give up and pay by bank... all was okay when you could just pay manually to an address
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519636860' id='601577'>
+<a class='timestamp' href='#601577'><time timestamp='2018-02-26T09:21:00Z'>09:21</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+I was reading about the bitcoin db locks exploit, <a href="https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki" class="link" target="_blank">https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki</a>  - but I don&#x27;t see there information when it was introduced exactly and &quot;who is responsible&quot; for it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519636980' id='601578'>
+<a class='timestamp' href='#601578'><time timestamp='2018-02-26T09:23:00Z'>09:23</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+which commit/pr added this problem?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637340' id='601579'>
+<a class='timestamp' href='#601579'><time timestamp='2018-02-26T09:29:00Z'>09:29</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+can anyone review <a href="https://github.com/bitcoin-core/bitcoincore.org/pull/513" class="link" target="_blank">https://github.com/bitcoin-core/bitcoincore.org/pull/513</a> please
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637400' id='601580'>
+<a class='timestamp' href='#601580'><time timestamp='2018-02-26T09:30:00Z'>09:30</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+booyah:  that bug was always in there AFAIK, and I don&#x27;t think it was intentionally exploited, it was an unexpected interaction between the db library and consensus
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637460' id='601581'>
+<a class='timestamp' href='#601581'><time timestamp='2018-02-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+wumpus: so all released versions of Bitcoin, including Satoshi&#x27;s release, were vulneable?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637460' id='601582'>
+<a class='timestamp' href='#601582'><time timestamp='2018-02-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+booyah: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637460' id='601583'>
+<a class='timestamp' href='#601583'><time timestamp='2018-02-26T09:31:00Z'>09:31</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637520' id='601584'>
+<a class='timestamp' href='#601584'><time timestamp='2018-02-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+I&#x27;m asking also since there&#x27;re idiots in -otc claiming that is &quot;bitcoin core fault&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637520' id='601585'>
+<a class='timestamp' href='#601585'><time timestamp='2018-02-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+satoshis bitcoin 0.1 was more vulnerable in a pile of ways. there’s lots of things that aren’t understood well.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637520' id='601586'>
+<a class='timestamp' href='#601586'><time timestamp='2018-02-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+everything using berkeleydb for the utxo set, which was the case from the first version
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637520' id='601587'>
+<a class='timestamp' href='#601587'><time timestamp='2018-02-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+ie, you could create unlimited bitcoin out of thin air and spend anybodies bitcoin.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637520' id='601588'>
+<a class='timestamp' href='#601588'><time timestamp='2018-02-26T09:32:00Z'>09:32</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+not that one echeveria
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637580' id='601589'>
+<a class='timestamp' href='#601589'><time timestamp='2018-02-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+?     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637580' id='601590'>
+<a class='timestamp' href='#601590'><time timestamp='2018-02-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+that was another bug in satoshi&#x27;s code, much earlier
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637580' id='601591'>
+<a class='timestamp' href='#601591'><time timestamp='2018-02-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+I’m saying it’s not perfect, and you can’t attribute that to later development at all. I realise they’re 3 different, earlier bugs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637580' id='601592'>
+<a class='timestamp' href='#601592'><time timestamp='2018-02-26T09:33:00Z'>09:33</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+we need better CVE / bug disclosure process guys
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601593'>
+<a class='timestamp' href='#601593'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+uh. this is ancient history.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601594'>
+<a class='timestamp' href='#601594'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, this is ancient history
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601595'>
+<a class='timestamp' href='#601595'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+above information should be state in that BIP 50 imo. Which versions were affected (all), when it was introduced (in first version), by who (Satoshi)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601596'>
+<a class='timestamp' href='#601596'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+both the BIP50 fork and satoshi&#x27;s counting mistake :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601597'>
+<a class='timestamp' href='#601597'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+it is also the most known security event (or 1 of like 3) used NOW to prove that bitcoin core is incompetent 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601598'>
+<a class='timestamp' href='#601598'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+&quot;prove&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637640' id='601599'>
+<a class='timestamp' href='#601599'><time timestamp='2018-02-26T09:34:00Z'>09:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+feel free to dig in history, someone must, but I focus on the future only
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637700' id='601600'>
+<a class='timestamp' href='#601600'><time timestamp='2018-02-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+booyah: feel free to write them up.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637700' id='601601'>
+<a class='timestamp' href='#601601'><time timestamp='2018-02-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+[10:33] &lt;mats&gt; this is 0.8.0, which satoshi did not release
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637700' id='601602'>
+<a class='timestamp' href='#601602'><time timestamp='2018-02-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+0.8 <b>*fixed*</b> the bug.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637700' id='601603'>
+<a class='timestamp' href='#601603'><time timestamp='2018-02-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+wumpus: I see. btw please provide such detailed info for any future (if any) then :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637700' id='601604'>
+<a class='timestamp' href='#601604'><time timestamp='2018-02-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if their point is that bitcoin core&#x27;s contributors make mistakes, then they are right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637700' id='601605'>
+<a class='timestamp' href='#601605'><time timestamp='2018-02-26T09:35:00Z'>09:35</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+no version before 0.7 was consensus complete due to berkeleydb not being deterministic.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637760' id='601606'>
+<a class='timestamp' href='#601606'><time timestamp='2018-02-26T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+find any person alive who writes bugless software FFS, we have a very thorough QA and testing process in place but it&#x27;s impossible to guarantee that bugs won&#x27;t happen
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637760' id='601607'>
+<a class='timestamp' href='#601607'><time timestamp='2018-02-26T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+booyah: let’s take this to #bitcoin please.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637760' id='601608'>
+<a class='timestamp' href='#601608'><time timestamp='2018-02-26T09:36:00Z'>09:36</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+most of that trolling comes from people supporting projects that publish code with virtually no review and QA at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519637820' id='601609'>
+<a class='timestamp' href='#601609'><time timestamp='2018-02-26T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes, take it somewhere else, it&#x27;s not relevant to anything today
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638060' id='601610'>
+<a class='timestamp' href='#601610'><time timestamp='2018-02-26T09:41:00Z'>09:41</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if you want to call me incompetent, go ahead and try to do better. I have more than 20 years of experience in development and computer security. But I&#x27;m not perfect. Open source hinges on having lots of eyes on the source code to catch mistakes, not any special person.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638180' id='601611'>
+<a class='timestamp' href='#601611'><time timestamp='2018-02-26T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+:)     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638180' id='601612'>
+<a class='timestamp' href='#601612'><time timestamp='2018-02-26T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+so: try to attack the code, that&#x27;s good. Don&#x27;t try to attack the developers, that just results in drama.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638180' id='601613'>
+<a class='timestamp' href='#601613'><time timestamp='2018-02-26T09:43:00Z'>09:43</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+bitcoin 0.8 was not &#x27;bitcoin core&#x27; :D
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638240' id='601614'>
+<a class='timestamp' href='#601614'><time timestamp='2018-02-26T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+wumpus: speaking about the future, will the bitcoin wallet be returning to name &quot;bitcoin&quot; instead &quot;bitcoin core&quot;?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638240' id='601615'>
+<a class='timestamp' href='#601615'><time timestamp='2018-02-26T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638240' id='601616'>
+<a class='timestamp' href='#601616'><time timestamp='2018-02-26T09:44:00Z'>09:44</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+you can pry my project name from my cold dead hands
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638300' id='601617'>
+<a class='timestamp' href='#601617'><time timestamp='2018-02-26T09:45:00Z'>09:45</time></a>
+&lt;<span class='nick nick-10'> booyah</span>&gt;
+hm? I was just asking about the name :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638900' id='601618'>
+<a class='timestamp' href='#601618'><time timestamp='2018-02-26T09:55:00Z'>09:55</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+booyah, fyi the people trying to blame someone for that stuff know they&#x27;re lying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638900' id='601619'>
+<a class='timestamp' href='#601619'><time timestamp='2018-02-26T09:55:00Z'>09:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if you want a serious answer: some things (such as naming, branding) are too trivial to be concerned with here. There&#x27;s as many opinions on it as bitcoin users. You can fork the source code today and change the name (it&#x27;s a constant in configure.ac FWIW) or use luke-jr&#x27;s Bitcoin Knots. If there is no agreement on changing something, the best thing is just to stick with what is there.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519638900' id='601620'>
+<a class='timestamp' href='#601620'><time timestamp='2018-02-26T09:55:00Z'>09:55</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+pointing out that they&#x27;re lying is mostly useless
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519639020' id='601621'>
+<a class='timestamp' href='#601621'><time timestamp='2018-02-26T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+If the amount of discussion required to change a few words in a tooltip is any indication... changing the name of the app would eat up all of Core&#x27;s resources for a year :-) There&#x27;s more important things to work on.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519639020' id='601622'>
+<a class='timestamp' href='#601622'><time timestamp='2018-02-26T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+And if you want to change the bitcoin logo to a purple elephant and denominate coins in &#x27;fluppydoodleblurz&#x27; from now on, go ahead and release a wallet that does that, use that on your sites, make a BIP, etc. By nature, bitcoin is permissionless.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519639080' id='601623'>
+<a class='timestamp' href='#601623'><time timestamp='2018-02-26T09:58:00Z'>09:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+provoostenator: exactly, it&#x27;s like a human DDoS attack :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519639080' id='601624'>
+<a class='timestamp' href='#601624'><time timestamp='2018-02-26T09:58:00Z'>09:58</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Needs CVE?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519639320' id='601625'>
+<a class='timestamp' href='#601625'><time timestamp='2018-02-26T10:02:00Z'>10:02</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+CVE-0000-0000000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519643460' id='601626'>
+<a class='timestamp' href='#601626'><time timestamp='2018-02-26T11:11:00Z'>11:11</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+poke: can anyone review <a href="https://github.com/bitcoin-core/bitcoincore.org/pull/513" class="link" target="_blank">https://github.com/bitcoin-core/bitcoincore.org/pull/513</a> , needs to be reviewed to allow merging, so that the site can be updated
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519644300' id='601627'>
+<a class='timestamp' href='#601627'><time timestamp='2018-02-26T11:25:00Z'>11:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 1 new commit to master: <a href="https://github.com/bitcoin/bitcoin/commit/d3f4dd313e5fe58903caf2f4d04827e7f7944e17" class="link" target="_blank">https://github.com/bitcoin/bitcoin/commit/d3f4dd313e5fe58903caf2f4d04827e7f7944e17</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519644300' id='601628'>
+<a class='timestamp' href='#601628'><time timestamp='2018-02-26T11:25:00Z'>11:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d3f4dd3 Wladimir J. van der Laan: doc: Add historical release notes for 0.16.0...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519648740' id='601629'>
+<a class='timestamp' href='#601629'><time timestamp='2018-02-26T12:39:00Z'>12:39</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+laanwj: does this need a blog entry too?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519648740' id='601630'>
+<a class='timestamp' href='#601630'><time timestamp='2018-02-26T12:39:00Z'>12:39</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+wumpus
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649220' id='601631'>
+<a class='timestamp' href='#601631'><time timestamp='2018-02-26T12:47:00Z'>12:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+provoostenator: yes. We should do one. Do you want to do it provoostenator?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649220' id='601632'>
+<a class='timestamp' href='#601632'><time timestamp='2018-02-26T12:47:00Z'>12:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Just the &quot;Recent Posts&quot; thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649340' id='601633'>
+<a class='timestamp' href='#601633'><time timestamp='2018-02-26T12:49:00Z'>12:49</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+It would be nice if it had pretty pictures like 0.15: <a href="https://bitcoincore.org/en/2017/09/01/release-0.15.0/" class="link" target="_blank">https://bitcoincore.org/en/2017/09/01/release-0.15.0/</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649400' id='601634'>
+<a class='timestamp' href='#601634'><time timestamp='2018-02-26T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+David Harding usually does that, don&#x27;t know if he has time, might want to ping him 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649400' id='601635'>
+<a class='timestamp' href='#601635'><time timestamp='2018-02-26T12:50:00Z'>12:50</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I&#x27;m happy to review it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649520' id='601636'>
+<a class='timestamp' href='#601636'><time timestamp='2018-02-26T12:52:00Z'>12:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Okay. Let me ping him.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649580' id='601637'>
+<a class='timestamp' href='#601637'><time timestamp='2018-02-26T12:53:00Z'>12:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+he&#x27;s not here is he
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649640' id='601638'>
+<a class='timestamp' href='#601638'><time timestamp='2018-02-26T12:54:00Z'>12:54</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Just aked him on twitter... :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649700' id='601639'>
+<a class='timestamp' href='#601639'><time timestamp='2018-02-26T12:55:00Z'>12:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+<a href="https://bitcoin.org/en/download" class="link" target="_blank">https://bitcoin.org/en/download</a> is not updating even though I updated the git repository at <a href="https://github.com/bitcoin-dot-org/bitcoin.org" class="link" target="_blank">https://github.com/bitcoin-dot-org/bitcoin.org</a>, might be that someone needs to push a button there too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649820' id='601640'>
+<a class='timestamp' href='#601640'><time timestamp='2018-02-26T12:57:00Z'>12:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+wumpus: I have 0.16.0 at <a href="https://bitcoin.org/en/download" class="link" target="_blank">https://bitcoin.org/en/download</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519649940' id='601641'>
+<a class='timestamp' href='#601641'><time timestamp='2018-02-26T12:59:00Z'>12:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Dave said he is going to do it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519650000' id='601642'>
+<a class='timestamp' href='#601642'><time timestamp='2018-02-26T13:00:00Z'>13:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: oh, apparently needed an explicit request, my browser was caching the old page. Phew.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519650000' id='601643'>
+<a class='timestamp' href='#601643'><time timestamp='2018-02-26T13:00:00Z'>13:00</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jonasschnelli: awesome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519650060' id='601644'>
+<a class='timestamp' href='#601644'><time timestamp='2018-02-26T13:01:00Z'>13:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I&#x27;ll add him to the cc-list for RCs next time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519655760' id='601645'>
+<a class='timestamp' href='#601645'><time timestamp='2018-02-26T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+#12083 should be ready
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519655760' id='601646'>
+<a class='timestamp' href='#601646'><time timestamp='2018-02-26T14:36:00Z'>14:36</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12083" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12083</a> | Improve getchaintxstats test coverage by promag · Pull Request #12083 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519656840' id='601647'>
+<a class='timestamp' href='#601647'><time timestamp='2018-02-26T14:54:00Z'>14:54</time></a>
+&lt;<span class='nick nick-1'> denis2342</span>&gt;
+is this worth a pull request?: <a href="https://github.com/denis2342/bitcoin/commit/89d961ed274b42fb8ee01f5e79f59ba6fd078d1c" class="link" target="_blank">https://github.com/denis2342/bitcoin/commit/89d961ed274b42fb8ee01f5e79f59ba6fd078d1c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657260' id='601648'>
+<a class='timestamp' href='#601648'><time timestamp='2018-02-26T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+denis2342: the style guide favors include_hex over fIncludeHez
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657260' id='601649'>
+<a class='timestamp' href='#601649'><time timestamp='2018-02-26T15:01:00Z'>15:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*x     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657320' id='601650'>
+<a class='timestamp' href='#601650'><time timestamp='2018-02-26T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-1'> denis2342</span>&gt;
+sipa: ok, there were both and I took the wrong one ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657320' id='601651'>
+<a class='timestamp' href='#601651'><time timestamp='2018-02-26T15:02:00Z'>15:02</time></a>
+&lt;<span class='nick nick-1'> denis2342</span>&gt;
+I can change that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657380' id='601652'>
+<a class='timestamp' href='#601652'><time timestamp='2018-02-26T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+denis2342: the style guide also says not to create patches purely to improve style
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657380' id='601653'>
+<a class='timestamp' href='#601653'><time timestamp='2018-02-26T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(the overhead of the review process is just not worth it for does)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657380' id='601654'>
+<a class='timestamp' href='#601654'><time timestamp='2018-02-26T15:03:00Z'>15:03</time></a>
+&lt;<span class='nick nick-1'> denis2342</span>&gt;
+sipa: it is not purely style
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657440' id='601655'>
+<a class='timestamp' href='#601655'><time timestamp='2018-02-26T15:04:00Z'>15:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, i see!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519657620' id='601656'>
+<a class='timestamp' href='#601656'><time timestamp='2018-02-26T15:07:00Z'>15:07</time></a>
+&lt;<span class='nick nick-1'> denis2342</span>&gt;
+changed to include_hex  <a href="https://github.com/denis2342/bitcoin/commit/c8a34e51ad06a1a6f3d82925bb17da34e5766173" class="link" target="_blank">https://github.com/denis2342/bitcoin/commit/c8a34e51ad06a1a6f3d82925bb17da34e5766173</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519658160' id='601657'>
+<a class='timestamp' href='#601657'><time timestamp='2018-02-26T15:16:00Z'>15:16</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] nopara73 opened pull request #12540: Remove suggestion &quot;getinfo&quot; (master...patch-2) <a href="https://github.com/bitcoin/bitcoin/pull/12540" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12540</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519658880' id='601658'>
+<a class='timestamp' href='#601658'><time timestamp='2018-02-26T15:28:00Z'>15:28</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] denis2342 opened pull request #12541: streamlined the use of include_hex (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/12541" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12541</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519659060' id='601659'>
+<a class='timestamp' href='#601659'><time timestamp='2018-02-26T15:31:00Z'>15:31</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12540: Remove suggestion &quot;getinfo&quot; (master...patch-2) <a href="https://github.com/bitcoin/bitcoin/pull/12540" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12540</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519659480' id='601660'>
+<a class='timestamp' href='#601660'><time timestamp='2018-02-26T15:38:00Z'>15:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr closed pull request #11802: RPC/Wallet: Refuse to dumpprivkey for derived addresses (master...dumpprivkey_noderived) <a href="https://github.com/bitcoin/bitcoin/pull/11802" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11802</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519659600' id='601661'>
+<a class='timestamp' href='#601661'><time timestamp='2018-02-26T15:40:00Z'>15:40</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+denis2342: should have a test there no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519659660' id='601662'>
+<a class='timestamp' href='#601662'><time timestamp='2018-02-26T15:41:00Z'>15:41</time></a>
+&lt;<span class='nick nick-1'> denis2342</span>&gt;
+promag: ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660020' id='601663'>
+<a class='timestamp' href='#601663'><time timestamp='2018-02-26T15:47:00Z'>15:47</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+denis2342: for instance, decoderawtransactions calls TxToUniv with include_hex=false, so it would be nice to have some test checking that hex field isn&#x27;t there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660260' id='601664'>
+<a class='timestamp' href='#601664'><time timestamp='2018-02-26T15:51:00Z'>15:51</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+denis2342: furthermore, this change is breaking change, and requires release note
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660260' id='601665'>
+<a class='timestamp' href='#601665'><time timestamp='2018-02-26T15:51:00Z'>15:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/d3f4dd313e5f...228b086b9a3d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/d3f4dd313e5f...228b086b9a3d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660260' id='601666'>
+<a class='timestamp' href='#601666'><time timestamp='2018-02-26T15:51:00Z'>15:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 501b439 João Barbosa: rpc: Refactor blockhash parse in getchaintxstats
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660260' id='601667'>
+<a class='timestamp' href='#601667'><time timestamp='2018-02-26T15:51:00Z'>15:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 57e6786 João Barbosa: qa: Improve getchaintxstats functional test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660260' id='601668'>
+<a class='timestamp' href='#601668'><time timestamp='2018-02-26T15:51:00Z'>15:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 228b086 Wladimir J. van der Laan: Merge #12083: Improve getchaintxstats test coverage...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660320' id='601669'>
+<a class='timestamp' href='#601669'><time timestamp='2018-02-26T15:52:00Z'>15:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #12083: Improve getchaintxstats test coverage (master...2018-01-getchaintxstats) <a href="https://github.com/bitcoin/bitcoin/pull/12083" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12083</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660440' id='601670'>
+<a class='timestamp' href='#601670'><time timestamp='2018-02-26T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+gmaxwell: regarding #12080, should we just remove the address book instead? :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519660440' id='601671'>
+<a class='timestamp' href='#601671'><time timestamp='2018-02-26T15:54:00Z'>15:54</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12080" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12080</a> | Add support to search the address book by promag · Pull Request #12080 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519666620' id='601672'>
+<a class='timestamp' href='#601672'><time timestamp='2018-02-26T17:37:00Z'>17:37</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Where does QT serialize its (OptionsModel) settings and do I clear them?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519666800' id='601673'>
+<a class='timestamp' href='#601673'><time timestamp='2018-02-26T17:40:00Z'>17:40</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+<a href="http://doc.qt.io/qt-5/qsettings.html#clear" class="link" target="_blank">http://doc.qt.io/qt-5/qsettings.html#clear</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519666860' id='601674'>
+<a class='timestamp' href='#601674'><time timestamp='2018-02-26T17:41:00Z'>17:41</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Which is what the Reset settings feature uses.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519667460' id='601675'>
+<a class='timestamp' href='#601675'><time timestamp='2018-02-26T17:51:00Z'>17:51</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I was thinking of using a (much) higher dbcache in QT if physical memory size is known (e.g. <a href="https://msdn.microsoft.com/en-us/library/cc300158(v=VS.85).aspx)" class="link" target="_blank">https://msdn.microsoft.com/en-us/library/cc300158(v=VS.85).aspx)</a> and large enough. In that case we could remove the setting from the UI, and only honor -dbcache if set. Thoughts? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519668960' id='601676'>
+<a class='timestamp' href='#601676'><time timestamp='2018-02-26T18:16:00Z'>18:16</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+i&#x27;d be in favour of automatic dbcache / mempool / etc sizing. it seems obvious/useful enough that there&#x27;s probably a reason we&#x27;re not doing it though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519669020' id='601677'>
+<a class='timestamp' href='#601677'><time timestamp='2018-02-26T18:17:00Z'>18:17</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+e.g. on a 1GB machine it&#x27;s really common for bitcoind to get oomkilled and it seems to me that anyone that really wanted it to use ~all of the system ram could set that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519669200' id='601678'>
+<a class='timestamp' href='#601678'><time timestamp='2018-02-26T18:20:00Z'>18:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #12542: Remove redundant includes. Conform to header include guidelines. (master...include-guidelines) <a href="https://github.com/bitcoin/bitcoin/pull/12542" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12542</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519670400' id='601679'>
+<a class='timestamp' href='#601679'><time timestamp='2018-02-26T18:40:00Z'>18:40</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I think the case for QT is stronger than bitcoind. GUI&#x27;s are usually not on all the time. We may also want to flush if there&#x27;s no activity for a while. I think this is especially useful during IBD, where the progress bar should make it obvious to users that this process can be a drain on their system.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519670460' id='601680'>
+<a class='timestamp' href='#601680'><time timestamp='2018-02-26T18:41:00Z'>18:41</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I also don&#x27;t think many GUI users will feel comfortable touching these settings.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519670700' id='601681'>
+<a class='timestamp' href='#601681'><time timestamp='2018-02-26T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-16'> CubicEarths</span>&gt;
+provoostenator: GUI users include many technical people
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519672020' id='601682'>
+<a class='timestamp' href='#601682'><time timestamp='2018-02-26T19:07:00Z'>19:07</time></a>
+&lt;<span class='nick nick-10'> doo-dah</span>&gt;
+bitcoin.org seems to be down...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519672560' id='601683'>
+<a class='timestamp' href='#601683'><time timestamp='2018-02-26T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-10'> doo-dah</span>&gt;
+...and it&#x27;s back.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519672680' id='601684'>
+<a class='timestamp' href='#601684'><time timestamp='2018-02-26T19:18:00Z'>19:18</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+is a GUI user.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519672800' id='601685'>
+<a class='timestamp' href='#601685'><time timestamp='2018-02-26T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #12543: Fix typos (master...typos-201802) <a href="https://github.com/bitcoin/bitcoin/pull/12543" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12543</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519673640' id='601686'>
+<a class='timestamp' href='#601686'><time timestamp='2018-02-26T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Empact opened pull request #12545: test: Extend wait time by .1 seconds to ensure ping goes out (master...ping-timing) <a href="https://github.com/bitcoin/bitcoin/pull/12545" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12545</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519677840' id='601687'>
+<a class='timestamp' href='#601687'><time timestamp='2018-02-26T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-10'> tr4vis220202</span>&gt;
+When sending a bip-70 payment, bitcoin core sent to regular address instead of p2sh, hexdump of script is 76A9142AFD057FD359FC1C180B177D05F1B4191867471A88AC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519678680' id='601688'>
+<a class='timestamp' href='#601688'><time timestamp='2018-02-26T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tr4vis220202: are you sure the BIP70 request didn&#x27;t contain a regular output?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519678740' id='601689'>
+<a class='timestamp' href='#601689'><time timestamp='2018-02-26T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as far as i can see in the code, it just uses the exact script requested in the BIP70 payment request - regardless of what type of output it is
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519679400' id='601690'>
+<a class='timestamp' href='#601690'><time timestamp='2018-02-26T21:10:00Z'>21:10</time></a>
+&lt;<span class='nick nick-10'> tr4vis220202</span>&gt;
+when i decode it, there is an address, and a p2sh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519679520' id='601691'>
+<a class='timestamp' href='#601691'><time timestamp='2018-02-26T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+can you share the URI and the payment request?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519679520' id='601692'>
+<a class='timestamp' href='#601692'><time timestamp='2018-02-26T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(perhaps privately)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681380' id='601693'>
+<a class='timestamp' href='#601693'><time timestamp='2018-02-26T21:43:00Z'>21:43</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Quick question about the release notes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681440' id='601694'>
+<a class='timestamp' href='#601694'><time timestamp='2018-02-26T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+“Bitcoin Core is extensively tested on multiple operating systems using the Linux kernel, macOS 10.8+, and Windows Vista and later.”
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681440' id='601695'>
+<a class='timestamp' href='#601695'><time timestamp='2018-02-26T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Is there actually anyone testing extensively on Vista?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681440' id='601696'>
+<a class='timestamp' href='#601696'><time timestamp='2018-02-26T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-16'> * Randolf</span>&gt;
+laughs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681500' id='601697'>
+<a class='timestamp' href='#601697'><time timestamp='2018-02-26T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+I hope some people are testing the RCs on windows?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681500' id='601698'>
+<a class='timestamp' href='#601698'><time timestamp='2018-02-26T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Yeah, but Vista?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681500' id='601699'>
+<a class='timestamp' href='#601699'><time timestamp='2018-02-26T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+I have been running RC3 and then RC4 on Windows 10 (64-bit).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681500' id='601700'>
+<a class='timestamp' href='#601700'><time timestamp='2018-02-26T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Haven&#x27;t had any problems with it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681500' id='601701'>
+<a class='timestamp' href='#601701'><time timestamp='2018-02-26T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+doesn&#x27;t microsoft even support vista anymore?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681500' id='601702'>
+<a class='timestamp' href='#601702'><time timestamp='2018-02-26T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-15'> Chris_Stewart_5</span>&gt;
+does*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681560' id='601703'>
+<a class='timestamp' href='#601703'><time timestamp='2018-02-26T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Yeah, IIRC it EoL’d about a year ago
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681560' id='601704'>
+<a class='timestamp' href='#601704'><time timestamp='2018-02-26T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, i&#x27;m not up to date on windows versions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681560' id='601705'>
+<a class='timestamp' href='#601705'><time timestamp='2018-02-26T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+There probably are people using Bitcoin on Windows 7.  Windows Vista, I suspect, likely isn&#x27;t used for much these days.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681560' id='601706'>
+<a class='timestamp' href='#601706'><time timestamp='2018-02-26T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but we still support vista, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681560' id='601707'>
+<a class='timestamp' href='#601707'><time timestamp='2018-02-26T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+And as far as I know, it’s not even like XP, which tons of people stuck with for way too long
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681620' id='601708'>
+<a class='timestamp' href='#601708'><time timestamp='2018-02-26T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+sipa: that’s the question
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681620' id='601709'>
+<a class='timestamp' href='#601709'><time timestamp='2018-02-26T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+I have extra hardware and a Windows Vista license I could throw together to see if Bitcoin works on it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681620' id='601710'>
+<a class='timestamp' href='#601710'><time timestamp='2018-02-26T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Do we really, or did that just never get updated?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681620' id='601711'>
+<a class='timestamp' href='#601711'><time timestamp='2018-02-26T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+And also, does it actually not work on XP, or do we just say we don’t support it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681680' id='601712'>
+<a class='timestamp' href='#601712'><time timestamp='2018-02-26T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+If the latter, we should drop Vista too imho
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681740' id='601713'>
+<a class='timestamp' href='#601713'><time timestamp='2018-02-26T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+I&#x27;d suggest we move it up to Windows 7.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681740' id='601714'>
+<a class='timestamp' href='#601714'><time timestamp='2018-02-26T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+I can put a Pull Request in easily for that now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681980' id='601715'>
+<a class='timestamp' href='#601715'><time timestamp='2018-02-26T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] randolf opened pull request #12546: [docs] Minor improvements to Compatibility notes (master...patch-3) <a href="https://github.com/bitcoin/bitcoin/pull/12546" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12546</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681980' id='601716'>
+<a class='timestamp' href='#601716'><time timestamp='2018-02-26T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+See PR #12546 for this change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519681980' id='601717'>
+<a class='timestamp' href='#601717'><time timestamp='2018-02-26T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/12546" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12546</a> | [docs] Minor improvements to Compatibility notes by randolf · Pull Request #12546 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682160' id='601718'>
+<a class='timestamp' href='#601718'><time timestamp='2018-02-26T21:56:00Z'>21:56</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+as far as I&#x27;m aware XP is used <u>_more_</u> than vista
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682160' id='601719'>
+<a class='timestamp' href='#601719'><time timestamp='2018-02-26T21:56:00Z'>21:56</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+esotericnonsense++
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682220' id='601720'>
+<a class='timestamp' href='#601720'><time timestamp='2018-02-26T21:57:00Z'>21:57</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Windows Vista was so horrible that most people seem to want to forget it even existed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682280' id='601721'>
+<a class='timestamp' href='#601721'><time timestamp='2018-02-26T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Sounds like Windows ME to me.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682280' id='601722'>
+<a class='timestamp' href='#601722'><time timestamp='2018-02-26T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(coincidentally the last windows version I used...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682280' id='601723'>
+<a class='timestamp' href='#601723'><time timestamp='2018-02-26T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+That&#x27;s pre-WindowsXP stuff there.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682280' id='601724'>
+<a class='timestamp' href='#601724'><time timestamp='2018-02-26T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+esotericnonsense: right, that’s my impression too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682280' id='601725'>
+<a class='timestamp' href='#601725'><time timestamp='2018-02-26T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Vista came after XP.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682340' id='601726'>
+<a class='timestamp' href='#601726'><time timestamp='2018-02-26T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Randolf: I don’t think sipa was saying he thought we were talking about me
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682340' id='601727'>
+<a class='timestamp' href='#601727'><time timestamp='2018-02-26T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Rather, comparing the situation and the badness
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682340' id='601728'>
+<a class='timestamp' href='#601728'><time timestamp='2018-02-26T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+according to wikipedia, vista has consistently had about 1/5th the usage of XP for the past few years. according to their trackers anyway.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682340' id='601729'>
+<a class='timestamp' href='#601729'><time timestamp='2018-02-26T21:59:00Z'>21:59</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Oh, okay.  :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682400' id='601730'>
+<a class='timestamp' href='#601730'><time timestamp='2018-02-26T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+statcounter has it as 0.41% in march 2017 vs 2% for XP (of the overall total, desktop, mobile, everything included)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682400' id='601731'>
+<a class='timestamp' href='#601731'><time timestamp='2018-02-26T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-16'> rabidus</span>&gt;
+mobile xp ..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682400' id='601732'>
+<a class='timestamp' href='#601732'><time timestamp='2018-02-26T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Randolf: I’m not sure MacOS is right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682400' id='601733'>
+<a class='timestamp' href='#601733'><time timestamp='2018-02-26T22:00:00Z'>22:00</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+I don’t think it was ever called that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682460' id='601734'>
+<a class='timestamp' href='#601734'><time timestamp='2018-02-26T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+rabidus: no, as in, all browser stats. approx 45% desktop and 55% mobile for whatever sites they&#x27;re tracking. so XP is 4% of desktops in that stat
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682460' id='601735'>
+<a class='timestamp' href='#601735'><time timestamp='2018-02-26T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Oh?  I merely changed &quot;macOS&quot; to &quot;MacOS&quot; because I do remember supporting some MacOS computers at a help desk job many years ago.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682460' id='601736'>
+<a class='timestamp' href='#601736'><time timestamp='2018-02-26T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Maybe they&#x27;ve changed it since then?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682460' id='601737'>
+<a class='timestamp' href='#601737'><time timestamp='2018-02-26T22:01:00Z'>22:01</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+It was Mac OS until over a decade ago, then Mac OS X. A while back they dropped the Mac and made it just OS X
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682520' id='601738'>
+<a class='timestamp' href='#601738'><time timestamp='2018-02-26T22:02:00Z'>22:02</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+In the last year or two (IIRC), it was renamed to macOS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682580' id='601739'>
+<a class='timestamp' href='#601739'><time timestamp='2018-02-26T22:03:00Z'>22:03</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Oh.  I&#x27;ll have to fix that then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682580' id='601740'>
+<a class='timestamp' href='#601740'><time timestamp='2018-02-26T22:03:00Z'>22:03</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+That new version looks like a mistake.  Oh well.  :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682580' id='601741'>
+<a class='timestamp' href='#601741'><time timestamp='2018-02-26T22:03:00Z'>22:03</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+10.8 was still OS X (no Mac) if I’m not mistaken, but 1. I’m not sure if the renaming was retroactive or not, and 2. I feel like macOS is more understandable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682640' id='601742'>
+<a class='timestamp' href='#601742'><time timestamp='2018-02-26T22:04:00Z'>22:04</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+They changed it in order to make their various OSes consistent
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682700' id='601743'>
+<a class='timestamp' href='#601743'><time timestamp='2018-02-26T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+iOS, watchOS, tvOS, etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682700' id='601744'>
+<a class='timestamp' href='#601744'><time timestamp='2018-02-26T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+Well, I see that &quot;macOS&quot; is indeed how they&#x27;re marketing it on their web site nowadays, so you&#x27;re obviously correct that the name should begin with a lower-case &quot;m.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682700' id='601745'>
+<a class='timestamp' href='#601745'><time timestamp='2018-02-26T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-10'> michagogo</span>&gt;
+Don’t know what the HomePod runs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682700' id='601746'>
+<a class='timestamp' href='#601746'><time timestamp='2018-02-26T22:05:00Z'>22:05</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+this is kind of a bitcoin question but kind of not. what&#x27;s the trick to make bitcoin-qt not appear as a postage stamp on ubuntu with high dpi screens?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519682760' id='601747'>
+<a class='timestamp' href='#601747'><time timestamp='2018-02-26T22:06:00Z'>22:06</time></a>
+&lt;<span class='nick nick-7'> esotericnonsense</span>&gt;
+is there a &#x27;qt-tweaker&#x27; or something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519683840' id='601748'>
+<a class='timestamp' href='#601748'><time timestamp='2018-02-26T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-9'> mlz</span>&gt;
+i&#x27;ve been testing the RCs on windows for a while now but ofc I don&#x27;t check everything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1519684080' id='601749'>
+<a class='timestamp' href='#601749'><time timestamp='2018-02-26T22:28:00Z'>22:28</time></a>
+&lt;<span class='nick nick-9'> mlz</span>&gt;
+one thing i&#x27;m wondering if can be improved: cross-compiling for windonws on ubuntu 14 Trusty starting fresh from beginning to finishing takes about 4-5 hours, I wish this could be shorter
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2021-02-27
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2021-02-27' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:16 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2021-01-27">&lt;</a><span class='header'>  February 2021   </span><a href="/bitcoin-core-dev/2021-03-27">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2021-02-01">1</a>  <a class="" href="/bitcoin-core-dev/2021-02-02">2</a>  <a class="" href="/bitcoin-core-dev/2021-02-03">3</a>  <a class="" href="/bitcoin-core-dev/2021-02-04">4</a>  <a class="" href="/bitcoin-core-dev/2021-02-05">5</a>  <a class="" href="/bitcoin-core-dev/2021-02-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2021-02-07">7</a>  <a class="" href="/bitcoin-core-dev/2021-02-08">8</a>  <a class="" href="/bitcoin-core-dev/2021-02-09">9</a> <a class="" href="/bitcoin-core-dev/2021-02-10">10</a> <a class="" href="/bitcoin-core-dev/2021-02-11">11</a> <a class="" href="/bitcoin-core-dev/2021-02-12">12</a> <a class="" href="/bitcoin-core-dev/2021-02-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2021-02-14">14</a> <a class="" href="/bitcoin-core-dev/2021-02-15">15</a> <a class="" href="/bitcoin-core-dev/2021-02-16">16</a> <a class="" href="/bitcoin-core-dev/2021-02-17">17</a> <a class="" href="/bitcoin-core-dev/2021-02-18">18</a> <a class="" href="/bitcoin-core-dev/2021-02-19">19</a> <a class="" href="/bitcoin-core-dev/2021-02-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2021-02-21">21</a> <a class="" href="/bitcoin-core-dev/2021-02-22">22</a> <a class="" href="/bitcoin-core-dev/2021-02-23">23</a> <a class="" href="/bitcoin-core-dev/2021-02-24">24</a> <a class="" href="/bitcoin-core-dev/2021-02-25">25</a> <a class="" href="/bitcoin-core-dev/2021-02-26">26</a> <a class="current" href="/bitcoin-core-dev/2021-02-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2021-02-28">28</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1614392040' id='356502'>
+<a class='timestamp' href='#356502'><time timestamp='2021-02-27T02:14:00Z'>02:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: i&#x27;m breaking my head... i don&#x27;t understand how ProduceSignature ever worked at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392100' id='356503'>
+<a class='timestamp' href='#356503'><time timestamp='2021-02-27T02:15:00Z'>02:15</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sipa: where?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392160' id='356504'>
+<a class='timestamp' href='#356504'><time timestamp='2021-02-27T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you call it through SignSignature, from multiple SPKMs, as far as i can see, if the first SPKM is able to sign, the second one will just wipe the witness
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392160' id='356505'>
+<a class='timestamp' href='#356505'><time timestamp='2021-02-27T02:16:00Z'>02:16</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+It&#x27;ll do VerifyScript and find it to be valid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392220' id='356506'>
+<a class='timestamp' href='#356506'><time timestamp='2021-02-27T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392220' id='356507'>
+<a class='timestamp' href='#356507'><time timestamp='2021-02-27T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+Then abort early and not change anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392220' id='356508'>
+<a class='timestamp' href='#356508'><time timestamp='2021-02-27T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+got it!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392220' id='356509'>
+<a class='timestamp' href='#356509'><time timestamp='2021-02-27T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+this explains
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392220' id='356510'>
+<a class='timestamp' href='#356510'><time timestamp='2021-02-27T02:17:00Z'>02:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392280' id='356511'>
+<a class='timestamp' href='#356511'><time timestamp='2021-02-27T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it constructs a new checker objects, which doesn&#x27;t have access to PrecomputedTransactionData, which is necessary to verify taproot sigs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392280' id='356512'>
+<a class='timestamp' href='#356512'><time timestamp='2021-02-27T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+Yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392280' id='356513'>
+<a class='timestamp' href='#356513'><time timestamp='2021-02-27T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I have a pr for that actually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392280' id='356514'>
+<a class='timestamp' href='#356514'><time timestamp='2021-02-27T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392280' id='356515'>
+<a class='timestamp' href='#356515'><time timestamp='2021-02-27T02:18:00Z'>02:18</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+(for other reasons, but should give access to that)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392340' id='356516'>
+<a class='timestamp' href='#356516'><time timestamp='2021-02-27T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+passing down the signaturecreator&#x27;s checker, rather than constructing a new one?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392340' id='356517'>
+<a class='timestamp' href='#356517'><time timestamp='2021-02-27T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+#21166
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392340' id='356518'>
+<a class='timestamp' href='#356518'><time timestamp='2021-02-27T02:19:00Z'>02:19</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/21166" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/21166</a> | Have SignatureExtractorChecker subclass MutableTransactionSignatureChecker by achow101 · Pull Request #21166 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392400' id='356519'>
+<a class='timestamp' href='#356519'><time timestamp='2021-02-27T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, that doesn&#x27;t work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392400' id='356520'>
+<a class='timestamp' href='#356520'><time timestamp='2021-02-27T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s still creating a new checker
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392400' id='356521'>
+<a class='timestamp' href='#356521'><time timestamp='2021-02-27T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(which includes a new MutableTransactionSignatureChecker)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392400' id='356522'>
+<a class='timestamp' href='#356522'><time timestamp='2021-02-27T02:20:00Z'>02:20</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+Ah, think I just don&#x27;t know what you need
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392460' id='356523'>
+<a class='timestamp' href='#356523'><time timestamp='2021-02-27T02:21:00Z'>02:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, it&#x27;s a fine change, but it&#x27;s orthogonal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392520' id='356524'>
+<a class='timestamp' href='#356524'><time timestamp='2021-02-27T02:22:00Z'>02:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+also: really, we&#x27;re verifying every existing witness in a transaction being signed in every SPKM?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392580' id='356525'>
+<a class='timestamp' href='#356525'><time timestamp='2021-02-27T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I guess we are
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392580' id='356526'>
+<a class='timestamp' href='#356526'><time timestamp='2021-02-27T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m sure there&#x27;s a way to keep it in SignatureData form across those calls
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392580' id='356527'>
+<a class='timestamp' href='#356527'><time timestamp='2021-02-27T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which would avoid that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392580' id='356528'>
+<a class='timestamp' href='#356528'><time timestamp='2021-02-27T02:23:00Z'>02:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+also orthogonal, of course
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392640' id='356529'>
+<a class='timestamp' href='#356529'><time timestamp='2021-02-27T02:24:00Z'>02:24</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+Yeah. Signing performance hasn&#x27;t really been a concern too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392640' id='356530'>
+<a class='timestamp' href='#356530'><time timestamp='2021-02-27T02:24:00Z'>02:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392640' id='356531'>
+<a class='timestamp' href='#356531'><time timestamp='2021-02-27T02:24:00Z'>02:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+just seems a bit silly, it&#x27;s not a big deal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392940' id='356532'>
+<a class='timestamp' href='#356532'><time timestamp='2021-02-27T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: can you explain how 21166 fixes 21151? what function specifically is missing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392940' id='356533'>
+<a class='timestamp' href='#356533'><time timestamp='2021-02-27T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+CheckSequnce was missing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614392940' id='356534'>
+<a class='timestamp' href='#356534'><time timestamp='2021-02-27T02:29:00Z'>02:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614393000' id='356535'>
+<a class='timestamp' href='#356535'><time timestamp='2021-02-27T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+Same with ChecLockTime, so op_cltv scripts don&#x27;t work too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614393000' id='356536'>
+<a class='timestamp' href='#356536'><time timestamp='2021-02-27T02:30:00Z'>02:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394380' id='356537'>
+<a class='timestamp' href='#356537'><time timestamp='2021-02-27T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+achow101: i think there is a simpler solution... just don&#x27;t wipe scriptWitness
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394380' id='356538'>
+<a class='timestamp' href='#356538'><time timestamp='2021-02-27T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+unless sigdata.witness is false
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394860' id='356539'>
+<a class='timestamp' href='#356539'><time timestamp='2021-02-27T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+what about scriptSig?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394860' id='356540'>
+<a class='timestamp' href='#356540'><time timestamp='2021-02-27T03:01:00Z'>03:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there are a couple things
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394920' id='356541'>
+<a class='timestamp' href='#356541'><time timestamp='2021-02-27T03:02:00Z'>03:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ideally just these functions don&#x27;t get called at all for things that are already signed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394920' id='356542'>
+<a class='timestamp' href='#356542'><time timestamp='2021-02-27T03:02:00Z'>03:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the caller has the best context to determine that, i think
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394920' id='356543'>
+<a class='timestamp' href='#356543'><time timestamp='2021-02-27T03:02:00Z'>03:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+caller = wallet, rpc, psbt, ...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394980' id='356544'>
+<a class='timestamp' href='#356544'><time timestamp='2021-02-27T03:03:00Z'>03:03</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+not necessarily
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394980' id='356545'>
+<a class='timestamp' href='#356545'><time timestamp='2021-02-27T03:03:00Z'>03:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+e.g. if you lack amount information, a VerifyScript will fail for every witness
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394980' id='356546'>
+<a class='timestamp' href='#356546'><time timestamp='2021-02-27T03:03:00Z'>03:03</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that doesn&#x27;t mean you should wipe it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614394980' id='356547'>
+<a class='timestamp' href='#356547'><time timestamp='2021-02-27T03:03:00Z'>03:03</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+for these non-wallet inputs, no context knows until it runs through the verifier
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395040' id='356548'>
+<a class='timestamp' href='#356548'><time timestamp='2021-02-27T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok, setting aside the question of deciding whether an input is fully signed or not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395040' id='356549'>
+<a class='timestamp' href='#356549'><time timestamp='2021-02-27T03:04:00Z'>03:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you somehow think it&#x27;s not yet fully signed, so try to sign yourself, and fail... there is no point in wiping anything at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395100' id='356550'>
+<a class='timestamp' href='#356550'><time timestamp='2021-02-27T03:05:00Z'>03:05</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395160' id='356551'>
+<a class='timestamp' href='#356551'><time timestamp='2021-02-27T03:06:00Z'>03:06</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and i think that&#x27;s a pretty simple change
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395220' id='356552'>
+<a class='timestamp' href='#356552'><time timestamp='2021-02-27T03:07:00Z'>03:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="https://explorer.bc-2.jp/tx/da68fd6ccdfd0359b94012dfa613f69c934a99a84a90e53cf01413ca832bb1b6?expand" class="link" target="_blank">https://explorer.bc-2.jp/tx/da68fd6ccdfd0359b94012dfa613f69c934a99a84a90e53cf01413ca832bb1b6?expand</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395280' id='356553'>
+<a class='timestamp' href='#356553'><time timestamp='2021-02-27T03:08:00Z'>03:08</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+that might be a simple change, but I think a better/longer term solution is to overhaul the signing to be more psbt like
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395340' id='356554'>
+<a class='timestamp' href='#356554'><time timestamp='2021-02-27T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+so it puts things inside of SignatureData and only attempts to create a scriptSig and scriptWitness when trying to finalize
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395340' id='356555'>
+<a class='timestamp' href='#356555'><time timestamp='2021-02-27T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395340' id='356556'>
+<a class='timestamp' href='#356556'><time timestamp='2021-02-27T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+and those shouldn&#x27;t be part of the SignatureData
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395340' id='356557'>
+<a class='timestamp' href='#356557'><time timestamp='2021-02-27T03:09:00Z'>03:09</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+part of the complexity is the compatibility with the old raw transaction behavior where we want to be able to go from tx -&gt; sigdata
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395400' id='356558'>
+<a class='timestamp' href='#356558'><time timestamp='2021-02-27T03:10:00Z'>03:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but we don&#x27;t need that functionality for new script signing functionality
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395460' id='356559'>
+<a class='timestamp' href='#356559'><time timestamp='2021-02-27T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+I really just want to deprecate and remove signrawtransaction*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395460' id='356560'>
+<a class='timestamp' href='#356560'><time timestamp='2021-02-27T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+but I think people still use it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395460' id='356561'>
+<a class='timestamp' href='#356561'><time timestamp='2021-02-27T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but we probably also want a function that can detect invalid scriptSig/witness data, so it can ignore it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614395460' id='356562'>
+<a class='timestamp' href='#356562'><time timestamp='2021-02-27T03:11:00Z'>03:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+otherwise it&#x27;d just be: you already have witness/scriptSig -&gt; no touch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614396660' id='356563'>
+<a class='timestamp' href='#356563'><time timestamp='2021-02-27T03:31:00Z'>03:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="https://explorer.bc-2.jp/tx/dda4cb9290415952d93f52518df978d45ae1710e60e711e6786926e99d305ef9?expand" class="link" target="_blank">https://explorer.bc-2.jp/tx/dda4cb9290415952d93f52518df978d45ae1710e60e711e6786926e99d305ef9?expand</a> &lt;- script path spend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614396780' id='356564'>
+<a class='timestamp' href='#356564'><time timestamp='2021-02-27T03:33:00Z'>03:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+made using sendtoaddress :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614397200' id='356565'>
+<a class='timestamp' href='#356565'><time timestamp='2021-02-27T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+sipa: miniscript?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614397200' id='356566'>
+<a class='timestamp' href='#356566'><time timestamp='2021-02-27T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+or taproot?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614397260' id='356567'>
+<a class='timestamp' href='#356567'><time timestamp='2021-02-27T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+taproit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614397260' id='356568'>
+<a class='timestamp' href='#356568'><time timestamp='2021-02-27T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+*taproot
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614397320' id='356569'>
+<a class='timestamp' href='#356569'><time timestamp='2021-02-27T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+nice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614397320' id='356570'>
+<a class='timestamp' href='#356570'><time timestamp='2021-02-27T03:42:00Z'>03:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+branch needs a lot of cleaning up, but it does something now :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614428100' id='356571'>
+<a class='timestamp' href='#356571'><time timestamp='2021-02-27T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/5ba5becbb5d8...fb67caebe26f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/5ba5becbb5d8...fb67caebe26f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614428100' id='356572'>
+<a class='timestamp' href='#356572'><time timestamp='2021-02-27T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ace3f4c Jon Atack: test: improve assertions in feature_blockfilterindex_prune.py
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614428100' id='356573'>
+<a class='timestamp' href='#356573'><time timestamp='2021-02-27T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 88c4b9b Jon Atack: test: remove unneeded node from feature_blockfilterindex_prune.py
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614428100' id='356574'>
+<a class='timestamp' href='#356574'><time timestamp='2021-02-27T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fb67cae MarcoFalke: Merge #21297: test: feature_blockfilterindex_prune.py improvements
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614428100' id='356575'>
+<a class='timestamp' href='#356575'><time timestamp='2021-02-27T12:15:00Z'>12:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #21297: test: feature_blockfilterindex_prune.py improvements (master...feature_blockfilterindex_prune-improvements) <a href="https://github.com/bitcoin/bitcoin/pull/21297" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21297</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614441420' id='356576'>
+<a class='timestamp' href='#356576'><time timestamp='2021-02-27T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[gui] hebasto opened pull request #229: Fix regression with initial sorting after pr205 (master...210227-sort) <a href="https://github.com/bitcoin-core/gui/pull/229" class="link" target="_blank">https://github.com/bitcoin-core/gui/pull/229</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614447300' id='356577'>
+<a class='timestamp' href='#356577'><time timestamp='2021-02-27T17:35:00Z'>17:35</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[gui] luke-jr opened pull request #230: Support backup to new text-based database dump format (master...gui_backup_formats) <a href="https://github.com/bitcoin-core/gui/pull/230" class="link" target="_blank">https://github.com/bitcoin-core/gui/pull/230</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614447900' id='356578'>
+<a class='timestamp' href='#356578'><time timestamp='2021-02-27T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+vasild: I finished reviewing the I2P PR late last night, then my internet went down, and when I restarted GitHub had saved none of the many comments I had pending. Disheartening. I&#x27;m thinking that by default now on large PR reviews I&#x27;ll start annotating the code directly, git commit and push my own branch, then refer to the branch in my review. That also takes much less GitHub space,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614447900' id='356579'>
+<a class='timestamp' href='#356579'><time timestamp='2021-02-27T17:45:00Z'>17:45</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+which is good in order to avoid deeper &quot;hidden items&quot; clicking, which for me is up to 105 hidden items in that PR, and which continued to hide one of your commits even after clicking repeatedly to unhide everything. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614448500' id='356580'>
+<a class='timestamp' href='#356580'><time timestamp='2021-02-27T17:55:00Z'>17:55</time></a>
+&lt;<span class='nick nick-14'> jonatack</span>&gt;
+(Not a reflection on the PR itself--it looks very good!)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614448560' id='356581'>
+<a class='timestamp' href='#356581'><time timestamp='2021-02-27T17:56:00Z'>17:56</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] ivanacostarubio opened pull request #21308: build: removing xcrun from darwin build (master...issue18959) <a href="https://github.com/bitcoin/bitcoin/pull/21308" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21308</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614451560' id='356582'>
+<a class='timestamp' href='#356582'><time timestamp='2021-02-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] theStack opened pull request #21310: zmq test: fix sync-up by matching notification to generated block (master...2021-zmq-fix_sync_up_procedure) <a href="https://github.com/bitcoin/bitcoin/pull/21310" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21310</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614451860' id='356583'>
+<a class='timestamp' href='#356583'><time timestamp='2021-02-27T18:51:00Z'>18:51</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[gui] hebasto closed pull request #228: Drop unused parameter in GUIUtil::get{Save|Open}FileName (master...210224-file) <a href="https://github.com/bitcoin-core/gui/pull/228" class="link" target="_blank">https://github.com/bitcoin-core/gui/pull/228</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614452160' id='356584'>
+<a class='timestamp' href='#356584'><time timestamp='2021-02-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+is interface_zmq having issues, or is there some incomprehensible bug in gui#230 I can&#x27;t reproduce locally? :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614452160' id='356585'>
+<a class='timestamp' href='#356585'><time timestamp='2021-02-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/230" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/230</a> | Update German translation to latest git. by TheBlueMatt · Pull Request #230 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614452280' id='356586'>
+<a class='timestamp' href='#356586'><time timestamp='2021-02-27T18:58:00Z'>18:58</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+peers at gribble
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614452940' id='356587'>
+<a class='timestamp' href='#356587'><time timestamp='2021-02-27T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+if I make a PR, and then I make another PR referincing that PR in the title, and then I change the first to reference the latter, and then put the number in IRC what does gribble do?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453000' id='356588'>
+<a class='timestamp' href='#356588'><time timestamp='2021-02-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I doubt gribble responds to itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453000' id='356589'>
+<a class='timestamp' href='#356589'><time timestamp='2021-02-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+gribble: echo gribble: echo hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453000' id='356590'>
+<a class='timestamp' href='#356590'><time timestamp='2021-02-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+x.x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453000' id='356591'>
+<a class='timestamp' href='#356591'><time timestamp='2021-02-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jeremyrubin: also, you&#x27;d need to be quick - gribble doesn&#x27;t announce renames ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453060' id='356592'>
+<a class='timestamp' href='#356592'><time timestamp='2021-02-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+err, maybe not relevant if you manually enter it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453060' id='356593'>
+<a class='timestamp' href='#356593'><time timestamp='2021-02-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+anyway, off topic XD
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614453960' id='356594'>
+<a class='timestamp' href='#356594'><time timestamp='2021-02-27T19:26:00Z'>19:26</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+jeremyrubin, it ignores itself as all irc bots that aren&#x27;t instantly banned do
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614454860' id='356595'>
+<a class='timestamp' href='#356595'><time timestamp='2021-02-27T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] theStack opened pull request #21311: rpc: document optional fields for getchaintxstats result (master...2021-rpc-document_optional_getchaintxstats_fields) <a href="https://github.com/bitcoin/bitcoin/pull/21311" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21311</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614455220' id='356596'>
+<a class='timestamp' href='#356596'><time timestamp='2021-02-27T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] vladyslavstartsev opened pull request #21312: wallet: remove lock during `listaddressgroupings` (master...listaddressgroupings-no-lock) <a href="https://github.com/bitcoin/bitcoin/pull/21312" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/21312</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614462900' id='356597'>
+<a class='timestamp' href='#356597'><time timestamp='2021-02-27T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-16'> s7r</span>&gt;
+building from source doesn&#x27;t work any more cleanly on Debian.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614462900' id='356598'>
+<a class='timestamp' href='#356598'><time timestamp='2021-02-27T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-16'> s7r</span>&gt;
+I get A compiler with support for C++17 language features is required.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614462960' id='356599'>
+<a class='timestamp' href='#356599'><time timestamp='2021-02-27T21:56:00Z'>21:56</time></a>
+&lt;<span class='nick nick-16'> s7r</span>&gt;
+(current compiler does support C++17 though)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614463080' id='356600'>
+<a class='timestamp' href='#356600'><time timestamp='2021-02-27T21:58:00Z'>21:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which compiler is that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614463560' id='356601'>
+<a class='timestamp' href='#356601'><time timestamp='2021-02-27T22:06:00Z'>22:06</time></a>
+&lt;<span class='nick nick-16'> s7r</span>&gt;
+sipa, gcc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614463620' id='356602'>
+<a class='timestamp' href='#356602'><time timestamp='2021-02-27T22:07:00Z'>22:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614463620' id='356603'>
+<a class='timestamp' href='#356603'><time timestamp='2021-02-27T22:07:00Z'>22:07</time></a>
+&lt;<span class='nick nick-16'> s7r</span>&gt;
+4:6.3.0-4
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614463680' id='356604'>
+<a class='timestamp' href='#356604'><time timestamp='2021-02-27T22:08:00Z'>22:08</time></a>
+&lt;<span class='nick nick-16'> s7r</span>&gt;
+sorry:  6.3.0-18+deb9u1
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1614463680' id='356605'>
+<a class='timestamp' href='#356605'><time timestamp='2021-02-27T22:08:00Z'>22:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that may be too old
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

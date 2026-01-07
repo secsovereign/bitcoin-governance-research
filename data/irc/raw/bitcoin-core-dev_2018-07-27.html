@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-07-27
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-07-27' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-06-27">&lt;</a><span class='header'>    July 2018     </span><a href="/bitcoin-core-dev/2018-08-27">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A; <a class="" href="/bitcoin-core-dev/2018-07-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-07-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-07-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-07-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-07-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-07-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-07-07">7</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-07-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-07-09">9</a> <a class="" href="/bitcoin-core-dev/2018-07-10">10</a> <a class="" href="/bitcoin-core-dev/2018-07-11">11</a> <a class="" href="/bitcoin-core-dev/2018-07-12">12</a> <a class="" href="/bitcoin-core-dev/2018-07-13">13</a> <a class="" href="/bitcoin-core-dev/2018-07-14">14</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-07-15">15</a> 16 <a class="" href="/bitcoin-core-dev/2018-07-17">17</a> <a class="" href="/bitcoin-core-dev/2018-07-18">18</a> <a class="" href="/bitcoin-core-dev/2018-07-19">19</a> <a class="" href="/bitcoin-core-dev/2018-07-20">20</a> <a class="" href="/bitcoin-core-dev/2018-07-21">21</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-07-22">22</a> <a class="" href="/bitcoin-core-dev/2018-07-23">23</a> <a class="" href="/bitcoin-core-dev/2018-07-24">24</a> <a class="" href="/bitcoin-core-dev/2018-07-25">25</a> <a class="" href="/bitcoin-core-dev/2018-07-26">26</a> <a class="current" href="/bitcoin-core-dev/2018-07-27">27</a> <a class="" href="/bitcoin-core-dev/2018-07-28">28</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-07-29">29</a> <a class="" href="/bitcoin-core-dev/2018-07-30">30</a> <a class="" href="/bitcoin-core-dev/2018-07-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1532679300' id='622464'>
+<a class='timestamp' href='#622464'><time timestamp='2018-07-27T08:15:00Z'>08:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: would adding &#x27;h&#x27; as equivalent to &#x27; in the descriptor xpub/xpriv range definition makes sense? &gt;&#x27;&lt; in conjunction with JSON and the GUI/bitcoin-cli/shell seems to be a hassle
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532691900' id='622465'>
+<a class='timestamp' href='#622465'><time timestamp='2018-07-27T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: yes perhaps; but for compatibility with existing RPCs i stayed with &#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532692440' id='622466'>
+<a class='timestamp' href='#622466'><time timestamp='2018-07-27T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: is think it should not be OR, it should be AND
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532692440' id='622467'>
+<a class='timestamp' href='#622467'><time timestamp='2018-07-27T11:54:00Z'>11:54</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+support &#x27; AND h
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532701560' id='622468'>
+<a class='timestamp' href='#622468'><time timestamp='2018-07-27T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+so, I&#x27;m looking to find out a few things about the bitcoincore.org site. Chiefly, content changes are delegated. Who can I speak to about that?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532701560' id='622469'>
+<a class='timestamp' href='#622469'><time timestamp='2018-07-27T14:26:00Z'>14:26</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+*how
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532701620' id='622470'>
+<a class='timestamp' href='#622470'><time timestamp='2018-07-27T14:27:00Z'>14:27</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+Is there a policy somewhere perhaps?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532702880' id='622471'>
+<a class='timestamp' href='#622471'><time timestamp='2018-07-27T14:48:00Z'>14:48</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+brighton36: I help maintain the site.  I don&#x27;t relaly understand your question.  There&#x27;s a basic contributing policy at <a href="https://github.com/bitcoin-core/bitcoincore.org/blob/master/CONTRIBUTING.md" class="link" target="_blank">https://github.com/bitcoin-core/bitcoincore.org/blob/master/CONTRIBUTING.md</a> but the basic process is the same for any open source project: people open PRs proposing changes, other people provide feedback, once the feedback is generally positive, the PR is merged.  If the PR never gets to that stage, it&#x27;s 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532702880' id='622472'>
+<a class='timestamp' href='#622472'><time timestamp='2018-07-27T14:48:00Z'>14:48</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+eventually closed.  If there&#x27;s something wonky going on (like lots of comments from unknown accounts), that&#x27;s factored into the merge/no-merge decision.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704080' id='622473'>
+<a class='timestamp' href='#622473'><time timestamp='2018-07-27T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+thank-you harding :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704080' id='622474'>
+<a class='timestamp' href='#622474'><time timestamp='2018-07-27T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+I get that this is a heavily politicized issue. But, I&#x27;d like to know what the process is
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704080' id='622475'>
+<a class='timestamp' href='#622475'><time timestamp='2018-07-27T15:08:00Z'>15:08</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+I think a mission statement would help greatly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704140' id='622476'>
+<a class='timestamp' href='#622476'><time timestamp='2018-07-27T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+less would obviously be more, but, just being able to point at a mission would help us out greatly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704140' id='622477'>
+<a class='timestamp' href='#622477'><time timestamp='2018-07-27T15:09:00Z'>15:09</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+Borrowing one from any other prominent open source project, and redacting specifics would seem productive. Less is more.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704200' id='622478'>
+<a class='timestamp' href='#622478'><time timestamp='2018-07-27T15:10:00Z'>15:10</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+Is there a process by which the stakeholders could decide that, or is a PR the process?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704200' id='622479'>
+<a class='timestamp' href='#622479'><time timestamp='2018-07-27T15:10:00Z'>15:10</time></a>
+&lt;<span class='nick nick-5'> harding</span>&gt;
+brighton36: I&#x27;m not sure what you&#x27;re talking about, but it feels a bit off topic for this channel.  Would you mind joining #bitcoin-core-website to discuss further?  (Or you can PM me if you&#x27;re a registered user.)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704200' id='622480'>
+<a class='timestamp' href='#622480'><time timestamp='2018-07-27T15:10:00Z'>15:10</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+yep
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532704200' id='622481'>
+<a class='timestamp' href='#622481'><time timestamp='2018-07-27T15:10:00Z'>15:10</time></a>
+&lt;<span class='nick nick-1'> brighton36</span>&gt;
+thank-you sir
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715780' id='622482'>
+<a class='timestamp' href='#622482'><time timestamp='2018-07-27T18:23:00Z'>18:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+MarcoFalke: AssertionError: not(0.00700000 == 0.007)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715780' id='622483'>
+<a class='timestamp' href='#622483'><time timestamp='2018-07-27T18:23:00Z'>18:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+any idea how to deal with that in tests?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715840' id='622484'>
+<a class='timestamp' href='#622484'><time timestamp='2018-07-27T18:24:00Z'>18:24</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: maybe assert_approx?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715900' id='622485'>
+<a class='timestamp' href='#622485'><time timestamp='2018-07-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t see that anywhere in our source code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715900' id='622486'>
+<a class='timestamp' href='#622486'><time timestamp='2018-07-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+this can&#x27;t be the only place where this is an issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715900' id='622487'>
+<a class='timestamp' href='#622487'><time timestamp='2018-07-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so i must be doing something wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715900' id='622488'>
+<a class='timestamp' href='#622488'><time timestamp='2018-07-27T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(it&#x27;s ValueFromAmount output in RPC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715960' id='622489'>
+<a class='timestamp' href='#622489'><time timestamp='2018-07-27T18:26:00Z'>18:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;ll just try to stick to integer amounts
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532715960' id='622490'>
+<a class='timestamp' href='#622490'><time timestamp='2018-07-27T18:26:00Z'>18:26</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: test/functional/wallet_groups.py
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716200' id='622491'>
+<a class='timestamp' href='#622491'><time timestamp='2018-07-27T18:30:00Z'>18:30</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+sipa: are both values coming from rpc calls, or is one hardcoded in?  i think we use Decimal() in the test framework a bunch, presumably to solve that problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716260' id='622492'>
+<a class='timestamp' href='#622492'><time timestamp='2018-07-27T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sdaftuar: ah!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716260' id='622493'>
+<a class='timestamp' href='#622493'><time timestamp='2018-07-27T18:31:00Z'>18:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+one is hardcoded
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716380' id='622494'>
+<a class='timestamp' href='#622494'><time timestamp='2018-07-27T18:33:00Z'>18:33</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: re xpub range in descriptors...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716380' id='622495'>
+<a class='timestamp' href='#622495'><time timestamp='2018-07-27T18:33:00Z'>18:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+:( even we can&#x27;t get it right.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716440' id='622496'>
+<a class='timestamp' href='#622496'><time timestamp='2018-07-27T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: if you disagree with the index &lt;= vs &lt;, then I guess you need to +1 when populating the range from the JSON or change the doc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716440' id='622497'>
+<a class='timestamp' href='#622497'><time timestamp='2018-07-27T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Because the doc states: &quot;\&quot;range\&quot;: n,             (numeric, optional) Up to what child index HD chains should be explored (default: 1000)\n&quot;&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716440' id='622498'>
+<a class='timestamp' href='#622498'><time timestamp='2018-07-27T18:34:00Z'>18:34</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+if you pass in 1000, it will only derive up to 999
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716500' id='622499'>
+<a class='timestamp' href='#622499'><time timestamp='2018-07-27T18:35:00Z'>18:35</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I think the doc is correct and would recommend to +1 somewhere else
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716620' id='622500'>
+<a class='timestamp' href='#622500'><time timestamp='2018-07-27T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716680' id='622501'>
+<a class='timestamp' href='#622501'><time timestamp='2018-07-27T18:38:00Z'>18:38</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+IMO if one puts a range of 1500, then one probably expect that key at index 1500 will be included...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716740' id='622502'>
+<a class='timestamp' href='#622502'><time timestamp='2018-07-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: why not a real range X-Y? instead of pure Y?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716740' id='622503'>
+<a class='timestamp' href='#622503'><time timestamp='2018-07-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok, will fix
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716740' id='622504'>
+<a class='timestamp' href='#622504'><time timestamp='2018-07-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: sounds like something for a later extension?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716740' id='622505'>
+<a class='timestamp' href='#622505'><time timestamp='2018-07-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(although could be changed later)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716740' id='622506'>
+<a class='timestamp' href='#622506'><time timestamp='2018-07-27T18:39:00Z'>18:39</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716920' id='622507'>
+<a class='timestamp' href='#622507'><time timestamp='2018-07-27T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+GAH
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532716920' id='622508'>
+<a class='timestamp' href='#622508'><time timestamp='2018-07-27T18:42:00Z'>18:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+AssertionError: not(0.00200000 == 0.00200000000000000004163336342344337026588618755340576171875)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717040' id='622509'>
+<a class='timestamp' href='#622509'><time timestamp='2018-07-27T18:44:00Z'>18:44</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+sipa: i think you need to do `Decimal(&quot;0.002&quot;)`?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717100' id='622510'>
+<a class='timestamp' href='#622510'><time timestamp='2018-07-27T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+at least, that&#x27;s what i see all over our python test code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717160' id='622511'>
+<a class='timestamp' href='#622511'><time timestamp='2018-07-27T18:46:00Z'>18:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sdaftuar: thanks! that works
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717760' id='622512'>
+<a class='timestamp' href='#622512'><time timestamp='2018-07-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: regarding support for &quot;h&quot; instead of &quot;&#x27;&quot;, should it roundtrip?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717760' id='622513'>
+<a class='timestamp' href='#622513'><time timestamp='2018-07-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+no... I think only input
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717760' id='622514'>
+<a class='timestamp' href='#622514'><time timestamp='2018-07-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ok, that&#x27;s easy enough then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717760' id='622515'>
+<a class='timestamp' href='#622515'><time timestamp='2018-07-27T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717820' id='622516'>
+<a class='timestamp' href='#622516'><time timestamp='2018-07-27T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I guess no-one will complain about the missing roundtripness...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717820' id='622517'>
+<a class='timestamp' href='#622517'><time timestamp='2018-07-27T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+IMO it&#x27;s mainly useful to bypass shellish input sources
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532717820' id='622518'>
+<a class='timestamp' href='#622518'><time timestamp='2018-07-27T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+*shellish input source restrictions
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718240' id='622519'>
+<a class='timestamp' href='#622519'><time timestamp='2018-07-27T19:04:00Z'>19:04</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+Has the bitcoind config param -rpcclienttimeout been removed? I&#x27;m getting errors trying to set it in both the command line and in bitcoin.conf.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718300' id='622520'>
+<a class='timestamp' href='#622520'><time timestamp='2018-07-27T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+satwo: no, but it&#x27;s a bitcoin-cli command line option; not a bitcoind one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718360' id='622521'>
+<a class='timestamp' href='#622521'><time timestamp='2018-07-27T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+Thanks sipa. This doc may need updating then: <a href="https://github.com/bitcoin/bitcoin/blob/master/contrib/debian/examples/bitcoin.conf" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/contrib/debian/examples/bitcoin.conf</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718540' id='622522'>
+<a class='timestamp' href='#622522'><time timestamp='2018-07-27T19:09:00Z'>19:09</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+Would it be appropriate to remove the section for rpcclienttimeout there? Or am I missing something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718600' id='622523'>
+<a class='timestamp' href='#622523'><time timestamp='2018-07-27T19:10:00Z'>19:10</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in bitcoin.conf it should work fine; that file should be read by both bitcoind and bitcoin-cli
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718660' id='622524'>
+<a class='timestamp' href='#622524'><time timestamp='2018-07-27T19:11:00Z'>19:11</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+That&#x27;s what I thought, but I got the following error when starting bitcoind: Error reading configuration file: Invalid configuration value rpcclienttimeout
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718720' id='622525'>
+<a class='timestamp' href='#622525'><time timestamp='2018-07-27T19:12:00Z'>19:12</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+oh, of course
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718780' id='622526'>
+<a class='timestamp' href='#622526'><time timestamp='2018-07-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right; you can&#x27;t put it in bitcoin.conf anymore, because it&#x27;s not a bitcoind option
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718780' id='622527'>
+<a class='timestamp' href='#622527'><time timestamp='2018-07-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and since 0.17 bitcoind will give an error if an invalid option is passed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718780' id='622528'>
+<a class='timestamp' href='#622528'><time timestamp='2018-07-27T19:13:00Z'>19:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we could add an exception to ignore it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718960' id='622529'>
+<a class='timestamp' href='#622529'><time timestamp='2018-07-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+For just that one param?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718960' id='622530'>
+<a class='timestamp' href='#622530'><time timestamp='2018-07-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+no, this is true for every parameter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532718960' id='622531'>
+<a class='timestamp' href='#622531'><time timestamp='2018-07-27T19:16:00Z'>19:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+in earlier versions bitcoind would just ignore unknown options; now it will give an error
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719200' id='622532'>
+<a class='timestamp' href='#622532'><time timestamp='2018-07-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+Got it. What do you mean exactly by adding an exception to ignore it? Show the error/warning but allow bitcoind to start anyway?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719200' id='622533'>
+<a class='timestamp' href='#622533'><time timestamp='2018-07-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but we should probably make it ignore bitcoin-cli only options like this one, when present in bitcoin.conf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719200' id='622534'>
+<a class='timestamp' href='#622534'><time timestamp='2018-07-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s good that it now gives errors on unkonwn options, this was a long-running issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719200' id='622535'>
+<a class='timestamp' href='#622535'><time timestamp='2018-07-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but yes, that&#x27;s firly annoying too...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719260' id='622536'>
+<a class='timestamp' href='#622536'><time timestamp='2018-07-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa: though that means that all executables need to have knowledge of all other executables&#x27; flags
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719260' id='622537'>
+<a class='timestamp' href='#622537'><time timestamp='2018-07-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+which is exactly what we were trying to avoid by modularizing the options system
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719260' id='622538'>
+<a class='timestamp' href='#622538'><time timestamp='2018-07-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: or we need a way to specify bitcoin.conf options that only apply to a particular binary
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719260' id='622539'>
+<a class='timestamp' href='#622539'><time timestamp='2018-07-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it&#x27;s kind of annoying, maybe cli-specific options could have their own sections?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719260' id='622540'>
+<a class='timestamp' href='#622540'><time timestamp='2018-07-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+like the network sections
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719260' id='622541'>
+<a class='timestamp' href='#622541'><time timestamp='2018-07-27T19:21:00Z'>19:21</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719320' id='622542'>
+<a class='timestamp' href='#622542'><time timestamp='2018-07-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+for 0.17 I agree we could just make it a warning
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719320' id='622543'>
+<a class='timestamp' href='#622543'><time timestamp='2018-07-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if an unknown option is specified
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719320' id='622544'>
+<a class='timestamp' href='#622544'><time timestamp='2018-07-27T19:22:00Z'>19:22</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+then for 0.18 think about for to sensibly enforce this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719380' id='622545'>
+<a class='timestamp' href='#622545'><time timestamp='2018-07-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s one possibility
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719380' id='622546'>
+<a class='timestamp' href='#622546'><time timestamp='2018-07-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or we could use the deprecation mechanism
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719380' id='622547'>
+<a class='timestamp' href='#622547'><time timestamp='2018-07-27T19:23:00Z'>19:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+(by default it&#x27;s enforced, unless you pass -ignoreunknownconfigoptions or so; and then it still only applies to bitcoin.conf and not to command line options)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719440' id='622548'>
+<a class='timestamp' href='#622548'><time timestamp='2018-07-27T19:24:00Z'>19:24</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719620' id='622549'>
+<a class='timestamp' href='#622549'><time timestamp='2018-07-27T19:27:00Z'>19:27</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+wumpus: actually, it might be annoying if users get errors for Knots configs in bitcoin.conf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622550'>
+<a class='timestamp' href='#622550'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+perhaps there should be a way to explicitly say &quot;don&#x27;t error if you don&#x27;t understand this&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622551'>
+<a class='timestamp' href='#622551'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sipa has a good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622552'>
+<a class='timestamp' href='#622552'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+per-option seems safer IMO
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622553'>
+<a class='timestamp' href='#622553'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+make it an error if an unknown option on the command line
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622554'>
+<a class='timestamp' href='#622554'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+though we could do both
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622555'>
+<a class='timestamp' href='#622555'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but a warning if in bitcoin.conf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532719680' id='622556'>
+<a class='timestamp' href='#622556'><time timestamp='2018-07-27T19:28:00Z'>19:28</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532720340' id='622557'>
+<a class='timestamp' href='#622557'><time timestamp='2018-07-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+Happy to attempt an implementation of this, if no one else wants to knock it out. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532720520' id='622558'>
+<a class='timestamp' href='#622558'><time timestamp='2018-07-27T19:42:00Z'>19:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i vaguely remember we already have an exception for some option, but i can&#x27;t check right now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532722560' id='622559'>
+<a class='timestamp' href='#622559'><time timestamp='2018-07-27T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+satwo: would be awesome
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532724420' id='622560'>
+<a class='timestamp' href='#622560'><time timestamp='2018-07-27T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-9'> satwo</span>&gt;
+wumpus: Will work on it this weekend. Still learning C++ but I&#x27;ll do the best I can
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532725200' id='622561'>
+<a class='timestamp' href='#622561'><time timestamp='2018-07-27T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: 0.16.2 macOS signature ping :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532726280' id='622562'>
+<a class='timestamp' href='#622562'><time timestamp='2018-07-27T21:18:00Z'>21:18</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+cfields: Oh. Yes. Just started the build,... will PR the detatched sig tomorrow (in 10-12h).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532726580' id='622563'>
+<a class='timestamp' href='#622563'><time timestamp='2018-07-27T21:23:00Z'>21:23</time></a>
+&lt;<span class='nick nick-13'> cfields</span>&gt;
+jonasschnelli: np, thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732100' id='622564'>
+<a class='timestamp' href='#622564'><time timestamp='2018-07-27T22:55:00Z'>22:55</time></a>
+&lt;<span class='nick nick-12'> jhfrontz</span>&gt;
+Is there anything that needs to be done to enable use of the  0.16.2 version of contrib/gitian-descriptors/gitian-linux.yml (when using a docker-based gitian build)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732160' id='622565'>
+<a class='timestamp' href='#622565'><time timestamp='2018-07-27T22:56:00Z'>22:56</time></a>
+&lt;<span class='nick nick-12'> jhfrontz</span>&gt;
+I&#x27;m getting errors about missing symbols (like described here: <a href="https://github.com/bitcoin/bitcoin/issues/12511#issuecomment-386740137" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/12511#issuecomment-386740137</a> ).  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732580' id='622566'>
+<a class='timestamp' href='#622566'><time timestamp='2018-07-27T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-12'> jhfrontz</span>&gt;
+It looks like all the signers of 0.16.2  for linux so far have used &quot;trusty&quot; (instead of the 0.16.2-gitian-linux.yml-spec&#x27;d &quot;bionic&quot;).  So maybe I shouldn&#x27;t be using the new version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732580' id='622567'>
+<a class='timestamp' href='#622567'><time timestamp='2018-07-27T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes 0.16.2 is built with trusty
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732580' id='622568'>
+<a class='timestamp' href='#622568'><time timestamp='2018-07-27T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+no releases yet have been built with bionic, though this is the plan for 0.17
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732700' id='622569'>
+<a class='timestamp' href='#622569'><time timestamp='2018-07-27T23:05:00Z'>23:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jhfrontz: if you build on bionic (even if it works), you won&#x27;t get the same binaries as others
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732760' id='622570'>
+<a class='timestamp' href='#622570'><time timestamp='2018-07-27T23:06:00Z'>23:06</time></a>
+&lt;<span class='nick nick-12'> jhfrontz</span>&gt;
+OK, tnx.  I must&#x27;ve pulled down the wrong version?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732820' id='622571'>
+<a class='timestamp' href='#622571'><time timestamp='2018-07-27T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I guess so? I&#x27;m not sure how you end up in that situation at all, the descriptors on the 0.16 branch shouldn&#x27;t point to bionic
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732820' id='622572'>
+<a class='timestamp' href='#622572'><time timestamp='2018-07-27T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-12'> jhfrontz</span>&gt;
+of gitian-linux.yml, I mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732820' id='622573'>
+<a class='timestamp' href='#622573'><time timestamp='2018-07-27T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-12'> jhfrontz</span>&gt;
+doh, wrong branch…
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1532732820' id='622574'>
+<a class='timestamp' href='#622574'><time timestamp='2018-07-27T23:07:00Z'>23:07</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/blob/v0.16.2/contrib/gitian-descriptors/gitian-linux.yml" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/v0.16.2/contrib/gitian-descriptors/gitian-linux.yml</a> &lt;- specifies trusty
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

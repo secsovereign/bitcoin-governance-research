@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-08-27
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-08-27' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-07-27">&lt;</a><span class='header'>   August 2018    </span><a href="/bitcoin-core-dev/2018-09-27">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2018-08-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-08-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-08-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-08-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-08-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-08-06">6</a>  <a class="" href="/bitcoin-core-dev/2018-08-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-08-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-08-09">9</a> <a class="" href="/bitcoin-core-dev/2018-08-10">10</a> <a class="" href="/bitcoin-core-dev/2018-08-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-12">12</a> <a class="" href="/bitcoin-core-dev/2018-08-13">13</a> <a class="" href="/bitcoin-core-dev/2018-08-14">14</a> <a class="" href="/bitcoin-core-dev/2018-08-15">15</a> <a class="" href="/bitcoin-core-dev/2018-08-16">16</a> <a class="" href="/bitcoin-core-dev/2018-08-17">17</a> <a class="" href="/bitcoin-core-dev/2018-08-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-19">19</a> <a class="" href="/bitcoin-core-dev/2018-08-20">20</a> <a class="" href="/bitcoin-core-dev/2018-08-21">21</a> <a class="" href="/bitcoin-core-dev/2018-08-22">22</a> <a class="" href="/bitcoin-core-dev/2018-08-23">23</a> <a class="" href="/bitcoin-core-dev/2018-08-24">24</a> <a class="" href="/bitcoin-core-dev/2018-08-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-08-26">26</a> <a class="current" href="/bitcoin-core-dev/2018-08-27">27</a> <a class="" href="/bitcoin-core-dev/2018-08-28">28</a> <a class="" href="/bitcoin-core-dev/2018-08-29">29</a> <a class="" href="/bitcoin-core-dev/2018-08-30">30</a> <a class="" href="/bitcoin-core-dev/2018-08-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1535338080' id='627712'>
+<a class='timestamp' href='#627712'><time timestamp='2018-08-27T02:48:00Z'>02:48</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+wait, where in the code again are the logics for checking if the PoW is on-target - i think there are two locations that do this comparison.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535338380' id='627713'>
+<a class='timestamp' href='#627713'><time timestamp='2018-08-27T02:53:00Z'>02:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+pow.cpp, CheckProofOfWork
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535338560' id='627714'>
+<a class='timestamp' href='#627714'><time timestamp='2018-08-27T02:56:00Z'>02:56</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, can pnode-&gt;GetRefCount() be == instead of &lt;= 0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535338560' id='627715'>
+<a class='timestamp' href='#627715'><time timestamp='2018-08-27T02:56:00Z'>02:56</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+you put in an assert that it&#x27;s &gt;= 0 in 2013 soo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535338560' id='627716'>
+<a class='timestamp' href='#627716'><time timestamp='2018-08-27T02:56:00Z'>02:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+phantomcircuit: i&#x27;m probably the wrong person to ask
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340480' id='627717'>
+<a class='timestamp' href='#627717'><time timestamp='2018-08-27T03:28:00Z'>03:28</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, it seems adding MADV_RANDOM to the leveldb mmap would help reduce the memory footprint, but it isn&#x27;t going to help performance if there is any locality or larger reads
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340540' id='627718'>
+<a class='timestamp' href='#627718'><time timestamp='2018-08-27T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is no locality
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340540' id='627719'>
+<a class='timestamp' href='#627719'><time timestamp='2018-08-27T03:29:00Z'>03:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+they&#x27;re sorted by txid
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340600' id='627720'>
+<a class='timestamp' href='#627720'><time timestamp='2018-08-27T03:30:00Z'>03:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: I think it&#x27;s somewhat likely to help performance specifically because there is no locality in reads.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340660' id='627721'>
+<a class='timestamp' href='#627721'><time timestamp='2018-08-27T03:31:00Z'>03:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+ossifrage: I think the thing we really need to do is start measuring dirty pages, rather than RES.  And I expect MADV_RANDOM will make it faster.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340660' id='627722'>
+<a class='timestamp' href='#627722'><time timestamp='2018-08-27T03:31:00Z'>03:31</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+gmaxwell, it all depends on the timeframe, if over enough time does it hit contiguous blocks and is that timeframe shorter then the the life of the page
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535340660' id='627723'>
+<a class='timestamp' href='#627723'><time timestamp='2018-08-27T03:31:00Z'>03:31</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+pay now vs pay later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341140' id='627724'>
+<a class='timestamp' href='#627724'><time timestamp='2018-08-27T03:39:00Z'>03:39</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+looking at: pmap -x $(pidof bitcoin-qt) | grep .ldb | awk &#x27;{if($3 == 0){print}}&#x27;       shows that many of the ldb files aren&#x27;t using any RSS memory (after being up for almost a month)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341140' id='627725'>
+<a class='timestamp' href='#627725'><time timestamp='2018-08-27T03:39:00Z'>03:39</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+But I tend to OOM the POS box far too often
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341140' id='627726'>
+<a class='timestamp' href='#627726'><time timestamp='2018-08-27T03:39:00Z'>03:39</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+crypto/sha256.* is <b>*single-iteration*</b> SHA256?  (would be great if this was marked out in the file)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341200' id='627727'>
+<a class='timestamp' href='#627727'><time timestamp='2018-08-27T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Jmabsd: of course; SHA256 is SHA256, not double SHA256
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341200' id='627728'>
+<a class='timestamp' href='#627728'><time timestamp='2018-08-27T03:40:00Z'>03:40</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+(y)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341260' id='627729'>
+<a class='timestamp' href='#627729'><time timestamp='2018-08-27T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+double SHA256 is called &quot;Hash&quot; in the sourcecode
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341260' id='627730'>
+<a class='timestamp' href='#627730'><time timestamp='2018-08-27T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and SHA256+RIPEMD160 is called Hash160
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535341260' id='627731'>
+<a class='timestamp' href='#627731'><time timestamp='2018-08-27T03:41:00Z'>03:41</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+(y)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343060' id='627732'>
+<a class='timestamp' href='#627732'><time timestamp='2018-08-27T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+wait, in the Bitcoin PoW 32bit floating point structure &quot;deserializer&quot; at <a href="https://github.com/bitcoin/bitcoin/blob/eb7daf4d600eeb631427c018a984a77a34aca66e/src/arith_uint256.cpp#L209" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/eb7daf4d600eeb631427c018a984a77a34aca66e/src/arith_uint256.cpp#L209</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343060' id='627733'>
+<a class='timestamp' href='#627733'><time timestamp='2018-08-27T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+, you first shift-right a 32bit uint by 24 positions - this means the highest 8 bits become the lowest 8 bits, and the remainder of bits will be zero
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343060' id='627734'>
+<a class='timestamp' href='#627734'><time timestamp='2018-08-27T04:11:00Z'>04:11</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+then you bitwise-and the whole thing with 0x007fffff - but that&#x27;s useless, isn&#x27;t it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343120' id='627735'>
+<a class='timestamp' href='#627735'><time timestamp='2018-08-27T04:12:00Z'>04:12</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+here that&#x27;s the same as bitwise-anding with 0xff, which was already implied by the shift-right ?? 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343240' id='627736'>
+<a class='timestamp' href='#627736'><time timestamp='2018-08-27T04:14:00Z'>04:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Jmabsd: read again
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343300' id='627737'>
+<a class='timestamp' href='#627737'><time timestamp='2018-08-27T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+&gt;&gt; is right-shift, line 208 does &quot;int nSize = nCompact &gt;&gt; 24;&quot;. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343360' id='627738'>
+<a class='timestamp' href='#627738'><time timestamp='2018-08-27T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+nCompact is uint32_t which is afaik an unsigned 32bit integer.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343360' id='627739'>
+<a class='timestamp' href='#627739'><time timestamp='2018-08-27T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+right-shifting 24 bits means what i suggested above. &quot;int&quot; here doesn&#x27;t matter because it&#x27;s at least 32bits and we&#x27;re decimating the size here.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343360' id='627740'>
+<a class='timestamp' href='#627740'><time timestamp='2018-08-27T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+OH
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535343360' id='627741'>
+<a class='timestamp' href='#627741'><time timestamp='2018-08-27T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+sipa: ah you&#x27;re right, the AND is on the original compact value. thx.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346180' id='627742'>
+<a class='timestamp' href='#627742'><time timestamp='2018-08-27T05:03:00Z'>05:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+FWIW, the most non-mmap files open I&#x27;ve seen is 39
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346180' id='627743'>
+<a class='timestamp' href='#627743'><time timestamp='2018-08-27T05:03:00Z'>05:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+seems like it&#x27;s txindex-related, as that&#x27;s using 47 mmaps itself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346420' id='627744'>
+<a class='timestamp' href='#627744'><time timestamp='2018-08-27T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+err, not txindex, I have that disabled apparently
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346420' id='627745'>
+<a class='timestamp' href='#627745'><time timestamp='2018-08-27T05:07:00Z'>05:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+blocks/index :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346480' id='627746'>
+<a class='timestamp' href='#627746'><time timestamp='2018-08-27T05:08:00Z'>05:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+I imagine it&#x27;d be worse with txindex
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627747'>
+<a class='timestamp' href='#627747'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+Wait, just a funny detail on the &quot;showing block hash in reverse hex byte order in order for the PoW zeroes to be represented in the string&#x27;s leading position&quot;:
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627748'>
+<a class='timestamp' href='#627748'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+*actually*, the hex string printer does NOT reverse the hex positions (<a href="https://github.com/bitcoin/bitcoin/blob/eb7daf4d600eeb631427c018a984a77a34aca66e/src/utilstrencodings.h#L121" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/eb7daf4d600eeb631427c018a984a77a34aca66e/src/utilstrencodings.h#L121</a> - see here there&#x27;s no reversing of the order of the bits in the byte) - and the reversing logic applied on the whole per-structure level is reversing byte order only, never bit order (ref. <a href="https://github.com/bitcoin/bitcoin/blob/eb7daf4d600eeb631427c018a984a77a34aca66e/sr" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/eb7daf4d600eeb631427c018a984a77a34aca66e/sr</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627749'>
+<a class='timestamp' href='#627749'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+c/uint256.cpp#L23)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627750'>
+<a class='timestamp' href='#627750'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+for this reason, actually, within each 8-multiple of PoW zeroes, actually the serialization will NOT be made in reverse order, and, we can see this already at block #5 here: <a href="https://www.blockchain.com/btc/block/000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d" class="link" target="_blank">https://www.blockchain.com/btc/block/000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627751'>
+<a class='timestamp' href='#627751'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/5" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/5</a> | Make the version number the protocol version and not the client version · Issue #5 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627752'>
+<a class='timestamp' href='#627752'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+*#6
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627753'>
+<a class='timestamp' href='#627753'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+Its hash is &quot;000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d&quot;.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627754'>
+<a class='timestamp' href='#627754'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/6" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/6</a> | Treat wallet as a generic keystore · Issue #6 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627755'>
+<a class='timestamp' href='#627755'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+Do you see there, that, zeroes at the end of the block hash, which do count as PoW zeroes, are actually represented in the hex string <b>*BEHIND*</b> the digit 3,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346600' id='627756'>
+<a class='timestamp' href='#627756'><time timestamp='2018-08-27T05:10:00Z'>05:10</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+yeah so this is not a big deal but the reversing (done for illustrative purposes) is only partial.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346660' id='627757'>
+<a class='timestamp' href='#627757'><time timestamp='2018-08-27T05:11:00Z'>05:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+Jmabsd: pretty sure you are wrong
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346660' id='627758'>
+<a class='timestamp' href='#627758'><time timestamp='2018-08-27T05:11:00Z'>05:11</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+endianness deals with the bytes, not the bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346780' id='627759'>
+<a class='timestamp' href='#627759'><time timestamp='2018-08-27T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Jmabsd: you&#x27;re getting far too worked up about endianness issues
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346780' id='627760'>
+<a class='timestamp' href='#627760'><time timestamp='2018-08-27T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+they&#x27;re conventions, and usually every convention sucks for some reason, but you still need to pick one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346780' id='627761'>
+<a class='timestamp' href='#627761'><time timestamp='2018-08-27T05:13:00Z'>05:13</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+deal with it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346840' id='627762'>
+<a class='timestamp' href='#627762'><time timestamp='2018-08-27T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if you get it wrong, try the other way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535346840' id='627763'>
+<a class='timestamp' href='#627763'><time timestamp='2018-08-27T05:14:00Z'>05:14</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+only downside to big endian AFAIK is that you can&#x27;t truncate by a simple cast :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347020' id='627764'>
+<a class='timestamp' href='#627764'><time timestamp='2018-08-27T05:17:00Z'>05:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but yes, endianness is about the bytes (or symbols), not the indivudual bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347620' id='627765'>
+<a class='timestamp' href='#627765'><time timestamp='2018-08-27T05:27:00Z'>05:27</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+sipa: right, and an example of where PoW-significant zeroes show up in a non-leading position is block #6, <a href="https://www.blockchain.com/btc/block/000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d" class="link" target="_blank">https://www.blockchain.com/btc/block/000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347620' id='627766'>
+<a class='timestamp' href='#627766'><time timestamp='2018-08-27T05:27:00Z'>05:27</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/6" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/6</a> | Treat wallet as a generic keystore · Issue #6 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347680' id='627767'>
+<a class='timestamp' href='#627767'><time timestamp='2018-08-27T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+the 5:th byte in the reverse order there, is 0x30, the 0 there is zeroes however representation is byte-reversed only not bit reversed, and so the last bits in that byte get on the second hex position behind the 3.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347680' id='627768'>
+<a class='timestamp' href='#627768'><time timestamp='2018-08-27T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+this is trivial but anyhow.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347680' id='627769'>
+<a class='timestamp' href='#627769'><time timestamp='2018-08-27T05:28:00Z'>05:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Jmabsd: i think it&#x27;s getting offtopic here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347740' id='627770'>
+<a class='timestamp' href='#627770'><time timestamp='2018-08-27T05:29:00Z'>05:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+we can discuss the general principle, but at some point you just to try and see
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535347800' id='627771'>
+<a class='timestamp' href='#627771'><time timestamp='2018-08-27T05:30:00Z'>05:30</time></a>
+&lt;<span class='nick nick-9'> Jmabsd</span>&gt;
+yep.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535349840' id='627772'>
+<a class='timestamp' href='#627772'><time timestamp='2018-08-27T06:04:00Z'>06:04</time></a>
+&lt;<span class='nick nick-15'> ossifrage</span>&gt;
+luke-jr, the original reason for the leveldb mmap change was that it was using a large number of file descriptors, enough to push incoming connections out of the &lt;1024 fd select() limit. Bumping up the mmap count was sorta a workaround for that problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535351700' id='627773'>
+<a class='timestamp' href='#627773'><time timestamp='2018-08-27T06:35:00Z'>06:35</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+ossifrage: yes, I understand why now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535364480' id='627774'>
+<a class='timestamp' href='#627774'><time timestamp='2018-08-27T10:08:00Z'>10:08</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+luke-jr: thanks for diving into the mmap leveldb issue. i was also confused about how those limits interact and was doing some measurements of mmap usage.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535364540' id='627775'>
+<a class='timestamp' href='#627775'><time timestamp='2018-08-27T10:09:00Z'>10:09</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+with txindex off it looked like i&#x27;d never get more than 1000 mmaps, but with it on i&#x27;d get up to 2000
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535364660' id='627776'>
+<a class='timestamp' href='#627776'><time timestamp='2018-08-27T10:11:00Z'>10:11</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+one thing i was curious about was whether we have a good handle on the maximum number of non-mmap&#x27;ed files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535364780' id='627777'>
+<a class='timestamp' href='#627777'><time timestamp='2018-08-27T10:13:00Z'>10:13</time></a>
+&lt;<span class='nick nick-13'> sdaftuar</span>&gt;
+to make sure there&#x27;s not some remotely-triggerable leveldb behavior where we end up opening 1000 fd&#x27;s and breaking select()
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535365140' id='627778'>
+<a class='timestamp' href='#627778'><time timestamp='2018-08-27T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sdaftuar: looks like we&#x27;d be safe doing something like (4096 - 1) / (2 + txindex?1:0) for the file limit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535365140' id='627779'>
+<a class='timestamp' href='#627779'><time timestamp='2018-08-27T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(4096 only with the patched mmap limit ofc)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535365140' id='627780'>
+<a class='timestamp' href='#627780'><time timestamp='2018-08-27T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+in theory, we could probably burn fds on top of mmaps, but that might hurt performance more than it&#x27;s worth
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535365140' id='627781'>
+<a class='timestamp' href='#627781'><time timestamp='2018-08-27T10:19:00Z'>10:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+(since we know 64 * 3 was safe)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535378220' id='627782'>
+<a class='timestamp' href='#627782'><time timestamp='2018-08-27T13:57:00Z'>13:57</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+Review beg for #14023. It&#x27;s not urgent, but it requires frequent rebase and it should be a very easy, mechanical review.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535378220' id='627783'>
+<a class='timestamp' href='#627783'><time timestamp='2018-08-27T13:57:00Z'>13:57</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14023" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14023</a> | Remove accounts rpcs by jnewbery · Pull Request #14023 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535378280' id='627784'>
+<a class='timestamp' href='#627784'><time timestamp='2018-08-27T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+It&#x27;d be nice to get a critical number of people review it once than have lots of re-ACKs as it gets rebased
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535378280' id='627785'>
+<a class='timestamp' href='#627785'><time timestamp='2018-08-27T13:58:00Z'>13:58</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+wumpus: not sure if it makes the bar for high priority, but if you think it does, please add it :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535378460' id='627786'>
+<a class='timestamp' href='#627786'><time timestamp='2018-08-27T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+jnewbery: sure, added!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535380800' id='627787'>
+<a class='timestamp' href='#627787'><time timestamp='2018-08-27T14:40:00Z'>14:40</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535384880' id='627788'>
+<a class='timestamp' href='#627788'><time timestamp='2018-08-27T15:48:00Z'>15:48</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+gmaxwell sipa: so are we thinking at this point that RSS is kind of a useless metric because clean ldb pages will just be pushed out under memory pressure?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385000' id='627789'>
+<a class='timestamp' href='#627789'><time timestamp='2018-08-27T15:50:00Z'>15:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jamesob: possibly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385000' id='627790'>
+<a class='timestamp' href='#627790'><time timestamp='2018-08-27T15:50:00Z'>15:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jamesob: That is my view.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385120' id='627791'>
+<a class='timestamp' href='#627791'><time timestamp='2018-08-27T15:52:00Z'>15:52</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+do we want to have bitcoinperf count dirty pages as an additional metric?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385300' id='627792'>
+<a class='timestamp' href='#627792'><time timestamp='2018-08-27T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-3'> * wumpus</span>&gt;
+waves farewell to account API (finally)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385300' id='627793'>
+<a class='timestamp' href='#627793'><time timestamp='2018-08-27T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+\o/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385300' id='627794'>
+<a class='timestamp' href='#627794'><time timestamp='2018-08-27T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jamesob: I think we should.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385300' id='627795'>
+<a class='timestamp' href='#627795'><time timestamp='2018-08-27T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+thanks wumpus!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385300' id='627796'>
+<a class='timestamp' href='#627796'><time timestamp='2018-08-27T15:55:00Z'>15:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: it will be bittersweet goodbye
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385360' id='627797'>
+<a class='timestamp' href='#627797'><time timestamp='2018-08-27T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think i&#x27;ve developed somewhat of a stockholm syndrome with it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385360' id='627798'>
+<a class='timestamp' href='#627798'><time timestamp='2018-08-27T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+sipa, be healed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385360' id='627799'>
+<a class='timestamp' href='#627799'><time timestamp='2018-08-27T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yes that&#x27;s what happens :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385360' id='627800'>
+<a class='timestamp' href='#627800'><time timestamp='2018-08-27T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+I spent hours trying to write a sensible comment about balances with accounts in the code; failed. No love lost there.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385420' id='627801'>
+<a class='timestamp' href='#627801'><time timestamp='2018-08-27T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+it was the same for me for getinfo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385480' id='627802'>
+<a class='timestamp' href='#627802'><time timestamp='2018-08-27T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+but it just had to happen, after all that time, and I&#x27;m happy this particular knot is finally cut
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385600' id='627803'>
+<a class='timestamp' href='#627803'><time timestamp='2018-08-27T16:00:00Z'>16:00</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+gmaxwell: so basically we want to poll `pmap -x $(pidof bitcoind) | tail -n 1 | tr -s &#x27; &#x27; | cut -d&#x27; &#x27; -f 4` for a max value throughout ibd/reindex
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535385780' id='627804'>
+<a class='timestamp' href='#627804'><time timestamp='2018-08-27T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jamesob: I think that is what we want, yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386080' id='627805'>
+<a class='timestamp' href='#627805'><time timestamp='2018-08-27T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+The PR that was just merged removed the accounts RPCs. There&#x27;s a bunch of dead code left behind that&#x27;s removed in #13825. Feel free to review that if you want to help remove all traces of accounts. (non-urgent and I&#x27;m happy to keep rebasing)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386080' id='627806'>
+<a class='timestamp' href='#627806'><time timestamp='2018-08-27T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13825" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13825</a> | [wallet] Kill accounts by jnewbery · Pull Request #13825 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386680' id='627807'>
+<a class='timestamp' href='#627807'><time timestamp='2018-08-27T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+:(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386680' id='627808'>
+<a class='timestamp' href='#627808'><time timestamp='2018-08-27T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+14023 was merged without any actual answer to the locked fund issue.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386920' id='627809'>
+<a class='timestamp' href='#627809'><time timestamp='2018-08-27T16:22:00Z'>16:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what locked fund issue?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386920' id='627810'>
+<a class='timestamp' href='#627810'><time timestamp='2018-08-27T16:22:00Z'>16:22</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386980' id='627811'>
+<a class='timestamp' href='#627811'><time timestamp='2018-08-27T16:23:00Z'>16:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+a reference would be useful
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535386980' id='627812'>
+<a class='timestamp' href='#627812'><time timestamp='2018-08-27T16:23:00Z'>16:23</time></a>
+&lt;<span class='nick nick-4'> rockhouse</span>&gt;
+gmaxwell: Would you say this definition is correct? &quot;CTs don&#x27;t use homomorphic encryption. They use &quot;additively homomorphic commitments&quot; which are, essentially, cryptographic proofs.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387100' id='627813'>
+<a class='timestamp' href='#627813'><time timestamp='2018-08-27T16:25:00Z'>16:25</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: I don&#x27;t know if there is an issue on github anywhere. But as I pointed out, in the past people have attached accounts to addresses, gotten funds assigned to accounts, then found themselves unable to use send to address to send funds until they MOVEed the funds back.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387160' id='627814'>
+<a class='timestamp' href='#627814'><time timestamp='2018-08-27T16:26:00Z'>16:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+rockhouse: They&#x27;re additively homorphic commitments, but I wouldn&#x27;t say that the commitments themselves are &quot;cryptographic proofs&quot;, they&#x27;re just commitments. CT also uses cryptographic proofs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387160' id='627815'>
+<a class='timestamp' href='#627815'><time timestamp='2018-08-27T16:26:00Z'>16:26</time></a>
+&lt;<span class='nick nick-4'> rockhouse</span>&gt;
+thx
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387280' id='627816'>
+<a class='timestamp' href='#627816'><time timestamp='2018-08-27T16:28:00Z'>16:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I&#x27;m sorry I didn&#x27;t see that jnewbery responded to me (weird, I thought I had looked yesturday too!)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387340' id='627817'>
+<a class='timestamp' href='#627817'><time timestamp='2018-08-27T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: that&#x27;s certainly possible with accounts based RPCs... there were some that did balance checks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387340' id='627818'>
+<a class='timestamp' href='#627818'><time timestamp='2018-08-27T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+gmaxwell: but now the whole concept of balances is gone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387340' id='627819'>
+<a class='timestamp' href='#627819'><time timestamp='2018-08-27T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+What PR removed the balance checks?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387400' id='627820'>
+<a class='timestamp' href='#627820'><time timestamp='2018-08-27T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+accounts are gone.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387400' id='627821'>
+<a class='timestamp' href='#627821'><time timestamp='2018-08-27T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+without accounts, there are no more RPCs that do balance checks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387400' id='627822'>
+<a class='timestamp' href='#627822'><time timestamp='2018-08-27T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because the concept of balance doesn&#x27;t exist anymore
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387400' id='627823'>
+<a class='timestamp' href='#627823'><time timestamp='2018-08-27T16:30:00Z'>16:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Okay, what I&#x27;m asking is where were the balance checks removed? I looked at 13825 and I didn&#x27;t see that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387460' id='627824'>
+<a class='timestamp' href='#627824'><time timestamp='2018-08-27T16:31:00Z'>16:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+well the account RPCs are gone, no?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387520' id='627825'>
+<a class='timestamp' href='#627825'><time timestamp='2018-08-27T16:32:00Z'>16:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+My concern is that people assigned funds to labels in the past, then load up one of their wallets in new code. So they don&#x27;t need accounts rpcs to get in that state, if the backend code still checks balances.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387580' id='627826'>
+<a class='timestamp' href='#627826'><time timestamp='2018-08-27T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i think we really need to see a report
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387580' id='627827'>
+<a class='timestamp' href='#627827'><time timestamp='2018-08-27T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+because the only things that should be doing balance checks is accounts RPCs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387580' id='627828'>
+<a class='timestamp' href='#627828'><time timestamp='2018-08-27T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+even in the past
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387640' id='627829'>
+<a class='timestamp' href='#627829'><time timestamp='2018-08-27T16:34:00Z'>16:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+There are people in my IRC logs reporting issues sending with sendtoaddress then luke telling them to move and then them saying it worked.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387880' id='627830'>
+<a class='timestamp' href='#627830'><time timestamp='2018-08-27T16:38:00Z'>16:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that seems like a very serious bug, if true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535387880' id='627831'>
+<a class='timestamp' href='#627831'><time timestamp='2018-08-27T16:38:00Z'>16:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+first time i hear about it, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388060' id='627832'>
+<a class='timestamp' href='#627832'><time timestamp='2018-08-27T16:41:00Z'>16:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&quot;sendtoaddress only subtracts the amount from the default account,&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388060' id='627833'>
+<a class='timestamp' href='#627833'><time timestamp='2018-08-27T16:41:00Z'>16:41</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+what are you quoting?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388120' id='627834'>
+<a class='timestamp' href='#627834'><time timestamp='2018-08-27T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+IRC logs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388120' id='627835'>
+<a class='timestamp' href='#627835'><time timestamp='2018-08-27T16:42:00Z'>16:42</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+If that changed (or was never the case) OKAY, but I also thought it was the case, and I don&#x27;t remember a PR changing it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388180' id='627836'>
+<a class='timestamp' href='#627836'><time timestamp='2018-08-27T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+sendtoaddress subtracts the default account, but doesn&#x27;t check its balance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388180' id='627837'>
+<a class='timestamp' href='#627837'><time timestamp='2018-08-27T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it doesn&#x27;t do anything with accounts at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388180' id='627838'>
+<a class='timestamp' href='#627838'><time timestamp='2018-08-27T16:43:00Z'>16:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+as balances are just defined implicitly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388540' id='627839'>
+<a class='timestamp' href='#627839'><time timestamp='2018-08-27T16:49:00Z'>16:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it might be the case that the reporters were actually using sendmany, which did check, but which has since had it removed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388540' id='627840'>
+<a class='timestamp' href='#627840'><time timestamp='2018-08-27T16:49:00Z'>16:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I found the PR disabling it in sendmany.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388720' id='627841'>
+<a class='timestamp' href='#627841'><time timestamp='2018-08-27T16:52:00Z'>16:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388840' id='627842'>
+<a class='timestamp' href='#627842'><time timestamp='2018-08-27T16:54:00Z'>16:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and/or people have been uselessly telling people to use move when their real problem was something else.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388840' id='627843'>
+<a class='timestamp' href='#627843'><time timestamp='2018-08-27T16:54:00Z'>16:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(like needing to wait for unconfirmed funds to confirm)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388960' id='627844'>
+<a class='timestamp' href='#627844'><time timestamp='2018-08-27T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+yes, sendmany would call getLegacyBalance() and earlier getAccountBalance(). senttoaddress has always used getBalance(), which doesn&#x27;t check accounts/labels at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535388960' id='627845'>
+<a class='timestamp' href='#627845'><time timestamp='2018-08-27T16:56:00Z'>16:56</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+sendmany now uses getLegacyBalance() without an account argument
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535389020' id='627846'>
+<a class='timestamp' href='#627846'><time timestamp='2018-08-27T16:57:00Z'>16:57</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+if 14023 was done right, then none of the RPCs should now know anything about account balances at all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535391660' id='627847'>
+<a class='timestamp' href='#627847'><time timestamp='2018-08-27T17:41:00Z'>17:41</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+so i notice select has a 50ms timeout, that seems kind of short given all it&#x27;s only purpose is to consume pnode-&gt;vSend when the initial attempt failed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535392680' id='627848'>
+<a class='timestamp' href='#627848'><time timestamp='2018-08-27T17:58:00Z'>17:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I assume it was made short so that it wouldn&#x27;t block sending new messages.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535392800' id='627849'>
+<a class='timestamp' href='#627849'><time timestamp='2018-08-27T18:00:00Z'>18:00</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, send() is called on the full buffer before anything is added to pnode-&gt;vSend
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535392980' id='627850'>
+<a class='timestamp' href='#627850'><time timestamp='2018-08-27T18:03:00Z'>18:03</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+actually wait this is still doing the thing of calling send() for each message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535393160' id='627851'>
+<a class='timestamp' href='#627851'><time timestamp='2018-08-27T18:06:00Z'>18:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh we didn&#x27;t fix the thing where the header and payload go out in seperate packets? :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535393280' id='627852'>
+<a class='timestamp' href='#627852'><time timestamp='2018-08-27T18:08:00Z'>18:08</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, i think that&#x27;s fixed i mean sipa changed this in 2013 from the buffer per connection to a list of messages per connection
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535393280' id='627853'>
+<a class='timestamp' href='#627853'><time timestamp='2018-08-27T18:08:00Z'>18:08</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+and i cant remember why
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535393280' id='627854'>
+<a class='timestamp' href='#627854'><time timestamp='2018-08-27T18:08:00Z'>18:08</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+doesn&#x27;t change the optimistic send logic meaningfully though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535393340' id='627855'>
+<a class='timestamp' href='#627855'><time timestamp='2018-08-27T18:09:00Z'>18:09</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+so im still wondering about the 50ms timeout
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535395440' id='627856'>
+<a class='timestamp' href='#627856'><time timestamp='2018-08-27T18:44:00Z'>18:44</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: I can&#x27;t follow your comment here: <a href="https://github.com/bitcoin/bitcoin/pull/14049#discussion_r213027446" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14049#discussion_r213027446</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535395500' id='627857'>
+<a class='timestamp' href='#627857'><time timestamp='2018-08-27T18:45:00Z'>18:45</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+You mean a 32byte pubkey with missing first byte to test for?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535395980' id='627858'>
+<a class='timestamp' href='#627858'><time timestamp='2018-08-27T18:53:00Z'>18:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+BIP151 sends a 32 byte pubkey, not a 33 byte one. Right?  so a test that gives a junk value to the first byte doesn&#x27;t actually test any case that could be triggered by BIP151. (though it&#x27;s fine to test that too)  The test I&#x27;m going for is an x value not on the curve, since failing to check that is a common implementation bug in ECDH implementations.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535397600' id='627859'>
+<a class='timestamp' href='#627859'><time timestamp='2018-08-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: make sense now?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535397600' id='627860'>
+<a class='timestamp' href='#627860'><time timestamp='2018-08-27T19:20:00Z'>19:20</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Ah. I see! Will fix thanks gmaxwell
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535397900' id='627861'>
+<a class='timestamp' href='#627861'><time timestamp='2018-08-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell, sipa: what was the conclusion on the inefficiency of the ChaCha20Poly1305@openssh AEAD?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535397900' id='627862'>
+<a class='timestamp' href='#627862'><time timestamp='2018-08-27T19:25:00Z'>19:25</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(currently benchmarking)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398140' id='627863'>
+<a class='timestamp' href='#627863'><time timestamp='2018-08-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+CHACHA20POLY1305AEAD_BIG, 5, 340, 3.68279, 0.00215035, 0.00219169, 0.00216025
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398140' id='627864'>
+<a class='timestamp' href='#627864'><time timestamp='2018-08-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+CHACHA20POLY1305AEAD_SMALL, 5, 250000, 1.08673, 8.51516e-07, 8.93585e-07, 8.61119e-07
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398140' id='627865'>
+<a class='timestamp' href='#627865'><time timestamp='2018-08-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+HASH256_BIG, 5, 340, 3.81384, 0.00222589, 0.00226436, 0.00224086
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398140' id='627866'>
+<a class='timestamp' href='#627866'><time timestamp='2018-08-27T19:29:00Z'>19:29</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+HASH256_SMALL, 5, 250000, 1.1305, 8.96669e-07, 9.15482e-07, 9.03866e-07
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398200' id='627867'>
+<a class='timestamp' href='#627867'><time timestamp='2018-08-27T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(BIG = 1MB, SMALL: 256bytes)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398200' id='627868'>
+<a class='timestamp' href='#627868'><time timestamp='2018-08-27T19:30:00Z'>19:30</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(and this is SHA256 asm vs non-asm ChaCha)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398260' id='627869'>
+<a class='timestamp' href='#627869'><time timestamp='2018-08-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But I agree that the chacha20 rounds (one for the poly key, one for the length) is not very very efficient...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398260' id='627870'>
+<a class='timestamp' href='#627870'><time timestamp='2018-08-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But compared to dbl-SHA256 is probably faster
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398260' id='627871'>
+<a class='timestamp' href='#627871'><time timestamp='2018-08-27T19:31:00Z'>19:31</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(once optimized)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398740' id='627872'>
+<a class='timestamp' href='#627872'><time timestamp='2018-08-27T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: so there is an obvious optimization to get the length key from bytes 33-36 of the polykey chacha run.  the only apparent argument against doing that is that its less compatible with existing constructs.  it sounds like openssl didn&#x27;t do it that way so they could just call a function that implemented that TLS style AEAD.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398800' id='627873'>
+<a class='timestamp' href='#627873'><time timestamp='2018-08-27T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: Yes. That would work,... but would reduce the AAD len to 4 (currently flexible, but not required in our case).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535398800' id='627874'>
+<a class='timestamp' href='#627874'><time timestamp='2018-08-27T19:40:00Z'>19:40</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+My only worry is that we start cooking our own crypto...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399100' id='627875'>
+<a class='timestamp' href='#627875'><time timestamp='2018-08-27T19:45:00Z'>19:45</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+There is still the option to use AES-CGM <b>*duck*</b>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399160' id='627876'>
+<a class='timestamp' href='#627876'><time timestamp='2018-08-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Though non NI implementation will bring back cache-time attacks (or non efficient implementations)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399160' id='627877'>
+<a class='timestamp' href='#627877'><time timestamp='2018-08-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I guess ChaCha20 is preferable if we can&#x27;t guarantee for AES-NI (which I guess we can&#x27;t)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399160' id='627878'>
+<a class='timestamp' href='#627878'><time timestamp='2018-08-27T19:46:00Z'>19:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: for AES-GCM there are very fast non-NI that are cache time fine, for machines with SIMD.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399220' id='627879'>
+<a class='timestamp' href='#627879'><time timestamp='2018-08-27T19:47:00Z'>19:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It&#x27;s only CBC mode that really stinks without NI.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399280' id='627880'>
+<a class='timestamp' href='#627880'><time timestamp='2018-08-27T19:48:00Z'>19:48</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Okay. Yeah. Unsure then if switching &quot;back&quot; (we once discussed AES-CGM vs ChaChaPoly back in 2015) would make sense then.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399340' id='627881'>
+<a class='timestamp' href='#627881'><time timestamp='2018-08-27T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+basically chacha20 is the fastest on ARM by a wide margin.  Basically tied with non-NI on x86 if you use SIMD, and somewhat worse than NI GCM.  Our reasoning, which I assume is the same as others using chacha-- is that it makes sense to optimize for the least powerful computers.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399340' id='627882'>
+<a class='timestamp' href='#627882'><time timestamp='2018-08-27T19:49:00Z'>19:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think thats still true, though the 3x runs of chacha for small messages shifts the equation further in favor of AES simply because most of our messages are pretty small.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399400' id='627883'>
+<a class='timestamp' href='#627883'><time timestamp='2018-08-27T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. Indeed. I think optimizing for an AAD-len of 4 and reducing thus to 2x could make sense then
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399400' id='627884'>
+<a class='timestamp' href='#627884'><time timestamp='2018-08-27T19:50:00Z'>19:50</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: I&#x27;m not sure why it would reduce the AAD len?  poly1305 uses 32 bytes of key regardless of the auth token size.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399460' id='627885'>
+<a class='timestamp' href='#627885'><time timestamp='2018-08-27T19:51:00Z'>19:51</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The 2nd rund is currently to derive the 2nd ChaCha20 key for the AAD encryption (the 4 byte length in our case).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399520' id='627886'>
+<a class='timestamp' href='#627886'><time timestamp='2018-08-27T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh I see what you&#x27;re saying the length of the lenghts.  Well there are 64 bytes available.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399520' id='627887'>
+<a class='timestamp' href='#627887'><time timestamp='2018-08-27T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+32 get used for poly1305&#x27;s key, leaving 32 that get throw away right now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399520' id='627888'>
+<a class='timestamp' href='#627888'><time timestamp='2018-08-27T19:52:00Z'>19:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. We can set the max AAD size to 32
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399580' id='627889'>
+<a class='timestamp' href='#627889'><time timestamp='2018-08-27T19:53:00Z'>19:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But I&#x27;m not a cryptographer and I&#x27;m not sure if this would require some analysis first (isn&#x27;t it basically a new AEAD)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399700' id='627890'>
+<a class='timestamp' href='#627890'><time timestamp='2018-08-27T19:55:00Z'>19:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Where I&#x27;m unsure: currently, there are two ChaCha20 contexts (two keys), one context is for the actual stream <u>_AND_</u> the poly1305 key, the 2nd context for the AAD (the payload length)... and now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399760' id='627891'>
+<a class='timestamp' href='#627891'><time timestamp='2018-08-27T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+We would drop the second context,... and take the AAD key from the main context
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399760' id='627892'>
+<a class='timestamp' href='#627892'><time timestamp='2018-08-27T19:56:00Z'>19:56</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Reducing back to 32bytes of required key material... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399820' id='627893'>
+<a class='timestamp' href='#627893'><time timestamp='2018-08-27T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+At least the discussion I linked to before said that they designed it that way so they could use an unmodified implementation of the TLS AEAD to implement the openssl one. (this seems dumb to me, but its the rational they gave)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399820' id='627894'>
+<a class='timestamp' href='#627894'><time timestamp='2018-08-27T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Which sounds <u>_not_</u> after a problem... but again, IF we do that, probably good if a cryptograph-expert takes a closer look at this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399820' id='627895'>
+<a class='timestamp' href='#627895'><time timestamp='2018-08-27T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the defense against the length oracle just depends on you not being able to shift the input.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399880' id='627896'>
+<a class='timestamp' href='#627896'><time timestamp='2018-08-27T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I see... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399880' id='627897'>
+<a class='timestamp' href='#627897'><time timestamp='2018-08-27T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. Indeed. Reducing the performance in our system due to legacy stuff from the AEAD-origin system seems indeed inefficient
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399940' id='627898'>
+<a class='timestamp' href='#627898'><time timestamp='2018-08-27T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+also, does the openssl usage actually send the full 128 bit poly1305 tag?  I had thought it used a 96 bit tag.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399940' id='627899'>
+<a class='timestamp' href='#627899'><time timestamp='2018-08-27T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+To bad this is not an optimisation we can do later. :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535399940' id='627900'>
+<a class='timestamp' href='#627900'><time timestamp='2018-08-27T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: you mean openssh?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400000' id='627901'>
+<a class='timestamp' href='#627901'><time timestamp='2018-08-27T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well thats why I&#x27;m looking at it now. What got me going down this path was checking to see if anything would get in the way of getting the most out of AVX2/SSE2 in the future.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400000' id='627902'>
+<a class='timestamp' href='#627902'><time timestamp='2018-08-27T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: ye.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400000' id='627903'>
+<a class='timestamp' href='#627903'><time timestamp='2018-08-27T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400060' id='627904'>
+<a class='timestamp' href='#627904'><time timestamp='2018-08-27T20:01:00Z'>20:01</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+The openssh function produces a 128bit tag,... but not if they wired it over (probably)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400180' id='627905'>
+<a class='timestamp' href='#627905'><time timestamp='2018-08-27T20:03:00Z'>20:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+There is another change we might want to consider, but I wanted to research if anyone else has proposed it-- that we should chain the unused part of the tag from each message to the AAD (additional authenticated data) in the next message, so we get the full tag&#x27;s worth of protection, but then noticed we were using the whole tag output. When I thought it was truncated.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400300' id='627906'>
+<a class='timestamp' href='#627906'><time timestamp='2018-08-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: with the goal of saving 4 bytes per message, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400300' id='627907'>
+<a class='timestamp' href='#627907'><time timestamp='2018-08-27T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(in case we trunc down to 96bits)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400480' id='627908'>
+<a class='timestamp' href='#627908'><time timestamp='2018-08-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: where I&#x27;m also unsure – in case we would not reduce the AEAD to use a single 256bit key: the length is pretty much known (known plaintext), right now, in the AEAD@openssh, compromising the second, AAD key, is eventually not too critical
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400480' id='627909'>
+<a class='timestamp' href='#627909'><time timestamp='2018-08-27T20:08:00Z'>20:08</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+*in case we would reduce
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400780' id='627910'>
+<a class='timestamp' href='#627910'><time timestamp='2018-08-27T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+There is nothing wrong with the lengths being known. 99% of the protocol is known. It&#x27;s very obvious from traffic analysis when pings are sent, for example. And the sequences of messages we send at the start are the same each time.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400840' id='627911'>
+<a class='timestamp' href='#627911'><time timestamp='2018-08-27T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Yes. That true,... 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400900' id='627912'>
+<a class='timestamp' href='#627912'><time timestamp='2018-08-27T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: yes, making the tag shorter reduces overhead.  Right now for short messages like a tx inv, almost half the bandwidth is used by overhead (the 4 byte length and the 16 byte tag).  If I was imagining it and no one else is truncating the tags, then I guess we shouldn&#x27;t just to avoid the security analysis.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535400900' id='627913'>
+<a class='timestamp' href='#627913'><time timestamp='2018-08-27T20:15:00Z'>20:15</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+I think its def. worth to see if we can.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535401020' id='627914'>
+<a class='timestamp' href='#627914'><time timestamp='2018-08-27T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Compared to the v1 protocol (I agree that comparing is not the best metric), the encryption-overhead is not too bad. -4byte magic, -4bytes SHA-chksm,-~8bytes cmd, +16bytes MAC + 4byte length
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535401380' id='627915'>
+<a class='timestamp' href='#627915'><time timestamp='2018-08-27T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+still ends up being about twice as much. Which is not unacceptable.  It seems I was dreaming about the 96-bit tag, I don&#x27;t see anyone using poly1305 with truncated tags.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402100' id='627916'>
+<a class='timestamp' href='#627916'><time timestamp='2018-08-27T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+twice as much? v1 versus v2? v1 inv: 24(hdr)+36(msg) == 60 bytes    &lt; versus &gt;. v2: 4(outter-len)+4(cmd)+4(inner-len)+36(msg)+16MAC == 64
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402100' id='627917'>
+<a class='timestamp' href='#627917'><time timestamp='2018-08-27T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+So an inv is 4 bytes longer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402160' id='627918'>
+<a class='timestamp' href='#627918'><time timestamp='2018-08-27T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Also,... multiple messages can be combined into a single encrypted package
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402160' id='627919'>
+<a class='timestamp' href='#627919'><time timestamp='2018-08-27T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+reducing the &quot;weight&quot; of the AAD (payload length) and the MAC tag
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402280' id='627920'>
+<a class='timestamp' href='#627920'><time timestamp='2018-08-27T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh I forgot we could do that, well that basically kills any overhead concerns I had.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402400' id='627921'>
+<a class='timestamp' href='#627921'><time timestamp='2018-08-27T20:40:00Z'>20:40</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+on your message above, an INV is 4+12+1+36+4 on the wire today.   
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402460' id='627922'>
+<a class='timestamp' href='#627922'><time timestamp='2018-08-27T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+The twice comment was 4+4 vs 4+16 (-command savings) ~= 2x more overhead data. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402460' id='627923'>
+<a class='timestamp' href='#627923'><time timestamp='2018-08-27T20:41:00Z'>20:41</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+didn&#x27;t you miss the message size in your calc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402520' id='627924'>
+<a class='timestamp' href='#627924'><time timestamp='2018-08-27T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: AFAIK a v1 header is 24 bytes (4+12+!4!+4)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402520' id='627925'>
+<a class='timestamp' href='#627925'><time timestamp='2018-08-27T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yup
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402580' id='627926'>
+<a class='timestamp' href='#627926'><time timestamp='2018-08-27T20:43:00Z'>20:43</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+magic, command, (something), checksum, whats something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402640' id='627927'>
+<a class='timestamp' href='#627927'><time timestamp='2018-08-27T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+length
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402640' id='627928'>
+<a class='timestamp' href='#627928'><time timestamp='2018-08-27T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(something) == 4 bytes 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402640' id='627929'>
+<a class='timestamp' href='#627929'><time timestamp='2018-08-27T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(length)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402640' id='627930'>
+<a class='timestamp' href='#627930'><time timestamp='2018-08-27T20:44:00Z'>20:44</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(non variable)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402700' id='627931'>
+<a class='timestamp' href='#627931'><time timestamp='2018-08-27T20:45:00Z'>20:45</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+and in the new protocol we made the lengths implicit to the command type?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402700' id='627932'>
+<a class='timestamp' href='#627932'><time timestamp='2018-08-27T20:45:00Z'>20:45</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+10x v1 invs result in 600 bytes where a 10x v2 inv (packed) could result in 388 bytes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402760' id='627933'>
+<a class='timestamp' href='#627933'><time timestamp='2018-08-27T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: the v2 protocol uses varstr for the command rather then fixed 12 bytes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402760' id='627934'>
+<a class='timestamp' href='#627934'><time timestamp='2018-08-27T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+but that reduction above comes at the cost of combining 10invs (time lag)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402760' id='627935'>
+<a class='timestamp' href='#627935'><time timestamp='2018-08-27T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I know that the command is variable in v2. But do we have a second length then now?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402760' id='627936'>
+<a class='timestamp' href='#627936'><time timestamp='2018-08-27T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: if you&#x27;re going to combine 10 invs, you&#x27;d combine them in the inv message. :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402820' id='627937'>
+<a class='timestamp' href='#627937'><time timestamp='2018-08-27T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+inner length, outer length
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402820' id='627938'>
+<a class='timestamp' href='#627938'><time timestamp='2018-08-27T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: oh. yes. :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402820' id='627939'>
+<a class='timestamp' href='#627939'><time timestamp='2018-08-27T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+outer length is the encrypted payload length that can combine multiple messages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402820' id='627940'>
+<a class='timestamp' href='#627940'><time timestamp='2018-08-27T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(where the inner length is the message payload length)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402880' id='627941'>
+<a class='timestamp' href='#627941'><time timestamp='2018-08-27T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+right so it&#x27;s not like we saved coding that length.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402940' id='627942'>
+<a class='timestamp' href='#627942'><time timestamp='2018-08-27T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+you mean by using varlen for the inner message size?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402940' id='627943'>
+<a class='timestamp' href='#627943'><time timestamp='2018-08-27T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+*varint
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402940' id='627944'>
+<a class='timestamp' href='#627944'><time timestamp='2018-08-27T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+No.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402940' id='627945'>
+<a class='timestamp' href='#627945'><time timestamp='2018-08-27T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the 16 byte tag  replaces magic and the checksum but the additional length at the encryption layer is just additional.  
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535402940' id='627946'>
+<a class='timestamp' href='#627946'><time timestamp='2018-08-27T20:49:00Z'>20:49</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403000' id='627947'>
+<a class='timestamp' href='#627947'><time timestamp='2018-08-27T20:50:00Z'>20:50</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+Its somehow required since you first need to check the MAC before processing the inner messages
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403060' id='627948'>
+<a class='timestamp' href='#627948'><time timestamp='2018-08-27T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Sure. from the above I thought you were saying that it was the only length we have. generally. But sadly we can&#x27;t use implicit lengths because we need to be able to handle unknown messages.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403060' id='627949'>
+<a class='timestamp' href='#627949'><time timestamp='2018-08-27T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403120' id='627950'>
+<a class='timestamp' href='#627950'><time timestamp='2018-08-27T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Whats the maximum size of an encrypted message? the outer length. Just the same as the maximum message size?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403120' id='627951'>
+<a class='timestamp' href='#627951'><time timestamp='2018-08-27T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+2^31
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403120' id='627952'>
+<a class='timestamp' href='#627952'><time timestamp='2018-08-27T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(bit 32 is used for the rekey)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403120' id='627953'>
+<a class='timestamp' href='#627953'><time timestamp='2018-08-27T20:52:00Z'>20:52</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I sure hope not, else it&#x27;ll be awfully easy to exhaust your ram. :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403180' id='627954'>
+<a class='timestamp' href='#627954'><time timestamp='2018-08-27T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I know what the length can encode, but there needs to be a smaller limit in the implementation or otherwise there is a trivial memory exhaustion DOS.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403180' id='627955'>
+<a class='timestamp' href='#627955'><time timestamp='2018-08-27T20:53:00Z'>20:53</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: of course there is the MAX_SIZE check before decrypting the payload
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403240' id='627956'>
+<a class='timestamp' href='#627956'><time timestamp='2018-08-27T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/pull/14032/files#diff-35820b8a93cd261189cd3ea9a4e611e1R45" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14032/files#diff-35820b8a93cd261189cd3ea9a4e611e1R45</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403240' id='627957'>
+<a class='timestamp' href='#627957'><time timestamp='2018-08-27T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+So, if it&#x27;s the same MAX_SIZE as messages, does this end up effectively reducing MAX_SIZE by a few bytes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403300' id='627958'>
+<a class='timestamp' href='#627958'><time timestamp='2018-08-27T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+gmaxwell: Yes. I guess that would require fixing once we combine multiple messages (or expect it will be combined).
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403300' id='627959'>
+<a class='timestamp' href='#627959'><time timestamp='2018-08-27T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+So,... I guess it needs fixing now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403300' id='627960'>
+<a class='timestamp' href='#627960'><time timestamp='2018-08-27T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+It&#x27;s indeed missing bytes,... especially if we assume combined messages into a single enc package
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403300' id='627961'>
+<a class='timestamp' href='#627961'><time timestamp='2018-08-27T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+(will fix)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403360' id='627962'>
+<a class='timestamp' href='#627962'><time timestamp='2018-08-27T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+well yes/no, so max_size is much larger than any message we allow today.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403360' id='627963'>
+<a class='timestamp' href='#627963'><time timestamp='2018-08-27T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so it&#x27;s not actually a limitation. But I think it actually needs to be set to the largest message plus a few bytes for the overhead.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403360' id='627964'>
+<a class='timestamp' href='#627964'><time timestamp='2018-08-27T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I think as you have it now thats probably a trivial DOS attack, e.g. I can make your node use 32mb * npeers ram... so 4GB additional usage in the default configuration. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403420' id='627965'>
+<a class='timestamp' href='#627965'><time timestamp='2018-08-27T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+hmm...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403420' id='627966'>
+<a class='timestamp' href='#627966'><time timestamp='2018-08-27T20:57:00Z'>20:57</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+use 3 byte lengths :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403480' id='627967'>
+<a class='timestamp' href='#627967'><time timestamp='2018-08-27T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+3 byte is kinda limiting, I really wanted to suggest that previously. Realistically if we ever had messages that needed to be bigger we&#x27;d have to break them up for processing reasons.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403480' id='627968'>
+<a class='timestamp' href='#627968'><time timestamp='2018-08-27T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+How does the current network code prevents that (there is the same MAX_SIZE check)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403480' id='627969'>
+<a class='timestamp' href='#627969'><time timestamp='2018-08-27T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the serialization code will only reallocate in blobs of 5 MB as the data is read
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403480' id='627970'>
+<a class='timestamp' href='#627970'><time timestamp='2018-08-27T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jonasschnelli: there are size limits on the particular messages.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403480' id='627971'>
+<a class='timestamp' href='#627971'><time timestamp='2018-08-27T20:58:00Z'>20:58</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ah... we don&#x27;t need to auth before process there, right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403540' id='627972'>
+<a class='timestamp' href='#627972'><time timestamp='2018-08-27T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it never allocates more than 5 MB in addition to what it has already read from the stream
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403540' id='627973'>
+<a class='timestamp' href='#627973'><time timestamp='2018-08-27T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Like if we were to support (say) 40MB blocks pratically we should have messages that split the blocks into chunks, because transfering and allocating 40MB at a time would be kind of absurd.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403600' id='627974'>
+<a class='timestamp' href='#627974'><time timestamp='2018-08-27T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so 3byte lengths might actually be reasonable.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403600' id='627975'>
+<a class='timestamp' href='#627975'><time timestamp='2018-08-27T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+ack
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403600' id='627976'>
+<a class='timestamp' href='#627976'><time timestamp='2018-08-27T21:00:00Z'>21:00</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But due to the rekey approach, it would be 2^23
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403720' id='627977'>
+<a class='timestamp' href='#627977'><time timestamp='2018-08-27T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+But I guess we don&#x27;t want more then that per encryption package that needs auth (doesn&#x27;t mean we don&#x27;t want larger messages)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1535403780' id='627978'>
+<a class='timestamp' href='#627978'><time timestamp='2018-08-27T21:03:00Z'>21:03</time></a>
+&lt;<span class='nick nick-12'> * jonasschnelli</span>&gt;
+needs to go afk
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

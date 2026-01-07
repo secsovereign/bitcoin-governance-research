@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2024-04-23
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2024-04-23' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:09 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2024-03-23">&lt;</a><span class='header'>    April 2024    </span><a href="/bitcoin-core-dev/2024-05-23">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2024-04-01">1</a>  2  3  4  5  6  &#x000A; 7  8  <a class="" href="/bitcoin-core-dev/2024-04-09">9</a> <a class="" href="/bitcoin-core-dev/2024-04-10">10</a> <a class="" href="/bitcoin-core-dev/2024-04-11">11</a> <a class="" href="/bitcoin-core-dev/2024-04-12">12</a> <a class="" href="/bitcoin-core-dev/2024-04-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2024-04-14">14</a> <a class="" href="/bitcoin-core-dev/2024-04-15">15</a> <a class="" href="/bitcoin-core-dev/2024-04-16">16</a> <a class="" href="/bitcoin-core-dev/2024-04-17">17</a> <a class="" href="/bitcoin-core-dev/2024-04-18">18</a> <a class="" href="/bitcoin-core-dev/2024-04-19">19</a> <a class="" href="/bitcoin-core-dev/2024-04-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2024-04-21">21</a> <a class="" href="/bitcoin-core-dev/2024-04-22">22</a> <a class="current" href="/bitcoin-core-dev/2024-04-23">23</a> <a class="" href="/bitcoin-core-dev/2024-04-24">24</a> <a class="" href="/bitcoin-core-dev/2024-04-25">25</a> <a class="" href="/bitcoin-core-dev/2024-04-26">26</a> <a class="" href="/bitcoin-core-dev/2024-04-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2024-04-28">28</a> <a class="" href="/bitcoin-core-dev/2024-04-29">29</a> <a class="" href="/bitcoin-core-dev/2024-04-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='info op-topic' data-timestamp='1685024740' id='925038'>
+<a class='timeref' href='/bitcoin-core-dev/2023-05-25#925038'><time timestamp='2023-05-25T14:25:40Z'>2023-05-25 14:25</time></a>
+ChanServ changed the topic of #bitcoin-core-dev to: Bitcoin Core development discussion and commit log | Feel free to watch, but please take commentary and usage questions to #bitcoin | Channel logs: <a href="http://www.erisian.com.au/bitcoin-core-dev/" class="link" target="_blank">http://www.erisian.com.au/bitcoin-core-dev/</a>, <a href="http://gnusha.org/bitcoin-core-dev/" class="link" target="_blank">http://gnusha.org/bitcoin-core-dev/</a> | Weekly Meeting Thursday @ 14:00 UTC | Meeting topics <a href="http://gnusha.org/bitcoin-core-dev/proposedmeetingtopics.txt" class="link" target="_blank">http://gnusha.org/bitcoin-core-dev/proposedmeetingtopics.txt</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713830544' id='1020868'>
+<a class='timestamp' href='#1020868'><time timestamp='2024-04-23T00:02:24Z'>00:02</time></a>
+&lt;<span class='nick nick-5'>roasbeef</span>&gt;
+following up re that bitcoind testnet issue from a few days ago, the data dir upload finished, I also added the binary itself (linux amd64): <a href="https://drive.google.com/drive/folders/1iie_HQzUOrYaR94JPfNVQHA9UicUIDCV?usp=sharing" class="link" target="_blank">https://drive.google.com/drive/folders/1iie_HQzUOrYaR94JPfNVQHA9UicUIDCV?usp=sharing</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713830566' id='1020869'>
+<a class='timestamp' href='#1020869'><time timestamp='2024-04-23T00:02:46Z'>00:02</time></a>
+&lt;<span class='nick nick-5'>roasbeef</span>&gt;
+a reindex was able to fix some of the nodes, but others persisted so we wipe them from scratch (was after I copied the data dirs)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713830589' id='1020870'>
+<a class='timestamp' href='#1020870'><time timestamp='2024-04-23T00:03:09Z'>00:03</time></a>
+&lt;<span class='nick nick-5'>roasbeef</span>&gt;
+achow101: ^ 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713830623' id='1020871'>
+<a class='timestamp' href='#1020871'><time timestamp='2024-04-23T00:03:43Z'>00:03</time></a>
+&lt;<span class='nick nick-5'>roasbeef</span>&gt;
+core dump is here: <a href="https://drive.google.com/file/u/1/d/1N-0FZb4OG6nXLKE6DfgbDOUDi426XozM/view?usp=sharing" class="link" target="_blank">https://drive.google.com/file/u/1/d/1N-0FZb4OG6nXLKE6DfgbDOUDi426XozM/view?usp=sharing</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713831104' id='1020872'>
+<a class='timestamp' href='#1020872'><time timestamp='2024-04-23T00:11:44Z'>00:11</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+will look, thanks
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713832990' id='1020873'>
+<a class='timestamp' href='#1020873'><time timestamp='2024-04-23T00:43:10Z'>00:43</time></a>
+jon_atack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713833099' id='1020874'>
+<a class='timestamp' href='#1020874'><time timestamp='2024-04-23T00:44:59Z'>00:44</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+roasbeef: are you sure that the dockerfile you linked a few days ago is the right one? the binary you uploaded looks to be built on alpine
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713833138' id='1020875'>
+<a class='timestamp' href='#1020875'><time timestamp='2024-04-23T00:45:38Z'>00:45</time></a>
+abubakarsadiq has quit [Quit: Connection closed for inactivity]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713833165' id='1020876'>
+<a class='timestamp' href='#1020876'><time timestamp='2024-04-23T00:46:05Z'>00:46</time></a>
+jonatack has quit [Ping timeout: 268 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713833395' id='1020877'>
+<a class='timestamp' href='#1020877'><time timestamp='2024-04-23T00:49:55Z'>00:49</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+hmm, that repo does have dockerfiles for alpine, so maybe that&#x27;s it
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713833913' id='1020878'>
+<a class='timestamp' href='#1020878'><time timestamp='2024-04-23T00:58:33Z'>00:58</time></a>
+BlueMatt has quit [Quit: Quit]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713833929' id='1020879'>
+<a class='timestamp' href='#1020879'><time timestamp='2024-04-23T00:58:49Z'>00:58</time></a>
+BlueMatt has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713834359' id='1020880'>
+<a class='timestamp' href='#1020880'><time timestamp='2024-04-23T01:05:59Z'>01:05</time></a>
+S3RK_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713834579' id='1020881'>
+<a class='timestamp' href='#1020881'><time timestamp='2024-04-23T01:09:39Z'>01:09</time></a>
+S3RK has quit [Ping timeout: 272 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713836477' id='1020882'>
+<a class='timestamp' href='#1020882'><time timestamp='2024-04-23T01:41:17Z'>01:41</time></a>
+dviola has quit [Ping timeout: 240 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713836611' id='1020883'>
+<a class='timestamp' href='#1020883'><time timestamp='2024-04-23T01:43:31Z'>01:43</time></a>
+diego has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-nick' data-timestamp='1713836640' id='1020884'>
+<a class='timestamp' href='#1020884'><time timestamp='2024-04-23T01:44:00Z'>01:44</time></a>
+diego is now known as Guest6007
+<br>
+</div>
+
+<div class='info op-leave' data-timestamp='1713836740' id='1020885'>
+<a class='timestamp' href='#1020885'><time timestamp='2024-04-23T01:45:40Z'>01:45</time></a>
+Guest6007 has left #bitcoin-core-dev [#bitcoin-core-dev]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713836776' id='1020886'>
+<a class='timestamp' href='#1020886'><time timestamp='2024-04-23T01:46:16Z'>01:46</time></a>
+dviola has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713837335' id='1020887'>
+<a class='timestamp' href='#1020887'><time timestamp='2024-04-23T01:55:35Z'>01:55</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713839946' id='1020888'>
+<a class='timestamp' href='#1020888'><time timestamp='2024-04-23T02:39:06Z'>02:39</time></a>
+jarthur has quit [Quit: jarthur]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713842840' id='1020889'>
+<a class='timestamp' href='#1020889'><time timestamp='2024-04-23T03:27:20Z'>03:27</time></a>
+asoltys has quit [Ping timeout: 256 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713844861' id='1020890'>
+<a class='timestamp' href='#1020890'><time timestamp='2024-04-23T04:01:01Z'>04:01</time></a>
+cmirror has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713844892' id='1020891'>
+<a class='timestamp' href='#1020891'><time timestamp='2024-04-23T04:01:32Z'>04:01</time></a>
+cmirror has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713844953' id='1020892'>
+<a class='timestamp' href='#1020892'><time timestamp='2024-04-23T04:02:33Z'>04:02</time></a>
+jon_atack has quit [Ping timeout: 256 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713845136' id='1020893'>
+<a class='timestamp' href='#1020893'><time timestamp='2024-04-23T04:05:36Z'>04:05</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713845174' id='1020894'>
+<a class='timestamp' href='#1020894'><time timestamp='2024-04-23T04:06:14Z'>04:06</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713845479' id='1020895'>
+<a class='timestamp' href='#1020895'><time timestamp='2024-04-23T04:11:19Z'>04:11</time></a>
+jonatack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713847686' id='1020896'>
+<a class='timestamp' href='#1020896'><time timestamp='2024-04-23T04:48:06Z'>04:48</time></a>
+blockdyor has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713852990' id='1020897'>
+<a class='timestamp' href='#1020897'><time timestamp='2024-04-23T06:16:30Z'>06:16</time></a>
+PaperSword has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713853418' id='1020898'>
+<a class='timestamp' href='#1020898'><time timestamp='2024-04-23T06:23:38Z'>06:23</time></a>
+BrandonOdiwuor has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713853564' id='1020899'>
+<a class='timestamp' href='#1020899'><time timestamp='2024-04-23T06:26:04Z'>06:26</time></a>
+Guest60 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713853576' id='1020900'>
+<a class='timestamp' href='#1020900'><time timestamp='2024-04-23T06:26:16Z'>06:26</time></a>
+Guest60 has quit [Client Quit]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713855771' id='1020901'>
+<a class='timestamp' href='#1020901'><time timestamp='2024-04-23T07:02:51Z'>07:02</time></a>
+gribble has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713855772' id='1020902'>
+<a class='timestamp' href='#1020902'><time timestamp='2024-04-23T07:02:52Z'>07:02</time></a>
+gribble has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713856991' id='1020903'>
+<a class='timestamp' href='#1020903'><time timestamp='2024-04-23T07:23:11Z'>07:23</time></a>
+bitdex has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713857026' id='1020904'>
+<a class='timestamp' href='#1020904'><time timestamp='2024-04-23T07:23:46Z'>07:23</time></a>
+bitdex has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713857843' id='1020905'>
+<a class='timestamp' href='#1020905'><time timestamp='2024-04-23T07:37:23Z'>07:37</time></a>
+jon_atack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713857936' id='1020906'>
+<a class='timestamp' href='#1020906'><time timestamp='2024-04-23T07:38:56Z'>07:38</time></a>
+jonatack has quit [Ping timeout: 256 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713858673' id='1020907'>
+<a class='timestamp' href='#1020907'><time timestamp='2024-04-23T07:51:13Z'>07:51</time></a>
+bitdex_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713858718' id='1020908'>
+<a class='timestamp' href='#1020908'><time timestamp='2024-04-23T07:51:58Z'>07:51</time></a>
+bitdex has quit [Ping timeout: 260 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713859470' id='1020909'>
+<a class='timestamp' href='#1020909'><time timestamp='2024-04-23T08:04:30Z'>08:04</time></a>
+kexkey has quit [Ping timeout: 245 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713859561' id='1020910'>
+<a class='timestamp' href='#1020910'><time timestamp='2024-04-23T08:06:01Z'>08:06</time></a>
+kexkey has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713859610' id='1020911'>
+<a class='timestamp' href='#1020911'><time timestamp='2024-04-23T08:06:50Z'>08:06</time></a>
+Guyver2 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713860320' id='1020912'>
+<a class='timestamp' href='#1020912'><time timestamp='2024-04-23T08:18:40Z'>08:18</time></a>
+bitdex_ has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713860347' id='1020913'>
+<a class='timestamp' href='#1020913'><time timestamp='2024-04-23T08:19:07Z'>08:19</time></a>
+bitdex_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713861020' id='1020914'>
+<a class='timestamp' href='#1020914'><time timestamp='2024-04-23T08:30:20Z'>08:30</time></a>
+Guyver2 has quit [Quit: Going offline, see ya! (<a href="http://www.adiirc.com" class="link" target="_blank">www.adiirc.com</a>)]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713863331' id='1020915'>
+<a class='timestamp' href='#1020915'><time timestamp='2024-04-23T09:08:51Z'>09:08</time></a>
+BrandonOdiwuor has quit [Ping timeout: 250 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713863648' id='1020916'>
+<a class='timestamp' href='#1020916'><time timestamp='2024-04-23T09:14:08Z'>09:14</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] 9167674641 opened pull request #29937: Update README.md (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/29937" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29937</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713863676' id='1020917'>
+<a class='timestamp' href='#1020917'><time timestamp='2024-04-23T09:14:36Z'>09:14</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] willcl-ark closed pull request #29937: Update README.md (master...patch-1) <a href="https://github.com/bitcoin/bitcoin/pull/29937" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29937</a>
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713864100' id='1020918'>
+<a class='timestamp' href='#1020918'><time timestamp='2024-04-23T09:21:40Z'>09:21</time></a>
+ghost43 has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713864101' id='1020919'>
+<a class='timestamp' href='#1020919'><time timestamp='2024-04-23T09:21:41Z'>09:21</time></a>
+vasild has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713864127' id='1020920'>
+<a class='timestamp' href='#1020920'><time timestamp='2024-04-23T09:22:07Z'>09:22</time></a>
+vasild has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713864128' id='1020921'>
+<a class='timestamp' href='#1020921'><time timestamp='2024-04-23T09:22:08Z'>09:22</time></a>
+ghost43 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713864408' id='1020922'>
+<a class='timestamp' href='#1020922'><time timestamp='2024-04-23T09:26:48Z'>09:26</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] hanmz opened pull request #29938: Fix typos in description.md (master...fix/typos-description) <a href="https://github.com/bitcoin/bitcoin/pull/29938" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29938</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713865782' id='1020923'>
+<a class='timestamp' href='#1020923'><time timestamp='2024-04-23T09:49:42Z'>09:49</time></a>
+BrandonOdiwuor has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713868237' id='1020924'>
+<a class='timestamp' href='#1020924'><time timestamp='2024-04-23T10:30:37Z'>10:30</time></a>
+&lt;<span class='nick nick-13'>hebasto</span>&gt;
+can we have a github tag for PRs that have to be backported to the CMake staging branch? For example, #29904.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713868241' id='1020925'>
+<a class='timestamp' href='#1020925'><time timestamp='2024-04-23T10:30:41Z'>10:30</time></a>
+&lt;<span class='nick nick-10'>gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/29904" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/29904</a> | refactor: Use our own implementation of urlDecode by fjahr · Pull Request #29904 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713868538' id='1020926'>
+<a class='timestamp' href='#1020926'><time timestamp='2024-04-23T10:35:38Z'>10:35</time></a>
+&lt;<span class='nick nick-5'>laanwj</span>&gt;
+hebasto: yes, that would make sense
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713868610' id='1020927'>
+<a class='timestamp' href='#1020927'><time timestamp='2024-04-23T10:36:50Z'>10:36</time></a>
+jespada has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713869931' id='1020928'>
+<a class='timestamp' href='#1020928'><time timestamp='2024-04-23T10:58:51Z'>10:58</time></a>
+Guyver2 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713870800' id='1020929'>
+<a class='timestamp' href='#1020929'><time timestamp='2024-04-23T11:13:20Z'>11:13</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] theStack opened pull request #29939: test: add MiniWallet tagging support to avoid UTXO mixing, use in `fill_mempool` (master...202404-test-support_MiniWallet_tags) <a href="https://github.com/bitcoin/bitcoin/pull/29939" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29939</a>
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713873211' id='1020930'>
+<a class='timestamp' href='#1020930'><time timestamp='2024-04-23T11:53:31Z'>11:53</time></a>
+Guyver2 has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713873999' id='1020931'>
+<a class='timestamp' href='#1020931'><time timestamp='2024-04-23T12:06:39Z'>12:06</time></a>
+rkrux has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713874025' id='1020932'>
+<a class='timestamp' href='#1020932'><time timestamp='2024-04-23T12:07:05Z'>12:07</time></a>
+jonatack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713874141' id='1020933'>
+<a class='timestamp' href='#1020933'><time timestamp='2024-04-23T12:09:01Z'>12:09</time></a>
+jon_atack has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713874589' id='1020934'>
+<a class='timestamp' href='#1020934'><time timestamp='2024-04-23T12:16:29Z'>12:16</time></a>
+rkrux has quit [Ping timeout: 250 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713875644' id='1020935'>
+<a class='timestamp' href='#1020935'><time timestamp='2024-04-23T12:34:04Z'>12:34</time></a>
+jon_atack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713875761' id='1020936'>
+<a class='timestamp' href='#1020936'><time timestamp='2024-04-23T12:36:01Z'>12:36</time></a>
+jonatack has quit [Ping timeout: 255 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713875930' id='1020937'>
+<a class='timestamp' href='#1020937'><time timestamp='2024-04-23T12:38:50Z'>12:38</time></a>
+bitdex_ has quit [Quit: = &quot;&quot;]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713875968' id='1020938'>
+<a class='timestamp' href='#1020938'><time timestamp='2024-04-23T12:39:28Z'>12:39</time></a>
+brunoerg has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713876063' id='1020939'>
+<a class='timestamp' href='#1020939'><time timestamp='2024-04-23T12:41:03Z'>12:41</time></a>
+brunoerg has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713876529' id='1020940'>
+<a class='timestamp' href='#1020940'><time timestamp='2024-04-23T12:48:49Z'>12:48</time></a>
+brunoerg has quit [Ping timeout: 268 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713877140' id='1020941'>
+<a class='timestamp' href='#1020941'><time timestamp='2024-04-23T12:59:00Z'>12:59</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] Umiiii opened pull request #29940: test(mempool): add missing comparison of node1&#x27;s mempool in MempoolPackagesTest (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/29940" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29940</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713878185' id='1020942'>
+<a class='timestamp' href='#1020942'><time timestamp='2024-04-23T13:16:25Z'>13:16</time></a>
+zone117x has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713878647' id='1020943'>
+<a class='timestamp' href='#1020943'><time timestamp='2024-04-23T13:24:07Z'>13:24</time></a>
+rkrux has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713879628' id='1020944'>
+<a class='timestamp' href='#1020944'><time timestamp='2024-04-23T13:40:28Z'>13:40</time></a>
+bugs_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713879763' id='1020945'>
+<a class='timestamp' href='#1020945'><time timestamp='2024-04-23T13:42:43Z'>13:42</time></a>
+rkrux has quit [Ping timeout: 250 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713879839' id='1020946'>
+<a class='timestamp' href='#1020946'><time timestamp='2024-04-23T13:43:59Z'>13:43</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] Umiiii closed pull request #29940: test: add missing comparison of node1&#x27;s mempool in MempoolPackagesTest (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/29940" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29940</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713879863' id='1020947'>
+<a class='timestamp' href='#1020947'><time timestamp='2024-04-23T13:44:23Z'>13:44</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] Umiiii opened pull request #29941: test: add missing comparison of node1&#x27;s mempool in MempoolPackagesTest (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/29941" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29941</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713880804' id='1020948'>
+<a class='timestamp' href='#1020948'><time timestamp='2024-04-23T14:00:04Z'>14:00</time></a>
+Guyver2 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-leave' data-timestamp='1713882708' id='1020949'>
+<a class='timestamp' href='#1020949'><time timestamp='2024-04-23T14:31:48Z'>14:31</time></a>
+Guyver2 has left #bitcoin-core-dev [Closing Window]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713882775' id='1020950'>
+<a class='timestamp' href='#1020950'><time timestamp='2024-04-23T14:32:55Z'>14:32</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin-maintainer-tools] naiyoma opened pull request #162: check service flags being supported by  dns providers (main...feature/filter-dns-seeds) <a href="https://github.com/bitcoin-core/bitcoin-maintainer-tools/pull/162" class="link" target="_blank">https://github.com/bitcoin-core/bitcoin-maintainer-tools/pull/162</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713883385' id='1020951'>
+<a class='timestamp' href='#1020951'><time timestamp='2024-04-23T14:43:05Z'>14:43</time></a>
+brunoerg has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713885936' id='1020952'>
+<a class='timestamp' href='#1020952'><time timestamp='2024-04-23T15:25:36Z'>15:25</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] vostrnad opened pull request #29942: Remove redundant `-datacarrier` option (master...remove-datacarrier) <a href="https://github.com/bitcoin/bitcoin/pull/29942" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29942</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713886779' id='1020953'>
+<a class='timestamp' href='#1020953'><time timestamp='2024-04-23T15:39:39Z'>15:39</time></a>
+preimage has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713886817' id='1020954'>
+<a class='timestamp' href='#1020954'><time timestamp='2024-04-23T15:40:17Z'>15:40</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+laanwj: hebasto: has one been added yet?
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713887176' id='1020955'>
+<a class='timestamp' href='#1020955'><time timestamp='2024-04-23T15:46:16Z'>15:46</time></a>
+jonatack has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713887317' id='1020956'>
+<a class='timestamp' href='#1020956'><time timestamp='2024-04-23T15:48:37Z'>15:48</time></a>
+jon_atack has quit [Ping timeout: 256 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713888012' id='1020957'>
+<a class='timestamp' href='#1020957'><time timestamp='2024-04-23T16:00:12Z'>16:00</time></a>
+PaperSword has quit [Quit: PaperSword]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713888878' id='1020958'>
+<a class='timestamp' href='#1020958'><time timestamp='2024-04-23T16:14:38Z'>16:14</time></a>
+&lt;<span class='nick nick-13'>hebasto</span>&gt;
+I&#x27;ve just created a new &quot;Needs backport to CMake&quot; label
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713891900' id='1020959'>
+<a class='timestamp' href='#1020959'><time timestamp='2024-04-23T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 pushed 9 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/256e1703197f...2cecbbb98683" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/256e1703197f...2cecbbb98683</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713891900' id='1020960'>
+<a class='timestamp' href='#1020960'><time timestamp='2024-04-23T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 633e45b Sebastian Falbesoner: remove unneeded shell option from cpp-subprocess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713891900' id='1020961'>
+<a class='timestamp' href='#1020961'><time timestamp='2024-04-23T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master cececad Sebastian Falbesoner: remove unneeded preexec function option from cpp-subprocess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713891901' id='1020962'>
+<a class='timestamp' href='#1020962'><time timestamp='2024-04-23T17:05:01Z'>17:05</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 80d008c Sebastian Falbesoner: remove unneeded defer_spawn option from cpp-subprocess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713891907' id='1020963'>
+<a class='timestamp' href='#1020963'><time timestamp='2024-04-23T17:05:07Z'>17:05</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 merged pull request #29865: util: remove unused cpp-subprocess options (master...202404-remove-unused-cpp-subprocess-options) <a href="https://github.com/bitcoin/bitcoin/pull/29865" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29865</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713892584' id='1020964'>
+<a class='timestamp' href='#1020964'><time timestamp='2024-04-23T17:16:24Z'>17:16</time></a>
+Talkless has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713892867' id='1020965'>
+<a class='timestamp' href='#1020965'><time timestamp='2024-04-23T17:21:07Z'>17:21</time></a>
+BrandonOdiwuor has quit [Ping timeout: 250 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713893419' id='1020966'>
+<a class='timestamp' href='#1020966'><time timestamp='2024-04-23T17:30:19Z'>17:30</time></a>
+ryanofsky has quit [Quit: ZNC 1.7.5 - <a href="https://znc.in" class="link" target="_blank">https://znc.in</a>]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713893634' id='1020967'>
+<a class='timestamp' href='#1020967'><time timestamp='2024-04-23T17:33:54Z'>17:33</time></a>
+ryanofsky has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713894027' id='1020968'>
+<a class='timestamp' href='#1020968'><time timestamp='2024-04-23T17:40:27Z'>17:40</time></a>
+&lt;<span class='nick nick-3'>lightlike</span>&gt;
+I tried to load the datadir provided by roasbeef with v26.0 and current master, also got to the point of the invalid block (&quot;coinbase pays too much&quot;), but no segfault for me.
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713895083' id='1020969'>
+<a class='timestamp' href='#1020969'><time timestamp='2024-04-23T17:58:03Z'>17:58</time></a>
+brunoerg_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713895288' id='1020970'>
+<a class='timestamp' href='#1020970'><time timestamp='2024-04-23T18:01:28Z'>18:01</time></a>
+brunoerg has quit [Ping timeout: 268 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713896645' id='1020971'>
+<a class='timestamp' href='#1020971'><time timestamp='2024-04-23T18:24:05Z'>18:24</time></a>
+puchka has quit [Ping timeout: 240 seconds]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713897506' id='1020972'>
+<a class='timestamp' href='#1020972'><time timestamp='2024-04-23T18:38:26Z'>18:38</time></a>
+brunoerg_ has quit [Read error: Connection reset by peer]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713897655' id='1020973'>
+<a class='timestamp' href='#1020973'><time timestamp='2024-04-23T18:40:55Z'>18:40</time></a>
+brunoerg has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713897855' id='1020974'>
+<a class='timestamp' href='#1020974'><time timestamp='2024-04-23T18:44:15Z'>18:44</time></a>
+uasf has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713897879' id='1020975'>
+<a class='timestamp' href='#1020975'><time timestamp='2024-04-23T18:44:39Z'>18:44</time></a>
+phantomcircuit has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713897881' id='1020976'>
+<a class='timestamp' href='#1020976'><time timestamp='2024-04-23T18:44:41Z'>18:44</time></a>
+uasf_ has quit [Read error: Connection reset by peer]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713897897' id='1020977'>
+<a class='timestamp' href='#1020977'><time timestamp='2024-04-23T18:44:57Z'>18:44</time></a>
+phantomcircuit has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713897938' id='1020978'>
+<a class='timestamp' href='#1020978'><time timestamp='2024-04-23T18:45:38Z'>18:45</time></a>
+puchka has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713899809' id='1020979'>
+<a class='timestamp' href='#1020979'><time timestamp='2024-04-23T19:16:49Z'>19:16</time></a>
+Talkless has quit [Quit: Konversation terminated!]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713899895' id='1020980'>
+<a class='timestamp' href='#1020980'><time timestamp='2024-04-23T19:18:15Z'>19:18</time></a>
+bugs_ has quit [Ping timeout: 245 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713900785' id='1020981'>
+<a class='timestamp' href='#1020981'><time timestamp='2024-04-23T19:33:05Z'>19:33</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+sipa: i noticed that there have been a number of recent blocks where a large number of transactions had to be requested, any idea why? specifically this block was &gt;1k requested 000000000000000000028cb399a0f90b57c4a8b4738ca14111b8994a06f0667a
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713900888' id='1020982'>
+<a class='timestamp' href='#1020982'><time timestamp='2024-04-23T19:34:48Z'>19:34</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/2cecbbb98683...4aa18cea823b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/2cecbbb98683...4aa18cea823b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713900889' id='1020983'>
+<a class='timestamp' href='#1020983'><time timestamp='2024-04-23T19:34:49Z'>19:34</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 55b13ec Brandon Odiwuor: doc: explain what the wallet password does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713900889' id='1020984'>
+<a class='timestamp' href='#1020984'><time timestamp='2024-04-23T19:34:49Z'>19:34</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 4aa18ce Ava Chow: Merge bitcoin/bitcoin#28974: doc: explain what the wallet password does
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713900890' id='1020985'>
+<a class='timestamp' href='#1020985'><time timestamp='2024-04-23T19:34:50Z'>19:34</time></a>
+&lt;<span class='nick nick-8'>instagibbs</span>&gt;
+very large influx of tiny runes, perhaps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713900895' id='1020986'>
+<a class='timestamp' href='#1020986'><time timestamp='2024-04-23T19:34:55Z'>19:34</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 merged pull request #28974: doc: explain what the wallet password does (master...wallet_passphrase) <a href="https://github.com/bitcoin/bitcoin/pull/28974" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/28974</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713901254' id='1020987'>
+<a class='timestamp' href='#1020987'><time timestamp='2024-04-23T19:40:54Z'>19:40</time></a>
+&lt;<span class='nick nick-8'>instagibbs</span>&gt;
+one big &quot;miss&quot; for my node is 0000000000000000000050c1c51208603a78a8bfc5004a831c020fdb64ffac54 which appears to be full of prioritised txns
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713901562' id='1020988'>
+<a class='timestamp' href='#1020988'><time timestamp='2024-04-23T19:46:02Z'>19:46</time></a>
+Guest26 has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713901604' id='1020989'>
+<a class='timestamp' href='#1020989'><time timestamp='2024-04-23T19:46:44Z'>19:46</time></a>
+Guest26 has quit [Client Quit]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713901639' id='1020990'>
+<a class='timestamp' href='#1020990'><time timestamp='2024-04-23T19:47:19Z'>19:47</time></a>
+bugs_ has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713902886' id='1020991'>
+<a class='timestamp' href='#1020991'><time timestamp='2024-04-23T20:08:06Z'>20:08</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/4aa18cea823b...7c17f203a5fd" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/4aa18cea823b...7c17f203a5fd</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713902887' id='1020992'>
+<a class='timestamp' href='#1020992'><time timestamp='2024-04-23T20:08:07Z'>20:08</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master e30e862 brunoerg: test: remove duplicated ban test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713902888' id='1020993'>
+<a class='timestamp' href='#1020993'><time timestamp='2024-04-23T20:08:08Z'>20:08</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 7c17f20 Ava Chow: Merge bitcoin/bitcoin#29688: test: remove duplicated ban test
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713902893' id='1020994'>
+<a class='timestamp' href='#1020994'><time timestamp='2024-04-23T20:08:13Z'>20:08</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 merged pull request #29688: test: remove duplicated ban test (master...2024-03-ban-test) <a href="https://github.com/bitcoin/bitcoin/pull/29688" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29688</a>
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713904233' id='1020995'>
+<a class='timestamp' href='#1020995'><time timestamp='2024-04-23T20:30:33Z'>20:30</time></a>
+puchka has quit [Ping timeout: 272 seconds]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713904906' id='1020996'>
+<a class='timestamp' href='#1020996'><time timestamp='2024-04-23T20:41:46Z'>20:41</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+instagibbs: the only thing i can think of is someone has a &#x27;pay the pool&#x27; thing which isn&#x27;t broadcasting the transactions anywhere else
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713905259' id='1020997'>
+<a class='timestamp' href='#1020997'><time timestamp='2024-04-23T20:47:39Z'>20:47</time></a>
+&lt;<span class='nick nick-10'>sipa</span>&gt;
+phantomcircuit: sadly, that is exactly what exists
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713905645' id='1020998'>
+<a class='timestamp' href='#1020998'><time timestamp='2024-04-23T20:54:05Z'>20:54</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+sipa: i really don&#x27;t understand why anybody would bother, surely that would end up being more expensive for everybody involved
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713905680' id='1020999'>
+<a class='timestamp' href='#1020999'><time timestamp='2024-04-23T20:54:40Z'>20:54</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+the pool looses by increasing their orphan rate, the people paying are inherently over paying on average otherwise the pool wouldn&#x27;t offer this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713906965' id='1021000'>
+<a class='timestamp' href='#1021000'><time timestamp='2024-04-23T21:16:05Z'>21:16</time></a>
+&lt;<span class='nick nick-5'>achow101</span>&gt;
+phantomcircuit: have you seen marathon&#x27;s slipstream thing? they&#x27;ll mine anything as long as you pay, including nonstandard stuff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907276' id='1021001'>
+<a class='timestamp' href='#1021001'><time timestamp='2024-04-23T21:21:16Z'>21:21</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 pushed 4 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/7c17f203a5fd...a7129f827c9d" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/7c17f203a5fd...a7129f827c9d</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907277' id='1021002'>
+<a class='timestamp' href='#1021002'><time timestamp='2024-04-23T21:21:17Z'>21:21</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 6c1a2cc Sjors Provoost: test: use h marker for external signer mock
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907278' id='1021003'>
+<a class='timestamp' href='#1021003'><time timestamp='2024-04-23T21:21:18Z'>21:21</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master dc55531 Sjors Provoost: wallet: compare address returned by displayaddress
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907278' id='1021004'>
+<a class='timestamp' href='#1021004'><time timestamp='2024-04-23T21:21:18Z'>21:21</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+bitcoin/master 4357158 Sjors Provoost: wallet: return and display signer error
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907284' id='1021005'>
+<a class='timestamp' href='#1021005'><time timestamp='2024-04-23T21:21:24Z'>21:21</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] achow101 merged pull request #24313: Improve display address handling for external signer (master...2022/02/displayaddress) <a href="https://github.com/bitcoin/bitcoin/pull/24313" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/24313</a>
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713907433' id='1021006'>
+<a class='timestamp' href='#1021006'><time timestamp='2024-04-23T21:23:53Z'>21:23</time></a>
+preimage has quit [Quit: WeeChat 4.2.2]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907685' id='1021007'>
+<a class='timestamp' href='#1021007'><time timestamp='2024-04-23T21:28:05Z'>21:28</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+achow101: i mean for weird nonstandard stuff i guess, but their fee rate is literally 4x normal feerate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907690' id='1021008'>
+<a class='timestamp' href='#1021008'><time timestamp='2024-04-23T21:28:10Z'>21:28</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+so like who would use that and why
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713907848' id='1021009'>
+<a class='timestamp' href='#1021009'><time timestamp='2024-04-23T21:30:48Z'>21:30</time></a>
+brunoerg has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713907977' id='1021010'>
+<a class='timestamp' href='#1021010'><time timestamp='2024-04-23T21:32:57Z'>21:32</time></a>
+abubakarsadiq has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713907997' id='1021011'>
+<a class='timestamp' href='#1021011'><time timestamp='2024-04-23T21:33:17Z'>21:33</time></a>
+&lt;<span class='nick nick-14'>phantomcircuit</span>&gt;
+achow101: i see why, BRC-20 tokens apprently
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713908468' id='1021012'>
+<a class='timestamp' href='#1021012'><time timestamp='2024-04-23T21:41:08Z'>21:41</time></a>
+pablomartin has quit [Remote host closed the connection]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713909367' id='1021013'>
+<a class='timestamp' href='#1021013'><time timestamp='2024-04-23T21:56:07Z'>21:56</time></a>
+blockdyor has quit [Quit: My iMac has gone to sleep. ZZZzzz…]
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713909928' id='1021014'>
+<a class='timestamp' href='#1021014'><time timestamp='2024-04-23T22:05:28Z'>22:05</time></a>
+bugs_ has quit [Quit: Leaving]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713911781' id='1021015'>
+<a class='timestamp' href='#1021015'><time timestamp='2024-04-23T22:36:21Z'>22:36</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] luke-jr opened pull request #29946: Bugfix: JSON-RPC request Content-Type is application/json (master...jsonrpc_content_type) <a href="https://github.com/bitcoin/bitcoin/pull/29946" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29946</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1713913055' id='1021016'>
+<a class='timestamp' href='#1021016'><time timestamp='2024-04-23T22:57:35Z'>22:57</time></a>
+&lt;<span class='nick nick-2'>bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #29947: doc: Suggest only necessary Qt packages for installation on OpenBSD (master...240423-openbsd-qt-deps) <a href="https://github.com/bitcoin/bitcoin/pull/29947" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/29947</a>
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713915120' id='1021017'>
+<a class='timestamp' href='#1021017'><time timestamp='2024-04-23T23:32:00Z'>23:32</time></a>
+brunoerg has joined #bitcoin-core-dev
+<br>
+</div>
+
+<div class='info op-quit' data-timestamp='1713915405' id='1021018'>
+<a class='timestamp' href='#1021018'><time timestamp='2024-04-23T23:36:45Z'>23:36</time></a>
+brunoerg has quit [Ping timeout: 272 seconds]
+<br>
+</div>
+
+<div class='info op-join' data-timestamp='1713916621' id='1021019'>
+<a class='timestamp' href='#1021019'><time timestamp='2024-04-23T23:57:01Z'>23:57</time></a>
+PaperSword has joined #bitcoin-core-dev
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

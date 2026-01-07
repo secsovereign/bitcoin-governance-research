@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-03-04
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-03-04' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:24 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-02-04">&lt;</a><span class='header'>    March 2017    </span><a href="/bitcoin-core-dev/2017-04-04">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2017-03-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-03-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-03-03">3</a>  <a class="current" href="/bitcoin-core-dev/2017-03-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-03-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-03-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-03-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-03-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-03-09">9</a> <a class="" href="/bitcoin-core-dev/2017-03-10">10</a> <a class="" href="/bitcoin-core-dev/2017-03-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-03-12">12</a> <a class="" href="/bitcoin-core-dev/2017-03-13">13</a> <a class="" href="/bitcoin-core-dev/2017-03-14">14</a> <a class="" href="/bitcoin-core-dev/2017-03-15">15</a> <a class="" href="/bitcoin-core-dev/2017-03-16">16</a> <a class="" href="/bitcoin-core-dev/2017-03-17">17</a> <a class="" href="/bitcoin-core-dev/2017-03-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-03-19">19</a> <a class="" href="/bitcoin-core-dev/2017-03-20">20</a> <a class="" href="/bitcoin-core-dev/2017-03-21">21</a> <a class="" href="/bitcoin-core-dev/2017-03-22">22</a> <a class="" href="/bitcoin-core-dev/2017-03-23">23</a> <a class="" href="/bitcoin-core-dev/2017-03-24">24</a> <a class="" href="/bitcoin-core-dev/2017-03-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-03-26">26</a> <a class="" href="/bitcoin-core-dev/2017-03-27">27</a> <a class="" href="/bitcoin-core-dev/2017-03-28">28</a> <a class="" href="/bitcoin-core-dev/2017-03-29">29</a> <a class="" href="/bitcoin-core-dev/2017-03-30">30</a> <a class="" href="/bitcoin-core-dev/2017-03-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1488585720' id='533362'>
+<a class='timestamp' href='#533362'><time timestamp='2017-03-04T00:02:00Z'>00:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+no those figures are from using the scalar sha2 code.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488585780' id='533363'>
+<a class='timestamp' href='#533363'><time timestamp='2017-03-04T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+AFAIK the only real place we can make good use of the parallel sha2 SSE code would be in hash tree computation, but that is complicated as you know.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488585780' id='533364'>
+<a class='timestamp' href='#533364'><time timestamp='2017-03-04T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+IIRC the SIMD scalar sha2 is ~2x faster than ours, and the SIMD parallel sha2 is 3x faster than ours.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488585780' id='533365'>
+<a class='timestamp' href='#533365'><time timestamp='2017-03-04T00:03:00Z'>00:03</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+merkle trees probably aren&#x27;t a significant amount of hashing I think?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488585900' id='533366'>
+<a class='timestamp' href='#533366'><time timestamp='2017-03-04T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+They&#x27;re actually tons. because every node in it is three compression function runs. and there are txn*2 nodes in total.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488585900' id='533367'>
+<a class='timestamp' href='#533367'><time timestamp='2017-03-04T00:05:00Z'>00:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+so a block can have something like 24000 compression function runs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488585960' id='533368'>
+<a class='timestamp' href='#533368'><time timestamp='2017-03-04T00:06:00Z'>00:06</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+hmm     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488586080' id='533369'>
+<a class='timestamp' href='#533369'><time timestamp='2017-03-04T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so 8ms?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488586080' id='533370'>
+<a class='timestamp' href='#533370'><time timestamp='2017-03-04T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that&#x27;s significant
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488586080' id='533371'>
+<a class='timestamp' href='#533371'><time timestamp='2017-03-04T00:08:00Z'>00:08</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+assuming 3 GHz and 15 cpb for sha256
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488586140' id='533372'>
+<a class='timestamp' href='#533372'><time timestamp='2017-03-04T00:09:00Z'>00:09</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+&lt;wumpus&gt; gmaxwell: it&#x27;s a bit scary though as the external process will be able to keep a reference, and have all your key data :) &lt;- you can seal the fd and verify the seal in the sandboxed process to eliminate this vulnerability
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488586200' id='533373'>
+<a class='timestamp' href='#533373'><time timestamp='2017-03-04T00:10:00Z'>00:10</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yes, it&#x27;s non-trivial in terms of validation latency.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488586260' id='533374'>
+<a class='timestamp' href='#533374'><time timestamp='2017-03-04T00:11:00Z'>00:11</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+er actually disregard me, there is no read seal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588720' id='533375'>
+<a class='timestamp' href='#533375'><time timestamp='2017-03-04T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+hm Bitcoin Unlimited just added ~parallel block validation~ but I&#x27;m pretty sure it has no perforance benefit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588720' id='533376'>
+<a class='timestamp' href='#533376'><time timestamp='2017-03-04T00:52:00Z'>00:52</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+(in case anyone is looking at what they implemented)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588780' id='533377'>
+<a class='timestamp' href='#533377'><time timestamp='2017-03-04T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+jeremyrubin, correct, it is not a performance enhancement but an attempt to &quot;fix&quot; quadratic hashing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588780' id='533378'>
+<a class='timestamp' href='#533378'><time timestamp='2017-03-04T00:53:00Z'>00:53</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+wait what
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588840' id='533379'>
+<a class='timestamp' href='#533379'><time timestamp='2017-03-04T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+The parallel block validation?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588840' id='533380'>
+<a class='timestamp' href='#533380'><time timestamp='2017-03-04T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+yes     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588840' id='533381'>
+<a class='timestamp' href='#533381'><time timestamp='2017-03-04T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it means that the node doesn&#x27;t stall if your block takes a day to validate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588840' id='533382'>
+<a class='timestamp' href='#533382'><time timestamp='2017-03-04T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+yup, it&#x27;ll just burn a core for a day
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588840' id='533383'>
+<a class='timestamp' href='#533383'><time timestamp='2017-03-04T00:54:00Z'>00:54</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+of course under the assumption that the block also gets orphaned.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588900' id='533384'>
+<a class='timestamp' href='#533384'><time timestamp='2017-03-04T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Yeah isn&#x27;t that block hopefully just going to orphan
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588900' id='533385'>
+<a class='timestamp' href='#533385'><time timestamp='2017-03-04T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+if it takes that long to validate
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588900' id='533386'>
+<a class='timestamp' href='#533386'><time timestamp='2017-03-04T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+hmm     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588900' id='533387'>
+<a class='timestamp' href='#533387'><time timestamp='2017-03-04T00:55:00Z'>00:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+also, since our validation is already parallel anyway, it makes both blocks slower
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588960' id='533388'>
+<a class='timestamp' href='#533388'><time timestamp='2017-03-04T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+yeah that&#x27;s why I thought it was useless
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588960' id='533389'>
+<a class='timestamp' href='#533389'><time timestamp='2017-03-04T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+core can only do so many IPC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588960' id='533390'>
+<a class='timestamp' href='#533390'><time timestamp='2017-03-04T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+jeremyrubin, thus the question &quot;how long is too long&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488588960' id='533391'>
+<a class='timestamp' href='#533391'><time timestamp='2017-03-04T00:56:00Z'>00:56</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Well... that seems to be a hard fork then?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589020' id='533392'>
+<a class='timestamp' href='#533392'><time timestamp='2017-03-04T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Because now you&#x27;ll partition old nodes trying to validate whatever monster block (assuming it crashes/kills your node on old hardware)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589020' id='533393'>
+<a class='timestamp' href='#533393'><time timestamp='2017-03-04T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+jeremyrubin, it is likely to cause forks, yes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589020' id='533394'>
+<a class='timestamp' href='#533394'><time timestamp='2017-03-04T00:57:00Z'>00:57</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+itself it is not a hard fork.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589140' id='533395'>
+<a class='timestamp' href='#533395'><time timestamp='2017-03-04T00:59:00Z'>00:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+yeah, sorry was slightly imprecise with terminology 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589200' id='533396'>
+<a class='timestamp' href='#533396'><time timestamp='2017-03-04T01:00:00Z'>01:00</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+it seems they don&#x27;t mention it being a quadratic hashing fix in the documentation
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589200' id='533397'>
+<a class='timestamp' href='#533397'><time timestamp='2017-03-04T01:00:00Z'>01:00</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Also it seems quadratic hashing isn&#x27;t really a problem before this either, just wait until the block gets orphaned?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589260' id='533398'>
+<a class='timestamp' href='#533398'><time timestamp='2017-03-04T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+yea, it clearly has some unexplored interactions with selfish mining too.  E.g. if you mine an empty block, now you hold it locally for a bit comfortable that if there is a block race, you&#x27;ll win even though you announced later... you can be up to the typical validation time late in your announcement.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589260' id='533399'>
+<a class='timestamp' href='#533399'><time timestamp='2017-03-04T01:01:00Z'>01:01</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jeremyrubin: qudratic hashing is a <u>_huge_</u> problem if you&#x27;ve ripped off the blocksize limit and done nothing about it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589320' id='533400'>
+<a class='timestamp' href='#533400'><time timestamp='2017-03-04T01:02:00Z'>01:02</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+a block could take days to hash and shut down the network. :P (except for collaborating miners that know to &#x27;optimize out&#x27; checking that transaciton) :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589380' id='533401'>
+<a class='timestamp' href='#533401'><time timestamp='2017-03-04T01:03:00Z'>01:03</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Do we have a provision for abandoning a block mid validation if a longer header chain is seen?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589380' id='533402'>
+<a class='timestamp' href='#533402'><time timestamp='2017-03-04T01:03:00Z'>01:03</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Probably a tighter way to address same concern.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589440' id='533403'>
+<a class='timestamp' href='#533403'><time timestamp='2017-03-04T01:04:00Z'>01:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it&#x27;s not a concern for us. As it&#x27;s not really easy to make excessively slow blocks in the concernsus rules and segwit completely fixes quadratic hashing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589500' id='533404'>
+<a class='timestamp' href='#533404'><time timestamp='2017-03-04T01:05:00Z'>01:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+could basically worry about it once it <u>_ever_</u> would have made a difference, rather than adding complexity now.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589500' id='533405'>
+<a class='timestamp' href='#533405'><time timestamp='2017-03-04T01:05:00Z'>01:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(the complexity would be that that longer chain may be invalid, so you&#x27;ll have to go back to validating the other thing, seems messy as heck)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589560' id='533406'>
+<a class='timestamp' href='#533406'><time timestamp='2017-03-04T01:06:00Z'>01:06</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+well... it can be a good &quot;defensive&quot; code in case a new compelxity attaack is ever found.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589560' id='533407'>
+<a class='timestamp' href='#533407'><time timestamp='2017-03-04T01:06:00Z'>01:06</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sure but has to be weighed against the complexity of the fix and the risk it implies.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589560' id='533408'>
+<a class='timestamp' href='#533408'><time timestamp='2017-03-04T01:06:00Z'>01:06</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I think it&#x27;s a simple rule; always be trying to validate the largest-POW chain
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589620' id='533409'>
+<a class='timestamp' href='#533409'><time timestamp='2017-03-04T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+if such an attack was made, simply stalling is a pretty good failure option
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589620' id='533410'>
+<a class='timestamp' href='#533410'><time timestamp='2017-03-04T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(maybe if someone implemented it they&#x27;d find it was easy... though just testing it makes me feel uneasy, concurrency is really hard to test well.)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589620' id='533411'>
+<a class='timestamp' href='#533411'><time timestamp='2017-03-04T01:07:00Z'>01:07</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+fair!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589680' id='533412'>
+<a class='timestamp' href='#533412'><time timestamp='2017-03-04T01:08:00Z'>01:08</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+jeremyrubin: we do that, subject to the fact that while validating a block we&#x27;re effectively non-concurrent, so we won&#x27;t learn about the longer chain until we&#x27;re done.  So really the complexity there is just in safely increasing the concurrency. Which might be an independant good--- e.g. a side effect of the changes for the block testing stuff we were talking about a day ago.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589860' id='533413'>
+<a class='timestamp' href='#533413'><time timestamp='2017-03-04T01:11:00Z'>01:11</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+certainly I&#x27;d hope for more tests than parallel validation has :^)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488589920' id='533414'>
+<a class='timestamp' href='#533414'><time timestamp='2017-03-04T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+we don&#x27;t really have a good test harness for testing concurrency.  data race freeness doesn&#x27;t mean that a parallel algorihim will yield expected results in all ordering sequences.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590100' id='533415'>
+<a class='timestamp' href='#533415'><time timestamp='2017-03-04T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+some sort of framework that would cause all mutexes to block until the test explicitly lets them continue would be neat.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590220' id='533416'>
+<a class='timestamp' href='#533416'><time timestamp='2017-03-04T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+TD-Linux: well RR actually has neat stuff for making threaded execution determinstic, that I think could be listed into being a concurrency fuzzing tool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590280' id='533417'>
+<a class='timestamp' href='#533417'><time timestamp='2017-03-04T01:18:00Z'>01:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+e.g. replay from an to a given point... and then repeat the replay with many different values given to the RNG that schedules the threads, and see if you get different results.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590280' id='533418'>
+<a class='timestamp' href='#533418'><time timestamp='2017-03-04T01:18:00Z'>01:18</time></a>
+&lt;<span class='nick nick-6'> TD-Linux</span>&gt;
+gmaxwell, well if you want to fuzz rather than be explicit, doesn&#x27;t rr&#x27;s chaos mode already count?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590280' id='533419'>
+<a class='timestamp' href='#533419'><time timestamp='2017-03-04T01:18:00Z'>01:18</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+oh does it already do this? lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590340' id='533420'>
+<a class='timestamp' href='#533420'><time timestamp='2017-03-04T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+[01:01:39] &lt;gmaxwell&gt; yea, it clearly has some unexplored interactions with selfish mining too.  E.g. if you mine an empty block, now you hold it locally for a bit comfortable that if there is a block race, you&#x27;ll win even though you announced later… you can be up to the typical validation time late in your announcement. &lt;-- they may claim this is a good thing, since it incentivises smaller blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590400' id='533421'>
+<a class='timestamp' href='#533421'><time timestamp='2017-03-04T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+although in fact it incentivises blocks which meet relay-network policy even better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590400' id='533422'>
+<a class='timestamp' href='#533422'><time timestamp='2017-03-04T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+or rather, the most-limited relay policy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590400' id='533423'>
+<a class='timestamp' href='#533423'><time timestamp='2017-03-04T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the key point about selfish mining is that it gives excess returns to larger miners. So &quot;incenticizes smaller blocks at the expense of decenteralization&quot; ... missing the point. :P  Also,  not smaller but empty the validation time difference between a block and a slightly smaller one is neglgible, you have to make the block empty to reliably cut in front of others.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590460' id='533424'>
+<a class='timestamp' href='#533424'><time timestamp='2017-03-04T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the latest BIP152 stuff is much more policy durable than prior stuff, since it will retain transactions rejected for policy reasons and still use them to reconstruct blocks.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590580' id='533425'>
+<a class='timestamp' href='#533425'><time timestamp='2017-03-04T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+that&#x27;s not a good thing IMO
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590580' id='533426'>
+<a class='timestamp' href='#533426'><time timestamp='2017-03-04T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the network policy putting pressure on miners is a desirable trait
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590580' id='533427'>
+<a class='timestamp' href='#533427'><time timestamp='2017-03-04T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+although most-restrictive isn&#x27;t the ideal either, so meh
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590640' id='533428'>
+<a class='timestamp' href='#533428'><time timestamp='2017-03-04T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+&#x27;network policy&#x27; doesn&#x27;t matter, other miners policy matters. And moreover: doublespend is &#x27;policy&#x27; that is not in the miners control.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590640' id='533429'>
+<a class='timestamp' href='#533429'><time timestamp='2017-03-04T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Without extra someone spamming doublespends can considerably slow propagation.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590700' id='533430'>
+<a class='timestamp' href='#533430'><time timestamp='2017-03-04T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+true, but if that&#x27;s the only concern, we would want to limit the extra pool to just double spends
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590700' id='533431'>
+<a class='timestamp' href='#533431'><time timestamp='2017-03-04T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: consider, without it there is pressure to not increase the minimum feerate in your mempool. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590760' id='533432'>
+<a class='timestamp' href='#533432'><time timestamp='2017-03-04T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+because it will make you slower to accept blocks from others with a lower minimum feerate.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590760' id='533433'>
+<a class='timestamp' href='#533433'><time timestamp='2017-03-04T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(though I think there should probably be seperate extra pools for different kinds of rejections, adding complexity would have delayed getting it in)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590760' id='533434'>
+<a class='timestamp' href='#533434'><time timestamp='2017-03-04T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+luke-jr: also keep in mind that any time miners expirence delays the easiest solution for them is to just centeralize their pooling more.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590820' id='533435'>
+<a class='timestamp' href='#533435'><time timestamp='2017-03-04T01:27:00Z'>01:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+they&#x27;re not going to sit and go &quot;oh that sucks, I&#x27;ll twiddle my policy.&quot; 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590820' id='533436'>
+<a class='timestamp' href='#533436'><time timestamp='2017-03-04T01:27:00Z'>01:27</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+notes he didn&#x27;t oppose extra-pool :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488590880' id='533437'>
+<a class='timestamp' href='#533437'><time timestamp='2017-03-04T01:28:00Z'>01:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+fair enough.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488599640' id='533438'>
+<a class='timestamp' href='#533438'><time timestamp='2017-03-04T03:54:00Z'>03:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+#8694 is finally ready for final reviewing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488599640' id='533439'>
+<a class='timestamp' href='#533439'><time timestamp='2017-03-04T03:54:00Z'>03:54</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/8694" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/8694</a> | Basic multiwallet support by luke-jr · Pull Request #8694 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488600900' id='533440'>
+<a class='timestamp' href='#533440'><time timestamp='2017-03-04T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I&#x27;m debugging something; is there a threadsafe way to access pcoinstip during connectblock? I want to be able to access it from a scriptcheck
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488600900' id='533441'>
+<a class='timestamp' href='#533441'><time timestamp='2017-03-04T04:15:00Z'>04:15</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I&#x27;m guessing I would have to add locks around the usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488600960' id='533442'>
+<a class='timestamp' href='#533442'><time timestamp='2017-03-04T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+curious if anyone&#x27;s done this before and if the performance decrease is bad
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488600960' id='533443'>
+<a class='timestamp' href='#533443'><time timestamp='2017-03-04T04:16:00Z'>04:16</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+(I think it might be doable to parallelize checking the inputs)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488601800' id='533444'>
+<a class='timestamp' href='#533444'><time timestamp='2017-03-04T04:30:00Z'>04:30</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+hm I think i have something workable using shared_mutex
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488614820' id='533445'>
+<a class='timestamp' href='#533445'><time timestamp='2017-03-04T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] kobake opened pull request #9916: Fix msvc compiler error C4146 (minus operator applied to unsigned type) (master...fix-minus-operator-target-for-msvc-c4146) <a href="https://github.com/bitcoin/bitcoin/pull/9916" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9916</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488614820' id='533446'>
+<a class='timestamp' href='#533446'><time timestamp='2017-03-04T08:07:00Z'>08:07</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jonasschnelli: can always not support gitian builds with the first introduction of a new feature ;)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488633240' id='533447'>
+<a class='timestamp' href='#533447'><time timestamp='2017-03-04T13:14:00Z'>13:14</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+whee I have RPC working over a UNIX socket
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488633540' id='533448'>
+<a class='timestamp' href='#533448'><time timestamp='2017-03-04T13:19:00Z'>13:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+needed no changes to libevent on the server side. however to make bitcoin-cli be able to http over a UNIX socket needs a small change.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488642360' id='533449'>
+<a class='timestamp' href='#533449'><time timestamp='2017-03-04T15:46:00Z'>15:46</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj opened pull request #9919: UNIX sockets support for RPC (master...2017_03_unix_socket) <a href="https://github.com/bitcoin/bitcoin/pull/9919" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/9919</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488650400' id='533450'>
+<a class='timestamp' href='#533450'><time timestamp='2017-03-04T18:00:00Z'>18:00</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wumpus: nice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488661980' id='533451'>
+<a class='timestamp' href='#533451'><time timestamp='2017-03-04T21:13:00Z'>21:13</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+wumpus, would it be easy to also do block notifications over the unix socket?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488662040' id='533452'>
+<a class='timestamp' href='#533452'><time timestamp='2017-03-04T21:14:00Z'>21:14</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+current ckpool local block notification method is basically to execute a binary that then writes to a unix socket for notification of a block
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663180' id='533453'>
+<a class='timestamp' href='#533453'><time timestamp='2017-03-04T21:33:00Z'>21:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+Lightsword: everything that an be done over the current P2P port can also be done over the UNIX socket
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663180' id='533454'>
+<a class='timestamp' href='#533454'><time timestamp='2017-03-04T21:33:00Z'>21:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+eh, RPC port
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663240' id='533455'>
+<a class='timestamp' href='#533455'><time timestamp='2017-03-04T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+I guess what you&#x27;re looking for is #7949
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663240' id='533456'>
+<a class='timestamp' href='#533456'><time timestamp='2017-03-04T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/7949" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/7949</a> | [RPC] Add RPC long poll notifications by jonasschnelli · Pull Request #7949 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663300' id='533457'>
+<a class='timestamp' href='#533457'><time timestamp='2017-03-04T21:35:00Z'>21:35</time></a>
+&lt;<span class='nick nick-16'> Lightsword</span>&gt;
+wumpus, not long polling, having bitcoind itself write to another app’s listening unix socket for notifications
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663780' id='533458'>
+<a class='timestamp' href='#533458'><time timestamp='2017-03-04T21:43:00Z'>21:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+conceptually it&#x27;s the same, apart from who calls who. In both cases the listeners get immediate notification. Longpolling is simpler as bitcoind doesn&#x27;t need to keep track of who to notify, that&#x27;s implied by who is listening
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488663780' id='533459'>
+<a class='timestamp' href='#533459'><time timestamp='2017-03-04T21:43:00Z'>21:43</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+block notifications can also be broadcast over zeromq
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667020' id='533460'>
+<a class='timestamp' href='#533460'><time timestamp='2017-03-04T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+how does one CreateNewBlock s.t. a witness is added?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667020' id='533461'>
+<a class='timestamp' href='#533461'><time timestamp='2017-03-04T22:37:00Z'>22:37</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I&#x27;m having trouble writing a unit test using TestChain100 once segwit activates
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667380' id='533462'>
+<a class='timestamp' href='#533462'><time timestamp='2017-03-04T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you need at least 3 retarget periods worth of blocks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667440' id='533463'>
+<a class='timestamp' href='#533463'><time timestamp='2017-03-04T22:44:00Z'>22:44</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+ah so I need to be at &gt; 432
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667680' id='533464'>
+<a class='timestamp' href='#533464'><time timestamp='2017-03-04T22:48:00Z'>22:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667740' id='533465'>
+<a class='timestamp' href='#533465'><time timestamp='2017-03-04T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+1 period before signalling starts, another before it&#x27;s locked in, and a third before it is active
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667740' id='533466'>
+<a class='timestamp' href='#533466'><time timestamp='2017-03-04T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+hm ok
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667740' id='533467'>
+<a class='timestamp' href='#533467'><time timestamp='2017-03-04T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+that helped
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488667740' id='533468'>
+<a class='timestamp' href='#533468'><time timestamp='2017-03-04T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+now I get witness mismatch
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533469'>
+<a class='timestamp' href='#533469'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+    CMutableTransaction n;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533470'>
+<a class='timestamp' href='#533470'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+    {
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533471'>
+<a class='timestamp' href='#533471'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        std::vector&lt;CMutableTransaction&gt; txns;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533472'>
+<a class='timestamp' href='#533472'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.vin.resize(1);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533473'>
+<a class='timestamp' href='#533473'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.vin[0].prevout = COutPoint(txSpend.GetHash(), 0);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533474'>
+<a class='timestamp' href='#533474'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.vout.resize(25);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533475'>
+<a class='timestamp' href='#533475'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.nVersion = 1;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533476'>
+<a class='timestamp' href='#533476'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.nLockTime = 0;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533477'>
+<a class='timestamp' href='#533477'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.vin[0].scriptWitness = CScriptWitness();
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533478'>
+<a class='timestamp' href='#533478'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        n.vin[0].nSequence = CTxIn::SEQUENCE_FINAL;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533479'>
+<a class='timestamp' href='#533479'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        for (auto&amp; v : n.vout) {
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533480'>
+<a class='timestamp' href='#533480'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+            v.scriptPubKey = CScript();
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533481'>
+<a class='timestamp' href='#533481'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+            v.nValue = txSpend.vout[0].nValue / n.vout.size();
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533482'>
+<a class='timestamp' href='#533482'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        }
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533483'>
+<a class='timestamp' href='#533483'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        txns.push_back(n);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533484'>
+<a class='timestamp' href='#533484'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+        CreateAndProcessBlock(txns, scriptPubKey);
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668340' id='533485'>
+<a class='timestamp' href='#533485'><time timestamp='2017-03-04T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+    }
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668400' id='533486'>
+<a class='timestamp' href='#533486'><time timestamp='2017-03-04T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+(that&#x27;s the part of the test I&#x27;m trying to write)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668520' id='533487'>
+<a class='timestamp' href='#533487'><time timestamp='2017-03-04T23:02:00Z'>23:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+please don&#x27;t paste more than 3 lines
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1488668580' id='533488'>
+<a class='timestamp' href='#533488'><time timestamp='2017-03-04T23:03:00Z'>23:03</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+sorry; forgot
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

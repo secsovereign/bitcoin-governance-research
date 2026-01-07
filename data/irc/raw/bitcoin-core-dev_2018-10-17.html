@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2018-10-17
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2018-10-17' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:21 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2018-09-17">&lt;</a><span class='header'>   October 2018   </span><a href="/bitcoin-core-dev/2018-11-17">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;    <a class="" href="/bitcoin-core-dev/2018-10-01">1</a>  <a class="" href="/bitcoin-core-dev/2018-10-02">2</a>  <a class="" href="/bitcoin-core-dev/2018-10-03">3</a>  <a class="" href="/bitcoin-core-dev/2018-10-04">4</a>  <a class="" href="/bitcoin-core-dev/2018-10-05">5</a>  <a class="" href="/bitcoin-core-dev/2018-10-06">6</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2018-10-07">7</a>  <a class="" href="/bitcoin-core-dev/2018-10-08">8</a>  <a class="" href="/bitcoin-core-dev/2018-10-09">9</a> <a class="" href="/bitcoin-core-dev/2018-10-10">10</a> <a class="" href="/bitcoin-core-dev/2018-10-11">11</a> <a class="" href="/bitcoin-core-dev/2018-10-12">12</a> <a class="" href="/bitcoin-core-dev/2018-10-13">13</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-14">14</a> <a class="" href="/bitcoin-core-dev/2018-10-15">15</a> <a class="" href="/bitcoin-core-dev/2018-10-16">16</a> <a class="current" href="/bitcoin-core-dev/2018-10-17">17</a> <a class="" href="/bitcoin-core-dev/2018-10-18">18</a> <a class="" href="/bitcoin-core-dev/2018-10-19">19</a> <a class="" href="/bitcoin-core-dev/2018-10-20">20</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-21">21</a> <a class="" href="/bitcoin-core-dev/2018-10-22">22</a> <a class="" href="/bitcoin-core-dev/2018-10-23">23</a> <a class="" href="/bitcoin-core-dev/2018-10-24">24</a> <a class="" href="/bitcoin-core-dev/2018-10-25">25</a> <a class="" href="/bitcoin-core-dev/2018-10-26">26</a> <a class="" href="/bitcoin-core-dev/2018-10-27">27</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2018-10-28">28</a> <a class="" href="/bitcoin-core-dev/2018-10-29">29</a> <a class="" href="/bitcoin-core-dev/2018-10-30">30</a> <a class="" href="/bitcoin-core-dev/2018-10-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1539734400' id='634613'>
+<a class='timestamp' href='#634613'><time timestamp='2018-10-17T00:00:00Z'>00:00</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+But in practice it appears that a lot of people are exposing themselves, and ultimately thats an issue for us... not just because we care about people getting owned but because it increases the critical attack surface a lot.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539734400' id='634614'>
+<a class='timestamp' href='#634614'><time timestamp='2018-10-17T00:00:00Z'>00:00</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+ie, even if not authenticated, I don&#x27;t believe the RPC server is designed to handle a lot of arbitrary connections hogging sockets. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539734460' id='634615'>
+<a class='timestamp' href='#634615'><time timestamp='2018-10-17T00:01:00Z'>00:01</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+the rpcpassword is sent plaintext so a mitm can access everything too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539734640' id='634616'>
+<a class='timestamp' href='#634616'><time timestamp='2018-10-17T00:04:00Z'>00:04</time></a>
+&lt;<span class='nick nick-15'> echeveria</span>&gt;
+it&#x27;s not a huge issue, just something to consider. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539735240' id='634617'>
+<a class='timestamp' href='#634617'><time timestamp='2018-10-17T00:14:00Z'>00:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+indeed, we&#x27;ve had people in #bitcoin that were having issues because some third party was trying to password bruteforce their rpc port or something like that..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539735540' id='634618'>
+<a class='timestamp' href='#634618'><time timestamp='2018-10-17T00:19:00Z'>00:19</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: you don&#x27;t seem to have code for P2SH-P2WPKH
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539736020' id='634619'>
+<a class='timestamp' href='#634619'><time timestamp='2018-10-17T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: also i think the tests are very insufficient; it doesn&#x27;t test anything but that importmulti succeeds, not whether it actually imported anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539736020' id='634620'>
+<a class='timestamp' href='#634620'><time timestamp='2018-10-17T00:27:00Z'>00:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: also, no tests with solvable-but-not-spendable cases
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738720' id='634621'>
+<a class='timestamp' href='#634621'><time timestamp='2018-10-17T01:12:00Z'>01:12</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: yeah I know the tests aren&#x27;t the best, I&#x27;ll make some better ones soon
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738780' id='634622'>
+<a class='timestamp' href='#634622'><time timestamp='2018-10-17T01:13:00Z'>01:13</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: good point re P2SH-P2WPKH, it was there earlier when it always imported the public keys, but now I changed that I need to add the pubkey import into the P2SH if statement too
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738840' id='634623'>
+<a class='timestamp' href='#634623'><time timestamp='2018-10-17T01:14:00Z'>01:14</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: i also realized that the importmulti does a whole bunch of things not that it should be doing (unrelated to your PR), which I&#x27;d like to fix, like checking that the private keys are actually used, or assigning a timestamp for imported pubkey, or checking that no unnecessary information is given
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738900' id='634624'>
+<a class='timestamp' href='#634624'><time timestamp='2018-10-17T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so maybe my earlier claim that it can simplied a lot is an overstatement, but at least it should be possible to avoid all the duplication that exists now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738900' id='634625'>
+<a class='timestamp' href='#634625'><time timestamp='2018-10-17T01:15:00Z'>01:15</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+yeah that&#x27;s what I had hoped at the start, but it keeps devolving into lots of if statements :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738960' id='634626'>
+<a class='timestamp' href='#634626'><time timestamp='2018-10-17T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738960' id='634627'>
+<a class='timestamp' href='#634627'><time timestamp='2018-10-17T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+let&#x27;s first fix the functionality and tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738960' id='634628'>
+<a class='timestamp' href='#634628'><time timestamp='2018-10-17T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+further improvements can come later
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738960' id='634629'>
+<a class='timestamp' href='#634629'><time timestamp='2018-10-17T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+agreed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539738960' id='634630'>
+<a class='timestamp' href='#634630'><time timestamp='2018-10-17T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: btw, i realized that getaddressinfo doesn&#x27;t expose issolvable
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539739020' id='634631'>
+<a class='timestamp' href='#634631'><time timestamp='2018-10-17T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+which seems a pretty obvious improvement, and would make tests for whether importing succeeded much easier
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539739140' id='634632'>
+<a class='timestamp' href='#634632'><time timestamp='2018-10-17T01:19:00Z'>01:19</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+mmm I noticed that, I originally thought it did
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539739200' id='634633'>
+<a class='timestamp' href='#634633'><time timestamp='2018-10-17T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+did validateaddress expose it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539739200' id='634634'>
+<a class='timestamp' href='#634634'><time timestamp='2018-10-17T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+or was that never possible
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539739200' id='634635'>
+<a class='timestamp' href='#634635'><time timestamp='2018-10-17T01:20:00Z'>01:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t think it did
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539744360' id='634636'>
+<a class='timestamp' href='#634636'><time timestamp='2018-10-17T02:46:00Z'>02:46</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: managed to get rid of a bit more duplication in the process, should be better now
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539756060' id='634637'>
+<a class='timestamp' href='#634637'><time timestamp='2018-10-17T06:01:00Z'>06:01</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Github has a new review feature: &quot;New! Suggest specific code changes that the pull request author can immediately commit. You will be attributed in the commit.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539756480' id='634638'>
+<a class='timestamp' href='#634638'><time timestamp='2018-10-17T06:08:00Z'>06:08</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+I&#x27;ll try it on the importmulti segwit RPC PR, though I suspect it creates entire new (unsigned) commits, which would mess up our usual flow.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539757140' id='634639'>
+<a class='timestamp' href='#634639'><time timestamp='2018-10-17T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+well, the commits don&#x27;t need to be signed except the merge commits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539757140' id='634640'>
+<a class='timestamp' href='#634640'><time timestamp='2018-10-17T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+so who knows :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539757140' id='634641'>
+<a class='timestamp' href='#634641'><time timestamp='2018-10-17T06:19:00Z'>06:19</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+but most suggested changes in PRs will be nitfixes I imagine, which should be squashed anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539757680' id='634642'>
+<a class='timestamp' href='#634642'><time timestamp='2018-10-17T06:28:00Z'>06:28</time></a>
+&lt;<span class='nick nick-15'> provoostenator</span>&gt;
+Related thought: it would be very cool if it was possible to co-sign another persons commit, like a superACK.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539757800' id='634643'>
+<a class='timestamp' href='#634643'><time timestamp='2018-10-17T06:30:00Z'>06:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there is a convention to add &quot;Signed-off-by: &lt;name&gt;&quot; to a commit message
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539757860' id='634644'>
+<a class='timestamp' href='#634644'><time timestamp='2018-10-17T06:31:00Z'>06:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+there&#x27;s even a git option for it, git commit --signoff
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539759000' id='634645'>
+<a class='timestamp' href='#634645'><time timestamp='2018-10-17T06:50:00Z'>06:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: moar comments, starting to look good :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539759660' id='634646'>
+<a class='timestamp' href='#634646'><time timestamp='2018-10-17T07:01:00Z'>07:01</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: thanks, appreciate the amount of time youre putting into reviewing this, I&#x27;ll work on them as soon as I can
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539760680' id='634647'>
+<a class='timestamp' href='#634647'><time timestamp='2018-10-17T07:18:00Z'>07:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+meshcollider: happy to see someone working on this; we should have done this 2 releases ago, so the alternative is probably that i&#x27;d need to do it myself :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539760680' id='634648'>
+<a class='timestamp' href='#634648'><time timestamp='2018-10-17T07:18:00Z'>07:18</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+also, it&#x27;s great to get some more people familiar with this code
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761040' id='634649'>
+<a class='timestamp' href='#634649'><time timestamp='2018-10-17T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa pushed 3 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/23419e4c4939...27bf14f6f3e0" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/23419e4c4939...27bf14f6f3e0</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761040' id='634650'>
+<a class='timestamp' href='#634650'><time timestamp='2018-10-17T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 4ae50da practicalswift: Revert &quot;qa: Fix codespell error and have lint-spelling error instead of warn&quot;...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761040' id='634651'>
+<a class='timestamp' href='#634651'><time timestamp='2018-10-17T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master c32cf6a practicalswift: Add ignored word: mut
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761040' id='634652'>
+<a class='timestamp' href='#634652'><time timestamp='2018-10-17T07:24:00Z'>07:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 27bf14f Pieter Wuille: Merge #14495: build: Warn (don&#x27;t fail!) on spelling errors...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761100' id='634653'>
+<a class='timestamp' href='#634653'><time timestamp='2018-10-17T07:25:00Z'>07:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sipa closed pull request #14495: build: Warn (don&#x27;t fail!) on spelling errors (master...revert-codespell) <a href="https://github.com/bitcoin/bitcoin/pull/14495" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14495</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761100' id='634654'>
+<a class='timestamp' href='#634654'><time timestamp='2018-10-17T07:25:00Z'>07:25</time></a>
+&lt;<span class='nick nick-8'> AM5800</span>&gt;
+Hi, can someone tell me what is the current status of dandelion (BIP 156)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761220' id='634655'>
+<a class='timestamp' href='#634655'><time timestamp='2018-10-17T07:27:00Z'>07:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+AM5800: people are working on an implementation, but there is a lot of unclarity on how to combine it with the DoS protections the current mempool model has
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761340' id='634656'>
+<a class='timestamp' href='#634656'><time timestamp='2018-10-17T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-8'> AM5800</span>&gt;
+sipa, thanks. I would like to offer an assistance on this feature, who should I contact?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761400' id='634657'>
+<a class='timestamp' href='#634657'><time timestamp='2018-10-17T07:30:00Z'>07:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+AM5800: sdaftuar and MarcoFalke are probably people to talk to
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761460' id='634658'>
+<a class='timestamp' href='#634658'><time timestamp='2018-10-17T07:31:00Z'>07:31</time></a>
+&lt;<span class='nick nick-8'> AM5800</span>&gt;
+sipa, one final question: what would be the best way to reach them?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761460' id='634659'>
+<a class='timestamp' href='#634659'><time timestamp='2018-10-17T07:31:00Z'>07:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+irc is pretty good :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761520' id='634660'>
+<a class='timestamp' href='#634660'><time timestamp='2018-10-17T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you may need to wait a few hours or days, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761520' id='634661'>
+<a class='timestamp' href='#634661'><time timestamp='2018-10-17T07:32:00Z'>07:32</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: yes, I find the wallet and descriptor stuff all very interesting, much more interesting than say network code hehe
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539761580' id='634662'>
+<a class='timestamp' href='#634662'><time timestamp='2018-10-17T07:33:00Z'>07:33</time></a>
+&lt;<span class='nick nick-8'> AM5800</span>&gt;
+sipa: thank you!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539767280' id='634663'>
+<a class='timestamp' href='#634663'><time timestamp='2018-10-17T09:08:00Z'>09:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] luke-jr opened pull request #14501: Fix possible data race when committing block files (master...fsync_dir) <a href="https://github.com/bitcoin/bitcoin/pull/14501" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14501</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539772500' id='634664'>
+<a class='timestamp' href='#634664'><time timestamp='2018-10-17T10:35:00Z'>10:35</time></a>
+&lt;<span class='nick nick-11'> david___</span>&gt;
+LS
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539776640' id='634665'>
+<a class='timestamp' href='#634665'><time timestamp='2018-10-17T11:44:00Z'>11:44</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] karel-3d opened pull request #14502: Rpc helper class (master...rpc_helper_class) <a href="https://github.com/bitcoin/bitcoin/pull/14502" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14502</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539779760' id='634666'>
+<a class='timestamp' href='#634666'><time timestamp='2018-10-17T12:36:00Z'>12:36</time></a>
+&lt;<span class='nick nick-8'> Drakon</span>&gt;
+The option to minimize to system tray instead of the taskbar ist available, but doesn&#x27;t have an effect if it is started with the -min option. If I start it via that option, I have to click on the program symbil on the taskbar and then minimize it again in order to get it minimized to system tray.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539779820' id='634667'>
+<a class='timestamp' href='#634667'><time timestamp='2018-10-17T12:37:00Z'>12:37</time></a>
+&lt;<span class='nick nick-8'> Drakon</span>&gt;
+That&#x27;s annoying.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539784260' id='634668'>
+<a class='timestamp' href='#634668'><time timestamp='2018-10-17T13:51:00Z'>13:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+can you open an issue for that please? <a href="https://github.com/bitcoin/bitcoin/issues/new" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/new</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539784380' id='634669'>
+<a class='timestamp' href='#634669'><time timestamp='2018-10-17T13:53:00Z'>13:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(if there isn&#x27;t one yet-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539784860' id='634670'>
+<a class='timestamp' href='#634670'><time timestamp='2018-10-17T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/27bf14f6f3e0...3036faf51a18" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/27bf14f6f3e0...3036faf51a18</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539784860' id='634671'>
+<a class='timestamp' href='#634671'><time timestamp='2018-10-17T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ee0b7c4 practicalswift: build: Pin to specific versions of Python packages we install from PyPI in Travis
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539784860' id='634672'>
+<a class='timestamp' href='#634672'><time timestamp='2018-10-17T14:01:00Z'>14:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3036faf Wladimir J. van der Laan: Merge #14496: build: Pin to specific versions of Python packages we install from PyPI in Travis...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539784980' id='634673'>
+<a class='timestamp' href='#634673'><time timestamp='2018-10-17T14:03:00Z'>14:03</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #14496: build: Pin to specific versions of Python packages we install from PyPI in Travis (master...pin-pip-installed-packages-in-travis) <a href="https://github.com/bitcoin/bitcoin/pull/14496" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14496</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539789300' id='634674'>
+<a class='timestamp' href='#634674'><time timestamp='2018-10-17T15:15:00Z'>15:15</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+ken2812221: do you build bitcoin-qt with msvc?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539789840' id='634675'>
+<a class='timestamp' href='#634675'><time timestamp='2018-10-17T15:24:00Z'>15:24</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] isghe opened pull request #14504: show the progress of functional test (master...functional_test_progress) <a href="https://github.com/bitcoin/bitcoin/pull/14504" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14504</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790500' id='634676'>
+<a class='timestamp' href='#634676'><time timestamp='2018-10-17T15:35:00Z'>15:35</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+hebasto: regarding #14450 I&#x27;ve replaced the mingw setup with msvc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790560' id='634677'>
+<a class='timestamp' href='#634677'><time timestamp='2018-10-17T15:36:00Z'>15:36</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+but I don&#x27;t know how to build bitcoin-qt to test it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790620' id='634678'>
+<a class='timestamp' href='#634678'><time timestamp='2018-10-17T15:37:00Z'>15:37</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+I&#x27;m waiting for `vcpkg install qt5` ..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790740' id='634679'>
+<a class='timestamp' href='#634679'><time timestamp='2018-10-17T15:39:00Z'>15:39</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+promag: No, I don&#x27;t know how to do that.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790800' id='634680'>
+<a class='timestamp' href='#634680'><time timestamp='2018-10-17T15:40:00Z'>15:40</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+vcpkg is still using Qt 5.2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790800' id='634681'>
+<a class='timestamp' href='#634681'><time timestamp='2018-10-17T15:40:00Z'>15:40</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+here says 5.9.2
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539790920' id='634682'>
+<a class='timestamp' href='#634682'><time timestamp='2018-10-17T15:42:00Z'>15:42</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+oh, I missed that 9 for a while ago.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539791040' id='634683'>
+<a class='timestamp' href='#634683'><time timestamp='2018-10-17T15:44:00Z'>15:44</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+But it&#x27;s complicate to use qt tools on msvc. This could be done by cmake, but that&#x27;s a difficult task.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539796080' id='634684'>
+<a class='timestamp' href='#634684'><time timestamp='2018-10-17T17:08:00Z'>17:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] sdaftuar closed pull request #14220: Transaction relay privacy bugfix (master...2018-09-txrelay) <a href="https://github.com/bitcoin/bitcoin/pull/14220" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14220</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539797100' id='634685'>
+<a class='timestamp' href='#634685'><time timestamp='2018-10-17T17:25:00Z'>17:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #14505: Make all single parameter constructors explicit (C++11) (master...explicit-single-argument-constructors) <a href="https://github.com/bitcoin/bitcoin/pull/14505" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14505</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539799800' id='634686'>
+<a class='timestamp' href='#634686'><time timestamp='2018-10-17T18:10:00Z'>18:10</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #14506: Remove redundancies: redundant forward declaration, redundant namespace, redundancy copying, redundant conditionals (master...remove) <a href="https://github.com/bitcoin/bitcoin/pull/14506" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14506</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539800700' id='634687'>
+<a class='timestamp' href='#634687'><time timestamp='2018-10-17T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/3036faf51a18...816fab9ccae5" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/3036faf51a18...816fab9ccae5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539800700' id='634688'>
+<a class='timestamp' href='#634688'><time timestamp='2018-10-17T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 081cc02 Hennadii Stepanov: Fix QCompleter popup regression...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539800700' id='634689'>
+<a class='timestamp' href='#634689'><time timestamp='2018-10-17T18:25:00Z'>18:25</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 816fab9 Jonas Schnelli: Merge #14450: qt: Fix QCompleter popup regression...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539800820' id='634690'>
+<a class='timestamp' href='#634690'><time timestamp='2018-10-17T18:27:00Z'>18:27</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jonasschnelli closed pull request #14450: qt: Fix QCompleter popup regression (master...20181009-console-autocomplete) <a href="https://github.com/bitcoin/bitcoin/pull/14450" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14450</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539806220' id='634691'>
+<a class='timestamp' href='#634691'><time timestamp='2018-10-17T19:57:00Z'>19:57</time></a>
+&lt;<span class='nick nick-16'> ra_</span>&gt;
+Hello Everyone
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539806400' id='634692'>
+<a class='timestamp' href='#634692'><time timestamp='2018-10-17T20:00:00Z'>20:00</time></a>
+&lt;<span class='nick nick-16'> ra_</span>&gt;
+Hello Lei
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539808680' id='634693'>
+<a class='timestamp' href='#634693'><time timestamp='2018-10-17T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-13'> iceberg</span>&gt;
+Hello, I would like to ask question related to the hot wallet implementation of Gemini. Gemini is using the CloudHSM (the cloud-based HSM of AWS) for their hot wallet. As far as I know CloudHSM does not support the secp256k1. How is it possible to implement such a solution? Can such a solution be as safe as if the CloudHSM was supporting the secp256k1? I also asked the question on stack exchange <a href="https://tinyurl.com/yaq8al5" class="link" target="_blank">https://tinyurl.com/yaq8al5</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539808740' id='634694'>
+<a class='timestamp' href='#634694'><time timestamp='2018-10-17T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+you&#x27;ll need to ask gemini :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539808740' id='634695'>
+<a class='timestamp' href='#634695'><time timestamp='2018-10-17T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-13'> iceberg</span>&gt;
+I am sorry if the question is not relevant for this channel, but I am very curious...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539808800' id='634696'>
+<a class='timestamp' href='#634696'><time timestamp='2018-10-17T20:40:00Z'>20:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+to me personally, &quot;cloud HSM&quot; sounds like marketing nonsense, but I haven&#x27;t really looked into it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539808800' id='634697'>
+<a class='timestamp' href='#634697'><time timestamp='2018-10-17T20:40:00Z'>20:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but yes, off topic here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539808920' id='634698'>
+<a class='timestamp' href='#634698'><time timestamp='2018-10-17T20:42:00Z'>20:42</time></a>
+&lt;<span class='nick nick-13'> iceberg</span>&gt;
+I asked Gemini and they replied with a link from their website, which didn&#x27;t help. Thanks for the reply.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809160' id='634699'>
+<a class='timestamp' href='#634699'><time timestamp='2018-10-17T20:46:00Z'>20:46</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+I don&#x27;t know anything about gemini, but it is routine for bitcoin companies to more or less outright lie about their security.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809220' id='634700'>
+<a class='timestamp' href='#634700'><time timestamp='2018-10-17T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+MTGox also claimed to be using HSMs, for example.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809220' id='634701'>
+<a class='timestamp' href='#634701'><time timestamp='2018-10-17T20:47:00Z'>20:47</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Using &#x27;cloud hsm&#x27; might just mean they&#x27;re securing passwords using it. Or they keep the private keys in it normally but routinely export them for signing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809280' id='634702'>
+<a class='timestamp' href='#634702'><time timestamp='2018-10-17T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i assume that if gemini claims to be using amazon cloudhsm, then they&#x27;re indeed actually using those in some kind or form. whether that product actually gives them a security advantage is a very different question though :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809280' id='634703'>
+<a class='timestamp' href='#634703'><time timestamp='2018-10-17T20:48:00Z'>20:48</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Yes, indeed.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809940' id='634704'>
+<a class='timestamp' href='#634704'><time timestamp='2018-10-17T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+iceberg, there&#x27;s keystorage which is what i assume they&#x27;re using
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539809940' id='634705'>
+<a class='timestamp' href='#634705'><time timestamp='2018-10-17T20:59:00Z'>20:59</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+i cant see how that would provide any meaningful security
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539810060' id='634706'>
+<a class='timestamp' href='#634706'><time timestamp='2018-10-17T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+gmaxwell, well he had them at least
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539810060' id='634707'>
+<a class='timestamp' href='#634707'><time timestamp='2018-10-17T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539811920' id='634708'>
+<a class='timestamp' href='#634708'><time timestamp='2018-10-17T21:32:00Z'>21:32</time></a>
+&lt;<span class='nick nick-14'> ap4lmtree</span>&gt;
+hi
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539812760' id='634709'>
+<a class='timestamp' href='#634709'><time timestamp='2018-10-17T21:46:00Z'>21:46</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what&#x27;s up with appveyor failing random builds?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539812820' id='634710'>
+<a class='timestamp' href='#634710'><time timestamp='2018-10-17T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+or am i actually doing something wrong that travis doesn&#x27;t catch?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539812880' id='634711'>
+<a class='timestamp' href='#634711'><time timestamp='2018-10-17T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-4'> phantomcircuit</span>&gt;
+sipa, which tests fail?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539812880' id='634712'>
+<a class='timestamp' href='#634712'><time timestamp='2018-10-17T21:48:00Z'>21:48</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;ve seen ua_comment fail a few times
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539812940' id='634713'>
+<a class='timestamp' href='#634713'><time timestamp='2018-10-17T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+now also example_test: <a href="https://ci.appveyor.com/project/DrahtBot/bitcoin/builds/19592226" class="link" target="_blank">https://ci.appveyor.com/project/DrahtBot/bitcoin/builds/19592226</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813060' id='634714'>
+<a class='timestamp' href='#634714'><time timestamp='2018-10-17T21:51:00Z'>21:51</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+wth is example_test anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813120' id='634715'>
+<a class='timestamp' href='#634715'><time timestamp='2018-10-17T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+sipa: see #14446
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813120' id='634716'>
+<a class='timestamp' href='#634716'><time timestamp='2018-10-17T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14446" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14446</a> | tests: Some issue about running functional tests on Windows · Issue #14446 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813120' id='634717'>
+<a class='timestamp' href='#634717'><time timestamp='2018-10-17T21:52:00Z'>21:52</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+seeing failures in rust-land too <a href="https://github.com/solson/miri/pull/485" class="link" target="_blank">https://github.com/solson/miri/pull/485</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813180' id='634718'>
+<a class='timestamp' href='#634718'><time timestamp='2018-10-17T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+I&#x27;ve seen a lot of spurious appveyor failures recently too - and they queue up pretty deep so green lights take forever to come on
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813180' id='634719'>
+<a class='timestamp' href='#634719'><time timestamp='2018-10-17T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+we use that for windows testing, right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813180' id='634720'>
+<a class='timestamp' href='#634720'><time timestamp='2018-10-17T21:53:00Z'>21:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813240' id='634721'>
+<a class='timestamp' href='#634721'><time timestamp='2018-10-17T21:54:00Z'>21:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+specifically, msvc-built windows - which isn&#x27;t used for production anywhere
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539813300' id='634722'>
+<a class='timestamp' href='#634722'><time timestamp='2018-10-17T21:55:00Z'>21:55</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Ugh if someone suggests changes in that new commit thing then you can&#x27;t reply to their comments
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814620' id='634723'>
+<a class='timestamp' href='#634723'><time timestamp='2018-10-17T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+sipa: Instead of disabling the CI, why don&#x27;t do review #13501 and #14465 ASAP?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814620' id='634724'>
+<a class='timestamp' href='#634724'><time timestamp='2018-10-17T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13501" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13501</a> | Correctly terminate HTTP server by promag · Pull Request #13501 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814620' id='634725'>
+<a class='timestamp' href='#634725'><time timestamp='2018-10-17T22:17:00Z'>22:17</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14465" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14465</a> | tests: Stop node before removing the notification file by ken2812221 · Pull Request #14465 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814800' id='634726'>
+<a class='timestamp' href='#634726'><time timestamp='2018-10-17T22:20:00Z'>22:20</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+The act the same behaviour with mingw builds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814860' id='634727'>
+<a class='timestamp' href='#634727'><time timestamp='2018-10-17T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ken2812221: i had no idea there was a fix
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814860' id='634728'>
+<a class='timestamp' href='#634728'><time timestamp='2018-10-17T22:21:00Z'>22:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ken2812221: perhaps you should comment there is one on 14446?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814920' id='634729'>
+<a class='timestamp' href='#634729'><time timestamp='2018-10-17T22:22:00Z'>22:22</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+I did mention them in issue description.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539814980' id='634730'>
+<a class='timestamp' href='#634730'><time timestamp='2018-10-17T22:23:00Z'>22:23</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ken2812221: my apologies
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539815040' id='634731'>
+<a class='timestamp' href='#634731'><time timestamp='2018-10-17T22:24:00Z'>22:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i didn&#x27;t notice there were fixes mentioned 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539815340' id='634732'>
+<a class='timestamp' href='#634732'><time timestamp='2018-10-17T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+Now I use bold font to mention to fixes in the description. Hope that people won&#x27;t ignore them again.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539815640' id='634733'>
+<a class='timestamp' href='#634733'><time timestamp='2018-10-17T22:34:00Z'>22:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ken2812221: thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539815760' id='634734'>
+<a class='timestamp' href='#634734'><time timestamp='2018-10-17T22:36:00Z'>22:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ken2812221: i&#x27;m sorry if i came about as dismissive about appveyor, but i was a bit annoyed how it is interfering with development for little purpose (being compatible with building on windows is a nice to have, but it&#x27;s not like we&#x27;ll create production binaries that way)... though i have to take my words back if there are actual issues that are at the basis here
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539816360' id='634735'>
+<a class='timestamp' href='#634735'><time timestamp='2018-10-17T22:46:00Z'>22:46</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+sipa: example_test is an example test, for people who don&#x27;t know how to use our test framework. It didn&#x27;t used to run in CI. It shouldn&#x27;t ever fail
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539816540' id='634736'>
+<a class='timestamp' href='#634736'><time timestamp='2018-10-17T22:49:00Z'>22:49</time></a>
+&lt;<span class='nick nick-13'> ken2812221</span>&gt;
+As laanwj say, the appveyor ci status is not merge blocker. It&#x27;s a bit racy on Windows, so the error shows more often, we could find the same issue on travis sometimes.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539820380' id='634737'>
+<a class='timestamp' href='#634737'><time timestamp='2018-10-17T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+jnewbery: I think #13339 can be added to <a href="https://github.com/bitcoin/bitcoin/projects/2" class="link" target="_blank">https://github.com/bitcoin/bitcoin/projects/2</a>?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1539820380' id='634738'>
+<a class='timestamp' href='#634738'><time timestamp='2018-10-17T23:53:00Z'>23:53</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/13339" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/13339</a> | wallet: Replace %w by wallet name in -walletnotify script by promag · Pull Request #13339 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

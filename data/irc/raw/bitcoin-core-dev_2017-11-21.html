@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2017-11-21
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2017-11-21' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:23 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2017-10-21">&lt;</a><span class='header'>  November 2017   </span><a href="/bitcoin-core-dev/2017-12-21">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2017-11-01">1</a>  <a class="" href="/bitcoin-core-dev/2017-11-02">2</a>  <a class="" href="/bitcoin-core-dev/2017-11-03">3</a>  <a class="" href="/bitcoin-core-dev/2017-11-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2017-11-05">5</a>  <a class="" href="/bitcoin-core-dev/2017-11-06">6</a>  <a class="" href="/bitcoin-core-dev/2017-11-07">7</a>  <a class="" href="/bitcoin-core-dev/2017-11-08">8</a>  <a class="" href="/bitcoin-core-dev/2017-11-09">9</a> <a class="" href="/bitcoin-core-dev/2017-11-10">10</a> <a class="" href="/bitcoin-core-dev/2017-11-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-11-12">12</a> <a class="" href="/bitcoin-core-dev/2017-11-13">13</a> <a class="" href="/bitcoin-core-dev/2017-11-14">14</a> <a class="" href="/bitcoin-core-dev/2017-11-15">15</a> <a class="" href="/bitcoin-core-dev/2017-11-16">16</a> <a class="" href="/bitcoin-core-dev/2017-11-17">17</a> <a class="" href="/bitcoin-core-dev/2017-11-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-11-19">19</a> <a class="" href="/bitcoin-core-dev/2017-11-20">20</a> <a class="current" href="/bitcoin-core-dev/2017-11-21">21</a> <a class="" href="/bitcoin-core-dev/2017-11-22">22</a> <a class="" href="/bitcoin-core-dev/2017-11-23">23</a> <a class="" href="/bitcoin-core-dev/2017-11-24">24</a> <a class="" href="/bitcoin-core-dev/2017-11-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2017-11-26">26</a> <a class="" href="/bitcoin-core-dev/2017-11-27">27</a> <a class="" href="/bitcoin-core-dev/2017-11-28">28</a> <a class="" href="/bitcoin-core-dev/2017-11-29">29</a> <a class="" href="/bitcoin-core-dev/2017-11-30">30</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1511228160' id='581426'>
+<a class='timestamp' href='#581426'><time timestamp='2017-11-21T01:36:00Z'>01:36</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+morcos: I was just looking at fee rate estimation. I&#x27;m surprised that the Bitcoin Core estimate is still on 170 for second block target when the network has been clearing the mempool of &lt;40 for four days.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228220' id='581427'>
+<a class='timestamp' href='#581427'><time timestamp='2017-11-21T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+morcos: A few minutes ago, the block would have cleared down to below 5 satoshis per byte, but now there is one MB waiting at 160+
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228220' id='581428'>
+<a class='timestamp' href='#581428'><time timestamp='2017-11-21T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+morcos: Maybe the estimation is a bit of o self-fulfilling prophecy?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228280' id='581429'>
+<a class='timestamp' href='#581429'><time timestamp='2017-11-21T01:38:00Z'>01:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Murch: fee estimation does not look at what fees would be required to confirm given the current mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228280' id='581430'>
+<a class='timestamp' href='#581430'><time timestamp='2017-11-21T01:38:00Z'>01:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but at what fees <b>*are*</b> confirming
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228280' id='581431'>
+<a class='timestamp' href='#581431'><time timestamp='2017-11-21T01:38:00Z'>01:38</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+I know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228280' id='581432'>
+<a class='timestamp' href='#581432'><time timestamp='2017-11-21T01:38:00Z'>01:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+so yes, i guess it&#x27;s by definition a self-fullfilling prophecy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228340' id='581433'>
+<a class='timestamp' href='#581433'><time timestamp='2017-11-21T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if people keep overpaying, fee estimation will keep telling them to overpay
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228340' id='581434'>
+<a class='timestamp' href='#581434'><time timestamp='2017-11-21T01:39:00Z'>01:39</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+however, the fee estimation may be sustaining a higher fee level by jumping in at a too high level and generating enough send queue at that level
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228400' id='581435'>
+<a class='timestamp' href='#581435'><time timestamp='2017-11-21T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+I was considering that Morcos&#x27; algorithm may not be decreasing fees aggressively enough after such a great fee spike as we had.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228400' id='581436'>
+<a class='timestamp' href='#581436'><time timestamp='2017-11-21T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228400' id='581437'>
+<a class='timestamp' href='#581437'><time timestamp='2017-11-21T01:40:00Z'>01:40</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Murch: I&#x27;m not sure what you mean about clearing the mempool of &lt;40 for 4 days
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228460' id='581438'>
+<a class='timestamp' href='#581438'><time timestamp='2017-11-21T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+sipa: thats HOPEFU?LLy not true.  the design is such that if at least some poeple aren&#x27;t overpaying, and are also being confirmed, then fee esitmation will let you know that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228460' id='581439'>
+<a class='timestamp' href='#581439'><time timestamp='2017-11-21T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+even if most poeple are still overpaying
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228460' id='581440'>
+<a class='timestamp' href='#581440'><time timestamp='2017-11-21T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228460' id='581441'>
+<a class='timestamp' href='#581441'><time timestamp='2017-11-21T01:41:00Z'>01:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+morcos: but to an extent, there is a self-sustaining property in it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228520' id='581442'>
+<a class='timestamp' href='#581442'><time timestamp='2017-11-21T01:42:00Z'>01:42</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+the short term estimate has a half-life of only 18 blocks... so anything that happened more than say 12 hours ago is pretty meaningless
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228580' id='581443'>
+<a class='timestamp' href='#581443'><time timestamp='2017-11-21T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+yeah, there used to be more though.  now some people do place lower fees b/c they are willing to wait and so they use a longer target, so that helps the estimates for the shorter targets come down
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228580' id='581444'>
+<a class='timestamp' href='#581444'><time timestamp='2017-11-21T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+that&#x27;s a big part of why i wanted to increase the range to 1008.  incentivise people to try for those lower numbers
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228580' id='581445'>
+<a class='timestamp' href='#581445'><time timestamp='2017-11-21T01:43:00Z'>01:43</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but yea, i think there is definitely room to improve fee estimation, i just thinkthere is not much low hanging fruit.  it&#x27;s going to be pretty complicated to make it significantly better
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228640' id='581446'>
+<a class='timestamp' href='#581446'><time timestamp='2017-11-21T01:44:00Z'>01:44</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+well, the estimate does fit, as the fee level is now at ~170, but only 1.5MB over 30, and 1MB over 160 seems a bit unnatural
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228640' id='581447'>
+<a class='timestamp' href='#581447'><time timestamp='2017-11-21T01:44:00Z'>01:44</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Murch, looking at the last couple hours, there are several blocks that haven&#x27;t cleared down below 100
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228700' id='581448'>
+<a class='timestamp' href='#581448'><time timestamp='2017-11-21T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+yeah, the next one won&#x27;t either
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228700' id='581449'>
+<a class='timestamp' href='#581449'><time timestamp='2017-11-21T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+so then if you want to get confirmed in 2 blocks, you shouldn&#x27;t pay something that low
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228700' id='581450'>
+<a class='timestamp' href='#581450'><time timestamp='2017-11-21T01:45:00Z'>01:45</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+ask it for 12 and you&#x27;ll get a much lower answer
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228760' id='581451'>
+<a class='timestamp' href='#581451'><time timestamp='2017-11-21T01:46:00Z'>01:46</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+yeah, was just curious if anyone else was watching this and had thoughts on it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228880' id='581452'>
+<a class='timestamp' href='#581452'><time timestamp='2017-11-21T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+Fee estimates for target of 6 have gone up recently actually
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228880' id='581453'>
+<a class='timestamp' href='#581453'><time timestamp='2017-11-21T01:48:00Z'>01:48</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+but yeah its a good idea to keep an eye on it, especially since its&#x27; relatively new
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228940' id='581454'>
+<a class='timestamp' href='#581454'><time timestamp='2017-11-21T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+morcos: I was wondering, why is the fee estimate jumping at 45?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511228940' id='581455'>
+<a class='timestamp' href='#581455'><time timestamp='2017-11-21T01:49:00Z'>01:49</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+Are you switching the confidence curve?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229000' id='581456'>
+<a class='timestamp' href='#581456'><time timestamp='2017-11-21T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+sorry, 42
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229000' id='581457'>
+<a class='timestamp' href='#581457'><time timestamp='2017-11-21T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+Or, if you don&#x27;t know what I&#x27;m talking about, that may be custom to our estimate.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229000' id='581458'>
+<a class='timestamp' href='#581458'><time timestamp='2017-11-21T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+the time horizons break at 12 and 48, so there are often jumps around 6 , 12, 24, 48
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229000' id='581459'>
+<a class='timestamp' href='#581459'><time timestamp='2017-11-21T01:50:00Z'>01:50</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i don&#x27;t know why that would happen at 42
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581460'>
+<a class='timestamp' href='#581460'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+&quot;23&quot;: 22152,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581461'>
+<a class='timestamp' href='#581461'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+&quot;25&quot;: 20083,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581462'>
+<a class='timestamp' href='#581462'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+&quot;42&quot;: 135327,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581463'>
+<a class='timestamp' href='#581463'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+&quot;49&quot;: 128408,
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581464'>
+<a class='timestamp' href='#581464'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+huh???
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581465'>
+<a class='timestamp' href='#581465'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+that&#x27;s broken
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581466'>
+<a class='timestamp' href='#581466'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+it should never increase
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581467'>
+<a class='timestamp' href='#581467'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+Maybe it&#x27;s just a modification in our algorithm, maybe we&#x27;re not using Vanilla-Core after all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229060' id='581468'>
+<a class='timestamp' href='#581468'><time timestamp='2017-11-21T01:51:00Z'>01:51</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+yeah, exactly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229120' id='581469'>
+<a class='timestamp' href='#581469'><time timestamp='2017-11-21T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i see 19201 for 42
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229120' id='581470'>
+<a class='timestamp' href='#581470'><time timestamp='2017-11-21T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229120' id='581471'>
+<a class='timestamp' href='#581471'><time timestamp='2017-11-21T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+maybe you stopped asking for ECONOMICAL estimates?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229120' id='581472'>
+<a class='timestamp' href='#581472'><time timestamp='2017-11-21T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+We don&#x27;t have RBF, so we don&#x27;t do economical estimates
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229180' id='581473'>
+<a class='timestamp' href='#581473'><time timestamp='2017-11-21T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+i think you are for 23/25
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229180' id='581474'>
+<a class='timestamp' href='#581474'><time timestamp='2017-11-21T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+ah, that might be it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229180' id='581475'>
+<a class='timestamp' href='#581475'><time timestamp='2017-11-21T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+my conservative estimates for those are higher
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229240' id='581476'>
+<a class='timestamp' href='#581476'><time timestamp='2017-11-21T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+Alright, well, I guess I was mistaken in my thinking that our fee estimation is vanilla Core :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229240' id='581477'>
+<a class='timestamp' href='#581477'><time timestamp='2017-11-21T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-11'> morcos</span>&gt;
+oh.. forgot where you work, yeah i don&#x27;t think it is
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511229300' id='581478'>
+<a class='timestamp' href='#581478'><time timestamp='2017-11-21T01:55:00Z'>01:55</time></a>
+&lt;<span class='nick nick-4'> Murch</span>&gt;
+alright, thanks for your insights
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511247660' id='581479'>
+<a class='timestamp' href='#581479'><time timestamp='2017-11-21T07:01:00Z'>07:01</time></a>
+&lt;<span class='nick nick-5'> JeffSlentz</span>&gt;
+Hey, as a recent grad with not much experience with the Bitcoin Core project, are there any suggestions for contributing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511248320' id='581480'>
+<a class='timestamp' href='#581480'><time timestamp='2017-11-21T07:12:00Z'>07:12</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+JeffSlentz:  Probably one of the best things you can do is to become familiar with the source code.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511248380' id='581481'>
+<a class='timestamp' href='#581481'><time timestamp='2017-11-21T07:13:00Z'>07:13</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+JeffSlentz:  From there, you may find an area that can be improved and then raise discussions about it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511248380' id='581482'>
+<a class='timestamp' href='#581482'><time timestamp='2017-11-21T07:13:00Z'>07:13</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+JeffSlentz:  ...and suggestions on how to improve it, including source code if you feel inclined to write some.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249100' id='581483'>
+<a class='timestamp' href='#581483'><time timestamp='2017-11-21T07:25:00Z'>07:25</time></a>
+&lt;<span class='nick nick-5'> JeffSlentz</span>&gt;
+Randolf: Thanks! Is there a best practices way to learn the source code? I&#x27;m overwhelmed with the sheer amount
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249160' id='581484'>
+<a class='timestamp' href='#581484'><time timestamp='2017-11-21T07:26:00Z'>07:26</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+JeffSlentz:  Are you familiar with the programming language(s) that said source code is written in?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249220' id='581485'>
+<a class='timestamp' href='#581485'><time timestamp='2017-11-21T07:27:00Z'>07:27</time></a>
+&lt;<span class='nick nick-14'> Randolf</span>&gt;
+JeffSlentz:  If not, then there may be other options for you, but you&#x27;ll probably need to ask about those possibilities in the #bitcoin channel.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249340' id='581486'>
+<a class='timestamp' href='#581486'><time timestamp='2017-11-21T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+JeffSlentz Checkout the &quot;good first issue&quot; label on repo. <a href="https://github.com/bitcoin/bitcoin/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249340' id='581487'>
+<a class='timestamp' href='#581487'><time timestamp='2017-11-21T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+JeffSlentz Trying to jump in and more generally &quot;learn the source code&quot; wont be the best place to start. Instead, pick an issue, familiarise yourself with the code concerned, submit a PR to fix it. Rinse &amp; repeat.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249340' id='581488'>
+<a class='timestamp' href='#581488'><time timestamp='2017-11-21T07:29:00Z'>07:29</time></a>
+&lt;<span class='nick nick-5'> JeffSlentz</span>&gt;
+Randolf: I&#x27;ve written some C++ but it&#x27;s not my preferred language, I suppose.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249400' id='581489'>
+<a class='timestamp' href='#581489'><time timestamp='2017-11-21T07:30:00Z'>07:30</time></a>
+&lt;<span class='nick nick-5'> JeffSlentz</span>&gt;
+fanquake: Thanks, I think that&#x27;s a good approach
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511249640' id='581490'>
+<a class='timestamp' href='#581490'><time timestamp='2017-11-21T07:34:00Z'>07:34</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+JeffSlentz Also read through <a href="https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/CONTRIBUTING.md</a> &amp; <a href="https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/doc/developer-notes.md</a> . They explain how the development process works, and preferred code styles etc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511250720' id='581491'>
+<a class='timestamp' href='#581491'><time timestamp='2017-11-21T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 new commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/901ba3e38194...d4267a3ab271" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/901ba3e38194...d4267a3ab271</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511250720' id='581492'>
+<a class='timestamp' href='#581492'><time timestamp='2017-11-21T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d9340ce Matt Corallo: Fix sendrawtransaction hang when sending a tx already in mempool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511250720' id='581493'>
+<a class='timestamp' href='#581493'><time timestamp='2017-11-21T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d4267a3 Wladimir J. van der Laan: Merge #11738: Fix sendrawtransaction hang when sending a tx already in mempool...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511250720' id='581494'>
+<a class='timestamp' href='#581494'><time timestamp='2017-11-21T07:52:00Z'>07:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj closed pull request #11738: Fix sendrawtransaction hang when sending a tx already in mempool (master...2017-11-fix-sendraw-block) <a href="https://github.com/bitcoin/bitcoin/pull/11738" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11738</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511252280' id='581495'>
+<a class='timestamp' href='#581495'><time timestamp='2017-11-21T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-8'> fanquake</span>&gt;
+wumpus exposed :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511252280' id='581496'>
+<a class='timestamp' href='#581496'><time timestamp='2017-11-21T08:18:00Z'>08:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+fanquake: yep :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511252700' id='581497'>
+<a class='timestamp' href='#581497'><time timestamp='2017-11-21T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> geezas</span>&gt;
+anyone know if network-adjusted time as described in the wiki on block timestamps is used as described there
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511252700' id='581498'>
+<a class='timestamp' href='#581498'><time timestamp='2017-11-21T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> geezas</span>&gt;
+?     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511252700' id='581499'>
+<a class='timestamp' href='#581499'><time timestamp='2017-11-21T08:25:00Z'>08:25</time></a>
+&lt;<span class='nick nick-11'> geezas</span>&gt;
+&quot;A timestamp is accepted as valid if it is greater than the median timestamp of previous 11 blocks, and less than the network-adjusted time + 2 hours. &quot;Network-adjusted time&quot; is the median of the timestamps returned by all nodes connected to you.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257320' id='581500'>
+<a class='timestamp' href='#581500'><time timestamp='2017-11-21T09:42:00Z'>09:42</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+see GetMedianTimePast
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257800' id='581501'>
+<a class='timestamp' href='#581501'><time timestamp='2017-11-21T09:50:00Z'>09:50</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+wumpus: the timespamt from node is just the timestamp in the blocks my node receives, right? Checking getMedianTimePast(), it referencis the blockchain. I have a feeling geezas tends to think it is a message that is exchanged between nodes. Can you shed some light, which view is correct?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257860' id='581502'>
+<a class='timestamp' href='#581502'><time timestamp='2017-11-21T09:51:00Z'>09:51</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+the text he quotes talks about the median timestamp of the previous 11 blocks, that&#x27;s implemented in GetMedianTimePast
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257920' id='581503'>
+<a class='timestamp' href='#581503'><time timestamp='2017-11-21T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+there is also a median filter get relative node times at connection, in src/timedata.h, but that is a wholly separate thing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257920' id='581504'>
+<a class='timestamp' href='#581504'><time timestamp='2017-11-21T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it also talks about network-adjusted time, which is indeed there is a message exchanged between nodes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257920' id='581505'>
+<a class='timestamp' href='#581505'><time timestamp='2017-11-21T09:52:00Z'>09:52</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+ah ok, that is what I wanted to know
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257980' id='581506'>
+<a class='timestamp' href='#581506'><time timestamp='2017-11-21T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+tried doing an experiment, but can not force my system to change its time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257980' id='581507'>
+<a class='timestamp' href='#581507'><time timestamp='2017-11-21T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+so if I set my time to 2015 would I invalidate blocks? It sounds like bitcoin-core would take the blockchain (and other nodes) as the source of time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257980' id='581508'>
+<a class='timestamp' href='#581508'><time timestamp='2017-11-21T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+there&#x27;s an option to override that logic IIRC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257980' id='581509'>
+<a class='timestamp' href='#581509'><time timestamp='2017-11-21T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+need to look into timedata.h, that might answer it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511257980' id='581510'>
+<a class='timestamp' href='#581510'><time timestamp='2017-11-21T09:53:00Z'>09:53</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it also never adjusts more than 1 hour iirc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258040' id='581511'>
+<a class='timestamp' href='#581511'><time timestamp='2017-11-21T09:54:00Z'>09:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+(for the node time, not for the consensus logic obviously)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258040' id='581512'>
+<a class='timestamp' href='#581512'><time timestamp='2017-11-21T09:54:00Z'>09:54</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+-maxtimeadjustment=0
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258040' id='581513'>
+<a class='timestamp' href='#581513'><time timestamp='2017-11-21T09:54:00Z'>09:54</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+yeah turned off ntp on my laptop, but will see. I will perhaps use regtest and disconnect from the internet for that time :) 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258100' id='581514'>
+<a class='timestamp' href='#581514'><time timestamp='2017-11-21T09:55:00Z'>09:55</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+also if you just want to test w/ bitcoin and times there&#x27;s setmocktime
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258160' id='581515'>
+<a class='timestamp' href='#581515'><time timestamp='2017-11-21T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+ah ok, it must be in the unit tests than ... will look it up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258160' id='581516'>
+<a class='timestamp' href='#581516'><time timestamp='2017-11-21T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+ty!     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258160' id='581517'>
+<a class='timestamp' href='#581517'><time timestamp='2017-11-21T09:56:00Z'>09:56</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+there&#x27;s also the &#x27;faketime&#x27; command that allows time machine experiments without changing time on your computer globally
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258220' id='581518'>
+<a class='timestamp' href='#581518'><time timestamp='2017-11-21T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+ah wow
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258220' id='581519'>
+<a class='timestamp' href='#581519'><time timestamp='2017-11-21T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+did not know that one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258220' id='581520'>
+<a class='timestamp' href='#581520'><time timestamp='2017-11-21T09:57:00Z'>09:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+&quot;faketime - manipulate the system time for a given command&quot; we use or at least used that for the gitian build to force a deterministic time
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258280' id='581521'>
+<a class='timestamp' href='#581521'><time timestamp='2017-11-21T09:58:00Z'>09:58</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+ah this is cool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258340' id='581522'>
+<a class='timestamp' href='#581522'><time timestamp='2017-11-21T09:59:00Z'>09:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+from my experience it doesn&#x27;t work with very far future dates due to 32-bit timestamps, but YMMV
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511258820' id='581523'>
+<a class='timestamp' href='#581523'><time timestamp='2017-11-21T10:07:00Z'>10:07</time></a>
+&lt;<span class='nick nick-8'> Sentineo</span>&gt;
+hm not getting peers when in future :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511267160' id='581524'>
+<a class='timestamp' href='#581524'><time timestamp='2017-11-21T12:26:00Z'>12:26</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+Hey guys, have a small question - Can anyone suggest an easy way to view the nSequence bit for rbf signalling? Thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511267640' id='581525'>
+<a class='timestamp' href='#581525'><time timestamp='2017-11-21T12:34:00Z'>12:34</time></a>
+&lt;<span class='nick nick-6'> Varunram</span>&gt;
+well, nvm, I just parsed the json from getrawtransaction :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511272320' id='581526'>
+<a class='timestamp' href='#581526'><time timestamp='2017-11-21T13:52:00Z'>13:52</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #11743: qa: Add multiwallet prefix test (master...Mf1711-qaMultiwallet) <a href="https://github.com/bitcoin/bitcoin/pull/11743" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11743</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279760' id='581527'>
+<a class='timestamp' href='#581527'><time timestamp='2017-11-21T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+wumpus: should #10996 be discussed next meeting?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279760' id='581528'>
+<a class='timestamp' href='#581528'><time timestamp='2017-11-21T15:56:00Z'>15:56</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10996" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10996</a> | Add per-network config file network.conf by ajtowns · Pull Request #10996 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279820' id='581529'>
+<a class='timestamp' href='#581529'><time timestamp='2017-11-21T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+promag: sure
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279820' id='581530'>
+<a class='timestamp' href='#581530'><time timestamp='2017-11-21T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+I&#x27;ll give it a try
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279820' id='581531'>
+<a class='timestamp' href='#581531'><time timestamp='2017-11-21T15:57:00Z'>15:57</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+promag: I think it&#x27;d help a lot in changes that we&#x27;re making that effectively set configuration for a single network
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279880' id='581532'>
+<a class='timestamp' href='#581532'><time timestamp='2017-11-21T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
++     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279880' id='581533'>
+<a class='timestamp' href='#581533'><time timestamp='2017-11-21T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
++1     
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279880' id='581534'>
+<a class='timestamp' href='#581534'><time timestamp='2017-11-21T15:58:00Z'>15:58</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+I don&#x27;t think we should allow overwriting logs different networks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279940' id='581535'>
+<a class='timestamp' href='#581535'><time timestamp='2017-11-21T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+*of different networks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511279940' id='581536'>
+<a class='timestamp' href='#581536'><time timestamp='2017-11-21T15:59:00Z'>15:59</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we could allow some settings to only appear in per-network configuration or command line
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280180' id='581537'>
+<a class='timestamp' href='#581537'><time timestamp='2017-11-21T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we have no way of handling multiple daemons writing to the same log file so we really want to avoid that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280180' id='581538'>
+<a class='timestamp' href='#581538'><time timestamp='2017-11-21T16:03:00Z'>16:03</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+right
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280240' id='581539'>
+<a class='timestamp' href='#581539'><time timestamp='2017-11-21T16:04:00Z'>16:04</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+maybe GetArg and friends could automatically handle options like `-(&lt;network&gt;-)?&lt;arg&gt;`?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280300' id='581540'>
+<a class='timestamp' href='#581540'><time timestamp='2017-11-21T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+also it&#x27;d make no sense, we&#x27;d have to distinguish which daemon is logging for each line - if you really want to dump all your bitcoin logging to one place, you can already use -printtoconsole w/ some log aggregation like systemd
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280300' id='581541'>
+<a class='timestamp' href='#581541'><time timestamp='2017-11-21T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+right, proper logging
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280300' id='581542'>
+<a class='timestamp' href='#581542'><time timestamp='2017-11-21T16:05:00Z'>16:05</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+yea that&#x27;d be another option
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280360' id='581543'>
+<a class='timestamp' href='#581543'><time timestamp='2017-11-21T16:06:00Z'>16:06</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+to make it possible to prefix options with -regtest- and -testnet- or -mainnet-, that would (afaik) work just as well as per-network configuration files...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280420' id='581544'>
+<a class='timestamp' href='#581544'><time timestamp='2017-11-21T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+wumpus: the only difference is that you must launch with the network argument
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280420' id='581545'>
+<a class='timestamp' href='#581545'><time timestamp='2017-11-21T16:07:00Z'>16:07</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+so that it can read from the correct config file
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280480' id='581546'>
+<a class='timestamp' href='#581546'><time timestamp='2017-11-21T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+with a single file, GetArg could 1st check -(&lt;network&gt;-)?&lt;arg&gt; and then -&lt;arg&gt;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280480' id='581547'>
+<a class='timestamp' href='#581547'><time timestamp='2017-11-21T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+hmm, does &quot;-testnet-logfile=BLAH&quot; make more sense than &quot;-logfile=blah-$NETWORK-log&quot; ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280540' id='581548'>
+<a class='timestamp' href='#581548'><time timestamp='2017-11-21T16:09:00Z'>16:09</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+aj: IMO it does, with $NETWORK you are stick to that replacement
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280600' id='581549'>
+<a class='timestamp' href='#581549'><time timestamp='2017-11-21T16:10:00Z'>16:10</time></a>
+&lt;<span class='nick nick-8'> promag</span>&gt;
+anyway, something to discuss thrusday
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280720' id='581550'>
+<a class='timestamp' href='#581550'><time timestamp='2017-11-21T16:12:00Z'>16:12</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+promag: you could still use different conf files (-conffile or network specific) to have different names, but yeah, i think i agree
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280780' id='581551'>
+<a class='timestamp' href='#581551'><time timestamp='2017-11-21T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+promag: i think setting -logfile=blah should be treated as -mainnet-logfile=blah, so if you run -regtest or -testnet you get an error, though...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280780' id='581552'>
+<a class='timestamp' href='#581552'><time timestamp='2017-11-21T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+hey, I noticed that getrawtransaction says &quot;Use gettransaction for wallet transactions&quot; when it doesn&#x27;t have a transaction.. but the gettransaction RPC doesn&#x27;t seem to exist on my node, presumably because I compiled it with --disable-wallet?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280780' id='581553'>
+<a class='timestamp' href='#581553'><time timestamp='2017-11-21T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+promag: (or it uses the default location, rather than erroring probably)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280780' id='581554'>
+<a class='timestamp' href='#581554'><time timestamp='2017-11-21T16:13:00Z'>16:13</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+if that&#x27;s what&#x27;s going on, might it make sense to still have all the wallet RPCs stubbed out with a helpful message, even when wallet support is not compiled in?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280900' id='581555'>
+<a class='timestamp' href='#581555'><time timestamp='2017-11-21T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+hkjn0: would be better to change the getrawtransaction message to not mention the wallet if wallet support is not built in
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280900' id='581556'>
+<a class='timestamp' href='#581556'><time timestamp='2017-11-21T16:15:00Z'>16:15</time></a>
+&lt;<span class='nick nick-1'> achow101</span>&gt;
+hkjn0: gettransaction is a wallet rpc, so if you did --disable-wallet, it won&#x27;t exist
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511280960' id='581557'>
+<a class='timestamp' href='#581557'><time timestamp='2017-11-21T16:16:00Z'>16:16</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+ok wumpus, that also would make sense to me, but we agree current messages are somewhat confusing?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281020' id='581558'>
+<a class='timestamp' href='#581558'><time timestamp='2017-11-21T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+stubbing out the methods would add some code, and would make the wallet method names exist in yet another place, I prefer for nothing wallet-related to be in the client at all if built without
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281020' id='581559'>
+<a class='timestamp' href='#581559'><time timestamp='2017-11-21T16:17:00Z'>16:17</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+--disable-build is very much an advanced option, we don&#x27;t ship binaries with that, and assume people that use it know what they&#x27;re doing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281080' id='581560'>
+<a class='timestamp' href='#581560'><time timestamp='2017-11-21T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+disable-wallet lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281080' id='581561'>
+<a class='timestamp' href='#581561'><time timestamp='2017-11-21T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+clearly a risky assumption, in my case! :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281080' id='581562'>
+<a class='timestamp' href='#581562'><time timestamp='2017-11-21T16:18:00Z'>16:18</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+ok, if the change is to just modify the getrawtransaction message if wallet isn&#x27;t enabled, what&#x27;s the best way to do that? should I file an issue?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281140' id='581563'>
+<a class='timestamp' href='#581563'><time timestamp='2017-11-21T16:19:00Z'>16:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+make a patch and file a PR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281140' id='581564'>
+<a class='timestamp' href='#581564'><time timestamp='2017-11-21T16:19:00Z'>16:19</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+if you create an issue for something non-critical without providing code, it&#x27;s unlikely it&#x27;s ever picked up
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281260' id='581565'>
+<a class='timestamp' href='#581565'><time timestamp='2017-11-21T16:21:00Z'>16:21</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+I&#x27;m just asking for advice for best processes here, change might be simple enough that I can give it a whirl.. but the change is so small an issue is unnecessary here?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281320' id='581566'>
+<a class='timestamp' href='#581566'><time timestamp='2017-11-21T16:22:00Z'>16:22</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+or is it preferred to have issue + patch, even for small changes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281500' id='581567'>
+<a class='timestamp' href='#581567'><time timestamp='2017-11-21T16:25:00Z'>16:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+we always handle code changes through github PRs, even small ones
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281500' id='581568'>
+<a class='timestamp' href='#581568'><time timestamp='2017-11-21T16:25:00Z'>16:25</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+they still need review
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281740' id='581569'>
+<a class='timestamp' href='#581569'><time timestamp='2017-11-21T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jnewbery: btw, are you going to revive #11047 ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281740' id='581570'>
+<a class='timestamp' href='#581570'><time timestamp='2017-11-21T16:29:00Z'>16:29</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/11047" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/11047</a> | [tests] rename functional tests by jnewbery · Pull Request #11047 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281980' id='581571'>
+<a class='timestamp' href='#581571'><time timestamp='2017-11-21T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+wumpus: sorry if I was unclear, I realize all changes go through PRs, but my question was whether it was encouraged to have PR + GH issue even for small changes, or if PR alone would suffice
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511281980' id='581572'>
+<a class='timestamp' href='#581572'><time timestamp='2017-11-21T16:33:00Z'>16:33</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+PR alone is fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282040' id='581573'>
+<a class='timestamp' href='#581573'><time timestamp='2017-11-21T16:34:00Z'>16:34</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+cool
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282040' id='581574'>
+<a class='timestamp' href='#581574'><time timestamp='2017-11-21T16:34:00Z'>16:34</time></a>
+&lt;<span class='nick nick-16'> wumpus</span>&gt;
+sorry, was also confused by terminology, as github regards a PR also as a kind of issue
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282040' id='581575'>
+<a class='timestamp' href='#581575'><time timestamp='2017-11-21T16:34:00Z'>16:34</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+hkjn0: please at least describe if it fixes something though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282160' id='581576'>
+<a class='timestamp' href='#581576'><time timestamp='2017-11-21T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+instagibbs: could you elaborate? are you saying &quot;use good descriptions in commits / PRs&quot;, or something else?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282220' id='581577'>
+<a class='timestamp' href='#581577'><time timestamp='2017-11-21T16:37:00Z'>16:37</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+hkjn0: right, as appropriate. At a minimum in the PR, so I can git blame and backtrace
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282280' id='581578'>
+<a class='timestamp' href='#581578'><time timestamp='2017-11-21T16:38:00Z'>16:38</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+certain contributors aren&#x27;t that great at it :P
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282340' id='581579'>
+<a class='timestamp' href='#581579'><time timestamp='2017-11-21T16:39:00Z'>16:39</time></a>
+&lt;<span class='nick nick-9'> hkjn0</span>&gt;
+kk, for sure.. I&#x27;m pretty used to commit messages many times longer than actual code diff :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282340' id='581580'>
+<a class='timestamp' href='#581580'><time timestamp='2017-11-21T16:39:00Z'>16:39</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #11744: net: Add missing locks in net.{cpp,h} (master...missing-net-locks) <a href="https://github.com/bitcoin/bitcoin/pull/11744" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11744</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511282760' id='581581'>
+<a class='timestamp' href='#581581'><time timestamp='2017-11-21T16:46:00Z'>16:46</time></a>
+&lt;<span class='nick nick-11'> instagibbs</span>&gt;
+hkjn0: perfect :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511283900' id='581582'>
+<a class='timestamp' href='#581582'><time timestamp='2017-11-21T17:05:00Z'>17:05</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+aj: it&#x27;s not near the top of my list. If you want it, it&#x27;s yours!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511284800' id='581583'>
+<a class='timestamp' href='#581583'><time timestamp='2017-11-21T17:20:00Z'>17:20</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jnewbery: does it need anything other than regular rebases and nit fixes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511288100' id='581584'>
+<a class='timestamp' href='#581584'><time timestamp='2017-11-21T18:15:00Z'>18:15</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #11746: trivial: Fix unsuccessful typo (master...unsuccesful) <a href="https://github.com/bitcoin/bitcoin/pull/11746" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11746</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511289780' id='581585'>
+<a class='timestamp' href='#581585'><time timestamp='2017-11-21T18:43:00Z'>18:43</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: do you still have that &quot;block request amount&quot; graph? (what depth will be received how frequently)?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511291100' id='581586'>
+<a class='timestamp' href='#581586'><time timestamp='2017-11-21T19:05:00Z'>19:05</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jonasschnelli: i&#x27;m still gathering the data
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511291160' id='581587'>
+<a class='timestamp' href='#581587'><time timestamp='2017-11-21T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-13'> jonasschnelli</span>&gt;
+sipa: okay.. you have a live graph? or you will produce one once you have collected enought points?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511293260' id='581588'>
+<a class='timestamp' href='#581588'><time timestamp='2017-11-21T19:41:00Z'>19:41</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Elbandi opened pull request #11747: Fix: Open files read only if requested (master...fix11745) <a href="https://github.com/bitcoin/bitcoin/pull/11747" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11747</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511293440' id='581589'>
+<a class='timestamp' href='#581589'><time timestamp='2017-11-21T19:44:00Z'>19:44</time></a>
+&lt;<span class='nick nick-14'> ChuckSupport</span>&gt;
+Good day! I&#x27;ve been saving up since 2015 to buy my own antminer and finally mine on core and not GPU mine. I&#x27;m a QA first developer second and would like to contribute but I&#x27;m still new to github practices. Can someone suggest how I could go about this? Start with github practices, then how can I pull test code and test ,etc. Thanks for everything you&#x27;ve done and sacrificed for this!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511294760' id='581590'>
+<a class='timestamp' href='#581590'><time timestamp='2017-11-21T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+Chris_Stewart_5: #bitcoin-mining will probably be more helpful, or #bitcoin. this channel is specifically about software development of Bitcoin Core
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511294760' id='581591'>
+<a class='timestamp' href='#581591'><time timestamp='2017-11-21T20:06:00Z'>20:06</time></a>
+&lt;<span class='nick nick-8'> andytoshi</span>&gt;
+sorry Chris_Stewart_5 i meant to highlight that guy who left
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303340' id='581592'>
+<a class='timestamp' href='#581592'><time timestamp='2017-11-21T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: are you here atm?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303340' id='581593'>
+<a class='timestamp' href='#581593'><time timestamp='2017-11-21T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: hey
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303340' id='581594'>
+<a class='timestamp' href='#581594'><time timestamp='2017-11-21T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: re #10996, I&#x27;m just a little confused now 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303340' id='581595'>
+<a class='timestamp' href='#581595'><time timestamp='2017-11-21T22:29:00Z'>22:29</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/10996" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/10996</a> | Add per-network config file network.conf by ajtowns · Pull Request #10996 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303400' id='581596'>
+<a class='timestamp' href='#581596'><time timestamp='2017-11-21T22:30:00Z'>22:30</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+-netconf is just -conf but relative to net-specific datadir?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303460' id='581597'>
+<a class='timestamp' href='#581597'><time timestamp='2017-11-21T22:31:00Z'>22:31</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: yeah: patch makes bitcoind load two config files, .bitcoin/bitcoin.conf and .bitcoin/testnet3/network.conf; -conf lets you choose a different name for the first one, -netconf a different name for the second one
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303520' id='581598'>
+<a class='timestamp' href='#581598'><time timestamp='2017-11-21T22:32:00Z'>22:32</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+I like the default reading of the network specific config file but I&#x27;m worried the parameter interaction between conf and netconf will confuse users
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303640' id='581599'>
+<a class='timestamp' href='#581599'><time timestamp='2017-11-21T22:34:00Z'>22:34</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: i worry about that too. current behaviour is that bitcoin.conf is loaded first and network.conf second (so bitcoin.conf can specify the network), and any setting in bitcoin.conf overrides any setting in network.conf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303700' id='581600'>
+<a class='timestamp' href='#581600'><time timestamp='2017-11-21T22:35:00Z'>22:35</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: (ie, GetArg returns the first value seen, GetArgs returns all of them from both files)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303760' id='581601'>
+<a class='timestamp' href='#581601'><time timestamp='2017-11-21T22:36:00Z'>22:36</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: Perhaps instead of -netconf parameter, just rely on -conf for specifying a config file if they want (because they can specify one in a net-specific directory explicitly if they want) and then only load the network.conf if -conf is not specified?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303880' id='581602'>
+<a class='timestamp' href='#581602'><time timestamp='2017-11-21T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: hmm.. the choice i&#x27;m seeing is between having a param to let you choose a different name for the file, or no param at all and just always checking for datadir/network.conf
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303880' id='581603'>
+<a class='timestamp' href='#581603'><time timestamp='2017-11-21T22:38:00Z'>22:38</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+I think if people are explicitly specifying a different config with -conf parameter, we can assume they want to use it on the network they&#x27;ve specified right?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511303940' id='581604'>
+<a class='timestamp' href='#581604'><time timestamp='2017-11-21T22:39:00Z'>22:39</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+So if they use -conf, we only load that, but if they don&#x27;t then we load the network specific file by default too?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304000' id='581605'>
+<a class='timestamp' href='#581605'><time timestamp='2017-11-21T22:40:00Z'>22:40</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: But perhaps I haven&#x27;t fully understood the use case so it&#x27;s your call
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304180' id='581606'>
+<a class='timestamp' href='#581606'><time timestamp='2017-11-21T22:43:00Z'>22:43</time></a>
+&lt;<span class='nick nick-16'> jnewbery</span>&gt;
+aj: sorry for long delay. Yes, just rebase and nits. Rebase should be easy - it&#x27;s just a case of re-running the script
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304420' id='581607'>
+<a class='timestamp' href='#581607'><time timestamp='2017-11-21T22:47:00Z'>22:47</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+jnewbery: no worries about the delay, that&#x27;s why the i in irc doesn&#x27;t stand for instant :) sounds good, i guess i&#x27;ll check with MarcoFalke that there&#x27;s not more reason to close it than inactivity
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304660' id='581608'>
+<a class='timestamp' href='#581608'><time timestamp='2017-11-21T22:51:00Z'>22:51</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: i&#x27;m not sure if there&#x27;s a use case... atm, you could have standard settings in bitcoin.conf and special settings in network.conf (mainnet addnode&#x27;s say), and switch either independently via command line options. that just seems a bit more flexible and maybe natural to me?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304780' id='581609'>
+<a class='timestamp' href='#581609'><time timestamp='2017-11-21T22:53:00Z'>22:53</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: Or, what if both the net specific file and the root datadir one had the same name, and -conf specified them both?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304840' id='581610'>
+<a class='timestamp' href='#581610'><time timestamp='2017-11-21T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Or would having them both called bitcoin.conf be confusing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304840' id='581611'>
+<a class='timestamp' href='#581611'><time timestamp='2017-11-21T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: mainnet bitcoin.conf and network.conf live in the same directory :(
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304840' id='581612'>
+<a class='timestamp' href='#581612'><time timestamp='2017-11-21T22:54:00Z'>22:54</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Ah true lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511304960' id='581613'>
+<a class='timestamp' href='#581613'><time timestamp='2017-11-21T22:56:00Z'>22:56</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: Hmm perhaps someone else will give feedback on the approach too, I think I&#x27;d still prefer not having the netconf command and just using conf if it&#x27;s specified but yeah no massive leaning either way
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511305140' id='581614'>
+<a class='timestamp' href='#581614'><time timestamp='2017-11-21T22:59:00Z'>22:59</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: i might see if i can code up your way and match the tests, see what it looks liek
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511305200' id='581615'>
+<a class='timestamp' href='#581615'><time timestamp='2017-11-21T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+aj: sounds good, thank you! :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511305200' id='581616'>
+<a class='timestamp' href='#581616'><time timestamp='2017-11-21T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-3'> meshcollider</span>&gt;
+Sorry for being difficult :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511305200' id='581617'>
+<a class='timestamp' href='#581617'><time timestamp='2017-11-21T23:00:00Z'>23:00</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: i don&#x27;t expect to like it, but i&#x27;ve been wrong before :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511305560' id='581618'>
+<a class='timestamp' href='#581618'><time timestamp='2017-11-21T23:06:00Z'>23:06</time></a>
+&lt;<span class='nick nick-3'> aj</span>&gt;
+meshcollider: hmm, question is, if i respond in less than two weeks, will the difficulty increase...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1511307420' id='581619'>
+<a class='timestamp' href='#581619'><time timestamp='2017-11-21T23:37:00Z'>23:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] fanquake closed pull request #11735: [refactor] Remove magic numbers from HMAC SHA256 (master...eliminate_magic_numbers) <a href="https://github.com/bitcoin/bitcoin/pull/11735" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/11735</a>
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

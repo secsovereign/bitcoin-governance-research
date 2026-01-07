@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html>
+<title>
+#bitcoin-core-dev
+ on 2019-05-06
+ — 
+searchable irc log
+</title>
+<meta charset='utf-8'>
+<meta content='IE=9' http-equiv='X-UA-Compatible'>
+<link href='/style-light.css' id='stylesheet' rel='stylesheet'>
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='http://chaincode.com/bitcoin-core-dev/2019-05-06' rel='canonical'>
+<meta content='channel #bitcoin-core-dev IRC chat logs' name='description'>
+<script src='/jquery.min.js'></script>
+<script src='/jquery.ba-hashchange.min.js'></script>
+<script src='/cookies.min.js'></script>
+<script src='/application.js'></script>
+<body>
+<section id='sidebar'>
+<section id='calendar'>
+<pre class='clock'>17:20 UTC</pre>
+<pre><a href="/bitcoin-core-dev/2019-04-06">&lt;</a><span class='header'>     May 2019     </span><a href="/bitcoin-core-dev/2019-06-06">&gt;</a>&#x000A;<span class='header'>Su Mo Tu We Th Fr Sa  </span>&#x000A;          <a class="" href="/bitcoin-core-dev/2019-05-01">1</a>  <a class="" href="/bitcoin-core-dev/2019-05-02">2</a>  <a class="" href="/bitcoin-core-dev/2019-05-03">3</a>  <a class="" href="/bitcoin-core-dev/2019-05-04">4</a>  &#x000A; <a class="" href="/bitcoin-core-dev/2019-05-05">5</a>  <a class="current" href="/bitcoin-core-dev/2019-05-06">6</a>  <a class="" href="/bitcoin-core-dev/2019-05-07">7</a>  <a class="" href="/bitcoin-core-dev/2019-05-08">8</a>  <a class="" href="/bitcoin-core-dev/2019-05-09">9</a> <a class="" href="/bitcoin-core-dev/2019-05-10">10</a> <a class="" href="/bitcoin-core-dev/2019-05-11">11</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-05-12">12</a> <a class="" href="/bitcoin-core-dev/2019-05-13">13</a> <a class="" href="/bitcoin-core-dev/2019-05-14">14</a> <a class="" href="/bitcoin-core-dev/2019-05-15">15</a> <a class="" href="/bitcoin-core-dev/2019-05-16">16</a> <a class="" href="/bitcoin-core-dev/2019-05-17">17</a> <a class="" href="/bitcoin-core-dev/2019-05-18">18</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-05-19">19</a> <a class="" href="/bitcoin-core-dev/2019-05-20">20</a> <a class="" href="/bitcoin-core-dev/2019-05-21">21</a> <a class="" href="/bitcoin-core-dev/2019-05-22">22</a> <a class="" href="/bitcoin-core-dev/2019-05-23">23</a> <a class="" href="/bitcoin-core-dev/2019-05-24">24</a> <a class="" href="/bitcoin-core-dev/2019-05-25">25</a>  &#x000A;<a class="" href="/bitcoin-core-dev/2019-05-26">26</a> <a class="" href="/bitcoin-core-dev/2019-05-27">27</a> <a class="" href="/bitcoin-core-dev/2019-05-28">28</a> <a class="" href="/bitcoin-core-dev/2019-05-29">29</a> <a class="" href="/bitcoin-core-dev/2019-05-30">30</a> <a class="" href="/bitcoin-core-dev/2019-05-31">31</a></pre>
+</section>
+<section id='options'>
+<form action='/bitcoin-core-dev/search'>
+<input id='search-box' name='q' placeholder='Enter keywords'>
+<input type='submit' value='Search'>
+<br/>
+<br/>
+<p>This is a searchable archive of <a href=/bitcoin-core-dev>#bitcoin-core-dev</a> irc</p>
+<br/>
+<small>
+<b>Examples</b>
+<br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=bitcoin">bitcoin</a>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=*BIP*">*BIP*</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22bitcoin-git%22">bitcoin-git</a><br/>
+<a href="http://bitcoin-irc.chaincode.com/bitcoin-core-dev/search?q=%22core-meetingbot%22">core-meetingbot</a>
+<br/>
+<br/>
+</small>
+<small>Search supports standard MySQL <a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html">fulltext search operations</a></small>
+<br/>
+<br/>
+<small>Click on the timestamp of a message for a sharable link</small>
+<br/>
+<br/>
+<small>Message timestamps are in UTC</small>
+<br/>
+<br/>
+<small>This archive is hosted by <a href="http://chaincode.com">Chaincode</a> and runs on <a href="https://github.com/whitequark/irclogger">irclogger</a></small>
+<br/>
+</form>
+</section>
+</section>
+<section class='without-noise' data-channel='#bitcoin-core-dev' id='log'>
+<aside id='log-panel'>
+<a href='#' id='light_dark'></a>
+<label for='filter'>
+Filter:
+</label>
+<input id='filter'>
+<span class='clear-input' id='clear_filter' style='display:none'></span>
+<div class='input-group'>
+<input id='show_noise' type='checkbox'>
+<label for='show_noise'>
+Show join/leave messages
+</label>
+</div>
+</aside>
+<div class='log-messages with-panel'>
+<div class='talk op-msg' data-timestamp='1557105360' id='665789'>
+<a class='timestamp' href='#665789'><time timestamp='2019-05-06T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i noticed read() accepts &#x27;size_t for its third argument but &#x27;int&#x27;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105360' id='665790'>
+<a class='timestamp' href='#665790'><time timestamp='2019-05-06T01:16:00Z'>01:16</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+whoops, &#x27;int&#x27; is used here: <a href="https://github.com/bitcoin/bitcoin/blob/master/src/random.cpp#L290" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/random.cpp#L290</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105420' id='665791'>
+<a class='timestamp' href='#665791'><time timestamp='2019-05-06T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+particularly &#x27;have&#x27; and &#x27;NUM_OS_RANDOM_BYTES&#x27; are int
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105420' id='665792'>
+<a class='timestamp' href='#665792'><time timestamp='2019-05-06T01:17:00Z'>01:17</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+is this intended for some reason, or a bug?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105660' id='665793'>
+<a class='timestamp' href='#665793'><time timestamp='2019-05-06T01:21:00Z'>01:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it&#x27;s a constant, it doesn&#x27;t matter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105780' id='665794'>
+<a class='timestamp' href='#665794'><time timestamp='2019-05-06T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+but why?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105780' id='665795'>
+<a class='timestamp' href='#665795'><time timestamp='2019-05-06T01:23:00Z'>01:23</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+size_t is unsigned, int is signed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105840' id='665796'>
+<a class='timestamp' href='#665796'><time timestamp='2019-05-06T01:24:00Z'>01:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+32 is 32
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105900' id='665797'>
+<a class='timestamp' href='#665797'><time timestamp='2019-05-06T01:25:00Z'>01:25</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+right but it doesn&#x27;t really answer my question
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105960' id='665798'>
+<a class='timestamp' href='#665798'><time timestamp='2019-05-06T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: use of an unsigned value would potentially risk random unsigned promotions elsewhere.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105960' id='665799'>
+<a class='timestamp' href='#665799'><time timestamp='2019-05-06T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Which is a common source of gnarly bugs.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557105960' id='665800'>
+<a class='timestamp' href='#665800'><time timestamp='2019-05-06T01:26:00Z'>01:26</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+32 fortunately fits in every type (except bool. :P )
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557106140' id='665801'>
+<a class='timestamp' href='#665801'><time timestamp='2019-05-06T01:29:00Z'>01:29</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, makes sense, it&#x27;s that i would think doing that kind of thing might cause platform issues down the road, maybe similar to the way &quot;word&quot; became ambiguous
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557106620' id='665802'>
+<a class='timestamp' href='#665802'><time timestamp='2019-05-06T01:37:00Z'>01:37</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+tryphe: I don&#x27;t think C++ allows it to be ambiguous
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107040' id='665803'>
+<a class='timestamp' href='#665803'><time timestamp='2019-05-06T01:44:00Z'>01:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: thabkfully we have a lot of control over supported platforms; right now, the code already relies on int being at least 32 bits iirc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107160' id='665804'>
+<a class='timestamp' href='#665804'><time timestamp='2019-05-06T01:46:00Z'>01:46</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+luke-jr, sipa, those are good points, i guess it just makes me think how ints were 16 bits on 16-bit processors and how over time there were problems because interpretation became loose
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107220' id='665805'>
+<a class='timestamp' href='#665805'><time timestamp='2019-05-06T01:47:00Z'>01:47</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+tryphe: int is guaranteed to be at least 16-bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107520' id='665806'>
+<a class='timestamp' href='#665806'><time timestamp='2019-05-06T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+what about using an already defined fixed-width type like int32_t?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107520' id='665807'>
+<a class='timestamp' href='#665807'><time timestamp='2019-05-06T01:52:00Z'>01:52</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+would it be preferred over int?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107580' id='665808'>
+<a class='timestamp' href='#665808'><time timestamp='2019-05-06T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+it really depends on what the code requires
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107580' id='665809'>
+<a class='timestamp' href='#665809'><time timestamp='2019-05-06T01:53:00Z'>01:53</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+if it&#x27;s just counting from 1 to 3, int is fine
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107640' id='665810'>
+<a class='timestamp' href='#665810'><time timestamp='2019-05-06T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+if it&#x27;s iterating over an array, it should use size_t
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107640' id='665811'>
+<a class='timestamp' href='#665811'><time timestamp='2019-05-06T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+etc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107640' id='665812'>
+<a class='timestamp' href='#665812'><time timestamp='2019-05-06T01:54:00Z'>01:54</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+fixed-width types should only be used when there is a need for an exact width
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107700' id='665813'>
+<a class='timestamp' href='#665813'><time timestamp='2019-05-06T01:55:00Z'>01:55</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+but if you know it&#x27;s 32 bits, then that&#x27;s why C++11 standard made fixed-width types, for that exact reaason
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107700' id='665814'>
+<a class='timestamp' href='#665814'><time timestamp='2019-05-06T01:55:00Z'>01:55</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+it just seems strange that you would use int to me, that&#x27;s all
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107760' id='665815'>
+<a class='timestamp' href='#665815'><time timestamp='2019-05-06T01:56:00Z'>01:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+`int` is the preferred integer type when 16-bits is sufficient
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107760' id='665816'>
+<a class='timestamp' href='#665816'><time timestamp='2019-05-06T01:56:00Z'>01:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+the compiler will choose whatever width is best for the target platform
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107760' id='665817'>
+<a class='timestamp' href='#665817'><time timestamp='2019-05-06T01:56:00Z'>01:56</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+eg, it will use 32-bit if 16-bit would entail extra overflow checks/handling
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107820' id='665818'>
+<a class='timestamp' href='#665818'><time timestamp='2019-05-06T01:57:00Z'>01:57</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i thought you guys only supported platforms where it was 32 bits, though
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557107940' id='665819'>
+<a class='timestamp' href='#665819'><time timestamp='2019-05-06T01:59:00Z'>01:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108000' id='665820'>
+<a class='timestamp' href='#665820'><time timestamp='2019-05-06T02:00:00Z'>02:00</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+luke-jr, but from what sipa said, it can only be 32, hence the confusion
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108060' id='665821'>
+<a class='timestamp' href='#665821'><time timestamp='2019-05-06T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+so it can be 16 sometimes?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108060' id='665822'>
+<a class='timestamp' href='#665822'><time timestamp='2019-05-06T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: C++ only guarantees that ints are at least 16 bits
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108060' id='665823'>
+<a class='timestamp' href='#665823'><time timestamp='2019-05-06T02:01:00Z'>02:01</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+bitcoin core only support platforms where it is 32
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108120' id='665824'>
+<a class='timestamp' href='#665824'><time timestamp='2019-05-06T02:02:00Z'>02:02</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gotcha
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108180' id='665825'>
+<a class='timestamp' href='#665825'><time timestamp='2019-05-06T02:03:00Z'>02:03</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i still don&#x27;t see why you would want to use int, seems like a future rat&#x27;s nest of problems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108240' id='665826'>
+<a class='timestamp' href='#665826'><time timestamp='2019-05-06T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+really, it is not a big deal
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108240' id='665827'>
+<a class='timestamp' href='#665827'><time timestamp='2019-05-06T02:04:00Z'>02:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+int is big enough for the constant 32, hence, it is enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108420' id='665828'>
+<a class='timestamp' href='#665828'><time timestamp='2019-05-06T02:07:00Z'>02:07</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i see why you would want to use that for promotion to an unsigned type, but i&#x27;m just thinking hypothetically i guess :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108480' id='665829'>
+<a class='timestamp' href='#665829'><time timestamp='2019-05-06T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+maybe some guy in 100 years compiles an old bitcoin build on the new C++50 standard where ints are 128 bytes, or something, lol
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108480' id='665830'>
+<a class='timestamp' href='#665830'><time timestamp='2019-05-06T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+bits even
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108480' id='665831'>
+<a class='timestamp' href='#665831'><time timestamp='2019-05-06T02:08:00Z'>02:08</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+and it will still work
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108540' id='665832'>
+<a class='timestamp' href='#665832'><time timestamp='2019-05-06T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+because 32 is still 32 in 128-bit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108540' id='665833'>
+<a class='timestamp' href='#665833'><time timestamp='2019-05-06T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+yeah, you could even safely promote it to size_t_128 or something i guess :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108540' id='665834'>
+<a class='timestamp' href='#665834'><time timestamp='2019-05-06T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+thanks, that makes sense
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557108540' id='665835'>
+<a class='timestamp' href='#665835'><time timestamp='2019-05-06T02:09:00Z'>02:09</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+wasn&#x27;t trying to nag, just didn&#x27;t understand it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557111300' id='665836'>
+<a class='timestamp' href='#665836'><time timestamp='2019-05-06T02:55:00Z'>02:55</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i&#x27;m thankful for bitcoin because watching the development process helps amatuers like me not have such terrible C++ habits :o
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557121020' id='665837'>
+<a class='timestamp' href='#665837'><time timestamp='2019-05-06T05:37:00Z'>05:37</time></a>
+&lt;<span class='nick nick-6'> jb55</span>&gt;
+gcc bugs... spooky
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557121920' id='665838'>
+<a class='timestamp' href='#665838'><time timestamp='2019-05-06T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+tryphe: one interesting note about int, is that it is the smallest type for which C/C++ will not perform integer promotion behind your back unless the arguments have different types
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557121920' id='665839'>
+<a class='timestamp' href='#665839'><time timestamp='2019-05-06T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+if you&#x27;re smaller than int, you get promoted to int no matter what
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557121920' id='665840'>
+<a class='timestamp' href='#665840'><time timestamp='2019-05-06T05:52:00Z'>05:52</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+once you&#x27;re at int, you get left alone unless you need a promotion to make the operation possible 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557123300' id='665841'>
+<a class='timestamp' href='#665841'><time timestamp='2019-05-06T06:15:00Z'>06:15</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gwillen, neat, thanks!
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557123300' id='665842'>
+<a class='timestamp' href='#665842'><time timestamp='2019-05-06T06:15:00Z'>06:15</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gwillen, i guess i had noticed that before, but never had a real explanation for it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557129900' id='665843'>
+<a class='timestamp' href='#665843'><time timestamp='2019-05-06T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/d7d7d3150606...9bbaac73bb1f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/d7d7d3150606...9bbaac73bb1f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557129900' id='665844'>
+<a class='timestamp' href='#665844'><time timestamp='2019-05-06T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 77851ab Luke Dashjr: GUI: Refactor actual QR code rendering into new QRImageWidget::setQR
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557129900' id='665845'>
+<a class='timestamp' href='#665845'><time timestamp='2019-05-06T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fc92984 Luke Dashjr: GUI: Move QRImageWidget to its own file-pair
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557129900' id='665846'>
+<a class='timestamp' href='#665846'><time timestamp='2019-05-06T08:05:00Z'>08:05</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 9bbaac7 Wladimir J. van der Laan: Merge #15928: GUI: Move QRImageWidget to its own file-pair
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557129960' id='665847'>
+<a class='timestamp' href='#665847'><time timestamp='2019-05-06T08:06:00Z'>08:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #15928:  GUI: Move QRImageWidget to its own file-pair (master...split_qrencoder) <a href="https://github.com/bitcoin/bitcoin/pull/15928" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15928</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557130080' id='665848'>
+<a class='timestamp' href='#665848'><time timestamp='2019-05-06T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/9bbaac73bb1f...773e16f9190f" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/9bbaac73bb1f...773e16f9190f</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557130080' id='665849'>
+<a class='timestamp' href='#665849'><time timestamp='2019-05-06T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 00d1104 Daniel Kraft: Install bitcoin-wallet manpage.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557130080' id='665850'>
+<a class='timestamp' href='#665850'><time timestamp='2019-05-06T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 773e16f Wladimir J. van der Laan: Merge #15947: Install bitcoin-wallet manpage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557130080' id='665851'>
+<a class='timestamp' href='#665851'><time timestamp='2019-05-06T08:08:00Z'>08:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #15947: Install bitcoin-wallet manpage (master...install-wallet-man) <a href="https://github.com/bitcoin/bitcoin/pull/15947" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15947</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557135420' id='665852'>
+<a class='timestamp' href='#665852'><time timestamp='2019-05-06T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 5 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/773e16f9190f...a3d2d6b0674c" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/773e16f9190f...a3d2d6b0674c</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557135420' id='665853'>
+<a class='timestamp' href='#665853'><time timestamp='2019-05-06T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fad40ec MarcoFalke: wallet: Use IsValidNumArgs in getwalletinfo rpc
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557135420' id='665854'>
+<a class='timestamp' href='#665854'><time timestamp='2019-05-06T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master fad13e9 MarcoFalke: rpcwallet: Make helper methods const on CWallet
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557135420' id='665855'>
+<a class='timestamp' href='#665855'><time timestamp='2019-05-06T09:37:00Z'>09:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 999931c MarcoFalke: rpc: Add getbalances RPC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557135480' id='665856'>
+<a class='timestamp' href='#665856'><time timestamp='2019-05-06T09:38:00Z'>09:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #15930: rpc: Add balances RPC (master...1904-rpcWalletBalances) <a href="https://github.com/bitcoin/bitcoin/pull/15930" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15930</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557142680' id='665857'>
+<a class='timestamp' href='#665857'><time timestamp='2019-05-06T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj pushed 5 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/a3d2d6b0674c...c5ffe8d5155b" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/a3d2d6b0674c...c5ffe8d5155b</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557142680' id='665858'>
+<a class='timestamp' href='#665858'><time timestamp='2019-05-06T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 2ee811e João Barbosa: wallet: Track scanning duration
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557142680' id='665859'>
+<a class='timestamp' href='#665859'><time timestamp='2019-05-06T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 90e27ab João Barbosa: wallet: Track current scanning progress
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557142680' id='665860'>
+<a class='timestamp' href='#665860'><time timestamp='2019-05-06T11:38:00Z'>11:38</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d3e8458 João Barbosa: rpc: Show scanning details in getwalletinfo
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557142740' id='665861'>
+<a class='timestamp' href='#665861'><time timestamp='2019-05-06T11:39:00Z'>11:39</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] laanwj merged pull request #15730: rpc: Show scanning details in getwalletinfo (master...2019-04-getwalletinfo-scanning) <a href="https://github.com/bitcoin/bitcoin/pull/15730" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15730</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557143100' id='665862'>
+<a class='timestamp' href='#665862'><time timestamp='2019-05-06T11:45:00Z'>11:45</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] meshcollider opened pull request #15957: Show &quot;No wallets available&quot; in open menu instead of nothing (master...201905_openwallet_empty) <a href="https://github.com/bitcoin/bitcoin/pull/15957" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15957</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557152340' id='665863'>
+<a class='timestamp' href='#665863'><time timestamp='2019-05-06T14:19:00Z'>14:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke opened pull request #15959: refactor: Work around gcc compiler bug 90348 (master...1905-gccBugWorkaround) <a href="https://github.com/bitcoin/bitcoin/pull/15959" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15959</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557156840' id='665864'>
+<a class='timestamp' href='#665864'><time timestamp='2019-05-06T15:34:00Z'>15:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] Annasadra opened pull request #15960: git (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/15960" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15960</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557158880' id='665865'>
+<a class='timestamp' href='#665865'><time timestamp='2019-05-06T16:08:00Z'>16:08</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke closed pull request #15960: git (master...master) <a href="https://github.com/bitcoin/bitcoin/pull/15960" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15960</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557160560' id='665866'>
+<a class='timestamp' href='#665866'><time timestamp='2019-05-06T16:36:00Z'>16:36</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift opened pull request #15962: Add locking annotation for RewindBlockIndex (requires holding cs_main) (master...RewindBlockIndex) <a href="https://github.com/bitcoin/bitcoin/pull/15962" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15962</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557162060' id='665867'>
+<a class='timestamp' href='#665867'><time timestamp='2019-05-06T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 3 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/c5ffe8d5155b...8ec7121a4590" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/c5ffe8d5155b...8ec7121a4590</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557162060' id='665868'>
+<a class='timestamp' href='#665868'><time timestamp='2019-05-06T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master ba534cc John Newbery: [tests] log thread names by default in functional tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557162060' id='665869'>
+<a class='timestamp' href='#665869'><time timestamp='2019-05-06T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 7b29ec2 John Newbery: [tests] Comment for why logging config is set as command-line args.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557162060' id='665870'>
+<a class='timestamp' href='#665870'><time timestamp='2019-05-06T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 8ec7121 MarcoFalke: Merge #15927: [tests] log thread names by default in functional tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557162060' id='665871'>
+<a class='timestamp' href='#665871'><time timestamp='2019-05-06T17:01:00Z'>17:01</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #15927: [tests] log thread names by default in functional tests (master...2019-04-log-threads-tests) <a href="https://github.com/bitcoin/bitcoin/pull/15927" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15927</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557163140' id='665872'>
+<a class='timestamp' href='#665872'><time timestamp='2019-05-06T17:19:00Z'>17:19</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] jnewbery opened pull request #15963: [tests] Make random seed logged and settable (master...2019-05-test-deterministic-randomness) <a href="https://github.com/bitcoin/bitcoin/pull/15963" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15963</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557167820' id='665873'>
+<a class='timestamp' href='#665873'><time timestamp='2019-05-06T18:37:00Z'>18:37</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] giulio92 opened pull request #15964: Docs: Improve build-osx document formatting (master...feature/update-macOS-doc) <a href="https://github.com/bitcoin/bitcoin/pull/15964" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15964</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557168900' id='665874'>
+<a class='timestamp' href='#665874'><time timestamp='2019-05-06T18:55:00Z'>18:55</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+if the default maximum open file descriptors on Mac OS 10 is 256 (&#x27;ulimit -n&#x27; == 256), and the leveldb default is 1000, what would a reasonable leveldb default be so that bitcoind + leveldb won&#x27;t exceed 256 fds total?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557168960' id='665875'>
+<a class='timestamp' href='#665875'><time timestamp='2019-05-06T18:56:00Z'>18:56</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+on one hand, if it goes too low, it could hurt performance, but on the other hand, we don&#x27;t want it to exceed 256, which seems low for having tons of files around for compaction.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169020' id='665876'>
+<a class='timestamp' href='#665876'><time timestamp='2019-05-06T18:57:00Z'>18:57</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i guess i should clarify: it&#x27;s 256 per process, not system-wide, of course.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665877'>
+<a class='timestamp' href='#665877'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+tryphe: have you actually hit the limit?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665878'>
+<a class='timestamp' href='#665878'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+is it really? :/
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665879'>
+<a class='timestamp' href='#665879'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I&#x27;m asking because I&#x27;m on OS X and I&#x27;m kind of suprised I never have
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665880'>
+<a class='timestamp' href='#665880'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+luke-jr: yes, it sucks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665881'>
+<a class='timestamp' href='#665881'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+including mmaps?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665882'>
+<a class='timestamp' href='#665882'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I had to change one of the linter tests because it tried to open every file in the tree at once, and it would crash on OS X
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665883'>
+<a class='timestamp' href='#665883'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+mm, I don&#x27;t know about mmaps, I wouldn&#x27;t think so
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169140' id='665884'>
+<a class='timestamp' href='#665884'><time timestamp='2019-05-06T18:59:00Z'>18:59</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+maybe that&#x27;s why I&#x27;ve never hit it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169200' id='665885'>
+<a class='timestamp' href='#665885'><time timestamp='2019-05-06T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+^ i was looking at #14870 and realized this was most likely the culprit after running ulimit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169200' id='665886'>
+<a class='timestamp' href='#665886'><time timestamp='2019-05-06T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-9'> gribble</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/issues/14870" class="link" target="_blank">https://github.com/bitcoin/bitcoin/issues/14870</a> | Bitcoind crashes with Too Many Files error · Issue #14870 · bitcoin/bitcoin · GitHub
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169200' id='665887'>
+<a class='timestamp' href='#665887'><time timestamp='2019-05-06T19:00:00Z'>19:00</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+but it&#x27;s hard to know how many files will need to be read by the compaction mechanism... i doubt it&#x27;s identical across different configurations and whatnot
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169260' id='665888'>
+<a class='timestamp' href='#665888'><time timestamp='2019-05-06T19:01:00Z'>19:01</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+read simultaneously, rather
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169320' id='665889'>
+<a class='timestamp' href='#665889'><time timestamp='2019-05-06T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+the change that raised the leveldb limit to 1000 is <a href="https://github.com/bitcoin/bitcoin/pull/12495" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/12495</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169320' id='665890'>
+<a class='timestamp' href='#665890'><time timestamp='2019-05-06T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+which says (like luke-jr was just asking): &quot;On 64-bit POSIX hosts LevelDB will open up to 1000 file descriptors using mmap(), and it does not retain an open file descriptor for such files.&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169320' id='665891'>
+<a class='timestamp' href='#665891'><time timestamp='2019-05-06T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gwillen, i didn&#x27;t hit the limit personally, but my Mac box is mostly just for testing, not for full node running
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169320' id='665892'>
+<a class='timestamp' href='#665892'><time timestamp='2019-05-06T19:02:00Z'>19:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+so I wonder if something else is actually the culprit
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169380' id='665893'>
+<a class='timestamp' href='#665893'><time timestamp='2019-05-06T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I regularly run full nodes on my box for testing and real use
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169380' id='665894'>
+<a class='timestamp' href='#665894'><time timestamp='2019-05-06T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+and I&#x27;ve <u>_never_</u> hit this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169380' id='665895'>
+<a class='timestamp' href='#665895'><time timestamp='2019-05-06T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+although I guess these days I wouldn&#x27;t, since I upped my default at some point... if I did that before 12495 was merged, I might be a bad test case
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169380' id='665896'>
+<a class='timestamp' href='#665896'><time timestamp='2019-05-06T19:03:00Z'>19:03</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+but I would expect that if the leveldb file count were the culprit, LOTS of people would be affected, and I believe the theory that mmaps should not count
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169560' id='665897'>
+<a class='timestamp' href='#665897'><time timestamp='2019-05-06T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+yeah, i&#x27;m not sure. my hunch was that leveldb would approach that limit, and bitcoind opening files could cause the issue to appear, without leveldb being the sole cause (depends how many files bitcoind is also accessing)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557169560' id='665898'>
+<a class='timestamp' href='#665898'><time timestamp='2019-05-06T19:06:00Z'>19:06</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+which would make sense i guess, 256 isn&#x27;t insanely high
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557171240' id='665899'>
+<a class='timestamp' href='#665899'><time timestamp='2019-05-06T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke pushed 2 commits to master: <a href="https://github.com/bitcoin/bitcoin/compare/8ec7121a4590...3632143ebbfd" class="link" target="_blank">https://github.com/bitcoin/bitcoin/compare/8ec7121a4590...3632143ebbfd</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557171240' id='665900'>
+<a class='timestamp' href='#665900'><time timestamp='2019-05-06T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master d2eee87 Ben Woosley: Lift prevector default vals to the member declaration
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557171240' id='665901'>
+<a class='timestamp' href='#665901'><time timestamp='2019-05-06T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+bitcoin/master 3632143 MarcoFalke: Merge #14266: refactor: Lift prevector default vals to the member declarat...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557171240' id='665902'>
+<a class='timestamp' href='#665902'><time timestamp='2019-05-06T19:34:00Z'>19:34</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] MarcoFalke merged pull request #14266: refactor: Lift prevector default vals to the member declaration (master...prevector-defaults) <a href="https://github.com/bitcoin/bitcoin/pull/14266" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/14266</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557171480' id='665903'>
+<a class='timestamp' href='#665903'><time timestamp='2019-05-06T19:38:00Z'>19:38</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+gwillen: bitcoin increases the ulimit, see RaiseFileDescriptorLimit().
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557171540' id='665904'>
+<a class='timestamp' href='#665904'><time timestamp='2019-05-06T19:39:00Z'>19:39</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+mmaps also don&#x27;t themselves count. (also most of the time any &#x27;large&#x27; malloc also results in a mmap)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557172680' id='665905'>
+<a class='timestamp' href='#665905'><time timestamp='2019-05-06T19:58:00Z'>19:58</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, it looks like it would call RaiseFileDescriptorLimit(125 + 150 + 8), which only gets you 283 instead of 256
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557172740' id='665906'>
+<a class='timestamp' href='#665906'><time timestamp='2019-05-06T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell: <a href="https://github.com/bitcoin/bitcoin/blob/12aa2ac988d0ccb21019a20b109e018cf31b78cf/src/init.cpp#L1007" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/12aa2ac988d0ccb21019a20b109e018cf31b78cf/src/init.cpp#L1007</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557172740' id='665907'>
+<a class='timestamp' href='#665907'><time timestamp='2019-05-06T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: on 64-bit systems, LevelDB uses mmap which doesn&#x27;t need many simultaneous file descriptors
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557172740' id='665908'>
+<a class='timestamp' href='#665908'><time timestamp='2019-05-06T19:59:00Z'>19:59</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+and on linux, it&#x27;s less than 1024, which is the default, so it does nothing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557172920' id='665909'>
+<a class='timestamp' href='#665909'><time timestamp='2019-05-06T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+right, if leveldb isn&#x27;t taking up fds then the whole leveldb thing is a red herring and the cause must be something else
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557172920' id='665910'>
+<a class='timestamp' href='#665910'><time timestamp='2019-05-06T20:02:00Z'>20:02</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, i see, but what about too many concurrent mmap() calls? assuming you have a bunch of 2MB files at one level, it seems to me like you could potentially still be opening hundreds of handles at once
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173040' id='665911'>
+<a class='timestamp' href='#665911'><time timestamp='2019-05-06T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, what i mean by that is, the fd isn&#x27;t closed until mmap returns the mapping
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173040' id='665912'>
+<a class='timestamp' href='#665912'><time timestamp='2019-05-06T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: yes, but they are created sequentially.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173040' id='665913'>
+<a class='timestamp' href='#665913'><time timestamp='2019-05-06T20:04:00Z'>20:04</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: i don&#x27;t think those things happen in separate threads
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173100' id='665914'>
+<a class='timestamp' href='#665914'><time timestamp='2019-05-06T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i see, thanks. maybe i&#x27;m thinking of rocksdb, where it happens in a thread pool.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173100' id='665915'>
+<a class='timestamp' href='#665915'><time timestamp='2019-05-06T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+the comment about RPC in the reporter is a pretty strong indication that they&#x27;re likely hammering the RPC...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173100' id='665916'>
+<a class='timestamp' href='#665916'><time timestamp='2019-05-06T20:05:00Z'>20:05</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, yeah, but usually you don&#x27;t have leveldb throw that error unless something is implemented wrong, it&#x27;s a common problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173220' id='665917'>
+<a class='timestamp' href='#665917'><time timestamp='2019-05-06T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: the error being reported by the user is not from leveldb.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173220' id='665918'>
+<a class='timestamp' href='#665918'><time timestamp='2019-05-06T20:07:00Z'>20:07</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+It&#x27;s from libevent-- which handles the rpc.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173340' id='665919'>
+<a class='timestamp' href='#665919'><time timestamp='2019-05-06T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, look at the first instance
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173340' id='665920'>
+<a class='timestamp' href='#665920'><time timestamp='2019-05-06T20:09:00Z'>20:09</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: it looks to me like they&#x27;re hammering the rpc and used up all the FDs that way, and leveldb is unable to get a single FD to open a file.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173400' id='665921'>
+<a class='timestamp' href='#665921'><time timestamp='2019-05-06T20:10:00Z'>20:10</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, 2018-12-04T17:09:42Z leveldb: Compaction error: IO error: /Users/matt/Library/Application Support/Bitcoin/testnet3/indexes/txindex/012589.ldb: Too many open files
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173460' id='665922'>
+<a class='timestamp' href='#665922'><time timestamp='2019-05-06T20:11:00Z'>20:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+maybe we should increasy fds also proportionally to -rpcthreads ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173520' id='665923'>
+<a class='timestamp' href='#665923'><time timestamp='2019-05-06T20:12:00Z'>20:12</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: yes, I was just looking for where we did that, seems we don&#x27;t.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173580' id='665924'>
+<a class='timestamp' href='#665924'><time timestamp='2019-05-06T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+we might want to add some instrumentation that runs during tests, and checks to see if the total open fds is ever greater than we pass to RaiseFileDescriptorLimit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173580' id='665925'>
+<a class='timestamp' href='#665925'><time timestamp='2019-05-06T20:13:00Z'>20:13</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+if it raises the fds to 283 if it&#x27;s &lt;283, but the default is 1024 on most linux/unix systems (except mac os), would a sane thing to be just to increase the fds to 1024 on mac os? (i think the max per process is 10240)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173640' id='665926'>
+<a class='timestamp' href='#665926'><time timestamp='2019-05-06T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+otherwise we&#x27;re going to keep ending up with bugs that are invisible when RaiseFileDescriptorLimit does nothing.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173640' id='665927'>
+<a class='timestamp' href='#665927'><time timestamp='2019-05-06T20:14:00Z'>20:14</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: well that would just be covering up the bug that RaiseFileDescriptorLimit isn&#x27;t being increased by the rpc thread count.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173760' id='665928'>
+<a class='timestamp' href='#665928'><time timestamp='2019-05-06T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, yeah, i&#x27;m not even sure how to reproduce it, but if that&#x27;s one glaring difference, it might make sense to increase it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173760' id='665929'>
+<a class='timestamp' href='#665929'><time timestamp='2019-05-06T20:16:00Z'>20:16</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: then the problem will just show up again when users set rpcthreads even higher
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173820' id='665930'>
+<a class='timestamp' href='#665930'><time timestamp='2019-05-06T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+if you don&#x27;t understand an issue, just changing things blindly risks introducing new issues, and not fixing them.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173820' id='665931'>
+<a class='timestamp' href='#665931'><time timestamp='2019-05-06T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+But I think we do understand it-- RaiseFileDescriptorLimit should be getting the rpcthreads added.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173820' id='665932'>
+<a class='timestamp' href='#665932'><time timestamp='2019-05-06T20:17:00Z'>20:17</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but by how much?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173880' id='665933'>
+<a class='timestamp' href='#665933'><time timestamp='2019-05-06T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, i don&#x27;t see how adding in the number of rpcs would do anything if RaiseFileDescriptorLimit() doesn&#x27;t do anything if my fd limit is 1024 by default
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173880' id='665934'>
+<a class='timestamp' href='#665934'><time timestamp='2019-05-06T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+rpcs/rpc threads
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557173880' id='665935'>
+<a class='timestamp' href='#665935'><time timestamp='2019-05-06T20:18:00Z'>20:18</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] zenosage opened pull request #15965: check bad-prevblk is right error for invalid descendants (master...bad-prevblk) <a href="https://github.com/bitcoin/bitcoin/pull/15965" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15965</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174000' id='665936'>
+<a class='timestamp' href='#665936'><time timestamp='2019-05-06T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: go look at the code in init.cpp. It works out how many FDs we can actually use.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174000' id='665937'>
+<a class='timestamp' href='#665937'><time timestamp='2019-05-06T20:20:00Z'>20:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: what if you have 2000 rpc threads? :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174060' id='665938'>
+<a class='timestamp' href='#665938'><time timestamp='2019-05-06T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Right now it doesn&#x27;t account for the RPC threads (they&#x27;re just assumed to be part of MIN_CORE_FILEDESCRIPTORS, but that doesn&#x27;t hold if someone changes the setting)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174060' id='665939'>
+<a class='timestamp' href='#665939'><time timestamp='2019-05-06T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+it should account for RPC threads.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174060' id='665940'>
+<a class='timestamp' href='#665940'><time timestamp='2019-05-06T20:21:00Z'>20:21</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Which would be the actual bug.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174180' id='665941'>
+<a class='timestamp' href='#665941'><time timestamp='2019-05-06T20:23:00Z'>20:23</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, i already looked at it before i told you anything
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174240' id='665942'>
+<a class='timestamp' href='#665942'><time timestamp='2019-05-06T20:24:00Z'>20:24</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: i think you&#x27;re missing something, but i don&#x27;t see what
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174300' id='665943'>
+<a class='timestamp' href='#665943'><time timestamp='2019-05-06T20:25:00Z'>20:25</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i see why you would want to add the number of rpc threads, but not why you would want different fd max values on different systems
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174360' id='665944'>
+<a class='timestamp' href='#665944'><time timestamp='2019-05-06T20:26:00Z'>20:26</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what are you talking about with &quot;different fd max values on different systems&quot; ?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665945'>
+<a class='timestamp' href='#665945'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: he&#x27;s referring to the fact that we don&#x27;t raise it if it&#x27;s already more than we need.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665946'>
+<a class='timestamp' href='#665946'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, on mac os 10, if &#x27;limit -n&#x27; gives 256, what would RaiseFileDescriptorLimit() set the value to?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665947'>
+<a class='timestamp' href='#665947'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, likewise, on linux, what would it do?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665948'>
+<a class='timestamp' href='#665948'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+sipa: and on OSX the default is lower than we need (with defaults), but on linux it&#x27;s higher.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665949'>
+<a class='timestamp' href='#665949'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it tries to raise it if needed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665950'>
+<a class='timestamp' href='#665950'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+the difference is a value of ~700
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174420' id='665951'>
+<a class='timestamp' href='#665951'><time timestamp='2019-05-06T20:27:00Z'>20:27</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+if it&#x27;s not needed, there is nothing to be done
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174480' id='665952'>
+<a class='timestamp' href='#665952'><time timestamp='2019-05-06T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes, so the number needed is miscomputed, and we should fix that
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174480' id='665953'>
+<a class='timestamp' href='#665953'><time timestamp='2019-05-06T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: The limit is compltely irrelevant so long as it is greater than our need. If our caclulated need is incorrect, then we will have problems in some configurations.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174480' id='665954'>
+<a class='timestamp' href='#665954'><time timestamp='2019-05-06T20:28:00Z'>20:28</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+that fact that it&#x27;s already 1024 only helps mask the problem
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174540' id='665955'>
+<a class='timestamp' href='#665955'><time timestamp='2019-05-06T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+If we set the limit higher than we think we need, it won&#x27;t fix any bugs-- the program will still fail in some configurations-- but it will make some bugs less visible.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174540' id='665956'>
+<a class='timestamp' href='#665956'><time timestamp='2019-05-06T20:29:00Z'>20:29</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+So instead of failing on mac when you adjust rpc threads at all, it&#x27;ll still fail, but everwhere when you set rpcthreads to 700. (or whatever)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174600' id='665957'>
+<a class='timestamp' href='#665957'><time timestamp='2019-05-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+right but &lt;300 seems pretty low, especially if they are running bitcoin-qt which accesses a bunch of files, not to mention future features
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174600' id='665958'>
+<a class='timestamp' href='#665958'><time timestamp='2019-05-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: so we should fix the computation that incorrectly determines 300 is enough
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174600' id='665959'>
+<a class='timestamp' href='#665959'><time timestamp='2019-05-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Any new features that use FDs need to increase the calculated limit.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174600' id='665960'>
+<a class='timestamp' href='#665960'><time timestamp='2019-05-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i don&#x27;t understand what you&#x27;re arguing for
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174600' id='665961'>
+<a class='timestamp' href='#665961'><time timestamp='2019-05-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, because it&#x27;s a glaring difference, and you&#x27;re blowing it off like it&#x27;s nothing
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174600' id='665962'>
+<a class='timestamp' href='#665962'><time timestamp='2019-05-06T20:30:00Z'>20:30</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+No fixed amount is safe, only computing the required amount is safe.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665963'>
+<a class='timestamp' href='#665963'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: no...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665964'>
+<a class='timestamp' href='#665964'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i&#x27;m not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665965'>
+<a class='timestamp' href='#665965'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+for every 1 github issue there&#x27;s 1000 morons that ignored it and stopped using it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665966'>
+<a class='timestamp' href='#665966'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665967'>
+<a class='timestamp' href='#665967'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+for the same reason
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665968'>
+<a class='timestamp' href='#665968'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+tryphe: we are statically computing the exact number of file descriptors we need, and raising the limit to that exact value, which we will never exceed, so there is never a reason for it to be higher
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665969'>
+<a class='timestamp' href='#665969'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+in this case, there is a bug, which is that we compute the wrong number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665970'>
+<a class='timestamp' href='#665970'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+once the bug is fixed, there will again be no reason to ever raise the number
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174660' id='665971'>
+<a class='timestamp' href='#665971'><time timestamp='2019-05-06T20:31:00Z'>20:31</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+tryphe: I think we&#x27;re failing to communicate here. I think we should fix the problem, which is now known in part thanks to your exploration.  We should not, however, paper over misbehavior as that can create much more serious issues.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174720' id='665972'>
+<a class='timestamp' href='#665972'><time timestamp='2019-05-06T20:32:00Z'>20:32</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+it sounds like you believe that Core will sometimes open other file descriptors not accounted for here, but that is not supposed to ever happen, and would represent a bug
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174720' id='665973'>
+<a class='timestamp' href='#665973'><time timestamp='2019-05-06T20:32:00Z'>20:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+Fixing the calculation will fix the bug.  Blindly increasing the value on OSX will paper over the bug and any similar bug in the future but not actually fix it.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174720' id='665974'>
+<a class='timestamp' href='#665974'><time timestamp='2019-05-06T20:32:00Z'>20:32</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto opened pull request #15966: net: Drop the ancient miniUPnPc API version support (master...20190506-drop-ancient-miniupnpc-api) <a href="https://github.com/bitcoin/bitcoin/pull/15966" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15966</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174720' id='665975'>
+<a class='timestamp' href='#665975'><time timestamp='2019-05-06T20:32:00Z'>20:32</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+what gwillen says. All FDs <u>_must_</u> be accounted for.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665976'>
+<a class='timestamp' href='#665976'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I think this is unusual, and it&#x27;s much more typical for people to just give a high number and hope for the best
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665977'>
+<a class='timestamp' href='#665977'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, gmaxwell, gwillen, i see. that makes sense.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665978'>
+<a class='timestamp' href='#665978'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+cool :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665979'>
+<a class='timestamp' href='#665979'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, we try to account for all resource usage
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665980'>
+<a class='timestamp' href='#665980'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+(it&#x27;s a little less crtical now that we don&#x27;t use select on linux, but they still need to be accounted for)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665981'>
+<a class='timestamp' href='#665981'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+disk, memory, cpu, fds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174780' id='665982'>
+<a class='timestamp' href='#665982'><time timestamp='2019-05-06T20:33:00Z'>20:33</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+could we actually <u>_lower_</u> it from 1024 on linux, instead of leaving it alone?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665983'>
+<a class='timestamp' href='#665983'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+that would make this kind of thing show up much faster
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665984'>
+<a class='timestamp' href='#665984'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+rather than only happening on oddball os x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665985'>
+<a class='timestamp' href='#665985'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yeah, perhaps
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665986'>
+<a class='timestamp' href='#665986'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+and it would satisfy tryphe&#x27;s very reasonable desire that it be the same across platforms, which I think is a good thought :-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665987'>
+<a class='timestamp' href='#665987'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+we should at least in some test builds.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665988'>
+<a class='timestamp' href='#665988'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i do think it&#x27;s sort of a hinderance that mac os is somehow bundled in with other &quot;linux/unix&quot; compile targets and has some funny differences, though.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665989'>
+<a class='timestamp' href='#665989'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+yeah
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665990'>
+<a class='timestamp' href='#665990'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+as one of the few people actively developing on OS X, I agree ;-)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665991'>
+<a class='timestamp' href='#665991'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+but yeah i think raising it is silly especially with mmap
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174840' id='665992'>
+<a class='timestamp' href='#665992'><time timestamp='2019-05-06T20:34:00Z'>20:34</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+like make one of the debug builds reduce fd limit to the computed amount.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174900' id='665993'>
+<a class='timestamp' href='#665993'><time timestamp='2019-05-06T20:35:00Z'>20:35</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i didn&#x27;t intend to suggest raising it as a key argument, just nitpicking differences between systems i guess
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174960' id='665994'>
+<a class='timestamp' href='#665994'><time timestamp='2019-05-06T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+difference between systems are good though-- without this one we wouldn&#x27;t have found this issue until some other change increased usage to the point where it was making 1024 limit get busted.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557174960' id='665995'>
+<a class='timestamp' href='#665995'><time timestamp='2019-05-06T20:36:00Z'>20:36</time></a>
+&lt;<span class='nick nick-14'> gmaxwell</span>&gt;
+which might have happened across the whole network at once
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175020' id='665996'>
+<a class='timestamp' href='#665996'><time timestamp='2019-05-06T20:37:00Z'>20:37</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+heh, that&#x27;s an interesting point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='665997'>
+<a class='timestamp' href='#665997'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+yeah, i would think lowering it and dynamically setting it across all platforms would make sense, as you only really need to increase it if you are running some insane file server or something
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='665998'>
+<a class='timestamp' href='#665998'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+and that&#x27;s when you -need- overkill
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='665999'>
+<a class='timestamp' href='#665999'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+here, you know what you need
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='666000'>
+<a class='timestamp' href='#666000'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+what does file server have to do with it?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='666001'>
+<a class='timestamp' href='#666001'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I raised it in my .profile, I should maybe take that out :-\
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='666002'>
+<a class='timestamp' href='#666002'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+since it masks any problem like this
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='666003'>
+<a class='timestamp' href='#666003'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+this limit is per process, not system wide
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175080' id='666004'>
+<a class='timestamp' href='#666004'><time timestamp='2019-05-06T20:38:00Z'>20:38</time></a>
+&lt;<span class='nick nick-4'> gwillen</span>&gt;
+I did it so I could get the tests to run, but then I fixed the tests
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175140' id='666005'>
+<a class='timestamp' href='#666005'><time timestamp='2019-05-06T20:39:00Z'>20:39</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, it just as an example of extremes where people blindly raise the limit to 10000 or whatever :p
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175200' id='666006'>
+<a class='timestamp' href='#666006'><time timestamp='2019-05-06T20:40:00Z'>20:40</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, but in those cases they are maybe succombing to future DoS problems and whatnot
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557175860' id='666007'>
+<a class='timestamp' href='#666007'><time timestamp='2019-05-06T20:51:00Z'>20:51</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+gmaxwell, do you think i should give it a test with a lower MIN_CORE_FILEDESCRIPTORS value, and add the rpc threads in? maybe use 0 for MIN_CORE_FILEDESCRIPTORS instead of 150
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176040' id='666008'>
+<a class='timestamp' href='#666008'><time timestamp='2019-05-06T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+We certainly need a few FDs independent of RPC handling (including those for accessing block files, undo files, ...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176040' id='666009'>
+<a class='timestamp' href='#666009'><time timestamp='2019-05-06T20:54:00Z'>20:54</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+right, i&#x27;ll give it a try! thanks
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176100' id='666010'>
+<a class='timestamp' href='#666010'><time timestamp='2019-05-06T20:55:00Z'>20:55</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+i also don&#x27;t know how many FDs we need per RPC, and it&#x27;s hard to experimentally determine the upper bound as it depends on the type of RPCs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176160' id='666011'>
+<a class='timestamp' href='#666011'><time timestamp='2019-05-06T20:56:00Z'>20:56</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but there is at least 1 for the TCP connection itself (except on windows, where sockets don&#x27;t count as FDs...), and maybe 1 or 2 more for files that may be accessed for handling the RPC
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176460' id='666012'>
+<a class='timestamp' href='#666012'><time timestamp='2019-05-06T21:01:00Z'>21:01</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i see, because an rpc might trigger a file to be read?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176520' id='666013'>
+<a class='timestamp' href='#666013'><time timestamp='2019-05-06T21:02:00Z'>21:02</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557176760' id='666014'>
+<a class='timestamp' href='#666014'><time timestamp='2019-05-06T21:06:00Z'>21:06</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] practicalswift closed pull request #15962: Add locking annotations for RewindBlockIndex and GetNetworkHashPS. Add missing locks. (master...RewindBlockIndex) <a href="https://github.com/bitcoin/bitcoin/pull/15962" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15962</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177060' id='666015'>
+<a class='timestamp' href='#666015'><time timestamp='2019-05-06T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, i wonder if an &quot;rpc thread fd factor&quot; could be used, perhaps to replace MIN_CORE_FILEDESCRIPTORS which is a value of 150. 20 fds per thread *8 threads=160, so you&#x27;d get 160, which is roughly the same, but a little more
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177060' id='666016'>
+<a class='timestamp' href='#666016'><time timestamp='2019-05-06T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: we still have a number of fds independent of RPCs
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177060' id='666017'>
+<a class='timestamp' href='#666017'><time timestamp='2019-05-06T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+probably the majority
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177060' id='666018'>
+<a class='timestamp' href='#666018'><time timestamp='2019-05-06T21:11:00Z'>21:11</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, right, that&#x27;s true
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177120' id='666019'>
+<a class='timestamp' href='#666019'><time timestamp='2019-05-06T21:12:00Z'>21:12</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+good point
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177420' id='666020'>
+<a class='timestamp' href='#666020'><time timestamp='2019-05-06T21:17:00Z'>21:17</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+anyone think it&#x27;d be a good idea to prefix class member function calls with `this-&gt;` for clarity?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177480' id='666021'>
+<a class='timestamp' href='#666021'><time timestamp='2019-05-06T21:18:00Z'>21:18</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+jamesob: no, that&#x27;s why they&#x27;re supposed to be named m_*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177540' id='666022'>
+<a class='timestamp' href='#666022'><time timestamp='2019-05-06T21:19:00Z'>21:19</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+that only applies to class <b>*data*</b> members afaict
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177540' id='666023'>
+<a class='timestamp' href='#666023'><time timestamp='2019-05-06T21:19:00Z'>21:19</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+oh, methods
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177600' id='666024'>
+<a class='timestamp' href='#666024'><time timestamp='2019-05-06T21:20:00Z'>21:20</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+`this-&gt;` seems ugly, but I don&#x27;t know that I have a better solution, and I agree it can at times be unclear
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177660' id='666025'>
+<a class='timestamp' href='#666025'><time timestamp='2019-05-06T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+luke-jr: agreed
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177660' id='666026'>
+<a class='timestamp' href='#666026'><time timestamp='2019-05-06T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jamesob: the explicit way to do that is writing Classname::Method(...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177660' id='666027'>
+<a class='timestamp' href='#666027'><time timestamp='2019-05-06T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+but that&#x27;s also ugly
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177660' id='666028'>
+<a class='timestamp' href='#666028'><time timestamp='2019-05-06T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+i think it makes a little sense if you consider how you destruct this-&gt;~Class();
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177660' id='666029'>
+<a class='timestamp' href='#666029'><time timestamp='2019-05-06T21:21:00Z'>21:21</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+but maybe adds clutter
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177720' id='666030'>
+<a class='timestamp' href='#666030'><time timestamp='2019-05-06T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+what?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177720' id='666031'>
+<a class='timestamp' href='#666031'><time timestamp='2019-05-06T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+you destruct with delete..
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177720' id='666032'>
+<a class='timestamp' href='#666032'><time timestamp='2019-05-06T21:22:00Z'>21:22</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+sipa: yeah that&#x27;s wordy
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177780' id='666033'>
+<a class='timestamp' href='#666033'><time timestamp='2019-05-06T21:23:00Z'>21:23</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+wonders why `this` is a pointer and not a reference anyway
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557177780' id='666034'>
+<a class='timestamp' href='#666034'><time timestamp='2019-05-06T21:23:00Z'>21:23</time></a>
+&lt;<span class='nick nick-4'> jamesob</span>&gt;
+something something destructors something something?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178440' id='666035'>
+<a class='timestamp' href='#666035'><time timestamp='2019-05-06T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="http://www.stroustrup.com/bs_faq2.html#pointers-and-references" class="link" target="_blank">http://www.stroustrup.com/bs_faq2.html#pointers-and-references</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178440' id='666036'>
+<a class='timestamp' href='#666036'><time timestamp='2019-05-06T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ Why is &quot;this&quot; not a reference?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178440' id='666037'>
+<a class='timestamp' href='#666037'><time timestamp='2019-05-06T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+Because &quot;this&quot; was introduced into C++ (really into C with Classes) before references were added. Also, I chose &quot;this&quot; to follow Simula usage, rather than the (later) Smalltalk use of &quot;self&quot;. 
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178440' id='666038'>
+<a class='timestamp' href='#666038'><time timestamp='2019-05-06T21:34:00Z'>21:34</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+luke-jr, they are identical, but you can use delete to destruct an array
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178500' id='666039'>
+<a class='timestamp' href='#666039'><time timestamp='2019-05-06T21:35:00Z'>21:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: no, you need delete[] to destruct an array
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178500' id='666040'>
+<a class='timestamp' href='#666040'><time timestamp='2019-05-06T21:35:00Z'>21:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+and invoking a destructor does not release its memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178500' id='666041'>
+<a class='timestamp' href='#666041'><time timestamp='2019-05-06T21:35:00Z'>21:35</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+it only destroys the object allocated in it
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178560' id='666042'>
+<a class='timestamp' href='#666042'><time timestamp='2019-05-06T21:36:00Z'>21:36</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, that&#x27;s what i said
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178560' id='666043'>
+<a class='timestamp' href='#666043'><time timestamp='2019-05-06T21:36:00Z'>21:36</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+1) &quot;but you can use delete to destruct an array&quot;, that&#x27;s wrong, you need to use delete[]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178620' id='666044'>
+<a class='timestamp' href='#666044'><time timestamp='2019-05-06T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, yeah.... i meant delete or delete[]
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178620' id='666045'>
+<a class='timestamp' href='#666045'><time timestamp='2019-05-06T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+2) &quot;they are identical&quot;, that&#x27;s wrong; deleting an object invokes the relevant destructors as needed, but actually cleans up allocated memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178620' id='666046'>
+<a class='timestamp' href='#666046'><time timestamp='2019-05-06T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+just &#x27;delete&#x27; as the keyword
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178620' id='666047'>
+<a class='timestamp' href='#666047'><time timestamp='2019-05-06T21:37:00Z'>21:37</time></a>
+&lt;<span class='nick nick-14'> * luke-jr</span>&gt;
+wonders if there&#x27;s ever a case where calling this-&gt;~class directly actually makes sense. :x
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178680' id='666048'>
+<a class='timestamp' href='#666048'><time timestamp='2019-05-06T21:38:00Z'>21:38</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: if you&#x27;re constructing objects objects in self-allocated space
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178740' id='666049'>
+<a class='timestamp' href='#666049'><time timestamp='2019-05-06T21:39:00Z'>21:39</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+<a href="https://github.com/bitcoin/bitcoin/blob/master/src/prevector.h#L396" class="link" target="_blank">https://github.com/bitcoin/bitcoin/blob/master/src/prevector.h#L396</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178800' id='666050'>
+<a class='timestamp' href='#666050'><time timestamp='2019-05-06T21:40:00Z'>21:40</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, luke-jr, but i zero out the memory in the destructor. that&#x27;s what it&#x27;s for...
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178860' id='666051'>
+<a class='timestamp' href='#666051'><time timestamp='2019-05-06T21:41:00Z'>21:41</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+tryphe: the destructor is invoked automatically when destroying the object (when it goes out of scope, when delete is called, ...); you usually don&#x27;t need to invoke it yourself
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178920' id='666052'>
+<a class='timestamp' href='#666052'><time timestamp='2019-05-06T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: hmm, I figured since new can be used with preallocated space, so could delete, but I guess not
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557178920' id='666053'>
+<a class='timestamp' href='#666053'><time timestamp='2019-05-06T21:42:00Z'>21:42</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+the only counterexample i know is when you&#x27;re writing your own container classes that manually manage memory
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179040' id='666054'>
+<a class='timestamp' href='#666054'><time timestamp='2019-05-06T21:44:00Z'>21:44</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+luke-jr: <a href="https://en.cppreference.com/w/cpp/language/new#Placement_new" class="link" target="_blank">https://en.cppreference.com/w/cpp/language/new#Placement_new</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179100' id='666055'>
+<a class='timestamp' href='#666055'><time timestamp='2019-05-06T21:45:00Z'>21:45</time></a>
+&lt;<span class='nick nick-16'> luke-jr</span>&gt;
+sipa: yes, that&#x27;s what I mean
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179220' id='666056'>
+<a class='timestamp' href='#666056'><time timestamp='2019-05-06T21:47:00Z'>21:47</time></a>
+&lt;<span class='nick nick-11'> bitcoin-git</span>&gt;
+[bitcoin] hebasto closed pull request #15966: net: Drop the ancient miniUPnPc API version support (master...20190506-drop-ancient-miniupnpc-api) <a href="https://github.com/bitcoin/bitcoin/pull/15966" class="link" target="_blank">https://github.com/bitcoin/bitcoin/pull/15966</a>
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179340' id='666057'>
+<a class='timestamp' href='#666057'><time timestamp='2019-05-06T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, right, it&#x27;s just hard to explain how i&#x27;m using it, it&#x27;s a thread cleanup at the end of an application. if i invoke the destructor inside of itself, i don&#x27;t have to call &#x27;delete&#x27; from main() and the pointer gets popped off of the stack when main unwinds
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179340' id='666058'>
+<a class='timestamp' href='#666058'><time timestamp='2019-05-06T21:49:00Z'>21:49</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, i guess i wrote &quot;this-&gt;Class()&quot; because i have &quot;delete&quot; all over the place and wanted to mark &quot;i&#x27;m exiting the thread here&quot;
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179400' id='666059'>
+<a class='timestamp' href='#666059'><time timestamp='2019-05-06T21:50:00Z'>21:50</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+well, thread manager*
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179400' id='666060'>
+<a class='timestamp' href='#666060'><time timestamp='2019-05-06T21:50:00Z'>21:50</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+ah, this is starting to get off topic :)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557179460' id='666061'>
+<a class='timestamp' href='#666061'><time timestamp='2019-05-06T21:51:00Z'>21:51</time></a>
+&lt;<span class='nick nick-5'> tryphe</span>&gt;
+sipa, lol, sorry &lt;3
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557184740' id='666062'>
+<a class='timestamp' href='#666062'><time timestamp='2019-05-06T23:19:00Z'>23:19</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I happened to be reviewing VerifyScript, and wanted to check that it is the intended behavior that if CastToBool(witnessprogram) == false that validation fails?
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557184800' id='666063'>
+<a class='timestamp' href='#666063'><time timestamp='2019-05-06T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+I just couldn&#x27;t find it in the documentation (practically speaking it doesn&#x27;t exclude very many scripts...)
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557184800' id='666064'>
+<a class='timestamp' href='#666064'><time timestamp='2019-05-06T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+jeremyrubin: yes
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557184800' id='666065'>
+<a class='timestamp' href='#666065'><time timestamp='2019-05-06T23:20:00Z'>23:20</time></a>
+&lt;<span class='nick nick-13'> sipa</span>&gt;
+&quot;not very many&quot; is really &quot;practically none&quot;, as the witness program is a hash
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557184980' id='666066'>
+<a class='timestamp' href='#666066'><time timestamp='2019-05-06T23:23:00Z'>23:23</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+Yep it&#x27;s fine, just wanted to clarify as it&#x27;s not documented that it is intentional.
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557185040' id='666067'>
+<a class='timestamp' href='#666067'><time timestamp='2019-05-06T23:24:00Z'>23:24</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+The same sort of thing is true for P2SH
+<br>
+</div>
+
+<div class='talk op-msg' data-timestamp='1557185100' id='666068'>
+<a class='timestamp' href='#666068'><time timestamp='2019-05-06T23:25:00Z'>23:25</time></a>
+&lt;<span class='nick nick-2'> jeremyrubin</span>&gt;
+My reason for looking at it is refactoring the VerifyScript code so that I understand it better.
+<br>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>
