@@ -199,23 +199,37 @@ class GitHubCollector:
             logger.info(f"✅ Backup created successfully: {backup_file}")
             logger.info(f"   You can safely resume collection now - your data is protected")
         
-        prs = self.repo.get_pulls(state='all', sort='created', direction='asc')
+        # Start with most recent PRs and work backwards
+        prs = self.repo.get_pulls(state='all', sort='created', direction='desc')
         total_count = prs.totalCount
-        logger.info(f"Found {total_count} total PRs")
+        logger.info(f"Found {total_count} total PRs, starting with most recent and working backwards")
         
         collected = 0
         skipped = 0
         errors = 0
         max_retries = 3
+        consecutive_existing = 0  # Track consecutive existing PRs to stop early
         
         with open(self.prs_file, 'a') as f:  # Append mode to resume
             for pr in prs:
-                # Skip PRs we already have, but continue collecting (don't stop - we need to find gaps)
+                # Skip PRs we already have
                 if pr.number in existing_pr_numbers:
                     skipped += 1
+                    consecutive_existing += 1
+                    
+                    # If we've hit 100 consecutive existing PRs, we've likely reached the boundary
+                    # Continue a bit more to catch any gaps, then stop
+                    if consecutive_existing >= 100 and skipped > 1000:
+                        logger.info(f"Hit {consecutive_existing} consecutive existing PRs. Likely reached existing data boundary.")
+                        logger.info(f"Stopping collection - found {collected} new PRs, skipped {skipped} existing")
+                        break
+                    
                     if skipped % 1000 == 0:
-                        logger.info(f"Skipped {skipped} already-collected PRs...")
+                        logger.info(f"Skipped {skipped} already-collected PRs (working backwards)...")
                     continue
+                
+                # Reset counter when we find a new PR
+                consecutive_existing = 0
                 
                 # Check GitHub API rate limit periodically
                 if collected % self._check_rate_limit_every == 0:

@@ -55,36 +55,139 @@ class IRCCollector:
         
         self.messages_file = self.output_dir / 'messages.jsonl'
     
-    def collect_all_channels(self):
-        """Collect IRC logs from all channels."""
+    def collect_all_channels(self, skip_existing: bool = True):
+        """Collect IRC logs from all channels.
+        
+        Args:
+            skip_existing: If True, skip messages that already exist. If False, collect all messages.
+        """
         logger.info("Starting IRC log collection")
+        
+        # Load existing messages to avoid duplicates
+        existing_messages = set()
+        if skip_existing and self.messages_file.exists():
+            logger.info(f"Loading existing messages from {self.messages_file}...")
+            try:
+                with open(self.messages_file, 'r') as f:
+                    for line in f:
+                        try:
+                            msg = json.loads(line)
+                            # Create unique identifier: channel + timestamp + nickname + message hash
+                            msg_id = self._get_message_id(msg)
+                            if msg_id:
+                                existing_messages.add(msg_id)
+                        except:
+                            continue
+                logger.info(f"Loaded {len(existing_messages)} existing message IDs")
+            except Exception as e:
+                logger.warning(f"Error loading existing messages: {e}")
+        
+        self.existing_messages = existing_messages
         
         for channel_name, base_url in self.base_urls.items():
             logger.info(f"Collecting from {channel_name}...")
-            self._collect_channel(channel_name, base_url)
+            self._collect_channel(channel_name, base_url, skip_existing)
         
         logger.info("IRC log collection complete")
     
-    def _collect_channel(self, channel_name: str, base_url: str):
-        """Collect logs from a specific IRC channel."""
+    def _get_message_id(self, msg: Dict[str, Any]) -> Optional[str]:
+        """Generate a unique identifier for a message."""
         try:
-            # Get list of log files
-            log_files = self._get_log_files(base_url)
-            logger.info(f"Found {len(log_files)} log files for {channel_name}")
+            channel = msg.get('channel', '')
+            timestamp = msg.get('timestamp', '')
+            nickname = msg.get('nickname', '')
+            message = msg.get('message', '')
             
-            all_messages = []
+            # Create hash of message content for uniqueness
+            import hashlib
+            msg_hash = hashlib.md5(message.encode()).hexdigest()[:8]
             
-            for log_url in log_files:
-                logger.info(f"  Processing {Path(log_url).name}...")
-                messages = self._download_and_parse_log(channel_name, log_url)
-                all_messages.extend(messages)
+            # Use channel + timestamp + nickname + hash as unique ID
+            return f"{channel}:{timestamp}:{nickname}:{msg_hash}"
+        except:
+            return None
+    
+    def _collect_channel(self, channel_name: str, base_url: str, skip_existing: bool = True):
+        """Collect logs from a specific IRC channel.
+        
+        Args:
+            channel_name: Name of the IRC channel
+            base_url: Base URL for the channel archive
+            skip_existing: If True, skip messages that already exist
+        """
+        try:
+            # Process dates incrementally (most recent first) instead of generating all URLs
+            from datetime import datetime, timedelta
+            
+            collected = 0
+            skipped = 0
+            consecutive_existing_logs = 0  # Track consecutive logs with only existing messages
+            
+            # Start from today and work backwards
+            current_date = datetime.now()
+            start_date = datetime(2009, 1, 1)  # Earliest possible date
+            
+            logger.info(f"Processing dates incrementally from {current_date.date()} backwards to {start_date.date()}")
+            
+            checked = 0
+            while current_date >= start_date:
+                date_str = current_date.strftime('%Y-%m-%d')
+                log_url = urljoin(base_url, date_str)
                 
-                # Write incrementally
-                with open(self.messages_file, 'a') as f:
-                    for msg in messages:
-                        f.write(json.dumps(msg) + '\n')
+                # Try to access this date's log
+                try:
+                    test_response = requests.head(log_url, timeout=3, allow_redirects=True)
+                    if test_response.status_code == 200:
+                        # Valid log exists, process it immediately
+                        logger.info(f"  Processing {date_str}...")
+                        messages = self._download_and_parse_log(channel_name, log_url)
+                        
+                        # Filter out existing messages
+                        new_messages = []
+                        log_skipped = 0
+                        for msg in messages:
+                            msg_id = self._get_message_id(msg)
+                            if skip_existing and msg_id and msg_id in self.existing_messages:
+                                skipped += 1
+                                log_skipped += 1
+                                continue
+                            new_messages.append(msg)
+                            if msg_id:
+                                self.existing_messages.add(msg_id)
+                        
+                        # If this log had no new messages, increment counter
+                        if len(new_messages) == 0 and len(messages) > 0:
+                            consecutive_existing_logs += 1
+                        else:
+                            consecutive_existing_logs = 0
+                        
+                        # Write only new messages
+                        if new_messages:
+                            with open(self.messages_file, 'a') as f:
+                                for msg in new_messages:
+                                    f.write(json.dumps(msg) + '\n')
+                            collected += len(new_messages)
+                        
+                        # Stop if we've hit many consecutive logs with only existing messages
+                        if consecutive_existing_logs >= 10 and collected > 0:
+                            logger.info(f"Hit {consecutive_existing_logs} consecutive logs with only existing messages.")
+                            logger.info(f"Stopping collection - found {collected} new messages, skipped {skipped} existing")
+                            break
+                        
+                        if skipped > 0 and skipped % 1000 == 0:
+                            logger.info(f"  Skipped {skipped} existing messages, collected {collected} new (working backwards)...")
+                except:
+                    # Date doesn't exist or error, continue
+                    pass
+                
+                current_date -= timedelta(days=1)
+                checked += 1
+                
+                # Progress logging every 1000 dates checked
+                if checked % 1000 == 0:
+                    logger.info(f"Checked {checked} dates, collected {collected} new messages (working backwards)...")
             
-            logger.info(f"Collected {len(all_messages)} messages from {channel_name}")
+            logger.info(f"Collected {collected} new messages from {channel_name}, skipped {skipped} existing")
             
         except Exception as e:
             logger.error(f"Error collecting {channel_name}: {e}")
@@ -116,23 +219,22 @@ class IRCCollector:
                     # But we can try to access them
                     log_files.append(full_url)
             
-            # Method 2: Generate date-based URLs for historical dates
+            # Method 2: Generate date-based URLs starting from most recent and working backwards
             # The archive seems to use format: /bitcoin-core-dev/YYYY-MM-DD
-            # Go back to 2009 (Bitcoin started in 2009) - that's ~15+ years of logs
+            # Start from today and work backwards until we hit existing data
             if len(log_files) < 100:
-                logger.info("Trying date-based URL generation for IRC logs (going back to 2009)")
+                logger.info("Generating IRC log URLs starting from most recent and working backwards")
                 from datetime import datetime, timedelta
                 
-                # Go back to 2009-01-01 (Bitcoin's early days)
-                end_date = datetime.now()
-                start_date = datetime(2009, 1, 1)
+                # Start from today and work backwards
+                current_date = datetime.now()
+                start_date = datetime(2009, 1, 1)  # Earliest possible date
                 
-                logger.info(f"Generating IRC log URLs from {start_date.date()} to {end_date.date()}")
-                current_date = start_date
+                logger.info(f"Generating IRC log URLs from {current_date.date()} backwards to {start_date.date()}")
                 checked = 0
                 found = 0
                 
-                while current_date <= end_date:
+                while current_date >= start_date:
                     date_str = current_date.strftime('%Y-%m-%d')
                     # Try the date as a path
                     url = urljoin(response.url, date_str)
@@ -144,16 +246,14 @@ class IRCCollector:
                     except:
                         pass
                     
-                    current_date += timedelta(days=1)
+                    current_date -= timedelta(days=1)
                     checked += 1
                     
                     # Progress logging every 1000 days checked
                     if checked % 1000 == 0:
-                        logger.info(f"Checked {checked} dates, found {found} valid logs...")
-                    
-                    # No limit - we want all historical data
+                        logger.info(f"Checked {checked} dates, found {found} valid logs (working backwards)...")
             
-            # Remove duplicates and sort
+            # Remove duplicates and keep reverse chronological order (most recent first)
             log_files = sorted(list(set(log_files)), reverse=True)
             logger.info(f"Found {len(log_files)} log URLs")
             return log_files
@@ -413,8 +513,18 @@ class IRCCollector:
 
 def main():
     """Main entry point."""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Collect IRC chat logs from Bitcoin development channels')
+    parser.add_argument('--skip-existing', action='store_true', default=True,
+                       help='Skip messages that already exist (default: True)')
+    parser.add_argument('--no-skip-existing', dest='skip_existing', action='store_false',
+                       help='Collect all messages, including duplicates')
+    
+    args = parser.parse_args()
+    
     collector = IRCCollector()
-    collector.collect_all_channels()
+    collector.collect_all_channels(skip_existing=args.skip_existing)
 
 
 if __name__ == '__main__':

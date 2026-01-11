@@ -72,67 +72,159 @@ class MailingListCollector:
         
         self.emails_file = self.output_dir / 'emails.jsonl'
     
-    def collect_all_emails(self):
-        """Collect all emails from both mailing lists."""
+    def collect_all_emails(self, skip_existing: bool = True):
+        """Collect all emails from both mailing lists.
+        
+        Args:
+            skip_existing: If True, skip emails that already exist. If False, collect all emails.
+        """
         logger.info("Starting mailing list collection")
+        
+        # Load existing emails to avoid duplicates
+        existing_emails = set()
+        if skip_existing and self.emails_file.exists():
+            logger.info(f"Loading existing emails from {self.emails_file}...")
+            try:
+                with open(self.emails_file, 'r') as f:
+                    for line in f:
+                        try:
+                            email = json.loads(line)
+                            # Use Message-ID as primary identifier, fallback to date+subject+from
+                            email_id = self._get_email_id(email)
+                            if email_id:
+                                existing_emails.add(email_id)
+                        except:
+                            continue
+                logger.info(f"Loaded {len(existing_emails)} existing email IDs")
+            except Exception as e:
+                logger.warning(f"Error loading existing emails: {e}")
+        
+        self.existing_emails = existing_emails
         
         # Collect bitcoin-dev
         logger.info("Collecting bitcoin-dev mailing list")
-        self._collect_list('bitcoin-dev', self.bitcoin_dev_url)
+        self._collect_list('bitcoin-dev', self.bitcoin_dev_url, skip_existing)
         
         # Collect bitcoin-core-dev
         logger.info("Collecting bitcoin-core-dev mailing list")
-        self._collect_list('bitcoin-core-dev', self.bitcoin_core_dev_url)
+        self._collect_list('bitcoin-core-dev', self.bitcoin_core_dev_url, skip_existing)
         
         logger.info("Mailing list collection complete")
     
-    def _collect_list(self, list_name: str, base_url: str):
-        """Collect emails from a specific mailing list."""
+    def _get_email_id(self, email: Dict[str, Any]) -> Optional[str]:
+        """Generate a unique identifier for an email."""
+        try:
+            # Primary: Use Message-ID if available
+            msg_id = email.get('message_id', '')
+            if msg_id:
+                return f"msgid:{msg_id}"
+            
+            # Fallback: Use date + subject + from
+            date = email.get('date', '')
+            subject = email.get('subject', '')
+            from_addr = email.get('from', '')
+            
+            if date and subject and from_addr:
+                import hashlib
+                # Create hash of subject+from for uniqueness
+                content_hash = hashlib.md5(f"{subject}:{from_addr}".encode()).hexdigest()[:8]
+                return f"fallback:{date}:{content_hash}"
+            
+            return None
+        except:
+            return None
+    
+    def _collect_list(self, list_name: str, base_url: str, skip_existing: bool = True):
+        """Collect emails from a specific mailing list.
+        
+        Args:
+            list_name: Name of the mailing list
+            base_url: Base URL for the mailing list archive
+            skip_existing: If True, skip emails that already exist
+        """
         logger.info(f"Collecting from {list_name} using alternative sources")
         
         all_emails = []
         
         # Try alternative sources in order of preference
         # 1. marc.info (most reliable, well-indexed)
+        stopped_early = False
         if list_name in self.alternative_sources['marc_info']:
             logger.info(f"Trying marc.info for {list_name}")
-            emails = self._collect_from_marc_info(list_name)
+            emails = self._collect_from_marc_info(list_name, skip_existing)
             all_emails.extend(emails)
             logger.info(f"Collected {len(emails)} emails from marc.info")
+            
+            # Check if we stopped early (this is handled inside _collect_from_marc_info)
+            # For now, if we got emails, continue to other sources if needed
         
-        # 2. mail-archive.com
-        if list_name in self.alternative_sources['mail_archive']:
+        # 2. mail-archive.com (skip if we stopped early from marc.info)
+        if list_name in self.alternative_sources['mail_archive'] and not stopped_early:
             logger.info(f"Trying mail-archive.com for {list_name}")
-            emails = self._collect_from_mail_archive(list_name)
+            emails = self._collect_from_mail_archive(list_name, skip_existing)
             all_emails.extend(emails)
             logger.info(f"Collected {len(emails)} emails from mail-archive.com")
         
         # 3. Try original pipermail (may find some accessible archives)
+        # Get archive URLs starting from most recent
         archive_urls = self._get_archive_urls(base_url, list_name)
         if archive_urls:
-            logger.info(f"Found {len(archive_urls)} accessible pipermail archives")
+            logger.info(f"Found {len(archive_urls)} accessible pipermail archives (processing most recent first)")
+            consecutive_existing_archives = 0
             for archive_url in archive_urls:
                 logger.info(f"Processing {archive_url}")
                 emails = self._download_and_parse_archive(archive_url, list_name)
+                
+                # Check if this archive had any new emails
+                archive_new = 0
+                for email in emails:
+                    email_id = self._get_email_id(email)
+                    if not (skip_existing and email_id and email_id in self.existing_emails):
+                        archive_new += 1
+                
                 all_emails.extend(emails)
+                
+                # If archive had no new emails and we've collected some, stop
+                if archive_new == 0 and len(emails) > 0:
+                    consecutive_existing_archives += 1
+                    if consecutive_existing_archives >= 3 and len(all_emails) > 0:
+                        logger.info(f"Hit {consecutive_existing_archives} consecutive archives with only existing emails. Stopping.")
+                        break
+                else:
+                    consecutive_existing_archives = 0
         
-        # Deduplicate by Message-ID if we have it
+        # Deduplicate within this batch first
         seen_message_ids = set()
-        unique_emails = []
+        batch_unique = []
         for email in all_emails:
             msg_id = email.get('message_id', '')
             if msg_id and msg_id in seen_message_ids:
                 continue
             if msg_id:
                 seen_message_ids.add(msg_id)
-            unique_emails.append(email)
+            batch_unique.append(email)
         
-        # Write all unique emails
-        with open(self.emails_file, 'a') as f:
-            for email in unique_emails:
-                f.write(json.dumps(email) + '\n')
+        # Filter out existing emails
+        collected = 0
+        skipped = 0
+        new_emails = []
+        for email in batch_unique:
+            email_id = self._get_email_id(email)
+            if skip_existing and email_id and email_id in self.existing_emails:
+                skipped += 1
+                continue
+            new_emails.append(email)
+            if email_id:
+                self.existing_emails.add(email_id)
+            collected += 1
         
-        logger.info(f"Collected {len(unique_emails)} unique emails from {list_name}")
+        # Write only new emails
+        if new_emails:
+            with open(self.emails_file, 'a') as f:
+                for email in new_emails:
+                    f.write(json.dumps(email) + '\n')
+        
+        logger.info(f"Collected {collected} new emails from {list_name}, skipped {skipped} existing")
     
     def _get_archive_urls(self, base_url: str, list_name: str = "") -> List[str]:
         """Get list of monthly archive URLs."""
@@ -491,8 +583,13 @@ class MailingListCollector:
             logger.debug(f"Error parsing email: {e}")
             return None
     
-    def _collect_from_marc_info(self, list_name: str) -> List[Dict[str, Any]]:
-        """Collect emails from marc.info archive."""
+    def _collect_from_marc_info(self, list_name: str, skip_existing: bool = True) -> List[Dict[str, Any]]:
+        """Collect emails from marc.info archive.
+        
+        Args:
+            list_name: Name of the mailing list
+            skip_existing: If True, skip emails that already exist
+        """
         emails = []
         base_url = self.alternative_sources['marc_info'][list_name]
         
@@ -509,28 +606,44 @@ class MailingListCollector:
                 href = link.get('href', '')
                 if '&b=' in href and '&w=2' in href:  # Monthly archive link
                     full_url = urljoin(base_url, href)
-                    archive_links.append(full_url)
+                    # Extract date from URL for sorting
+                    date_match = re.search(r'&b=(\d{6})', href)
+                    if date_match:
+                        archive_links.append((date_match.group(1), full_url))
             
-            logger.info(f"Found {len(archive_links)} monthly archives on marc.info")
+            # Sort by date (most recent first) - YYYYMM format sorts correctly
+            archive_links.sort(key=lambda x: x[0], reverse=True)
+            archive_links = [url for _, url in archive_links]  # Extract just URLs
             
-            # Calculate estimated total messages
-            total_estimated = 0
-            for link in soup.find_all('a', href=True):
-                if '&b=' in link.get('href', '') and '&w=2' in link.get('href', ''):
-                    text = link.get_text()
-                    msg_match = re.search(r'\((\d+)\s+messages?\)', text)
-                    if msg_match:
-                        total_estimated += int(msg_match.group(1))
+            logger.info(f"Found {len(archive_links)} monthly archives on marc.info (processing most recent first)")
             
-            logger.info(f"Estimated total messages: {total_estimated:,}")
-            
-            # Process each monthly archive (no limit - collect all)
+            # Process each monthly archive starting from most recent
+            consecutive_existing_months = 0
             for archive_url in archive_links:
                 try:
                     month_emails = self._parse_marc_info_archive(archive_url, list_name)
+                    
+                    # Check how many are new (not in existing_emails)
+                    month_new = 0
+                    for email in month_emails:
+                        email_id = self._get_email_id(email)
+                        if not (skip_existing and email_id and email_id in self.existing_emails):
+                            month_new += 1
+                    
                     emails.extend(month_emails)
+                    
+                    # If this month had no new emails and we've collected some, increment counter
+                    if month_new == 0 and len(month_emails) > 0:
+                        consecutive_existing_months += 1
+                        # Stop if we hit 3 consecutive months with only existing emails
+                        if consecutive_existing_months >= 3 and len(emails) > 0:
+                            logger.info(f"Hit {consecutive_existing_months} consecutive months with only existing emails. Stopping marc.info collection.")
+                            break
+                    else:
+                        consecutive_existing_months = 0
+                    
                     if len(emails) % 100 == 0:
-                        logger.info(f"Collected {len(emails)} emails from marc.info so far...")
+                        logger.info(f"Collected {len(emails)} emails from marc.info so far (working backwards)...")
                 except Exception as e:
                     logger.debug(f"Error processing {archive_url}: {e}")
                     continue
@@ -677,8 +790,13 @@ class MailingListCollector:
             logger.debug(f"Error parsing marc.info message: {e}")
             return None
     
-    def _collect_from_mail_archive(self, list_name: str) -> List[Dict[str, Any]]:
-        """Collect emails from mail-archive.com - FULL IMPLEMENTATION."""
+    def _collect_from_mail_archive(self, list_name: str, skip_existing: bool = True) -> List[Dict[str, Any]]:
+        """Collect emails from mail-archive.com - FULL IMPLEMENTATION.
+        
+        Args:
+            list_name: Name of the mailing list
+            skip_existing: If True, skip emails that already exist
+        """
         emails = []
         base_url = self.alternative_sources['mail_archive'][list_name]
         
@@ -734,21 +852,34 @@ class MailingListCollector:
             
             # Method 2: Also try sequential access (msg00001.html, msg00002.html, etc.)
             # This is a backup method in case pagination misses some
-            logger.info("Also trying sequential message access...")
+            # Work backwards from most recent (20000) to find new messages faster
+            logger.info("Also trying sequential message access (working backwards from most recent)...")
             sequential_found = 0
-            for msg_num in range(1, 20000):  # Try up to 20,000 messages
+            consecutive_404s = 0
+            max_consecutive_404s = 50  # Stop after 50 consecutive 404s
+            
+            # Start from 20000 and work backwards
+            for msg_num in range(20000, 0, -1):
                 msg_url = urljoin(base_url, f"msg{msg_num:05d}.html")
                 try:
                     resp = requests.head(msg_url, timeout=5)
                     if resp.status_code == 200:
+                        consecutive_404s = 0  # Reset counter on success
                         if msg_url not in all_message_links:
                             all_message_links.append(msg_url)
                             sequential_found += 1
                             if sequential_found % 100 == 0:
-                                logger.info(f"Found {sequential_found} additional messages via sequential access...")
+                                logger.info(f"Found {sequential_found} additional messages via sequential access (checking {msg_num}...)...")
+                    else:
+                        consecutive_404s += 1
+                        # Stop early if we hit many consecutive 404s (reached end of messages)
+                        if consecutive_404s >= max_consecutive_404s:
+                            logger.info(f"Hit {consecutive_404s} consecutive 404s, stopping sequential access at message {msg_num}")
+                            break
                 except:
-                    # If we get 404s for a while, we've probably reached the end
-                    if msg_num > 100 and sequential_found == 0:
+                    consecutive_404s += 1
+                    if consecutive_404s >= max_consecutive_404s:
+                        logger.info(f"Hit {consecutive_404s} consecutive errors, stopping sequential access at message {msg_num}")
                         break
                     pass
             
@@ -985,8 +1116,18 @@ class MailingListCollector:
 
 def main():
     """Main entry point."""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Collect emails from Bitcoin development mailing lists')
+    parser.add_argument('--skip-existing', action='store_true', default=True,
+                       help='Skip emails that already exist (default: True)')
+    parser.add_argument('--no-skip-existing', dest='skip_existing', action='store_false',
+                       help='Collect all emails, including duplicates')
+    
+    args = parser.parse_args()
+    
     collector = MailingListCollector()
-    collector.collect_all_emails()
+    collector.collect_all_emails(skip_existing=args.skip_existing)
 
 
 if __name__ == '__main__':
