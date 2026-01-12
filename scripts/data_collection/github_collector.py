@@ -462,14 +462,16 @@ class GitHubCollector:
         else:
             logger.info("No existing issues found, collecting all issues")
         
-        issues = self.repo.get_issues(state='all', sort='created', direction='asc')
+        # Start with most recent issues and work backwards
+        issues = self.repo.get_issues(state='all', sort='created', direction='desc')
         total_count = issues.totalCount
-        logger.info(f"Found {total_count} total issues")
+        logger.info(f"Found {total_count} total issues, starting with most recent and working backwards")
         
         collected = 0
         skipped = 0
         errors = 0
         max_retries = 3
+        consecutive_existing = 0  # Track consecutive existing issues to stop early
         
         # Create backup of existing file before appending (if file exists and has data)
         if self.issues_file.exists() and existing_issue_numbers:
@@ -487,12 +489,24 @@ class GitHubCollector:
                 if issue.pull_request:
                     continue
                 
-                # Skip issues we already have, but continue collecting (don't stop - we need to find gaps)
+                # Skip issues we already have
                 if issue.number in existing_issue_numbers:
                     skipped += 1
+                    consecutive_existing += 1
+                    
+                    # If we've hit 100 consecutive existing issues, we've likely reached the boundary
+                    # Continue a bit more to catch any gaps, then stop
+                    if consecutive_existing >= 100 and skipped > 1000:
+                        logger.info(f"Hit {consecutive_existing} consecutive existing issues. Likely reached existing data boundary.")
+                        logger.info(f"Stopping collection - found {collected} new issues, skipped {skipped} existing")
+                        break
+                    
                     if skipped % 1000 == 0:
-                        logger.info(f"Skipped {skipped} already-collected issues...")
+                        logger.info(f"Skipped {skipped} already-collected issues (working backwards)...")
                     continue
+                
+                # Reset counter when we find a new issue
+                consecutive_existing = 0
                 
                 # Check GitHub API rate limit periodically
                 if collected % self._check_rate_limit_every == 0:
