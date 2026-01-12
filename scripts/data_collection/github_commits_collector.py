@@ -10,6 +10,7 @@ import sys
 import os
 import json
 import time
+import re
 from pathlib import Path
 from typing import Dict, Any, Optional
 from datetime import datetime
@@ -60,22 +61,68 @@ class GitHubCommitsCollector:
         # Track if we need to check rate limits
         self._check_rate_limit_every = 50  # Check GitHub API rate limit every 50 commits
     
-    def collect_all_commits(self):
-        """Collect all commits from the repository."""
+    def collect_all_commits(self, skip_existing: bool = True):
+        """Collect all commits from the repository.
+        
+        Args:
+            skip_existing: If True, skip commits that already exist. If False, collect all commits.
+        """
         logger.info("Starting commits collection")
         
         commits_file = self.data_dir / "commits_raw.jsonl"
         
+        # Load existing commits to avoid duplicates
+        existing_shas = set()
+        if skip_existing and commits_file.exists():
+            logger.info(f"Loading existing commits from {commits_file}...")
+            try:
+                with open(commits_file, 'r') as f:
+                    for line in f:
+                        try:
+                            commit = json.loads(line)
+                            if commit.get('sha'):
+                                existing_shas.add(commit['sha'])
+                        except:
+                            continue
+                logger.info(f"Loaded {len(existing_shas)} existing commit SHAs")
+            except Exception as e:
+                logger.warning(f"Error loading existing commits: {e}")
+        
         # Get all commits (this will take a while for large repos)
+        # Start with most recent commits and work backwards
         try:
-            commits = self.repo.get_commits()
+            commits = self.repo.get_commits()  # Default is most recent first
             total_commits = commits.totalCount
             
-            logger.info(f"Found {total_commits} total commits")
+            logger.info(f"Found {total_commits} total commits, starting with most recent and working backwards")
             
             collected = 0
-            with open(commits_file, 'w') as f:
+            skipped = 0
+            consecutive_existing = 0  # Track consecutive existing commits to stop early
+            
+            with open(commits_file, 'a') as f:  # Append mode to resume
                 for commit in commits:
+                    commit_sha = commit.sha
+                    
+                    # Skip commits we already have
+                    if skip_existing and commit_sha in existing_shas:
+                        skipped += 1
+                        consecutive_existing += 1
+                        
+                        # If we've hit 100 consecutive existing commits, we've likely reached the boundary
+                        # Continue a bit more to catch any gaps, then stop
+                        if consecutive_existing >= 100 and skipped > 1000:
+                            logger.info(f"Hit {consecutive_existing} consecutive existing commits. Likely reached existing data boundary.")
+                            logger.info(f"Stopping collection - found {collected} new commits, skipped {skipped} existing")
+                            break
+                        
+                        if skipped % 1000 == 0:
+                            logger.info(f"Skipped {skipped} already-collected commits (working backwards)...")
+                        continue
+                    
+                    # Reset counter when we find a new commit
+                    consecutive_existing = 0
+                    
                     # Check GitHub API rate limit periodically
                     if collected % self._check_rate_limit_every == 0:
                         self._check_and_wait_for_rate_limit()
@@ -87,15 +134,16 @@ class GitHubCommitsCollector:
                         f.write(json.dumps(commit_data) + '\n')
                         f.flush()
                         collected += 1
+                        existing_shas.add(commit_sha)  # Track in memory too
                     
                     # Small delay to spread out API calls
                     if collected % 100 == 0:
-                        logger.info(f"Collected {collected}/{total_commits} commits ({collected*100//total_commits}%)")
+                        logger.info(f"Collected {collected} new commits, skipped {skipped} existing ({collected*100//total_commits if total_commits > 0 else 0}%)")
                         time.sleep(0.5)  # 500ms delay every 100 commits
                     elif collected % 10 == 0:
                         time.sleep(0.1)  # 100ms delay every 10 commits
             
-            logger.info(f"Collected {collected} commits to {commits_file}")
+            logger.info(f"Collected {collected} new commits, skipped {skipped} existing commits")
             
         except Exception as e:
             logger.error(f"Error collecting commits: {e}")
@@ -231,6 +279,10 @@ def main():
     parser = argparse.ArgumentParser(description='Collect commits from bitcoin/bitcoin')
     parser.add_argument('--limit', type=int, default=None,
                        help='Limit number of commits to collect (for testing)')
+    parser.add_argument('--skip-existing', action='store_true', default=True,
+                       help='Skip commits that already exist (default: True)')
+    parser.add_argument('--no-skip-existing', dest='skip_existing', action='store_false',
+                       help='Collect all commits, including existing ones')
     
     args = parser.parse_args()
     
@@ -241,12 +293,11 @@ def main():
         logger.info(f"LIMIT MODE: Collecting only {args.limit} commits (for testing)")
         collector.collect_commits_limited(args.limit)
     else:
-        collector.collect_all_commits()
+        collector.collect_all_commits(skip_existing=args.skip_existing)
     
     logger.info("GitHub commits collection complete")
 
 
 if __name__ == '__main__':
-    import re
     main()
 
