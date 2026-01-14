@@ -118,39 +118,76 @@ class PRGovernanceAnalyzer:
             prompt += f"\n... and {len(participants) - 10} more participants\n"
         
         prompt += f"""
+## Critical Analysis Requirements
+
+### Deductions vs Inferences
+
+**You MUST explicitly differentiate between deductions and inferences in your analysis:**
+
+- **[DEDUCTION]**: A conclusion that follows necessarily from the data. Facts that can be directly observed.
+  - Example: "Commit 0bf7b38b on 2020-07-13 contains `fs::remove_all()`" (verifiable in commit diff)
+  - Example: "PR has 98 reviews" (countable from data)
+  - Example: "Sjors left a review comment on 2022-08-26" (directly observable)
+  - **Format**: State as fact: "The data shows..." or "Commit X contains..." or "[DEDUCTION]..."
+
+- **[INFERENCE]**: A conclusion drawn from available evidence but not directly observable.
+  - Example: "The comment 'Latest push adds cleanup' likely refers to cleanup code" (inference from comment)
+  - Example: "The cleanup code was probably added late" (inference, not directly observable)
+  - Example: "This suggests the code wasn't reviewed" (inference from absence of evidence)
+  - **Format**: Explicitly state as inference: "Based on [evidence], I infer..." or "[INFERENCE]..." or "This suggests..."
+
+**When making ANY claim, you MUST label it as either [DEDUCTION] or [INFERENCE].**
+
+### Commit History Analysis
+
+**You MUST unwind the complete commit history:**
+
+1. **Get ALL commits in the PR** - Use GitHub API: `GET /repos/bitcoin/bitcoin/pulls/{PR_NUMBER}/commits`
+2. **Trace code changes to specific commits** - For any code pattern mentioned, identify the exact commit
+3. **Check commit diffs** - Don't infer from comments, verify in commit diffs
+4. **Build complete timeline** - When was each piece of code added/modified/removed?
+
+**Don't make unnecessary inferences** - If you can see the commit, state it as a deduction. If you can't see the commit but have a comment, state it as an inference.
+
 ## Analysis Questions
 
-Please analyze this PR's governance situation and answer the following questions:
+Please analyze this PR's governance situation and answer the following questions. **Label every claim as [DEDUCTION] or [INFERENCE].**
 
 ### 1. Decision-Making Process
-- How was the decision to merge/reject made?
-- Was there adequate review and discussion?
-- Were decision criteria clear and consistently applied?
+- How was the decision to merge/reject made? [Label each claim]
+- Was there adequate review and discussion? [Label each claim]
+- Were decision criteria clear and consistently applied? [Label each claim]
 
 ### 2. Power Dynamics
-- Who had influence over this PR's outcome?
-- Were maintainers involved appropriately?
-- Was there any evidence of power concentration or abuse?
+- Who had influence over this PR's outcome? [Label each claim]
+- Were maintainers involved appropriately? [Label each claim]
+- Was there any evidence of power concentration or abuse? [Label each claim]
 
 ### 3. Transparency
-- Was discussion transparent and public?
-- Were concerns raised and addressed?
-- Was there cross-platform coordination (IRC, mailing lists)?
+- Was discussion transparent and public? [Label each claim]
+- Were concerns raised and addressed? [Label each claim]
+- Was there cross-platform coordination (IRC, mailing lists)? [Label each claim]
 
 ### 4. Governance Failures (if any)
-- Were there any governance failures or red flags?
+- Were there any governance failures or red flags? [Label each claim]
 - Examples: self-merge, zero reviews, lack of transparency, conflicts ignored
-- What could have been done better?
+- What could have been done better? [Label each claim]
 
 ### 5. Patterns
-- Does this PR exhibit patterns seen in other PRs?
-- Is this typical or atypical for Bitcoin Core governance?
-- What does this tell us about the governance system?
+- Does this PR exhibit patterns seen in other PRs? [Label each claim]
+- Is this typical or atypical for Bitcoin Core governance? [Label each claim]
+- What does this tell us about the governance system? [Label each claim]
 
 ### 6. Specific People/Relationships
-- Analyze relationships between participants
-- Were there conflicts or tensions?
-- Did personal relationships influence the outcome?
+- Analyze relationships between participants [Label each claim]
+- Were there conflicts or tensions? [Label each claim]
+- Did personal relationships influence the outcome? [Label each claim]
+
+### 7. Code Change Analysis
+- **Trace every significant code change to its specific commit** [DEDUCTION required]
+- When was each piece of code added? [Check commit diffs, don't infer]
+- Which commits contain which changes? [Verify in diffs]
+- What code was reviewed vs. not reviewed? [Label as DEDUCTION if verifiable, INFERENCE if not]
 
 ## Data Sources Available
 
@@ -159,6 +196,13 @@ Please analyze this PR's governance situation and answer the following questions
 - **Mailing List Emails**: {len(self.context.get('mailing_list_emails', []))} emails
 - **Related Commits**: {len(self.context.get('related_commits', []))} commits
 - **Timeline**: {len(timeline)} events total
+
+**IMPORTANT**: If the commit count seems low, you MUST fetch ALL commits in the PR using GitHub API:
+```bash
+curl "https://api.github.com/repos/bitcoin/bitcoin/pulls/{self.pr_number}/commits"
+```
+
+This will give you every commit that's part of the PR, not just merge commits or commits by author.
 
 ## Full Context Available
 

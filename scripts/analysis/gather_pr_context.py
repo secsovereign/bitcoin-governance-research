@@ -16,6 +16,7 @@ Output: Structured JSON file ready for AI analysis
 import sys
 import json
 import re
+import urllib.request
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 from datetime import datetime
@@ -121,14 +122,61 @@ class PRContextGatherer:
         return None
     
     def _get_related_commits(self, pr_number: int, pr_data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Get commits related to this PR."""
-        commits_file = self.github_dir / 'commits_raw.jsonl'
-        if not commits_file.exists():
-            return []
+        """Get ALL commits in this PR.
         
+        This method attempts multiple approaches:
+        1. Fetch directly from GitHub API (most reliable)
+        2. Fall back to local commits file if API unavailable
+        """
         related = []
         
-        # Method 1: Merge commit with PR number in message
+        # Method 1: Fetch ALL commits from GitHub API (preferred)
+        # This gets every commit that's part of the PR, not just merge commits
+        try:
+            import subprocess
+            import urllib.request
+            url = f"https://api.github.com/repos/bitcoin/bitcoin/pulls/{pr_number}/commits"
+            logger.info(f"Fetching commits from GitHub API: {url}")
+            
+            req = urllib.request.Request(url)
+            req.add_header('Accept', 'application/vnd.github.v3+json')
+            req.add_header('User-Agent', 'BitcoinCommons-Research')
+            
+            with urllib.request.urlopen(req, timeout=30) as response:
+                api_commits = json.loads(response.read().decode())
+                
+            for api_commit in api_commits:
+                # Get full commit details including diff
+                commit_sha = api_commit.get('sha')
+                commit_url = f"https://api.github.com/repos/bitcoin/bitcoin/commits/{commit_sha}"
+                
+                try:
+                    commit_req = urllib.request.Request(commit_url)
+                    commit_req.add_header('Accept', 'application/vnd.github.v3+json')
+                    commit_req.add_header('User-Agent', 'BitcoinCommons-Research')
+                    
+                    with urllib.request.urlopen(commit_req, timeout=30) as commit_response:
+                        full_commit = json.loads(commit_response.read().decode())
+                        related.append(full_commit)
+                except Exception as e:
+                    logger.warning(f"Could not fetch full commit {commit_sha}: {e}")
+                    # Fall back to basic commit data
+                    related.append(api_commit)
+            
+            if related:
+                logger.info(f"Fetched {len(related)} commits from GitHub API")
+                return related
+        except Exception as e:
+            logger.warning(f"Could not fetch commits from GitHub API: {e}")
+            logger.info("Falling back to local commits file")
+        
+        # Method 2: Fall back to local commits file
+        commits_file = self.github_dir / 'commits_raw.jsonl'
+        if not commits_file.exists():
+            logger.warning("No local commits file found and API fetch failed")
+            return []
+        
+        # Method 2a: Merge commit with PR number in message
         with open(commits_file) as f:
             for line in f:
                 try:
@@ -138,7 +186,7 @@ class PRContextGatherer:
                 except:
                     continue
         
-        # Method 2: Commits by PR author in PR timeframe
+        # Method 2b: Commits by PR author in PR timeframe
         if pr_data:
             pr_author = pr_data.get('user', {}).get('login')
             created_at = pr_data.get('created_at')
@@ -161,6 +209,11 @@ class PRContextGatherer:
                                     related.append(commit)
                         except:
                             continue
+        
+        if related:
+            logger.info(f"Found {len(related)} commits in local file (may be incomplete)")
+        else:
+            logger.warning("No commits found - PR commit history may be incomplete")
         
         return related
     

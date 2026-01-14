@@ -25,12 +25,14 @@ python scripts/analysis/gather_pr_context.py <PR_NUMBER>
 - GitHub PR data (comments, reviews, metadata)
 - IRC messages mentioning the PR
 - Mailing list emails mentioning the PR
-- Related commits
+- **ALL commits in the PR** (fetched from GitHub API, not just merge commits)
 - Timeline of events
 - Participant analysis
 - Governance indicators (self-merge, zero reviews, conflicts, etc.)
 
 **Output**: `data/pr_contexts/pr_context_{PR_NUMBER}.json`
+
+**Important**: The script now fetches ALL commits in the PR via GitHub API to ensure complete commit history. This allows tracing every code change to its specific commit.
 
 **Example**:
 ```bash
@@ -78,14 +80,20 @@ python scripts/analysis/analyze_pr_governance.py data/pr_contexts/pr_context_340
 Use the generated markdown file with an AI agent (like this one) to analyze:
 
 1. **Load the analysis file**: The markdown file contains all context and questions
-2. **Answer the analysis questions**:
+2. **Unwind commit history**: 
+   - Fetch ALL commits in the PR (if not already in context)
+   - Trace every code change to its specific commit
+   - Check commit diffs to verify code additions/modifications
+   - Don't infer when you can verify
+3. **Answer the analysis questions** with explicit deduction/inference labeling:
    - Decision-making process
    - Power dynamics
    - Transparency
    - Governance failures
    - Patterns
    - Specific people/relationships
-3. **Generate comprehensive analysis**
+   - **Code change analysis** (trace to commits)
+4. **Generate comprehensive analysis** with every claim labeled as [DEDUCTION] or [INFERENCE]
 
 **Example prompt to AI**:
 ```
@@ -96,14 +104,28 @@ Please analyze the governance situation described in data/pr_analyses/analysis_3
 
 ## Analysis Framework
 
+### Critical Requirements
+
+**Deductions vs Inferences:**
+- **[DEDUCTION]**: Facts directly observable from data (commit diffs, review counts, dates)
+- **[INFERENCE]**: Conclusions drawn from evidence but not directly observable
+- **Every claim MUST be labeled** as one or the other
+
+**Commit History Unwinding:**
+- Fetch ALL commits in the PR (not just merge commits)
+- Trace every code change to its specific commit
+- Check commit diffs - don't infer from comments
+- Build complete timeline of code changes
+
 ### Governance Indicators to Look For
 
-1. **Self-Merge**: Author merged their own PR
-2. **Zero Reviews**: No reviews before merge
-3. **Maintainer Involvement**: Who was involved, how
-4. **Conflict Indicators**: NACKs, rejections, concerns
-5. **Transparency**: Cross-platform discussion (IRC, mailing lists)
-6. **Decision Patterns**: How was the decision made?
+1. **Self-Merge**: Author merged their own PR [DEDUCTION if verifiable]
+2. **Zero Reviews**: No reviews before merge [DEDUCTION if countable]
+3. **Maintainer Involvement**: Who was involved, how [DEDUCTION if observable]
+4. **Conflict Indicators**: NACKs, rejections, concerns [DEDUCTION if in data]
+5. **Transparency**: Cross-platform discussion (IRC, mailing lists) [DEDUCTION if observable]
+6. **Decision Patterns**: How was the decision made? [May require INFERENCE]
+7. **Code Review Coverage**: Which commits/code were reviewed? [DEDUCTION if traceable to commits]
 
 ### Key Questions
 

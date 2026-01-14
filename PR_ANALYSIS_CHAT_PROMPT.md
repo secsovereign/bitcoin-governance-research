@@ -145,6 +145,59 @@ cat data/pr_analyses/analysis_34040.md
 # (The markdown file contains all context and questions)
 ```
 
+## Critical Analysis Requirements
+
+### Deductions vs Inferences
+
+**You MUST explicitly differentiate between deductions and inferences in your analysis:**
+
+- **[DEDUCTION]**: A conclusion that follows necessarily from the data. Facts that can be directly observed.
+  - Example: "Commit 0bf7b38b on 2020-07-13 contains `fs::remove_all()`" (can be verified in commit diff)
+  - Example: "PR has 98 reviews" (countable from data)
+  - Example: "Sjors left a review comment on 2022-08-26" (directly observable)
+  - **Format**: State as fact: "The data shows..." or "Commit X contains..." or "[DEDUCTION]..."
+
+- **[INFERENCE]**: A conclusion drawn from available evidence but not directly observable.
+  - Example: "The comment 'Latest push adds cleanup' likely refers to cleanup code" (inference from comment)
+  - Example: "The cleanup code was probably added late" (inference, not directly observable)
+  - Example: "This suggests the code wasn't reviewed" (inference from absence of evidence)
+  - **Format**: Explicitly state as inference: "Based on [evidence], I infer..." or "[INFERENCE]..." or "This suggests..."
+
+**When making ANY claim, you MUST label it as either [DEDUCTION] or [INFERENCE].**
+
+### Commit History Analysis
+
+**You MUST unwind the complete commit history of PRs:**
+
+1. **Get ALL commits in the PR** - Not just merge commits or commits by author
+   - Use GitHub API: `GET /repos/{owner}/{repo}/pulls/{pull_number}/commits`
+   - This gives you every commit that's part of the PR
+
+2. **Trace code changes to specific commits**:
+   - For any code pattern or change mentioned, identify the exact commit that introduced it
+   - Check each commit's diff to see what code was added/removed
+   - Don't infer from comments - verify in commit diffs
+
+3. **Build complete timeline of code changes**:
+   - When was each piece of code added?
+   - When was it modified?
+   - When was it removed?
+   - Which commits contain which changes?
+
+4. **Don't make unnecessary inferences**:
+   - If you can see the commit, state it as a deduction
+   - If you can't see the commit but have a comment, state it as an inference
+   - Don't infer when you can verify
+
+### Example of Proper Analysis
+
+**WRONG** (making inference without labeling):
+> "The cleanup code was added on 2022-08-17 based on the comment."
+
+**CORRECT** (explicitly labeled):
+> "[DEDUCTION] Commit 0bf7b38b on 2020-07-13 contains `fs::remove_all()` in the diff.
+> [INFERENCE] The comment on 2022-08-17 saying 'Latest push adds cleanup on failure' likely refers to refinement of cleanup logic, not the initial addition, since the code existed in commit 0bf7b38b from 2020."
+
 ## Important Notes
 
 - **Data Quality**: Some PRs (especially old ones) may have `None` for user.login fields. This is a data quality issue, not a protocol issue. The protocol handles this gracefully.
@@ -153,20 +206,31 @@ cat data/pr_analyses/analysis_34040.md
 
 - **Timeline**: Events are sorted chronologically. IRC messages and emails are included if they mention the PR number or related terms within the PR's timeframe.
 
+- **Commit History**: Always fetch ALL commits in the PR via GitHub API, not just merge commits or commits by author. Trace every code change to its specific commit.
+
 ## Your Task
 
 I want you to help me analyze specific PRs for governance situations or failures. When I give you a PR number:
 
-1. Run the context gathering script
-2. Generate the analysis file
-3. Review the data and provide insights
-4. Answer the analysis questions
-5. Identify any governance issues or patterns
+1. **Fetch ALL commits in the PR** using GitHub API (not just merge commits)
+2. **Trace every code change to its specific commit** - don't infer, verify
+3. **Run the context gathering script** (which should include all commits)
+4. **Generate the analysis file**
+5. **Review the data and provide insights** - explicitly labeling deductions vs inferences
+6. **Answer the analysis questions** - with proper deduction/inference labeling
+7. **Identify any governance issues or patterns**
+
+**Critical Requirements:**
+- **Every claim must be labeled** as [DEDUCTION] or [INFERENCE]
+- **Don't infer when you can verify** - check commit diffs directly
+- **Unwind complete commit history** - get all commits, trace all code changes
+- **State evidence explicitly** - show what data supports each claim
 
 You have full access to:
 - All the data files
 - The analysis scripts
 - The protocol documentation
 - The ability to run Python scripts and read files
+- GitHub API access (via curl or Python requests)
 
 Let me know when you're ready to analyze a specific PR!
