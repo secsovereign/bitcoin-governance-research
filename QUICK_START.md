@@ -103,5 +103,5 @@ After data collection:
 3. Run analysis scripts
 4. Generate reports
 
-See [DATA_SOURCING_AND_REPRODUCIBILITY.md](../DATA_SOURCING_AND_REPRODUCIBILITY.md) for detailed data sourcing information.
+See [DATA_SOURCING_AND_REPRODUCIBILITY.md](DATA_SOURCING_AND_REPRODUCIBILITY.md) for detailed data sourcing information.
 

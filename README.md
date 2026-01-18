@@ -2,7 +2,7 @@
 
 **Project**: Comprehensive Quantitative Analysis of Bitcoin Core Development Governance  
 **Purpose**: Empirical analysis of Bitcoin Core governance patterns through public data  
-**Data Coverage**: 2009-2025 (16+ years of development history)
+**Data Coverage**: 2010-2026 (15 years of development history)
 
 ## Project Overview
 
@@ -22,7 +22,9 @@ bitcoin-governance-research/
 ├── README.md                          # This file
 ├── pyproject.toml                     # Python project configuration
 ├── setup.sh                           # Setup script
-├── comprehensive_recent_analysis.py   # Main analysis script
+├── comprehensive_recent_analysis.py   # Legacy analysis script
+├── scripts/                           # Executable scripts
+│   └── run_all_analyses.py            # Main analysis pipeline (runs 9 core scripts)
 ├── data/                              # Data files
 │   ├── github/                       # GitHub PR/issue data
 │   ├── mailing_lists/                # Mailing list archives
@@ -85,13 +87,24 @@ python scripts/workflow.py
 
 ### Running Analysis
 
-The main analysis script runs the complete analysis pipeline:
+The main analysis pipeline runs all 9 core analysis scripts:
 
 ```bash
-python comprehensive_recent_analysis.py
+python scripts/run_all_analyses.py
 ```
 
+This runs:
+- Contributor Analysis
+- BCAP State of Mind & Power Shift Analysis
+- BIP Process Analysis
+- Cross-Platform Networks & Cross-Repository Comparison
+- Informal Sentiment Analysis (IRC/Email)
+- Release Signing Analysis
+- Enhanced Identity Resolution
+
 Individual analysis scripts are available in `scripts/analysis/` for specific analyses.
+
+**Note**: `comprehensive_recent_analysis.py` is a legacy script for historical analysis. Use `scripts/run_all_analyses.py` for current analyses.
 
 ## Methodology
 
@@ -117,7 +130,7 @@ We collect data from **three major public communication channels**:
    - Real-time coordination and discussions
    - **Total**: ~500,000 data points
 
-**Combined**: **~1.1 million data points** over **16+ years** of Bitcoin development history.
+**Combined**: **~1.1 million data points** over **15 years** of Bitcoin development history (2010-2026).
 
 See [DATA_SOURCING_AND_REPRODUCIBILITY.md](DATA_SOURCING_AND_REPRODUCIBILITY.md) for detailed data sourcing and reproducibility information.
 
@@ -139,6 +152,21 @@ See [DATA_SOURCING_AND_REPRODUCIBILITY.md](DATA_SOURCING_AND_REPRODUCIBILITY.md)
 3. **Detailed Analysis Reports** - Comprehensive analysis across multiple dimensions
 4. **Data Files** - Analysis results and processed data
 5. **Reproducibility** - All scripts and data sources documented
+
+## Related Research and Frameworks
+
+### BCAP (Bitcoin Consensus Analysis Project)
+
+Some of our research applies theoretical frameworks from **BCAP (Bitcoin Consensus Analysis Project)**, particularly:
+
+- **State of Mind (SOM) Framework**: Analyzing developer engagement levels during consensus changes
+- **Power Shift Concepts**: Understanding how governance changes during consensus change periods
+
+**BCAP Repository**: https://github.com/bitcoin-cap/bcap  
+**BCAP Website**: https://bitcoin-cap.github.io/bcap/  
+**BCAP Integration Report**: See [`findings/BCAP_INTEGRATION_REPORT.md`](findings/BCAP_INTEGRATION_REPORT.md)
+
+Our analysis applies BCAP's theoretical concepts to Bitcoin Core governance data, providing quantitative validation of theoretical claims about stakeholder engagement during consensus changes.
 
 ## License
 

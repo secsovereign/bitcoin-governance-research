@@ -182,7 +182,7 @@
 ## Files Using Maintainer List
 
 **Hardcoded in**:
-- `comprehensive_recent_analysis.py` (line 78-83)
+- `comprehensive_recent_analysis.py` (legacy script, line 78-83). Current maintainer analysis uses `scripts/run_all_analyses.py`.
 - `scripts/analysis/maintainer_timeline_analysis.py` (line 72-77)
 - `scripts/analysis/contributor_timeline_analysis.py` (line 72-77)
 - Multiple other analysis scripts (see grep results)

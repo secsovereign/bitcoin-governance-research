@@ -99,6 +99,29 @@
 
 17. **`MAINTAINER_TIMELINE_ANALYSIS.md`** - Maintainer activity timeline (includes current vs historical distinction)
 18. **`CONTRIBUTOR_TIMELINE_ANALYSIS.md`** - Contributor activity timeline
+19. **`CONTRIBUTOR_ANALYSIS.md`** ⭐ CONTRIBUTOR RETENTION
+    - 7,604 total contributors analyzed
+    - 87.7% exit rate (1-year threshold)
+    - Breakdown by type (authors vs participants)
+20. **`BCAP_INTEGRATION_REPORT.md`** - BCAP framework integration analysis
+    - State of Mind (SOM) analysis during SegWit/Taproot
+    - Power shift analysis during consensus changes
+    - Based on [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap)
+21. **`CROSS_PLATFORM_NETWORKS.md`** - Cross-platform influence analysis
+    - GitHub/IRC/Email overlap analysis
+    - Verified maintainer identities across platforms
+22. **`INFORMAL_SENTIMENT_ANALYSIS.md`** - IRC/Email sentiment analysis
+    - Sentiment distribution across informal channels
+    - State of Mind (SOM) analysis on IRC/email
+23. **`BIP_PROCESS_ANALYSIS.md`** - BIP governance analysis
+    - Proposer/champion patterns
+    - BIP-to-Core implementation pipeline
+24. **`RELEASE_SIGNING_ANALYSIS.md`** - Release signing authority
+    - Signer concentration analysis
+    - Signing patterns over time
+25. **`CROSS_REPO_COMPARISON.md`** - Core vs BIP repository comparison
+    - Actor overlap analysis
+    - Governance pattern comparison
 
 ---
 
@@ -136,9 +159,9 @@ All JSON data files are organized in the `data/` subdirectory for cleaner organi
 
 ## Archive
 
-- `archive/` - Older/redundant documents (kept for reference)
+- Older/redundant documents kept for reference in repository archives
 
 ---
 
-**Last Updated**: 2026-01-07  
+**Last Updated**: 2026-01-18  
 **Status**: ✅ Complete and validated

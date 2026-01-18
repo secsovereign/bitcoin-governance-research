@@ -134,7 +134,7 @@ The **Gini coefficient** is a measure of inequality, ranging from 0 to 1:
 
 ## Data Sources
 
-- **Analysis**: `comprehensive_recent_analysis.py` (updated with merged_by data)
+- **Analysis**: Historical analysis from `comprehensive_recent_analysis.py` (legacy script). Current analyses use `scripts/run_all_analyses.py`.
 - **Periods**: Historical (2012-2020) vs Recent (2021-2025)
 - **Data**: 23,478 PRs, 9,235 maintainer merged PRs with merged_by data
 

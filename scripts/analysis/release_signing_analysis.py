@@ -22,9 +22,6 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
-from src.utils.statistics import StatisticalAnalyzer
-from src.utils.network_analysis import NetworkAnalyzer
-from src.schemas.analysis_results import create_result_template, validate_result
 
 logger = setup_logger()
 
@@ -36,10 +33,10 @@ class ReleaseSigningAnalyzer:
         """Initialize analyzer."""
         self.data_dir = get_data_dir()
         self.processed_dir = self.data_dir / 'processed'
-        self.analysis_dir = get_analysis_dir() / 'release_signing'
-        self.analysis_dir.mkdir(parents=True, exist_ok=True)
-        
-        self.stat_analyzer = StatisticalAnalyzer(random_seed=42)
+        self.releases_dir = self.data_dir / 'releases'
+        self.analysis_dir = get_analysis_dir()
+        self.findings_dir = self.analysis_dir / 'findings' / 'data'
+        self.findings_dir.mkdir(parents=True, exist_ok=True)
     
     def run_analysis(self):
         """Run release signing analysis."""
@@ -84,11 +81,13 @@ class ReleaseSigningAnalyzer:
     
     def _load_release_signers(self) -> List[Dict[str, Any]]:
         """Load release signer data."""
-        signers_file = self.processed_dir / 'cleaned_release_signers.jsonl'
-        
+        # Try releases directory first (raw data), then fall back to processed
+        signers_file = self.releases_dir / 'release_signers.jsonl'
         if not signers_file.exists():
-            logger.warning(f"Release signers file not found: {signers_file}")
-            return []
+            signers_file = self.processed_dir / 'cleaned_release_signers.jsonl'
+            if not signers_file.exists():
+                logger.warning(f"Release signers file not found: {signers_file}")
+                return []
         
         releases = []
         with open(signers_file, 'r') as f:
@@ -166,9 +165,7 @@ class ReleaseSigningAnalyzer:
         top_10_share = sum(sorted_shares[:10]) if len(sorted_shares) >= 10 else sum(sorted_shares)
         
         # Gini coefficient
-        from src.utils.network_analysis import NetworkAnalyzer
-        network_analyzer = NetworkAnalyzer()
-        gini = network_analyzer._calculate_gini(list(signer_counts.values()))
+        gini = self._calculate_gini(list(signer_counts.values()))
         
         # HHI
         hhi = sum(s**2 for s in signer_shares.values())
@@ -351,22 +348,24 @@ class ReleaseSigningAnalyzer:
             'identification_rate': identified / len(signed_releases) if signed_releases else 0
         }
     
+    def _calculate_gini(self, values: List[float]) -> float:
+        """Calculate Gini coefficient."""
+        if not values or sum(values) == 0:
+            return 0.0
+        
+        sorted_values = sorted(values)
+        n = len(sorted_values)
+        cumsum = 0
+        for i, value in enumerate(sorted_values):
+            cumsum += value * (i + 1)
+        
+        return (2 * cumsum) / (n * sum(sorted_values)) - (n + 1) / n
+    
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        # Create result template
-        result = create_result_template('release_signing_analysis', '1.0.0')
-        result['metadata']['timestamp'] = datetime.now().isoformat()
-        result['metadata']['data_sources'] = [
-            'data/releases/release_signers.jsonl',
-            'data/processed/maintainer_timeline.json',
-            'data/github/collaborators.json'
-        ]
-        result['data'] = results
-        
-        # Save to file
-        output_file = self.analysis_dir / 'release_signing_analysis.json'
+        output_file = self.findings_dir / 'release_signing.json'
         with open(output_file, 'w') as f:
-            json.dump(result, f, indent=2)
+            json.dump(results, f, indent=2)
         
         logger.info(f"Results saved to {output_file}")
         

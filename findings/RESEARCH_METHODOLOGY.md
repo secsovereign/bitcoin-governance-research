@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-**Methodological Note**: This analysis is based on publicly available GitHub data covering 9,235 maintainer merged PRs (2009-2025). All claims are based on observable patterns in public data and acknowledge limitations of data visibility.
+**Methodological Note**: This analysis is based on publicly available GitHub data covering 9,235 maintainer merged PRs (2010-2026). All claims are based on observable patterns in public data and acknowledge limitations of data visibility.
 
 ---
 
@@ -21,7 +21,7 @@
 
 **Primary Sources**:
 1. **GitHub Repository Analysis** (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
-2. **Historical Commit Records** (2009-2025): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
+2. **Historical Commit Records** (2010-2026): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
 3. **External Research Cross-Reference**: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 20 (more comprehensive, includes those with 0 merges)
 
 **Validation Attempts**:
@@ -59,22 +59,32 @@ This document provides a comprehensive, incremental analysis of the research met
 ### 1.2 Research Approach
 
 **Method**: Quantitative analysis of publicly available data  
-**Scope**: 2009-2025 (16+ years)  
+**Scope**: 2010-2026 (15 years)  
 **Data Sources**: GitHub, Mailing Lists, IRC  
 **Analysis Type**: Descriptive statistics, temporal analysis, network analysis, comparative analysis
 
 ### 1.3 Theoretical Frameworks Applied
 
 **22+ analytical frameworks** from multiple disciplines:
-- Network Science (centrality, homophily)
+- Network Science (centrality, homophily, clustering)
 - Game Theory (cooperation rates, tournament theory)
 - Information Theory (entropy, information asymmetry)
 - Organizational Behavior (power structures, decision-making)
 - Political Science (governance models, accountability)
 - Complex Systems (emergence, self-organization)
 - Commons Governance (Ostrom principles)
+- Power Analysis (Gini coefficients, concentration metrics)
+- Temporal Analysis (cohort retention, trend analysis)
 
 **Rationale**: Multi-disciplinary approach provides comprehensive understanding and cross-validation of findings.
+
+**Methodology Validation Scripts** (available for reference):
+- `statistical_significance_tests.py` - Statistical significance testing for findings
+- `sensitivity_quality_weighting.py` - Sensitivity analysis for review quality weighting
+- `max_vs_sum_comparison.py` - Methodology validation for aggregation methods
+- `uniform_threshold_analysis.py` - Threshold sensitivity analysis
+
+**Note**: These validation scripts support methodology development but are not part of the core analysis pipeline. They are preserved for methodological transparency and alternative perspective analysis.
 
 ---
 
@@ -86,7 +96,7 @@ This document provides a comprehensive, incremental analysis of the research met
 **Secondary Sources**: Mailing Lists (bitcoin-dev, bitcoin-core-dev), IRC Channels (#bitcoin-core-dev)
 
 **Total Data Collected**:
-- **23,478 Pull Requests** (PRs)
+- **23,615 Pull Requests** (PRs)
 - **8,890 Issues**
 - **19,446 Emails** (mailing lists)
 - **433,048 IRC Messages**
@@ -106,7 +116,7 @@ This document provides a comprehensive, incremental analysis of the research met
 
 **Primary Sources**:
 1. GitHub Repository Analysis (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
-2. Historical Commit Records (2009-2025): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
+2. Historical Commit Records (2010-2026): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
 3. External Research Cross-Reference: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 20 (more comprehensive, includes those with 0 merges)
 
 **Validation Attempts**:
@@ -123,7 +133,7 @@ This document provides a comprehensive, incremental analysis of the research met
 **Authentication**: Personal Access Token (required for 5,000 requests/hour rate limit)
 
 **Collection Steps**:
-1. **Pull Requests**: Collected all PRs from repository inception (2009)
+1. **Pull Requests**: Collected all PRs from repository inception (2010)
    - Metadata: number, title, description, author, dates, state, labels
    - Comments: All PR comments with author, timestamp, content
    - Reviews: All formal reviews (post-Sept 2016) with state, author, body
@@ -870,10 +880,16 @@ def calculate_gini(values: List[float]) -> float:
 ### 7.2 Analysis Reproducibility
 
 **All analyses can be reproduced**:
-- Main analysis: `comprehensive_recent_analysis.py`
+- Main analysis pipeline: `scripts/run_all_analyses.py` (runs 10 core analysis scripts)
+- Legacy analysis: `comprehensive_recent_analysis.py` (historical analysis)
 - Individual analyses: `scripts/analysis/*.py`
 - Satoshi governance: `scripts/analysis/analyze_satoshi_governance.py`
 - Validation: `scripts/validation/*.py`
+
+**Shared Utilities** (reusable across analyses):
+- `src/utils/power_metrics.py` - Power concentration calculations (Gini, HHI, top-N shares)
+- `src/utils/temporal_utils.py` - Temporal analysis utilities (period grouping, trends, cohorts)
+- `src/utils/pr_classification.py` - PR importance classification (trivial, low, normal, high, critical)
 
 **Requirements**:
 - Data files (or ability to regenerate)
@@ -887,7 +903,7 @@ def calculate_gini(values: List[float]) -> float:
 **All methodology documented**:
 - This document (comprehensive methodology)
 - Review counting details (see section 4.1 in this document)
-- `../DATA_SOURCING_AND_REPRODUCIBILITY.md` (data sources - in root directory)
+- Data sourcing information (documented in this file and individual analysis scripts)
 - Individual analysis scripts (docstrings, comments)
 
 **Result**: ✅ Fully reproducible research

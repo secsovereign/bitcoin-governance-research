@@ -60,7 +60,7 @@ This document compares our comprehensive analysis with external research on Bitc
 - Specific metrics: 81.1% top 3 control, 26.5% self-merge rate
 - Review quality analysis (30.2% zero-review historical using MAX with 0.3/0.5 thresholds)
 - Maintainer timeline analysis (who joined, who left, when)
-- Contributor exit patterns (96.9% exit rate)
+- Contributor exit patterns (87.7% exit rate across 7,604 contributors)
 - Cross-platform review integration (IRC, email, GitHub)
 
 ---

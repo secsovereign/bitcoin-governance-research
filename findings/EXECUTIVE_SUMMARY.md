@@ -1,11 +1,11 @@
 # Bitcoin Core Governance Analysis
 
-**23,478 PRs | 8,890 Issues | 19,446 Emails | 433,048 IRC Messages | 339 Releases | 2009-2025**
+**23,615 PRs | 8,890 Issues | 19,446 Emails | 433,048 IRC Messages | 339 Releases | 2010-2026**
 
 **Last Updated**: 2026-01-07  
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer
 
-**External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison.
+**External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
 
 ---
 
@@ -112,6 +112,8 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 ---
 
 ## The Long-Term Problem
+
+**Massive Contributor Churn**: 87.7% of 7,604 contributors have exited (no activity in 1 year). Only 935 remain active. 42.5% contributed once and left. Even high-quality contributors (50%+ merge rate) exit at 83.5%. The contributor pool is **not growing** - it's churning.
 
 **Power Calcification**: Top 10 control increased from 42.7% → 49.8% (recent period). Gini coefficient: 0.851 (extreme inequality, unchanged). Self-merge rate: 26.5% (stable, not declining). Power is **concentrating over time**, not distributing. Authority is **stabilizing in fewer hands**, not democratizing. This is the opposite of decentralization.
 
