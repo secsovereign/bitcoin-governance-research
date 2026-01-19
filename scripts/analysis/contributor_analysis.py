@@ -54,6 +54,7 @@ class Contributor:
     issue_comments: int = 0
     first_activity: Optional[datetime] = None
     last_activity: Optional[datetime] = None
+    maintainers_who_merged: Dict[str, int] = field(default_factory=dict)  # maintainer -> count
     
     @property
     def total_activities(self) -> int:
@@ -102,6 +103,8 @@ class ContributorAnalyzer:
         
         self.contributors: Dict[str, Contributor] = {}
         self.reference_date = datetime.now(timezone.utc)
+        self.merged_by_map: Dict[int, str] = {}  # pr_number -> merged_by username
+        self.maintainers: Set[str] = self._load_maintainers()
     
     def run(self):
         """Run the analysis."""
@@ -110,6 +113,7 @@ class ContributorAnalyzer:
         logger.info("=" * 70)
         
         # Load data
+        self._load_merged_by_mapping()
         self._load_prs()
         self._load_issues()
         
@@ -121,6 +125,42 @@ class ContributorAnalyzer:
         self._print_summary(results)
         
         return results
+    
+    def _load_maintainers(self) -> Set[str]:
+        """Load maintainer list."""
+        maintainers = {
+            'laanwj', 'sipa', 'maflcko', 'marcofalke', 'fanquake', 'hebasto', 
+            'jnewbery', 'ryanofsky', 'achow101', 'theuni', 'jonasschnelli',
+            'sjors', 'promag', 'instagibbs', 'instagibbs', 'thebluematt', 'thebluematt',
+            'jonatack', 'gmaxwell', 'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        }
+        return {m.lower() for m in maintainers}
+    
+    def _load_merged_by_mapping(self):
+        """Load merged_by mapping."""
+        merged_by_file = self.github_dir / 'merged_by_mapping.jsonl'
+        if not merged_by_file.exists():
+            merged_by_file = self.data_dir.parent.parent / 'data' / 'github' / 'merged_by_mapping.jsonl'
+        
+        if not merged_by_file.exists():
+            logger.warning("Merged_by mapping file not found")
+            return
+        
+        logger.info("Loading merged_by mapping...")
+        count = 0
+        with open(merged_by_file) as f:
+            for line in f:
+                try:
+                    data = json.loads(line)
+                    pr_num = data.get('pr_number')
+                    merged_by = (data.get('merged_by') or '').lower().strip()
+                    if pr_num and merged_by:
+                        self.merged_by_map[pr_num] = merged_by
+                        count += 1
+                except Exception:
+                    continue
+        
+        logger.info(f"Loaded {count:,} merged_by mappings")
     
     def _load_prs(self):
         """Load all PR data."""
@@ -148,6 +188,12 @@ class ContributorAnalyzer:
                         self.contributors[author].prs_authored += 1
                         if pr.get('merged'):
                             self.contributors[author].prs_merged += 1
+                            # Track which maintainer merged this PR
+                            pr_num = pr.get('number')
+                            if pr_num and pr_num in self.merged_by_map:
+                                merged_by = self.merged_by_map[pr_num]
+                                self.contributors[author].maintainers_who_merged[merged_by] = \
+                                    self.contributors[author].maintainers_who_merged.get(merged_by, 0) + 1
                         self._update_dates(author, pr.get('created_at'))
                     
                     # Comments
@@ -263,6 +309,60 @@ class ContributorAnalyzer:
         high_quality = [c for c in authors if c.merge_rate >= 0.5]  # 50%+ merge rate
         high_quality_active = sum(1 for c in high_quality if c.is_active(self.reference_date, 365))
         
+        # Authors with 5+ merged PRs (more established contributors)
+        established_authors = [c for c in authors if c.prs_merged >= 5]
+        established_active = sum(1 for c in established_authors if c.is_active(self.reference_date, 365))
+        
+        # Merge rate buckets analysis (for authors with 5+ merged PRs)
+        merge_rate_buckets = {
+            '0-25%': [],
+            '25-50%': [],
+            '50-75%': [],
+            '75-100%': []
+        }
+        
+        for author in established_authors:
+            rate = author.merge_rate
+            if rate < 0.25:
+                merge_rate_buckets['0-25%'].append(author)
+            elif rate < 0.50:
+                merge_rate_buckets['25-50%'].append(author)
+            elif rate < 0.75:
+                merge_rate_buckets['50-75%'].append(author)
+            else:
+                merge_rate_buckets['75-100%'].append(author)
+        
+        # Maintainer relationship analysis (for authors with 5+ merged PRs)
+        maintainer_relationship = {
+            'single_maintainer_dominant': [],  # One maintainer merged 50%+ of their PRs
+            'multi_maintainer': [],  # Multiple maintainers, no single dominant
+            'maintainer_diversity': []  # Track maintainer diversity scores
+        }
+        
+        for author in established_authors:
+            if not author.maintainers_who_merged:
+                continue
+            
+            total_merged = sum(author.maintainers_who_merged.values())
+            if total_merged == 0:
+                continue
+            
+            # Check if one maintainer is dominant (50%+ of merges)
+            max_count = max(author.maintainers_who_merged.values())
+            if max_count / total_merged >= 0.5:
+                maintainer_relationship['single_maintainer_dominant'].append(author)
+            else:
+                maintainer_relationship['multi_maintainer'].append(author)
+            
+            # Calculate diversity (HHI-like: sum of squares of proportions)
+            diversity = sum((count / total_merged) ** 2 for count in author.maintainers_who_merged.values())
+            maintainer_relationship['maintainer_diversity'].append({
+                'username': author.username,
+                'diversity_score': diversity,
+                'num_maintainers': len(author.maintainers_who_merged),
+                'total_merged': total_merged
+            })
+        
         # Tenure analysis (for active contributors with 2+ activities)
         active_multi = [c for c in all_contribs if c.is_active(self.reference_date) and c.total_activities >= 2]
         avg_tenure_active = (sum(c.tenure_days() for c in active_multi) / len(active_multi)) if active_multi else 0
@@ -322,6 +422,37 @@ class ContributorAnalyzer:
                 'high_quality_definition': '50%+ PR merge rate',
                 'high_quality_active_1yr': high_quality_active,
                 'high_quality_exit_rate_1yr': (len(high_quality) - high_quality_active) / len(high_quality) if high_quality else 0
+            },
+            'established_authors': {
+                'total': len(established_authors),
+                'definition': '5+ merged PRs',
+                'active_1yr': established_active,
+                'exit_rate_1yr': (len(established_authors) - established_active) / len(established_authors) if established_authors else 0
+            },
+            'merge_rate_buckets': {
+                bucket: {
+                    'total': len(authors_list),
+                    'active_1yr': sum(1 for a in authors_list if a.is_active(self.reference_date, 365)),
+                    'exit_rate_1yr': (len(authors_list) - sum(1 for a in authors_list if a.is_active(self.reference_date, 365))) / len(authors_list) if authors_list else 0,
+                    'avg_merge_rate': sum(a.merge_rate for a in authors_list) / len(authors_list) if authors_list else 0
+                }
+                for bucket, authors_list in merge_rate_buckets.items()
+            },
+            'maintainer_relationships': {
+                'single_maintainer_dominant': {
+                    'total': len(maintainer_relationship['single_maintainer_dominant']),
+                    'definition': 'One maintainer merged 50%+ of their PRs',
+                    'active_1yr': sum(1 for a in maintainer_relationship['single_maintainer_dominant'] if a.is_active(self.reference_date, 365)),
+                    'exit_rate_1yr': (len(maintainer_relationship['single_maintainer_dominant']) - sum(1 for a in maintainer_relationship['single_maintainer_dominant'] if a.is_active(self.reference_date, 365))) / len(maintainer_relationship['single_maintainer_dominant']) if maintainer_relationship['single_maintainer_dominant'] else 0
+                },
+                'multi_maintainer': {
+                    'total': len(maintainer_relationship['multi_maintainer']),
+                    'definition': 'Multiple maintainers, no single dominant',
+                    'active_1yr': sum(1 for a in maintainer_relationship['multi_maintainer'] if a.is_active(self.reference_date, 365)),
+                    'exit_rate_1yr': (len(maintainer_relationship['multi_maintainer']) - sum(1 for a in maintainer_relationship['multi_maintainer'] if a.is_active(self.reference_date, 365))) / len(maintainer_relationship['multi_maintainer']) if maintainer_relationship['multi_maintainer'] else 0
+                },
+                'avg_diversity_score': sum(d['diversity_score'] for d in maintainer_relationship['maintainer_diversity']) / len(maintainer_relationship['maintainer_diversity']) if maintainer_relationship['maintainer_diversity'] else 0,
+                'avg_num_maintainers': sum(d['num_maintainers'] for d in maintainer_relationship['maintainer_diversity']) / len(maintainer_relationship['maintainer_diversity']) if maintainer_relationship['maintainer_diversity'] else 0
             },
             'tenure': {
                 'avg_tenure_days_active': avg_tenure_active,
@@ -396,6 +527,30 @@ class ContributorAnalyzer:
         print(f"HIGH-QUALITY AUTHORS (50%+ merge rate): {q['high_quality_authors']:,}")
         print(f"  • Exit rate: {q['high_quality_exit_rate_1yr']:.1%}")
         print()
+        
+        if 'established_authors' in results:
+            ea = results['established_authors']
+            print(f"ESTABLISHED AUTHORS (5+ merged PRs): {ea['total']:,}")
+            print(f"  • Exit rate: {ea['exit_rate_1yr']:.1%}")
+            print()
+        
+        if 'merge_rate_buckets' in results:
+            print("EXIT RATES BY MERGE RATE (5+ merged PRs):")
+            for bucket, data in results['merge_rate_buckets'].items():
+                if data['total'] > 0:
+                    print(f"  • {bucket}: {data['total']:,} authors, {data['exit_rate_1yr']:.1%} exit rate, {data['avg_merge_rate']:.1%} avg merge rate")
+            print()
+        
+        if 'maintainer_relationships' in results:
+            mr = results['maintainer_relationships']
+            print("MAINTAINER RELATIONSHIPS (5+ merged PRs):")
+            print(f"  • Single maintainer dominant: {mr['single_maintainer_dominant']['total']:,} authors")
+            print(f"    Exit rate: {mr['single_maintainer_dominant']['exit_rate_1yr']:.1%}")
+            print(f"  • Multi-maintainer: {mr['multi_maintainer']['total']:,} authors")
+            print(f"    Exit rate: {mr['multi_maintainer']['exit_rate_1yr']:.1%}")
+            print(f"  • Avg maintainer diversity: {mr['avg_diversity_score']:.3f}")
+            print(f"  • Avg num maintainers per author: {mr['avg_num_maintainers']:.1f}")
+            print()
 
 
 def main():
