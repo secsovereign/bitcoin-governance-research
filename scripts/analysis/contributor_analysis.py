@@ -333,6 +333,7 @@ class ContributorAnalyzer:
                 merge_rate_buckets['75-100%'].append(author)
         
         # Maintainer relationship analysis (for authors with 5+ merged PRs)
+<<<<<<< Updated upstream
         maintainer_relationship = {
             'single_maintainer_dominant': [],  # One maintainer merged 50%+ of their PRs
             'multi_maintainer': [],  # Multiple maintainers, no single dominant
@@ -340,6 +341,19 @@ class ContributorAnalyzer:
         }
         
         for author in established_authors:
+=======
+        # EXCLUDE MAINTAINERS from this analysis - we only care about non-maintainers
+        non_maintainer_established = [a for a in established_authors if a.username not in self.maintainers]
+        maintainer_established = [a for a in established_authors if a.username in self.maintainers]
+        
+        maintainer_relationship = {
+            'single_maintainer_dominant': [],  # One maintainer merged 50%+ of their PRs (non-maintainers only)
+            'multi_maintainer': [],  # Multiple maintainers, no single dominant (non-maintainers only)
+            'maintainer_diversity': []  # Track maintainer diversity scores (non-maintainers only)
+        }
+        
+        for author in non_maintainer_established:
+>>>>>>> Stashed changes
             if not author.maintainers_who_merged:
                 continue
             
@@ -427,7 +441,17 @@ class ContributorAnalyzer:
                 'total': len(established_authors),
                 'definition': '5+ merged PRs',
                 'active_1yr': established_active,
+<<<<<<< Updated upstream
                 'exit_rate_1yr': (len(established_authors) - established_active) / len(established_authors) if established_authors else 0
+=======
+                'exit_rate_1yr': (len(established_authors) - established_active) / len(established_authors) if established_authors else 0,
+                'non_maintainers': len(non_maintainer_established),
+                'maintainers': len(maintainer_established),
+                'non_maintainer_active': sum(1 for a in non_maintainer_established if a.is_active(self.reference_date, 365)),
+                'non_maintainer_exit_rate': (len(non_maintainer_established) - sum(1 for a in non_maintainer_established if a.is_active(self.reference_date, 365))) / len(non_maintainer_established) if non_maintainer_established else 0,
+                'maintainer_active': sum(1 for a in maintainer_established if a.is_active(self.reference_date, 365)),
+                'maintainer_exit_rate': (len(maintainer_established) - sum(1 for a in maintainer_established if a.is_active(self.reference_date, 365))) / len(maintainer_established) if maintainer_established else 0
+>>>>>>> Stashed changes
             },
             'merge_rate_buckets': {
                 bucket: {
@@ -439,15 +463,26 @@ class ContributorAnalyzer:
                 for bucket, authors_list in merge_rate_buckets.items()
             },
             'maintainer_relationships': {
+<<<<<<< Updated upstream
                 'single_maintainer_dominant': {
                     'total': len(maintainer_relationship['single_maintainer_dominant']),
                     'definition': 'One maintainer merged 50%+ of their PRs',
+=======
+                'note': 'Analysis excludes maintainers - only non-maintainer contributors with 5+ merged PRs',
+                'single_maintainer_dominant': {
+                    'total': len(maintainer_relationship['single_maintainer_dominant']),
+                    'definition': 'One maintainer merged 50%+ of their PRs (non-maintainers only)',
+>>>>>>> Stashed changes
                     'active_1yr': sum(1 for a in maintainer_relationship['single_maintainer_dominant'] if a.is_active(self.reference_date, 365)),
                     'exit_rate_1yr': (len(maintainer_relationship['single_maintainer_dominant']) - sum(1 for a in maintainer_relationship['single_maintainer_dominant'] if a.is_active(self.reference_date, 365))) / len(maintainer_relationship['single_maintainer_dominant']) if maintainer_relationship['single_maintainer_dominant'] else 0
                 },
                 'multi_maintainer': {
                     'total': len(maintainer_relationship['multi_maintainer']),
+<<<<<<< Updated upstream
                     'definition': 'Multiple maintainers, no single dominant',
+=======
+                    'definition': 'Multiple maintainers, no single dominant (non-maintainers only)',
+>>>>>>> Stashed changes
                     'active_1yr': sum(1 for a in maintainer_relationship['multi_maintainer'] if a.is_active(self.reference_date, 365)),
                     'exit_rate_1yr': (len(maintainer_relationship['multi_maintainer']) - sum(1 for a in maintainer_relationship['multi_maintainer'] if a.is_active(self.reference_date, 365))) / len(maintainer_relationship['multi_maintainer']) if maintainer_relationship['multi_maintainer'] else 0
                 },
@@ -532,6 +567,12 @@ class ContributorAnalyzer:
             ea = results['established_authors']
             print(f"ESTABLISHED AUTHORS (5+ merged PRs): {ea['total']:,}")
             print(f"  • Exit rate: {ea['exit_rate_1yr']:.1%}")
+<<<<<<< Updated upstream
+=======
+            if 'non_maintainers' in ea:
+                print(f"  • Non-maintainers: {ea['non_maintainers']:,} ({ea['non_maintainer_exit_rate']:.1%} exit rate)")
+                print(f"  • Maintainers: {ea['maintainers']:,} ({ea['maintainer_exit_rate']:.1%} exit rate)")
+>>>>>>> Stashed changes
             print()
         
         if 'merge_rate_buckets' in results:
@@ -543,7 +584,13 @@ class ContributorAnalyzer:
         
         if 'maintainer_relationships' in results:
             mr = results['maintainer_relationships']
+<<<<<<< Updated upstream
             print("MAINTAINER RELATIONSHIPS (5+ merged PRs):")
+=======
+            print("MAINTAINER RELATIONSHIPS (5+ merged PRs, NON-MAINTAINERS ONLY):")
+            if 'note' in mr:
+                print(f"  Note: {mr['note']}")
+>>>>>>> Stashed changes
             print(f"  • Single maintainer dominant: {mr['single_maintainer_dominant']['total']:,} authors")
             print(f"    Exit rate: {mr['single_maintainer_dominant']['exit_rate_1yr']:.1%}")
             print(f"  • Multi-maintainer: {mr['multi_maintainer']['total']:,} authors")
