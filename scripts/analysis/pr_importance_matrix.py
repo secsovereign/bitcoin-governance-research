@@ -268,6 +268,152 @@ def analyze_by_pr_type(prs: list, calculate_weighted_review_count) -> Dict[str, 
     
     return results
 
+def analyze_complexity_correlation(prs: list, calculate_weighted_review_count) -> Dict[str, Any]:
+    """
+    Analyze correlation between code complexity and governance complexity.
+    
+    Code complexity: file count, lines changed
+    Governance complexity: review count, comment count, participants, discussion length
+    
+    Returns:
+        Dict with correlation analysis
+    """
+    complexity_data = []
+    
+    for pr in prs:
+        if not pr.get('merged'):
+            continue
+        
+        # Code complexity metrics
+        files = pr.get('files', [])
+        files_count = len(files) if files else 0
+        total_additions = pr.get('total_additions', 0) or 0
+        total_deletions = pr.get('total_deletions', 0) or 0
+        total_changes = total_additions + total_deletions
+        
+        # Governance complexity metrics
+        reviews = pr.get('reviews', [])
+        comments = pr.get('comments', [])
+        review_comments = pr.get('review_comments', [])
+        
+        review_count = len(reviews)
+        comment_count = len(comments) + len(review_comments)
+        
+        # Participants
+        participants = set()
+        if pr.get('author'):
+            participants.add(pr.get('author'))
+        for comment in comments:
+            if comment.get('author'):
+                participants.add(comment.get('author'))
+        for review in reviews:
+            if review.get('author'):
+                participants.add(review.get('author'))
+        
+        participant_count = len(participants)
+        
+        # Discussion length (total characters)
+        discussion_length = 0
+        if pr.get('body'):
+            discussion_length += len(pr.get('body', ''))
+        for comment in comments:
+            if comment.get('body'):
+                discussion_length += len(comment.get('body', ''))
+        for review in reviews:
+            if review.get('body'):
+                discussion_length += len(review.get('body', ''))
+        
+        # Decision time (proxy for governance complexity)
+        created = pr.get('created_at')
+        merged = pr.get('merged_at')
+        decision_time_days = None
+        if created and merged:
+            try:
+                from datetime import datetime
+                created_dt = datetime.fromisoformat(created.replace('Z', '+00:00'))
+                merged_dt = datetime.fromisoformat(merged.replace('Z', '+00:00'))
+                decision_time_days = (merged_dt - created_dt).days
+            except:
+                pass
+        
+        complexity_data.append({
+            'code_complexity': {
+                'files_count': files_count,
+                'total_changes': total_changes,
+                'additions': total_additions,
+                'deletions': total_deletions
+            },
+            'governance_complexity': {
+                'review_count': review_count,
+                'comment_count': comment_count,
+                'participant_count': participant_count,
+                'discussion_length': discussion_length,
+                'decision_time_days': decision_time_days
+            }
+        })
+    
+    # Calculate correlations
+    if not complexity_data:
+        return {'error': 'No data available'}
+    
+    # Group by code complexity levels
+    by_code_complexity = {
+        'low': [d for d in complexity_data if d['code_complexity']['files_count'] <= 5],
+        'medium': [d for d in complexity_data if 5 < d['code_complexity']['files_count'] <= 15],
+        'high': [d for d in complexity_data if d['code_complexity']['files_count'] > 15]
+    }
+    
+    complexity_stats = {}
+    for level, data_list in by_code_complexity.items():
+        if data_list:
+            gov_complexity = [d['governance_complexity'] for d in data_list]
+            complexity_stats[level] = {
+                'count': len(data_list),
+                'avg_review_count': sum(g['review_count'] for g in gov_complexity) / len(gov_complexity),
+                'avg_comment_count': sum(g['comment_count'] for g in gov_complexity) / len(gov_complexity),
+                'avg_participant_count': sum(g['participant_count'] for g in gov_complexity) / len(gov_complexity),
+                'avg_discussion_length': sum(g['discussion_length'] for g in gov_complexity) / len(gov_complexity),
+                'avg_decision_time': sum(g['decision_time_days'] for g in gov_complexity if g['decision_time_days']) / len([g for g in gov_complexity if g['decision_time_days']]) if [g for g in gov_complexity if g['decision_time_days']] else None
+            }
+    
+    # Overall correlation
+    all_code_files = [d['code_complexity']['files_count'] for d in complexity_data]
+    all_gov_reviews = [d['governance_complexity']['review_count'] for d in complexity_data]
+    all_gov_participants = [d['governance_complexity']['participant_count'] for d in complexity_data]
+    
+    # Simple correlation (files vs reviews)
+    if all_code_files and all_gov_reviews:
+        avg_files = sum(all_code_files) / len(all_code_files)
+        avg_reviews = sum(all_gov_reviews) / len(all_gov_reviews)
+        
+        # Calculate correlation coefficient (simplified)
+        numerator = sum((all_code_files[i] - avg_files) * (all_gov_reviews[i] - avg_reviews) 
+                       for i in range(len(all_code_files)))
+        files_variance = sum((f - avg_files) ** 2 for f in all_code_files)
+        reviews_variance = sum((r - avg_reviews) ** 2 for r in all_gov_reviews)
+        
+        if files_variance > 0 and reviews_variance > 0:
+            correlation = numerator / (files_variance ** 0.5 * reviews_variance ** 0.5)
+        else:
+            correlation = 0
+    else:
+        correlation = 0
+    
+    return {
+        'by_code_complexity': complexity_stats,
+        'correlation_files_vs_reviews': correlation,
+        'overall': {
+            'total_prs': len(complexity_data),
+            'avg_files': sum(all_code_files) / len(all_code_files) if all_code_files else 0,
+            'avg_reviews': sum(all_gov_reviews) / len(all_gov_reviews) if all_gov_reviews else 0,
+            'avg_participants': sum(all_gov_participants) / len(all_gov_participants) if all_gov_participants else 0
+        },
+        'interpretation': {
+            'correlation': 'Positive = more complex code gets more governance attention',
+            'by_complexity': 'Shows if governance scales with code complexity'
+        }
+    }
+
 if __name__ == '__main__':
     print("PR Classification System")
     print("=" * 50)

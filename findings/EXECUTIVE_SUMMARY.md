@@ -2,7 +2,7 @@
 
 **23,615 PRs | 8,890 Issues | 19,446 Emails | 433,048 IRC Messages | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-01-07  
+**Last Updated**: 2026-01-24  
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
@@ -34,6 +34,8 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 
 **Gini coefficient: 0.851** (extreme inequality). US income inequality is 0.49. Bitcoin Core's contribution inequality is **74% higher**.
 
+**Voting bloc cohesion: 89.3%** - Reviewers vote together 89% of the time, indicating strong voting blocs. 214 strong blocs (>80% cohesion) identified. Top bloc: fanquake ↔ laanwj (100% cohesion, 13/13 together). **Implication**: Voting blocs are structural, not temporary - reviewers consistently align on decisions.
+
 ### Arbitrary Authority = No Accountability
 
 **26.5% self-merge rate** (2,446 of 9,235 maintainer PRs).  
@@ -51,6 +53,8 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 **Maintainers: 26.5% can self-merge.**  
 **Non-maintainers: 0% can self-merge** (not permitted).  
 **Maintainer reviews carry 5.5x more weight** than non-maintainer reviews.
+
+**Response time inequality: 1.41x** - Non-maintainers wait 41% longer to merge (145.4h vs 93.3h median). First review times are nearly equal (12.3h vs 12.4h), but merge decisions favor maintainers. **Implication**: No bias in initial review, but maintainer privilege in merge decisions.
 
 **Structural problem**: There's a **power asymmetry**. Some people have exclusive privileges (self-merge, weighted reviews) that others don't. This creates a **hierarchical structure**: Maintainers with exclusive rights, contributors without them, outsiders with uncertain path forward.
 
@@ -73,8 +77,11 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 - Top 10 control: 42.7% → 49.8% (worse) ❌
 - Review weight bias: 5.5:1 (unchanged) ❌
 - Gini coefficient: 0.851 → 0.837 (unchanged) ❌
+- Network concentration: 90%+ top3 concentration persists over 16 years ❌
 
 **The pattern**: The **workflow got efficient**. The **power structure didn't change**. Concentrated authority got better at processing PRs, but concentration remains.
+
+**Coordination costs**: Average 22.0 messages per PR. Governance complexity scales 3.8x with code complexity (low: 15.6 msgs, medium: 43.9 msgs, high: 59.7 msgs). **Implication**: Complex code requires significantly more governance overhead.
 
 ---
 
@@ -90,6 +97,8 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 - Create network splits
 
 **12.2% of maintainer PRs merge with zero review** - potential security risk. No review means no detection of malicious code.
+
+**5,128 conflicts identified** (1,469 NACKs, 899 CHANGES_REQUESTED, 3,823 heated discussions). Average resolution time: 103.2 days. 2,649 conflicts resulted in PRs being merged anyway. **Implication**: Conflicts are common, resolution is slow, and many conflicts don't prevent merges.
 
 ### 2. Single Points of Failure
 

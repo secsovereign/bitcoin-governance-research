@@ -1,7 +1,7 @@
 # Novel Interpretations: New Ways of Looking at Bitcoin Core Governance
 
 **Analysis Date**: 2026-01-07  
-**Last Updated**: 2026-01-07 (cross-platform integration, PR importance analysis)  
+**Last Updated**: 2026-01-24 (voting bloc formation, coordination costs added)  
 **Purpose**: Provide novel aggregations and interpretations that reveal hidden patterns  
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification
 
@@ -220,6 +220,49 @@ Maintainers cluster into distinct behavioral patterns:
 5. **Controversy Drives Escalation**: Review count is driven by controversy (NACKs), not author status. Maintainers don't automatically get fewer reviews.
 
 6. **Approval is the Gate**: Approval rate (33+ pp difference) is the strongest predictor of merge success, more than review count.
+
+---
+
+## 7. Voting Bloc Formation ⭐⭐⭐
+
+**Finding**: 89.3% average voting bloc cohesion - reviewers vote together 89% of the time.
+
+**Details**:
+- **262 voting pairs** analyzed
+- **214 strong blocs** (>80% cohesion)
+- **Top bloc**: fanquake ↔ laanwj (100% cohesion, 13/13 together)
+- **Temporal stability**: Cohesion remains high (87.8% to 100%) across years (2016-2025)
+- **Conflict behavior**: Cohesion drops from 100% (non-conflicts) to 76.7% (conflicts)
+
+**Interpretation**: 
+- **Voting blocs are structural**: 89.3% cohesion means reviewers consistently align on decisions
+- **Not temporary**: High cohesion persists over time (2016-2025)
+- **Conflicts reveal boundaries**: Cohesion breaks down during conflicts (76.7% vs 100%), revealing true bloc boundaries
+- **Widespread phenomenon**: 214 strong blocs indicates voting bloc behavior is common, not isolated
+
+**Key Insight**: Voting blocs are a structural feature of Bitcoin Core governance. Reviewers form informal voting coalitions that persist over time. Conflicts stress-test these blocs, revealing their boundaries when cohesion breaks down.
+
+---
+
+## 8. Coordination Costs ⭐⭐
+
+**Finding**: Governance complexity scales 3.8x with code complexity.
+
+**Details**:
+- **Average communication**: 22.0 messages per PR
+- **By complexity**:
+  - Low complexity (≤5 files): 15.6 messages, 4.8 participants, 33.2 days
+  - Medium complexity (6-15 files): 43.9 messages, 6.8 participants, 67.7 days
+  - High complexity (>15 files): 59.7 messages, 7.4 participants, 66.0 days
+- **Scaling factor**: 3.8x more communication for high complexity vs. low complexity
+
+**Interpretation**:
+- **Complexity creates overhead**: More complex code requires significantly more governance attention
+- **Communication scales**: 3.8x more messages for high complexity PRs
+- **Participants increase**: More people involved in complex decisions (4.8 → 7.4)
+- **Decision time increases**: Complex PRs take longer to decide (33.2 → 67.7 days)
+
+**Key Insight**: Code complexity directly drives governance complexity. Complex changes require more coordination, more participants, and more time. This creates a natural barrier to complex changes, potentially favoring simpler, incremental changes.
 
 ---
 

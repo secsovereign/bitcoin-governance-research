@@ -22,7 +22,11 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
-from src.utils.statistics import StatisticalAnalyzer
+try:
+    from src.utils.statistics import StatisticalAnalyzer
+    HAS_STAT_ANALYZER = True
+except ImportError:
+    HAS_STAT_ANALYZER = False
 from src.schemas.analysis_results import create_result_template
 
 logger = setup_logger()
@@ -38,7 +42,10 @@ class NackEffectivenessAnalyzer:
         self.analysis_dir = get_analysis_dir() / 'nack_effectiveness'
         self.analysis_dir.mkdir(parents=True, exist_ok=True)
         
-        self.stat_analyzer = StatisticalAnalyzer(random_seed=42)
+        if HAS_STAT_ANALYZER:
+            self.stat_analyzer = StatisticalAnalyzer(random_seed=42)
+        else:
+            self.stat_analyzer = None
         
         # NACK keywords
         self.nack_keywords = [
@@ -72,12 +79,16 @@ class NackEffectivenessAnalyzer:
         # Analyze NACK patterns
         patterns = self._analyze_nack_patterns(nacks, prs)
         
+        # Analyze conflict resolution patterns
+        conflict_resolution = self._analyze_conflict_resolution(nacks, prs, maintainer_timeline)
+        
         # Save results
         self._save_results({
             'effectiveness': effectiveness,
             'maintainer_comparison': maintainer_comparison,
             'top_nackers': top_nackers,
-            'patterns': patterns
+            'patterns': patterns,
+            'conflict_resolution': conflict_resolution
         })
         
         logger.info("NACK effectiveness analysis complete")
@@ -88,6 +99,13 @@ class NackEffectivenessAnalyzer:
         
         if not prs_file.exists():
             prs_file = self.processed_dir / 'cleaned_prs.jsonl'
+        
+        # Check parent directory if not found (go up from publication-package/data to commons-research/data)
+        if not prs_file.exists():
+            parent_processed = self.data_dir.parent.parent / 'data' / 'processed'
+            prs_file = parent_processed / 'enriched_prs.jsonl'
+            if not prs_file.exists():
+                prs_file = parent_processed / 'cleaned_prs.jsonl'
         
         if not prs_file.exists():
             logger.warning(f"PR data not found: {prs_file}")
@@ -314,6 +332,154 @@ class NackEffectivenessAnalyzer:
             'late_nacks': late_nacks,
             'nack_types': dict(nack_types),
             'total_nacks': len(nacks)
+        }
+    
+    def _analyze_conflict_resolution(
+        self,
+        nacks: List[Dict[str, Any]],
+        prs: List[Dict[str, Any]],
+        maintainer_timeline: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Analyze conflict resolution patterns."""
+        logger.info("Analyzing conflict resolution patterns...")
+        
+        prs_by_number = {pr.get('number'): pr for pr in prs}
+        
+        # Identify conflicts: NACKs, CHANGES_REQUESTED reviews
+        conflicts = []
+        conflict_keywords = ['disagree', 'oppose', 'against', 'wrong', 'bad idea', 'concern']
+        
+        for pr in prs:
+            pr_number = pr.get('number')
+            if not pr_number:
+                continue
+            
+            # Check for NACKs
+            has_nack = any(n.get('pr_number') == pr_number for n in nacks)
+            
+            # Check for CHANGES_REQUESTED reviews
+            has_changes_requested = any(
+                r.get('state', '').upper() == 'CHANGES_REQUESTED'
+                for r in pr.get('reviews', [])
+            )
+            
+            # Check for heated discussions (keyword-based)
+            has_heated_discussion = False
+            for comment in pr.get('comments', []):
+                text = (comment.get('body') or '').lower()
+                if any(kw in text for kw in conflict_keywords):
+                    has_heated_discussion = True
+                    break
+            
+            if has_nack or has_changes_requested or has_heated_discussion:
+                conflicts.append({
+                    'pr_number': pr_number,
+                    'has_nack': has_nack,
+                    'has_changes_requested': has_changes_requested,
+                    'has_heated_discussion': has_heated_discussion,
+                    'pr_state': pr.get('state'),
+                    'merged': pr.get('merged', False),
+                    'closed': pr.get('state') == 'closed'
+                })
+        
+        # Track resolution paths
+        resolution_paths = {
+            'merged_anyway': 0,
+            'withdrawn': 0,
+            'modified': 0,  # Hard to detect, but can infer from multiple updates
+            'still_open': 0,
+            'closed': 0
+        }
+        
+        for conflict in conflicts:
+            pr_number = conflict['pr_number']
+            pr = prs_by_number.get(pr_number)
+            
+            if not pr:
+                continue
+            
+            if conflict['merged']:
+                resolution_paths['merged_anyway'] += 1
+            elif pr.get('state') == 'closed' and not conflict['merged']:
+                # Check if withdrawn (closed without merge, no recent activity)
+                resolution_paths['closed'] += 1
+            elif pr.get('state') == 'open':
+                resolution_paths['still_open'] += 1
+        
+        # Measure time-to-resolution
+        resolution_times = []
+        for conflict in conflicts:
+            pr_number = conflict['pr_number']
+            pr = prs_by_number.get(pr_number)
+            
+            if not pr or not conflict['closed']:
+                continue
+            
+            created = pr.get('created_at')
+            closed = pr.get('closed_at')
+            
+            if created and closed:
+                try:
+                    created_dt = datetime.fromisoformat(created.replace('Z', '+00:00'))
+                    closed_dt = datetime.fromisoformat(closed.replace('Z', '+00:00'))
+                    days = (closed_dt - created_dt).days
+                    resolution_times.append(days)
+                except:
+                    pass
+        
+        avg_resolution_time = sum(resolution_times) / len(resolution_times) if resolution_times else 0
+        
+        # Conflict networks (who conflicts with whom)
+        conflict_networks = defaultdict(lambda: {'conflicts_with': set(), 'conflict_count': 0})
+        
+        for conflict in conflicts:
+            pr_number = conflict['pr_number']
+            pr = prs_by_number.get(pr_number)
+            
+            if not pr:
+                continue
+            
+            author = (pr.get('author') or '').lower()
+            
+            # Find conflict participants
+            for nack in nacks:
+                if nack.get('pr_number') == pr_number:
+                    nacker = (nack.get('author') or '').lower()
+                    if nacker and author:
+                        conflict_networks[author]['conflicts_with'].add(nacker)
+                        conflict_networks[author]['conflict_count'] += 1
+            
+            for review in pr.get('reviews', []):
+                if review.get('state', '').upper() == 'CHANGES_REQUESTED':
+                    reviewer = (review.get('author') or '').lower()
+                    if reviewer and author:
+                        conflict_networks[author]['conflicts_with'].add(reviewer)
+                        conflict_networks[author]['conflict_count'] += 1
+        
+        # Convert sets to lists for JSON serialization
+        conflict_networks_serializable = {}
+        for author, data in conflict_networks.items():
+            conflict_networks_serializable[author] = {
+                'conflicts_with': list(data['conflicts_with']),
+                'conflict_count': data['conflict_count']
+            }
+        
+        return {
+            'total_conflicts': len(conflicts),
+            'conflicts_by_type': {
+                'nack': sum(1 for c in conflicts if c['has_nack']),
+                'changes_requested': sum(1 for c in conflicts if c['has_changes_requested']),
+                'heated_discussion': sum(1 for c in conflicts if c['has_heated_discussion'])
+            },
+            'resolution_paths': resolution_paths,
+            'avg_resolution_time_days': avg_resolution_time,
+            'resolution_time_count': len(resolution_times),
+            'conflict_networks': conflict_networks_serializable,
+            'top_conflict_participants': sorted(
+                conflict_networks_serializable.items(),
+                key=lambda x: x[1]['conflict_count'],
+                reverse=True
+            )[:10]
         }
     
     def _save_results(self, results: Dict[str, Any]):

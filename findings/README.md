@@ -29,6 +29,10 @@
    - PR importance analysis by period
    - Power concentration by period
    - Review quality by period
+   - Response time inequality analysis
+   - Network evolution over time
+   - Voting bloc temporal evolution
+   - Conflict resolution temporal evolution
 
 4. **`NOVEL_INTERPRETATIONS.md`**
    - Behavioral clusters, power hierarchy, review reciprocity
@@ -122,6 +126,16 @@
 25. **`CROSS_REPO_COMPARISON.md`** - Core vs BIP repository comparison
     - Actor overlap analysis
     - Governance pattern comparison
+26. **`CONFLICT_RESOLUTION_ANALYSIS.md`** ⭐ CONFLICT ANALYSIS
+    - 5,128 conflicts identified (NACKs, CHANGES_REQUESTED, heated discussions)
+    - Resolution paths and timing analysis
+    - Temporal evolution of conflicts
+    - Voting bloc behavior during conflicts
+27. **`COORDINATION_COSTS_ANALYSIS.md`** ⭐ COORDINATION OVERHEAD
+    - Communication volume per PR (22.0 messages average)
+    - Coordination costs by complexity (3.8x scaling)
+    - Participant and decision time analysis
+    - Governance complexity scaling with code complexity
 
 ---
 
@@ -163,5 +177,5 @@ All JSON data files are organized in the `data/` subdirectory for cleaner organi
 
 ---
 
-**Last Updated**: 2026-01-18  
-**Status**: ✅ Complete and validated
+**Last Updated**: 2026-01-24  
+**Status**: ✅ Complete and validated (novel analyses and integrations added)

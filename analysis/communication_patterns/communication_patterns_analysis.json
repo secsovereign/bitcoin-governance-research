@@ -1,0 +1,128 @@
+{
+  "metadata": {
+    "analysis_name": "communication_patterns_analysis",
+    "timestamp": "2026-01-23T23:10:00.876742",
+    "version": "1.0.0",
+    "data_sources": [
+      "data/processed/enriched_prs.jsonl",
+      "data/processed/cleaned_emails.jsonl",
+      "data/processed/cleaned_irc.jsonl"
+    ],
+    "parameters": {}
+  },
+  "data": {
+    "platform_patterns": {
+      "github": {
+        "participants": 2389,
+        "avg_message_length": 436.1569195482265,
+        "total_messages": 207464
+      },
+      "email": {
+        "participants": 1834,
+        "avg_message_length": 2148.802829494057,
+        "total_messages": 19351
+      },
+      "irc": {
+        "participants": 0,
+        "avg_message_length": 0,
+        "total_messages": 0
+      }
+    },
+    "cross_platform": {
+      "total_unique_participants": 4207,
+      "github_only": 2373,
+      "email_only": 1818,
+      "irc_only": 0,
+      "all_three_platforms": 0,
+      "cross_platform_rate": 0.0
+    },
+    "networks": {
+      "network_size": {
+        "nodes": 2970,
+        "edges": 114503
+      },
+      "platforms": [
+        "github",
+        "email",
+        "irc"
+      ],
+      "note": "Full network analysis requires complete identity resolution"
+    },
+    "temporal_evolution": {
+      "github_by_year": {
+        "2010": 3,
+        "2011": 453,
+        "2012": 938,
+        "2013": 845,
+        "2014": 1527,
+        "2015": 1190,
+        "2016": 1562,
+        "2017": 1842,
+        "2018": 2081,
+        "2019": 1954,
+        "2020": 2122,
+        "2021": 1994,
+        "2022": 2002,
+        "2023": 1581,
+        "2024": 1637,
+        "2025": 1747
+      },
+      "email_by_year": {
+        "2024": 127,
+        "2023": 1448,
+        "2022": 2176,
+        "2021": 1953,
+        "2020": 1160,
+        "2019": 1349,
+        "2018": 1611,
+        "2017": 2775,
+        "2016": 1710,
+        "2015": 3928,
+        "2014": 387,
+        "2013": 304,
+        "2012": 223,
+        "2011": 175,
+        "2025": 25
+      },
+      "irc_by_year": {}
+    },
+    "response_patterns": {
+      "avg_response_time_hours": 36.5876799128756,
+      "total_responses": 22216,
+      "response_rate": 0.9462475508987137
+    },
+    "coordination_costs": {
+      "overall": {
+        "total_prs": 15840,
+        "avg_communication_per_pr": 22.00006313131313,
+        "avg_participants_per_pr": 5.195833333333334,
+        "avg_decision_time_days": 41.19665691600501
+      },
+      "by_complexity": {
+        "low": {
+          "count": 12714,
+          "avg_communication": 15.558046248230298,
+          "avg_participants": 4.766084631115306,
+          "avg_decision_time": 33.20362682980118
+        },
+        "medium": {
+          "count": 2277,
+          "avg_communication": 43.901185770750985,
+          "avg_participants": 6.786122090469917,
+          "avg_decision_time": 67.68050806057646
+        },
+        "high": {
+          "count": 849,
+          "avg_communication": 59.73262661955241,
+          "avg_participants": 7.366313309776207,
+          "avg_decision_time": 66.00785340314137
+        }
+      },
+      "interpretation": {
+        "communication_volume": "Total messages/comments/reviews per PR",
+        "coordination_overhead": "How much communication is needed per decision",
+        "complexity_correlation": "Does coordination cost increase with PR complexity?"
+      }
+    }
+  }
+}

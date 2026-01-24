@@ -290,6 +290,91 @@ class InterdisciplinaryAnalyzer:
             'avg_reciprocity': sum(c['reciprocity'] for c in coalitions) / len(coalitions) if coalitions else 0
         }
     
+    def voting_bloc_analysis(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Political Science: Analyze voting blocs - who votes together?"""
+        print("Analyzing voting blocs...")
+        
+        # Track review decisions by PR
+        pr_reviews = defaultdict(list)  # pr_number -> [(reviewer, state, timestamp)]
+        
+        for pr in prs:
+            pr_number = pr.get('number')
+            if not pr_number:
+                continue
+            
+            for review in pr.get('reviews', []):
+                reviewer = (review.get('author') or '').lower()
+                state = review.get('state', '').upper()
+                timestamp = review.get('submitted_at') or review.get('created_at')
+                
+                if reviewer and state in ['APPROVED', 'CHANGES_REQUESTED']:
+                    pr_reviews[pr_number].append({
+                        'reviewer': reviewer,
+                        'state': state,
+                        'timestamp': timestamp
+                    })
+        
+        # Find reviewers who vote together (same decisions on same PRs)
+        voting_pairs = defaultdict(lambda: {'together': 0, 'opposed': 0, 'total': 0})
+        
+        for pr_number, reviews in pr_reviews.items():
+            if len(reviews) < 2:
+                continue
+            
+            # Get unique reviewers and their decisions
+            reviewer_decisions = {}
+            for review in reviews:
+                reviewer = review['reviewer']
+                state = review['state']
+                if reviewer not in reviewer_decisions:
+                    reviewer_decisions[reviewer] = state
+            
+            # Compare all pairs
+            reviewers = list(reviewer_decisions.keys())
+            for i, r1 in enumerate(reviewers):
+                for r2 in reviewers[i+1:]:
+                    pair_key = tuple(sorted([r1, r2]))
+                    voting_pairs[pair_key]['total'] += 1
+                    
+                    if reviewer_decisions[r1] == reviewer_decisions[r2]:
+                        voting_pairs[pair_key]['together'] += 1
+                    else:
+                        voting_pairs[pair_key]['opposed'] += 1
+        
+        # Calculate cohesion scores
+        voting_blocs = []
+        for (r1, r2), stats in voting_pairs.items():
+            if stats['total'] < 5:  # Need at least 5 PRs to be meaningful
+                continue
+            
+            cohesion = stats['together'] / stats['total'] if stats['total'] > 0 else 0
+            
+            voting_blocs.append({
+                'reviewer1': r1,
+                'reviewer2': r2,
+                'together': stats['together'],
+                'opposed': stats['opposed'],
+                'total': stats['total'],
+                'cohesion': cohesion
+            })
+        
+        # Sort by cohesion
+        voting_blocs.sort(key=lambda x: x['cohesion'], reverse=True)
+        
+        # Calculate average cohesion
+        avg_cohesion = sum(b['cohesion'] for b in voting_blocs) / len(voting_blocs) if voting_blocs else 0
+        
+        # Find strongest blocs (cohesion > 0.8)
+        strong_blocs = [b for b in voting_blocs if b['cohesion'] > 0.8]
+        
+        return {
+            'total_pairs': len(voting_blocs),
+            'avg_cohesion': avg_cohesion,
+            'strong_blocs_count': len(strong_blocs),
+            'top_voting_blocs': voting_blocs[:20],
+            'strong_blocs': strong_blocs[:10]
+        }
+    
     def complex_systems_emergence(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Complex Systems: Analyze emergent patterns."""
         print("Analyzing emergent patterns...")
@@ -365,6 +450,7 @@ class InterdisciplinaryAnalyzer:
             'information_entropy': self.information_theory_entropy(prs),
             'organizational_decisions': self.organizational_decision_patterns(prs),
             'coalition_formation': self.coalition_formation_analysis(prs),
+            'voting_blocs': self.voting_bloc_analysis(prs),
             'complex_systems': self.complex_systems_emergence(prs),
             'analysis_date': datetime.now().isoformat()
         }
@@ -434,6 +520,18 @@ class InterdisciplinaryAnalyzer:
                 m1 = parts[0] if len(parts) > 0 else ''
                 m2 = parts[1] if len(parts) > 1 else ''
             print(f"  {m1} ↔ {m2}: {c['total']} interactions")
+        print()
+        
+        # Voting blocs
+        print("POLITICAL SCIENCE: Voting Blocs")
+        print("-" * 80)
+        blocs = results['voting_blocs']
+        print(f"Total voting pairs: {blocs['total_pairs']}")
+        print(f"Average cohesion: {blocs['avg_cohesion']:.2%}")
+        print(f"Strong blocs (cohesion > 80%): {blocs['strong_blocs_count']}")
+        print("Top voting blocs:")
+        for b in blocs['top_voting_blocs'][:5]:
+            print(f"  {b['reviewer1']} ↔ {b['reviewer2']}: {b['cohesion']:.1%} cohesion ({b['together']}/{b['total']} together)")
         print()
         
         # Complex systems

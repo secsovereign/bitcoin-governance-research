@@ -1,7 +1,7 @@
 # Interdisciplinary Analysis Report
 
 **Date**: 2026-01-07  
-**Last Updated**: 2026-01-07 (external research comparison added)  
+**Last Updated**: 2026-01-24 (voting bloc analysis added)  
 **Frameworks Applied**: Network Science, Game Theory, Information Theory, Organizational Behavior, Political Science, Complex Systems  
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification
 
@@ -99,6 +99,37 @@ Applying multiple disciplinary frameworks reveals Bitcoin Core governance as a c
 5. sipa ↔ laanwj: 334 interactions
 
 **Interpretation**: Clear coalition patterns—fanquake and laanwj are central to multiple coalitions. maflcko is frequently merged by both, suggesting coalition membership.
+
+---
+
+## 5b. Political Science: Voting Bloc Analysis
+
+### Findings
+
+**Voting bloc cohesion**: 89.3% average cohesion
+- **Total voting pairs**: 262 pairs analyzed
+- **Strong blocs** (>80% cohesion): 214 blocs
+- **Perfect cohesion blocs** (100%): Multiple pairs vote together 100% of the time
+
+**Top voting blocs** (highest cohesion):
+1. fanquake ↔ laanwj: 100% cohesion (13/13 together)
+2. jonasschnelli ↔ laanwj: 100% cohesion (8/8 together)
+3. dcousens ↔ laanwj: 100% cohesion (5/5 together)
+4. dcousens ↔ jonasschnelli: 100% cohesion (15/15 together)
+5. jonasschnelli ↔ paveljanik: 100% cohesion (6/6 together)
+
+**Temporal analysis**: Voting bloc cohesion remains high (87.8% to 100%) across years (2016-2025), indicating blocs are stable over time.
+
+**Conflict behavior**: During conflicts, bloc cohesion drops from 100% (non-conflicts) to 76.7% (conflicts), revealing bloc boundaries under stress.
+
+**Interpretation**: 
+- **89.3% cohesion** means reviewers vote together 89% of the time—voting blocs are real and strong
+- **214 strong blocs** indicates widespread voting bloc behavior, not isolated pairs
+- **100% cohesion pairs** show perfect alignment—some reviewers always vote together
+- **Temporal stability** suggests blocs are structural, not temporary
+- **Conflict breakdown** reveals that conflicts stress-test voting blocs; blocs break under pressure, revealing true boundaries
+
+**Key Insight**: Voting blocs are a structural feature of Bitcoin Core governance. Reviewers consistently align on decisions, creating informal voting coalitions that persist over time. Conflicts reveal these bloc boundaries when cohesion breaks down.
 
 ---
 

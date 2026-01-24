@@ -82,3 +82,4 @@ Bitcoin Core has experienced **87.7% contributor exit** (1-year threshold) with 
 
 *Source: `contributor_analysis.json`*
 
+

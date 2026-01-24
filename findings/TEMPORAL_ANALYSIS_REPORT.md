@@ -1,7 +1,7 @@
 # Comprehensive Temporal Analysis Report
 
 **Date**: 2026-01-07  
-**Last Updated**: 2026-01-07 (quality-weighted review counting, consistency fixes)  
+**Last Updated**: 2026-01-24 (response time inequality, network evolution, voting bloc temporal, conflict resolution temporal added)  
 **Purpose**: Extract maximum useful information from temporal patterns  
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer (ACK=0.3, detailed review=1.0, threshold=0.5 for recent era)
 
@@ -134,6 +134,21 @@ Temporal analysis reveals significant changes in Bitcoin Core governance pattern
 
 ---
 
+## 4. Behavioral Changes Over Time
+
+**Question**: How did individual maintainer behavior change over time?
+
+### Key Findings
+
+1. **Individual evolution**: Many maintainers reduced self-merge rates over time
+2. **Review depth increased**: All maintainers show increased review counts
+3. **Some eliminated self-merge**: sipa, gmaxwell, luke-jr eliminated self-merge entirely
+4. **High-volume maintainers slower to change**: laanwj still has 36.5% self-merge in recent period
+
+**Note**: Detailed behavioral changes by maintainer are available in the analysis data. See `data/temporal_analysis.json` for complete maintainer-by-maintainer breakdown.
+
+---
+
 ## 5. Speed Hack Temporal Analysis
 
 **Question**: Did the "speed hack" (self-merged PRs merging 2x faster) persist over time?
@@ -221,7 +236,132 @@ Temporal analysis reveals significant changes in Bitcoin Core governance pattern
 
 ---
 
-## 9. Maintainer Lifecycle
+## 9. Response Time Inequality Analysis
+
+### Findings
+
+**Overall response time inequality**:
+- **First review**: Nearly equal (12.3h vs 12.4h median) - no bias in initial response
+- **Merge time**: 1.41x inequality (non-maintainers wait 41% longer: 145.4h vs 93.3h median)
+
+**Response time by complexity**:
+- **Low complexity**: 1.51x merge inequality, 1.08x review inequality
+- **Medium complexity**: 1.56x merge inequality (highest), 0.73x review inequality
+- **High complexity**: 1.35x merge inequality, 0.42x review inequality (lowest)
+
+### Key Findings
+
+1. **No bias in first review**: Maintainer and non-maintainer PRs get reviewed at nearly the same speed
+2. **Merge time inequality**: Non-maintainers wait 41% longer to merge
+3. **Complexity effect**: Review inequality decreases with complexity (complex PRs get faster reviews regardless of author status)
+4. **Merge inequality highest for medium complexity**: Suggests medium complexity PRs face the most status-based delays
+
+**Interpretation**: 
+- Initial review is fair, but merge decisions favor maintainers
+- Complex PRs get urgent attention regardless of author status (complexity creates urgency)
+- Medium complexity PRs face the most inequality (not urgent enough to override status bias, but complex enough to require review)
+
+---
+
+## 10. Temporal Network Evolution
+
+### Findings
+
+**Network concentration over time** (top 3 control):
+- **2020**: 91.3% concentration (225 nodes)
+- **2021**: 96.7% concentration (257 nodes)
+- **2022**: 93.6% concentration (229 nodes)
+- **2023**: 95.9% concentration (192 nodes)
+- **2024**: 93.8% concentration (217 nodes)
+- **2025**: 90.0% concentration (214 nodes)
+
+**Network size**: 192-257 nodes (varies by year, 214-217 in recent years)
+
+**Top merger by year**: fanquake consistently top merger in recent years (2022-2025)
+
+### Key Findings
+
+1. **90%+ concentration persists**: Top 3 maintainers control 90%+ of merges consistently
+2. **No decentralization trend**: Concentration remains high over 16 years
+3. **Network size stable**: 192-257 nodes (214-217 in recent years)
+4. **Power structure calcified**: fanquake dominates recent years
+
+**Interpretation**: 
+- Network concentration is structural, not temporary
+- Power structure hasn't decentralized over time
+- Recent dominance by fanquake suggests further concentration, not distribution
+
+---
+
+## 11. Voting Bloc Temporal Evolution
+
+### Findings
+
+**Voting bloc cohesion over time** (2016-2025):
+- **2016**: 100% cohesion (1 voting pair)
+- **2017**: 100% cohesion (3 voting pairs)
+- **2019**: 97.1% cohesion (7 voting pairs)
+- **2020**: 95.8% cohesion (12 voting pairs)
+- **2021**: 87.8% cohesion (8 voting pairs)
+- **2022**: 92.9% cohesion (9 voting pairs)
+- **2023**: 100% cohesion (9 voting pairs)
+- **2024**: 98.3% cohesion (12 voting pairs)
+- **2025**: 98.3% cohesion (10 voting pairs)
+
+**Strong blocs** (>80% cohesion): 0-12 per year
+
+### Key Findings
+
+1. **High cohesion persists**: 87.8% to 100% across all years
+2. **Stable over time**: No decline in voting bloc cohesion
+3. **More blocs over time**: Number of voting pairs increased (1 → 12)
+
+**Interpretation**: 
+- Voting blocs are stable structural features
+- Cohesion remains high over time (no breakdown)
+- More blocs form over time, but cohesion stays high
+
+---
+
+## 12. Conflict Resolution Temporal Evolution
+
+### Findings
+
+**Conflict rates over time** (2016-2025):
+- **2016**: 9.3% conflict rate (146 conflicts)
+- **2017**: 14.0% conflict rate (257 conflicts)
+- **2018**: 13.3% conflict rate (276 conflicts)
+- **2019**: 15.8% conflict rate (309 conflicts) - **peak**
+- **2020**: 15.8% conflict rate (336 conflicts) - **peak**
+- **2021**: 12.4% conflict rate (248 conflicts)
+- **2022**: 11.9% conflict rate (239 conflicts)
+- **2023**: 12.1% conflict rate (192 conflicts)
+- **2024**: 12.8% conflict rate (210 conflicts)
+- **2025**: 13.1% conflict rate (240 conflicts)
+
+**Resolution time over time**:
+- **2016**: 125.5 days average
+- **2017**: 122.8 days average
+- **2019**: 160.1 days average (peak)
+- **2020**: 138.3 days average
+- **2021**: 169.9 days average (peak)
+- **2025**: 47.0 days average - **significant improvement**
+
+### Key Findings
+
+1. **Conflict rate stable**: 9-16% of PRs have conflicts
+2. **Peak conflicts**: 2019-2020 had highest conflict rates (15.8%)
+3. **Resolution time improving**: 47 days in 2025 (down from 160+ days)
+4. **Conflicts are common**: 9-16% of PRs experience conflicts
+
+**Interpretation**: 
+- Conflicts are a regular feature of governance (not rare)
+- Conflict resolution processes have improved significantly (47 days vs 160+ days)
+- Peak conflicts in 2019-2020 may correlate with major events (Taproot, etc.)
+
+---
+
+## 13. Maintainer Lifecycle
 
 ### First PR Patterns
 
@@ -282,7 +422,7 @@ Temporal analysis reveals significant changes in Bitcoin Core governance pattern
 - **PRs analyzed**: 23,478 PRs (2009-2025)
 - **Maintainer PRs**: 9,235 merged PRs
 - **Temporal coverage**: Full repository history
-- **Analysis date**: 2026-01-07
+- **Analysis date**: 2026-01-24
 
 ---
 

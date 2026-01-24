@@ -381,3 +381,4 @@ def calculate_moving_average(
     
     return result
 
+

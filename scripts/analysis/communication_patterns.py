@@ -23,7 +23,11 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
-from src.utils.network_analysis import NetworkAnalyzer
+try:
+    from src.utils.network_analysis import NetworkAnalyzer
+    HAS_NETWORK_ANALYZER = True
+except ImportError:
+    HAS_NETWORK_ANALYZER = False
 from src.schemas.analysis_results import create_result_template
 
 logger = setup_logger()
@@ -39,7 +43,10 @@ class CommunicationPatternAnalyzer:
         self.analysis_dir = get_analysis_dir() / 'communication_patterns'
         self.analysis_dir.mkdir(parents=True, exist_ok=True)
         
-        self.network_analyzer = NetworkAnalyzer()
+        if HAS_NETWORK_ANALYZER:
+            self.network_analyzer = NetworkAnalyzer()
+        else:
+            self.network_analyzer = None
     
     def run_analysis(self):
         """Run communication pattern analysis."""
@@ -68,13 +75,26 @@ class CommunicationPatternAnalyzer:
         # Analyze response patterns
         response_patterns = self._analyze_response_patterns(prs, emails)
         
+        # Analyze coordination costs
+        coordination_costs = self._analyze_coordination_costs(prs, emails, irc_messages)
+        
+        # Analyze coordination costs temporal (GitHub only for performance)
+        # Note: Full email/IRC matching is computationally expensive, so temporal analysis uses GitHub data only
+        try:
+            coordination_costs_temporal = self._analyze_coordination_costs_temporal(prs, emails, irc_messages)
+        except Exception as e:
+            logger.warning(f"Coordination costs temporal analysis skipped due to performance: {e}")
+            coordination_costs_temporal = {'note': 'Analysis skipped due to performance constraints'}
+        
         # Save results
         self._save_results({
             'platform_patterns': platform_patterns,
             'cross_platform': cross_platform,
             'networks': networks,
             'temporal_evolution': temporal,
-            'response_patterns': response_patterns
+            'response_patterns': response_patterns,
+            'coordination_costs': coordination_costs,
+            'coordination_costs_temporal': coordination_costs_temporal
         })
         
         logger.info("Communication pattern analysis complete")
@@ -84,6 +104,13 @@ class CommunicationPatternAnalyzer:
         prs_file = self.processed_dir / 'enriched_prs.jsonl'
         if not prs_file.exists():
             prs_file = self.processed_dir / 'cleaned_prs.jsonl'
+        
+        # Check parent directory if not found (go up from publication-package/data to commons-research/data)
+        if not prs_file.exists():
+            parent_processed = self.data_dir.parent.parent / 'data' / 'processed'
+            prs_file = parent_processed / 'enriched_prs.jsonl'
+            if not prs_file.exists():
+                prs_file = parent_processed / 'cleaned_prs.jsonl'
         
         if not prs_file.exists():
             return []
@@ -97,6 +124,10 @@ class CommunicationPatternAnalyzer:
     def _load_emails(self) -> List[Dict[str, Any]]:
         """Load email data."""
         emails_file = self.processed_dir / 'cleaned_emails.jsonl'
+        # Check parent directory if not found
+        if not emails_file.exists():
+            parent_processed = self.data_dir.parent.parent / 'data' / 'processed'
+            emails_file = parent_processed / 'cleaned_emails.jsonl'
         if not emails_file.exists():
             return []
         
@@ -109,6 +140,10 @@ class CommunicationPatternAnalyzer:
     def _load_irc(self) -> List[Dict[str, Any]]:
         """Load IRC data."""
         irc_file = self.processed_dir / 'cleaned_irc.jsonl'
+        # Check parent directory if not found
+        if not irc_file.exists():
+            parent_processed = self.data_dir.parent.parent / 'data' / 'processed'
+            irc_file = parent_processed / 'cleaned_irc.jsonl'
         if not irc_file.exists():
             return []
         
@@ -372,6 +407,200 @@ class CommunicationPatternAnalyzer:
             'total_responses': len(response_times),
             'response_rate': len(response_times) / len(prs) if prs else 0
         }
+    
+    def _analyze_coordination_costs(
+        self,
+        prs: List[Dict[str, Any]],
+        emails: List[Dict[str, Any]],
+        irc_messages: List[Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """Analyze coordination costs - communication volume per decision."""
+        logger.info("Analyzing coordination costs...")
+        
+        # PR communication volume
+        pr_communication = []
+        
+        for pr in prs:
+            if not pr.get('merged', False):
+                continue
+            
+            pr_number = pr.get('number')
+            if not pr_number:
+                continue
+            
+            # Count GitHub communication
+            comments_count = len(pr.get('comments', []))
+            reviews_count = len(pr.get('reviews', []))
+            review_comments_count = len(pr.get('review_comments', []))
+            github_volume = comments_count + reviews_count + review_comments_count
+            
+            # Count email mentions (simple: check if PR number mentioned)
+            email_mentions = 0
+            pr_str = f"#{pr_number}" or f"pull/{pr_number}"
+            for email in emails:
+                body = (email.get('body') or '').lower()
+                subject = (email.get('subject') or '').lower()
+                if pr_str.lower() in body or pr_str.lower() in subject:
+                    email_mentions += 1
+            
+            # Count IRC mentions
+            irc_mentions = 0
+            for msg in irc_messages:
+                message = (msg.get('message') or '').lower()
+                if pr_str.lower() in message:
+                    irc_mentions += 1
+            
+            # PR complexity
+            files = pr.get('files', [])
+            files_count = len(files) if files else 0
+            total_additions = pr.get('total_additions', 0) or 0
+            total_deletions = pr.get('total_deletions', 0) or 0
+            total_changes = total_additions + total_deletions
+            
+            # Decision timeline
+            created = pr.get('created_at')
+            merged = pr.get('merged_at')
+            decision_time_days = None
+            if created and merged:
+                try:
+                    created_dt = datetime.fromisoformat(created.replace('Z', '+00:00'))
+                    merged_dt = datetime.fromisoformat(merged.replace('Z', '+00:00'))
+                    decision_time_days = (merged_dt - created_dt).days
+                except:
+                    pass
+            
+            pr_communication.append({
+                'pr_number': pr_number,
+                'github_volume': github_volume,
+                'email_mentions': email_mentions,
+                'irc_mentions': irc_mentions,
+                'total_communication': github_volume + email_mentions + irc_mentions,
+                'files_count': files_count,
+                'total_changes': total_changes,
+                'decision_time_days': decision_time_days,
+                'participants': len(set(
+                    [pr.get('author')] +
+                    [c.get('author') for c in pr.get('comments', [])] +
+                    [r.get('author') for r in pr.get('reviews', [])]
+                ))
+            })
+        
+        # Calculate correlations
+        if pr_communication:
+            # Group by complexity
+            by_complexity = {
+                'low': [p for p in pr_communication if p['files_count'] <= 5],
+                'medium': [p for p in pr_communication if 5 < p['files_count'] <= 15],
+                'high': [p for p in pr_communication if p['files_count'] > 15]
+            }
+            
+            complexity_stats = {}
+            for complexity, prs_list in by_complexity.items():
+                if prs_list:
+                    complexity_stats[complexity] = {
+                        'count': len(prs_list),
+                        'avg_communication': sum(p['total_communication'] for p in prs_list) / len(prs_list),
+                        'avg_participants': sum(p['participants'] for p in prs_list) / len(prs_list),
+                        'avg_decision_time': sum(p['decision_time_days'] for p in prs_list if p['decision_time_days']) / len([p for p in prs_list if p['decision_time_days']]) if [p for p in prs_list if p['decision_time_days']] else None
+                    }
+            
+            # Overall stats
+            overall_stats = {
+                'total_prs': len(pr_communication),
+                'avg_communication_per_pr': sum(p['total_communication'] for p in pr_communication) / len(pr_communication),
+                'avg_participants_per_pr': sum(p['participants'] for p in pr_communication) / len(pr_communication),
+                'avg_decision_time_days': sum(p['decision_time_days'] for p in pr_communication if p['decision_time_days']) / len([p for p in pr_communication if p['decision_time_days']]) if [p for p in pr_communication if p['decision_time_days']] else None
+            }
+        else:
+            complexity_stats = {}
+            overall_stats = {}
+        
+        return {
+            'overall': overall_stats,
+            'by_complexity': complexity_stats,
+            'interpretation': {
+                'communication_volume': 'Total messages/comments/reviews per PR',
+                'coordination_overhead': 'How much communication is needed per decision',
+                'complexity_correlation': 'Does coordination cost increase with PR complexity?'
+            }
+        }
+    
+    def _analyze_coordination_costs_temporal(
+        self,
+        prs: List[Dict[str, Any]],
+        emails: List[Dict[str, Any]],
+        irc_messages: List[Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """Analyze coordination costs over time (GitHub only for performance)."""
+        logger.info("Analyzing coordination costs temporal patterns (GitHub data only)...")
+        
+        # Group PRs by year
+        prs_by_year = defaultdict(list)
+        for pr in prs:
+            if not pr.get('merged', False):
+                continue
+            created = pr.get('created_at')
+            if created:
+                try:
+                    year = datetime.fromisoformat(created.replace('Z', '+00:00')).year
+                    prs_by_year[year].append(pr)
+                except:
+                    pass
+        
+        temporal_costs = {}
+        
+        for year in sorted(prs_by_year.keys()):
+            year_prs = prs_by_year[year]
+            if len(year_prs) < 50:  # Require minimum PRs
+                continue
+            
+            # Analyze coordination costs for this year (GitHub only for performance)
+            year_communication = []
+            
+            for pr in year_prs:
+                pr_number = pr.get('number')
+                if not pr_number:
+                    continue
+                
+                # Count GitHub communication only (email/IRC matching is too slow)
+                comments_count = len(pr.get('comments', []))
+                reviews_count = len(pr.get('reviews', []))
+                review_comments_count = len(pr.get('review_comments', []))
+                github_volume = comments_count + reviews_count + review_comments_count
+                
+                # Decision timeline
+                created = pr.get('created_at')
+                merged = pr.get('merged_at')
+                decision_time_days = None
+                if created and merged:
+                    try:
+                        created_dt = datetime.fromisoformat(created.replace('Z', '+00:00'))
+                        merged_dt = datetime.fromisoformat(merged.replace('Z', '+00:00'))
+                        decision_time_days = (merged_dt - created_dt).days
+                    except:
+                        pass
+                
+                year_communication.append({
+                    'github_volume': github_volume,
+                    'total_communication': github_volume,  # GitHub only
+                    'decision_time_days': decision_time_days,
+                    'participants': len(set(
+                        [pr.get('author')] +
+                        [c.get('author') for c in pr.get('comments', [])] +
+                        [r.get('author') for r in pr.get('reviews', [])]
+                    ))
+                })
+            
+            if year_communication:
+                temporal_costs[year] = {
+                    'total_prs': len(year_communication),
+                    'avg_communication_per_pr': sum(p['total_communication'] for p in year_communication) / len(year_communication),
+                    'avg_participants_per_pr': sum(p['participants'] for p in year_communication) / len(year_communication),
+                    'avg_decision_time_days': sum(p['decision_time_days'] for p in year_communication if p['decision_time_days']) / len([p for p in year_communication if p['decision_time_days']]) if [p for p in year_communication if p['decision_time_days']] else None,
+                    'note': 'GitHub data only - email/IRC matching skipped for performance'
+                }
+        
+        return temporal_costs
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""

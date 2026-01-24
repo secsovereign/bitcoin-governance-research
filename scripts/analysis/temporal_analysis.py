@@ -634,6 +634,490 @@ class TemporalAnalyzer:
         
         return output
     
+    def analyze_response_time_inequality(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze response time inequality by author status."""
+        print("Analyzing response time inequality...")
+        
+        def parse_timestamp(ts: Optional[str]) -> Optional[datetime]:
+            if not ts:
+                return None
+            try:
+                return datetime.fromisoformat(ts.replace('Z', '+00:00'))
+            except:
+                return None
+        
+        maintainer_list = [m.lower() for m in self.maintainers]
+        
+        response_times = {
+            'maintainer_authors': [],
+            'non_maintainer_authors': [],
+            'time_to_first_review': {
+                'maintainer': [],
+                'non_maintainer': []
+            },
+            'time_to_merge': {
+                'maintainer': [],
+                'non_maintainer': []
+            }
+        }
+        
+        for pr in prs:
+            if not pr.get('merged', False):
+                continue
+            
+            author = (pr.get('author') or '').lower()
+            is_maintainer = author in maintainer_list
+            
+            created = parse_timestamp(pr.get('created_at'))
+            merged = parse_timestamp(pr.get('merged_at'))
+            
+            if not created or not merged:
+                continue
+            
+            # Time to merge
+            time_to_merge = (merged - created).total_seconds() / 3600  # hours
+            if is_maintainer:
+                response_times['time_to_merge']['maintainer'].append(time_to_merge)
+            else:
+                response_times['time_to_merge']['non_maintainer'].append(time_to_merge)
+            
+            # Time to first review
+            reviews = pr.get('reviews', [])
+            if reviews:
+                first_review_time = None
+                for review in reviews:
+                    review_ts = parse_timestamp(review.get('submitted_at') or review.get('created_at'))
+                    if review_ts and review_ts > created:
+                        if first_review_time is None or review_ts < first_review_time:
+                            first_review_time = review_ts
+                
+                if first_review_time:
+                    time_to_review = (first_review_time - created).total_seconds() / 3600  # hours
+                    if is_maintainer:
+                        response_times['time_to_first_review']['maintainer'].append(time_to_review)
+                    else:
+                        response_times['time_to_first_review']['non_maintainer'].append(time_to_review)
+        
+        # Calculate statistics
+        def calc_stats(times: List[float]) -> Dict[str, float]:
+            if not times:
+                return {'count': 0, 'mean': 0, 'median': 0}
+            times_sorted = sorted(times)
+            return {
+                'count': len(times),
+                'mean': sum(times) / len(times),
+                'median': times_sorted[len(times_sorted) // 2] if times_sorted else 0
+            }
+        
+        results = {
+            'time_to_first_review': {
+                'maintainer': calc_stats(response_times['time_to_first_review']['maintainer']),
+                'non_maintainer': calc_stats(response_times['time_to_first_review']['non_maintainer']),
+                'inequality_ratio': 0.0
+            },
+            'time_to_merge': {
+                'maintainer': calc_stats(response_times['time_to_merge']['maintainer']),
+                'non_maintainer': calc_stats(response_times['time_to_merge']['non_maintainer']),
+                'inequality_ratio': 0.0
+            }
+        }
+        
+        # Calculate inequality ratios
+        maint_review_mean = results['time_to_first_review']['maintainer']['mean']
+        non_maint_review_mean = results['time_to_first_review']['non_maintainer']['mean']
+        if non_maint_review_mean > 0:
+            results['time_to_first_review']['inequality_ratio'] = non_maint_review_mean / maint_review_mean if maint_review_mean > 0 else 0
+        
+        maint_merge_mean = results['time_to_merge']['maintainer']['mean']
+        non_maint_merge_mean = results['time_to_merge']['non_maintainer']['mean']
+        if non_maint_merge_mean > 0:
+            results['time_to_merge']['inequality_ratio'] = non_maint_merge_mean / maint_merge_mean if maint_merge_mean > 0 else 0
+        
+        return results
+    
+    def analyze_response_time_by_complexity(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze response time inequality by code complexity."""
+        print("Analyzing response time by complexity...")
+        
+        def parse_timestamp(ts: Optional[str]) -> Optional[datetime]:
+            if not ts:
+                return None
+            try:
+                return datetime.fromisoformat(ts.replace('Z', '+00:00'))
+            except:
+                return None
+        
+        maintainer_list = [m.lower() for m in self.maintainers]
+        
+        # Group by complexity
+        complexity_groups = {
+            'low': {'maintainer': {'review': [], 'merge': []}, 'non_maintainer': {'review': [], 'merge': []}},
+            'medium': {'maintainer': {'review': [], 'merge': []}, 'non_maintainer': {'review': [], 'merge': []}},
+            'high': {'maintainer': {'review': [], 'merge': []}, 'non_maintainer': {'review': [], 'merge': []}}
+        }
+        
+        for pr in prs:
+            if not pr.get('merged', False):
+                continue
+            
+            # Determine complexity
+            files = pr.get('files', [])
+            files_count = len(files) if files else 0
+            
+            if files_count <= 5:
+                complexity = 'low'
+            elif files_count <= 15:
+                complexity = 'medium'
+            else:
+                complexity = 'high'
+            
+            author = (pr.get('author') or '').lower()
+            is_maintainer = author in maintainer_list
+            
+            created = parse_timestamp(pr.get('created_at'))
+            merged = parse_timestamp(pr.get('merged_at'))
+            
+            if not created or not merged:
+                continue
+            
+            # Time to merge
+            time_to_merge = (merged - created).total_seconds() / 3600  # hours
+            if is_maintainer:
+                complexity_groups[complexity]['maintainer']['merge'].append(time_to_merge)
+            else:
+                complexity_groups[complexity]['non_maintainer']['merge'].append(time_to_merge)
+            
+            # Time to first review
+            reviews = pr.get('reviews', [])
+            if reviews:
+                first_review_time = None
+                for review in reviews:
+                    review_ts = parse_timestamp(review.get('submitted_at') or review.get('created_at'))
+                    if review_ts and review_ts > created:
+                        if first_review_time is None or review_ts < first_review_time:
+                            first_review_time = review_ts
+                
+                if first_review_time:
+                    time_to_review = (first_review_time - created).total_seconds() / 3600  # hours
+                    if is_maintainer:
+                        complexity_groups[complexity]['maintainer']['review'].append(time_to_review)
+                    else:
+                        complexity_groups[complexity]['non_maintainer']['review'].append(time_to_review)
+        
+        # Calculate statistics
+        def calc_stats(times: List[float]) -> Dict[str, float]:
+            if not times:
+                return {'count': 0, 'mean': 0, 'median': 0}
+            times_sorted = sorted(times)
+            return {
+                'count': len(times),
+                'mean': sum(times) / len(times),
+                'median': times_sorted[len(times_sorted) // 2] if times_sorted else 0
+            }
+        
+        results = {}
+        for complexity in ['low', 'medium', 'high']:
+            group = complexity_groups[complexity]
+            results[complexity] = {
+                'time_to_first_review': {
+                    'maintainer': calc_stats(group['maintainer']['review']),
+                    'non_maintainer': calc_stats(group['non_maintainer']['review']),
+                    'inequality_ratio': 0.0
+                },
+                'time_to_merge': {
+                    'maintainer': calc_stats(group['maintainer']['merge']),
+                    'non_maintainer': calc_stats(group['non_maintainer']['merge']),
+                    'inequality_ratio': 0.0
+                }
+            }
+            
+            # Calculate inequality ratios
+            maint_review_mean = results[complexity]['time_to_first_review']['maintainer']['mean']
+            non_maint_review_mean = results[complexity]['time_to_first_review']['non_maintainer']['mean']
+            if non_maint_review_mean > 0 and maint_review_mean > 0:
+                results[complexity]['time_to_first_review']['inequality_ratio'] = non_maint_review_mean / maint_review_mean
+            
+            maint_merge_mean = results[complexity]['time_to_merge']['maintainer']['mean']
+            non_maint_merge_mean = results[complexity]['time_to_merge']['non_maintainer']['mean']
+            if non_maint_merge_mean > 0 and maint_merge_mean > 0:
+                results[complexity]['time_to_merge']['inequality_ratio'] = non_maint_merge_mean / maint_merge_mean
+        
+        return results
+    
+    def analyze_temporal_network_evolution(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze how network structure changes over time."""
+        print("Analyzing temporal network evolution...")
+        
+        def parse_timestamp(ts: Optional[str]) -> Optional[datetime]:
+            if not ts:
+                return None
+            try:
+                return datetime.fromisoformat(ts.replace('Z', '+00:00'))
+            except:
+                return None
+        
+        # Group PRs by year
+        prs_by_year = defaultdict(list)
+        for pr in prs:
+            if not pr.get('merged', False):
+                continue
+            merged_at = parse_timestamp(pr.get('merged_at'))
+            if merged_at:
+                year = merged_at.year
+                prs_by_year[year].append(pr)
+        
+        network_evolution = {}
+        
+        for year in sorted(prs_by_year.keys()):
+            year_prs = prs_by_year[year]
+            
+            # Build network for this year
+            merge_edges = defaultdict(lambda: defaultdict(int))
+            review_edges = defaultdict(lambda: defaultdict(int))
+            nodes = set()
+            
+            for pr in year_prs:
+                author = (pr.get('author') or '').lower()
+                merged_by = (pr.get('merged_by') or '').lower()
+                
+                if author and merged_by:
+                    nodes.add(author)
+                    nodes.add(merged_by)
+                    merge_edges[merged_by][author] += 1
+                
+                for review in pr.get('reviews', []):
+                    reviewer = (review.get('author') or '').lower()
+                    if reviewer and author:
+                        nodes.add(reviewer)
+                        nodes.add(author)
+                        review_edges[reviewer][author] += 1
+            
+            # Calculate network metrics
+            merge_degree = {node: sum(merge_edges[node].values()) for node in nodes}
+            review_degree = {node: sum(review_edges[node].values()) for node in nodes}
+            
+            # Top 3 concentration (power concentration)
+            sorted_merge = sorted(merge_degree.items(), key=lambda x: x[1], reverse=True)
+            total_merges = sum(merge_degree.values())
+            top3_merges = sum(count for _, count in sorted_merge[:3])
+            top3_concentration = top3_merges / total_merges if total_merges > 0 else 0
+            
+            # Unique authors merged (betweenness proxy)
+            unique_authors_merged = {}
+            for merger, authors in merge_edges.items():
+                unique_authors_merged[merger] = len(authors)
+            
+            network_evolution[year] = {
+                'total_nodes': len(nodes),
+                'total_merges': total_merges,
+                'top3_concentration': top3_concentration,
+                'top_merger': sorted_merge[0][0] if sorted_merge else None,
+                'top_merger_count': sorted_merge[0][1] if sorted_merge else 0,
+                'unique_authors_merged': len(unique_authors_merged),
+                'max_unique_authors': max(unique_authors_merged.values()) if unique_authors_merged else 0
+            }
+        
+        return network_evolution
+    
+    def analyze_voting_bloc_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze voting bloc formation and cohesion over time."""
+        print("Analyzing voting bloc temporal patterns...")
+        
+        maintainer_list = [m.lower() for m in self.maintainers]
+        
+        # Group PRs by year
+        prs_by_year = defaultdict(list)
+        for pr in prs:
+            merged_at = pr.get('merged_at')
+            if merged_at:
+                try:
+                    year = datetime.fromisoformat(merged_at.replace('Z', '+00:00')).year
+                    prs_by_year[year].append(pr)
+                except ValueError:
+                    pass
+        
+        temporal_bloc_metrics = {}
+        
+        for year in sorted(prs_by_year.keys()):
+            year_prs = prs_by_year[year]
+            if len(year_prs) < 50:  # Require minimum PRs for meaningful analysis
+                continue
+            
+            # Track review decisions for each PR by maintainers
+            pr_maintainer_reviews = defaultdict(lambda: defaultdict(str))  # pr_num -> maintainer -> review_state
+            
+            for pr in year_prs:
+                pr_number = pr.get('number')
+                if not pr_number:
+                    continue
+                
+                for review in pr.get('reviews', []):
+                    reviewer = (review.get('author') or '').lower()
+                    review_state = (review.get('state') or '').lower()
+                    
+                    if reviewer in maintainer_list and review_state in ['approved', 'changes_requested']:
+                        pr_maintainer_reviews[pr_number][reviewer] = review_state
+            
+            # Identify pairs of maintainers who frequently vote together
+            voting_together_counts = defaultdict(lambda: defaultdict(int))
+            
+            for pr_num, maintainer_states in pr_maintainer_reviews.items():
+                active_maintainers_in_pr = [m for m in maintainer_list if m in maintainer_states]
+                
+                for i, m1 in enumerate(active_maintainers_in_pr):
+                    for m2 in active_maintainers_in_pr[i+1:]:
+                        if maintainer_states[m1] == maintainer_states[m2]:
+                            # They voted the same way
+                            pair_key = tuple(sorted((m1, m2)))
+                            voting_together_counts[pair_key][maintainer_states[m1]] += 1
+            
+            # Calculate cohesion for each pair
+            blocs = []
+            for pair, states in voting_together_counts.items():
+                m1, m2 = pair
+                total_same_votes = sum(states.values())
+                
+                if total_same_votes > 2:  # Only consider significant interactions
+                    # Count total times they reviewed same PRs
+                    total_together = sum(1 for pr_num, maintainer_states in pr_maintainer_reviews.items()
+                                       if m1 in maintainer_states and m2 in maintainer_states)
+                    
+                    cohesion = total_same_votes / total_together if total_together > 0 else 0
+                    
+                    blocs.append({
+                        'pair': f"{m1}_{m2}",
+                        'm1': m1,
+                        'm2': m2,
+                        'together': total_same_votes,
+                        'total': total_together,
+                        'cohesion': cohesion
+                    })
+            
+            # Calculate average cohesion
+            avg_cohesion = sum(b['cohesion'] for b in blocs) / len(blocs) if blocs else 0
+            strong_blocs = [b for b in blocs if b['cohesion'] > 0.8]
+            
+            temporal_bloc_metrics[year] = {
+                'total_prs_in_year': len(year_prs),
+                'voting_pairs': len(blocs),
+                'avg_cohesion': avg_cohesion,
+                'strong_blocs_count': len(strong_blocs),
+                'top_blocs': sorted(blocs, key=lambda x: x['cohesion'], reverse=True)[:5]
+            }
+        
+        return temporal_bloc_metrics
+    
+    def analyze_conflict_resolution_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Analyze conflict resolution patterns over time."""
+        print("Analyzing conflict resolution temporal patterns...")
+        
+        # NACK keywords
+        nack_keywords = [
+            'nack', 'nacked', 'nacking',
+            'concept nack', 'approach nack', 'utack nack',
+            'strong nack', 'weak nack'
+        ]
+        
+        # Group PRs by year
+        prs_by_year = defaultdict(list)
+        for pr in prs:
+            created_at = pr.get('created_at')
+            if created_at:
+                try:
+                    year = datetime.fromisoformat(created_at.replace('Z', '+00:00')).year
+                    prs_by_year[year].append(pr)
+                except ValueError:
+                    pass
+        
+        temporal_conflict_metrics = {}
+        
+        for year in sorted(prs_by_year.keys()):
+            year_prs = prs_by_year[year]
+            if len(year_prs) < 50:  # Require minimum PRs
+                continue
+            
+            conflicts = []
+            conflict_types = {'nack': 0, 'changes_requested': 0, 'heated_discussion': 0}
+            resolution_paths = {'merged_anyway': 0, 'closed': 0, 'withdrawn': 0, 'still_open': 0}
+            resolution_times = []
+            
+            for pr in year_prs:
+                pr_number = pr.get('number')
+                has_nack = False
+                has_changes_requested = False
+                has_heated_discussion = False
+                
+                # Check for NACKs
+                for comment in pr.get('comments', []):
+                    body = (comment.get('body') or '').lower()
+                    if any(keyword in body for keyword in nack_keywords):
+                        has_nack = True
+                        conflict_types['nack'] += 1
+                        break
+                
+                # Check for CHANGES_REQUESTED reviews
+                for review in pr.get('reviews', []):
+                    if (review.get('state') or '').upper() == 'CHANGES_REQUESTED':
+                        has_changes_requested = True
+                        conflict_types['changes_requested'] += 1
+                        break
+                
+                # Check for heated discussion (multiple negative comments)
+                negative_keywords = ['disagree', 'oppose', 'against', 'wrong', 'bad idea', 'concern', 'problem']
+                negative_comments = sum(1 for comment in pr.get('comments', [])
+                                      if any(kw in (comment.get('body') or '').lower() for kw in negative_keywords))
+                if negative_comments >= 3:
+                    has_heated_discussion = True
+                    conflict_types['heated_discussion'] += 1
+                
+                # If has conflict, track it
+                if has_nack or has_changes_requested or has_heated_discussion:
+                    conflicts.append(pr_number)
+                    
+                    # Determine resolution path
+                    if pr.get('merged', False):
+                        resolution_paths['merged_anyway'] += 1
+                    elif pr.get('state') == 'closed':
+                        resolution_paths['closed'] += 1
+                    else:
+                        resolution_paths['still_open'] += 1
+                    
+                    # Calculate resolution time
+                    created_at = pr.get('created_at')
+                    closed_at = pr.get('closed_at')
+                    merged_at = pr.get('merged_at')
+                    
+                    if created_at:
+                        try:
+                            created_dt = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                            end_dt = None
+                            
+                            if merged_at:
+                                end_dt = datetime.fromisoformat(merged_at.replace('Z', '+00:00'))
+                            elif closed_at:
+                                end_dt = datetime.fromisoformat(closed_at.replace('Z', '+00:00'))
+                            
+                            if end_dt:
+                                resolution_days = (end_dt - created_dt).days
+                                if resolution_days >= 0:
+                                    resolution_times.append(resolution_days)
+                        except ValueError:
+                            pass
+            
+            avg_resolution_time = sum(resolution_times) / len(resolution_times) if resolution_times else 0
+            
+            temporal_conflict_metrics[year] = {
+                'total_prs_in_year': len(year_prs),
+                'total_conflicts': len(conflicts),
+                'conflict_rate': len(conflicts) / len(year_prs) if year_prs else 0,
+                'conflicts_by_type': conflict_types.copy(),
+                'resolution_paths': resolution_paths.copy(),
+                'avg_resolution_time_days': avg_resolution_time,
+                'conflict_prs_count': len(conflicts)
+            }
+        
+        return temporal_conflict_metrics
+    
     def run_all_analyses(self) -> Dict[str, Any]:
         """Run all temporal analyses."""
         print("="*80)
@@ -655,6 +1139,11 @@ class TemporalAnalyzer:
             'pr_importance_temporal': self.analyze_pr_importance_temporal(prs),
             'power_concentration_temporal': self.analyze_power_concentration_temporal(prs),
             'review_quality_temporal': self.analyze_review_quality_temporal(prs),
+            'response_time_inequality': self.analyze_response_time_inequality(prs),
+            'response_time_by_complexity': self.analyze_response_time_by_complexity(prs),
+            'network_evolution': self.analyze_temporal_network_evolution(prs),
+            'voting_bloc_temporal': self.analyze_voting_bloc_temporal(prs),
+            'conflict_resolution_temporal': self.analyze_conflict_resolution_temporal(prs),
             'analysis_date': datetime.now().isoformat()
         }
         
@@ -705,11 +1194,61 @@ class TemporalAnalyzer:
         # Behavioral changes
         print("BEHAVIORAL CHANGES OVER TIME (Sample)")
         print("-" * 80)
-        changes = results['behavioral_changes']
+        changes = results.get('behavioral_changes', {})
         for maintainer, periods in list(changes.items())[:5]:
             print(f"{maintainer}:")
             for period, stats in periods.items():
                 print(f"  {period}: {stats['self_merge_rate']*100:.1f}% self-merge, {stats['avg_reviews']:.1f} avg reviews")
+            print()
+        
+        # Response Time Inequality
+        print("RESPONSE TIME INEQUALITY")
+        print("-" * 80)
+        response_times = results.get('response_time_inequality', {})
+        if response_times:
+            print("Time to First Review (Hours):")
+            print(f"  Maintainer PRs: Avg={response_times.get('time_to_first_review', {}).get('maintainer', {}).get('mean', 0):.1f}, Median={response_times.get('time_to_first_review', {}).get('maintainer', {}).get('median', 0):.1f}")
+            print(f"  Non-Maintainer PRs: Avg={response_times.get('time_to_first_review', {}).get('non_maintainer', {}).get('mean', 0):.1f}, Median={response_times.get('time_to_first_review', {}).get('non_maintainer', {}).get('median', 0):.1f}")
+            print("Time to Merge (Hours):")
+            print(f"  Maintainer PRs: Avg={response_times.get('time_to_merge', {}).get('maintainer', {}).get('mean', 0):.1f}, Median={response_times.get('time_to_merge', {}).get('maintainer', {}).get('median', 0):.1f}")
+            print(f"  Non-Maintainer PRs: Avg={response_times.get('time_to_merge', {}).get('non_maintainer', {}).get('mean', 0):.1f}, Median={response_times.get('time_to_merge', {}).get('non_maintainer', {}).get('median', 0):.1f}")
+        print()
+        
+        # Voting Bloc Temporal
+        print("VOTING BLOC TEMPORAL EVOLUTION")
+        print("-" * 80)
+        voting_bloc_temporal = results.get('voting_bloc_temporal', {})
+        if voting_bloc_temporal:
+            print("Year | PRs | Voting Pairs | Avg Cohesion | Strong Blocs")
+            print("-" * 80)
+            for year in sorted(voting_bloc_temporal.keys())[-10:]:  # Last 10 years
+                stats = voting_bloc_temporal[year]
+                print(f"{year} | {stats.get('total_prs_in_year', 0):4d} | {stats.get('voting_pairs', 0):11d} | {stats.get('avg_cohesion', 0):6.1%} | {stats.get('strong_blocs_count', 0):12d}")
+        print()
+        
+        # Conflict Resolution Temporal
+        print("CONFLICT RESOLUTION TEMPORAL EVOLUTION")
+        print("-" * 80)
+        conflict_temporal = results.get('conflict_resolution_temporal', {})
+        if conflict_temporal:
+            print("Year | PRs | Conflicts | Conflict Rate | Avg Resolution (days)")
+            print("-" * 80)
+            for year in sorted(conflict_temporal.keys())[-10:]:  # Last 10 years
+                stats = conflict_temporal[year]
+                print(f"{year} | {stats.get('total_prs_in_year', 0):4d} | {stats.get('total_conflicts', 0):9d} | {stats.get('conflict_rate', 0):12.1%} | {stats.get('avg_resolution_time_days', 0):20.1f}")
+        print()
+        
+        # Response Time by Complexity
+        print("RESPONSE TIME BY COMPLEXITY")
+        print("-" * 80)
+        response_by_complexity = results.get('response_time_by_complexity', {})
+        if response_by_complexity:
+            for complexity in ['low', 'medium', 'high']:
+                if complexity in response_by_complexity:
+                    stats = response_by_complexity[complexity]
+                    print(f"{complexity.upper()} Complexity:")
+                    print(f"  First Review - Maintainer: {stats['time_to_first_review']['maintainer']['median']:.1f}h, Non-maintainer: {stats['time_to_first_review']['non_maintainer']['median']:.1f}h (Inequality: {stats['time_to_first_review']['inequality_ratio']:.2f}x)")
+                    print(f"  Merge Time - Maintainer: {stats['time_to_merge']['maintainer']['median']:.1f}h, Non-maintainer: {stats['time_to_merge']['non_maintainer']['median']:.1f}h (Inequality: {stats['time_to_merge']['inequality_ratio']:.2f}x)")
             print()
 
 
