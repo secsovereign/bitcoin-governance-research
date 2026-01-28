@@ -136,6 +136,11 @@
     - Coordination costs by complexity (3.8x scaling)
     - Participant and decision time analysis
     - Governance complexity scaling with code complexity
+28. **`TECHNICAL_DEBT_ANALYSIS.md`** ⭐ TECHNICAL DEBT
+    - 26.8% of codebase has high technical debt (1,108 files)
+    - Patch-to-refactor ratio: 3.0 (debt accumulation)
+    - RPC subsystem highest debt (61.5% high debt files)
+    - Quantifies technical debt in Bitcoin Core codebase
 
 ---
 
@@ -177,5 +182,5 @@ All JSON data files are organized in the `data/` subdirectory for cleaner organi
 
 ---
 
-**Last Updated**: 2026-01-24  
-**Status**: ✅ Complete and validated (novel analyses and integrations added)
+**Last Updated**: 2026-01-28  
+**Status**: ✅ Complete and validated (technical debt analysis added)
