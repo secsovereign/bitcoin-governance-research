@@ -74,7 +74,7 @@ def analyze_maintainer_timeline(prs: List[Dict]) -> Dict[str, Any]:
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
         'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
     }
     
     # Track maintainer activity

@@ -65,7 +65,7 @@ def validate_contributor_timeline():
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
         'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
     }
     found_maintainers = [c for c in timeline.keys() if c.lower() in maintainers]
     

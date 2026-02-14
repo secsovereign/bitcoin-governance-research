@@ -159,7 +159,7 @@ class OptimizedMergedByBackfiller:
                 'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
                 'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
                 'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-                'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+                'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
             }
             prs = [p for p in prs 
                    if (p.get('author') or '').lower() in [m.lower() for m in maintainers]]

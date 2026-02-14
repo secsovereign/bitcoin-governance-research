@@ -206,7 +206,7 @@ def calculate_zero_review_rate(
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
         'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
     }
     
     for pr in prs:

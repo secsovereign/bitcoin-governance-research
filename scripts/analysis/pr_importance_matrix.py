@@ -210,7 +210,7 @@ def create_pr_review_matrix(prs: list, calculate_weighted_review_count) -> Dict[
             'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
             'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
             'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
         }
         
         if author in maintainers:
@@ -251,7 +251,7 @@ def analyze_by_pr_type(prs: list, calculate_weighted_review_count) -> Dict[str, 
             'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
             'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
             'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
         }]
         
         maintainer_zero = [p for p in maintainer_prs if calculate_weighted_review_count(p) < 0.5]

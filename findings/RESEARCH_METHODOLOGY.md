@@ -22,7 +22,7 @@
 **Primary Sources**:
 1. **GitHub Repository Analysis** (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
 2. **Historical Commit Records** (2010-2026): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
-3. **External Research Cross-Reference**: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 20 (more comprehensive, includes those with 0 merges)
+3. **External Research Cross-Reference**: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 21 (more comprehensive, includes those with 0 merges)
 
 **Validation Attempts**:
 - ⚠️ **MAINTAINERS File**: Bitcoin Core does not maintain a MAINTAINERS file in the repository
@@ -30,7 +30,7 @@
 - ✅ **Historical Analysis**: Verified through merge activity (9,235 maintainer merged PRs)
 
 **Maintainer Categories**:
-- **15 Active Mergers**: People who have merged at least one PR (13 maintainers + 2 non-maintainers with historical merge access)
+- **17 Active Mergers**: Maintainers who have merged at least one PR; 2 non-maintainers with historical merge access
 - **5 Maintainers Who Never Merged**: Identified as maintainers but have never merged a PR (may have other roles: reviewers, advisors, inactive)
 
 **Acknowledgment**: Maintainer list is based on observable merge activity and historical records. Bitcoin Core does not maintain a public MAINTAINERS file. If maintainers are missing or incorrectly included, analysis would need adjustment. See `MAINTAINER_LIST_SOURCE.md` for complete documentation.
@@ -59,7 +59,7 @@ This document provides a comprehensive, incremental analysis of the research met
 ### 1.2 Research Approach
 
 **Method**: Quantitative analysis of publicly available data  
-**Scope**: 2010-2026 (15 years)  
+**Scope**: 2010-2026 (16 years)  
 **Data Sources**: GitHub, Mailing Lists, IRC  
 **Analysis Type**: Descriptive statistics, temporal analysis, network analysis, comparative analysis
 
@@ -111,13 +111,13 @@ This document provides a comprehensive, incremental analysis of the research met
 
 **Summary**:
 - **Total Maintainers Identified**: 20
-- **15 Active Mergers**: People who have merged at least one PR (13 maintainers + 2 non-maintainers with historical merge access)
+- **17 Active Mergers**: Maintainers who have merged at least one PR; 2 non-maintainers with historical merge access
 - **5 Maintainers Who Never Merged**: Identified as maintainers but have never merged a PR (may have other roles: reviewers, advisors, inactive)
 
 **Primary Sources**:
 1. GitHub Repository Analysis (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
 2. Historical Commit Records (2010-2026): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
-3. External Research Cross-Reference: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 20 (more comprehensive, includes those with 0 merges)
+3. External Research Cross-Reference: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 21 (more comprehensive, includes those with 0 merges)
 
 **Validation Attempts**:
 - ⚠️ **MAINTAINERS File**: Bitcoin Core does not maintain a MAINTAINERS file in the repository
@@ -636,7 +636,7 @@ def calculate_gini(values: List[float]) -> float:
 - **Quantitative metrics**: Merges, authored PRs, reviews given, self-merges, zero-review merges
 - **Qualitative insights**: Founders, early/modern, prolific, high self-merge/zero-review, longest tenure
 
-**Result**: 20 maintainers identified, 12 with merge activity, 6 with 0 merges (may have other roles)
+**Result**: 21 maintainers identified, 17 with merge activity, 4 with 0 merges (may have other roles)
 
 #### 4.5.4 Contributor Timeline Analysis
 
@@ -696,7 +696,7 @@ def calculate_gini(values: List[float]) -> float:
 **Checks**:
 1. **Key Metrics**: Verify consistency across all documents (30.2% historical zero-review, 3.4% recent zero-review, 26.5% self-merge, 81.1% top 3 control)
 2. **JSON Data Files**: Validate structure and content
-3. **Maintainer Lists**: Verify consistency (20 maintainers)
+3. **Maintainer Lists**: Verify consistency (21 maintainers)
 4. **Date Consistency**: Verify all dates are valid and reasonable
 5. **Methodology Notes**: Verify presence in key documents
 

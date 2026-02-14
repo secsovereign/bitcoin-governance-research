@@ -2,13 +2,13 @@
 
 **Project**: Comprehensive Quantitative Analysis of Bitcoin Core Development Governance  
 **Purpose**: Empirical analysis of Bitcoin Core governance patterns through public data  
-**Data Coverage**: 2010-2026 (15 years of development history)
+**Data Coverage**: 2010-2026 (16 years of development history)
 
 ## Project Overview
 
 ### Objective
 
-Analyze 15+ years of Bitcoin Core's public development data to quantitatively examine:
+Analyze 16+ years of Bitcoin Core's public development data to quantitatively examine:
 
 1. Power concentration in governance structures
 2. Review and merge decision patterns
@@ -23,14 +23,13 @@ bitcoin-governance-research/
 ├── pyproject.toml                     # Python project configuration
 ├── setup.sh                           # Setup script
 ├── comprehensive_recent_analysis.py   # Legacy analysis script
-├── scripts/                           # Executable scripts
-│   └── run_all_analyses.py            # Main analysis pipeline (runs 9 core scripts)
 ├── data/                              # Data files
 │   ├── github/                       # GitHub PR/issue data
 │   ├── mailing_lists/                # Mailing list archives
 │   ├── irc/                          # IRC chat logs
 │   └── processed/                    # Processed datasets
 ├── scripts/                           # Executable scripts
+│   ├── run_all_analyses.py            # Main analysis pipeline (runs 9 core scripts)
 │   ├── data_collection/              # Data collection scripts
 │   ├── data_processing/              # Data processing scripts
 │   ├── analysis/                     # Analysis scripts
@@ -115,22 +114,22 @@ See [findings/RESEARCH_METHODOLOGY.md](findings/RESEARCH_METHODOLOGY.md) for det
 We collect data from **three major public communication channels**:
 
 1. **GitHub** (`bitcoin/bitcoin` repository)
-   - ~23,455 Pull Requests with all comments and reviews
-   - ~5,000 Issues with discussions
+   - ~23,478 Pull Requests with all comments and reviews
+   - ~8,890 Issues with discussions
    - ~500,000+ comments and reviews
-   - **Total**: ~528,000 data points
+   - **Total**: ~528,000+ data points
 
 2. **Mailing Lists** (bitcoin-dev, bitcoin-core-dev)
-   - ~70,000 emails from 2008-present
+   - ~19,446 emails from 2008-present
    - Full thread structure and discussions
-   - **Total**: ~70,000 data points
+   - **Total**: ~19,446 data points
 
 3. **IRC Channels** (#bitcoin-core-dev, #bitcoin-dev, #bitcoin-core)
-   - ~500,000+ messages from development channels
+   - ~433,048 messages from development channels
    - Real-time coordination and discussions
-   - **Total**: ~500,000 data points
+   - **Total**: ~433,048 data points
 
-**Combined**: **~1.1 million data points** over **15 years** of Bitcoin development history (2010-2026).
+**Combined**: **~1+ million data points** over **16 years** of Bitcoin development history (2010-2026).
 
 See [DATA_SOURCING_AND_REPRODUCIBILITY.md](DATA_SOURCING_AND_REPRODUCIBILITY.md) for detailed data sourcing and reproducibility information.
 

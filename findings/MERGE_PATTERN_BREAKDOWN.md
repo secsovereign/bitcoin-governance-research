@@ -136,7 +136,7 @@
 
 **Key Findings**:
 - **Average self-merge rate**: 14.5% (lower than overall 26.5% because some maintainers rarely self-merge)
-- **Average zero-review self-merge rate**: 33.6% (of self-merges)
+- **Average zero-review self-merge rate**: 46.1% (of self-merges)
 - **Extreme variation**: 
   - **laanwj**: 77.1% self-merge (522 with zero reviews!)
   - **gavinandresen**: 68.3% self-merge (122 with zero reviews)
@@ -218,7 +218,7 @@
 | **Friend patterns** | 24 significant relationships |
 | **Janitor patterns** | 10 maintainers merge 10+ authors |
 | **Average self-merge rate** | 14.5% (by maintainer) |
-| **Zero-review self-merge rate** | 33.6% (of self-merges) |
+| **Zero-review self-merge rate** | 46.1% (of self-merges) |
 
 ---
 

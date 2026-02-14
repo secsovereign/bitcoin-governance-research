@@ -76,7 +76,7 @@ class BCAPPowerShiftAnalyzer:
             'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
             'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
             'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
         }
     
     def run_analysis(self):

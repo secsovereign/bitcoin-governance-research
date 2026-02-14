@@ -7,12 +7,12 @@
 
 ## Maintainer List
 
-**Total Maintainers Identified**: 20
+**Total Maintainers Identified**: 21
 
 **List**:
 1. laanwj
 2. sipa
-3. maflcko (MarcoFalke)
+3. maflcko
 4. fanquake
 5. hebasto
 6. jnewbery
@@ -20,16 +20,26 @@
 8. achow101
 9. theuni
 10. jonasschnelli
-11. Sjors
+11. sjors
 12. promag
 13. instagibbs
-14. TheBlueMatt (thebluematt)
+14. thebluematt
 15. jonatack
 16. gmaxwell
 17. gavinandresen
 18. petertodd
 19. luke-jr
 20. glozow
+21. TheCharlatan
+
+### Current Active Maintainers (as of 2025)
+
+**5 people** with merge authority who have merged since 2023:
+- fanquake
+- ryanofsky
+- hebasto
+- achow101
+- TheCharlatan
 
 ---
 
@@ -49,7 +59,7 @@
 
 3. **External Research Cross-Reference**
    - Stanford JBLP (2024): Reports "13 maintainers over the past decade"
-   - Our analysis: Identified 20 maintainers (more comprehensive, includes those with 0 merges)
+   - Our analysis: Identified 21 maintainers (more comprehensive, includes those with 0 merges)
    - Difference: We include maintainers who may have had other roles (reviewers, advisors) even if they never merged PRs
 
 ### Validation Attempts
@@ -71,21 +81,21 @@
 3. **Top Contributors Validation** ✅ **VERIFIED**
    - Fetched top 30 contributors via GitHub API (public data)
    - **Result**: Top contributors match our maintainer list:
-     - laanwj, fanquake, sipa, achow101, hebasto, gavinandresen, ryanofsky, jnewbery, glozow, jonasschnelli
+     - laanwj, fanquake, sipa, achow101, hebasto, gavinandresen, ryanofsky, jnewbery, glozow, TheCharlatan, jonasschnelli
    - **Date verified**: 2026-01-07
    - **Method**: GitHub API (`repos/bitcoin/bitcoin/contributors`)
 
 4. **Historical Analysis** ✅ **VERIFIED**
    - Verified maintainer status through merge activity (9,235 maintainer merged PRs)
-   - Identified 15 people who have actually merged PRs
-   - Identified 5 additional maintainers who have never merged (may have other roles)
+   - Identified 17 people who have actually merged PRs (from maintainer list)
+   - Identified 4 additional maintainers who have never merged (may have other roles)
    - **Cross-reference**: Top contributors from GitHub API match active mergers in our analysis
 
 ---
 
 ## Maintainer Categories
 
-### Active Mergers (15 people)
+### Active Mergers (17 people)
 **Definition**: People who have merged at least one PR
 
 **List**:
@@ -104,18 +114,19 @@
 - jonatack (253 merges)
 - promag (204 merges)
 - gavinandresen (180 merges)
+- glozow (137 merges)
+- TheCharlatan
 
 **Plus 2 non-maintainers with historical merge access** (identified through merge activity analysis)
 
-### Maintainers Who Never Merged (5 people)
+### Maintainers Who Never Merged (4 people)
 **Definition**: Identified as maintainers but have never merged a PR
 
 **List**:
 - instagibbs
 - gmaxwell
 - petertodd
-- Sjors
-- (One additional maintainer - verify from data)
+- sjors
 
 **Possible Roles**:
 - Code reviewers
@@ -155,8 +166,8 @@
 - If maintainers are missing or incorrectly included, analysis would need adjustment
 
 **Validation**:
-- ✅ 15 people have actually merged PRs (verified through data)
-- ✅ 20 maintainers identified (includes those with 0 merges)
+- ✅ 17 maintainers have actually merged PRs (verified through data)
+- ✅ 21 maintainers identified (includes those with 0 merges)
 - ✅ Top contributors from GitHub API match our active maintainer list
 - ✅ No MAINTAINERS file exists in repository (verified via GitHub API)
 - ⚠️ Collaborator list requires push access (cannot verify via API)
@@ -174,7 +185,7 @@
 **Defense**: 
 - List is based on observable merge activity (9,235 PRs)
 - Cross-referenced with external research
-- More comprehensive than external research (20 vs. 13)
+- More comprehensive than external research (21 vs. 13)
 - Acknowledged limitation: "If maintainers are missing or incorrectly included, analysis would need adjustment"
 
 ---

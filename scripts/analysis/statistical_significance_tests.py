@@ -245,7 +245,7 @@ def t_test_self_merge_stability(prs):
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
         'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
     }
     
     # Calculate yearly self-merge rates
@@ -319,7 +319,7 @@ def calculate_confidence_intervals(prs):
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
         'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
     }
     
     # Self-merge rate

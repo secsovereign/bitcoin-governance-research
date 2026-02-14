@@ -9,7 +9,7 @@
 ### Core Reports (Essential Reading)
 
 1. **`EXECUTIVE_SUMMARY.md`** ⭐ START HERE
-   - 37-line summary of all findings
+   - Summary of all findings
    - Key metrics and insights
 
 2. **`GLOSSARY_AND_CONTEXT.md`** ⭐ FOR NON-EXPERTS
@@ -18,11 +18,11 @@
    - Why metrics matter
    - Historical context
 
-2. **`MERGE_PATTERN_BREAKDOWN.md`**
+3. **`MERGE_PATTERN_BREAKDOWN.md`**
    - Detailed merge analysis
    - Self-merge breakdown, friend patterns, individual maintainer patterns
 
-3. **`TEMPORAL_ANALYSIS_REPORT.md`**
+4. **`TEMPORAL_ANALYSIS_REPORT.md`**
    - Temporal patterns (yearly, quarterly, generational)
    - Process improvements vs structural persistence
    - Speed hack (time-to-merge) by period
@@ -34,20 +34,15 @@
    - Voting bloc temporal evolution
    - Conflict resolution temporal evolution
 
-4. **`NOVEL_INTERPRETATIONS.md`**
+5. **`NOVEL_INTERPRETATIONS.md`**
    - Behavioral clusters, power hierarchy, review reciprocity
    - Novel insights from data
 
-7. **`INTERDISCIPLINARY_ANALYSIS_REPORT.md`**
+6. **`INTERDISCIPLINARY_ANALYSIS_REPORT.md`**
    - Network science, game theory, information theory
    - Multi-disciplinary perspectives
 
-### Supporting Analysis
-
-   - Complete metrics (historical vs recent)
-   - Comprehensive data overview
-
-8. **`GINI_COEFFICIENT_EXPLANATION.md`**
+7. **`GINI_COEFFICIENT_EXPLANATION.md`**
    - Gini coefficient explanation and values
    - Inequality metrics
 
@@ -93,50 +88,54 @@
     - Governance mentions, decision patterns, authority statements
     - Full data and excerpts
 
+16. **`MAINTAINER_LIST_SOURCE.md`**
+    - Maintainer list documentation and validation
+    - Current vs historical maintainers
+
 ### Supporting Analysis
 
-16. **`PR_IMPORTANCE_ANALYSIS.md`** ⭐
+17. **`PR_IMPORTANCE_ANALYSIS.md`** ⭐
     - PR classification by importance (trivial, low, normal, high, critical)
     - Zero-review rates by PR type
     - Review quality matrix analysis
     - Addresses "housekeeping doesn't need review" argument
 
-17. **`MAINTAINER_TIMELINE_ANALYSIS.md`** - Maintainer activity timeline (includes current vs historical distinction)
-18. **`CONTRIBUTOR_TIMELINE_ANALYSIS.md`** - Contributor activity timeline
-19. **`CONTRIBUTOR_ANALYSIS.md`** ⭐ CONTRIBUTOR RETENTION
+18. **`MAINTAINER_TIMELINE_ANALYSIS.md`** - Maintainer activity timeline (includes current vs historical distinction)
+19. **`CONTRIBUTOR_TIMELINE_ANALYSIS.md`** - Contributor activity timeline
+20. **`CONTRIBUTOR_ANALYSIS.md`** ⭐ CONTRIBUTOR RETENTION
     - 7,604 total contributors analyzed
     - 87.7% exit rate (1-year threshold)
     - Breakdown by type (authors vs participants)
-20. **`BCAP_INTEGRATION_REPORT.md`** - BCAP framework integration analysis
+21. **`BCAP_INTEGRATION_REPORT.md`** - BCAP framework integration analysis
     - State of Mind (SOM) analysis during SegWit/Taproot
     - Power shift analysis during consensus changes
     - Based on [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap)
-21. **`CROSS_PLATFORM_NETWORKS.md`** - Cross-platform influence analysis
+22. **`CROSS_PLATFORM_NETWORKS.md`** - Cross-platform influence analysis
     - GitHub/IRC/Email overlap analysis
     - Verified maintainer identities across platforms
-22. **`INFORMAL_SENTIMENT_ANALYSIS.md`** - IRC/Email sentiment analysis
+23. **`INFORMAL_SENTIMENT_ANALYSIS.md`** - IRC/Email sentiment analysis
     - Sentiment distribution across informal channels
     - State of Mind (SOM) analysis on IRC/email
-23. **`BIP_PROCESS_ANALYSIS.md`** - BIP governance analysis
+24. **`BIP_PROCESS_ANALYSIS.md`** - BIP governance analysis
     - Proposer/champion patterns
     - BIP-to-Core implementation pipeline
-24. **`RELEASE_SIGNING_ANALYSIS.md`** - Release signing authority
+25. **`RELEASE_SIGNING_ANALYSIS.md`** - Release signing authority
     - Signer concentration analysis
     - Signing patterns over time
-25. **`CROSS_REPO_COMPARISON.md`** - Core vs BIP repository comparison
+26. **`CROSS_REPO_COMPARISON.md`** - Core vs BIP repository comparison
     - Actor overlap analysis
     - Governance pattern comparison
-26. **`CONFLICT_RESOLUTION_ANALYSIS.md`** ⭐ CONFLICT ANALYSIS
+27. **`CONFLICT_RESOLUTION_ANALYSIS.md`** ⭐ CONFLICT ANALYSIS
     - 5,128 conflicts identified (NACKs, CHANGES_REQUESTED, heated discussions)
     - Resolution paths and timing analysis
     - Temporal evolution of conflicts
     - Voting bloc behavior during conflicts
-27. **`COORDINATION_COSTS_ANALYSIS.md`** ⭐ COORDINATION OVERHEAD
+28. **`COORDINATION_COSTS_ANALYSIS.md`** ⭐ COORDINATION OVERHEAD
     - Communication volume per PR (22.0 messages average)
     - Coordination costs by complexity (3.8x scaling)
     - Participant and decision time analysis
     - Governance complexity scaling with code complexity
-28. **`TECHNICAL_DEBT_ANALYSIS.md`** ⭐ TECHNICAL DEBT
+29. **`TECHNICAL_DEBT_ANALYSIS.md`** ⭐ TECHNICAL DEBT
     - 26.8% of codebase has high technical debt (1,108 files)
     - Patch-to-refactor ratio: 3.0 (debt accumulation)
     - RPC subsystem highest debt (61.5% high debt files)

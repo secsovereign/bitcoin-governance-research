@@ -8,14 +8,14 @@
 ## Note on Maintainer Count
 
 **External Research**: Stanford JBLP (2024) reports "13 maintainers over the past decade"  
-**Our Analysis**: **20 maintainers** identified (more comprehensive list including those with 0 merges)  
+**Our Analysis**: **21 maintainers** identified (more comprehensive list including those with 0 merges)  
 **Difference**: We include maintainers who may have had other roles (reviewers, advisors) even if they never merged PRs. This provides a more complete picture of maintainer authority over time.
 
 ---
 
 ## Overview
 
-**Total Maintainers Analyzed**: 20
+**Total Maintainers Analyzed**: 21
 
 **Active Maintainers**: 5
 
@@ -42,7 +42,8 @@
 - **maflcko**: Joined 2016-04-25T13:00:04+00:00, 1891 merges
 - **fanquake**: Joined 2019-06-13T08:49:50+00:00, 2378 merges
 - **achow101**: Joined 2021-12-20T19:49:53+00:00, 308 merges
-- **glozow**: Joined 2022-07-26T09:55:19+00:00, 137 merges
+- **glozow**: Joined 2022-07-26, 137 merges
+- **TheCharlatan**: Joined 2025
 - **ryanofsky**: Joined 2023-06-09T18:21:37+00:00, 67 merges
 - **hebasto**: Joined 2023-11-21T11:08:34+00:00, 46 merges
 
@@ -283,7 +284,7 @@
 
 - **Join Date**: 2022-07-26T09:55:19+00:00
 - **Last Merge**: 2025-11-12T15:17:04+00:00
-- **Status**: Active
+- **Status**: Inactive
 - **Tenure**: 3.3 years
 - **Total Merges**: 137
 - **Total Authored**: 153
@@ -295,6 +296,11 @@
   - 2024: 47 merges
   - 2023: 17 merges
   - 2022: 12 merges
+
+### TheCharlatan
+
+- **Join Date**: 2025
+- **Status**: Active
 
 ### ryanofsky
 

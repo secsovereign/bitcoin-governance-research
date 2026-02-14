@@ -132,7 +132,7 @@ class ContributorAnalyzer:
             'laanwj', 'sipa', 'maflcko', 'marcofalke', 'fanquake', 'hebasto', 
             'jnewbery', 'ryanofsky', 'achow101', 'theuni', 'jonasschnelli',
             'sjors', 'promag', 'instagibbs', 'instagibbs', 'thebluematt', 'thebluematt',
-            'jonatack', 'gmaxwell', 'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+            'jonatack', 'gmaxwell', 'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
         }
         return {m.lower() for m in maintainers}
     

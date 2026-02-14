@@ -124,7 +124,7 @@ Maintainers cluster into distinct behavioral patterns:
 - Avg reviews: **6.8**
 
 **2020s (2020+):**
-- Members: glozow
+- Members: glozow, TheCharlatan
 - Self-merge rate: **8.4%**
 - Avg reviews: **19.7**
 

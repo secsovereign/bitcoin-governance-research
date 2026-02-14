@@ -1,7 +1,7 @@
 # Cross-Platform Influence Networks Report
 
 **Analysis Date**: 2026-01-18  
-**Data Sources**: GitHub PRs (23,615), IRC messages (441,931), Emails (19,908)  
+**Data Sources**: GitHub PRs (23,615), IRC messages (433,048), Emails (19,446)  
 **Purpose**: Build comprehensive influence networks across platforms and identify hidden influencers
 
 ---
@@ -43,14 +43,14 @@ Using documented maintainer aliases, we verified **20 core maintainers** are pre
 | sipa | ✓ | ✓ | ✓ |
 | gavinandresen | ✓ | ✓ | ✓ |
 | gmaxwell | ✓ | ✓ (nullc) | ✓ |
-| TheBlueMatt | ✓ | ✓ | ✓ |
+| thebluematt | ✓ | ✓ | ✓ |
 | ... and 15 more | | | |
 
 ---
 
 ## Implications
 
-1. **Core Governance Verified**: 20 maintainers confirmed across all platforms
+1. **Core Governance Verified**: 21 maintainers confirmed across all platforms
 2. **Lower Bound**: 236 exact-match overlap is minimum; actual overlap likely higher
 3. **Platform Separation**: Non-maintainer overlap rates suggest distinct communities
 4. **Hidden Influencers**: Many IRC/email participants are not on GitHub

@@ -71,13 +71,13 @@ This document compares our comprehensive analysis with external research on Bitc
 **Focus**: Maintainer role, rough consensus process, fork as check
 
 **Key Points**:
-- Only 13 maintainers over past decade (we found 20)
+- Only 13 maintainers over past decade (we found 21)
 - 5 active maintainers (we found 5)
 - Maintainers act as gatekeepers, not unilateral decision-makers
 - Open-source nature allows forking as check
 
 **Our Coverage**: ✅ **SIGNIFICANTLY MORE DETAILED**
-- We identify **20 maintainers** (not 13) - more comprehensive list
+- We identify **21 maintainers** (not 13) - more comprehensive list
 - We provide **individual maintainer analysis** (timeline, patterns, metrics)
 - We quantify **gatekeeper behavior** (self-merge rates, zero-review rates)
 - We analyze **fork threat effectiveness** (documented in narrative analysis)

@@ -121,7 +121,7 @@ def analyze_contributor_timeline(prs: List[Dict], min_contributions: int = 5, mi
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
         'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
     }
     
     # Track contributor activity

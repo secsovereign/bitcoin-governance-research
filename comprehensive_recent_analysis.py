@@ -79,7 +79,7 @@ def analyze_period(prs: List[Dict], period_name: str, start_year: int, end_year:
         'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
         'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
         'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow'
+        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
     }
     
     print(f"Total PRs: {len(period_prs):,}")

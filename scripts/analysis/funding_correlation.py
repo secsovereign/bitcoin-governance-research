@@ -67,7 +67,7 @@ def analyze_funding_correlation(data_dir: Path):
                           ['laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
                            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
                            'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-                           'gavinandresen', 'petertodd', 'luke-jr', 'glozow']]
+                           'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan']]
         
         maintainer_merged = [p for p in merged if p in maintainer_prs]
         
