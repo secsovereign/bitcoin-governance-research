@@ -1,0 +1,151 @@
+# Title/body keyword rules (Tier 2a)
+# Matched case-insensitively against title + body.
+# Higher weight wins within a category; conflicts → ambiguous unless one dominates.
+
+keyword_rules:
+  debt_compensation:
+    weight: 3
+    any:
+      - "performance"
+      - "optimiz"
+      - "speed up"
+      - "faster"
+      - "prefetch"
+      - "lock contention"
+      - "cs_main"
+      - "cs_wallet"
+      - "deadlock"
+      - "race condition"
+      - "thread pool"
+      - "paralleliz"
+      - "ibd"
+      - "initial block download"
+      - "sync improvement"
+      - "reduce memory"
+      - "oom"
+      - "memory usage"
+      - "cpu usage"
+      - "hot path"
+      - "avoid lock"
+      - "release lock"
+      - "latency"
+      - "throughput"
+      - "cache miss"
+      - "caching"
+      - "perf:"
+
+  refactor:
+    weight: 2
+    any:
+      - "refactor"
+      - "cleanup"
+      - "clean up"
+      - "reorganize"
+      - "restructure"
+      - "move code"
+      - "rename"
+      - "deduplicate"
+      - "simplify"
+      - "modernize"
+
+  new_feature:
+    weight: 2
+    any:
+      - "add support"
+      - "introduce"
+      - "new feature"
+      - "add rpc"
+      - "add a new"
+      - "feature:"
+
+  consensus_change:
+    weight: 4
+    any:
+      - "consensus"
+      - "soft fork"
+      - "hard fork"
+      - "bip-"
+      - " bip "
+      - "activation"
+      - "deploy"
+      - "taproot"
+      - "segwit"
+      - "script verify"
+      - "consensus rule"
+      - "block validity"
+
+  networking_change:
+    weight: 2
+    any:
+      - "p2p"
+      - "peer"
+      - "addrman"
+      - "net_processing"
+      - "connection"
+      - "inbound"
+      - "outbound"
+      - "compact block"
+      - "bip152"
+      - "bip324"
+      - "erlay"
+      - "addr relay"
+      - "tx relay"
+
+  rpc_change:
+    weight: 2
+    any:
+      - "rpc"
+      - "rest api"
+      - "json-rpc"
+      - "zmq"
+      - "bitcoin-cli"
+
+  dependency_maintenance:
+    weight: 3
+    any:
+      - "bump "
+      - "update secp"
+      - "secp256k1"
+      - "depends:"
+      - "subtree"
+      - "vendor"
+      - "upstream"
+      - "leveldb"
+      - "univalue"
+      - "qt 5"
+      - "qt 6"
+      - "boost "
+
+  test_ci_build:
+    weight: 2
+    any:
+      - "ci:"
+      - "test:"
+      - "tests:"
+      - "fuzz"
+      - "unit test"
+      - "functional test"
+      - "cmake"
+      - "build system"
+      - "github actions"
+      - "cirrus"
+
+  documentation:
+    weight: 3
+    any:
+      - "doc:"
+      - "docs:"
+      - "documentation"
+      - "readme"
+      - "typo"
+      - "comment only"
+      - "release notes"
+
+# If enrich_data pr_type.primary_type is set, map into our taxonomy as a weak signal
+enrich_pr_type_map:
+  consensus: consensus_change
+  bugfix: other
+  feature: new_feature
+  documentation: documentation
+  refactor: refactor
+  unknown: null

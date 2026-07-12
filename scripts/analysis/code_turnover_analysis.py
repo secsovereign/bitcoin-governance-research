@@ -145,10 +145,13 @@ def analyze_file_turnover(prs: List[Dict[str, Any]]) -> Dict[str, Any]:
         'years_active': 0,  # Years between first and last modification
     })
     
-    # Process merged PRs only
+    # Process merged PRs only — chronological order is required so file-size
+    # estimates and first-touch change classification are not inverted when the
+    # JSONL is newest-first (as GitHub collectors typically write).
     merged_prs = [pr for pr in prs if pr.get('merged', False) and pr.get('merged_at')]
-    
-    print(f"Processing {len(merged_prs)} merged PRs...")
+    merged_prs.sort(key=lambda pr: pr.get('merged_at') or '')
+
+    print(f"Processing {len(merged_prs)} merged PRs (chronological)...")
     
     for pr in merged_prs:
         merged_at = pr.get('merged_at')

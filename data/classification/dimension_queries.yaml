@@ -1,0 +1,62 @@
+# Per architectural-comparison dimension: how to count Core PRs (Phase 2).
+# Used by architectural_comparison.py; also informs keyword/path evidence tags.
+
+dimensions:
+  formal_spec:
+    description: "Orange Paper / CONSENSUS_SPEC vs Core ad hoc consensus changes"
+    primary_categories: [consensus_change]
+    path_any: ["src/consensus/", "src/validation.cpp", "src/script/"]
+    title_any: ["consensus", "bip-", "soft fork", "activation"]
+
+  spec_lock:
+    description: "Z3 spec-lock vs absence of formal verification in Core"
+    # Core has no equivalent — count stays interpretive (0 locked fns)
+    primary_categories: []
+    note: "No Core PR proxy; report Commons spec_locked_count only"
+
+  pure_rust_secp256k1:
+    description: "Pure Rust secp256k1 vs C libsecp maintenance"
+    primary_categories: [dependency_maintenance]
+    path_any: ["src/secp256k1/", "depends/packages/secp"]
+    title_any: ["secp256k1", "subtree update", "secp"]
+
+  utxo_commitments:
+    description: "UTXO commitments vs IBD/sync patch churn"
+    primary_categories: [debt_compensation]
+    path_any: ["src/txdb", "src/coins", "src/node/blockstorage", "src/index/"]
+    title_any: ["assumeutxo", "utxo", "ibd", "snapshot", "chainstate"]
+
+  parallel_ibd:
+    description: "Parallel IBD vs lock/thread-pool workarounds"
+    primary_categories: [debt_compensation]
+    path_any: ["src/validation.cpp", "src/checkqueue", "src/net_processing"]
+    title_any: ["ibd", "cs_main", "lock", "parallel", "prefetch", "script check"]
+
+  multi_transport_p2p:
+    description: "Iroh/QUIC/Dandelion vs legacy P2P stack changes"
+    primary_categories: [networking_change]
+    path_any: ["src/net", "src/net_processing", "src/addrman", "src/protocol"]
+    title_any: ["p2p", "peer", "bip324", "v2 transport", "erlay"]
+
+  module_system:
+    description: "Process modules vs RPC monolith growth"
+    primary_categories: [rpc_change]
+    path_any: ["src/rpc/"]
+    title_any: ["rpc", "rest"]
+
+  selective_sync:
+    description: "Selective sync module — no Core equivalent"
+    primary_categories: []
+    note: "No Core PR proxy"
+
+  differential_testing:
+    description: "blvm-bench differential vs Core test/review culture"
+    primary_categories: [test_ci_build]
+    path_any: ["test/", "src/test/"]
+    title_any: ["test", "fuzz"]
+
+  layered_crates:
+    description: "Layered crates vs monolith cross-cutting PRs"
+    # Measured as PRs touching many subsystems — computed in comparison script
+    primary_categories: []
+    note: "Computed: multi-subsystem file span per PR"

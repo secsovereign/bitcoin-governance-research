@@ -140,6 +140,9 @@
     - Patch-to-refactor ratio: 3.0 (debt accumulation)
     - RPC subsystem highest debt (61.5% high debt files)
     - Quantifies technical debt in Bitcoin Core codebase
+30. **`ARCHITECTURAL_DIVERGENCE_FINAL_REPORT.md`** ⭐ CORE vs COMMONS (SINGLE FINAL REPORT)
+    - Findings, methodology, validation, citations, exemplars, limitations, reproducibility
+    - Recomputed from primary data (2026-07-12)
 
 ---
 
@@ -181,5 +184,5 @@ All JSON data files are organized in the `data/` subdirectory for cleaner organi
 
 ---
 
-**Last Updated**: 2026-01-28  
+**Last Updated**: 2026-07-12  
 **Status**: ✅ Complete and validated (technical debt analysis added)

@@ -1,0 +1,948 @@
+{
+  "created_at": "2026-07-12T08:37:13.357888+00:00",
+  "seed": 99,
+  "focus": [
+    "debt_compensation",
+    "test_ci_build"
+  ],
+  "per_category": 20,
+  "baseline_headlines_pre_tighten": {
+    "architectural_debt_tax_pct": 6.14,
+    "total_maintenance_burden_pct": 44.33,
+    "net_new_capability_pct": 16.07,
+    "ambiguous_pct": 9.94
+  },
+  "post_tighten_headlines": {
+    "architectural_debt_tax_pct": 1.7,
+    "total_maintenance_burden_pct": 39.79,
+    "structural_work_pct": 8.82,
+    "net_new_capability_pct": 16.23,
+    "other_pct": 22.87
+  },
+  "post_tighten_primary_pct": {
+    "rpc_change": 5.79,
+    "documentation": 12.29,
+    "refactor": 8.82,
+    "dependency_maintenance": 3.37,
+    "debt_compensation": 1.7,
+    "test_ci_build": 34.72,
+    "other": 22.87,
+    "consensus_change": 3.72,
+    "networking_change": 6.05,
+    "new_feature": 0.67
+  },
+  "post_tighten_primary_counts": {
+    "rpc_change": 964,
+    "documentation": 2047,
+    "refactor": 1469,
+    "dependency_maintenance": 561,
+    "debt_compensation": 283,
+    "test_ci_build": 5782,
+    "other": 3809,
+    "consensus_change": 619,
+    "networking_change": 1008,
+    "new_feature": 111
+  },
+  "post_tighten_ambiguous_pct": 8.76,
+  "ambiguous_debt_share": 2.67,
+  "rule_changes": [
+    "Round-1 FP lessons: Block storage/UTXO no auto-debt; copyright\u2192docs; CI tooling\u2192test_ci",
+    "No soft debt-join without debt signal; strong vs weak debt keywords",
+    "enrich_perf alone does not gate debt_join; Resource usage remains debt boost",
+    "refactor: title wins unless strong debt; util:refactor\u2192refactor; qa:/benchmark overrides",
+    "Docs \"Document \u2026\"\u2192documentation; Tests+test title\u2192test_ci; UI/eBPF/autoprune\u2192other",
+    "Build parallelize/makefile\u2192test_ci; narrow test-flakiness override"
+  ],
+  "agreement": {
+    "debt_compensation": {
+      "agree": 15,
+      "n": 20,
+      "pct": 75.0
+    },
+    "test_ci_build": {
+      "agree": 19,
+      "n": 20,
+      "pct": 95.0
+    },
+    "combined": {
+      "agree": 34,
+      "n": 40,
+      "pct": 85.0
+    }
+  },
+  "round1_comparison": {
+    "debt_compensation": "1/5 (20%) \u2192 15/20 (75%)",
+    "test_ci_build": "1/5 (20%) \u2192 19/20 (95%)"
+  },
+  "maintenance_shift_pp": -4.54,
+  "debt_tax_shift_pp": -4.44,
+  "material_shift": true,
+  "prs": [
+    {
+      "number": 4390,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "networking_change",
+        "refactor"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": true,
+      "tier_used": "2a",
+      "title": "incremental net cleanup 2",
+      "labels": [],
+      "files": [
+        "src/netbase.cpp"
+      ],
+      "body": "I'm going to split of some changes from #4348 to make review easier and hopefully merging faster :).",
+      "human_primary": "refactor",
+      "human_agree": false,
+      "human_notes": "net cleanup structural"
+    },
+    {
+      "number": 4805,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "other",
+        "test_ci_build"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "[Wallet] Do not flush the wallet in AddToWalletIfInvolvingMe(..)",
+      "labels": [
+        "Wallet"
+      ],
+      "files": [
+        "src/db.cpp",
+        "src/db.h",
+        "src/init.cpp",
+        "src/test/accounting_tests.cpp",
+        "src/wallet.cpp",
+        "src/wallet.h",
+        "src/walletdb.cpp",
+        "src/walletdb.h"
+      ],
+      "body": "We are currently flushing the wallet after every operation. This is very slow. In case of syncing txs, we need performance, rather than durability. Our SetBestChain-mechanism ensures, that txs from a block are always synced, even on a crash, as we rescan the necessary blocks on startup. The FlushWalletThread only flushes, if there is no wallet-update for 2 seconds. I tested replacing the txn_checkpoint(..) call with log_flush, but this does not help. Currently I can only add about 10 txs per second to the wallet on my machine. After this patch its more than 1000 txs per second. For example importaddress mvqaxopu9Uef2qjXSV3fGrp6DcEYnCoYWK adds about 20000 txs to the wallet. Together with these optimizations #4702 #4712 you hardly notice the difference between a normal rescan and adding 2000",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "avoid wallet flush hot path"
+    },
+    {
+      "number": 13083,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "other"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Add compile time checking for cs_main runtime locking assertions",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/interfaces/wallet.cpp",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/test/miner_tests.cpp",
+        "src/txmempool.cpp",
+        "src/validation.cpp",
+        "src/validation.h",
+        "src/validationinterface.cpp",
+        "src/validationinterface.h",
+        "src/wallet/feebumper.cpp",
+        "src/wallet/rpcwallet.cpp",
+        "src/wallet/wallet.cpp",
+        "src/wallet/wallet.h"
+      ],
+      "body": "Add compile time checking for `cs_main` runtime locking assertions. This PR is a subset of #12665. The PR was broken up to make reviewing easier. The intention is that literally all `EXCLUSIVE_LOCKS_REQUIRED`/`LOCKS_EXCLUDED`:s added in this PR should follow either directly or indirectly from `AssertLockHeld(\u2026)`/`AssertLockNotHeld(\u2026)`:s already existing in the repo. Consider the case where function `A(\u2026)` contains `AssertLockHeld(cs_foo)` (without first locking `cs_foo` in `A`), and that `B(\u2026)` calls `A(\u2026)` (without first locking `cs_main`): * It _directly_ follows that: `A(\u2026)` should have an `EXCLUSIVE_LOCKS_REQUIRED(cs_foo)` annotation. * It _indirectly_ follows that: `B(\u2026)` should have an `EXCLUSIVE_LOCKS_REQUIRED(cs_foo)` annotation.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "compile-time cs_main lock assertions"
+    },
+    {
+      "number": 16015,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "consensus_change"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": true,
+      "tier_used": "1+2a+2b",
+      "title": "validation: Hold cs_main when reading chainActive in RewindBlockIndex",
+      "labels": [
+        "Validation"
+      ],
+      "files": [
+        "src/validation.cpp"
+      ],
+      "body": "Fixes #15980. Hold `cs_main` when reading `chainActive` (via `::ChainActive()`) in `RewindBlockIndex`.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "cs_main hold on RewindBlockIndex"
+    },
+    {
+      "number": 10322,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "other"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Use hardware timestamps in RNG seeding",
+      "labels": [
+        "Utils/log/libs"
+      ],
+      "files": [
+        "src/random.cpp"
+      ],
+      "body": "Faster, and more entropy.",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "RNG hardware timestamps \u2014 not arch debt"
+    },
+    {
+      "number": 9959,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Mining: Prevent slowdown in CreateNewBlock on large mempools",
+      "labels": [
+        "Mining"
+      ],
+      "files": [
+        "src/miner.cpp",
+        "src/miner.h"
+      ],
+      "body": "I've been investigating performance regressions in CreateNewBlock. `addPackageTxs()` is supposed to \"fail fast\" for transactions that don't fit in a block. However while we skip the most expensive ancestor/descendant calculations for failing transactions (generally), it turns out the other work we're doing (mostly map lookups?) can still be pretty slow. After trying various approaches to speed up those operations (replacing maps with unordered_maps, changing the sort order on the ancestor score function to avoid needless re-sorting, and even getting rid of the maps altogether in favor of storing set information directly in the mempool entry), the one optimization that dominates all these is to just return earlier when the block is nearly full. So in this PR: when we're within 4000 weight o",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "CreateNewBlock large-mempool slowdown"
+    },
+    {
+      "number": 22609,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "other"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "[GetTransaction] remove unneeded cs_main lock acquire",
+      "labels": [],
+      "files": [
+        "src/node/transaction.cpp"
+      ],
+      "body": "This PR is a follow-up to #22383. For reading from the mempool, only `mempool.cs` needs to be locked (see [suggestion by MarcoFalke](https://github.com/bitcoin/bitcoin/pull/22383#discussion_r675069128)): https://github.com/bitcoin/bitcoin/blob/b620b2d58a55a88ad21da70cb2000863ef17b651/src/txmempool.h#L554-L558 `CTxMemPool::get()` acquires this lock: https://github.com/bitcoin/bitcoin/blob/b620b2d58a55a88ad21da70cb2000863ef17b651/src/txmempool.cpp#L822-L829 so we don't need to acquire any lock ourselves in `GetTransaction()`, as the other functions called in the remaining parts also don't need to have `cs_main` locked.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "remove unneeded cs_main acquire"
+    },
+    {
+      "number": 27191,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "test_ci_build",
+        "other"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "blockstorage: Adjust fastprune limit if block exceeds blockfile size",
+      "labels": [
+        "Block storage",
+        "CI failed"
+      ],
+      "files": [
+        "src/node/blockstorage.cpp",
+        "test/functional/feature_fastprune.py",
+        "test/functional/test_runner.py"
+      ],
+      "body": "The debug-only `-fastprune` option used in several tests is not always safe to use: If a `-fastprune` node receives a block larger than the maximum blockfile size of `64kb` bad things happen: The while loop in `BlockManager::FindBlockPos` never terminates, and the node runs oom because memory for `m_blockfile_info` is allocated in each iteration of the loop. The same would happen if a naive user used `-fastprune` on anything other than regtest (so this can be tested by syncing on signet for example, the first block that crashes the node is at height 2232). Change the approach by raising the blockfile size to the size of the block, if that block otherwise wouldn't fit (idea by TheCharlatan).",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "fastprune blockstorage limit adjust"
+    },
+    {
+      "number": 9912,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Optimize GetWitnessHash() for non-segwit transactions",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/primitives/transaction.cpp"
+      ],
+      "body": "I've been investigating performance of `CreateNewBlock()`, and one performance regression I spotted was added in #9189, when we started always calculating the witness commitment (even before segwit has activated). This is particularly slow because we don't currently cache the witness hash of a transaction. The coinbase commitment takes about 8ms to generate currently; after this patch this time is reduced to about 1.5ms. I think this also ought to speed up compact block performance, but I haven't tried to benchmark. (I think in an ideal world, we'd go further and cache these witness hashes for segwit transactions as well -- I proposed one approach in #9700, and I tried another approach for a similar kind of caching benefit in #9709, but need reviewer feedback to figure out how to move forw",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "GetWitnessHash optimize"
+    },
+    {
+      "number": 4768,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Perform CVerifyDB on pcoinsdbview instead of pcoinsTip",
+      "labels": [
+        "UTXO Db and Indexes"
+      ],
+      "files": [
+        "src/init.cpp",
+        "src/main.cpp",
+        "src/main.h",
+        "src/rpcblockchain.cpp"
+      ],
+      "body": "Perform CVerifyDB on pcoinsdbview instead of pcoinsTip. Bypassing the main coins cache allows more thorough checking with the same memory budget. This has no effect on performance because everything ends up in the child cache created by VerifyDB itself. It has bugged me ever since #4675, which effectively reduced the number of checked blocks to reduce peak memory usage. - Pass the coinsview to use as argument to VerifyDB - This also avoids that the first `pcoinsTip->Flush()` after VerifyDB writes a large slew of unchanged coin records (only read by the child cache) back to the database. For comparison: ``` Without: 2014-08-27 07:18:09 No coin database inconsistencies in last 148 blocks (61620 transactions) With: 2014-08-27 07:12:28 No coin database inconsistencies in last 262 blocks (10176",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "CVerifyDB on dbview not tip cache"
+    },
+    {
+      "number": 1093,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "Database micro-optimization for \"tx\" network message",
+      "labels": [],
+      "files": [
+        "src/main.cpp",
+        "src/main.h"
+      ],
+      "body": "Open database once per \"tx\" message, rather than multiple times, in the case of orphan transaction presence. As a side effect, a now-unused CTransaction::AcceptToMemoryPool() variant is removed.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "DB micro-opt for tx message"
+    },
+    {
+      "number": 740,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a",
+      "title": "Fix horrific performance found by gmaxwell.",
+      "labels": [],
+      "files": [
+        "src/serialize.h"
+      ],
+      "body": "I hereby certify that I have greped for ever use of CDataStream and find no case where secure_allocator is necessary. Note that this fix increases blockchain download by gmaxwell's estimate of some \"1000x faster\"",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "fix horrific performance"
+    },
+    {
+      "number": 27189,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "util: Use steady clock in SeedStrengthen, FindBestImplementation, FlushStateToDisk",
+      "labels": [
+        "Utils/log/libs"
+      ],
+      "files": [
+        "ci/test/06_script_b.sh",
+        "src/node/minisketchwrapper.cpp",
+        "src/random.cpp",
+        "src/util/time.h",
+        "src/validation.cpp",
+        "src/validation.h"
+      ],
+      "body": "There may be a theoretical deadlock for the duration of the offset when the system clock is adjusted into a past time while executing `SeedStrengthen`. Fix this by using steady clock. Do the same in `FindBestImplementation`, which shouldn't be affected, because it discards outlier measurements. However, doing the same there for consistency seems fine. Do the same in `FlushStateToDisk`, which should make the flushes more steady, if the system clock is adjusted by a large offset.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "steady clock in SeedStrengthen/FlushState"
+    },
+    {
+      "number": 1992,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "networking_change"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": true,
+      "tier_used": "2a+2b",
+      "title": "don't use memset() in privacy/security relevant code parts",
+      "labels": [],
+      "files": [
+        "src/allocators.h",
+        "src/base58.h",
+        "src/crypter.cpp",
+        "src/crypter.h",
+        "src/netbase.cpp",
+        "src/util.cpp"
+      ],
+      "body": "As memset() can be optimized out by a compiler it should not be used in privacy/security relevant code parts. OpenSSL provides the safe OPENSSL_cleanse() function in crypto.h, which perfectly does the job of clean and overwrite data. For details see: http://www.viva64.com/en/b/0178/ - change memset() to OPENSSL_cleanse() where appropriate - change a hard-coded number from netbase.cpp into a sizeof() There are still some more memset() calls in the code, perhaps a dev should take a look if I missed any, that is related to this pull!",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "memset privacy hardening"
+    },
+    {
+      "number": 3912,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "Fix Bloom filter not to use bit_mask",
+      "labels": [],
+      "files": [
+        "src/bloom.cpp"
+      ],
+      "body": "It will speed up Bloom filter.",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "Bloom bit_mask correctness"
+    },
+    {
+      "number": 12048,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Use best-fit strategy in Arena, now O(log(n)) instead O(n)",
+      "labels": [
+        "Refactoring",
+        "Resource usage"
+      ],
+      "files": [
+        "src/bench/lockedpool.cpp",
+        "src/support/lockedpool.cpp",
+        "src/support/lockedpool.h"
+      ],
+      "body": "This replaces the first-fit algorithm used in the Arena with a best-fit. According to \"Dynamic Storage Allocation: A Survey and Critical Review\", Wilson et. al. 1995, http://www.scs.stanford.edu/14wi-cs140/sched/readings/wilson.pdf, both startegies work well in practice. The advantage of using best-fit is that we can switch the O(n) allocation to O(log(n)). Additionally, some previously O(log(n)) operations are now O(1) operations by using hash maps. The end effect is that the benchmark runs about 2.5 times faster on my machine: # Benchmark, evals, iterations, total, min, max, median old: BenchLockedPool, 5, 530, 5.25749, 0.00196938, 0.00199755, 0.00198172 new: BenchLockedPool, 5, 1300, 5.11313, 0.000781493, 0.000793314, 0.00078606 I've run all unit tests and benchmarks, and increased the ",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "Arena best-fit O(log n)"
+    },
+    {
+      "number": 4885,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "Better handling of orphan transactions",
+      "labels": [],
+      "files": [
+        "src/init.cpp",
+        "src/main.cpp",
+        "src/main.h",
+        "src/test/DoS_tests.cpp"
+      ],
+      "body": "This is an alternative to #4880 The second commit fixes a crashing bug I found when testing the rest of these commits. The first is #4880. The third is a two-line change to remove orphans when a node is disconnected for any reason, rather than just because it is banned. The fourth adds a -maxorphantx option, and drops the default maximum number of orphan transactions to store in memory from 10,000 to 100, which is much closer to the actual number of orphans at any time during normal operation. Lowering the maximum number of orphans stored reduces potential memory usage and mitigates a whole class of \"make your node spend a lot of time validating invalid orphans\" attacks.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "orphan handling DoS/structure"
+    },
+    {
+      "number": 4675,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Reduce maximum total coinscache size during verification",
+      "labels": [
+        "UTXO Db and Indexes"
+      ],
+      "files": [
+        "src/main.cpp"
+      ],
+      "body": "Due to growing coinsviewcaches, the memory usage during verification with checklevel=3 (and standard settings for dbcache) could be up to 500MiB on a 64-bit system. This is about twice the peak during reindexing, unnecessarily extending bitcoind's memory envelope. This commit reduces the maximum total size of the caches used during verification to just nCoinCacheSize, which should be the limit.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "reduce coinscache during verification"
+    },
+    {
+      "number": 12287,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "consensus_change",
+        "other"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": true,
+      "tier_used": "1+2a+2b",
+      "title": "Optimise lock behaviour for GuessVerificationProgress()",
+      "labels": [
+        "Validation"
+      ],
+      "files": [
+        "src/qt/clientmodel.cpp",
+        "src/validation.cpp",
+        "src/wallet/wallet.cpp"
+      ],
+      "body": "`GuessVerificationProgress()` needs `cs_main` due to accessing the `pindex->nChainTx`. This adds a `AssertLockHeld` in `GuessVerificationProgress()` and adds the missing locks in... * `LoadChainTip()` * `ScanForWalletTransactions()` (got missed in #11281) * GUI, `ClientModel::getVerificationProgress()` <--- **this may have GUI performance impacts**, but could be relaxed later with a cache or something more efficient.",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "GuessVerificationProgress lock opt"
+    },
+    {
+      "number": 19478,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Remove CTxMempool::mapLinks data structure member",
+      "labels": [
+        "Refactoring",
+        "Mempool",
+        "Resource usage"
+      ],
+      "files": [
+        "src/miner.h",
+        "src/net_processing.cpp",
+        "src/rpc/blockchain.cpp",
+        "src/txmempool.cpp",
+        "src/txmempool.h"
+      ],
+      "body": "Currently we have a peculiar data structure in the mempool called maplinks. Maplinks job is to track the in-pool children and parents of each transaction. This PR can be primarily understood and reviewed as a simple refactoring to remove this extra data structure, although it comes with a nice memory and performance improvement for free. Maplinks is particularly peculiar because removing it is not as simple as just moving it's inner structure to the owning CTxMempoolEntry. Because TxLinks (the class storing the setEntries for parents and children) store txiters to each entry in the mempool corresponding to the parent or child, it means that the TxLinks type is \"aware\" of the boost multiindex (mapTx) it's coming from, which is in turn, aware of the entry type stored in mapTx. Thus we used m",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "remove mapLinks mempool structure"
+    },
+    {
+      "number": 15350,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "qa: Drop RPC connection if --usecli",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/functional/test_framework/test_node.py"
+      ],
+      "body": "Drop the RPC connection used in `TestNode.wait_for_rpc_connection` if `--usecli` is set. If the connection is kept and not used the `Connection: close` header is never sent and so the connection only closes due to timeout (30 sec). It might be sensible to revert e98a9eede2fb48ff33a020acc888cbcd83e24bbf in a follow up, however it changes the shutdown behavior.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 24484,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "guix: use same commit for codesigning time-machine",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "contrib/guix/guix-codesign"
+      ],
+      "body": "The time machines should be updated in lockstep.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 35114,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "test: NodeClockContext follow-ups",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "src/bench/index_blockfilter.cpp",
+        "src/bench/util_time.cpp",
+        "src/bench/wallet_balance.cpp",
+        "src/bench/wallet_create_tx.cpp",
+        "src/bench/wallet_encrypt.cpp",
+        "src/test/addrman_tests.cpp",
+        "src/test/banman_tests.cpp",
+        "src/test/chainstate_write_tests.cpp",
+        "src/test/denialofservice_tests.cpp",
+        "src/test/fuzz/addrman.cpp",
+        "src/test/fuzz/banman.cpp",
+        "src/test/fuzz/block_index_tree.cpp",
+        "src/test/fuzz/cmpctblock.cpp",
+        "src/test/fuzz/connman.cpp",
+        "src/test/fuzz/headerssync.cpp"
+      ],
+      "body": "Follow-up to #34858 Updates remaining `SetMockTime` call sites that are clean, mechanical swaps fitting the spirit of the original PR (see: https://github.com/bitcoin/bitcoin/pull/34858#pullrequestreview-4031647119 and https://github.com/bitcoin/bitcoin/pull/34858#issuecomment-4221757881). Further updates to `SetMockTime` are more complex and deserve separate, isolated PRs. The default constructor for `NodeClockContext` increments to the next tick, which is a defensive measure to prevent time going backwards on construction. This has caused some confusion (see thread: https://github.com/bitcoin/bitcoin/pull/34858#discussion_r3057648646) and can be safely removed after updating the only test where this is load-bearing (b3c9bd7f2df230525c8e339394a315a2c500055d) (see: https://github.com/bitco",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 10429,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "tests: fix spurious addrman test failure",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "src/test/addrman_tests.cpp"
+      ],
+      "body": "There have been a few PRs lately that have failed checks due to a bug introduced in #10287. The first check happened to work already because the chosen addresses didn't collide. The ```addrman.Clear()``` after that check causes addrman's salt to be reset, making all future tests non-deterministic. When inserting two addresses of the same class, from the same source, there's a 1/64 chance that their hashes will collide. So it's faulty logic to be checking for an exact size. @sipa, mind verifying that? I'd like to fix this properly by ensuring determinism in the test as a next step, but I'd rather fix the spurious failures asap.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 33546,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "test: add functional test for `TestShell` (matching doc example)",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/functional/feature_framework_testshell.py",
+        "test/functional/test-shell.md",
+        "test/functional/test_runner.py"
+      ],
+      "body": "This PR adds a functional framework test for the `TestShell` class. The primary motivation for this is to avoid that the example instructions for the interactive Python shell in `test-shell.md` get outdated or broken without noticing, a problem we had already several times in the past (see #26520, #27906, #31415). Having a copy is still not perfect, as docs and functional test have to be kept in sync, but I don't expect this to be a problem in practice, assuming the hint in the functional test comment is hopefully noticed if changes are made. Alternatively, the example instructions in `test-shell.md` could be removed with a hint to the functional test (I tend to prefer to keep the docs as-is though, showing the full REPL interaction). The first commit contain two small removal fix-ups in `",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 22322,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "fuzz: Check banman roundtrip",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "src/test/fuzz/banman.cpp"
+      ],
+      "body": "",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 27376,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "ci: Remove second user account",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "ci/test/04_install.sh",
+        "ci/test/05_before_script.sh"
+      ],
+      "body": "The rationale for the second (nonroot) account no longer applies. See also https://github.com/bitcoin/bitcoin/pull/27333#discussion_r1148898438",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 20861,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [
+        "consensus_change"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "BIP 350: Implement Bech32m and use it for v1+ segwit addresses",
+      "labels": [
+        "Utils/log/libs"
+      ],
+      "files": [
+        "contrib/testgen/README.md",
+        "contrib/testgen/gen_key_io_test_vectors.py",
+        "doc/bips.md",
+        "doc/release-notes-20861.md",
+        "src/bech32.cpp",
+        "src/bech32.h",
+        "src/bench/bech32.cpp",
+        "src/key_io.cpp",
+        "src/test/bech32_tests.cpp",
+        "src/test/data/key_io_invalid.json",
+        "src/test/data/key_io_valid.json",
+        "src/test/fuzz/bech32.cpp",
+        "test/functional/rpc_invalid_address_message.py",
+        "test/functional/test_framework/segwit_addr.py",
+        "test/functional/wallet_labels.py"
+      ],
+      "body": "This implements [BIP 350](https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki): * For segwit v1+ addresses, a new checksum algorithm called Bech32m is used. * Segwit v0 address keep using Bech32 as specified in [BIP 173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki).",
+      "human_primary": "consensus_change",
+      "human_agree": false,
+      "human_notes": "BIP350 Bech32m is consensus/addressing, not CI"
+    },
+    {
+      "number": 19881,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "ci: Double tsan CPU and Memory to avoid global timeout",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        ".cirrus.yml"
+      ],
+      "body": "Fix #19864",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 22366,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "[0.21] fuzz: add missing ECCVerifyHandle to base_encode_decode",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "src/test/fuzz/base_encode_decode.cpp",
+        "src/test/util_tests.cpp",
+        "src/util/system.cpp",
+        "test/functional/feature_includeconf.py"
+      ],
+      "body": "Backports #22279, #22002 and #22137 to fix fuzzing issues in the 0.21 branch: https://github.com/bitcoin/bitcoin/runs/2864012729.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 19868,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "build: Fix target name",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "depends/funcs.mk"
+      ],
+      "body": "It seems like a typo :) This PR: - fixes errors when building a package in depends for `HOST=x86_64-apple-darwin16` (fix #19799) - is a correct alternative to https://github.com/bitcoin/bitcoin/pull/19764/commits/d25e0e308f51f6b995e5d0033224c424dc8afc2c from #19764",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 20468,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "build: warn when generating man pages for binaries built from a dirty branch",
+      "labels": [
+        "Build system",
+        "Scripts and tools"
+      ],
+      "files": [
+        "contrib/devtools/gen-manpages.sh",
+        "src/bitcoin-tx.cpp",
+        "src/bitcoin-wallet.cpp",
+        "src/bitcoind.cpp"
+      ],
+      "body": "- Adjusted `--version` flag behavior in bitcoind and bitcoin-wallet to have the same behavior. - Added `--version` flag to bitcoin-tx to match. - Added functionality in gen-manpages.sh to error when attempting to generate man pages for binaries built from a dirty branch. mitigates problem with issue #20412",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 19230,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "[TESTS] Move base58 to own module to break circular dependency",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/functional/test_framework/address.py",
+        "test/functional/test_framework/base58.py",
+        "test/functional/test_framework/key.py",
+        "test/functional/test_runner.py"
+      ],
+      "body": "I encountered difficulties with the test framework in #17977. This fixes them, and I think the change is generally useful.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 21107,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "test: remove type: comments in favour of actual annotations",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/functional/data/invalid_txs.py",
+        "test/functional/p2p_message_capture.py",
+        "test/functional/test_framework/script.py"
+      ],
+      "body": "Now that we require Python 3.6+, we should be using variable type annotations directly rather than `# type:` comments. Also takes care of the discarded value issue in p2p_message_capture.py. See: https://github.com/bitcoin/bitcoin/pull/19509/files#r571674446.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 13623,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Migrate gitian-build.sh to python",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "contrib/gitian-build.py",
+        "contrib/gitian-build.sh"
+      ],
+      "body": "Fixes #13620 - Rename Mac OSX to MacOS, rename option from 'x' to 'm' - Fix a bug from https://github.com/bitcoin/bitcoin/blob/b641f60425674d737d77abd8c49929d953ea4154/contrib/gitian-build.sh#L338-L342",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 31711,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "build: set build type and per-build-type flags as early as possible",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "CMakeLists.txt",
+        "cmake/module/ProcessConfigurations.cmake"
+      ],
+      "body": "This ensures that most compiler tests are not run with the wrong build type's flags. The initial c++ checks are an exception to that because many internal CMake variables are unset until a language is selected, so it's problematic to change our build type before that. The difference can be seen in `build/CMakeFiles/CMakeConfigureLog.yaml`. Before, `Debug` was used for many of the earlly checks. After this PR, it's only the first 2 checks.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 28588,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "test: BIP324: add checks for v1 prefix matching / wrong network magic detection",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/functional/p2p_v2_transport.py"
+      ],
+      "body": "This PR adds missing test coverage for the detection of incoming v1 connections and wrong network magic on BIP324-enabled (i.e. running with `-v2transport=1`) nodes. Both checks are using prefix sizes of 16 bytes (previously only 12 bytes were used for the v1 prefix matching, which was fixed by PR #28577).",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 34045,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "test: Log IP of download server in get_previous_releases.py",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/get_previous_releases.py"
+      ],
+      "body": "In order to help debug issues with previous release downloads from our web server, we need to know which IP the downloader connected to.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 21023,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "fuzz: Disable shuffle when merge=1",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/fuzz/test_runner.py"
+      ],
+      "body": "This should hopefully help make the deletion of fuzz inputs more deterministic. My tests (N=1) revealed that without this patch 7000 files differ (https://github.com/bitcoin-core/qa-assets/pull/44#issuecomment-768841467). With this patch, \"only\" 2000 files differ.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 19897,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Change FILE_CHAR_BLOCKLIST to FILE_CHARS_DISALLOWED",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "test/functional/feature_notifications.py"
+      ],
+      "body": "Blocklist is ambiguous. It could mean a list of blocks. Example: \"blocknotify\" in the same file refers to Bitcoin blocks.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": "Tests-labeled rename in test paths"
+    }
+  ]
+}

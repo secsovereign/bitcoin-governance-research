@@ -42,7 +42,7 @@ def main():
     print("BITCOIN CORE GOVERNANCE ANALYSIS - FULL PIPELINE")
     print("=" * 70)
     print()
-    print("This will run all 10 core analysis scripts:")
+    print("This will run all 10 core analysis scripts, then architectural divergence:")
     print()
     
     scripts_dir = project_root / "scripts" / "analysis"
@@ -60,6 +60,11 @@ def main():
         ("release_signing_analysis.py", "Release Signing Analysis"),
         ("identity_resolution_enhanced.py", "Enhanced Identity Resolution"),
         ("funding_analysis_consolidated.py", "Funding Analysis"),
+        # Architectural divergence (Phases 1–3); requires prior classification JSONL
+        ("blvm_codebase_metrics.py", "Commons Codebase Metrics"),
+        ("subsystem_debt_comparison.py", "Subsystem Debt Comparison"),
+        ("architectural_comparison.py", "Architectural Comparison Table"),
+        ("velocity_differential.py", "Architectural Velocity Differential"),
     ]
     
     success_count = 0

@@ -1,0 +1,60 @@
+{
+  "analysis_date": "2026-07-12T08:36:45.657702+00:00",
+  "methodology": "docs/ARCHITECTURAL_DIVERGENCE_PLAN.md (Phase 1 + Cursor Tier 3 import)",
+  "cursor_batch_id": "20260712T074551Z_000",
+  "cursor_updated": 50,
+  "metrics": {
+    "total_classified": 16653,
+    "ambiguous_count": 1459,
+    "ambiguous_pct": 8.76,
+    "confidence": {
+      "high": 13434,
+      "medium": 2368,
+      "low": 851
+    },
+    "primary_counts": {
+      "rpc_change": 964,
+      "documentation": 2047,
+      "refactor": 1469,
+      "dependency_maintenance": 561,
+      "debt_compensation": 283,
+      "test_ci_build": 5782,
+      "other": 3809,
+      "consensus_change": 619,
+      "networking_change": 1008,
+      "new_feature": 111
+    },
+    "primary_pct": {
+      "rpc_change": 5.79,
+      "documentation": 12.29,
+      "refactor": 8.82,
+      "dependency_maintenance": 3.37,
+      "debt_compensation": 1.7,
+      "test_ci_build": 34.72,
+      "other": 22.87,
+      "consensus_change": 3.72,
+      "networking_change": 6.05,
+      "new_feature": 0.67
+    },
+    "headline_metrics": {
+      "architectural_debt_tax_pct": 1.7,
+      "total_maintenance_burden_pct": 39.79,
+      "structural_work_pct": 8.82,
+      "net_new_capability_pct": 16.23,
+      "other_pct": 22.87
+    }
+  },
+  "data_sources": [
+    "/home/user/src/bitcoin-governance-research/data/processed/enriched_prs.jsonl",
+    "/home/user/src/bitcoin-governance-research/findings/data/code_turnover_analysis.json",
+    "/home/user/src/bitcoin-governance-research/data/classification"
+  ],
+  "parameters": {
+    "debt_score_threshold": 50.0
+  },
+  "limitations": [
+    "Tier 3 (Cursor) not yet applied; ambiguous_pct includes unresolved cases",
+    "code_turnover_analysis.json may predate full regenerated PR corpus",
+    "Labels and keywords are heuristics; debt_compensation is hardest category"
+  ]
+}

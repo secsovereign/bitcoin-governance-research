@@ -1,0 +1,3074 @@
+{
+  "batch_id": "20260712T074551Z_000",
+  "prompt_hash": "7c8c1dc06cb66f1e",
+  "prompt_path": "/home/user/src/bitcoin-governance-research/scripts/analysis/prompts/architectural_category.md",
+  "created_at": "2026-07-12T07:45:51.188002+00:00",
+  "count": 50,
+  "instructions": "Classify each PR into primary architectural_category and optional secondary[]. Use scripts/analysis/prompts/architectural_category.md. Return JSONL lines: {number, primary, secondary, confidence, rationale}.",
+  "prs": [
+    {
+      "number": 20813,
+      "primary": "refactor",
+      "secondary": [
+        "test_ci_build",
+        "other",
+        "consensus_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Docs->documentation",
+        "paths:{'test_ci_build': 110, 'networking_change': 7, 'other': 91, 'consensus_change': 12, 'rpc_change': 11}",
+        "kw:dependency_maintenance:['bump ']",
+        "enrich:consensus->consensus_change",
+        "debt_join:test/functional/test_framework/test_framework.py=76,src/policy/policy.h=74,src/bench/coin_selection.cpp=72,src/torcontrol.cpp=68,src/core_io.h=68",
+        "override:title_prefix:scripted-diff:->refactor"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 22.0,
+        "consensus_change": 13.25,
+        "networking_change": 10.5,
+        "rpc_change": 12.75,
+        "dependency_maintenance": 3.0,
+        "test_ci_build": 19.0,
+        "documentation": 4.0,
+        "other": 17.0
+      },
+      "ambiguous": true,
+      "title": "scripted-diff: Bump copyright headers",
+      "merged_at": "2020-12-31T17:51:51+00:00",
+      "labels": [
+        "Docs"
+      ],
+      "files_sample": [
+        "build_msvc/testconsensus/testconsensus.cpp",
+        "ci/lint/04_install.sh",
+        "ci/lint/06_script.sh",
+        "ci/lint_run_all.sh",
+        "ci/test/wrap-qemu.sh",
+        "ci/test_run_all.sh",
+        "contrib/devtools/circular-dependencies.py",
+        "contrib/devtools/gen-manpages.sh",
+        "contrib/filter-lcov.py",
+        "contrib/gitian-build.py",
+        "contrib/testgen/base58.py",
+        "contrib/testgen/gen_key_io_test_vectors.py"
+      ],
+      "body": "Needs to be done because no one has removed the years yet",
+      "files": [
+        "build_msvc/testconsensus/testconsensus.cpp",
+        "ci/lint/04_install.sh",
+        "ci/lint/06_script.sh",
+        "ci/lint_run_all.sh",
+        "ci/test/wrap-qemu.sh",
+        "ci/test_run_all.sh",
+        "contrib/devtools/circular-dependencies.py",
+        "contrib/devtools/gen-manpages.sh",
+        "contrib/filter-lcov.py",
+        "contrib/gitian-build.py",
+        "contrib/testgen/base58.py",
+        "contrib/testgen/gen_key_io_test_vectors.py",
+        "contrib/zmq/zmq_sub.py",
+        "share/genbuild.sh",
+        "src/addrdb.cpp",
+        "src/addrdb.h",
+        "src/attributes.h",
+        "src/banman.cpp",
+        "src/base58.cpp",
+        "src/base58.h"
+      ]
+    },
+    {
+      "number": 11651,
+      "primary": "test_ci_build",
+      "secondary": [
+        "refactor",
+        "other",
+        "consensus_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Build system->test_ci_build",
+        "paths:{'documentation': 1, 'networking_change': 13, 'rpc_change': 23, 'consensus_change': 28, 'other': 145, 'test_ci_build': 63}",
+        "kw:refactor:['refactor']",
+        "enrich:feature->new_feature",
+        "debt_join:src/miner.h=80,src/test/test_bitcoin.h=80,src/wallet/walletdb.h=78,src/test/test_bitcoin.cpp=76,src/policy/policy.h=74",
+        "override:title_prefix:refactor:->refactor"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 20.0,
+        "new_feature": 0.5,
+        "consensus_change": 17.0,
+        "networking_change": 13.25,
+        "rpc_change": 15.75,
+        "test_ci_build": 21.0,
+        "documentation": 1.5,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "refactor: Make all #includes relative to project root (laanwj, MeshCollider, ryanofsky)",
+      "merged_at": "2017-11-16T08:34:00+00:00",
+      "labels": [
+        "Build system"
+      ],
+      "files_sample": [
+        "doc/developer-notes.md",
+        "src/Makefile.am",
+        "src/Makefile.qt.include",
+        "src/Makefile.test.include",
+        "src/addrdb.cpp",
+        "src/addrdb.h",
+        "src/addrman.cpp",
+        "src/addrman.h",
+        "src/arith_uint256.cpp",
+        "src/base58.cpp",
+        "src/base58.h",
+        "src/bech32.cpp"
+      ],
+      "body": "Rebase of #11053 Previously started by @laanwj, ACK'ed by promag, ryanofsky, jonasschnelli, and concept-ACK'ed by practicalswift and jnewbery. Thus should be almost RTM :)",
+      "files": [
+        "doc/developer-notes.md",
+        "src/Makefile.am",
+        "src/Makefile.qt.include",
+        "src/Makefile.test.include",
+        "src/addrdb.cpp",
+        "src/addrdb.h",
+        "src/addrman.cpp",
+        "src/addrman.h",
+        "src/arith_uint256.cpp",
+        "src/base58.cpp",
+        "src/base58.h",
+        "src/bech32.cpp",
+        "src/bench/Examples.cpp",
+        "src/bench/base58.cpp",
+        "src/bench/bench.cpp",
+        "src/bench/bench_bitcoin.cpp",
+        "src/bench/ccoins_caching.cpp",
+        "src/bench/checkblock.cpp",
+        "src/bench/checkqueue.cpp",
+        "src/bench/coin_selection.cpp"
+      ]
+    },
+    {
+      "number": 18673,
+      "primary": "refactor",
+      "secondary": [
+        "test_ci_build",
+        "other",
+        "rpc_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "label:Tests->test_ci_build",
+        "paths:{'test_ci_build': 174, 'networking_change': 3, 'rpc_change': 14, 'consensus_change': 10, 'other': 62}",
+        "kw:dependency_maintenance:['bump ']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/miner.h=80,test/functional/wallet_multiwallet.py=78,src/wallet/walletdb.h=78,src/index/base.cpp=77,test/functional/test_framework/test_node.py=77",
+        "override:title_prefix:scripted-diff:->refactor"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 26.0,
+        "consensus_change": 12.75,
+        "networking_change": 4.5,
+        "rpc_change": 13.5,
+        "dependency_maintenance": 3.0,
+        "test_ci_build": 23.0,
+        "other": 17.0
+      },
+      "ambiguous": true,
+      "title": "scripted-diff: Sort test includes",
+      "merged_at": "2020-04-17T14:14:27+00:00",
+      "labels": [
+        "Refactoring",
+        "Tests"
+      ],
+      "files_sample": [
+        "build_msvc/bitcoin_config.h",
+        "build_msvc/testconsensus/testconsensus.cpp",
+        "ci/test/00_setup_env.sh",
+        "ci/test/00_setup_env_arm.sh",
+        "ci/test/00_setup_env_mac.sh",
+        "ci/test/00_setup_env_mac_host.sh",
+        "ci/test/00_setup_env_native_asan.sh",
+        "ci/test/00_setup_env_native_fuzz.sh",
+        "ci/test/00_setup_env_native_fuzz_with_valgrind.sh",
+        "ci/test/00_setup_env_native_nowallet.sh",
+        "ci/test/00_setup_env_native_qt5.sh",
+        "ci/test/00_setup_env_native_tsan.sh"
+      ],
+      "body": "When writing tests, often includes need to be added or removed. Currently the list of includes is not sorted, so developers that write tests and have `clang-format` installed will either have an unrelated change (sorting) included in their commit or they will have to manually undo the sort. This pull preempts both issues by just sorting all includes in one commit. Please be aware that this is **NOT** a change to policy to enforce clang-format or any other developer guideline or process. Developers are free to use whatever tool they want, see also #18651. Edit: Also includes a commit to bump the copyright headers, so that the touched files don't need to be touched again for that.",
+      "files": [
+        "build_msvc/bitcoin_config.h",
+        "build_msvc/testconsensus/testconsensus.cpp",
+        "ci/test/00_setup_env.sh",
+        "ci/test/00_setup_env_arm.sh",
+        "ci/test/00_setup_env_mac.sh",
+        "ci/test/00_setup_env_mac_host.sh",
+        "ci/test/00_setup_env_native_asan.sh",
+        "ci/test/00_setup_env_native_fuzz.sh",
+        "ci/test/00_setup_env_native_fuzz_with_valgrind.sh",
+        "ci/test/00_setup_env_native_nowallet.sh",
+        "ci/test/00_setup_env_native_qt5.sh",
+        "ci/test/00_setup_env_native_tsan.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "ci/test/00_setup_env_s390x.sh",
+        "ci/test/00_setup_env_s390x_host.sh",
+        "ci/test/00_setup_env_win64.sh",
+        "ci/test/05_before_script.sh",
+        "ci/test/06_script_a.sh",
+        "ci/test/06_script_b.sh",
+        "ci/test/wrap-qemu.sh"
+      ]
+    },
+    {
+      "number": 31104,
+      "primary": "other",
+      "secondary": [
+        "documentation",
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Backport->other",
+        "paths:{'test_ci_build': 7, 'dependency_maintenance': 1, 'documentation': 9, 'networking_change': 2, 'consensus_change': 2}",
+        "debt_join:src/key_io.cpp=63,depends/hosts/mingw32.mk=58,doc/man/bitcoin-util.1=50,src/test/fuzz/addrman.cpp=50",
+        "override:backport->other"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "consensus_change": 3.0,
+        "networking_change": 3.0,
+        "dependency_maintenance": 1.5,
+        "test_ci_build": 10.5,
+        "documentation": 14.25,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "[28.x] Backports & 28.1rc1",
+      "merged_at": "2024-12-04T13:36:33+00:00",
+      "labels": [
+        "Backport"
+      ],
+      "files_sample": [
+        "build_msvc/fuzz/fuzz.vcxproj",
+        "ci/test/00_setup_env_native_fuzz_with_valgrind.sh",
+        "configure.ac",
+        "contrib/devtools/gen-bitcoin-conf.sh",
+        "depends/hosts/mingw32.mk",
+        "doc/bitcoin-conf.md",
+        "doc/man/bitcoin-cli.1",
+        "doc/man/bitcoin-qt.1",
+        "doc/man/bitcoin-tx.1",
+        "doc/man/bitcoin-util.1",
+        "doc/man/bitcoin-wallet.1",
+        "doc/man/bitcoind.1"
+      ],
+      "body": "Backports: * #30568 * #31007 * #31013 * #31016 * #31035 * #31166 Contains: * A commit to do the same as #31307.",
+      "files": [
+        "build_msvc/fuzz/fuzz.vcxproj",
+        "ci/test/00_setup_env_native_fuzz_with_valgrind.sh",
+        "configure.ac",
+        "contrib/devtools/gen-bitcoin-conf.sh",
+        "depends/hosts/mingw32.mk",
+        "doc/bitcoin-conf.md",
+        "doc/man/bitcoin-cli.1",
+        "doc/man/bitcoin-qt.1",
+        "doc/man/bitcoin-tx.1",
+        "doc/man/bitcoin-util.1",
+        "doc/man/bitcoin-wallet.1",
+        "doc/man/bitcoind.1",
+        "doc/release-notes.md",
+        "doc/release-notes/release-notes-28.0.md",
+        "src/addrman.cpp",
+        "src/addrman_impl.h",
+        "src/key_io.cpp",
+        "src/script/miniscript.cpp",
+        "src/script/miniscript.h",
+        "src/test/fuzz/addrman.cpp"
+      ]
+    },
+    {
+      "number": 29888,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Backport->other",
+        "label:CI failed->test_ci_build",
+        "paths:{'test_ci_build': 8, 'dependency_maintenance': 3, 'documentation': 3, 'other': 1, 'rpc_change': 1, 'consensus_change': 1}",
+        "debt_join:src/index/base.cpp=77,test/functional/rpc_psbt.py=72,src/core_read.cpp=61,src/test/rpc_tests.cpp=60",
+        "override:backport->other"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "consensus_change": 1.5,
+        "rpc_change": 1.5,
+        "dependency_maintenance": 4.5,
+        "test_ci_build": 18.0,
+        "documentation": 4.5,
+        "other": 20.5
+      },
+      "ambiguous": true,
+      "title": "[27.x] Backports",
+      "merged_at": "2024-05-13T03:53:35+00:00",
+      "labels": [
+        "Backport",
+        "CI failed"
+      ],
+      "files_sample": [
+        "build-aux/m4/l_atomic.m4",
+        "ci/test/00_setup_env_s390x.sh",
+        "depends/packages/qt.mk",
+        "depends/patches/qt/zlib-timebits64.patch",
+        "doc/build-osx.md",
+        "doc/release-notes.md",
+        "doc/release-notes/release-notes-27.0.md",
+        "src/core_read.cpp",
+        "src/index/base.cpp",
+        "src/kernel/chainparams.cpp",
+        "src/rpc/node.cpp",
+        "src/script/sign.cpp"
+      ],
+      "body": "Backports: * https://github.com/bitcoin/bitcoin/pull/29691 * https://github.com/bitcoin/bitcoin/pull/29747 * https://github.com/bitcoin/bitcoin/pull/29776 * https://github.com/bitcoin/bitcoin/pull/29853 * https://github.com/bitcoin/bitcoin/pull/29856 * https://github.com/bitcoin/bitcoin/pull/29859 * https://github.com/bitcoin/bitcoin/pull/29869 * https://github.com/bitcoin/bitcoin/pull/29870 * https://github.com/bitcoin/bitcoin/pull/29886 * https://github.com/bitcoin/bitcoin/pull/29892 * https://github.com/bitcoin/bitcoin/pull/29934 * https://github.com/bitcoin/bitcoin/pull/29985",
+      "files": [
+        "build-aux/m4/l_atomic.m4",
+        "ci/test/00_setup_env_s390x.sh",
+        "depends/packages/qt.mk",
+        "depends/patches/qt/zlib-timebits64.patch",
+        "doc/build-osx.md",
+        "doc/release-notes.md",
+        "doc/release-notes/release-notes-27.0.md",
+        "src/core_read.cpp",
+        "src/index/base.cpp",
+        "src/kernel/chainparams.cpp",
+        "src/rpc/node.cpp",
+        "src/script/sign.cpp",
+        "src/test/rpc_tests.cpp",
+        "src/test/script_tests.cpp",
+        "src/univalue/test/object.cpp",
+        "test/functional/rpc_psbt.py",
+        "test/functional/rpc_signrawtransactionwithkey.py",
+        "test/functional/rpc_uptime.py",
+        "test/functional/wallet_signrawtransactionwithwallet.py"
+      ]
+    },
+    {
+      "number": 13258,
+      "primary": "refactor",
+      "secondary": [
+        "networking_change",
+        "new_feature"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'networking_change': 1, 'test_ci_build': 1, 'consensus_change': 1}",
+        "kw:new_feature:['introduce']",
+        "enrich:bugfix->other",
+        "debt_join:src/validation.h=62,src/uint256.h=52,src/hash.h=51"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "new_feature": 2.0,
+        "consensus_change": 1.5,
+        "networking_change": 3.5,
+        "test_ci_build": 1.5,
+        "other": 0.75
+      },
+      "ambiguous": true,
+      "title": "uint256: Remove unnecessary crypto/common.h dependency",
+      "merged_at": "2018-11-30T17:49:54+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/addrman.cpp",
+        "src/hash.h",
+        "src/test/addrman_tests.cpp",
+        "src/uint256.h",
+        "src/validation.h"
+      ],
+      "body": "This is an alternative to #13242 which keeps the `ReadLE64` part, but moves the `crypto/common.h` dependency into `crypto/common.h` as a function outside of `uint256`. **Reason:** this change will remove dependencies for `uint256` to `crypto/common.h`, `compat/endian.h`, and `compat/byteswap.h`. This PR removes the need to update tests to be endian-aware/-independent, but keeps the (arguably dubious) `ReadLE64` part (which was only introduced to fix the tests, not for any functionality).",
+      "files": [
+        "src/addrman.cpp",
+        "src/hash.h",
+        "src/test/addrman_tests.cpp",
+        "src/uint256.h",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 13249,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'networking_change': 2, 'other': 15, 'rpc_change': 3, 'test_ci_build': 10, 'consensus_change': 1}",
+        "debt_join:src/test/test_bitcoin.cpp=76,src/qt/bitcoin.cpp=66,src/test/transaction_tests.cpp=65,src/bitcoin-tx.cpp=64,src/qt/bitcoingui.cpp=64"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "consensus_change": 1.5,
+        "networking_change": 3.0,
+        "rpc_change": 4.5,
+        "test_ci_build": 12.5,
+        "other": 15.75
+      },
+      "ambiguous": true,
+      "title": "Make objects in range declarations immutable by default. Avoid unnecessary copying of objects in range declarations.",
+      "merged_at": "2018-09-04T13:50:54+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/bech32.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/cuckoocache.h",
+        "src/net.cpp",
+        "src/net_processing.cpp",
+        "src/qt/bitcoin.cpp",
+        "src/qt/bitcoingui.cpp",
+        "src/qt/peertablemodel.cpp",
+        "src/qt/sendcoinsdialog.cpp",
+        "src/qt/splashscreen.cpp",
+        "src/qt/trafficgraphwidget.cpp",
+        "src/qt/transactiondesc.cpp"
+      ],
+      "body": "Make objects in range declarations immutable by default. Rationale: * Immutable objects are easier to reason about. * Prevents accidental or hard-to-notice change of value.",
+      "files": [
+        "src/bech32.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/cuckoocache.h",
+        "src/net.cpp",
+        "src/net_processing.cpp",
+        "src/qt/bitcoin.cpp",
+        "src/qt/bitcoingui.cpp",
+        "src/qt/peertablemodel.cpp",
+        "src/qt/sendcoinsdialog.cpp",
+        "src/qt/splashscreen.cpp",
+        "src/qt/trafficgraphwidget.cpp",
+        "src/qt/transactiondesc.cpp",
+        "src/qt/transactionrecord.cpp",
+        "src/rpc/blockchain.cpp",
+        "src/rpc/mining.cpp",
+        "src/rpc/net.cpp",
+        "src/test/checkqueue_tests.cpp",
+        "src/test/coins_tests.cpp",
+        "src/test/cuckoocache_tests.cpp",
+        "src/test/dbwrapper_tests.cpp"
+      ]
+    },
+    {
+      "number": 11592,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Tests->test_ci_build",
+        "label:Backport->other",
+        "paths:{'documentation': 1, 'rpc_change': 3, 'networking_change': 4, 'other': 3, 'test_ci_build': 42, 'consensus_change': 2}",
+        "debt_join:src/miner.h=80,test/functional/bip68-sequence.py=80,test/functional/blockchain.py=80,test/functional/bumpfee.py=80,test/functional/disconnect_ban.py=80",
+        "override:backport->other"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "consensus_change": 3.0,
+        "networking_change": 6.0,
+        "rpc_change": 4.5,
+        "test_ci_build": 23.0,
+        "documentation": 1.5,
+        "other": 23.5
+      },
+      "ambiguous": true,
+      "title": "0.15: Backports",
+      "merged_at": "2017-11-03T22:43:03+00:00",
+      "labels": [
+        "Tests",
+        "Backport"
+      ],
+      "files_sample": [
+        "doc/release-notes.md",
+        "src/httpserver.cpp",
+        "src/init.cpp",
+        "src/miner.cpp",
+        "src/miner.h",
+        "src/net.cpp",
+        "src/net.h",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/policy/policy.h",
+        "src/rpc/mining.cpp",
+        "src/rpc/net.cpp"
+      ],
+      "body": "",
+      "files": [
+        "doc/release-notes.md",
+        "src/httpserver.cpp",
+        "src/init.cpp",
+        "src/miner.cpp",
+        "src/miner.h",
+        "src/net.cpp",
+        "src/net.h",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/policy/policy.h",
+        "src/rpc/mining.cpp",
+        "src/rpc/net.cpp",
+        "src/test/DoS_tests.cpp",
+        "src/test/test_bitcoin.cpp",
+        "src/test/test_bitcoin.h",
+        "src/test/util_tests.cpp",
+        "src/utilstrencodings.cpp",
+        "src/utilstrencodings.h",
+        "src/validation.cpp",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 11536,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build",
+        "rpc_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Wallet->other",
+        "paths:{'documentation': 1, 'other': 4, 'rpc_change': 2, 'test_ci_build': 5}",
+        "kw:refactor:['rename', 'simplify']",
+        "kw:rpc_change:['rpc']",
+        "enrich:consensus->consensus_change",
+        "debt_join:test/functional/test_runner.py=77,src/wallet/wallet.h=55,src/qt/paymentserver.cpp=52,src/rpc/client.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "consensus_change": 0.25,
+        "rpc_change": 5.0,
+        "test_ci_build": 9.5,
+        "documentation": 1.5,
+        "other": 10.0
+      },
+      "ambiguous": true,
+      "title": "Rename account to label where appropriate",
+      "merged_at": "2018-03-22T20:28:40+00:00",
+      "labels": [
+        "Wallet"
+      ],
+      "files_sample": [
+        "doc/release-notes.md",
+        "src/qt/paymentserver.cpp",
+        "src/rpc/client.cpp",
+        "src/rpc/protocol.h",
+        "src/wallet/rpcwallet.cpp",
+        "src/wallet/wallet.cpp",
+        "src/wallet/wallet.h",
+        "test/functional/test_runner.py",
+        "test/functional/wallet_accounts.py",
+        "test/functional/wallet_import_rescan.py",
+        "test/functional/wallet_labels.py",
+        "test/functional/wallet_listreceivedby.py"
+      ],
+      "body": "Rename account to label where appropriate This change only updates strings and adds RPC aliases, but should simplify the implementation of address labels in https://github.com/bitcoin/bitcoin/pull/7729, by getting renaming out of the way and letting that change focus on semantics. The difference between accounts and labels is that labels apply only to addresses, while accounts apply to both addresses and transactions (transactions have \"from\" and \"to\" accounts). The code associating accounts with transactions is clumsy and unreliable so we would like get rid of it. --- There is a rebased version of #7729 atop this PR at https://github.com/ryanofsky/bitcoin/commits/pr/label, see https://github.com/bitcoin/bitcoin/pull/7729#issuecomment-338417139.",
+      "files": [
+        "doc/release-notes.md",
+        "src/qt/paymentserver.cpp",
+        "src/rpc/client.cpp",
+        "src/rpc/protocol.h",
+        "src/wallet/rpcwallet.cpp",
+        "src/wallet/wallet.cpp",
+        "src/wallet/wallet.h",
+        "test/functional/test_runner.py",
+        "test/functional/wallet_accounts.py",
+        "test/functional/wallet_import_rescan.py",
+        "test/functional/wallet_labels.py",
+        "test/functional/wallet_listreceivedby.py"
+      ]
+    },
+    {
+      "number": 11309,
+      "primary": "other",
+      "secondary": [
+        "consensus_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Mempool->other",
+        "paths:{'networking_change': 1, 'rpc_change': 1, 'test_ci_build': 1, 'consensus_change': 2, 'other': 1}",
+        "kw:refactor:['cleanup']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/test/txvalidationcache_tests.cpp=74,src/validation.h=62,src/rpc/rawtransaction.cpp=53,src/validation.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 2.0,
+        "consensus_change": 5.25,
+        "networking_change": 1.5,
+        "rpc_change": 1.5,
+        "test_ci_build": 1.5,
+        "other": 5.5
+      },
+      "ambiguous": true,
+      "title": "Minor cleanups for AcceptToMemoryPool",
+      "merged_at": "2017-09-29T13:12:00+00:00",
+      "labels": [
+        "Mempool"
+      ],
+      "files_sample": [
+        "src/net_processing.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/test/txvalidationcache_tests.cpp",
+        "src/validation.cpp",
+        "src/validation.h",
+        "src/wallet/wallet.cpp"
+      ],
+      "body": "First commit just removes default arguments from `AcceptToMemoryPool` and consolidates two arguments, it does not change behavior. Second commit finally fixes the fact that we're not meant to reject based on mempool min fee when adding a transaction from a disconnected block during a reorg as mentioned [here](https://github.com/bitcoin/bitcoin/pull/9602#issue-202197849) Third commit makes fee estimation ignore transactions added from a disconnected block during a reorg. I think this was another source of fee estimates returning estimates below 1000 sat/kB as in #11303.",
+      "files": [
+        "src/net_processing.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/test/txvalidationcache_tests.cpp",
+        "src/validation.cpp",
+        "src/validation.h",
+        "src/wallet/wallet.cpp"
+      ]
+    },
+    {
+      "number": 10244,
+      "primary": "other",
+      "secondary": [
+        "refactor"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:GUI->other",
+        "paths:{'documentation': 1, 'networking_change': 1, 'other': 53}",
+        "kw:refactor:['refactor']",
+        "kw:networking_change:['peer']",
+        "kw:rpc_change:['rpc']",
+        "kw:documentation:['readme']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/qt/bitcoingui.h=68,src/Makefile.qttest.include=68,src/qt/clientmodel.cpp=67,src/qt/bitcoin.cpp=66,src/qt/optionsmodel.cpp=64",
+        "override:title_prefix:refactor:->refactor"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 20.0,
+        "consensus_change": 0.25,
+        "networking_change": 3.5,
+        "rpc_change": 2.0,
+        "documentation": 4.5,
+        "other": 23.0
+      },
+      "ambiguous": true,
+      "title": "Refactor: separate gui from wallet and node",
+      "merged_at": "2018-04-05T16:19:56+00:00",
+      "labels": [
+        "GUI"
+      ],
+      "files_sample": [
+        "doc/developer-notes.md",
+        "src/Makefile.am",
+        "src/Makefile.qt.include",
+        "src/Makefile.qttest.include",
+        "src/interface/README.md",
+        "src/interface/handler.cpp",
+        "src/interface/handler.h",
+        "src/interface/node.cpp",
+        "src/interface/node.h",
+        "src/interface/wallet.cpp",
+        "src/interface/wallet.h",
+        "src/net_processing.h"
+      ],
+      "body": "This is a refactoring PR that does not change behavior in any way. This change: 1. Creates abstract [`Node`](https://github.com/ryanofsky/bitcoin/blob/pr/ipc-local/src/interface/node.h) and [`Wallet`](https://github.com/ryanofsky/bitcoin/blob/pr/ipc-local/src/interface/wallet.h) interfaces in [`src/interface/`](https://github.com/ryanofsky/bitcoin/tree/pr/ipc-local/src/interface) 1. Updates Qt code to call the new interfaces. This largely consists of diffs of the form: ```diff - InitLogging(); - InitParameterInteraction(); + node.initLogging(); + node.initParameterInteraction(); ``` This change allows followup PR #10102 (makes `bitcoin-qt` control `bitcoind` over an IPC socket) to work without any significant updates to Qt code. Additionally: * It provides a single place to describe the interface between GUI and daemon code. * It can make better GUI testing possible, because Node and Wallet objects have virtual methods that can be overloaded for mocking. * It can be used to help make the GUI more responsive (see https://github.com/bitcoin/bitcoin/issues/10504) Other notes: * I used python scripts [hide-globals.py](https://github.com/ryanofsky/home/blob/master/src/2017/hide-globals/hide-globals.py) and [replace-syms.py](https://github.com/ryanofsky/home/blob/master/src/2017/hide-globals/replace-syms.py) to identify all the places where Qt code was accessing libbitcoin global variables and calling functions accessing those global variables. * These changes were originally part ",
+      "files": [
+        "doc/developer-notes.md",
+        "src/Makefile.am",
+        "src/Makefile.qt.include",
+        "src/Makefile.qttest.include",
+        "src/interface/README.md",
+        "src/interface/handler.cpp",
+        "src/interface/handler.h",
+        "src/interface/node.cpp",
+        "src/interface/node.h",
+        "src/interface/wallet.cpp",
+        "src/interface/wallet.h",
+        "src/net_processing.h",
+        "src/qt/addresstablemodel.cpp",
+        "src/qt/addresstablemodel.h",
+        "src/qt/bantablemodel.cpp",
+        "src/qt/bantablemodel.h",
+        "src/qt/bitcoin.cpp",
+        "src/qt/bitcoingui.cpp",
+        "src/qt/bitcoingui.h",
+        "src/qt/clientmodel.cpp"
+      ]
+    },
+    {
+      "number": 9450,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build",
+        "consensus_change",
+        "rpc_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Docs->documentation",
+        "paths:{'test_ci_build': 47, 'networking_change': 10, 'rpc_change': 20, 'consensus_change': 23, 'other': 101}",
+        "enrich:documentation->documentation",
+        "debt_join:src/miner.h=80,src/test/test_bitcoin.h=80,src/wallet/walletdb.h=78,src/test/test_bitcoin.cpp=76,src/test/txvalidationcache_tests.cpp=74"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "consensus_change": 15.75,
+        "networking_change": 12.5,
+        "rpc_change": 15.0,
+        "test_ci_build": 17.0,
+        "documentation": 4.75,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "Increment MIT licence copyright header year on files modified in 2016",
+      "merged_at": "2017-01-04T11:09:50+00:00",
+      "labels": [
+        "Docs"
+      ],
+      "files_sample": [
+        "contrib/devtools/check-doc.py",
+        "contrib/devtools/optimize-pngs.py",
+        "contrib/linearize/linearize-data.py",
+        "contrib/linearize/linearize-hashes.py",
+        "contrib/macdeploy/custom_dsstore.py",
+        "contrib/seeds/makeseeds.py",
+        "contrib/testgen/base58.py",
+        "contrib/testgen/gen_base58_test_vectors.py",
+        "qa/rpc-tests/bip68-112-113-p2p.py",
+        "qa/rpc-tests/bip9-softforks.py",
+        "qa/rpc-tests/preciousblock.py",
+        "share/rpcuser/rpcuser.py"
+      ],
+      "body": "Edited via: $ contrib/devtools/copyright_header.py update .",
+      "files": [
+        "contrib/devtools/check-doc.py",
+        "contrib/devtools/optimize-pngs.py",
+        "contrib/linearize/linearize-data.py",
+        "contrib/linearize/linearize-hashes.py",
+        "contrib/macdeploy/custom_dsstore.py",
+        "contrib/seeds/makeseeds.py",
+        "contrib/testgen/base58.py",
+        "contrib/testgen/gen_base58_test_vectors.py",
+        "qa/rpc-tests/bip68-112-113-p2p.py",
+        "qa/rpc-tests/bip9-softforks.py",
+        "qa/rpc-tests/preciousblock.py",
+        "share/rpcuser/rpcuser.py",
+        "src/addrdb.cpp",
+        "src/addrdb.h",
+        "src/addrman.cpp",
+        "src/addrman.h",
+        "src/amount.cpp",
+        "src/amount.h",
+        "src/arith_uint256.cpp",
+        "src/arith_uint256.h"
+      ]
+    },
+    {
+      "number": 8059,
+      "primary": "networking_change",
+      "secondary": [
+        "refactor"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'networking_change': 2, 'rpc_change': 1, 'test_ci_build': 1, 'other': 1}",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/test/txvalidationcache_tests.cpp=74,src/main.h=68,src/main.cpp=62,src/rpc/rawtransaction.cpp=53"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "consensus_change": 0.25,
+        "networking_change": 5.0,
+        "rpc_change": 1.5,
+        "test_ci_build": 1.5,
+        "other": 1.5
+      },
+      "ambiguous": true,
+      "title": "Remove unneeded feerate param from RelayTransaction/AcceptToMemoryPool.",
+      "merged_at": "2016-05-16T20:56:19+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/main.cpp",
+        "src/main.h",
+        "src/net.cpp",
+        "src/net.h",
+        "src/rpc/rawtransaction.cpp",
+        "src/test/txvalidationcache_tests.cpp",
+        "src/wallet/wallet.cpp"
+      ],
+      "body": "This argument was recently added by the addition of feefilter then mooted by #7840.",
+      "files": [
+        "src/main.cpp",
+        "src/main.h",
+        "src/net.cpp",
+        "src/net.h",
+        "src/rpc/rawtransaction.cpp",
+        "src/test/txvalidationcache_tests.cpp",
+        "src/wallet/wallet.cpp"
+      ]
+    },
+    {
+      "number": 7205,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build",
+        "consensus_change",
+        "networking_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'test_ci_build': 46, 'rpc_change': 2, 'consensus_change': 18, 'other': 106, 'networking_change': 6}",
+        "kw:new_feature:['introduce']",
+        "enrich:consensus->consensus_change",
+        "debt_join:qa/rpc-tests/mempool_reorg.py=80,src/miner.h=80,qa/rpc-tests/disablewallet.py=78,src/wallet/walletdb.h=78,src/rpcclient.h=78"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "new_feature": 2.0,
+        "consensus_change": 14.75,
+        "networking_change": 9.0,
+        "rpc_change": 3.0,
+        "test_ci_build": 17.0,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "Update copyright headers to 2015",
+      "merged_at": "2016-01-05T13:11:45+00:00",
+      "labels": [],
+      "files_sample": [
+        "contrib/devtools/README.md",
+        "contrib/devtools/fix-copyright-headers.py",
+        "qa/pull-tester/rpc-tests.py",
+        "qa/rpc-tests/bipdersig.py",
+        "qa/rpc-tests/blockchain.py",
+        "qa/rpc-tests/disablewallet.py",
+        "qa/rpc-tests/forknotify.py",
+        "qa/rpc-tests/fundrawtransaction.py",
+        "qa/rpc-tests/getblocktemplate_longpoll.py",
+        "qa/rpc-tests/getblocktemplate_proposals.py",
+        "qa/rpc-tests/getchaintips.py",
+        "qa/rpc-tests/httpbasics.py"
+      ],
+      "body": "This can be merged into 0.12 and master without conflicts or rebase. The first commit will fix the python helper script introduced in #3646 to no longer remove previous copyright years.",
+      "files": [
+        "contrib/devtools/README.md",
+        "contrib/devtools/fix-copyright-headers.py",
+        "qa/pull-tester/rpc-tests.py",
+        "qa/rpc-tests/bipdersig.py",
+        "qa/rpc-tests/blockchain.py",
+        "qa/rpc-tests/disablewallet.py",
+        "qa/rpc-tests/forknotify.py",
+        "qa/rpc-tests/fundrawtransaction.py",
+        "qa/rpc-tests/getblocktemplate_longpoll.py",
+        "qa/rpc-tests/getblocktemplate_proposals.py",
+        "qa/rpc-tests/getchaintips.py",
+        "qa/rpc-tests/httpbasics.py",
+        "qa/rpc-tests/invalidateblock.py",
+        "qa/rpc-tests/keypool.py",
+        "qa/rpc-tests/listtransactions.py",
+        "qa/rpc-tests/mempool_reorg.py",
+        "qa/rpc-tests/mempool_resurrect_test.py",
+        "qa/rpc-tests/mempool_spendcoinbase.py",
+        "qa/rpc-tests/merkle_blocks.py",
+        "qa/rpc-tests/nodehandling.py"
+      ]
+    },
+    {
+      "number": 5677,
+      "primary": "test_ci_build",
+      "secondary": [
+        "rpc_change",
+        "debt_compensation",
+        "dependency_maintenance"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:RPC/REST/ZMQ->rpc_change",
+        "paths:{'test_ci_build': 8, 'dependency_maintenance': 3, 'documentation': 2, 'rpc_change': 6, 'other': 4}",
+        "kw:debt_compensation:['performance']",
+        "kw:refactor:['refactor']",
+        "kw:rpc_change:['rpc', 'bitcoin-cli']",
+        "kw:dependency_maintenance:['univalue', 'boost ']",
+        "kw:test_ci_build:['unit test', 'build system']",
+        "enrich:bugfix->other",
+        "enrich_subtype:performance->debt_compensation",
+        "hotspots:['src/init.cpp']",
+        "debt_join:qa/pull-tester/rpc-tests.sh=80,src/util.h=71,src/bitcoind.cpp=71,src/init.h=68,src/Makefile.qttest.include=68"
+      ],
+      "scores": {
+        "debt_compensation": 13.0,
+        "refactor": 2.0,
+        "rpc_change": 17.0,
+        "dependency_maintenance": 10.5,
+        "test_ci_build": 18.0,
+        "documentation": 3.0,
+        "other": 6.75
+      },
+      "ambiguous": true,
+      "title": "libevent-based http server",
+      "merged_at": "2015-09-04T11:06:23+00:00",
+      "labels": [
+        "RPC/REST/ZMQ"
+      ],
+      "files_sample": [
+        "configure.ac",
+        "contrib/bitcoind.bash-completion",
+        "contrib/debian/examples/bitcoin.conf",
+        "contrib/debian/manpages/bitcoin-cli.1",
+        "contrib/debian/manpages/bitcoin-qt.1",
+        "contrib/debian/manpages/bitcoin.conf.5",
+        "contrib/debian/manpages/bitcoind.1",
+        "depends/packages/libevent.mk",
+        "depends/packages/packages.mk",
+        "depends/patches/libevent/reuseaddr.patch",
+        "doc/build-unix.md",
+        "doc/release-notes.md"
+      ],
+      "body": "- _Replace usage of boost::asio with [libevent2](http://libevent.org/)_. boost::asio is not part of C++11, so unlike other boost there is no forwards-compatibility reason to stick with it. Together with #4738 (convert json_spirit to UniValue), this rids Bitcoin Core of the worst offenders with regard to compile-time slowness. - _Replace spit-and-duct-tape http server with evhttp_. Front-end http handling is handled by libevent, a work queue (with configurable depth and parallelism) is used to handle application requests. - _Wrap HTTP request in C++ class_; this makes the application code mostly HTTP-server-neutral - _Refactor RPC to move all http-specific code to a separate file_. Theoreticaly this can allow building without HTTP server but with another RPC backend, e.g. Qt's debug console (currently not implemented) or future RPC mechanisms people may want to use. - _HTTP dispatch mechanism_; services (e.g., RPC, REST) register which URL paths they want to handle. By using a proven, high-performance asynchronous networking library (also used by Tor) and HTTP server, problems such as #5674, #5655, #344 should be avoided. What works? bitcoind, bitcoin-cli, bitcoin-qt. Unit tests and RPC/REST tests pass. The aim for now is everything but SSL support. Configuration options: - `-rpcthreads`: repurposed as \"number of work handler threads\". Still defaults to 4. - `-rpcworkqueue`: maximum depth of work queue. When this is reached, new requests will return a 500 Internal Error. - `-r",
+      "files": [
+        "configure.ac",
+        "contrib/bitcoind.bash-completion",
+        "contrib/debian/examples/bitcoin.conf",
+        "contrib/debian/manpages/bitcoin-cli.1",
+        "contrib/debian/manpages/bitcoin-qt.1",
+        "contrib/debian/manpages/bitcoin.conf.5",
+        "contrib/debian/manpages/bitcoind.1",
+        "depends/packages/libevent.mk",
+        "depends/packages/packages.mk",
+        "depends/patches/libevent/reuseaddr.patch",
+        "doc/build-unix.md",
+        "doc/release-notes.md",
+        "qa/pull-tester/rpc-tests.sh",
+        "qa/rpc-tests/httpbasics.py",
+        "qa/rpc-tests/rest.py",
+        "src/Makefile.am",
+        "src/Makefile.qt.include",
+        "src/Makefile.qttest.include",
+        "src/bitcoin-cli.cpp",
+        "src/bitcoind.cpp"
+      ]
+    },
+    {
+      "number": 2767,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build",
+        "debt_compensation",
+        "networking_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'test_ci_build': 35, 'networking_change': 8, 'rpc_change': 1, 'other': 71}",
+        "kw:refactor:['cleanup']",
+        "enrich:consensus->consensus_change",
+        "enrich_subtype:performance->debt_compensation",
+        "hotspots:['src/init.cpp', 'src/main.cpp', 'src/net.cpp', 'src/txdb.cpp', 'src/txmempool.h']",
+        "debt_join:src/bitcoinrpc.h=84,src/bitcoinrpc.cpp=84,src/miner.h=80,src/test/test_bitcoin.cpp=76,src/util.h=71"
+      ],
+      "scores": {
+        "debt_compensation": 16.0,
+        "refactor": 2.0,
+        "consensus_change": 0.25,
+        "networking_change": 12.0,
+        "rpc_change": 1.5,
+        "test_ci_build": 17.0,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "Cleanup code by using forward declarations and other methods...",
+      "merged_at": "2013-11-10T18:21:16+00:00",
+      "labels": [],
+      "files_sample": [
+        "configure.ac",
+        "share/qt/extract_strings_qt.py",
+        "src/Makefile.am",
+        "src/addrman.cpp",
+        "src/addrman.h",
+        "src/alert.cpp",
+        "src/alert.h",
+        "src/allocators.h",
+        "src/base58.h",
+        "src/bignum.h",
+        "src/bitcoin-cli.cpp",
+        "src/bitcoind.cpp"
+      ],
+      "body": "... of avoiding unnecessary header includes. Additionally alphabetizes and groups includes and forward declarations. Note: there are a large amount of changes that have been rebased onto the most recent master. I did my best to ensure that no code was functionally changed; however, a code review of all my changes would be advised. ### Theory By using [forward declarations](http://en.wikipedia.org/wiki/Forward_declaration), compilation speed can be increased in both incremental and full builds. Forward declarations suffice over having the full declaration in cases where the type that is being forward declared is only used as a reference or being pointed to, and the usage is not an [lvalue](http://en.wikipedia.org/wiki/Value_%28computer_science%29). By making these modifications, the total number of header files needed to compile any .cpp file is reduced. Fewer header files being included reduces the total amount of code that needs to be compiled for each .cpp file. ### Quantitative Results How much time does this actually account for? For bitcoind: ![Bitcoind Results](http://i.imgur.com/KNDcgBS.png) [This](https://docs.google.com/spreadsheet/ccc?key=0AnpjY4_hVstbdHllazg4MG80V1UtUTVqM0hfTUE3bEE&usp=sharing) spreadsheet shows detailed results for each of the different builds (note that there are multiple sheets in the spreadsheet), along with the interesting stats and graph for each. This data was generated automatically via the scripts [here](https://gist.github.com/brandondahl",
+      "files": [
+        "configure.ac",
+        "share/qt/extract_strings_qt.py",
+        "src/Makefile.am",
+        "src/addrman.cpp",
+        "src/addrman.h",
+        "src/alert.cpp",
+        "src/alert.h",
+        "src/allocators.h",
+        "src/base58.h",
+        "src/bignum.h",
+        "src/bitcoin-cli.cpp",
+        "src/bitcoind.cpp",
+        "src/bitcoinrpc.cpp",
+        "src/bitcoinrpc.h",
+        "src/bloom.cpp",
+        "src/bloom.h",
+        "src/chainparams.cpp",
+        "src/chainparams.h",
+        "src/checkpoints.cpp",
+        "src/checkpoints.h"
+      ]
+    },
+    {
+      "number": 2632,
+      "primary": "networking_change",
+      "secondary": [
+        "test_ci_build",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'test_ci_build': 3, 'networking_change': 3, 'other': 2}",
+        "kw:refactor:['refactor']",
+        "kw:new_feature:['introduce']",
+        "kw:networking_change:['connection']",
+        "enrich:consensus->consensus_change",
+        "debt_join:bitcoin-qt.pro=85,src/makefile.unix=85,src/bitcoinrpc.cpp=84,contrib/test-patches/bitcoind-comparison.patch=73,src/util.h=71"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 2.0,
+        "new_feature": 2.0,
+        "consensus_change": 0.25,
+        "networking_change": 6.5,
+        "test_ci_build": 6.5,
+        "other": 3.0
+      },
+      "ambiguous": true,
+      "title": "Refactor chain-specific tweaks into a CChainParams class and introduce a regtest mode",
+      "merged_at": "2013-06-22T13:56:15+00:00",
+      "labels": [],
+      "files_sample": [
+        "bitcoin-qt.pro",
+        "contrib/test-patches/bitcoind-comparison.patch",
+        "src/alert.cpp",
+        "src/base58.h",
+        "src/bitcoind.cpp",
+        "src/bitcoinrpc.cpp",
+        "src/chainparams.cpp",
+        "src/chainparams.h",
+        "src/checkpoints.cpp",
+        "src/db.cpp",
+        "src/db.h",
+        "src/init.cpp"
+      ],
+      "body": "Matt Corallo's bitcoind/bitcoinj comparison tool relies on a patch that sets difficulty to zero, thus ensuring blocks can be found instantly without any delay. It also drops the subsidy halving interval so that can be tested and makes a few other tweaks. This series of patches creates a new CChainParams abstraction that hides various things that vary between main, test and regression test networks. It then adds a regtest mode triggered by the -regtest flag that disables external connections and uses the \"insta-block\" rule set. Also, the miner thread will shut down once it finds a block, meaning you can generate a single block from the command line on demand by running ./bitcoind -regtest setgenerate true This change is incomplete - some things like DNS seeds, checkpoints and difficulty transition formulas aren't refactored out yet. However I wanted to get feedback on the approach before continuing, and the current code is useful even though there's still more refactoring to go. Signed off by: Matt Corallo",
+      "files": [
+        "bitcoin-qt.pro",
+        "contrib/test-patches/bitcoind-comparison.patch",
+        "src/alert.cpp",
+        "src/base58.h",
+        "src/bitcoind.cpp",
+        "src/bitcoinrpc.cpp",
+        "src/chainparams.cpp",
+        "src/chainparams.h",
+        "src/checkpoints.cpp",
+        "src/db.cpp",
+        "src/db.h",
+        "src/init.cpp",
+        "src/main.cpp",
+        "src/main.h",
+        "src/makefile.unix",
+        "src/net.cpp",
+        "src/protocol.cpp",
+        "src/protocol.h",
+        "src/qt/clientmodel.cpp",
+        "src/rpcmining.cpp"
+      ]
+    },
+    {
+      "number": 1101,
+      "primary": "networking_change",
+      "secondary": [
+        "new_feature",
+        "refactor",
+        "rpc_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Feature->new_feature",
+        "label:Refactoring->refactor",
+        "paths:{'networking_change': 2}",
+        "kw:rpc_change:['rpc', 'json-rpc']",
+        "kw:dependency_maintenance:['upstream']",
+        "enrich:bugfix->other",
+        "debt_join:src/bitcoinrpc.h=84,src/bitcoinrpc.cpp=84"
+      ],
+      "scores": {
+        "debt_compensation": 1.0,
+        "refactor": 4.0,
+        "new_feature": 4.0,
+        "networking_change": 5.0,
+        "rpc_change": 4.0,
+        "dependency_maintenance": 3.0,
+        "other": 0.75
+      },
+      "ambiguous": true,
+      "title": "Multithreaded JSON-RPC with HTTP 1.1 Keep-Alive support",
+      "merged_at": "2012-05-11T16:57:09+00:00",
+      "labels": [
+        "Feature",
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/bitcoinrpc.cpp",
+        "src/bitcoinrpc.h",
+        "src/net.cpp",
+        "src/net.h"
+      ],
+      "body": "This is a cleaned up version of JoelKatz' work, originally found in pull request #568. A few minor didnt-check-error-return bugs were fixed. All other changes were comment- or coding style-related changes unrelated to behavior. Should be upstream-ready at this point. Is in use at a few pools and other places.",
+      "files": [
+        "src/bitcoinrpc.cpp",
+        "src/bitcoinrpc.h",
+        "src/net.cpp",
+        "src/net.h"
+      ]
+    },
+    {
+      "number": 35634,
+      "primary": "documentation",
+      "secondary": [
+        "debt_compensation",
+        "rpc_change",
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a",
+      "evidence": [
+        "paths:{'documentation': 1, 'other': 1}",
+        "kw:debt_compensation:['oom']",
+        "kw:rpc_change:['bitcoin-cli']",
+        "kw:test_ci_build:['cmake']",
+        "enrich:consensus->consensus_change"
+      ],
+      "scores": {
+        "debt_compensation": 3.0,
+        "consensus_change": 0.25,
+        "rpc_change": 2.0,
+        "test_ci_build": 2.0,
+        "documentation": 3.5,
+        "other": 1.5
+      },
+      "ambiguous": true,
+      "title": "txospenderindex: use zero-byte entry values",
+      "merged_at": "2026-07-04T08:47:47+00:00",
+      "labels": [],
+      "files_sample": [
+        "doc/release-notes-35634.md",
+        "src/index/txospenderindex.cpp"
+      ],
+      "body": "**Problem:** `TxoSpenderIndex` values are never read: `FindSpender()` only uses the key, which already encodes the spender's disk position, but the values are written as single-byte `\\0`(instead of empty values). **Fix:** Write zero-byte markers for new `txospenderindex` entries instead. Existing indexes stay readable because both formats use the same keys and the value is ignored. Rebuilding is only needed to shrink old entries. **Related work:** This complements #35568, which saves another ~4.5 GB by dropping bloom filters. A #35531-style rewrite could let existing indexes reclaim both savings without a full rebuild. **Reproducer:** Automated tests weren't added, but the manual reproducer below builds both commits, checks old/new format compatibility through `gettxspendingprevout`, and prints rebuilt index sizes. On my mainnet datadir this PR shrank `txospenderindex` by ~3.4 GB (from 89G to 86G). <details><summary>Script + sample output</summary> ```bash BEFORE=\"89b4000ae06c72c5a14ee05ad70d3aece3f1b382\" AFTER=\"1be799ef858c33158a302857b084e169b5bf8c1f\" DATA_DIR=\"/mnt/my_storage/BitcoinData\" LOG=\"${DATA_DIR}/debug.log\" OUT='[{\"txid\":\"0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9\",\"vout\":0}]' SPEND=\"f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16\"; \\ for b in before after; do [ -x ./build-$b/bin/bitcoin-cli ] && ./build-$b/bin/bitcoin-cli -datadir=\"${DATA_DIR}\" stop >/dev/null 2>&1 || true; done; sleep 10; \\ git reset --hard >/dev/null 2>&1 ",
+      "files": [
+        "doc/release-notes-35634.md",
+        "src/index/txospenderindex.cpp"
+      ]
+    },
+    {
+      "number": 34483,
+      "primary": "test_ci_build",
+      "secondary": [
+        "debt_compensation",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'other': 5, 'networking_change': 1, 'rpc_change': 3, 'test_ci_build': 15}",
+        "kw:debt_compensation:['faster']",
+        "kw:refactor:['refactor']",
+        "enrich:refactor->refactor",
+        "enrich_subtype:performance->debt_compensation",
+        "hotspots:['src/net.cpp']",
+        "debt_join:src/test/transaction_tests.cpp=65,src/test/fuzz/util.h=65,src/test/dbwrapper_tests.cpp=60,src/streams.h=59,src/psbt.cpp=56",
+        "override_skip:refactor:debt_signal"
+      ],
+      "scores": {
+        "debt_compensation": 13.0,
+        "refactor": 6.5,
+        "networking_change": 1.5,
+        "rpc_change": 4.5,
+        "test_ci_build": 15.75,
+        "other": 7.5
+      },
+      "ambiguous": true,
+      "title": "refactor: Use SpanReader over DataStream",
+      "merged_at": "2026-02-07T02:00:31+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/bench/readwriteblock.cpp",
+        "src/core_io.cpp",
+        "src/dbwrapper.h",
+        "src/kernel/bitcoinkernel.cpp",
+        "src/net.cpp",
+        "src/psbt.cpp",
+        "src/qt/recentrequeststablemodel.cpp",
+        "src/qt/test/wallettests.cpp",
+        "src/rest.cpp",
+        "src/rpc/blockchain.cpp",
+        "src/rpc/txoutproof.cpp",
+        "src/serialize.h"
+      ],
+      "body": "This changes all places, where possible, to use SpanReader over DataStream. This makes the code easier to read and reason about, because `SpanReader` can never write data. Also, the code should be minimally faster, because it avoids a full redundant copy of the whole vector of bytes.",
+      "files": [
+        "src/bench/readwriteblock.cpp",
+        "src/core_io.cpp",
+        "src/dbwrapper.h",
+        "src/kernel/bitcoinkernel.cpp",
+        "src/net.cpp",
+        "src/psbt.cpp",
+        "src/qt/recentrequeststablemodel.cpp",
+        "src/qt/test/wallettests.cpp",
+        "src/rest.cpp",
+        "src/rpc/blockchain.cpp",
+        "src/rpc/txoutproof.cpp",
+        "src/serialize.h",
+        "src/streams.h",
+        "src/test/bloom_tests.cpp",
+        "src/test/coins_tests.cpp",
+        "src/test/dbwrapper_tests.cpp",
+        "src/test/fuzz/block.cpp",
+        "src/test/fuzz/deserialize.cpp",
+        "src/test/fuzz/script_flags.cpp",
+        "src/test/fuzz/transaction.cpp"
+      ]
+    },
+    {
+      "number": 34329,
+      "primary": "test_ci_build",
+      "secondary": [
+        "networking_change",
+        "rpc_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'documentation': 1, 'networking_change': 2, 'rpc_change': 1, 'test_ci_build': 3}",
+        "kw:networking_change:['peer']",
+        "kw:rpc_change:['rpc']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/net_processing.h=62,src/test/fuzz/rpc.cpp=55"
+      ],
+      "scores": {
+        "debt_compensation": 1.0,
+        "consensus_change": 0.25,
+        "networking_change": 5.0,
+        "rpc_change": 3.5,
+        "test_ci_build": 6.5,
+        "documentation": 1.5
+      },
+      "ambiguous": true,
+      "title": "rpc,net: Add private broadcast RPCs",
+      "merged_at": "2026-02-19T21:42:21+00:00",
+      "labels": [
+        "Private Broadcast"
+      ],
+      "files_sample": [
+        "doc/release-notes-29415.md",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/private_broadcast.cpp",
+        "src/private_broadcast.h",
+        "src/rpc/mempool.cpp",
+        "src/test/fuzz/rpc.cpp",
+        "src/test/private_broadcast_tests.cpp",
+        "test/functional/p2p_private_broadcast.py"
+      ],
+      "body": "Follow up from #29415 Sending a transaction via private broadcast does not have any way for a user to track the status of the transaction before it gets returned by another peer. The default logs have been removed as well in #34267. Nor is there any way to abort a transaction once it has been added to the private broadcast queue. This adds two new RPCs: - `getprivatebroadastinfo` returns information about what transactions are in the private broadcast queue, including all the peers' addresses we have chosen and timestamps. - `abortprivatebroadcast` stops broadcasting a transaction in the private broadcast queue.",
+      "files": [
+        "doc/release-notes-29415.md",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/private_broadcast.cpp",
+        "src/private_broadcast.h",
+        "src/rpc/mempool.cpp",
+        "src/test/fuzz/rpc.cpp",
+        "src/test/private_broadcast_tests.cpp",
+        "test/functional/p2p_private_broadcast.py"
+      ]
+    },
+    {
+      "number": 34124,
+      "primary": "debt_compensation",
+      "secondary": [
+        "test_ci_build",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'other': 6, 'rpc_change': 1, 'test_ci_build': 8, 'consensus_change': 1}",
+        "kw:debt_compensation:['caching']",
+        "kw:refactor:['cleanup']",
+        "kw:test_ci_build:['fuzz']",
+        "enrich:consensus->consensus_change",
+        "enrich_subtype:performance->debt_compensation",
+        "hotspots:['src/coins.cpp', 'src/txdb.cpp', 'src/txmempool.h', 'src/validation.cpp']",
+        "debt_join:src/txdb.h=69,src/txdb.cpp=67,src/test/transaction_tests.cpp=65,src/bitcoin-tx.cpp=64,src/coins.h=57"
+      ],
+      "scores": {
+        "debt_compensation": 17.5,
+        "refactor": 6.0,
+        "consensus_change": 1.75,
+        "rpc_change": 1.5,
+        "test_ci_build": 16.0,
+        "other": 9.0
+      },
+      "ambiguous": true,
+      "title": "validation: make `CCoinsView` a pure virtual interface",
+      "merged_at": "2026-04-13T12:40:45+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/bench/ccoins_caching.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/coins.cpp",
+        "src/coins.h",
+        "src/node/psbt.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/test/coins_tests.cpp",
+        "src/test/fuzz/coins_view.cpp",
+        "src/test/fuzz/coinscache_sim.cpp",
+        "src/test/fuzz/transaction.cpp",
+        "src/test/script_p2sh_tests.cpp",
+        "src/test/sigopcount_tests.cpp"
+      ],
+      "body": "### Problem `CCoinsView` is the coins view interface, but historically it also provided built-in no-op behavior: * It provided default no-op implementations (returning `std::nullopt`, `uint256()`, `false`, or `nullptr`) instead of being pure virtual. * Callers could instantiate a bare `CCoinsView` and get silent no-op behavior. * Mixing the interface definition with a built-in dummy implementation blurred the abstraction boundary. ### Context This is part of the ongoing coins caching cleanup in #34280. ### Fix This PR separates the interface from no-op behavior and makes `CCoinsView` pure virtual in incremental steps: * Add `CoinsViewEmpty` as an explicit no-op coins view for tests, benchmarks, and temporary backends. * Replace direct bare-`CCoinsView` test and dummy instantiations with `CoinsViewEmpty`. * Make all `CCoinsView` methods pure virtual (`PeekCoin`, `GetCoin`, `HaveCoin`, `GetBestBlock`, `GetHeadBlocks`, `BatchWrite`, `Cursor`, `EstimateSize`). * Remove the legacy default implementations from `coins.cpp`. * Update fuzz and dummy backends to use `CoinsViewEmpty` explicitly.",
+      "files": [
+        "src/bench/ccoins_caching.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/coins.cpp",
+        "src/coins.h",
+        "src/node/psbt.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/test/coins_tests.cpp",
+        "src/test/fuzz/coins_view.cpp",
+        "src/test/fuzz/coinscache_sim.cpp",
+        "src/test/fuzz/transaction.cpp",
+        "src/test/script_p2sh_tests.cpp",
+        "src/test/sigopcount_tests.cpp",
+        "src/test/transaction_tests.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/txdb.cpp",
+        "src/txdb.h",
+        "src/txmempool.h",
+        "src/validation.cpp"
+      ]
+    },
+    {
+      "number": 32863,
+      "primary": "other",
+      "secondary": [
+        "documentation"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Backport->other",
+        "paths:{'dependency_maintenance': 5, 'documentation': 9, 'networking_change': 1, 'test_ci_build': 5}",
+        "debt_join:depends/packages/libevent.mk=62,src/test/netbase_tests.cpp=55,depends/funcs.mk=52,test/functional/feature_taproot.py=51,CMakePresets.json=50",
+        "override:backport->other"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "networking_change": 1.5,
+        "dependency_maintenance": 7.5,
+        "test_ci_build": 7.5,
+        "documentation": 14.25,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "[29.x] Backports",
+      "merged_at": "2025-07-18T17:47:34+00:00",
+      "labels": [
+        "Backport"
+      ],
+      "files_sample": [
+        "CMakePresets.json",
+        "depends/builders/freebsd.mk",
+        "depends/builders/openbsd.mk",
+        "depends/funcs.mk",
+        "depends/packages/libevent.mk",
+        "depends/patches/libevent/winver_fixup.patch",
+        "doc/build-freebsd.md",
+        "doc/build-netbsd.md",
+        "doc/build-openbsd.md",
+        "doc/build-osx.md",
+        "doc/build-unix.md",
+        "doc/build-windows-msvc.md"
+      ],
+      "body": "Backports - #32463 - #32716 - #32823 - #32826 - #32837 - #32841 - #32846 - #32850 - #32858 - #32859 - #32943 - #32954",
+      "files": [
+        "CMakePresets.json",
+        "depends/builders/freebsd.mk",
+        "depends/builders/openbsd.mk",
+        "depends/funcs.mk",
+        "depends/packages/libevent.mk",
+        "depends/patches/libevent/winver_fixup.patch",
+        "doc/build-freebsd.md",
+        "doc/build-netbsd.md",
+        "doc/build-openbsd.md",
+        "doc/build-osx.md",
+        "doc/build-unix.md",
+        "doc/build-windows-msvc.md",
+        "doc/build-windows.md",
+        "doc/p2p-bad-ports.md",
+        "doc/release-notes.md",
+        "src/netbase.cpp",
+        "src/test/netbase_tests.cpp",
+        "src/test/script_p2sh_tests.cpp",
+        "test/functional/feature_fee_estimation.py",
+        "test/functional/feature_taproot.py"
+      ]
+    },
+    {
+      "number": 32479,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Backport->other",
+        "label:CI failed->test_ci_build",
+        "paths:{'test_ci_build': 10, 'dependency_maintenance': 3, 'documentation': 1, 'rpc_change': 1}",
+        "debt_join:test/functional/test_framework/test_node.py=77,src/zmq/zmqnotificationinterface.h=61,depends/packages/xproto.mk=52,ci/test/03_test_script.sh=50,test/functional/test_framework/util.py=50",
+        "override:backport->other"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "rpc_change": 1.5,
+        "dependency_maintenance": 4.5,
+        "test_ci_build": 18.5,
+        "documentation": 1.5,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "[27.x] Backports",
+      "merged_at": "2025-06-09T12:52:21+00:00",
+      "labels": [
+        "Backport",
+        "CI failed"
+      ],
+      "files_sample": [
+        "ci/test/03_test_script.sh",
+        "contrib/guix/INSTALL.md",
+        "contrib/guix/libexec/prelude.bash",
+        "depends/packages/capnp.mk",
+        "depends/packages/libmultiprocess.mk",
+        "depends/packages/xproto.mk",
+        "doc/release-notes.md",
+        "src/zmq/zmqnotificationinterface.h",
+        "test/functional/interface_usdt_coinselection.py",
+        "test/functional/interface_usdt_mempool.py",
+        "test/functional/interface_usdt_net.py",
+        "test/functional/interface_usdt_utxocache.py"
+      ],
+      "body": "Backports - #32070 - #32187 - #32286 - #32439 - #32568",
+      "files": [
+        "ci/test/03_test_script.sh",
+        "contrib/guix/INSTALL.md",
+        "contrib/guix/libexec/prelude.bash",
+        "depends/packages/capnp.mk",
+        "depends/packages/libmultiprocess.mk",
+        "depends/packages/xproto.mk",
+        "doc/release-notes.md",
+        "src/zmq/zmqnotificationinterface.h",
+        "test/functional/interface_usdt_coinselection.py",
+        "test/functional/interface_usdt_mempool.py",
+        "test/functional/interface_usdt_net.py",
+        "test/functional/interface_usdt_utxocache.py",
+        "test/functional/interface_usdt_validation.py",
+        "test/functional/test_framework/test_node.py",
+        "test/functional/test_framework/util.py"
+      ]
+    },
+    {
+      "number": 32420,
+      "primary": "test_ci_build",
+      "secondary": [
+        "consensus_change",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Mining->other",
+        "paths:{'other': 2, 'rpc_change': 1, 'test_ci_build': 14}",
+        "kw:refactor:['cleanup']",
+        "kw:consensus_change:['consensus', 'soft fork', 'consensus rule']",
+        "kw:rpc_change:['rpc']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/test/validation_block_tests.cpp=68,test/functional/test_framework/blocktools.py=68,src/test/blockfilter_index_tests.cpp=64,src/bench/block_assemble.cpp=58,src/rpc/mining.cpp=54"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 2.0,
+        "consensus_change": 12.25,
+        "rpc_change": 3.5,
+        "test_ci_build": 15.5,
+        "other": 7.0
+      },
+      "ambiguous": true,
+      "title": "mining, ipc: omit dummy extraNonce from coinbase",
+      "merged_at": "2026-02-02T23:21:48+00:00",
+      "labels": [
+        "Mining"
+      ],
+      "files_sample": [
+        "src/bench/block_assemble.cpp",
+        "src/node/miner.cpp",
+        "src/node/types.h",
+        "src/rpc/mining.cpp",
+        "src/test/blockfilter_index_tests.cpp",
+        "src/test/fuzz/package_eval.cpp",
+        "src/test/fuzz/process_message.cpp",
+        "src/test/fuzz/process_messages.cpp",
+        "src/test/fuzz/tx_pool.cpp",
+        "src/test/fuzz/utxo_total_supply.cpp",
+        "src/test/miner_tests.cpp",
+        "src/test/peerman_tests.cpp"
+      ],
+      "body": "This PR changes the Mining IPC interface to stop including a dummy `extraNonce` in the coinbase `scriptSig` by default, exposing only the consensus-required BIP34 height. This simplifies downstream mining software (including Stratum v2), avoids forcing clients to strip or ignore data we generate, and reduces the risk of incompatibilities if future soft forks add required commitments to the `scriptSig`. Existing behavior is preserved for RPCs, tests, regtest, and internal mining by explicitly opting in to the dummy `extraNonce` where needed (e.g. to satisfy `bad-cb-length` at low heights), so consensus rules and test coverage are unchanged. The remainder of the PR consists of small comment fixes, naming clarifications, and test cleanups to make the intent and behavior clearer.",
+      "files": [
+        "src/bench/block_assemble.cpp",
+        "src/node/miner.cpp",
+        "src/node/types.h",
+        "src/rpc/mining.cpp",
+        "src/test/blockfilter_index_tests.cpp",
+        "src/test/fuzz/package_eval.cpp",
+        "src/test/fuzz/process_message.cpp",
+        "src/test/fuzz/process_messages.cpp",
+        "src/test/fuzz/tx_pool.cpp",
+        "src/test/fuzz/utxo_total_supply.cpp",
+        "src/test/miner_tests.cpp",
+        "src/test/peerman_tests.cpp",
+        "src/test/testnet4_miner_tests.cpp",
+        "src/test/util/mining.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/test/validation_block_tests.cpp",
+        "test/functional/interface_ipc.py",
+        "test/functional/test_framework/blocktools.py"
+      ]
+    },
+    {
+      "number": 32299,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Backport->other",
+        "label:CI failed->test_ci_build",
+        "paths:{'dependency_maintenance': 2, 'documentation': 1, 'rpc_change': 1, 'test_ci_build': 7}",
+        "debt_join:test/functional/test_framework/test_node.py=77,src/zmq/zmqnotificationinterface.h=61,test/functional/test_framework/util.py=50",
+        "override:backport->other"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "rpc_change": 1.5,
+        "dependency_maintenance": 3.0,
+        "test_ci_build": 16.5,
+        "documentation": 1.5,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "[28.x] Backports",
+      "merged_at": "2025-05-13T13:02:36+00:00",
+      "labels": [
+        "Backport",
+        "CI failed"
+      ],
+      "files_sample": [
+        "depends/packages/capnp.mk",
+        "depends/packages/libmultiprocess.mk",
+        "doc/release-notes.md",
+        "src/zmq/zmqnotificationinterface.h",
+        "test/functional/interface_usdt_coinselection.py",
+        "test/functional/interface_usdt_mempool.py",
+        "test/functional/interface_usdt_net.py",
+        "test/functional/interface_usdt_utxocache.py",
+        "test/functional/interface_usdt_validation.py",
+        "test/functional/test_framework/test_node.py",
+        "test/functional/test_framework/util.py"
+      ],
+      "body": "Backports: - #32070 - #32187 - #32286 - #32336",
+      "files": [
+        "depends/packages/capnp.mk",
+        "depends/packages/libmultiprocess.mk",
+        "doc/release-notes.md",
+        "src/zmq/zmqnotificationinterface.h",
+        "test/functional/interface_usdt_coinselection.py",
+        "test/functional/interface_usdt_mempool.py",
+        "test/functional/interface_usdt_net.py",
+        "test/functional/interface_usdt_utxocache.py",
+        "test/functional/interface_usdt_validation.py",
+        "test/functional/test_framework/test_node.py",
+        "test/functional/test_framework/util.py"
+      ]
+    },
+    {
+      "number": 31212,
+      "primary": "rpc_change",
+      "secondary": [
+        "test_ci_build",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Utils/log/libs->other",
+        "paths:{'rpc_change': 3, 'other': 1, 'test_ci_build': 4}",
+        "kw:rpc_change:['rpc', 'bitcoin-cli']",
+        "kw:documentation:['documentation']",
+        "enrich:feature->new_feature",
+        "debt_join:src/bitcoind.cpp=71,src/httprpc.cpp=68,src/qt/bitcoin.cpp=66,src/bitcoin-tx.cpp=64,src/bitcoin-wallet.cpp=59"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "new_feature": 0.5,
+        "rpc_change": 8.5,
+        "test_ci_build": 8.0,
+        "documentation": 3.0,
+        "other": 5.5
+      },
+      "ambiguous": true,
+      "title": "util: Improve documentation and negation of args",
+      "merged_at": "2024-12-04T18:20:58+00:00",
+      "labels": [
+        "Utils/log/libs"
+      ],
+      "files_sample": [
+        "src/bitcoin-cli.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/bitcoin-util.cpp",
+        "src/bitcoin-wallet.cpp",
+        "src/bitcoind.cpp",
+        "src/common/config.cpp",
+        "src/common/init.cpp",
+        "src/httprpc.cpp",
+        "src/init.cpp",
+        "src/init/common.cpp",
+        "src/qt/bitcoin.cpp",
+        "src/rpc/request.cpp"
+      ],
+      "body": "- Document `-color` as only applying to `-getinfo`, to be less confusing for bitcoin-cli users. - No longer print version information when getting passed `-noversion`. - Disallow `-nodatadir` as we cannot run without one. It was previously interpreted as a mix of unset and as a relative path of \"0\". - Support `-norpccookiefile` - Support `-nopid` - Properly support `-noconf` (instead of working by accident). Also detect when directories are specified instead of files. Prompted by investigation in https://github.com/bitcoin/bitcoin/pull/16545#pullrequestreview-2316714013.",
+      "files": [
+        "src/bitcoin-cli.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/bitcoin-util.cpp",
+        "src/bitcoin-wallet.cpp",
+        "src/bitcoind.cpp",
+        "src/common/config.cpp",
+        "src/common/init.cpp",
+        "src/httprpc.cpp",
+        "src/init.cpp",
+        "src/init/common.cpp",
+        "src/qt/bitcoin.cpp",
+        "src/rpc/request.cpp",
+        "test/functional/combine_logs.py",
+        "test/functional/feature_config_args.py",
+        "test/functional/interface_bitcoin_cli.py",
+        "test/functional/rpc_users.py"
+      ]
+    },
+    {
+      "number": 30695,
+      "primary": "test_ci_build",
+      "secondary": [
+        "debt_compensation",
+        "networking_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a",
+      "evidence": [
+        "paths:{'test_ci_build': 4}",
+        "kw:debt_compensation:['optimiz', 'throughput']",
+        "kw:networking_change:['p2p', 'connection']",
+        "kw:dependency_maintenance:['bump ']",
+        "kw:documentation:['readme']",
+        "enrich:consensus->consensus_change",
+        "enrich_subtype:performance->debt_compensation"
+      ],
+      "scores": {
+        "debt_compensation": 7.5,
+        "consensus_change": 0.25,
+        "networking_change": 4.0,
+        "dependency_maintenance": 3.0,
+        "test_ci_build": 8.0,
+        "documentation": 3.0
+      },
+      "ambiguous": true,
+      "title": "seeds: Add additional seed source and bump uptime requirements for Onion and I2P nodes",
+      "merged_at": "2024-08-27T16:53:07+00:00",
+      "labels": [],
+      "files_sample": [
+        "contrib/seeds/README.md",
+        "contrib/seeds/makeseeds.py",
+        "contrib/seeds/nodes_main.txt",
+        "contrib/seeds/nodes_main_manual.txt",
+        "src/chainparamsseeds.h"
+      ],
+      "body": "This builds on #30008 and adds data [exported](https://github.com/virtu/seed-exporter) by [my crawler](https://github.com/virtu/p2p-crawler) an additional source for seed nodes. Data covers all supported network types. [edit: Added Luke's seeder as input as well.] ### Motivation - Further decentralizes the seed node selection process (in the long term potentially enabling an _n_-source threshold for nodes to prevent a single source from entering malicious nodes) - No longer need to manually curate seed node list for any network type: See last paragraph of OP in #30008. My crawler has been [discovering the handful of available cjdns nodes](https://21.ninja/reachable-nodes/nodes-by-net-type/) for around two months, all but one of which meet the reliability criteria. - Alignment of uptime requirements for Onion and I2P nodes with those of clearnet nodes to 50%: If I'm reading the code correctly, seeders appear to optimize for up-to-dateness by using [lower connection timeouts](https://github.com/achow101/dnsseedrs/blob/3c1a63c6723819871d76fe0fbd2155fe5a5bb171/src/crawl.rs#L349) than [Bitcoin Core](https://github.com/bitcoin/bitcoin/blob/bc87ad98543299e1990ee1994d0653df3ac70093/src/netbase.cpp#L40C27-L40C48) to maximize throughput. Since my crawler does not have the same timeliness requirements, it opts for accuracy by using generous timeouts. As a result, its data contains additional eligible Onion (and other darknet nodes), as is shown in the histogram below. Around 4500 Onion ",
+      "files": [
+        "contrib/seeds/README.md",
+        "contrib/seeds/makeseeds.py",
+        "contrib/seeds/nodes_main.txt",
+        "contrib/seeds/nodes_main_manual.txt",
+        "src/chainparamsseeds.h"
+      ]
+    },
+    {
+      "number": 30507,
+      "primary": "documentation",
+      "secondary": [
+        "refactor",
+        "networking_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "label:Docs->documentation",
+        "paths:{'networking_change': 1, 'consensus_change': 1}",
+        "enrich:bugfix->other",
+        "debt_join:src/validationinterface.cpp=72,src/validationinterface.h=71,src/validation.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "consensus_change": 1.5,
+        "networking_change": 3.5,
+        "documentation": 4.0,
+        "other": 0.75
+      },
+      "ambiguous": true,
+      "title": "m_tx_download_mutex followups",
+      "merged_at": "2024-07-25T13:13:05+00:00",
+      "labels": [
+        "Refactoring",
+        "Docs"
+      ],
+      "files_sample": [
+        "src/net_processing.cpp",
+        "src/txorphanage.h",
+        "src/validation.cpp",
+        "src/validationinterface.cpp",
+        "src/validationinterface.h"
+      ],
+      "body": "Followup to #30111. Includes suggestions: - https://github.com/bitcoin/bitcoin/pull/30111#discussion_r1686303768 - https://github.com/bitcoin/bitcoin/pull/30111#discussion_r1686314984 - https://github.com/bitcoin/bitcoin/pull/30111#discussion_r1683186792 - https://github.com/bitcoin/bitcoin/pull/30111#issuecomment-2242819514 - https://github.com/bitcoin/bitcoin/pull/30111#discussion_r1686372826",
+      "files": [
+        "src/net_processing.cpp",
+        "src/txorphanage.h",
+        "src/validation.cpp",
+        "src/validationinterface.cpp",
+        "src/validationinterface.h"
+      ]
+    },
+    {
+      "number": 30352,
+      "primary": "test_ci_build",
+      "secondary": [
+        "consensus_change",
+        "other",
+        "debt_compensation"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:TX fees and policy->other",
+        "paths:{'documentation': 1, 'other': 4, 'rpc_change': 2, 'consensus_change': 6, 'test_ci_build': 8}",
+        "kw:debt_compensation:['oom']",
+        "kw:consensus_change:['segwit']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/rpc/util.cpp=75,test/functional/mempool_accept.py=73,src/policy/policy.cpp=67,src/test/transaction_tests.cpp=65,src/key_io.cpp=63"
+      ],
+      "scores": {
+        "debt_compensation": 8.0,
+        "consensus_change": 13.25,
+        "rpc_change": 3.0,
+        "test_ci_build": 14.0,
+        "documentation": 1.5,
+        "other": 10.0
+      },
+      "ambiguous": true,
+      "title": "policy: Add PayToAnchor(P2A), `OP_1 <0x4e73>` as a standard output script for spending",
+      "merged_at": "2024-08-02T14:50:34+00:00",
+      "labels": [
+        "TX fees and policy"
+      ],
+      "files_sample": [
+        "doc/release-notes-30352.md",
+        "src/addresstype.cpp",
+        "src/addresstype.h",
+        "src/key_io.cpp",
+        "src/policy/policy.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/rpc/util.cpp",
+        "src/script/interpreter.cpp",
+        "src/script/script.cpp",
+        "src/script/script.h",
+        "src/script/sign.cpp",
+        "src/script/solver.cpp"
+      ],
+      "body": "This is a sub-feature taken out of the original proposal for ephemeral anchors #30239 This PR makes *spending* of `OP_1 <0x4e73>` (i.e. `bc1pfeessrawgf`) standard. Creation of this output type is already standard. Any future witness output types are considered relay-standard to create, but not to spend. This preserves upgrade hooks, such as a completely new output type for a softfork such as BIP341. It also gives us a bit of room to use a new output type for policy uses. This particular sized witness program has no other known use-cases (https://bitcoin.stackexchange.com/a/110664/17078), s it affords insufficient cryptographic security for a secure commitment to data, such as a script or a public key. This makes this type of output \"keyless\", or unauthenticated. As a witness program, the `scriptSig` of the input MUST be blank, by BIP141. This helps ensure txid-stability of the spending transaction, which may be required for smart contracting wallets. If we do not use segwit, a miner can simply insert an `OP_NOP` in the `scriptSig` without effecting the result of program execution. An additional relay restriction is to disallow non-empty witness data, which an adversary may use to penalize the \"honest\" transactor when RBF'ing the transaction due to the incremental fee requirement of RBF rules. The intended use-case for this output type is to \"anchor\" the transaction with a spending child to bring exogenous CPFP fees into the transaction package, encouraging the inclusion of th",
+      "files": [
+        "doc/release-notes-30352.md",
+        "src/addresstype.cpp",
+        "src/addresstype.h",
+        "src/key_io.cpp",
+        "src/policy/policy.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/rpc/util.cpp",
+        "src/script/interpreter.cpp",
+        "src/script/script.cpp",
+        "src/script/script.h",
+        "src/script/sign.cpp",
+        "src/script/solver.cpp",
+        "src/script/solver.h",
+        "src/test/fuzz/script.cpp",
+        "src/test/fuzz/util.cpp",
+        "src/test/script_standard_tests.cpp",
+        "src/test/script_tests.cpp",
+        "src/test/transaction_tests.cpp",
+        "src/wallet/rpc/addresses.cpp",
+        "src/wallet/rpc/backup.cpp"
+      ]
+    },
+    {
+      "number": 30115,
+      "primary": "dependency_maintenance",
+      "secondary": [
+        "rpc_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:RPC/REST/ZMQ->rpc_change",
+        "paths:{'rpc_change': 16, 'test_ci_build': 1, 'other': 8}",
+        "kw:debt_compensation:['performance', 'faster', 'memory usage']",
+        "kw:refactor:['refactor']",
+        "kw:rpc_change:['rpc']",
+        "kw:dependency_maintenance:['univalue']",
+        "enrich:bugfix->other",
+        "enrich_subtype:performance->debt_compensation",
+        "debt_join:src/rpc/util.cpp=75,src/core_write.cpp=63,src/rpc/net.cpp=62,src/rpc/rawtransaction_util.cpp=59,src/zmq/zmqrpc.cpp=55",
+        "override:dependency_title",
+        "override:title_prefix:rpc:->rpc_change"
+      ],
+      "scores": {
+        "debt_compensation": 15.5,
+        "refactor": 2.0,
+        "rpc_change": 42.0,
+        "dependency_maintenance": 43.0,
+        "test_ci_build": 1.5,
+        "other": 12.75
+      },
+      "ambiguous": true,
+      "title": "rpc: avoid copying into UniValue",
+      "merged_at": "2024-05-23T14:53:49+00:00",
+      "labels": [
+        "RPC/REST/ZMQ"
+      ],
+      "files_sample": [
+        "src/bitcoin-cli.cpp",
+        "src/core_write.cpp",
+        "src/net_types.cpp",
+        "src/rest.cpp",
+        "src/rpc/blockchain.cpp",
+        "src/rpc/client.cpp",
+        "src/rpc/external_signer.cpp",
+        "src/rpc/fees.cpp",
+        "src/rpc/mempool.cpp",
+        "src/rpc/mining.cpp",
+        "src/rpc/net.cpp",
+        "src/rpc/node.cpp"
+      ],
+      "body": "These are the simple (and hopefully obviously correct) copies that can be moves instead. This is a follow-up from https://github.com/bitcoin/bitcoin/pull/30094#issuecomment-2108751842 As it turns out, there are hundreds of places where we copy UniValues needlessly. It should be the case that moves are always preferred over copies, so there should be no downside to these changes. willcl-ark, however, noticed that memory usage may increase in some cases. Logically this makes no sense to me. The only plausible explanation imo is that because the moves are faster, more ops/second occur in some cases. This list of moves was obtained by changing the function signatures of the UniValue functions to accept only rvalues, then compiling and fixing them up one by one. There still exist many places where copies are being made. These can/should be fixed up, but weren't done here for the sake of doing the easy ones first. I ran these changes through clang-tidy with `performance-move-const-arg` and `bugprone-use-after-move` and no bugs were detected (though that's obviously not to say it can be trusted 100%). As stated above, there are still lots of other less trivial fixups to do after these including: - Using non-const UniValues where possible so that moves can happen - Refactoring code in order to be able to move a UniValue without introducing a use-after-move - Refactoring functions to accept UniValues by value rather than by const reference",
+      "files": [
+        "src/bitcoin-cli.cpp",
+        "src/core_write.cpp",
+        "src/net_types.cpp",
+        "src/rest.cpp",
+        "src/rpc/blockchain.cpp",
+        "src/rpc/client.cpp",
+        "src/rpc/external_signer.cpp",
+        "src/rpc/fees.cpp",
+        "src/rpc/mempool.cpp",
+        "src/rpc/mining.cpp",
+        "src/rpc/net.cpp",
+        "src/rpc/node.cpp",
+        "src/rpc/output_script.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/rpc/rawtransaction_util.cpp",
+        "src/rpc/server.cpp",
+        "src/rpc/util.cpp",
+        "src/test/script_tests.cpp",
+        "src/wallet/rpc/addresses.cpp",
+        "src/wallet/rpc/backup.cpp"
+      ]
+    },
+    {
+      "number": 30072,
+      "primary": "other",
+      "secondary": [
+        "documentation",
+        "refactor"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Mempool->other",
+        "paths:{'documentation': 1, 'consensus_change': 1, 'test_ci_build': 1}",
+        "kw:refactor:['refactor']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/validation.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 0.5,
+        "refactor": 2.0,
+        "consensus_change": 1.75,
+        "test_ci_build": 1.5,
+        "documentation": 3.5,
+        "other": 4.0
+      },
+      "ambiguous": true,
+      "title": "refactor prep for package rbf",
+      "merged_at": "2024-05-24T09:25:27+00:00",
+      "labels": [
+        "Mempool"
+      ],
+      "files_sample": [
+        "doc/policy/packages.md",
+        "src/validation.cpp",
+        "test/functional/mempool_package_onemore.py"
+      ],
+      "body": "First few commits of https://github.com/bitcoin/bitcoin/pull/28984 to set the stage for the package RBF logic. These refactors are preparation for evaluating an RBF in a multi-proposed-transaction context instead of only a single proposed transaction. Also, carveouts and sibling evictions only should work in single RBF cases so add logic to preclude multi-tx cases in the future. No behavior changes aside from bailing earlier from failed carve-outs.",
+      "files": [
+        "doc/policy/packages.md",
+        "src/validation.cpp",
+        "test/functional/mempool_package_onemore.py"
+      ]
+    },
+    {
+      "number": 30043,
+      "primary": "networking_change",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:P2P->networking_change",
+        "paths:{'test_ci_build': 9, 'dependency_maintenance': 5, 'documentation': 5, 'other': 6, 'networking_change': 2}",
+        "kw:dependency_maintenance:['upstream']",
+        "kw:test_ci_build:['test:', 'unit test', 'build system']",
+        "enrich:bugfix->other",
+        "debt_join:depends/packages/packages.mk=68,depends/Makefile=65,src/qt/optionsmodel.cpp=64,src/qt/optionsdialog.cpp=64,src/node/interfaces.cpp=54",
+        "override:title_prefix:net:->networking_change"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "networking_change": 27.0,
+        "dependency_maintenance": 10.5,
+        "test_ci_build": 20.25,
+        "documentation": 7.5,
+        "other": 9.75
+      },
+      "ambiguous": true,
+      "title": "net: Replace libnatpmp with built-in PCP+NATPMP implementation",
+      "merged_at": "2024-09-30T20:28:11+00:00",
+      "labels": [
+        "P2P"
+      ],
+      "files_sample": [
+        ".github/workflows/ci.yml",
+        "CMakeLists.txt",
+        "CMakePresets.json",
+        "ci/test/00_setup_env_mac_native.sh",
+        "ci/test/00_setup_env_native_asan.sh",
+        "ci/test/00_setup_env_native_previous_releases.sh",
+        "ci/test/00_setup_env_native_tidy.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "cmake/module/FindNATPMP.cmake",
+        "depends/Makefile",
+        "depends/README.md",
+        "depends/packages/libnatpmp.mk"
+      ],
+      "body": "Continues #30005. Closes #17012.. This PR adds PCP (Port Control Protocol) from [RFC6887](https://datatracker.ietf.org/doc/html/rfc6887). This adds, in addition to the existing IPv4 port mapping (which now uses PCP, with fallback to NAT-PMP), support for IPv6 pinholing-that is, opening a port on the firewall to make it reachable. PCP, like NAT-PMP is a simple UDP-based protocol, and the implementation is self-contained, so this gets rid of lthe libnatpnp dependency without adding a new one. It should otherwise be a drop-in replacement. NAT-PMP fallback is implemented so this will not make router support worse. For now it is disabled by default, though in the future (not in this PR) we could consider enable it by default to increase the number of connectable nodes without adding significant attack surface. To test: ```bash bitcoind -regtest -natpmp=1 -debug=net ``` (most of the changes in this PR are, ironically, removing the libnatpmp dependency and associated build system and build docs) ## TODO - [x] Default gateway discovery on Linux / FreeBSD - [x] Default gateway discovery on Windows - [x] Default gateway discovery on MacOS - [x] Either solve FreeBSD compile issue (probably upstream issue) or remove FreeBSD support ## Things to consider for follow-up PRs - https://github.com/bitcoin/bitcoin/pull/30043#discussion_r1658764974 avoid unreachable nets (not given to -onlynet=) - https://github.com/bitcoin/bitcoin/pull/30043#discussion_r1658949236 could announce an addr:port wh",
+      "files": [
+        ".github/workflows/ci.yml",
+        "CMakeLists.txt",
+        "CMakePresets.json",
+        "ci/test/00_setup_env_mac_native.sh",
+        "ci/test/00_setup_env_native_asan.sh",
+        "ci/test/00_setup_env_native_previous_releases.sh",
+        "ci/test/00_setup_env_native_tidy.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "cmake/module/FindNATPMP.cmake",
+        "depends/Makefile",
+        "depends/README.md",
+        "depends/packages/libnatpmp.mk",
+        "depends/packages/packages.mk",
+        "depends/toolchain.cmake.in",
+        "doc/build-freebsd.md",
+        "doc/build-openbsd.md",
+        "doc/build-osx.md",
+        "doc/build-unix.md",
+        "doc/dependencies.md",
+        "src/CMakeLists.txt"
+      ]
+    },
+    {
+      "number": 29569,
+      "primary": "consensus_change",
+      "secondary": [
+        "refactor"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'networking_change': 1, 'test_ci_build': 1, 'consensus_change': 2}",
+        "kw:refactor:['clean up', 'rename']",
+        "enrich:documentation->documentation",
+        "debt_join:src/validation.h=62,src/validation.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.0,
+        "refactor": 4.0,
+        "consensus_change": 5.0,
+        "networking_change": 1.5,
+        "test_ci_build": 1.5,
+        "documentation": 0.75
+      },
+      "ambiguous": true,
+      "title": "Rename CalculateHeadersWork to CalculateClaimedHeadersWork",
+      "merged_at": "2024-03-09T02:39:15+00:00",
+      "labels": [],
+      "files_sample": [
+        "src/net_processing.cpp",
+        "src/test/fuzz/headerssync.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ],
+      "body": "And clean up some comments. Confusion about what this is doing seems to be a running theme: https://github.com/bitcoin/bitcoin/pull/29549#discussion_r1511113344 https://github.com/bitcoin/bitcoin/pull/27278#discussion_r1141510303",
+      "files": [
+        "src/net_processing.cpp",
+        "src/test/fuzz/headerssync.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 29325,
+      "primary": "test_ci_build",
+      "secondary": [
+        "consensus_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Consensus->consensus_change",
+        "paths:{'test_ci_build': 27, 'documentation': 1, 'consensus_change': 4, 'other': 5, 'rpc_change': 1}",
+        "kw:consensus_change:['consensus']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/policy/policy.h=74,src/test/txvalidationcache_tests.cpp=74,test/functional/mempool_accept.py=73,src/policy/policy.cpp=67,src/test/transaction_tests.cpp=65"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "consensus_change": 14.25,
+        "rpc_change": 1.5,
+        "test_ci_build": 18.75,
+        "documentation": 1.5,
+        "other": 7.5
+      },
+      "ambiguous": true,
+      "title": "consensus: Store transaction nVersion as uint32_t",
+      "merged_at": "2024-06-12T09:32:40+00:00",
+      "labels": [
+        "Consensus"
+      ],
+      "files_sample": [
+        "contrib/signet/miner",
+        "doc/policy/mempool-replacements.md",
+        "src/bitcoin-tx.cpp",
+        "src/compressor.h",
+        "src/consensus/tx_verify.cpp",
+        "src/core_write.cpp",
+        "src/kernel/chainparams.cpp",
+        "src/policy/policy.cpp",
+        "src/policy/policy.h",
+        "src/policy/v3_policy.cpp",
+        "src/policy/v3_policy.h",
+        "src/primitives/transaction.cpp"
+      ],
+      "body": "Given that the use of a transaction's nVersion is always as an unsigned int, it doesn't make sense to store it as signed and then cast it to unsigned everywhere it is used and displayed. Since a few alternative implementations have recently been revealed to have made an error with this signedness that would have resulted in consensus failure, I think it makes sense for us to just make this always unsigned to make it clear that the version is treated as unsigned. This would also help us avoid future potential issues with signedness of this value. I believe that this is safe and does not actually change what transactions would or would not be considered both standard and consensus valid. Within consensus, the only use of the version in consensus is in BIP68 validation which was already casting it to uint32_t. Within policy, although it is used as a signed int for the transaction version number check, I do not think that this change would change standardness. Standard transactions are limited to the range [1, 2]. Negative numbers would have fallen under the < 1 condition, but by making it unsigned, they are still non-standard under the > 2 condition. Unsigned and signed ints are serialized and unserialized the same way so there is no change in serialization.",
+      "files": [
+        "contrib/signet/miner",
+        "doc/policy/mempool-replacements.md",
+        "src/bitcoin-tx.cpp",
+        "src/compressor.h",
+        "src/consensus/tx_verify.cpp",
+        "src/core_write.cpp",
+        "src/kernel/chainparams.cpp",
+        "src/policy/policy.cpp",
+        "src/policy/policy.h",
+        "src/policy/v3_policy.cpp",
+        "src/policy/v3_policy.h",
+        "src/primitives/transaction.cpp",
+        "src/primitives/transaction.h",
+        "src/rpc/rawtransaction.cpp",
+        "src/script/interpreter.cpp",
+        "src/script/miniscript.h",
+        "src/signet.cpp",
+        "src/test/data/tx_invalid.json",
+        "src/test/fuzz/package_eval.cpp",
+        "src/test/fuzz/tx_pool.cpp"
+      ]
+    },
+    {
+      "number": 29263,
+      "primary": "test_ci_build",
+      "secondary": [
+        "debt_compensation"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'test_ci_build': 4, 'other': 1, 'networking_change': 1}",
+        "kw:debt_compensation:['optimiz']",
+        "kw:refactor:['rename']",
+        "enrich:feature->new_feature",
+        "enrich_subtype:performance->debt_compensation",
+        "debt_join:src/test/fuzz/integer.cpp=59"
+      ],
+      "scores": {
+        "debt_compensation": 7.0,
+        "refactor": 2.0,
+        "new_feature": 0.5,
+        "networking_change": 1.5,
+        "test_ci_build": 8.0,
+        "other": 1.5
+      },
+      "ambiguous": true,
+      "title": "serialization: c++20 endian/byteswap/clz modernization",
+      "merged_at": "2024-03-01T16:20:11+00:00",
+      "labels": [],
+      "files_sample": [
+        "configure.ac",
+        "src/compat/byteswap.h",
+        "src/compat/endian.h",
+        "src/crypto/common.h",
+        "src/i2p.cpp",
+        "src/random.h",
+        "src/serialize.h",
+        "src/test/bswap_tests.cpp",
+        "src/test/crypto_tests.cpp",
+        "src/test/fuzz/integer.cpp",
+        "src/util/asmap.cpp"
+      ],
+      "body": "This replaces #28674, #29036, and #29057. Now ready for testing and review. Replaces platform-specific endian and byteswap functions. This is especially useful for kernel, as it means that our deep serialization code no longer requires bitcoin-config.h. I apologize for the size of the last commit, but it's hard to avoid making those changes at once. All platforms now use our internal functions rather than libc or platform-specific ones, with the exception of MSVC. Sadly, benchmarking showed that not all compilers are capable of detecting and optimizing byteswap functions, so compiler builtins are instead used where possible. However, they're now detected via macros rather than autoconf checks. This[ matches how libc++ implements std::byteswap for c++23](https://github.com/llvm/llvm-project/blob/main/libcxx/include/__bit/byteswap.h#L26). I suggest we move/rename `compat/endian.h`, but I left that out of this PR to avoid bikeshedding. #29057 pointed out some irregularities in benchmarks. After messing with various compilers and configs for a few weeks with these changes, I'm of the opinion that we can't win on every platform every time, so we should take the code that makes sense going forward. That said, if any real-world slowdowns are caused here, we should obviously investigate.",
+      "files": [
+        "configure.ac",
+        "src/compat/byteswap.h",
+        "src/compat/endian.h",
+        "src/crypto/common.h",
+        "src/i2p.cpp",
+        "src/random.h",
+        "src/serialize.h",
+        "src/test/bswap_tests.cpp",
+        "src/test/crypto_tests.cpp",
+        "src/test/fuzz/integer.cpp",
+        "src/util/asmap.cpp"
+      ]
+    },
+    {
+      "number": 28956,
+      "primary": "networking_change",
+      "secondary": [
+        "test_ci_build",
+        "consensus_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:P2P->networking_change",
+        "paths:{'networking_change': 1, 'other': 1, 'rpc_change': 1, 'test_ci_build': 2, 'consensus_change': 2}",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/validation.h=62,src/timedata.cpp=57,src/rpc/mining.cpp=54,src/bitcoin-chainstate.cpp=50,src/node/miner.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "consensus_change": 3.25,
+        "networking_change": 5.5,
+        "rpc_change": 1.5,
+        "test_ci_build": 5.0,
+        "other": 1.5
+      },
+      "ambiguous": true,
+      "title": "Nuke adjusted time from validation (attempt 2)",
+      "merged_at": "2024-01-31T20:58:56+00:00",
+      "labels": [
+        "P2P"
+      ],
+      "files_sample": [
+        "src/bitcoin-chainstate.cpp",
+        "src/headerssync.cpp",
+        "src/init.cpp",
+        "src/kernel/chainstatemanager_opts.h",
+        "src/net_processing.cpp",
+        "src/node/miner.cpp",
+        "src/rpc/mining.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/test/validation_chainstatemanager_tests.cpp",
+        "src/timedata.cpp",
+        "src/timedata.h",
+        "src/validation.cpp"
+      ],
+      "body": "This picks up parts of #25908. The use of adjusted time is removed from validation code while the warning to users if their clock is out of sync with the rest of the network remains.",
+      "files": [
+        "src/bitcoin-chainstate.cpp",
+        "src/headerssync.cpp",
+        "src/init.cpp",
+        "src/kernel/chainstatemanager_opts.h",
+        "src/net_processing.cpp",
+        "src/node/miner.cpp",
+        "src/rpc/mining.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/test/validation_chainstatemanager_tests.cpp",
+        "src/timedata.cpp",
+        "src/timedata.h",
+        "src/validation.cpp",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 28710,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build",
+        "documentation",
+        "dependency_maintenance"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a+2b",
+      "evidence": [
+        "paths:{'test_ci_build': 31, 'dependency_maintenance': 6, 'documentation': 10, 'other': 43, 'rpc_change': 1}",
+        "kw:documentation:['documentation']",
+        "enrich:documentation->documentation",
+        "debt_join:src/wallet/walletdb.h=78,test/functional/test_runner.py=77,test/functional/test_framework/test_framework.py=76,depends/packages/packages.mk=68,src/wallet/init.cpp=65"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "rpc_change": 1.5,
+        "dependency_maintenance": 9.0,
+        "test_ci_build": 17.0,
+        "documentation": 16.25,
+        "other": 19.0
+      },
+      "ambiguous": true,
+      "title": "Remove the legacy wallet and BDB dependency",
+      "merged_at": "2025-05-07T14:19:25+00:00",
+      "labels": [],
+      "files_sample": [
+        ".github/ci-test-each-commit-exec.sh",
+        ".github/workflows/ci.yml",
+        "CMakeLists.txt",
+        "CMakePresets.json",
+        "ci/test/00_setup_env_native_asan.sh",
+        "ci/test/00_setup_env_native_fuzz_with_msan.sh",
+        "ci/test/00_setup_env_native_msan.sh",
+        "ci/test/00_setup_env_native_tidy.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "cmake/bitcoin-build-config.h.in",
+        "cmake/module/FindBerkeleyDB.cmake",
+        "contrib/completions/bash/bitcoin-cli.bash"
+      ],
+      "body": "The final step of #20160. A bare minimum of legacy wallet code is kept in order to perform wallet migration. Migration of legacy wallets uses the independent BDB parser and a minimal `LegacyDataSPKM` that allows the legacy data to be loaded so that the migration can be completed. BDB has been removed as a dependency and documentation have been updated to reflect that.",
+      "files": [
+        ".github/ci-test-each-commit-exec.sh",
+        ".github/workflows/ci.yml",
+        "CMakeLists.txt",
+        "CMakePresets.json",
+        "ci/test/00_setup_env_native_asan.sh",
+        "ci/test/00_setup_env_native_fuzz_with_msan.sh",
+        "ci/test/00_setup_env_native_msan.sh",
+        "ci/test/00_setup_env_native_tidy.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "cmake/bitcoin-build-config.h.in",
+        "cmake/module/FindBerkeleyDB.cmake",
+        "contrib/completions/bash/bitcoin-cli.bash",
+        "contrib/devtools/check-deps.sh",
+        "contrib/valgrind.supp",
+        "depends/Makefile",
+        "depends/README.md",
+        "depends/packages/bdb.mk",
+        "depends/packages/packages.mk",
+        "depends/patches/bdb/clang_cxx_11.patch",
+        "depends/toolchain.cmake.in"
+      ]
+    },
+    {
+      "number": 28698,
+      "primary": "debt_compensation",
+      "secondary": [
+        "rpc_change",
+        "other",
+        "dependency_maintenance"
+      ],
+      "confidence": "medium",
+      "tier_used": "2a",
+      "evidence": [
+        "paths:{'other': 1, 'test_ci_build': 1}",
+        "kw:debt_compensation:['ibd']",
+        "kw:rpc_change:['rpc', 'bitcoin-cli']",
+        "kw:dependency_maintenance:['leveldb']",
+        "enrich:consensus->consensus_change",
+        "hotspots:['src/node/blockstorage.cpp']"
+      ],
+      "scores": {
+        "debt_compensation": 4.5,
+        "consensus_change": 0.25,
+        "rpc_change": 4.0,
+        "dependency_maintenance": 3.0,
+        "test_ci_build": 1.5,
+        "other": 3.5
+      },
+      "ambiguous": true,
+      "title": "assumeutxo, blockstorage: Prevent core dump on invalid hash",
+      "merged_at": "2023-10-29T09:22:20+00:00",
+      "labels": [],
+      "files_sample": [
+        "src/node/blockstorage.cpp",
+        "test/functional/feature_assumeutxo.py"
+      ],
+      "body": "While reviewing #27596 (ran `loadtxoutset` in `mainnet` before `m_assumeutxo_data` is empty as [currently](https://github.com/jamesob/bitcoin/blob/434495a8c1496ca23fe35b84499f3daf668d76b8/src/kernel/chainparams.cpp#L175-L177) in master - back to 1b1d711), got a `core dumped`, so it seems there's a potential issue if new releases ever remove snapshot details or a semi-experienced user performs a `loadtxoutset` on a different \"customised\" binary version (not sure if this is a real use case). ``` 2023-10-18T17:42:52Z [init] Using obfuscation key for /tmp/.test_utxo_2/blocks/index: 0000000000000000 node/blockstorage.cpp:390 LoadBlockIndex: Assertion `GetParams().AssumeutxoForBlockhash(*snapshot_blockhash)' failed. Aborted (core dumped) ``` <details> <summary>This is also happening before IBD is completed (<code>background validation</code> still being performed as it can be seen in rpc <code>getchainstates</code>)</summary> ``` /src/bitcoin-cli -datadir=${AU_DATADIR} getchainstates { \"headers\": 813097, \"chainstates\": [ { \"blocks\": 368249, \"bestblockhash\": \"00000000000000000b7a08224a1cb00d337100ba7a46c03d04b2c2d8964efc37\", \"difficulty\": 52278304845.59168, \"verificationprogress\": 0.086288278873286, \"coins_db_cache_bytes\": 7969177, \"coins_tip_cache_bytes\": 14908338995, \"validated\": true }, { \"blocks\": 813097, \"bestblockhash\": \"0000000000000000000270c9fdce7b17db64cca91f90106964b58e33a4d91089\", \"difficulty\": 61030681983175.59, \"verificationprogress\": 0.999997140098457, \"coins_db_cache",
+      "files": [
+        "src/node/blockstorage.cpp",
+        "test/functional/feature_assumeutxo.py"
+      ]
+    },
+    {
+      "number": 28451,
+      "primary": "refactor",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'networking_change': 1, 'other': 5, 'rpc_change': 2, 'test_ci_build': 24}",
+        "kw:refactor:['refactor']",
+        "enrich:bugfix->other",
+        "debt_join:src/test/fuzz/util.h=65,src/rpc/net.cpp=62,src/wallet/test/psbt_wallet_tests.cpp=61,src/streams.h=59,src/test/fuzz/integer.cpp=59",
+        "override:title_prefix:refactor:->refactor"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 24.0,
+        "networking_change": 1.5,
+        "rpc_change": 3.0,
+        "test_ci_build": 18.0,
+        "other": 8.25
+      },
+      "ambiguous": true,
+      "title": "refactor: Remove unused SER_DISK, SER_NETWORK, CDataStream",
+      "merged_at": "2023-11-30T16:12:03+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/Makefile.am",
+        "src/bench/rpc_blockchain.cpp",
+        "src/external_signer.cpp",
+        "src/net.h",
+        "src/node/protocol_version.h",
+        "src/psbt.cpp",
+        "src/rpc/net.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/serialize.h",
+        "src/streams.h",
+        "src/test/bloom_tests.cpp",
+        "src/test/fuzz/block.cpp"
+      ],
+      "body": "Seems odd to have code that is completely dead. Fix this by removing all of it.",
+      "files": [
+        "src/Makefile.am",
+        "src/bench/rpc_blockchain.cpp",
+        "src/external_signer.cpp",
+        "src/net.h",
+        "src/node/protocol_version.h",
+        "src/psbt.cpp",
+        "src/rpc/net.cpp",
+        "src/rpc/rawtransaction.cpp",
+        "src/serialize.h",
+        "src/streams.h",
+        "src/test/bloom_tests.cpp",
+        "src/test/fuzz/block.cpp",
+        "src/test/fuzz/deserialize.cpp",
+        "src/test/fuzz/float.cpp",
+        "src/test/fuzz/integer.cpp",
+        "src/test/fuzz/process_message.cpp",
+        "src/test/fuzz/psbt.cpp",
+        "src/test/fuzz/rpc.cpp",
+        "src/test/fuzz/script_sign.cpp",
+        "src/test/fuzz/transaction.cpp"
+      ]
+    },
+    {
+      "number": 27896,
+      "primary": "other",
+      "secondary": [
+        "test_ci_build"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Brainstorming->other",
+        "label:Linux/Unix->other",
+        "paths:{'test_ci_build': 12, 'other': 5, 'rpc_change': 2, 'networking_change': 2}",
+        "enrich:feature->new_feature",
+        "debt_join:src/index/base.cpp=77,test/functional/test_runner.py=77,test/functional/test_framework/test_framework.py=76,src/bitcoind.cpp=71,src/init.h=68"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "new_feature": 0.5,
+        "networking_change": 3.0,
+        "rpc_change": 3.0,
+        "test_ci_build": 15.0,
+        "other": 15.5
+      },
+      "ambiguous": true,
+      "title": "Remove the syscall sandbox",
+      "merged_at": "2023-06-27T22:19:33+00:00",
+      "labels": [
+        "Brainstorming",
+        "Linux/Unix"
+      ],
+      "files_sample": [
+        "ci/test/00_setup_env_i686_multiprocess.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "configure.ac",
+        "src/Makefile.am",
+        "src/bitcoind.cpp",
+        "src/checkqueue.h",
+        "src/httpserver.cpp",
+        "src/index/base.cpp",
+        "src/init.cpp",
+        "src/init.h",
+        "src/mapport.cpp",
+        "src/net.cpp"
+      ],
+      "body": "After initially being merged in #20487, it's no-longer clear that an internal syscall sandboxing mechanism is something that Bitcoin Core should have/maintain, especially when compared to better maintained/supported alterantives, i.e [firejail](https://github.com/netblue30/firejail). There is more related discussion in #24771. Note that given where it's used, the sandbox also gets dragged into the kernel. If it's removed, this should not require any sort of deprecation, as this was only ever an opt-in, experimental feature. Closes #24771.",
+      "files": [
+        "ci/test/00_setup_env_i686_multiprocess.sh",
+        "ci/test/00_setup_env_native_valgrind.sh",
+        "configure.ac",
+        "src/Makefile.am",
+        "src/bitcoind.cpp",
+        "src/checkqueue.h",
+        "src/httpserver.cpp",
+        "src/index/base.cpp",
+        "src/init.cpp",
+        "src/init.h",
+        "src/mapport.cpp",
+        "src/net.cpp",
+        "src/node/blockstorage.cpp",
+        "src/node/interfaces.cpp",
+        "src/rpc/node.cpp",
+        "src/scheduler.cpp",
+        "src/torcontrol.cpp",
+        "src/util/syscall_sandbox.cpp",
+        "src/util/syscall_sandbox.h",
+        "test/config.ini.in"
+      ]
+    },
+    {
+      "number": 27826,
+      "primary": "consensus_change",
+      "secondary": [
+        "networking_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Validation->consensus_change",
+        "paths:{'documentation': 1, 'networking_change': 1, 'consensus_change': 2}",
+        "kw:refactor:['refactor']",
+        "kw:new_feature:['introduce']",
+        "kw:networking_change:['peer', 'net_processing', 'compact block']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/validation.h=62,src/validation.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.0,
+        "refactor": 2.0,
+        "new_feature": 2.0,
+        "consensus_change": 9.25,
+        "networking_change": 7.5,
+        "documentation": 1.5
+      },
+      "ambiguous": true,
+      "title": "validation: log which peer sent us a header",
+      "merged_at": "2025-04-29T21:48:31+00:00",
+      "labels": [
+        "Validation"
+      ],
+      "files_sample": [
+        "doc/release-notes-27826.md",
+        "src/net_processing.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ],
+      "body": "Fixes #27744 Since #27278 we log received headers. For compact blocks we also log which peer sent it (e5ce8576349d404c466b2f4cab1ca7bf920904b2), but not for regular headers. That required an additional refactor, which this PR provides. Move the logging from validation to net_processing. This also reduces the number of log entries (under default configuration) per compact block header from 3 to 2: one for the header and one for the connected tip. The PR introduces a new helper method `LogBlockHeader`. When receiving a _compact block_ we call `LogBlockHeader` from the exact same place as where we previously logged. So that log message doesn't change. What does change is that we no longer _also_ log from `AcceptBlockHeader`. When receiving a regular header(s) message, _we only log the last one_. This is a change in behaviour because it was simpler to implement, but it's probably better anyway. It does mean that if a peer sends of a bunch of headers of which _any_ is invalid, we won't log it (here). Lastly I expanded the code comment explaining why we log this. It initially only covered selfish mining, but we also care about peers sending us headers but not following up (see e.g. #27626). Example log: ``` 2023-06-05T13:12:21Z Saw new header hash=000000000000000000045910263ef84b575ae3af151865238f1e5c619e69c330 height=792964 peer=0 2023-06-05T13:12:23Z UpdateTip: new best=000000000000000000045910263ef84b575ae3af151865238f1e5c619e69c330 height=792964 version=0x20000000 log2_work=94.",
+      "files": [
+        "doc/release-notes-27826.md",
+        "src/net_processing.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 27491,
+      "primary": "refactor",
+      "secondary": [
+        "test_ci_build",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'rpc_change': 5, 'other': 15, 'test_ci_build': 40}",
+        "kw:refactor:['refactor']",
+        "kw:consensus_change:['consensus']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/test/txvalidationcache_tests.cpp=74,src/chainparams.h=67,src/qt/test/test_main.cpp=66,src/qt/bitcoin.cpp=66,src/test/fuzz/util.h=65",
+        "override:title_prefix:refactor:->refactor"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 24.0,
+        "consensus_change": 4.25,
+        "rpc_change": 7.5,
+        "test_ci_build": 19.0,
+        "other": 13.75
+      },
+      "ambiguous": true,
+      "title": "refactor: Move chain constants to the util library",
+      "merged_at": "2023-05-09T14:42:51+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/Makefile.am",
+        "src/bench/checkblock.cpp",
+        "src/bench/load_external.cpp",
+        "src/bench/logging.cpp",
+        "src/bench/mempool_stress.cpp",
+        "src/bench/rpc_blockchain.cpp",
+        "src/bench/rpc_mempool.cpp",
+        "src/bitcoin-chainstate.cpp",
+        "src/bitcoin-cli.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/bitcoin-util.cpp",
+        "src/bitcoin-wallet.cpp"
+      ],
+      "body": "This pull request is part of the `libbitcoinkernel` project https://github.com/bitcoin/bitcoin/issues/24303 https://github.com/bitcoin/bitcoin/projects/18 and more specifically its \"Step 2: Decouple most non-consensus code from libbitcoinkernel\". It is also a follow up to #26177. It replaces pull request https://github.com/bitcoin/bitcoin/pull/27294, which just moved the constants to a new file, but did not re-declare them as enums. The code move of the chain name constants out of the `chainparamsbase` to their own separate header allows the kernel `chainparams` to no longer include `chainparamsbase`. The `chainparamsbase` contain references to the `ArgsManager` and networking related options that should not belong to the kernel library. Besides this move, the constants are re-declared as enums with helper functions facilitating string conversions.",
+      "files": [
+        "src/Makefile.am",
+        "src/bench/checkblock.cpp",
+        "src/bench/load_external.cpp",
+        "src/bench/logging.cpp",
+        "src/bench/mempool_stress.cpp",
+        "src/bench/rpc_blockchain.cpp",
+        "src/bench/rpc_mempool.cpp",
+        "src/bitcoin-chainstate.cpp",
+        "src/bitcoin-cli.cpp",
+        "src/bitcoin-tx.cpp",
+        "src/bitcoin-util.cpp",
+        "src/bitcoin-wallet.cpp",
+        "src/chainparams.cpp",
+        "src/chainparams.h",
+        "src/chainparamsbase.cpp",
+        "src/chainparamsbase.h",
+        "src/common/args.cpp",
+        "src/common/args.h",
+        "src/common/config.cpp",
+        "src/common/init.cpp"
+      ]
+    },
+    {
+      "number": 25832,
+      "primary": "networking_change",
+      "secondary": [
+        "debt_compensation",
+        "test_ci_build",
+        "documentation"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a",
+      "evidence": [
+        "label:Utils/log/libs->other",
+        "paths:{'test_ci_build': 3, 'documentation': 1, 'networking_change': 2}",
+        "kw:debt_compensation:['performance']",
+        "kw:networking_change:['p2p', 'peer', 'connection']",
+        "kw:documentation:['documentation']",
+        "enrich:consensus->consensus_change",
+        "enrich_subtype:performance->debt_compensation",
+        "hotspots:['src/net.cpp', 'src/net_processing.cpp']"
+      ],
+      "scores": {
+        "debt_compensation": 7.5,
+        "consensus_change": 0.25,
+        "networking_change": 9.0,
+        "test_ci_build": 6.5,
+        "documentation": 4.5,
+        "other": 4.0
+      },
+      "ambiguous": true,
+      "title": "tracing: network connection tracepoints",
+      "merged_at": "2025-02-05T15:30:58+00:00",
+      "labels": [
+        "Utils/log/libs"
+      ],
+      "files_sample": [
+        "contrib/tracing/README.md",
+        "contrib/tracing/log_p2p_connections.bt",
+        "doc/tracing.md",
+        "src/net.cpp",
+        "src/net_processing.cpp",
+        "test/functional/interface_usdt_net.py"
+      ],
+      "body": "This adds five new tracepoints with documentation and tests for network connections: - established connections with `net:inbound_connection` and `net:outbound_connection` - closed connections (both closed by us or by the peer) with `net:closed_connnection` - inbound connections that we choose to evict with `net:evicted_inbound_connection` - connections that are misbehaving and punished with `net:misbehaving_connection` I've been using these tracepoints for a few months now to monitor connection lifetimes, re-connection frequency by IP and netgroup, misbehavior, peer discouragement, and eviction and more. Together with the two existing P2P message tracepoints they allow for a good overview of local P2P network activity. Also sort-of addresses https://github.com/bitcoin/bitcoin/pull/22006#discussion_r636775863. I've been back and forth on which arguments to include. For example, `net:evicted_connection` could also include some of the eviction metrics like e.g. `last_block_time`, `min_ping_time`, ... but I've left them out for now. If wanted, this can be added here or in a follow-up. I've tried to minimize a potential performance impact by measuring executed instructions with `gdb` where possible (method described [here](https://github.com/bitcoin/bitcoin/pull/23724#issuecomment-996919963)). I don't think a few hundred extra instructions are too crucial, as connection opens/closes aren't too frequent (compared to e.g. P2P messages). Note: e.g. `CreateNodeFromAcceptedSocket()` us",
+      "files": [
+        "contrib/tracing/README.md",
+        "contrib/tracing/log_p2p_connections.bt",
+        "doc/tracing.md",
+        "src/net.cpp",
+        "src/net_processing.cpp",
+        "test/functional/interface_usdt_net.py"
+      ]
+    },
+    {
+      "number": 25527,
+      "primary": "test_ci_build",
+      "secondary": [
+        "consensus_change",
+        "refactor"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'test_ci_build': 4, 'other': 2, 'consensus_change': 4}",
+        "kw:new_feature:['introduce']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/test/txvalidationcache_tests.cpp=74,src/validation.h=62,src/script/sigcache.h=60,src/script/sigcache.cpp=52,ci/test/06_script_b.sh=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "new_feature": 2.0,
+        "consensus_change": 6.25,
+        "test_ci_build": 8.0,
+        "other": 3.0
+      },
+      "ambiguous": true,
+      "title": "[kernel 3c/n] Decouple validation cache initialization from `ArgsManager`",
+      "merged_at": "2022-08-04T15:44:00+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "ci/test/06_script_b.sh",
+        "src/Makefile.am",
+        "src/bitcoin-chainstate.cpp",
+        "src/cuckoocache.h",
+        "src/init.cpp",
+        "src/kernel/validation_cache_sizes.h",
+        "src/node/validation_cache_args.cpp",
+        "src/node/validation_cache_args.h",
+        "src/script/sigcache.cpp",
+        "src/script/sigcache.h",
+        "src/test/fuzz/script_sigcache.cpp",
+        "src/test/txvalidationcache_tests.cpp"
+      ],
+      "body": "This is part of the `libbitcoinkernel` project: #24303, https://github.com/bitcoin/bitcoin/projects/18 This PR is **_NOT_** dependent on any other PRs. ----- a.k.a. \"Stop calling `gArgs.GetIntArg(\"-maxsigcachesize\")` from validation code\" This PR introduces the `ValidationCacheSizes` struct and its corresponding `ApplyArgsManOptions` function, removing the need to call `gArgs` from `Init{Signature,ScriptExecution}Cache()`. This serves to further decouple `ArgsManager` from `libbitcoinkernel` code. More context can be gleaned from the commit messages.",
+      "files": [
+        "ci/test/06_script_b.sh",
+        "src/Makefile.am",
+        "src/bitcoin-chainstate.cpp",
+        "src/cuckoocache.h",
+        "src/init.cpp",
+        "src/kernel/validation_cache_sizes.h",
+        "src/node/validation_cache_args.cpp",
+        "src/node/validation_cache_args.h",
+        "src/script/sigcache.cpp",
+        "src/script/sigcache.h",
+        "src/test/fuzz/script_sigcache.cpp",
+        "src/test/txvalidationcache_tests.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 25514,
+      "primary": "test_ci_build",
+      "secondary": [
+        "networking_change"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:P2P->networking_change",
+        "paths:{'networking_change': 4, 'other': 1, 'rpc_change': 1, 'test_ci_build': 7}",
+        "kw:networking_change:['peer']",
+        "kw:test_ci_build:['unit test']",
+        "enrich:feature->new_feature",
+        "debt_join:src/test/fuzz/util.h=65,src/qt/rpcconsole.cpp=64,src/rpc/net.cpp=62,src/net_processing.h=62,src/test/fuzz/util.cpp=51"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "new_feature": 0.5,
+        "networking_change": 12.0,
+        "rpc_change": 1.5,
+        "test_ci_build": 14.5,
+        "other": 1.5
+      },
+      "ambiguous": true,
+      "title": "net processing: Move CNode::nServices and CNode::nLocalServices to Peer",
+      "merged_at": "2022-07-19T06:33:58+00:00",
+      "labels": [
+        "P2P"
+      ],
+      "files_sample": [
+        "src/net.cpp",
+        "src/net.h",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/qt/rpcconsole.cpp",
+        "src/rpc/net.cpp",
+        "src/test/denialofservice_tests.cpp",
+        "src/test/fuzz/net.cpp",
+        "src/test/fuzz/util.cpp",
+        "src/test/fuzz/util.h",
+        "src/test/net_tests.cpp",
+        "src/test/util/net.cpp"
+      ],
+      "body": "Another step in #19398. Which services we offer to a peer and which services they offer to us is application layer data and should not be stored on `CNode`. This is also a prerequisite for adding `PeerManager` unit tests (See #25515).",
+      "files": [
+        "src/net.cpp",
+        "src/net.h",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/qt/rpcconsole.cpp",
+        "src/rpc/net.cpp",
+        "src/test/denialofservice_tests.cpp",
+        "src/test/fuzz/net.cpp",
+        "src/test/fuzz/util.cpp",
+        "src/test/fuzz/util.h",
+        "src/test/net_tests.cpp",
+        "src/test/util/net.cpp",
+        "src/test/util/net.h"
+      ]
+    },
+    {
+      "number": 25499,
+      "primary": "networking_change",
+      "secondary": [
+        "refactor",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'networking_change': 2, 'rpc_change': 1, 'consensus_change': 1, 'other': 2}",
+        "debt_join:src/banman.cpp=56,src/addrdb.cpp=51,src/rpc/server.cpp=50,src/validation.cpp=50,src/wallet/bdb.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "consensus_change": 1.5,
+        "networking_change": 5.0,
+        "rpc_change": 1.5,
+        "other": 3.0
+      },
+      "ambiguous": true,
+      "title": "Use steady clock for all millis bench logging",
+      "merged_at": "2022-09-16T10:10:35+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/addrdb.cpp",
+        "src/banman.cpp",
+        "src/init.cpp",
+        "src/net.cpp",
+        "src/rpc/server.cpp",
+        "src/validation.cpp",
+        "src/wallet/bdb.cpp",
+        "src/wallet/wallet.cpp"
+      ],
+      "body": "Currently `GetTimeMillis` is used for bench logging in milliseconds integral precision. Replace it to use a steady clock that is type-safe and steady. Microsecond or float precision can be done in a follow-up.",
+      "files": [
+        "src/addrdb.cpp",
+        "src/banman.cpp",
+        "src/init.cpp",
+        "src/net.cpp",
+        "src/rpc/server.cpp",
+        "src/validation.cpp",
+        "src/wallet/bdb.cpp",
+        "src/wallet/wallet.cpp"
+      ]
+    },
+    {
+      "number": 25064,
+      "primary": "consensus_change",
+      "secondary": [
+        "test_ci_build",
+        "refactor"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'other': 1, 'rpc_change': 1, 'test_ci_build': 3, 'consensus_change': 2}",
+        "kw:consensus_change:['consensus']",
+        "enrich:consensus->consensus_change",
+        "debt_join:src/validation.h=62,src/rpc/mining.cpp=54,src/bitcoin-chainstate.cpp=50,src/node/miner.cpp=50,src/test/util/setup_common.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 4.0,
+        "consensus_change": 7.25,
+        "rpc_change": 1.5,
+        "test_ci_build": 6.5,
+        "other": 1.5
+      },
+      "ambiguous": true,
+      "title": "[kernel 2b/n] Add `ChainstateManager::m_adjusted_time_callback`",
+      "merged_at": "2022-05-20T18:41:56+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "src/Makefile.am",
+        "src/bitcoin-chainstate.cpp",
+        "src/init.cpp",
+        "src/kernel/chainstatemanager_opts.h",
+        "src/node/miner.cpp",
+        "src/rpc/mining.cpp",
+        "src/test/miner_tests.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/test/validation_chainstate_tests.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ],
+      "body": "``` This decouples validation.cpp from netaddress.cpp (transitively, timedata.cpp, and asmap.cpp). This is important for libbitcoinkernel as: - There is no reason for the consensus engine to be coupled with netaddress, timedata, and asmap - Users of libbitcoinkernel can now easily supply their own std::function that provides the adjusted time. See the src/Makefile.am changes for some satisfying removals. ```",
+      "files": [
+        "src/Makefile.am",
+        "src/bitcoin-chainstate.cpp",
+        "src/init.cpp",
+        "src/kernel/chainstatemanager_opts.h",
+        "src/node/miner.cpp",
+        "src/rpc/mining.cpp",
+        "src/test/miner_tests.cpp",
+        "src/test/util/setup_common.cpp",
+        "src/test/validation_chainstate_tests.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ]
+    },
+    {
+      "number": 24971,
+      "primary": "test_ci_build",
+      "secondary": [
+        "refactor",
+        "other",
+        "dependency_maintenance"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:Refactoring->refactor",
+        "paths:{'test_ci_build': 3, 'networking_change': 2, 'other': 2}",
+        "kw:refactor:['modernize']",
+        "kw:dependency_maintenance:['upstream']",
+        "enrich:bugfix->other",
+        "debt_join:src/torcontrol.cpp=68,src/qt/intro.cpp=55,src/randomenv.cpp=51"
+      ],
+      "scores": {
+        "debt_compensation": 1.5,
+        "refactor": 6.0,
+        "networking_change": 3.0,
+        "dependency_maintenance": 3.0,
+        "test_ci_build": 6.5,
+        "other": 3.75
+      },
+      "ambiguous": true,
+      "title": "tidy: modernize-use-nullptr",
+      "merged_at": "2022-04-26T13:56:22+00:00",
+      "labels": [
+        "Refactoring"
+      ],
+      "files_sample": [
+        "ci/test/06_script_a.sh",
+        "configure.ac",
+        "src/.bear-tidy-config",
+        "src/.clang-tidy",
+        "src/mapport.cpp",
+        "src/netbase.cpp",
+        "src/qt/intro.cpp",
+        "src/randomenv.cpp",
+        "src/support/allocators/secure.h",
+        "src/test/fuzz/crypto_diff_fuzz_chacha20.cpp",
+        "src/torcontrol.cpp",
+        "src/wallet/wallet.cpp"
+      ],
+      "body": "Alternative to #15112 which uses `clang-tidy` to do perform the checking, rather than `-Wzero-as-null-pointer-constant`, and avoids having to uses pragmas, i.e: ```cpp #if defined(HAVE_CONFIG_H) #include <config/bitcoin-config.h> #endif #if defined(HAVE_W_ZERO_AS_NULL_POINTER_CONSTANT) #pragma GCC diagnostic push #pragma GCC diagnostic ignored \"-Wzero-as-null-pointer-constant\" #pragma GCC diagnostic ignored \"-Wunknown-pragmas\" #pragma clang diagnostic push #pragma clang diagnostic ignored \"-Wzero-as-null-pointer-constant\" #endif ``` to suppress warnings coming from upstream code. Can be tested by dropping the preceding commit. Should produce errors like: ```bash clang-tidy-14 --use-color -p=/home/ubuntu/ci_scratch/ci/scratch/build/bitcoin-x86_64-pc-linux-gnu /home/ubuntu/ci_scratch/ci/scratch/build/bitcoin-x86_64-pc-linux-gnu/src/netbase.cpp /home/ubuntu/ci_scratch/ci/scratch/build/bitcoin-x86_64-pc-linux-gnu/src/netbase.cpp:678:36: error: use nullptr [modernize-use-nullptr,-warnings-as-errors] if (!Socks5(strDest, port, 0, sock)) { ^ nullptr ```",
+      "files": [
+        "ci/test/06_script_a.sh",
+        "configure.ac",
+        "src/.bear-tidy-config",
+        "src/.clang-tidy",
+        "src/mapport.cpp",
+        "src/netbase.cpp",
+        "src/qt/intro.cpp",
+        "src/randomenv.cpp",
+        "src/support/allocators/secure.h",
+        "src/test/fuzz/crypto_diff_fuzz_chacha20.cpp",
+        "src/torcontrol.cpp",
+        "src/wallet/wallet.cpp"
+      ]
+    },
+    {
+      "number": 24539,
+      "primary": "debt_compensation",
+      "secondary": [
+        "test_ci_build",
+        "rpc_change",
+        "other"
+      ],
+      "confidence": "medium",
+      "tier_used": "1+2a+2b",
+      "evidence": [
+        "label:UTXO Db and Indexes->debt_compensation",
+        "label_boost:UTXO Db and Indexes->debt_compensation",
+        "paths:{'documentation': 2, 'other': 4, 'rpc_change': 3, 'test_ci_build': 7}",
+        "kw:rpc_change:['rpc']",
+        "enrich:consensus->consensus_change",
+        "hotspots:['src/init.cpp']",
+        "debt_join:test/functional/test_runner.py=77,src/rpc/client.cpp=50"
+      ],
+      "scores": {
+        "debt_compensation": 12.5,
+        "consensus_change": 0.25,
+        "rpc_change": 6.5,
+        "test_ci_build": 12.5,
+        "documentation": 3.0,
+        "other": 6.0
+      },
+      "ambiguous": true,
+      "title": "Add a \"tx output spender\" index",
+      "merged_at": "2026-02-20T08:27:26+00:00",
+      "labels": [
+        "UTXO Db and Indexes"
+      ],
+      "files_sample": [
+        "doc/files.md",
+        "doc/release-notes-24539.md",
+        "src/CMakeLists.txt",
+        "src/index/txospenderindex.cpp",
+        "src/index/txospenderindex.h",
+        "src/init.cpp",
+        "src/node/caches.cpp",
+        "src/node/caches.h",
+        "src/rpc/client.cpp",
+        "src/rpc/mempool.cpp",
+        "src/rpc/node.cpp",
+        "src/test/CMakeLists.txt"
+      ],
+      "body": "This PR adds a new \"tx output spender\" index, which allows users to query which tx spent a given outpoint with the `gettxspendingprevout` RPC call that was added by https://github.com/bitcoin/bitcoin/pull/24408. Such an index would be extremely useful for Lightning, and probably for most layer-2 protocols that rely on chains of unpublished transactions. UPDATE: this PR is ready for review and issues have been addressed: - using a watch-only wallet instead would not work if there is a significant number of outpoints to watch (see https://github.com/bitcoin/bitcoin/pull/24539#issuecomment-1276595646) - this PR does not require `-txindex` anymore We use a composite key with 2 parts (suggested by romanz): hash(spent outpoint) and tx position, with an empty value. Average composite key size is 15 bytes. The spending tx can optionally be returned by `gettxspendingprevout` (even it `-txindex is not set`).",
+      "files": [
+        "doc/files.md",
+        "doc/release-notes-24539.md",
+        "src/CMakeLists.txt",
+        "src/index/txospenderindex.cpp",
+        "src/index/txospenderindex.h",
+        "src/init.cpp",
+        "src/node/caches.cpp",
+        "src/node/caches.h",
+        "src/rpc/client.cpp",
+        "src/rpc/mempool.cpp",
+        "src/rpc/node.cpp",
+        "src/test/CMakeLists.txt",
+        "src/test/txospenderindex_tests.cpp",
+        "test/functional/feature_init.py",
+        "test/functional/rpc_gettxspendingprevout.py",
+        "test/functional/rpc_mempool_info.py",
+        "test/functional/rpc_misc.py",
+        "test/functional/test_runner.py"
+      ]
+    }
+  ]
+}

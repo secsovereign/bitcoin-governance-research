@@ -1,0 +1,482 @@
+{
+  "analysis_date": "2026-07-12T08:37:48.478092+00:00",
+  "methodology": "docs/ARCHITECTURAL_DIVERGENCE_PLAN.md Phase 2 \u2014 dimension_queries.yaml",
+  "data_sources": [
+    "/home/user/src/bitcoin-governance-research/data/classification/dimension_queries.yaml",
+    "/home/user/src/bitcoin-governance-research/data/processed/pr_architectural_classification.jsonl",
+    "/home/user/src/bitcoin-governance-research/data/processed/enriched_prs.jsonl",
+    "/home/user/src/bitcoin-governance-research/data/reference/blvm_architecture_manifest.json",
+    "/home/user/src/bitcoin-governance-research/findings/data/blvm_codebase_metrics.json"
+  ],
+  "core_total_merged_prs": 16653,
+  "phase1_headline_metrics": {
+    "architectural_debt_tax_pct": 1.7,
+    "total_maintenance_burden_pct": 39.79,
+    "structural_work_pct": 8.82,
+    "net_new_capability_pct": 16.23,
+    "other_pct": 22.87
+  },
+  "comparison_table": [
+    {
+      "dimension": "formal_spec",
+      "description": "Orange Paper / CONSENSUS_SPEC vs Core ad hoc consensus changes",
+      "commons": {
+        "artifact": "blvm-spec/CONSENSUS_SPEC.md",
+        "summary": "RFC-style consensus rule register (manifest rule_count)",
+        "rule_count": 159
+      },
+      "core": {
+        "pr_proxy_count": 668,
+        "pr_proxy_pct": 4.01,
+        "primary_category_only_count": 619,
+        "primary_categories": [
+          "consensus_change"
+        ],
+        "query": {
+          "path_any": [
+            "src/consensus/",
+            "src/validation.cpp",
+            "src/script/"
+          ],
+          "title_any": [
+            "consensus",
+            "bip-",
+            "soft fork",
+            "activation"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35621,
+          35464,
+          35344,
+          35335,
+          35316,
+          35312,
+          35295,
+          35269
+        ]
+      }
+    },
+    {
+      "dimension": "spec_lock",
+      "description": "Z3 spec-lock vs absence of formal verification in Core",
+      "commons": {
+        "artifact": "blvm-spec-lock/ + #[spec_locked]",
+        "summary": "Z3-linked formal verification of production consensus paths",
+        "spec_locked_production_total": 251,
+        "core_equivalent": 0
+      },
+      "core": {
+        "pr_proxy_count": null,
+        "pr_proxy_pct": null,
+        "note": "No Core PR proxy; report Commons spec_locked_count only"
+      }
+    },
+    {
+      "dimension": "pure_rust_secp256k1",
+      "description": "Pure Rust secp256k1 vs C libsecp maintenance",
+      "commons": {
+        "artifact": "blvm-secp256k1/",
+        "summary": "Pure Rust secp256k1 (no C FFI at runtime)",
+        "layer": {
+          "note": "pure Rust secp256k1",
+          "paths": [
+            "blvm-secp256k1"
+          ],
+          "path_metrics": [
+            {
+              "path": "blvm-secp256k1",
+              "present": true,
+              "src_loc": 25578,
+              "test_loc": 3196,
+              "rust_files": 21,
+              "test_rust_files": 11,
+              "spec_locked_attrs": 0,
+              "test_density": 0.125
+            }
+          ],
+          "src_loc": 25578,
+          "test_loc": 3196,
+          "rust_files": 21,
+          "test_rust_files": 11,
+          "spec_locked_attrs": 0,
+          "test_density": 0.125
+        }
+      },
+      "core": {
+        "pr_proxy_count": 561,
+        "pr_proxy_pct": 3.37,
+        "primary_category_only_count": 561,
+        "primary_categories": [
+          "dependency_maintenance"
+        ],
+        "query": {
+          "path_any": [
+            "src/secp256k1/",
+            "depends/packages/secp"
+          ],
+          "title_any": [
+            "secp256k1",
+            "subtree update",
+            "secp"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35661,
+          35653,
+          35649,
+          35567,
+          35564,
+          35463,
+          35313,
+          35147
+        ]
+      }
+    },
+    {
+      "dimension": "utxo_commitments",
+      "description": "UTXO commitments vs IBD/sync patch churn",
+      "commons": {
+        "artifact": "blvm-protocol/src/utxo_commitments/",
+        "summary": "UTXO commitment protocol surface",
+        "layer": {
+          "note": "UTXO commitment protocol surface",
+          "paths": [
+            "blvm-protocol/src/utxo_commitments"
+          ],
+          "path_metrics": [
+            {
+              "path": "blvm-protocol/src/utxo_commitments",
+              "present": true,
+              "src_loc": 2754,
+              "test_loc": 0,
+              "rust_files": 8,
+              "test_rust_files": 0,
+              "spec_locked_attrs": 6,
+              "test_density": 0.0
+            }
+          ],
+          "src_loc": 2754,
+          "test_loc": 0,
+          "rust_files": 8,
+          "test_rust_files": 0,
+          "spec_locked_attrs": 6,
+          "test_density": 0.0
+        }
+      },
+      "core": {
+        "pr_proxy_count": 363,
+        "pr_proxy_pct": 2.18,
+        "primary_category_only_count": 283,
+        "primary_categories": [
+          "debt_compensation"
+        ],
+        "query": {
+          "path_any": [
+            "src/txdb",
+            "src/coins",
+            "src/node/blockstorage",
+            "src/index/"
+          ],
+          "title_any": [
+            "assumeutxo",
+            "utxo",
+            "ibd",
+            "snapshot",
+            "chainstate"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35673,
+          35652,
+          35594,
+          35465,
+          35406,
+          35359,
+          35295,
+          35173
+        ]
+      }
+    },
+    {
+      "dimension": "parallel_ibd",
+      "description": "Parallel IBD vs lock/thread-pool workarounds",
+      "commons": {
+        "artifact": "blvm-node/src/node/parallel_ibd/",
+        "summary": "Parallel IBD engine as first-class design",
+        "layer": {
+          "note": "parallel IBD engine",
+          "paths": [
+            "blvm-node/src/node/parallel_ibd"
+          ],
+          "path_metrics": [
+            {
+              "path": "blvm-node/src/node/parallel_ibd",
+              "present": true,
+              "src_loc": 12850,
+              "test_loc": 0,
+              "rust_files": 13,
+              "test_rust_files": 0,
+              "spec_locked_attrs": 0,
+              "test_density": 0.0
+            }
+          ],
+          "src_loc": 12850,
+          "test_loc": 0,
+          "rust_files": 13,
+          "test_rust_files": 0,
+          "spec_locked_attrs": 0,
+          "test_density": 0.0
+        }
+      },
+      "core": {
+        "pr_proxy_count": 766,
+        "pr_proxy_pct": 4.6,
+        "primary_category_only_count": 283,
+        "primary_categories": [
+          "debt_compensation"
+        ],
+        "query": {
+          "path_any": [
+            "src/validation.cpp",
+            "src/checkqueue",
+            "src/net_processing"
+          ],
+          "title_any": [
+            "ibd",
+            "cs_main",
+            "lock",
+            "parallel",
+            "prefetch",
+            "script check"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35673,
+          35652,
+          35621,
+          35594,
+          35498,
+          35465,
+          35406,
+          35359
+        ]
+      }
+    },
+    {
+      "dimension": "multi_transport_p2p",
+      "description": "Iroh/QUIC/Dandelion vs legacy P2P stack changes",
+      "commons": {
+        "artifact": "blvm-node/src/network/",
+        "summary": "Multi-transport P2P (Iroh/TCP/Dandelion/Erlay)",
+        "layer": {
+          "src_loc": 23051,
+          "transports": [
+            "iroh",
+            "tcp",
+            "dandelion",
+            "erlay"
+          ],
+          "test_density": 0.037
+        }
+      },
+      "core": {
+        "pr_proxy_count": 1125,
+        "pr_proxy_pct": 6.76,
+        "primary_category_only_count": 1008,
+        "primary_categories": [
+          "networking_change"
+        ],
+        "query": {
+          "path_any": [
+            "src/net",
+            "src/net_processing",
+            "src/addrman",
+            "src/protocol"
+          ],
+          "title_any": [
+            "p2p",
+            "peer",
+            "bip324",
+            "v2 transport",
+            "erlay"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35550,
+          35498,
+          35410,
+          35297,
+          35221,
+          35120,
+          35117,
+          35116
+        ]
+      }
+    },
+    {
+      "dimension": "module_system",
+      "description": "Process modules vs RPC monolith growth",
+      "commons": {
+        "artifact": "blvm-node/src/module/ + satellite module.toml",
+        "summary": "Process-isolated modules (+ optional WASM), not DLL plugins",
+        "layer": {
+          "src_loc": 18831,
+          "module_toml_count": 8,
+          "satellite_count": 7,
+          "isolation": "process_subprocess_plus_optional_wasm"
+        }
+      },
+      "core": {
+        "pr_proxy_count": 1355,
+        "pr_proxy_pct": 8.14,
+        "primary_category_only_count": 964,
+        "primary_categories": [
+          "rpc_change"
+        ],
+        "query": {
+          "path_any": [
+            "src/rpc/"
+          ],
+          "title_any": [
+            "rpc",
+            "rest"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35678,
+          35519,
+          35424,
+          35372,
+          35267,
+          35266,
+          35223,
+          35182
+        ]
+      }
+    },
+    {
+      "dimension": "selective_sync",
+      "description": "Selective sync module \u2014 no Core equivalent",
+      "commons": {
+        "artifact": "blvm-selective-sync/",
+        "summary": "Selective sync as satellite module",
+        "selective_sync_crate": {
+          "src_loc": 2260,
+          "test_loc": 155,
+          "spec_locked_count": 0
+        }
+      },
+      "core": {
+        "pr_proxy_count": null,
+        "pr_proxy_pct": null,
+        "note": "No Core PR proxy"
+      }
+    },
+    {
+      "dimension": "differential_testing",
+      "description": "blvm-bench differential vs Core test/review culture",
+      "commons": {
+        "artifact": "blvm-bench/",
+        "summary": "Differential / operator-scale testing harness",
+        "layer": {
+          "note": "differential / benchmarking harness",
+          "paths": [
+            "blvm-bench"
+          ],
+          "path_metrics": [
+            {
+              "path": "blvm-bench",
+              "present": true,
+              "src_loc": 32763,
+              "test_loc": 8245,
+              "rust_files": 89,
+              "test_rust_files": 49,
+              "spec_locked_attrs": 0,
+              "test_density": 0.252
+            }
+          ],
+          "src_loc": 32763,
+          "test_loc": 8245,
+          "rust_files": 89,
+          "test_rust_files": 49,
+          "spec_locked_attrs": 0,
+          "test_density": 0.252
+        }
+      },
+      "core": {
+        "pr_proxy_count": 6936,
+        "pr_proxy_pct": 41.65,
+        "primary_category_only_count": 5782,
+        "primary_categories": [
+          "test_ci_build"
+        ],
+        "query": {
+          "path_any": [
+            "test/",
+            "src/test/"
+          ],
+          "title_any": [
+            "test",
+            "fuzz"
+          ]
+        },
+        "note": null,
+        "exemplar_prs": [
+          35678,
+          35661,
+          35653,
+          35652,
+          35640,
+          35615,
+          35614,
+          35610
+        ]
+      }
+    },
+    {
+      "dimension": "layered_crates",
+      "description": "Layered crates vs monolith cross-cutting PRs",
+      "commons": {
+        "artifact": "6-tier crate stack (spec\u2192consensus\u2192protocol\u2192node\u2192bin/sdk\u2192commons)",
+        "summary": "ADR volatility gradient; layer boundaries enforced by crates",
+        "tier_stack": [
+          "blvm-spec",
+          "blvm-consensus",
+          "blvm-protocol",
+          "blvm-node",
+          "blvm / blvm-sdk",
+          "blvm-commons"
+        ]
+      },
+      "core": {
+        "pr_proxy_count": 2038,
+        "pr_proxy_pct": 12.24,
+        "definition": "merged PRs touching \u22653 coarse subsystems",
+        "note": "Computed: multi-subsystem file span per PR",
+        "exemplar_prs": [
+          35678,
+          35673,
+          35594,
+          35588,
+          35497,
+          35465,
+          35456,
+          35452
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Core side is PR-proxy counts, not proof of missing Commons features",
+    "Path/title OR matching can double-count across dimensions",
+    "spec_lock / selective_sync have no Core PR proxy by design",
+    "layered_crates uses coarse subsystem span heuristic"
+  ]
+}

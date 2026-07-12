@@ -1,0 +1,240 @@
+{
+  "analysis_date": "2026-07-12T08:37:30.491289+00:00",
+  "methodology": "docs/ARCHITECTURAL_DIVERGENCE_PLAN.md Phase 2 \u2014 Core turnover debt vs Commons static layers (asymmetric metrics)",
+  "data_sources": [
+    "/home/user/src/bitcoin-governance-research/findings/data/code_turnover_analysis.json",
+    "/home/user/src/bitcoin-governance-research/findings/data/blvm_codebase_metrics.json",
+    "/home/user/src/bitcoin-governance-research/findings/data/pr_architectural_classification.json"
+  ],
+  "core_turnover_meta": {
+    "analysis_date": "2026-07-12T03:55:16.421224",
+    "total_prs_analyzed": 16653,
+    "overall_patch_to_refactor_ratio": 3.0148254868243716,
+    "technical_debt_metrics": {
+      "high_debt_count": 1186,
+      "high_debt_percentage": 27.879642689233663,
+      "untouchable_count": 71,
+      "untouchable_percentage": 1.6690173953925715,
+      "avg_debt_score": 37.7380993933484,
+      "median_debt_score": 35.92410523748552,
+      "debt_distribution": {
+        "critical": 144,
+        "medium": 1800,
+        "high": 1088,
+        "low": 1222
+      }
+    }
+  },
+  "phase1_headline_metrics": {
+    "architectural_debt_tax_pct": 1.7,
+    "total_maintenance_burden_pct": 39.79,
+    "structural_work_pct": 8.82,
+    "net_new_capability_pct": 16.23,
+    "other_pct": 22.87
+  },
+  "headline_contrasts": {
+    "core_rpc_avg_debt_score": 52.62,
+    "core_rpc_high_debt_pct": 62.13,
+    "core_rpc_patch_to_refactor": 3.737,
+    "commons_module_isolation": "process_subprocess_plus_optional_wasm",
+    "commons_spec_locked_total": 251,
+    "commons_consensus_rules": 159
+  },
+  "comparison_table": [
+    {
+      "axis": "consensus",
+      "interpretation": "Core consensus files show accumulated patch debt; Commons consensus is spec-locked with formal verification surface.",
+      "core": {
+        "subsystem": "consensus",
+        "file_count_in_distribution": 39,
+        "debt": {
+          "files": 39,
+          "avg_debt_score": 43.53,
+          "high_debt_percentage": 38.46,
+          "untouchable_percentage": 0.0,
+          "total_patches": 1024,
+          "total_refactors": 1012,
+          "patch_to_refactor_ratio": 1.012
+        }
+      },
+      "commons": {
+        "consensus": {
+          "src_loc": 50099,
+          "test_loc": 54422,
+          "test_density": 1.086,
+          "rust_files": 131,
+          "spec_locked_attrs": 240,
+          "manifest_spec_locked": 240
+        },
+        "spec_lock": {
+          "src_loc": 16237,
+          "test_loc": 861,
+          "test_density": 0.053,
+          "rust_files": 23,
+          "spec_locked_attrs": 64
+        }
+      }
+    },
+    {
+      "axis": "rpc",
+      "interpretation": "Core RPC is a high-debt growth surface (monolith). Commons splits node RPC from process-isolated module endpoints.",
+      "core": {
+        "subsystem": "rpc",
+        "file_count_in_distribution": 235,
+        "debt": {
+          "files": 235,
+          "avg_debt_score": 52.62,
+          "high_debt_percentage": 62.13,
+          "untouchable_percentage": 0.0,
+          "total_patches": 5273,
+          "total_refactors": 1411,
+          "patch_to_refactor_ratio": 3.737
+        }
+      },
+      "commons": {
+        "node_rpc": {
+          "src_loc": 20453,
+          "test_loc": 275,
+          "test_density": 0.013,
+          "rust_files": 38,
+          "spec_locked_attrs": 0,
+          "rpc_method_heuristic": 32
+        },
+        "modules": {
+          "src_loc": 18831,
+          "test_loc": 0,
+          "test_density": 0.0,
+          "rust_files": 60,
+          "spec_locked_attrs": 0,
+          "module_toml_count": 8,
+          "satellite_count": 7,
+          "isolation": "process_subprocess_plus_optional_wasm"
+        }
+      }
+    },
+    {
+      "axis": "network",
+      "interpretation": "Core P2P evolves on a legacy stack via networking_change / debt patches; Commons ships multi-transport + parallel IBD as designed subsystems.",
+      "core": {
+        "subsystem": "network",
+        "file_count_in_distribution": 165,
+        "debt": {
+          "files": 165,
+          "avg_debt_score": 39.2,
+          "high_debt_percentage": 28.48,
+          "untouchable_percentage": 0.61,
+          "total_patches": 4281,
+          "total_refactors": 982,
+          "patch_to_refactor_ratio": 4.359
+        }
+      },
+      "commons": {
+        "node_network": {
+          "src_loc": 23051,
+          "test_loc": 850,
+          "test_density": 0.037,
+          "rust_files": 53,
+          "spec_locked_attrs": 5,
+          "transports": [
+            "iroh",
+            "tcp",
+            "dandelion",
+            "erlay"
+          ]
+        },
+        "parallel_ibd": {
+          "src_loc": 12850,
+          "test_loc": 0,
+          "test_density": 0.0,
+          "rust_files": 13,
+          "spec_locked_attrs": 0
+        }
+      }
+    },
+    {
+      "axis": "script",
+      "interpretation": "Core script interpreter sits in the consensus debt surface; Commons folds script rules into the consensus crate + CONSENSUS_SPEC.",
+      "core": {
+        "subsystem": "script",
+        "file_count_in_distribution": 82,
+        "debt": {
+          "files": 82,
+          "avg_debt_score": 47.22,
+          "high_debt_percentage": 45.12,
+          "untouchable_percentage": 1.22,
+          "total_patches": 1468,
+          "total_refactors": 463,
+          "patch_to_refactor_ratio": 3.171
+        }
+      },
+      "commons": {
+        "consensus": {
+          "src_loc": 50099,
+          "test_loc": 54422,
+          "test_density": 1.086,
+          "rust_files": 131,
+          "spec_locked_attrs": 240,
+          "manifest_spec_locked": 240
+        }
+      }
+    },
+    {
+      "axis": "wallet",
+      "interpretation": "Wallet is out of primary divergence axes (classified Core 'other'). Commons wallet surfaces live in SDK/app layers, not consensus.",
+      "core": {
+        "subsystem": "wallet",
+        "file_count_in_distribution": 271,
+        "debt": {
+          "files": 271,
+          "avg_debt_score": 42.55,
+          "high_debt_percentage": 33.58,
+          "untouchable_percentage": 0.0,
+          "total_patches": 8627,
+          "total_refactors": 1466,
+          "patch_to_refactor_ratio": 5.885
+        }
+      },
+      "commons": {}
+    },
+    {
+      "axis": "test",
+      "interpretation": "Core test_ci_build is a large share of PR volume; Commons emphasizes spec-lock + differential bench posture rather than PR test churn.",
+      "core": {
+        "subsystem": "test",
+        "file_count_in_distribution": 1143,
+        "debt": {
+          "files": 1143,
+          "avg_debt_score": 37.72,
+          "high_debt_percentage": 24.15,
+          "untouchable_percentage": 5.42,
+          "total_patches": 12348,
+          "total_refactors": 4795,
+          "patch_to_refactor_ratio": 2.575
+        }
+      },
+      "commons": {
+        "bench": {
+          "src_loc": 32763,
+          "test_loc": 8245,
+          "test_density": 0.252,
+          "rust_files": 89,
+          "spec_locked_attrs": 0
+        },
+        "consensus": {
+          "src_loc": 50099,
+          "test_loc": 54422,
+          "test_density": 1.086,
+          "rust_files": 131,
+          "spec_locked_attrs": 240,
+          "manifest_spec_locked": 240
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Core debt scores from Feb 2026 turnover snapshot (15,884 PRs); may lag regenerated corpus",
+    "Commons metrics are static (LOC/spec-lock/features) \u2014 not debt_score",
+    "Subsystem taxonomies are not 1:1 across C++ monolith vs Rust crates",
+    "Do not interpret lower Commons LOC as lower complexity"
+  ]
+}

@@ -1,0 +1,57 @@
+# GitHub label → architectural category (Tier 1)
+# Core labels observed on bitcoin/bitcoin merged PRs.
+# Multiple labels may apply; primary chosen by priority order in classifier.
+
+categories:
+  - debt_compensation
+  - refactor
+  - new_feature
+  - consensus_change
+  - networking_change
+  - rpc_change
+  - dependency_maintenance
+  - test_ci_build
+  - documentation
+  - other
+
+# Exact label name (case-insensitive) → category
+label_map:
+  "Refactoring": refactor
+  "Docs": documentation
+  "Documentation": documentation
+  "Tests": test_ci_build
+  "Build system": test_ci_build
+  "CI failed": test_ci_build
+  "CI": test_ci_build
+  "Scripts and tools": test_ci_build
+  "RPC/REST/ZMQ": rpc_change
+  "P2P": networking_change
+  "Validation": consensus_change
+  "Consensus": consensus_change
+  "Wallet": other  # wallet is out of primary divergence axes; keep as other unless keywords override
+  "GUI": other
+  "QT": other
+  "MacOS": other
+  "Windows": other
+  "Linux/Unix": other
+  "Utils/log/libs": other
+  "Bug": other  # bug alone is weak; subtypes from keywords
+  "Feature": new_feature
+  "Backport": other
+  "Mining": other
+  "Mempool": other
+  "TX fees and policy": other
+  "Resource usage": debt_compensation
+  "Block storage": other  # storage features/fixes; debt only via keywords + Resource usage
+  "UTXO Db and Indexes": other  # same — do not auto-map to debt_compensation
+  "Descriptors and Scripting": other
+  "PSBT": other
+  "Interfaces": other
+  "Upstream": dependency_maintenance
+  "Brainstorming": other
+  "Private Broadcast": rpc_change
+
+# Only Resource usage auto-boosts debt; Block storage / UTXO Db caused false positives
+# (e.g. XOR blocksdir privacy feature). Those need keyword/perf signals instead.
+debt_compensation_boost_labels:
+  - "Resource usage"

@@ -1,0 +1,152 @@
+{
+  "analysis_date": "2026-07-12T00:00:00+00:00",
+  "methodology": "docs/ARCHITECTURAL_DIVERGENCE_PLAN.md Phase 2 — exemplar appendix (annotated pairs)",
+  "purpose": "Narrative bridges for arXiv §3; not a statistical sample",
+  "pairs": [
+    {
+      "id": 1,
+      "theme": "formal_spec",
+      "core": {
+        "pr": 32998,
+        "title": "Bump SCRIPT_VERIFY flags to 64 bit",
+        "category": "consensus_change",
+        "point": "Consensus surface grows via ad hoc flag/bit expansions without a rule register."
+      },
+      "commons": {
+        "artifact": "blvm-spec/CONSENSUS_SPEC.md",
+        "point": "Consensus rules live in a numbered register (BLK/TX/SC/…); changes target named rules."
+      }
+    },
+    {
+      "id": 2,
+      "theme": "spec_lock",
+      "core": {
+        "pr": null,
+        "title": null,
+        "category": null,
+        "point": "No production Z3 / spec-lock equivalent in Bitcoin Core."
+      },
+      "commons": {
+        "artifact": "blvm-spec-lock/ + #[spec_locked] in blvm-consensus",
+        "point": "Hundreds of production consensus functions are attribute-locked to the Orange Paper / CONSENSUS_SPEC."
+      }
+    },
+    {
+      "id": 3,
+      "theme": "pure_rust_secp256k1",
+      "core": {
+        "pr": 35564,
+        "title": "Update secp256k1 subtree to latest master",
+        "category": "dependency_maintenance",
+        "point": "Ongoing C libsecp256k1 subtree maintenance tax."
+      },
+      "commons": {
+        "artifact": "blvm-secp256k1/",
+        "point": "Pure Rust secp256k1 crate; dependency maintenance is Rust-native, not a C subtree."
+      }
+    },
+    {
+      "id": 4,
+      "theme": "utxo_commitments_ibd",
+      "core": {
+        "pr": 1677,
+        "title": "Ultraprune: use a pruned-txout-set database for block validation",
+        "category": "debt_compensation",
+        "point": "Foundational UTXO storage redesign to make validation tractable — architectural debt compensation."
+      },
+      "commons": {
+        "artifact": "blvm-protocol/src/utxo_commitments/ + parallel_ibd",
+        "point": "UTXO commitments and parallel IBD are designed subsystems, not after-the-fact storage rescues."
+      }
+    },
+    {
+      "id": 5,
+      "theme": "parallel_ibd_locks",
+      "core": {
+        "pr": 35652,
+        "title": "init: fix reindex deadlock by waking cv after interrupt",
+        "category": "debt_compensation",
+        "point": "Lock/concurrency patches around IBD/reindex remain a recurring tax."
+      },
+      "commons": {
+        "artifact": "blvm-node/src/node/parallel_ibd/",
+        "point": "Parallel IBD engine isolates sync concurrency as a first-class module."
+      }
+    },
+    {
+      "id": 6,
+      "theme": "multi_transport_p2p",
+      "core": {
+        "pr": 30043,
+        "title": "net: Replace libnatpmp with built-in PCP+NATPMP implementation",
+        "category": "networking_change",
+        "point": "Legacy stack evolves via net/ transport and NAT patches."
+      },
+      "commons": {
+        "artifact": "blvm-node/src/network/{iroh_transport,tcp_transport,dandelion,erlay}.rs",
+        "point": "Multiple transports (Iroh/TCP/Dandelion/Erlay) coexist under one network layer."
+      }
+    },
+    {
+      "id": 7,
+      "theme": "module_vs_rpc_monolith",
+      "core": {
+        "pr": 22751,
+        "title": "rpc/wallet: add simulaterawtransaction RPC",
+        "category": "new_feature",
+        "point": "New capability often lands as another RPC on the shared bitcoind surface (RPC high-debt subsystem)."
+      },
+      "commons": {
+        "artifact": "blvm-node/src/module/ + satellite module.toml crates",
+        "point": "Extensions are process-isolated modules with manifests, not growth of a single RPC monolith."
+      }
+    },
+    {
+      "id": 8,
+      "theme": "orphanage_dos_bounds",
+      "core": {
+        "pr": 31829,
+        "title": "p2p: improve TxOrphanage denial of service bounds",
+        "category": "networking_change",
+        "point": "CPU/memory DoS bounds patched into orphanage on the existing net_processing design."
+      },
+      "commons": {
+        "artifact": "blvm-node/src/network/dos_protection.rs + bandwidth_protection.rs",
+        "point": "DoS/bandwidth protections are dedicated network components alongside transports."
+      }
+    },
+    {
+      "id": 9,
+      "theme": "kernel_refactor_vs_layers",
+      "core": {
+        "pr": 25290,
+        "title": "[kernel 3a/n] Decouple CTxMemPool from ArgsManager",
+        "category": "refactor",
+        "point": "Years-long kernel extraction: peeling globals from a monolith after the fact."
+      },
+      "commons": {
+        "artifact": "blvm-consensus / blvm-protocol / blvm-node crate boundaries",
+        "point": "Layer separation is the starting architecture (volatility gradient), not a retrofit."
+      }
+    },
+    {
+      "id": 10,
+      "theme": "selective_sync",
+      "core": {
+        "pr": null,
+        "title": null,
+        "category": null,
+        "point": "No first-class selective-sync module equivalent in Core."
+      },
+      "commons": {
+        "artifact": "blvm-selective-sync/ (+ node modules/selective-sync)",
+        "point": "Selective sync ships as a satellite module with module.toml isolation."
+      }
+    }
+  ],
+  "limitations": [
+    "Pairs are illustrative, not randomly sampled",
+    "Core PR categories from Phase 1 classification (tiers 1–3)",
+    "Absence of a Core PR does not prove impossibility — it marks a design asymmetry"
+  ]
+}

@@ -1,0 +1,887 @@
+{
+  "analysis_date": "2026-07-12T08:36:49.334271+00:00",
+  "methodology": "docs/ARCHITECTURAL_DIVERGENCE_PLAN.md Phase 3 \u2014 Core velocity; Commons posture only",
+  "data_sources": [
+    "/home/user/src/bitcoin-governance-research/data/processed/pr_architectural_classification.jsonl",
+    "/home/user/src/bitcoin-governance-research/findings/data/blvm_codebase_metrics.json"
+  ],
+  "definitions": {
+    "architectural_debt_tax": [
+      "debt_compensation"
+    ],
+    "total_maintenance_burden": [
+      "debt_compensation",
+      "dependency_maintenance",
+      "test_ci_build"
+    ],
+    "structural_work": [
+      "refactor"
+    ],
+    "net_new_capability": [
+      "consensus_change",
+      "networking_change",
+      "new_feature",
+      "rpc_change"
+    ],
+    "eras": [
+      {
+        "name": "early",
+        "start": 2010,
+        "end": 2013
+      },
+      {
+        "name": "growth",
+        "start": 2014,
+        "end": 2017
+      },
+      {
+        "name": "professionalization",
+        "start": 2018,
+        "end": 2021
+      },
+      {
+        "name": "recent",
+        "start": 2022,
+        "end": 2030
+      }
+    ]
+  },
+  "overall": {
+    "n": 16653,
+    "architectural_debt_tax_pct": 1.7,
+    "total_maintenance_burden_pct": 39.79,
+    "structural_work_pct": 8.82,
+    "net_new_capability_pct": 16.23,
+    "other_pct": 22.87,
+    "primary_counts": {
+      "rpc_change": 964,
+      "documentation": 2047,
+      "refactor": 1469,
+      "dependency_maintenance": 561,
+      "debt_compensation": 283,
+      "test_ci_build": 5782,
+      "other": 3809,
+      "consensus_change": 619,
+      "networking_change": 1008,
+      "new_feature": 111
+    },
+    "primary_pct": {
+      "rpc_change": 5.79,
+      "documentation": 12.29,
+      "refactor": 8.82,
+      "dependency_maintenance": 3.37,
+      "debt_compensation": 1.7,
+      "test_ci_build": 34.72,
+      "other": 22.87,
+      "consensus_change": 3.72,
+      "networking_change": 6.05,
+      "new_feature": 0.67
+    }
+  },
+  "by_year": {
+    "2011": {
+      "n": 280,
+      "architectural_debt_tax_pct": 2.14,
+      "total_maintenance_burden_pct": 11.79,
+      "structural_work_pct": 7.86,
+      "net_new_capability_pct": 33.57,
+      "other_pct": 40.36,
+      "primary_counts": {
+        "other": 113,
+        "test_ci_build": 26,
+        "networking_change": 34,
+        "consensus_change": 15,
+        "debt_compensation": 6,
+        "documentation": 18,
+        "rpc_change": 12,
+        "refactor": 22,
+        "new_feature": 33,
+        "dependency_maintenance": 1
+      },
+      "primary_pct": {
+        "other": 40.36,
+        "test_ci_build": 9.29,
+        "networking_change": 12.14,
+        "consensus_change": 5.36,
+        "debt_compensation": 2.14,
+        "documentation": 6.43,
+        "rpc_change": 4.29,
+        "refactor": 7.86,
+        "new_feature": 11.79,
+        "dependency_maintenance": 0.36
+      }
+    },
+    "2012": {
+      "n": 702,
+      "architectural_debt_tax_pct": 3.85,
+      "total_maintenance_burden_pct": 14.81,
+      "structural_work_pct": 3.99,
+      "net_new_capability_pct": 27.07,
+      "other_pct": 47.15,
+      "primary_counts": {
+        "other": 331,
+        "rpc_change": 28,
+        "networking_change": 82,
+        "documentation": 49,
+        "dependency_maintenance": 9,
+        "test_ci_build": 68,
+        "consensus_change": 55,
+        "new_feature": 25,
+        "refactor": 28,
+        "debt_compensation": 27
+      },
+      "primary_pct": {
+        "other": 47.15,
+        "rpc_change": 3.99,
+        "networking_change": 11.68,
+        "documentation": 6.98,
+        "dependency_maintenance": 1.28,
+        "test_ci_build": 9.69,
+        "consensus_change": 7.83,
+        "new_feature": 3.56,
+        "refactor": 3.99,
+        "debt_compensation": 3.85
+      }
+    },
+    "2013": {
+      "n": 613,
+      "architectural_debt_tax_pct": 3.92,
+      "total_maintenance_burden_pct": 23.33,
+      "structural_work_pct": 2.61,
+      "net_new_capability_pct": 20.55,
+      "other_pct": 43.72,
+      "primary_counts": {
+        "other": 268,
+        "documentation": 60,
+        "test_ci_build": 99,
+        "dependency_maintenance": 20,
+        "networking_change": 33,
+        "new_feature": 16,
+        "consensus_change": 49,
+        "rpc_change": 28,
+        "debt_compensation": 24,
+        "refactor": 16
+      },
+      "primary_pct": {
+        "other": 43.72,
+        "documentation": 9.79,
+        "test_ci_build": 16.15,
+        "dependency_maintenance": 3.26,
+        "networking_change": 5.38,
+        "new_feature": 2.61,
+        "consensus_change": 7.99,
+        "rpc_change": 4.57,
+        "debt_compensation": 3.92,
+        "refactor": 2.61
+      }
+    },
+    "2014": {
+      "n": 989,
+      "architectural_debt_tax_pct": 3.84,
+      "total_maintenance_burden_pct": 27.1,
+      "structural_work_pct": 5.66,
+      "net_new_capability_pct": 24.17,
+      "other_pct": 32.56,
+      "primary_counts": {
+        "documentation": 104,
+        "other": 322,
+        "new_feature": 19,
+        "rpc_change": 62,
+        "networking_change": 80,
+        "consensus_change": 78,
+        "test_ci_build": 199,
+        "dependency_maintenance": 31,
+        "debt_compensation": 38,
+        "refactor": 56
+      },
+      "primary_pct": {
+        "documentation": 10.52,
+        "other": 32.56,
+        "new_feature": 1.92,
+        "rpc_change": 6.27,
+        "networking_change": 8.09,
+        "consensus_change": 7.89,
+        "test_ci_build": 20.12,
+        "dependency_maintenance": 3.13,
+        "debt_compensation": 3.84,
+        "refactor": 5.66
+      }
+    },
+    "2015": {
+      "n": 780,
+      "architectural_debt_tax_pct": 2.44,
+      "total_maintenance_burden_pct": 30.64,
+      "structural_work_pct": 8.97,
+      "net_new_capability_pct": 19.74,
+      "other_pct": 27.56,
+      "primary_counts": {
+        "test_ci_build": 182,
+        "other": 215,
+        "networking_change": 59,
+        "documentation": 102,
+        "rpc_change": 50,
+        "dependency_maintenance": 38,
+        "refactor": 70,
+        "debt_compensation": 19,
+        "consensus_change": 39,
+        "new_feature": 6
+      },
+      "primary_pct": {
+        "test_ci_build": 23.33,
+        "other": 27.56,
+        "networking_change": 7.56,
+        "documentation": 13.08,
+        "rpc_change": 6.41,
+        "dependency_maintenance": 4.87,
+        "refactor": 8.97,
+        "debt_compensation": 2.44,
+        "consensus_change": 5.0,
+        "new_feature": 0.77
+      }
+    },
+    "2016": {
+      "n": 1060,
+      "architectural_debt_tax_pct": 3.02,
+      "total_maintenance_burden_pct": 29.06,
+      "structural_work_pct": 10.94,
+      "net_new_capability_pct": 17.64,
+      "other_pct": 24.53,
+      "primary_counts": {
+        "test_ci_build": 249,
+        "rpc_change": 59,
+        "other": 260,
+        "networking_change": 89,
+        "refactor": 116,
+        "dependency_maintenance": 27,
+        "documentation": 189,
+        "debt_compensation": 32,
+        "consensus_change": 39
+      },
+      "primary_pct": {
+        "test_ci_build": 23.49,
+        "rpc_change": 5.57,
+        "other": 24.53,
+        "networking_change": 8.4,
+        "refactor": 10.94,
+        "dependency_maintenance": 2.55,
+        "documentation": 17.83,
+        "debt_compensation": 3.02,
+        "consensus_change": 3.68
+      }
+    },
+    "2017": {
+      "n": 1197,
+      "architectural_debt_tax_pct": 1.75,
+      "total_maintenance_burden_pct": 31.91,
+      "structural_work_pct": 12.11,
+      "net_new_capability_pct": 17.79,
+      "other_pct": 24.23,
+      "primary_counts": {
+        "documentation": 167,
+        "test_ci_build": 338,
+        "dependency_maintenance": 23,
+        "other": 290,
+        "networking_change": 71,
+        "refactor": 145,
+        "rpc_change": 99,
+        "debt_compensation": 21,
+        "consensus_change": 41,
+        "new_feature": 2
+      },
+      "primary_pct": {
+        "documentation": 13.95,
+        "test_ci_build": 28.24,
+        "dependency_maintenance": 1.92,
+        "other": 24.23,
+        "networking_change": 5.93,
+        "refactor": 12.11,
+        "rpc_change": 8.27,
+        "debt_compensation": 1.75,
+        "consensus_change": 3.43,
+        "new_feature": 0.17
+      }
+    },
+    "2018": {
+      "n": 1307,
+      "architectural_debt_tax_pct": 1.3,
+      "total_maintenance_burden_pct": 38.41,
+      "structural_work_pct": 11.4,
+      "net_new_capability_pct": 12.01,
+      "other_pct": 23.72,
+      "primary_counts": {
+        "test_ci_build": 441,
+        "other": 310,
+        "documentation": 189,
+        "rpc_change": 88,
+        "dependency_maintenance": 44,
+        "refactor": 149,
+        "consensus_change": 32,
+        "networking_change": 36,
+        "debt_compensation": 17,
+        "new_feature": 1
+      },
+      "primary_pct": {
+        "test_ci_build": 33.74,
+        "other": 23.72,
+        "documentation": 14.46,
+        "rpc_change": 6.73,
+        "dependency_maintenance": 3.37,
+        "refactor": 11.4,
+        "consensus_change": 2.45,
+        "networking_change": 2.75,
+        "debt_compensation": 1.3,
+        "new_feature": 0.08
+      }
+    },
+    "2019": {
+      "n": 1266,
+      "architectural_debt_tax_pct": 0.87,
+      "total_maintenance_burden_pct": 37.68,
+      "structural_work_pct": 8.14,
+      "net_new_capability_pct": 13.27,
+      "other_pct": 24.88,
+      "primary_counts": {
+        "documentation": 203,
+        "test_ci_build": 427,
+        "networking_change": 43,
+        "other": 315,
+        "dependency_maintenance": 39,
+        "rpc_change": 96,
+        "refactor": 103,
+        "consensus_change": 27,
+        "new_feature": 2,
+        "debt_compensation": 11
+      },
+      "primary_pct": {
+        "documentation": 16.03,
+        "test_ci_build": 33.73,
+        "networking_change": 3.4,
+        "other": 24.88,
+        "dependency_maintenance": 3.08,
+        "rpc_change": 7.58,
+        "refactor": 8.14,
+        "consensus_change": 2.13,
+        "new_feature": 0.16,
+        "debt_compensation": 0.87
+      }
+    },
+    "2020": {
+      "n": 1461,
+      "architectural_debt_tax_pct": 0.75,
+      "total_maintenance_burden_pct": 44.08,
+      "structural_work_pct": 9.17,
+      "net_new_capability_pct": 17.45,
+      "other_pct": 19.99,
+      "primary_counts": {
+        "documentation": 136,
+        "test_ci_build": 604,
+        "networking_change": 123,
+        "refactor": 134,
+        "rpc_change": 92,
+        "other": 292,
+        "dependency_maintenance": 29,
+        "debt_compensation": 11,
+        "consensus_change": 40
+      },
+      "primary_pct": {
+        "documentation": 9.31,
+        "test_ci_build": 41.34,
+        "networking_change": 8.42,
+        "refactor": 9.17,
+        "rpc_change": 6.3,
+        "other": 19.99,
+        "dependency_maintenance": 1.98,
+        "debt_compensation": 0.75,
+        "consensus_change": 2.74
+      }
+    },
+    "2021": {
+      "n": 1448,
+      "architectural_debt_tax_pct": 0.62,
+      "total_maintenance_burden_pct": 46.89,
+      "structural_work_pct": 10.57,
+      "net_new_capability_pct": 16.37,
+      "other_pct": 14.09,
+      "primary_counts": {
+        "rpc_change": 83,
+        "other": 204,
+        "documentation": 175,
+        "test_ci_build": 648,
+        "refactor": 153,
+        "networking_change": 114,
+        "consensus_change": 40,
+        "dependency_maintenance": 22,
+        "debt_compensation": 9
+      },
+      "primary_pct": {
+        "rpc_change": 5.73,
+        "other": 14.09,
+        "documentation": 12.09,
+        "test_ci_build": 44.75,
+        "refactor": 10.57,
+        "networking_change": 7.87,
+        "consensus_change": 2.76,
+        "dependency_maintenance": 1.52,
+        "debt_compensation": 0.62
+      }
+    },
+    "2022": {
+      "n": 1367,
+      "architectural_debt_tax_pct": 1.1,
+      "total_maintenance_burden_pct": 44.62,
+      "structural_work_pct": 13.39,
+      "net_new_capability_pct": 12.14,
+      "other_pct": 18.07,
+      "primary_counts": {
+        "rpc_change": 82,
+        "test_ci_build": 550,
+        "documentation": 161,
+        "other": 247,
+        "refactor": 183,
+        "debt_compensation": 15,
+        "dependency_maintenance": 45,
+        "networking_change": 58,
+        "consensus_change": 25,
+        "new_feature": 1
+      },
+      "primary_pct": {
+        "rpc_change": 6.0,
+        "test_ci_build": 40.23,
+        "documentation": 11.78,
+        "other": 18.07,
+        "refactor": 13.39,
+        "debt_compensation": 1.1,
+        "dependency_maintenance": 3.29,
+        "networking_change": 4.24,
+        "consensus_change": 1.83,
+        "new_feature": 0.07
+      }
+    },
+    "2023": {
+      "n": 1135,
+      "architectural_debt_tax_pct": 1.15,
+      "total_maintenance_burden_pct": 54.54,
+      "structural_work_pct": 8.81,
+      "net_new_capability_pct": 13.04,
+      "other_pct": 14.19,
+      "primary_counts": {
+        "other": 161,
+        "test_ci_build": 562,
+        "refactor": 100,
+        "networking_change": 59,
+        "documentation": 107,
+        "rpc_change": 60,
+        "dependency_maintenance": 44,
+        "consensus_change": 28,
+        "debt_compensation": 13,
+        "new_feature": 1
+      },
+      "primary_pct": {
+        "other": 14.19,
+        "test_ci_build": 49.52,
+        "refactor": 8.81,
+        "networking_change": 5.2,
+        "documentation": 9.43,
+        "rpc_change": 5.29,
+        "dependency_maintenance": 3.88,
+        "consensus_change": 2.47,
+        "debt_compensation": 1.15,
+        "new_feature": 0.09
+      }
+    },
+    "2024": {
+      "n": 1164,
+      "architectural_debt_tax_pct": 1.37,
+      "total_maintenance_burden_pct": 54.38,
+      "structural_work_pct": 6.96,
+      "net_new_capability_pct": 12.63,
+      "other_pct": 13.66,
+      "primary_counts": {
+        "test_ci_build": 544,
+        "rpc_change": 58,
+        "debt_compensation": 16,
+        "consensus_change": 35,
+        "refactor": 81,
+        "documentation": 144,
+        "other": 159,
+        "dependency_maintenance": 73,
+        "networking_change": 53,
+        "new_feature": 1
+      },
+      "primary_pct": {
+        "test_ci_build": 46.74,
+        "rpc_change": 4.98,
+        "debt_compensation": 1.37,
+        "consensus_change": 3.01,
+        "refactor": 6.96,
+        "documentation": 12.37,
+        "other": 13.66,
+        "dependency_maintenance": 6.27,
+        "networking_change": 4.55,
+        "new_feature": 0.09
+      }
+    },
+    "2025": {
+      "n": 1128,
+      "architectural_debt_tax_pct": 1.15,
+      "total_maintenance_burden_pct": 54.08,
+      "structural_work_pct": 4.96,
+      "net_new_capability_pct": 10.37,
+      "other_pct": 16.31,
+      "primary_counts": {
+        "documentation": 161,
+        "test_ci_build": 513,
+        "other": 184,
+        "refactor": 56,
+        "dependency_maintenance": 84,
+        "networking_change": 44,
+        "consensus_change": 36,
+        "rpc_change": 37,
+        "debt_compensation": 13
+      },
+      "primary_pct": {
+        "documentation": 14.27,
+        "test_ci_build": 45.48,
+        "other": 16.31,
+        "refactor": 4.96,
+        "dependency_maintenance": 7.45,
+        "networking_change": 3.9,
+        "consensus_change": 3.19,
+        "rpc_change": 3.28,
+        "debt_compensation": 1.15
+      }
+    },
+    "2026": {
+      "n": 756,
+      "architectural_debt_tax_pct": 1.46,
+      "total_maintenance_burden_pct": 49.6,
+      "structural_work_pct": 7.54,
+      "net_new_capability_pct": 13.76,
+      "other_pct": 18.25,
+      "primary_counts": {
+        "rpc_change": 30,
+        "documentation": 82,
+        "refactor": 57,
+        "dependency_maintenance": 32,
+        "debt_compensation": 11,
+        "test_ci_build": 332,
+        "other": 138,
+        "consensus_change": 40,
+        "networking_change": 30,
+        "new_feature": 4
+      },
+      "primary_pct": {
+        "rpc_change": 3.97,
+        "documentation": 10.85,
+        "refactor": 7.54,
+        "dependency_maintenance": 4.23,
+        "debt_compensation": 1.46,
+        "test_ci_build": 43.92,
+        "other": 18.25,
+        "consensus_change": 5.29,
+        "networking_change": 3.97,
+        "new_feature": 0.53
+      }
+    }
+  },
+  "by_era": {
+    "early": {
+      "n": 1595,
+      "architectural_debt_tax_pct": 3.57,
+      "total_maintenance_burden_pct": 17.55,
+      "structural_work_pct": 4.14,
+      "net_new_capability_pct": 25.71,
+      "other_pct": 44.64,
+      "primary_counts": {
+        "other": 712,
+        "documentation": 127,
+        "test_ci_build": 193,
+        "dependency_maintenance": 30,
+        "networking_change": 149,
+        "new_feature": 74,
+        "consensus_change": 119,
+        "rpc_change": 68,
+        "debt_compensation": 57,
+        "refactor": 66
+      },
+      "primary_pct": {
+        "other": 44.64,
+        "documentation": 7.96,
+        "test_ci_build": 12.1,
+        "dependency_maintenance": 1.88,
+        "networking_change": 9.34,
+        "new_feature": 4.64,
+        "consensus_change": 7.46,
+        "rpc_change": 4.26,
+        "debt_compensation": 3.57,
+        "refactor": 4.14
+      }
+    },
+    "growth": {
+      "n": 4026,
+      "architectural_debt_tax_pct": 2.73,
+      "total_maintenance_burden_pct": 29.73,
+      "structural_work_pct": 9.61,
+      "net_new_capability_pct": 19.7,
+      "other_pct": 27.0,
+      "primary_counts": {
+        "documentation": 562,
+        "test_ci_build": 968,
+        "dependency_maintenance": 119,
+        "other": 1087,
+        "networking_change": 299,
+        "refactor": 387,
+        "rpc_change": 270,
+        "debt_compensation": 110,
+        "consensus_change": 197,
+        "new_feature": 27
+      },
+      "primary_pct": {
+        "documentation": 13.96,
+        "test_ci_build": 24.04,
+        "dependency_maintenance": 2.96,
+        "other": 27.0,
+        "networking_change": 7.43,
+        "refactor": 9.61,
+        "rpc_change": 6.71,
+        "debt_compensation": 2.73,
+        "consensus_change": 4.89,
+        "new_feature": 0.67
+      }
+    },
+    "professionalization": {
+      "n": 5482,
+      "architectural_debt_tax_pct": 0.88,
+      "total_maintenance_burden_pct": 41.99,
+      "structural_work_pct": 9.83,
+      "net_new_capability_pct": 14.9,
+      "other_pct": 20.45,
+      "primary_counts": {
+        "rpc_change": 359,
+        "other": 1121,
+        "documentation": 703,
+        "test_ci_build": 2120,
+        "refactor": 539,
+        "networking_change": 316,
+        "consensus_change": 139,
+        "dependency_maintenance": 134,
+        "debt_compensation": 48,
+        "new_feature": 3
+      },
+      "primary_pct": {
+        "rpc_change": 6.55,
+        "other": 20.45,
+        "documentation": 12.82,
+        "test_ci_build": 38.67,
+        "refactor": 9.83,
+        "networking_change": 5.76,
+        "consensus_change": 2.54,
+        "dependency_maintenance": 2.44,
+        "debt_compensation": 0.88,
+        "new_feature": 0.05
+      }
+    },
+    "recent": {
+      "n": 5550,
+      "architectural_debt_tax_pct": 1.23,
+      "total_maintenance_burden_pct": 51.3,
+      "structural_work_pct": 8.59,
+      "net_new_capability_pct": 12.29,
+      "other_pct": 16.02,
+      "primary_counts": {
+        "rpc_change": 267,
+        "documentation": 655,
+        "refactor": 477,
+        "dependency_maintenance": 278,
+        "debt_compensation": 68,
+        "test_ci_build": 2501,
+        "other": 889,
+        "consensus_change": 164,
+        "networking_change": 244,
+        "new_feature": 7
+      },
+      "primary_pct": {
+        "rpc_change": 4.81,
+        "documentation": 11.8,
+        "refactor": 8.59,
+        "dependency_maintenance": 5.01,
+        "debt_compensation": 1.23,
+        "test_ci_build": 45.06,
+        "other": 16.02,
+        "consensus_change": 2.95,
+        "networking_change": 4.4,
+        "new_feature": 0.13
+      }
+    }
+  },
+  "trend": [
+    {
+      "year": 2011,
+      "n": 280,
+      "architectural_debt_tax_pct": 2.14,
+      "total_maintenance_burden_pct": 11.79,
+      "structural_work_pct": 7.86,
+      "net_new_capability_pct": 33.57,
+      "other_pct": 40.36
+    },
+    {
+      "year": 2012,
+      "n": 702,
+      "architectural_debt_tax_pct": 3.85,
+      "total_maintenance_burden_pct": 14.81,
+      "structural_work_pct": 3.99,
+      "net_new_capability_pct": 27.07,
+      "other_pct": 47.15
+    },
+    {
+      "year": 2013,
+      "n": 613,
+      "architectural_debt_tax_pct": 3.92,
+      "total_maintenance_burden_pct": 23.33,
+      "structural_work_pct": 2.61,
+      "net_new_capability_pct": 20.55,
+      "other_pct": 43.72
+    },
+    {
+      "year": 2014,
+      "n": 989,
+      "architectural_debt_tax_pct": 3.84,
+      "total_maintenance_burden_pct": 27.1,
+      "structural_work_pct": 5.66,
+      "net_new_capability_pct": 24.17,
+      "other_pct": 32.56
+    },
+    {
+      "year": 2015,
+      "n": 780,
+      "architectural_debt_tax_pct": 2.44,
+      "total_maintenance_burden_pct": 30.64,
+      "structural_work_pct": 8.97,
+      "net_new_capability_pct": 19.74,
+      "other_pct": 27.56
+    },
+    {
+      "year": 2016,
+      "n": 1060,
+      "architectural_debt_tax_pct": 3.02,
+      "total_maintenance_burden_pct": 29.06,
+      "structural_work_pct": 10.94,
+      "net_new_capability_pct": 17.64,
+      "other_pct": 24.53
+    },
+    {
+      "year": 2017,
+      "n": 1197,
+      "architectural_debt_tax_pct": 1.75,
+      "total_maintenance_burden_pct": 31.91,
+      "structural_work_pct": 12.11,
+      "net_new_capability_pct": 17.79,
+      "other_pct": 24.23
+    },
+    {
+      "year": 2018,
+      "n": 1307,
+      "architectural_debt_tax_pct": 1.3,
+      "total_maintenance_burden_pct": 38.41,
+      "structural_work_pct": 11.4,
+      "net_new_capability_pct": 12.01,
+      "other_pct": 23.72
+    },
+    {
+      "year": 2019,
+      "n": 1266,
+      "architectural_debt_tax_pct": 0.87,
+      "total_maintenance_burden_pct": 37.68,
+      "structural_work_pct": 8.14,
+      "net_new_capability_pct": 13.27,
+      "other_pct": 24.88
+    },
+    {
+      "year": 2020,
+      "n": 1461,
+      "architectural_debt_tax_pct": 0.75,
+      "total_maintenance_burden_pct": 44.08,
+      "structural_work_pct": 9.17,
+      "net_new_capability_pct": 17.45,
+      "other_pct": 19.99
+    },
+    {
+      "year": 2021,
+      "n": 1448,
+      "architectural_debt_tax_pct": 0.62,
+      "total_maintenance_burden_pct": 46.89,
+      "structural_work_pct": 10.57,
+      "net_new_capability_pct": 16.37,
+      "other_pct": 14.09
+    },
+    {
+      "year": 2022,
+      "n": 1367,
+      "architectural_debt_tax_pct": 1.1,
+      "total_maintenance_burden_pct": 44.62,
+      "structural_work_pct": 13.39,
+      "net_new_capability_pct": 12.14,
+      "other_pct": 18.07
+    },
+    {
+      "year": 2023,
+      "n": 1135,
+      "architectural_debt_tax_pct": 1.15,
+      "total_maintenance_burden_pct": 54.54,
+      "structural_work_pct": 8.81,
+      "net_new_capability_pct": 13.04,
+      "other_pct": 14.19
+    },
+    {
+      "year": 2024,
+      "n": 1164,
+      "architectural_debt_tax_pct": 1.37,
+      "total_maintenance_burden_pct": 54.38,
+      "structural_work_pct": 6.96,
+      "net_new_capability_pct": 12.63,
+      "other_pct": 13.66
+    },
+    {
+      "year": 2025,
+      "n": 1128,
+      "architectural_debt_tax_pct": 1.15,
+      "total_maintenance_burden_pct": 54.08,
+      "structural_work_pct": 4.96,
+      "net_new_capability_pct": 10.37,
+      "other_pct": 16.31
+    },
+    {
+      "year": 2026,
+      "n": 756,
+      "architectural_debt_tax_pct": 1.46,
+      "total_maintenance_burden_pct": 49.6,
+      "structural_work_pct": 7.54,
+      "net_new_capability_pct": 13.76,
+      "other_pct": 18.25
+    }
+  ],
+  "commons_posture": {
+    "consensus_rule_count": 159,
+    "spec_locked_production_total": 251,
+    "module_toml_count": 8,
+    "satellite_module_crates": 7,
+    "tier_stack": [
+      "blvm-spec",
+      "blvm-consensus",
+      "blvm-protocol",
+      "blvm-node",
+      "blvm / blvm-sdk",
+      "blvm-commons"
+    ],
+    "age_note": "Young codebase; no multi-decade patch debt on consensus layer",
+    "methodology": "static_metrics_only_no_pr_velocity",
+    "velocity_claim": "none \u2014 static design posture only; no PR-throughput comparison"
+  },
+  "missing_merged_at": 0,
+  "limitations": [
+    "Classification heuristics + Cursor Tier 3; ~10% remain ambiguous",
+    "Era buckets are narrative conveniences, not causal periods",
+    "Commons has negligible comparable PR history \u2014 posture section only",
+    "Do not interpret year-to-year swings as proof of governance improvement alone"
+  ]
+}

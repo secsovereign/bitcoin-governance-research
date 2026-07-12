@@ -1,0 +1,103 @@
+# Explicit Core path prefixes → architectural category (Tier 2a)
+# Longer / more specific prefixes win (classifier sorts by length desc).
+
+path_map:
+  # Consensus / validation
+  - { prefix: "src/consensus/", category: consensus_change }
+  - { prefix: "src/script/", category: consensus_change }
+  - { prefix: "src/validation.cpp", category: consensus_change }
+  - { prefix: "src/validation.h", category: consensus_change }
+  - { prefix: "src/validation/", category: consensus_change }
+  - { prefix: "src/pow.cpp", category: consensus_change }
+  - { prefix: "src/pow.h", category: consensus_change }
+  - { prefix: "src/tx_verify", category: consensus_change }
+  - { prefix: "src/consensus", category: consensus_change }
+
+  # Networking
+  - { prefix: "src/net_processing", category: networking_change }
+  - { prefix: "src/net.cpp", category: networking_change }
+  - { prefix: "src/net.h", category: networking_change }
+  - { prefix: "src/net_permissions", category: networking_change }
+  - { prefix: "src/netbase", category: networking_change }
+  - { prefix: "src/netgroup", category: networking_change }
+  - { prefix: "src/netmessagemaker", category: networking_change }
+  - { prefix: "src/protocol.cpp", category: networking_change }
+  - { prefix: "src/protocol.h", category: networking_change }
+  - { prefix: "src/addrman", category: networking_change }
+  - { prefix: "src/banman", category: networking_change }
+  - { prefix: "src/i2p", category: networking_change }
+  - { prefix: "src/torcontrol", category: networking_change }
+  - { prefix: "src/node/connection_types", category: networking_change }
+  - { prefix: "src/node/txdownloadman", category: networking_change }
+  # blockstorage/indexes are churny but not automatically debt_compensation
+  - { prefix: "src/node/blockstorage", category: other }
+  - { prefix: "src/node/chainstate", category: consensus_change }
+  - { prefix: "src/node/miner", category: other }
+  - { prefix: "src/node/", category: other }
+
+  # RPC
+  - { prefix: "src/rpc/", category: rpc_change }
+  - { prefix: "src/rest.cpp", category: rpc_change }
+  - { prefix: "src/httprpc", category: rpc_change }
+  - { prefix: "src/httpserver", category: rpc_change }
+  - { prefix: "src/bitcoin-cli", category: rpc_change }
+  - { prefix: "src/zmq/", category: rpc_change }
+
+  # Dependencies / secp
+  - { prefix: "src/secp256k1/", category: dependency_maintenance }
+  - { prefix: "depends/", category: dependency_maintenance }
+  - { prefix: "src/univalue/", category: dependency_maintenance }
+  - { prefix: "src/leveldb/", category: dependency_maintenance }
+  - { prefix: "src/crc32c/", category: dependency_maintenance }
+  - { prefix: "src/crypto/", category: other }
+  - { prefix: "src/minisketch/", category: dependency_maintenance }
+
+  # Tests / CI / build
+  - { prefix: "src/test/", category: test_ci_build }
+  - { prefix: "test/", category: test_ci_build }
+  - { prefix: "ci/", category: test_ci_build }
+  - { prefix: ".github/", category: test_ci_build }
+  - { prefix: "CMakeLists.txt", category: test_ci_build }
+  - { prefix: "cmake/", category: test_ci_build }
+  - { prefix: "configure.ac", category: test_ci_build }
+  - { prefix: "Makefile", category: test_ci_build }
+  - { prefix: "build-aux/", category: test_ci_build }
+  - { prefix: "contrib/", category: test_ci_build }
+
+  # Docs
+  - { prefix: "doc/", category: documentation }
+  - { prefix: "README", category: documentation }
+  - { prefix: "src/qt/locale/", category: other }
+
+  # Wallet / GUI — out of primary divergence axes
+  - { prefix: "src/wallet/", category: other }
+  - { prefix: "src/qt/", category: other }
+
+  # IBD / UTXO / mempool: path alone is weak; debt_compensation needs keyword/label signal
+  - { prefix: "src/txmempool", category: other }
+  - { prefix: "src/policy/", category: other }
+  - { prefix: "src/index/", category: other }
+  - { prefix: "src/dbwrapper", category: other }
+  - { prefix: "src/txdb", category: other }
+  - { prefix: "src/coins.cpp", category: other }
+  - { prefix: "src/coins.h", category: other }
+  - { prefix: "src/undo.h", category: consensus_change }
+  - { prefix: "src/chain.cpp", category: consensus_change }
+  - { prefix: "src/chain.h", category: consensus_change }
+  - { prefix: "src/checkqueue", category: other }
+  - { prefix: "src/scheduler", category: other }
+
+# Files that boost debt_compensation when touched (high architectural lock-in)
+debt_hotspot_files:
+  - "src/validation.cpp"
+  - "src/validation.h"
+  - "src/net_processing.cpp"
+  - "src/net_processing.h"
+  - "src/net.cpp"
+  - "src/txmempool.cpp"
+  - "src/txmempool.h"
+  - "src/coins.cpp"
+  - "src/txdb.cpp"
+  - "src/node/blockstorage.cpp"
+  - "src/init.cpp"
+  - "src/main.cpp"

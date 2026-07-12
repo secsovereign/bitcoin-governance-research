@@ -1,0 +1,364 @@
+{
+  "analysis_date": "2026-07-12T08:36:51.159054+00:00",
+  "methodology": "docs/ARCHITECTURAL_DIVERGENCE_PLAN.md Phase 2 \u2014 static Commons metrics",
+  "data_sources": [
+    "/home/user/src/bitcoin-governance-research/data/reference/blvm_architecture_manifest.json",
+    "/home/user/src/btc-commons"
+  ],
+  "limitations": [
+    "Does not apply Core patch-frequency debt formula to Commons",
+    "rpc_method_heuristic is pattern-based, not a formal API registry dump",
+    "test_density undercounts inline #[cfg(test)] modules in src/",
+    "blvm-bench operator differential-test counts are not re-verified here"
+  ],
+  "metrics": {
+    "commons_root": "/home/user/src/btc-commons",
+    "layers": {
+      "consensus": {
+        "note": "spec-lock %, #[spec_locked] count, fuzz/property tests, LOC",
+        "paths": [
+          "blvm-consensus",
+          "blvm-primitives"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-consensus",
+            "present": true,
+            "src_loc": 43563,
+            "test_loc": 54422,
+            "rust_files": 109,
+            "test_rust_files": 206,
+            "spec_locked_attrs": 240,
+            "test_density": 1.249
+          },
+          {
+            "path": "blvm-primitives",
+            "present": true,
+            "src_loc": 6536,
+            "test_loc": 0,
+            "rust_files": 22,
+            "test_rust_files": 0,
+            "spec_locked_attrs": 0,
+            "test_density": 0.0
+          }
+        ],
+        "src_loc": 50099,
+        "test_loc": 54422,
+        "rust_files": 131,
+        "test_rust_files": 206,
+        "spec_locked_attrs": 240,
+        "test_density": 1.086,
+        "manifest_spec_locked": 240
+      },
+      "protocol": {
+        "note": "spec-lock count, BIP modules, LOC",
+        "paths": [
+          "blvm-protocol"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-protocol",
+            "present": true,
+            "src_loc": 17453,
+            "test_loc": 11441,
+            "rust_files": 117,
+            "test_rust_files": 32,
+            "spec_locked_attrs": 6,
+            "test_density": 0.656
+          }
+        ],
+        "src_loc": 17453,
+        "test_loc": 11441,
+        "rust_files": 117,
+        "test_rust_files": 32,
+        "spec_locked_attrs": 6,
+        "test_density": 0.656,
+        "manifest_spec_locked": 6
+      },
+      "node_network": {
+        "note": "transport features, test count, LOC",
+        "paths": [
+          "blvm-node/src/network"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-node/src/network",
+            "present": true,
+            "src_loc": 23051,
+            "test_loc": 850,
+            "rust_files": 53,
+            "test_rust_files": 3,
+            "spec_locked_attrs": 5,
+            "test_density": 0.037
+          }
+        ],
+        "src_loc": 23051,
+        "test_loc": 850,
+        "rust_files": 53,
+        "test_rust_files": 3,
+        "spec_locked_attrs": 5,
+        "test_density": 0.037,
+        "transports": [
+          "iroh",
+          "tcp",
+          "dandelion",
+          "erlay"
+        ]
+      },
+      "node_rpc": {
+        "note": "method count, LOC vs module endpoints",
+        "paths": [
+          "blvm-node/src/rpc"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-node/src/rpc",
+            "present": true,
+            "src_loc": 20453,
+            "test_loc": 275,
+            "rust_files": 38,
+            "test_rust_files": 2,
+            "spec_locked_attrs": 0,
+            "test_density": 0.013
+          }
+        ],
+        "src_loc": 20453,
+        "test_loc": 275,
+        "rust_files": 38,
+        "test_rust_files": 2,
+        "spec_locked_attrs": 0,
+        "test_density": 0.013,
+        "rpc_method_heuristic": 32
+      },
+      "node_storage": {
+        "note": "backend count, IBD engine LOC",
+        "paths": [
+          "blvm-node/src/storage"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-node/src/storage",
+            "present": true,
+            "src_loc": 23593,
+            "test_loc": 0,
+            "rust_files": 42,
+            "test_rust_files": 0,
+            "spec_locked_attrs": 0,
+            "test_density": 0.0
+          }
+        ],
+        "src_loc": 23593,
+        "test_loc": 0,
+        "rust_files": 42,
+        "test_rust_files": 0,
+        "spec_locked_attrs": 0,
+        "test_density": 0.0,
+        "backends": [
+          "database",
+          "ibd_engine"
+        ]
+      },
+      "modules": {
+        "note": "count, module.toml manifests, isolation boundary",
+        "paths": [
+          "blvm-node/src/module"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-node/src/module",
+            "present": true,
+            "src_loc": 18831,
+            "test_loc": 0,
+            "rust_files": 60,
+            "test_rust_files": 0,
+            "spec_locked_attrs": 0,
+            "test_density": 0.0
+          }
+        ],
+        "src_loc": 18831,
+        "test_loc": 0,
+        "rust_files": 60,
+        "test_rust_files": 0,
+        "spec_locked_attrs": 0,
+        "test_density": 0.0,
+        "module_toml_count": 8,
+        "satellite_crates": {
+          "blvm-governance": {
+            "src_loc": 1045,
+            "test_loc": 532,
+            "spec_locked_count": 0
+          },
+          "blvm-lightning": {
+            "src_loc": 1925,
+            "test_loc": 75,
+            "spec_locked_count": 0
+          },
+          "blvm-mesh": {
+            "src_loc": 5504,
+            "test_loc": 1639,
+            "spec_locked_count": 0
+          },
+          "blvm-stratum-v2": {
+            "src_loc": 2625,
+            "test_loc": 3302,
+            "spec_locked_count": 0
+          },
+          "blvm-selective-sync": {
+            "src_loc": 2260,
+            "test_loc": 155,
+            "spec_locked_count": 0
+          },
+          "blvm-miningos": {
+            "src_loc": 2450,
+            "test_loc": 21,
+            "spec_locked_count": 0
+          },
+          "blvm-datum": {
+            "src_loc": 2174,
+            "test_loc": 644,
+            "spec_locked_count": 0
+          }
+        },
+        "satellite_count": 7,
+        "isolation": "process_subprocess_plus_optional_wasm"
+      },
+      "parallel_ibd": {
+        "note": "parallel IBD engine",
+        "paths": [
+          "blvm-node/src/node/parallel_ibd"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-node/src/node/parallel_ibd",
+            "present": true,
+            "src_loc": 12850,
+            "test_loc": 0,
+            "rust_files": 13,
+            "test_rust_files": 0,
+            "spec_locked_attrs": 0,
+            "test_density": 0.0
+          }
+        ],
+        "src_loc": 12850,
+        "test_loc": 0,
+        "rust_files": 13,
+        "test_rust_files": 0,
+        "spec_locked_attrs": 0,
+        "test_density": 0.0
+      },
+      "utxo_commitments": {
+        "note": "UTXO commitment protocol surface",
+        "paths": [
+          "blvm-protocol/src/utxo_commitments"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-protocol/src/utxo_commitments",
+            "present": true,
+            "src_loc": 2754,
+            "test_loc": 0,
+            "rust_files": 8,
+            "test_rust_files": 0,
+            "spec_locked_attrs": 6,
+            "test_density": 0.0
+          }
+        ],
+        "src_loc": 2754,
+        "test_loc": 0,
+        "rust_files": 8,
+        "test_rust_files": 0,
+        "spec_locked_attrs": 6,
+        "test_density": 0.0
+      },
+      "spec_lock": {
+        "note": "Z3-linked formal verification crate",
+        "paths": [
+          "blvm-spec-lock"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-spec-lock",
+            "present": true,
+            "src_loc": 16237,
+            "test_loc": 861,
+            "rust_files": 23,
+            "test_rust_files": 9,
+            "spec_locked_attrs": 64,
+            "test_density": 0.053
+          }
+        ],
+        "src_loc": 16237,
+        "test_loc": 861,
+        "rust_files": 23,
+        "test_rust_files": 9,
+        "spec_locked_attrs": 64,
+        "test_density": 0.053
+      },
+      "secp256k1": {
+        "note": "pure Rust secp256k1",
+        "paths": [
+          "blvm-secp256k1"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-secp256k1",
+            "present": true,
+            "src_loc": 25578,
+            "test_loc": 3196,
+            "rust_files": 21,
+            "test_rust_files": 11,
+            "spec_locked_attrs": 0,
+            "test_density": 0.125
+          }
+        ],
+        "src_loc": 25578,
+        "test_loc": 3196,
+        "rust_files": 21,
+        "test_rust_files": 11,
+        "spec_locked_attrs": 0,
+        "test_density": 0.125
+      },
+      "bench": {
+        "note": "differential / benchmarking harness",
+        "paths": [
+          "blvm-bench"
+        ],
+        "path_metrics": [
+          {
+            "path": "blvm-bench",
+            "present": true,
+            "src_loc": 32763,
+            "test_loc": 8245,
+            "rust_files": 89,
+            "test_rust_files": 49,
+            "spec_locked_attrs": 0,
+            "test_density": 0.252
+          }
+        ],
+        "src_loc": 32763,
+        "test_loc": 8245,
+        "rust_files": 89,
+        "test_rust_files": 49,
+        "spec_locked_attrs": 0,
+        "test_density": 0.252
+      }
+    },
+    "posture": {
+      "consensus_rule_count": 159,
+      "spec_locked_production_total": 251,
+      "module_toml_count": 8,
+      "satellite_module_crates": 7,
+      "tier_stack": [
+        "blvm-spec",
+        "blvm-consensus",
+        "blvm-protocol",
+        "blvm-node",
+        "blvm / blvm-sdk",
+        "blvm-commons"
+      ],
+      "age_note": "Young codebase; no multi-decade patch debt on consensus layer",
+      "methodology": "static_metrics_only_no_pr_velocity"
+    },
+    "manifest_generated_at": "2026-07-12T08:30:55.037600+00:00"
+  }
+}
