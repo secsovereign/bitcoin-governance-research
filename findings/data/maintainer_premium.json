@@ -1,0 +1,2868 @@
+{
+  "analysis_name": "maintainer_premium",
+  "version": "7.0",
+  "generated_at": "2026-07-13T15:32:01.261830+00:00",
+  "fairness_framework": {
+    "identity_definition_primary": "ever_maintainer",
+    "identity_definition_sensitivity": "active_at_creation_via_timeline_periods",
+    "self_merge_rule": "self_merge counted in raw rates; excluded from adjusted success",
+    "prior_merges_rule": "reputation/access \u2014 report OR with and without this control",
+    "closed_unmerged_rule": "not equated to Core rejection; split by close proxies",
+    "quality_rule": "author_prep_score = body + test paths only (no reviews/LOC/merge). size_substance_score is size-heavy \u2014 not quality. engagement_score = reviews received \u2014 process only. Canonical high author-prep band: score >= 0.65 (also report >= 0.5). Phase 2: path_risk_band, concept/approach ACK text flags, nontrivial test diff \u2014 ACK flags are received signals (not author prep). CI still unavailable.",
+    "primary_claims": [
+      "large_outsider_merge_failure",
+      "cold_start_first_pr",
+      "self_merge_privilege",
+      "reputation_channel_via_prior_merges",
+      "author_prep_matched_outsider_gap",
+      "merge_concentration_see_sister_report"
+    ],
+    "not_claimed_from_raw_bivariate_alone": [
+      "level_playing_field_80_vs_55"
+    ],
+    "not_claimed_as_true_quality": [
+      "size_substance_score",
+      "engagement_score",
+      "importance_bands",
+      "concept_ack_received"
+    ]
+  },
+  "n_prs": 24808,
+  "n_maintainer_authored": 12312,
+  "bivariate": {
+    "maintainer_merge_rate": 0.799545159194282,
+    "non_maintainer_merge_rate": 0.5448943661971831,
+    "merge_rate_ratio_maint_over_non": 1.4673397428832058,
+    "maintainer_closed_unmerged_rate": 0.19249512670565302,
+    "non_maintainer_closed_unmerged_rate": 0.4357394366197183,
+    "maintainer_median_days_to_merge": 3.942644675925926,
+    "non_maintainer_median_days_to_merge": 6.3425,
+    "time_ratio_non_over_maint": 1.6086917592974495,
+    "chi_square_merge": {
+      "chi2": 1821.3354987498585,
+      "p_value": 0.0,
+      "dof": 1
+    },
+    "n_maintainer": 12312,
+    "n_non_maintainer": 12496,
+    "note": "Raw rates include self-merges as successes \u2014 use bivariate_fair for peer-reviewed comparison."
+  },
+  "bivariate_fair": {
+    "maintainer": {
+      "n": 12312,
+      "raw_merge_rate": 0.799545159194282,
+      "peer_merge_rate": 0.592267706302794,
+      "self_merge_rate": 0.20727745289148797,
+      "closed_unmerged_rate": 0.19249512670565302
+    },
+    "non_maintainer": {
+      "n": 12496,
+      "raw_merge_rate": 0.5448943661971831,
+      "peer_merge_rate": 0.5440140845070423,
+      "self_merge_rate": 0.0008802816901408451,
+      "closed_unmerged_rate": 0.4357394366197183
+    },
+    "raw_merge_rate_ratio": 1.4673397428832058,
+    "peer_merge_rate_ratio": 1.0886992141747152,
+    "self_merge_share_of_maintainer_prs": 0.20727745289148797,
+    "self_merge_share_of_maintainer_merges": 0.2592442096708655,
+    "reading": "If peer_merge rates converge, the raw maintainer premium is largely self-merge privilege rather than outsider rejection on typical PRs."
+  },
+  "controlled_logistic_merge": {
+    "n": 24468,
+    "include_prior_merges_control": true,
+    "outcome": "merged_including_self_merge",
+    "coefficients": {
+      "is_maintainer": 0.309881452916022,
+      "log_changes": -0.4009566763969724,
+      "files_changed": -0.0563102858549166,
+      "total_reviews": 0.6387803229476998,
+      "nack_count": -0.1785846039981507,
+      "log_prior_merges": 0.7328192222787351,
+      "consensus_related": -0.0016238733315284345,
+      "author_prep_score": -0.04170071567640844,
+      "type_consensus": -0.0016238733315284345,
+      "type_bugfix": 0.08580125872016035,
+      "type_unknown": -0.07828452288354118,
+      "type_feature": 0.2663964837138875,
+      "type_documentation": 0.3334973247045726,
+      "type_refactor": 0.08059853167337445
+    },
+    "odds_ratios": {
+      "is_maintainer": 1.3632634936406833,
+      "log_changes": 0.6696790733198001,
+      "files_changed": 0.9452457939835351,
+      "total_reviews": 1.894169195136977,
+      "nack_count": 0.8364532865913982,
+      "log_prior_merges": 2.080938975293505,
+      "consensus_related": 0.9983774444373769,
+      "author_prep_score": 0.9591567982139736,
+      "type_consensus": 0.9983774444373769,
+      "type_bugfix": 1.0895897603218758,
+      "type_unknown": 0.9247012904336236,
+      "type_feature": 1.305252467453932,
+      "type_documentation": 1.3958413122486448,
+      "type_refactor": 1.083935643373506
+    },
+    "maintainer_odds_ratio": 1.3632634936406833,
+    "prior_merges_odds_ratio": 2.080938975293505,
+    "author_prep_odds_ratio": 0.9591567982139736,
+    "likelihood_ratio_test_add_maintainer": {
+      "lr_stat": 55.725037162752415,
+      "p_value": 8.334995939794165e-14,
+      "df": 1
+    },
+    "peer_merge_outcome": {
+      "maintainer_odds_ratio": 0.7310504278795109,
+      "note": "Dependent variable = merged AND not self-merged"
+    },
+    "features": [
+      "is_maintainer",
+      "log_changes",
+      "files_changed",
+      "total_reviews",
+      "nack_count",
+      "log_prior_merges",
+      "consensus_related",
+      "author_prep_score",
+      "type_consensus",
+      "type_bugfix",
+      "type_unknown",
+      "type_feature",
+      "type_documentation",
+      "type_refactor"
+    ]
+  },
+  "controlled_logistic_merge_without_prior": {
+    "n": 24468,
+    "include_prior_merges_control": false,
+    "outcome": "merged_including_self_merge",
+    "coefficients": {
+      "is_maintainer": 1.2798585576946016,
+      "log_changes": -0.4066690710096834,
+      "files_changed": -0.10220700128674731,
+      "total_reviews": 0.6869987500927374,
+      "nack_count": -0.18603855200144231,
+      "consensus_related": -0.06794032464100166,
+      "author_prep_score": 0.050427900104774076,
+      "type_consensus": -0.06794032464100166,
+      "type_bugfix": -0.04800095799701147,
+      "type_unknown": -0.12015774180290395,
+      "type_feature": 0.1658805519850531,
+      "type_documentation": 0.18737949008605295,
+      "type_refactor": 0.1641359696915069
+    },
+    "odds_ratios": {
+      "is_maintainer": 3.596131044530167,
+      "log_changes": 0.6658645077140266,
+      "files_changed": 0.9028426427355728,
+      "total_reviews": 1.9877408649049615,
+      "nack_count": 0.8302415868900934,
+      "consensus_related": 0.9343162275699254,
+      "author_prep_score": 1.0517210316451184,
+      "type_consensus": 0.9343162275699254,
+      "type_bugfix": 0.9531328739786226,
+      "type_unknown": 0.8867805433222457,
+      "type_feature": 1.1804320930315473,
+      "type_documentation": 1.2060848954758943,
+      "type_refactor": 1.178374527421438
+    },
+    "maintainer_odds_ratio": 3.596131044530167,
+    "prior_merges_odds_ratio": null,
+    "author_prep_odds_ratio": 1.0517210316451184,
+    "likelihood_ratio_test_add_maintainer": {
+      "lr_stat": 1896.0321864800244,
+      "p_value": 0.0,
+      "df": 1
+    },
+    "peer_merge_outcome": {
+      "maintainer_odds_ratio": 1.2266309283332602,
+      "note": "Dependent variable = merged AND not self-merged"
+    },
+    "features": [
+      "is_maintainer",
+      "log_changes",
+      "files_changed",
+      "total_reviews",
+      "nack_count",
+      "consensus_related",
+      "author_prep_score",
+      "type_consensus",
+      "type_bugfix",
+      "type_unknown",
+      "type_feature",
+      "type_documentation",
+      "type_refactor"
+    ]
+  },
+  "size_strata": {
+    "tiny_0_49": {
+      "loc_range": [
+        0,
+        50
+      ],
+      "n": 15572,
+      "maintainer": {
+        "n": 7604,
+        "raw_merge_rate": 0.8291688584955287,
+        "peer_merge_rate": 0.6111257233035244,
+        "self_merge_rate": 0.21804313519200422,
+        "closed_unmerged_rate": 0.16846396633350869
+      },
+      "non_maintainer": {
+        "n": 7968,
+        "raw_merge_rate": 0.5965110441767069,
+        "peer_merge_rate": 0.5951305220883534,
+        "self_merge_rate": 0.0013805220883534137,
+        "closed_unmerged_rate": 0.397464859437751
+      },
+      "raw_merge_rate_ratio": 1.3900310255611976,
+      "peer_merge_rate_ratio": 1.0268767952936488
+    },
+    "small_50_499": {
+      "loc_range": [
+        50,
+        500
+      ],
+      "n": 7310,
+      "maintainer": {
+        "n": 3775,
+        "raw_merge_rate": 0.769271523178808,
+        "peer_merge_rate": 0.5825165562913908,
+        "self_merge_rate": 0.18675496688741722,
+        "closed_unmerged_rate": 0.21986754966887417
+      },
+      "non_maintainer": {
+        "n": 3535,
+        "raw_merge_rate": 0.51994342291372,
+        "peer_merge_rate": 0.51994342291372,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.4387553041018388
+      },
+      "raw_merge_rate_ratio": 1.4795292896828542,
+      "peer_merge_rate_ratio": 1.1203460427040621
+    },
+    "medium_500_1999": {
+      "loc_range": [
+        500,
+        2000
+      ],
+      "n": 1237,
+      "maintainer": {
+        "n": 671,
+        "raw_merge_rate": 0.6751117734724292,
+        "peer_merge_rate": 0.4828614008941878,
+        "self_merge_rate": 0.19225037257824143,
+        "closed_unmerged_rate": 0.27719821162444114
+      },
+      "non_maintainer": {
+        "n": 566,
+        "raw_merge_rate": 0.3286219081272085,
+        "peer_merge_rate": 0.3286219081272085,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.6060070671378092
+      },
+      "raw_merge_rate_ratio": 2.0543723859429837,
+      "peer_merge_rate_ratio": 1.4693524349790874
+    },
+    "large_2000_plus": {
+      "loc_range": [
+        2000,
+        null
+      ],
+      "n": 689,
+      "maintainer": {
+        "n": 262,
+        "raw_merge_rate": 0.6946564885496184,
+        "peer_merge_rate": 0.46564885496183206,
+        "self_merge_rate": 0.22900763358778625,
+        "closed_unmerged_rate": 0.2786259541984733
+      },
+      "non_maintainer": {
+        "n": 427,
+        "raw_merge_rate": 0.07494145199063232,
+        "peer_merge_rate": 0.07494145199063232,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.8992974238875878
+      },
+      "raw_merge_rate_ratio": 9.26932251908397,
+      "peer_merge_rate_ratio": 6.213501908396947
+    },
+    "ge_2000_loc": {
+      "n": 689,
+      "maintainer": {
+        "n": 262,
+        "raw_merge_rate": 0.6946564885496184,
+        "peer_merge_rate": 0.46564885496183206,
+        "self_merge_rate": 0.22900763358778625,
+        "closed_unmerged_rate": 0.2786259541984733
+      },
+      "non_maintainer": {
+        "n": 427,
+        "raw_merge_rate": 0.07494145199063232,
+        "peer_merge_rate": 0.07494145199063232,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.8992974238875878
+      },
+      "closed_only": {
+        "n": 671,
+        "maint_raw_merge": 0.7137254901960784,
+        "non_raw_merge": 0.07692307692307693,
+        "ratio": 9.278431372549019
+      }
+    },
+    "ge_5000_loc": {
+      "n": 413,
+      "maintainer": {
+        "n": 111,
+        "raw_merge_rate": 0.7657657657657657,
+        "peer_merge_rate": 0.5675675675675675,
+        "self_merge_rate": 0.1981981981981982,
+        "closed_unmerged_rate": 0.22522522522522523
+      },
+      "non_maintainer": {
+        "n": 302,
+        "raw_merge_rate": 0.04966887417218543,
+        "peer_merge_rate": 0.04966887417218543,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.9403973509933775
+      },
+      "closed_only": {
+        "n": 409,
+        "maint_raw_merge": 0.7727272727272727,
+        "non_raw_merge": 0.05016722408026756,
+        "ratio": 15.403030303030302
+      }
+    }
+  },
+  "outsider_segments": {
+    "cold_start_first_pr": {
+      "n": 3465,
+      "raw_merge_rate": 0.2891774891774892,
+      "peer_merge_rate": 0.28773448773448773,
+      "self_merge_rate": 0.001443001443001443,
+      "closed_unmerged_rate": 0.6992784992784993
+    },
+    "mid_1_to_4_prior_merges": {
+      "n": 2056,
+      "raw_merge_rate": 0.5403696498054474,
+      "peer_merge_rate": 0.5389105058365758,
+      "self_merge_rate": 0.0014591439688715954,
+      "closed_unmerged_rate": 0.4377431906614786
+    },
+    "established_ge_5_prior_merges": {
+      "n": 6975,
+      "raw_merge_rate": 0.6732616487455197,
+      "peer_merge_rate": 0.672831541218638,
+      "self_merge_rate": 0.00043010752688172043,
+      "closed_unmerged_rate": 0.3042293906810036
+    },
+    "top_20_volume_non_maintainer_authors": {
+      "n": 4493,
+      "raw_merge_rate": 0.7006454484754062,
+      "peer_merge_rate": 0.7006454484754062,
+      "self_merge_rate": 0.0,
+      "closed_unmerged_rate": 0.28399732917872245,
+      "n_authors": 20
+    },
+    "maintainer_reference": {
+      "n": 12312,
+      "raw_merge_rate": 0.799545159194282,
+      "peer_merge_rate": 0.592267706302794,
+      "self_merge_rate": 0.20727745289148797,
+      "closed_unmerged_rate": 0.19249512670565302
+    },
+    "reading": "Established and high-volume outsiders often approach maintainer raw merge rates on typical work; cold-start and large-LOC remain the exclusion zones."
+  },
+  "quality_matched": {
+    "score_definitions": {
+      "author_prep_score": "Body length bands + test-path touch only. No reviews/LOC/merge. High band >= 0.65; also report >= 0.5.",
+      "size_substance_score": "Ex-outcome size/files substance \u2014 NOT quality. Descriptive only.",
+      "engagement_score": "Reviews received \u2014 process only; not used for matching.",
+      "importance": "Excluded from claims (keyword classifier over-tags critical).",
+      "path_risk": "Path-based risk band (consensus/security/net/other).",
+      "concept_ack": "Received concept/approach ACK text \u2014 process signal, not author prep."
+    },
+    "thresholds": {
+      "author_prep_high": 0.65,
+      "author_prep_mid_high": 0.5,
+      "size_substance_high_quantile_cut": 0.4
+    },
+    "mean_scores": {
+      "maintainer_author_prep": 0.3915529564652372,
+      "non_maintainer_author_prep": 0.4031650128040974,
+      "maintainer_engagement": 0.2639294996751137,
+      "non_maintainer_engagement": 0.2266485275288092
+    },
+    "by_author_prep_band": {
+      "high": {
+        "n": 7492,
+        "mean_author_prep": 0.736312066203951,
+        "maintainer": {
+          "n": 3444,
+          "raw_merge_rate": 0.7604529616724739,
+          "peer_merge_rate": 0.616144018583043,
+          "self_merge_rate": 0.1443089430894309,
+          "closed_unmerged_rate": 0.218931475029036
+        },
+        "non_maintainer": {
+          "n": 4048,
+          "raw_merge_rate": 0.5901679841897233,
+          "peer_merge_rate": 0.5901679841897233,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.36141304347826086
+        }
+      },
+      "low_mid": {
+        "n": 12730,
+        "mean_author_prep": 0.25308719560094267,
+        "maintainer": {
+          "n": 6421,
+          "raw_merge_rate": 0.8042361002959041,
+          "peer_merge_rate": 0.5748325805949229,
+          "self_merge_rate": 0.22940351970098116,
+          "closed_unmerged_rate": 0.19202616414888646
+        },
+        "non_maintainer": {
+          "n": 6309,
+          "raw_merge_rate": 0.5151371057219845,
+          "peer_merge_rate": 0.5137105721984466,
+          "self_merge_rate": 0.0014265335235378032,
+          "closed_unmerged_rate": 0.4782057378348391
+        }
+      },
+      "mid_high": {
+        "n": 2241,
+        "mean_author_prep": 0.5,
+        "maintainer": {
+          "n": 1404,
+          "raw_merge_rate": 0.8404558404558404,
+          "peer_merge_rate": 0.5683760683760684,
+          "self_merge_rate": 0.2720797720797721,
+          "closed_unmerged_rate": 0.1581196581196581
+        },
+        "non_maintainer": {
+          "n": 837,
+          "raw_merge_rate": 0.6642771804062126,
+          "peer_merge_rate": 0.6642771804062126,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.3309438470728793
+        }
+      },
+      "none": {
+        "n": 2345,
+        "mean_author_prep": 0.0,
+        "maintainer": {
+          "n": 1043,
+          "raw_merge_rate": 0.8446788111217641,
+          "peer_merge_rate": 0.6529242569511026,
+          "self_merge_rate": 0.19175455417066156,
+          "closed_unmerged_rate": 0.15436241610738255
+        },
+        "non_maintainer": {
+          "n": 1302,
+          "raw_merge_rate": 0.4715821812596006,
+          "peer_merge_rate": 0.4700460829493088,
+          "self_merge_rate": 0.0015360983102918587,
+          "closed_unmerged_rate": 0.5284178187403994
+        }
+      }
+    },
+    "high_author_prep_ge_065": {
+      "n": 7492,
+      "mean_author_prep": 0.736312066203951,
+      "maintainer": {
+        "n": 3444,
+        "raw_merge_rate": 0.7604529616724739,
+        "peer_merge_rate": 0.616144018583043,
+        "self_merge_rate": 0.1443089430894309,
+        "closed_unmerged_rate": 0.218931475029036
+      },
+      "non_maintainer": {
+        "n": 4048,
+        "raw_merge_rate": 0.5901679841897233,
+        "peer_merge_rate": 0.5901679841897233,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.36141304347826086
+      },
+      "raw_merge_gap_pp": 17.02849774827506
+    },
+    "author_prep_ge_050": {
+      "n": 9733,
+      "mean_author_prep": 0.6819017774581322,
+      "maintainer": {
+        "n": 4848,
+        "raw_merge_rate": 0.7836221122112211,
+        "peer_merge_rate": 0.6023102310231023,
+        "self_merge_rate": 0.1813118811881188,
+        "closed_unmerged_rate": 0.20132013201320131
+      },
+      "non_maintainer": {
+        "n": 4885,
+        "raw_merge_rate": 0.6028659160696008,
+        "peer_merge_rate": 0.6028659160696008,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.3561924257932446
+      },
+      "raw_merge_gap_pp": 18.07561961416203
+    },
+    "high_size_substance_contrast": {
+      "n": 8415,
+      "mean_author_prep": 0.5652881758764112,
+      "maintainer": {
+        "n": 4312,
+        "raw_merge_rate": 0.7574211502782932,
+        "peer_merge_rate": 0.5732838589981447,
+        "self_merge_rate": 0.1841372912801484,
+        "closed_unmerged_rate": 0.22495361781076068
+      },
+      "non_maintainer": {
+        "n": 4103,
+        "raw_merge_rate": 0.4774555203509627,
+        "peer_merge_rate": 0.4774555203509627,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.47648062393370705
+      },
+      "raw_merge_gap_pp": 27.996562992733043,
+      "note": "High substance \u2248 larger PRs; outsider merge rates here often look worse \u2014 size exclusion, not 'low quality'."
+    },
+    "phase2": {
+      "by_path_risk": {
+        "consensus_sensitive": {
+          "n": 2251,
+          "maintainer": {
+            "n": 893,
+            "raw_merge_rate": 0.729003359462486,
+            "peer_merge_rate": 0.6002239641657335,
+            "self_merge_rate": 0.12877939529675253,
+            "closed_unmerged_rate": 0.24972004479283313
+          },
+          "non_maintainer": {
+            "n": 1358,
+            "raw_merge_rate": 0.34536082474226804,
+            "peer_merge_rate": 0.34536082474226804,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.6251840942562592
+          }
+        },
+        "networking": {
+          "n": 2375,
+          "maintainer": {
+            "n": 1122,
+            "raw_merge_rate": 0.7442067736185384,
+            "peer_merge_rate": 0.5793226381461676,
+            "self_merge_rate": 0.16488413547237077,
+            "closed_unmerged_rate": 0.24598930481283424
+          },
+          "non_maintainer": {
+            "n": 1253,
+            "raw_merge_rate": 0.5219473264166001,
+            "peer_merge_rate": 0.5211492418196328,
+            "self_merge_rate": 0.0007980845969672786,
+            "closed_unmerged_rate": 0.4405426975259378
+          }
+        },
+        "other": {
+          "n": 15878,
+          "maintainer": {
+            "n": 8008,
+            "raw_merge_rate": 0.8194305694305695,
+            "peer_merge_rate": 0.5896603396603397,
+            "self_merge_rate": 0.22977022977022976,
+            "closed_unmerged_rate": 0.1742007992007992
+          },
+          "non_maintainer": {
+            "n": 7870,
+            "raw_merge_rate": 0.5818297331639136,
+            "peer_merge_rate": 0.581702668360864,
+            "self_merge_rate": 0.00012706480304955527,
+            "closed_unmerged_rate": 0.4059720457433291
+          }
+        },
+        "security_sensitive": {
+          "n": 4203,
+          "maintainer": {
+            "n": 2278,
+            "raw_merge_rate": 0.786215978928885,
+            "peer_merge_rate": 0.607550482879719,
+            "self_merge_rate": 0.17866549604916593,
+            "closed_unmerged_rate": 0.20632133450395082
+          },
+          "non_maintainer": {
+            "n": 1925,
+            "raw_merge_rate": 0.5693506493506494,
+            "peer_merge_rate": 0.5693506493506494,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.4
+          }
+        },
+        "unknown": {
+          "n": 101,
+          "maintainer": {
+            "n": 11,
+            "raw_merge_rate": 0.45454545454545453,
+            "peer_merge_rate": 0.0,
+            "self_merge_rate": 0.45454545454545453,
+            "closed_unmerged_rate": 0.5454545454545454
+          },
+          "non_maintainer": {
+            "n": 90,
+            "raw_merge_rate": 0.12222222222222222,
+            "peer_merge_rate": 0.022222222222222223,
+            "self_merge_rate": 0.1,
+            "closed_unmerged_rate": 0.8777777777777778
+          }
+        }
+      },
+      "concept_ack_received": {
+        "n": 7718,
+        "mean_author_prep": 0.518158849442861,
+        "maintainer": {
+          "n": 4146,
+          "raw_merge_rate": 0.7904003859141341,
+          "peer_merge_rate": 0.6138446695610227,
+          "self_merge_rate": 0.17655571635311143,
+          "closed_unmerged_rate": 0.19319826338639653
+        },
+        "non_maintainer": {
+          "n": 3572,
+          "raw_merge_rate": 0.6797312430011199,
+          "peer_merge_rate": 0.6797312430011199,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.27855543113101905
+        },
+        "raw_merge_gap_pp": 11.066914291301423
+      },
+      "high_prep_and_nontrivial_tests": {
+        "n": 4679,
+        "mean_author_prep": 0.7447317802949348,
+        "maintainer": {
+          "n": 1996,
+          "raw_merge_rate": 0.7454909819639278,
+          "peer_merge_rate": 0.6152304609218436,
+          "self_merge_rate": 0.13026052104208416,
+          "closed_unmerged_rate": 0.22394789579158317
+        },
+        "non_maintainer": {
+          "n": 2683,
+          "raw_merge_rate": 0.5516213194185613,
+          "peer_merge_rate": 0.5516213194185613,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.3842713380544167
+        },
+        "raw_merge_gap_pp": 19.386966254536652
+      },
+      "ci_status": "unavailable_on_enriched_corpus"
+    },
+    "high_readiness_contrast": {
+      "n": 7492,
+      "mean_author_prep": 0.736312066203951,
+      "maintainer": {
+        "n": 3444,
+        "raw_merge_rate": 0.7604529616724739,
+        "peer_merge_rate": 0.616144018583043,
+        "self_merge_rate": 0.1443089430894309,
+        "closed_unmerged_rate": 0.218931475029036
+      },
+      "non_maintainer": {
+        "n": 4048,
+        "raw_merge_rate": 0.5901679841897233,
+        "peer_merge_rate": 0.5901679841897233,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.36141304347826086
+      },
+      "raw_merge_gap_pp": 17.02849774827506
+    },
+    "high_substance_contrast": {
+      "n": 8415,
+      "mean_author_prep": 0.5652881758764112,
+      "maintainer": {
+        "n": 4312,
+        "raw_merge_rate": 0.7574211502782932,
+        "peer_merge_rate": 0.5732838589981447,
+        "self_merge_rate": 0.1841372912801484,
+        "closed_unmerged_rate": 0.22495361781076068
+      },
+      "non_maintainer": {
+        "n": 4103,
+        "raw_merge_rate": 0.4774555203509627,
+        "peer_merge_rate": 0.4774555203509627,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.47648062393370705
+      },
+      "raw_merge_gap_pp": 27.996562992733043,
+      "note": "Alias of high_size_substance_contrast"
+    }
+  },
+  "author_prep_matched": {
+    "score_definitions": {
+      "author_prep_score": "Body length bands + test-path touch only. No reviews/LOC/merge. High band >= 0.65; also report >= 0.5.",
+      "size_substance_score": "Ex-outcome size/files substance \u2014 NOT quality. Descriptive only.",
+      "engagement_score": "Reviews received \u2014 process only; not used for matching.",
+      "importance": "Excluded from claims (keyword classifier over-tags critical).",
+      "path_risk": "Path-based risk band (consensus/security/net/other).",
+      "concept_ack": "Received concept/approach ACK text \u2014 process signal, not author prep."
+    },
+    "thresholds": {
+      "author_prep_high": 0.65,
+      "author_prep_mid_high": 0.5,
+      "size_substance_high_quantile_cut": 0.4
+    },
+    "mean_scores": {
+      "maintainer_author_prep": 0.3915529564652372,
+      "non_maintainer_author_prep": 0.4031650128040974,
+      "maintainer_engagement": 0.2639294996751137,
+      "non_maintainer_engagement": 0.2266485275288092
+    },
+    "by_author_prep_band": {
+      "high": {
+        "n": 7492,
+        "mean_author_prep": 0.736312066203951,
+        "maintainer": {
+          "n": 3444,
+          "raw_merge_rate": 0.7604529616724739,
+          "peer_merge_rate": 0.616144018583043,
+          "self_merge_rate": 0.1443089430894309,
+          "closed_unmerged_rate": 0.218931475029036
+        },
+        "non_maintainer": {
+          "n": 4048,
+          "raw_merge_rate": 0.5901679841897233,
+          "peer_merge_rate": 0.5901679841897233,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.36141304347826086
+        }
+      },
+      "low_mid": {
+        "n": 12730,
+        "mean_author_prep": 0.25308719560094267,
+        "maintainer": {
+          "n": 6421,
+          "raw_merge_rate": 0.8042361002959041,
+          "peer_merge_rate": 0.5748325805949229,
+          "self_merge_rate": 0.22940351970098116,
+          "closed_unmerged_rate": 0.19202616414888646
+        },
+        "non_maintainer": {
+          "n": 6309,
+          "raw_merge_rate": 0.5151371057219845,
+          "peer_merge_rate": 0.5137105721984466,
+          "self_merge_rate": 0.0014265335235378032,
+          "closed_unmerged_rate": 0.4782057378348391
+        }
+      },
+      "mid_high": {
+        "n": 2241,
+        "mean_author_prep": 0.5,
+        "maintainer": {
+          "n": 1404,
+          "raw_merge_rate": 0.8404558404558404,
+          "peer_merge_rate": 0.5683760683760684,
+          "self_merge_rate": 0.2720797720797721,
+          "closed_unmerged_rate": 0.1581196581196581
+        },
+        "non_maintainer": {
+          "n": 837,
+          "raw_merge_rate": 0.6642771804062126,
+          "peer_merge_rate": 0.6642771804062126,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.3309438470728793
+        }
+      },
+      "none": {
+        "n": 2345,
+        "mean_author_prep": 0.0,
+        "maintainer": {
+          "n": 1043,
+          "raw_merge_rate": 0.8446788111217641,
+          "peer_merge_rate": 0.6529242569511026,
+          "self_merge_rate": 0.19175455417066156,
+          "closed_unmerged_rate": 0.15436241610738255
+        },
+        "non_maintainer": {
+          "n": 1302,
+          "raw_merge_rate": 0.4715821812596006,
+          "peer_merge_rate": 0.4700460829493088,
+          "self_merge_rate": 0.0015360983102918587,
+          "closed_unmerged_rate": 0.5284178187403994
+        }
+      }
+    },
+    "high_author_prep_ge_065": {
+      "n": 7492,
+      "mean_author_prep": 0.736312066203951,
+      "maintainer": {
+        "n": 3444,
+        "raw_merge_rate": 0.7604529616724739,
+        "peer_merge_rate": 0.616144018583043,
+        "self_merge_rate": 0.1443089430894309,
+        "closed_unmerged_rate": 0.218931475029036
+      },
+      "non_maintainer": {
+        "n": 4048,
+        "raw_merge_rate": 0.5901679841897233,
+        "peer_merge_rate": 0.5901679841897233,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.36141304347826086
+      },
+      "raw_merge_gap_pp": 17.02849774827506
+    },
+    "author_prep_ge_050": {
+      "n": 9733,
+      "mean_author_prep": 0.6819017774581322,
+      "maintainer": {
+        "n": 4848,
+        "raw_merge_rate": 0.7836221122112211,
+        "peer_merge_rate": 0.6023102310231023,
+        "self_merge_rate": 0.1813118811881188,
+        "closed_unmerged_rate": 0.20132013201320131
+      },
+      "non_maintainer": {
+        "n": 4885,
+        "raw_merge_rate": 0.6028659160696008,
+        "peer_merge_rate": 0.6028659160696008,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.3561924257932446
+      },
+      "raw_merge_gap_pp": 18.07561961416203
+    },
+    "high_size_substance_contrast": {
+      "n": 8415,
+      "mean_author_prep": 0.5652881758764112,
+      "maintainer": {
+        "n": 4312,
+        "raw_merge_rate": 0.7574211502782932,
+        "peer_merge_rate": 0.5732838589981447,
+        "self_merge_rate": 0.1841372912801484,
+        "closed_unmerged_rate": 0.22495361781076068
+      },
+      "non_maintainer": {
+        "n": 4103,
+        "raw_merge_rate": 0.4774555203509627,
+        "peer_merge_rate": 0.4774555203509627,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.47648062393370705
+      },
+      "raw_merge_gap_pp": 27.996562992733043,
+      "note": "High substance \u2248 larger PRs; outsider merge rates here often look worse \u2014 size exclusion, not 'low quality'."
+    },
+    "phase2": {
+      "by_path_risk": {
+        "consensus_sensitive": {
+          "n": 2251,
+          "maintainer": {
+            "n": 893,
+            "raw_merge_rate": 0.729003359462486,
+            "peer_merge_rate": 0.6002239641657335,
+            "self_merge_rate": 0.12877939529675253,
+            "closed_unmerged_rate": 0.24972004479283313
+          },
+          "non_maintainer": {
+            "n": 1358,
+            "raw_merge_rate": 0.34536082474226804,
+            "peer_merge_rate": 0.34536082474226804,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.6251840942562592
+          }
+        },
+        "networking": {
+          "n": 2375,
+          "maintainer": {
+            "n": 1122,
+            "raw_merge_rate": 0.7442067736185384,
+            "peer_merge_rate": 0.5793226381461676,
+            "self_merge_rate": 0.16488413547237077,
+            "closed_unmerged_rate": 0.24598930481283424
+          },
+          "non_maintainer": {
+            "n": 1253,
+            "raw_merge_rate": 0.5219473264166001,
+            "peer_merge_rate": 0.5211492418196328,
+            "self_merge_rate": 0.0007980845969672786,
+            "closed_unmerged_rate": 0.4405426975259378
+          }
+        },
+        "other": {
+          "n": 15878,
+          "maintainer": {
+            "n": 8008,
+            "raw_merge_rate": 0.8194305694305695,
+            "peer_merge_rate": 0.5896603396603397,
+            "self_merge_rate": 0.22977022977022976,
+            "closed_unmerged_rate": 0.1742007992007992
+          },
+          "non_maintainer": {
+            "n": 7870,
+            "raw_merge_rate": 0.5818297331639136,
+            "peer_merge_rate": 0.581702668360864,
+            "self_merge_rate": 0.00012706480304955527,
+            "closed_unmerged_rate": 0.4059720457433291
+          }
+        },
+        "security_sensitive": {
+          "n": 4203,
+          "maintainer": {
+            "n": 2278,
+            "raw_merge_rate": 0.786215978928885,
+            "peer_merge_rate": 0.607550482879719,
+            "self_merge_rate": 0.17866549604916593,
+            "closed_unmerged_rate": 0.20632133450395082
+          },
+          "non_maintainer": {
+            "n": 1925,
+            "raw_merge_rate": 0.5693506493506494,
+            "peer_merge_rate": 0.5693506493506494,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.4
+          }
+        },
+        "unknown": {
+          "n": 101,
+          "maintainer": {
+            "n": 11,
+            "raw_merge_rate": 0.45454545454545453,
+            "peer_merge_rate": 0.0,
+            "self_merge_rate": 0.45454545454545453,
+            "closed_unmerged_rate": 0.5454545454545454
+          },
+          "non_maintainer": {
+            "n": 90,
+            "raw_merge_rate": 0.12222222222222222,
+            "peer_merge_rate": 0.022222222222222223,
+            "self_merge_rate": 0.1,
+            "closed_unmerged_rate": 0.8777777777777778
+          }
+        }
+      },
+      "concept_ack_received": {
+        "n": 7718,
+        "mean_author_prep": 0.518158849442861,
+        "maintainer": {
+          "n": 4146,
+          "raw_merge_rate": 0.7904003859141341,
+          "peer_merge_rate": 0.6138446695610227,
+          "self_merge_rate": 0.17655571635311143,
+          "closed_unmerged_rate": 0.19319826338639653
+        },
+        "non_maintainer": {
+          "n": 3572,
+          "raw_merge_rate": 0.6797312430011199,
+          "peer_merge_rate": 0.6797312430011199,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.27855543113101905
+        },
+        "raw_merge_gap_pp": 11.066914291301423
+      },
+      "high_prep_and_nontrivial_tests": {
+        "n": 4679,
+        "mean_author_prep": 0.7447317802949348,
+        "maintainer": {
+          "n": 1996,
+          "raw_merge_rate": 0.7454909819639278,
+          "peer_merge_rate": 0.6152304609218436,
+          "self_merge_rate": 0.13026052104208416,
+          "closed_unmerged_rate": 0.22394789579158317
+        },
+        "non_maintainer": {
+          "n": 2683,
+          "raw_merge_rate": 0.5516213194185613,
+          "peer_merge_rate": 0.5516213194185613,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.3842713380544167
+        },
+        "raw_merge_gap_pp": 19.386966254536652
+      },
+      "ci_status": "unavailable_on_enriched_corpus"
+    },
+    "high_readiness_contrast": {
+      "n": 7492,
+      "mean_author_prep": 0.736312066203951,
+      "maintainer": {
+        "n": 3444,
+        "raw_merge_rate": 0.7604529616724739,
+        "peer_merge_rate": 0.616144018583043,
+        "self_merge_rate": 0.1443089430894309,
+        "closed_unmerged_rate": 0.218931475029036
+      },
+      "non_maintainer": {
+        "n": 4048,
+        "raw_merge_rate": 0.5901679841897233,
+        "peer_merge_rate": 0.5901679841897233,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.36141304347826086
+      },
+      "raw_merge_gap_pp": 17.02849774827506
+    },
+    "high_substance_contrast": {
+      "n": 8415,
+      "mean_author_prep": 0.5652881758764112,
+      "maintainer": {
+        "n": 4312,
+        "raw_merge_rate": 0.7574211502782932,
+        "peer_merge_rate": 0.5732838589981447,
+        "self_merge_rate": 0.1841372912801484,
+        "closed_unmerged_rate": 0.22495361781076068
+      },
+      "non_maintainer": {
+        "n": 4103,
+        "raw_merge_rate": 0.4774555203509627,
+        "peer_merge_rate": 0.4774555203509627,
+        "self_merge_rate": 0.0,
+        "closed_unmerged_rate": 0.47648062393370705
+      },
+      "raw_merge_gap_pp": 27.996562992733043,
+      "note": "Alias of high_size_substance_contrast"
+    }
+  },
+  "close_proxies": {
+    "all_closed_unmerged": {
+      "n": 7815,
+      "counts": {
+        "no_reviews": 4880,
+        "staging_or_wip": 254,
+        "reviewed_then_closed": 2522,
+        "superseded_keyword": 18,
+        "had_nack": 141
+      },
+      "shares": {
+        "no_reviews": 0.6244401791426744,
+        "staging_or_wip": 0.032501599488163786,
+        "reviewed_then_closed": 0.32271273192578376,
+        "superseded_keyword": 0.0023032629558541267,
+        "had_nack": 0.01804222648752399
+      }
+    },
+    "maintainer_authored": {
+      "n": 2370,
+      "counts": {
+        "no_reviews": 1281,
+        "staging_or_wip": 104,
+        "superseded_keyword": 10,
+        "reviewed_then_closed": 942,
+        "had_nack": 33
+      },
+      "shares": {
+        "no_reviews": 0.540506329113924,
+        "staging_or_wip": 0.04388185654008439,
+        "superseded_keyword": 0.004219409282700422,
+        "reviewed_then_closed": 0.39746835443037976,
+        "had_nack": 0.013924050632911392
+      }
+    },
+    "non_maintainer_authored": {
+      "n": 5445,
+      "counts": {
+        "no_reviews": 3599,
+        "staging_or_wip": 150,
+        "reviewed_then_closed": 1580,
+        "had_nack": 108,
+        "superseded_keyword": 8
+      },
+      "shares": {
+        "no_reviews": 0.6609733700642791,
+        "staging_or_wip": 0.027548209366391185,
+        "reviewed_then_closed": 0.29017447199265384,
+        "had_nack": 0.019834710743801654,
+        "superseded_keyword": 0.0014692378328741965
+      }
+    },
+    "note": "no_reviews \u2248 abandoned / never engaged / ignored \u2014 not proven Core rejection. reviewed_then_closed is closer to contested non-merge. Explicit NACK and superseded keywords are rare in text."
+  },
+  "active_maintainer_sensitivity": {
+    "ever_maintainer": {
+      "maintainer": {
+        "n": 12312,
+        "raw_merge_rate": 0.799545159194282,
+        "peer_merge_rate": 0.592267706302794,
+        "self_merge_rate": 0.20727745289148797,
+        "closed_unmerged_rate": 0.19249512670565302
+      },
+      "non_maintainer": {
+        "n": 12496,
+        "raw_merge_rate": 0.5448943661971831,
+        "peer_merge_rate": 0.5440140845070423,
+        "self_merge_rate": 0.0008802816901408451,
+        "closed_unmerged_rate": 0.4357394366197183
+      }
+    },
+    "active_at_creation": {
+      "maintainer": {
+        "n": 8033,
+        "raw_merge_rate": 0.8197435578239761,
+        "peer_merge_rate": 0.5039213245362878,
+        "self_merge_rate": 0.31582223328768827,
+        "closed_unmerged_rate": 0.17191584713058633
+      },
+      "non_maintainer": {
+        "n": 16775,
+        "raw_merge_rate": 0.6001788375558867,
+        "peer_merge_rate": 0.598628912071535,
+        "self_merge_rate": 0.0015499254843517139,
+        "closed_unmerged_rate": 0.3835469448584203
+      }
+    },
+    "n_label_disagreement": 4279,
+    "note": "Active-at-creation uses timeline merge periods; people outside their estimated active window move to the non-maintainer side."
+  },
+  "stratified_by_pr_type": {
+    "bugfix": {
+      "n": 7537,
+      "maint_raw_merge": 0.8229591836734694,
+      "non_raw_merge": 0.5396737627868399,
+      "maint_peer_merge": 0.6150510204081633,
+      "non_peer_merge": 0.5388443461432126
+    },
+    "consensus": {
+      "n": 8514,
+      "maint_raw_merge": 0.7537830212875096,
+      "non_raw_merge": 0.5553629469122426,
+      "maint_peer_merge": 0.5886124647345473,
+      "non_peer_merge": 0.5542795232936077
+    },
+    "documentation": {
+      "n": 1048,
+      "maint_raw_merge": 0.8730434782608696,
+      "non_raw_merge": 0.5623678646934461,
+      "maint_peer_merge": 0.6504347826086957,
+      "non_peer_merge": 0.5581395348837209
+    },
+    "feature": {
+      "n": 3531,
+      "maint_raw_merge": 0.7965517241379311,
+      "non_raw_merge": 0.6236739251814629,
+      "maint_peer_merge": 0.578735632183908,
+      "non_peer_merge": 0.6231155778894473
+    },
+    "refactor": {
+      "n": 422,
+      "maint_raw_merge": 0.8034188034188035,
+      "non_raw_merge": 0.6223404255319149,
+      "maint_peer_merge": 0.6581196581196581,
+      "non_peer_merge": 0.6223404255319149
+    },
+    "unknown": {
+      "n": 3756,
+      "maint_raw_merge": 0.8245884773662552,
+      "non_raw_merge": 0.4381898454746137,
+      "maint_peer_merge": 0.5406378600823045,
+      "non_peer_merge": 0.4381898454746137
+    }
+  },
+  "stall_metrics": {
+    "open_n": 340,
+    "open_maint_share": 0.28823529411764703,
+    "closed_unmerged_n": 7815,
+    "closed_unmerged_maint_share": 0.30326295585412666,
+    "closed_unmerged_maint_rate": 0.19249512670565302,
+    "closed_unmerged_non_rate": 0.4357394366197183
+  },
+  "windows": {
+    "all_time": {
+      "n_prs": 24808,
+      "n_maintainer_authored": 12312,
+      "bivariate_raw": {
+        "maintainer_merge_rate": 0.799545159194282,
+        "non_maintainer_merge_rate": 0.5448943661971831,
+        "merge_rate_ratio_maint_over_non": 1.4673397428832058,
+        "maintainer_closed_unmerged_rate": 0.19249512670565302,
+        "non_maintainer_closed_unmerged_rate": 0.4357394366197183,
+        "maintainer_median_days_to_merge": 3.942644675925926,
+        "non_maintainer_median_days_to_merge": 6.3425,
+        "time_ratio_non_over_maint": 1.6086917592974495,
+        "chi_square_merge": {
+          "chi2": 1821.3354987498585,
+          "p_value": 0.0,
+          "dof": 1
+        },
+        "n_maintainer": 12312,
+        "n_non_maintainer": 12496,
+        "note": "Raw rates include self-merges as successes \u2014 use bivariate_fair for peer-reviewed comparison."
+      },
+      "bivariate_fair": {
+        "maintainer": {
+          "n": 12312,
+          "raw_merge_rate": 0.799545159194282,
+          "peer_merge_rate": 0.592267706302794,
+          "self_merge_rate": 0.20727745289148797,
+          "closed_unmerged_rate": 0.19249512670565302
+        },
+        "non_maintainer": {
+          "n": 12496,
+          "raw_merge_rate": 0.5448943661971831,
+          "peer_merge_rate": 0.5440140845070423,
+          "self_merge_rate": 0.0008802816901408451,
+          "closed_unmerged_rate": 0.4357394366197183
+        },
+        "raw_merge_rate_ratio": 1.4673397428832058,
+        "peer_merge_rate_ratio": 1.0886992141747152,
+        "self_merge_share_of_maintainer_prs": 0.20727745289148797,
+        "self_merge_share_of_maintainer_merges": 0.2592442096708655,
+        "reading": "If peer_merge rates converge, the raw maintainer premium is largely self-merge privilege rather than outsider rejection on typical PRs."
+      },
+      "controlled_logistic_merge_with_prior": {
+        "n": 24468,
+        "include_prior_merges_control": true,
+        "outcome": "merged_including_self_merge",
+        "coefficients": {
+          "is_maintainer": 0.309881452916022,
+          "log_changes": -0.4009566763969724,
+          "files_changed": -0.0563102858549166,
+          "total_reviews": 0.6387803229476998,
+          "nack_count": -0.1785846039981507,
+          "log_prior_merges": 0.7328192222787351,
+          "consensus_related": -0.0016238733315284345,
+          "author_prep_score": -0.04170071567640844,
+          "type_consensus": -0.0016238733315284345,
+          "type_bugfix": 0.08580125872016035,
+          "type_unknown": -0.07828452288354118,
+          "type_feature": 0.2663964837138875,
+          "type_documentation": 0.3334973247045726,
+          "type_refactor": 0.08059853167337445
+        },
+        "odds_ratios": {
+          "is_maintainer": 1.3632634936406833,
+          "log_changes": 0.6696790733198001,
+          "files_changed": 0.9452457939835351,
+          "total_reviews": 1.894169195136977,
+          "nack_count": 0.8364532865913982,
+          "log_prior_merges": 2.080938975293505,
+          "consensus_related": 0.9983774444373769,
+          "author_prep_score": 0.9591567982139736,
+          "type_consensus": 0.9983774444373769,
+          "type_bugfix": 1.0895897603218758,
+          "type_unknown": 0.9247012904336236,
+          "type_feature": 1.305252467453932,
+          "type_documentation": 1.3958413122486448,
+          "type_refactor": 1.083935643373506
+        },
+        "maintainer_odds_ratio": 1.3632634936406833,
+        "prior_merges_odds_ratio": 2.080938975293505,
+        "author_prep_odds_ratio": 0.9591567982139736,
+        "likelihood_ratio_test_add_maintainer": {
+          "lr_stat": 55.725037162752415,
+          "p_value": 8.334995939794165e-14,
+          "df": 1
+        },
+        "peer_merge_outcome": {
+          "maintainer_odds_ratio": 0.7310504278795109,
+          "note": "Dependent variable = merged AND not self-merged"
+        },
+        "features": [
+          "is_maintainer",
+          "log_changes",
+          "files_changed",
+          "total_reviews",
+          "nack_count",
+          "log_prior_merges",
+          "consensus_related",
+          "author_prep_score",
+          "type_consensus",
+          "type_bugfix",
+          "type_unknown",
+          "type_feature",
+          "type_documentation",
+          "type_refactor"
+        ]
+      },
+      "controlled_logistic_merge_without_prior": {
+        "n": 24468,
+        "include_prior_merges_control": false,
+        "outcome": "merged_including_self_merge",
+        "coefficients": {
+          "is_maintainer": 1.2798585576946016,
+          "log_changes": -0.4066690710096834,
+          "files_changed": -0.10220700128674731,
+          "total_reviews": 0.6869987500927374,
+          "nack_count": -0.18603855200144231,
+          "consensus_related": -0.06794032464100166,
+          "author_prep_score": 0.050427900104774076,
+          "type_consensus": -0.06794032464100166,
+          "type_bugfix": -0.04800095799701147,
+          "type_unknown": -0.12015774180290395,
+          "type_feature": 0.1658805519850531,
+          "type_documentation": 0.18737949008605295,
+          "type_refactor": 0.1641359696915069
+        },
+        "odds_ratios": {
+          "is_maintainer": 3.596131044530167,
+          "log_changes": 0.6658645077140266,
+          "files_changed": 0.9028426427355728,
+          "total_reviews": 1.9877408649049615,
+          "nack_count": 0.8302415868900934,
+          "consensus_related": 0.9343162275699254,
+          "author_prep_score": 1.0517210316451184,
+          "type_consensus": 0.9343162275699254,
+          "type_bugfix": 0.9531328739786226,
+          "type_unknown": 0.8867805433222457,
+          "type_feature": 1.1804320930315473,
+          "type_documentation": 1.2060848954758943,
+          "type_refactor": 1.178374527421438
+        },
+        "maintainer_odds_ratio": 3.596131044530167,
+        "prior_merges_odds_ratio": null,
+        "author_prep_odds_ratio": 1.0517210316451184,
+        "likelihood_ratio_test_add_maintainer": {
+          "lr_stat": 1896.0321864800244,
+          "p_value": 0.0,
+          "df": 1
+        },
+        "peer_merge_outcome": {
+          "maintainer_odds_ratio": 1.2266309283332602,
+          "note": "Dependent variable = merged AND not self-merged"
+        },
+        "features": [
+          "is_maintainer",
+          "log_changes",
+          "files_changed",
+          "total_reviews",
+          "nack_count",
+          "consensus_related",
+          "author_prep_score",
+          "type_consensus",
+          "type_bugfix",
+          "type_unknown",
+          "type_feature",
+          "type_documentation",
+          "type_refactor"
+        ]
+      },
+      "size_strata": {
+        "tiny_0_49": {
+          "loc_range": [
+            0,
+            50
+          ],
+          "n": 15572,
+          "maintainer": {
+            "n": 7604,
+            "raw_merge_rate": 0.8291688584955287,
+            "peer_merge_rate": 0.6111257233035244,
+            "self_merge_rate": 0.21804313519200422,
+            "closed_unmerged_rate": 0.16846396633350869
+          },
+          "non_maintainer": {
+            "n": 7968,
+            "raw_merge_rate": 0.5965110441767069,
+            "peer_merge_rate": 0.5951305220883534,
+            "self_merge_rate": 0.0013805220883534137,
+            "closed_unmerged_rate": 0.397464859437751
+          },
+          "raw_merge_rate_ratio": 1.3900310255611976,
+          "peer_merge_rate_ratio": 1.0268767952936488
+        },
+        "small_50_499": {
+          "loc_range": [
+            50,
+            500
+          ],
+          "n": 7310,
+          "maintainer": {
+            "n": 3775,
+            "raw_merge_rate": 0.769271523178808,
+            "peer_merge_rate": 0.5825165562913908,
+            "self_merge_rate": 0.18675496688741722,
+            "closed_unmerged_rate": 0.21986754966887417
+          },
+          "non_maintainer": {
+            "n": 3535,
+            "raw_merge_rate": 0.51994342291372,
+            "peer_merge_rate": 0.51994342291372,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.4387553041018388
+          },
+          "raw_merge_rate_ratio": 1.4795292896828542,
+          "peer_merge_rate_ratio": 1.1203460427040621
+        },
+        "medium_500_1999": {
+          "loc_range": [
+            500,
+            2000
+          ],
+          "n": 1237,
+          "maintainer": {
+            "n": 671,
+            "raw_merge_rate": 0.6751117734724292,
+            "peer_merge_rate": 0.4828614008941878,
+            "self_merge_rate": 0.19225037257824143,
+            "closed_unmerged_rate": 0.27719821162444114
+          },
+          "non_maintainer": {
+            "n": 566,
+            "raw_merge_rate": 0.3286219081272085,
+            "peer_merge_rate": 0.3286219081272085,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.6060070671378092
+          },
+          "raw_merge_rate_ratio": 2.0543723859429837,
+          "peer_merge_rate_ratio": 1.4693524349790874
+        },
+        "large_2000_plus": {
+          "loc_range": [
+            2000,
+            null
+          ],
+          "n": 689,
+          "maintainer": {
+            "n": 262,
+            "raw_merge_rate": 0.6946564885496184,
+            "peer_merge_rate": 0.46564885496183206,
+            "self_merge_rate": 0.22900763358778625,
+            "closed_unmerged_rate": 0.2786259541984733
+          },
+          "non_maintainer": {
+            "n": 427,
+            "raw_merge_rate": 0.07494145199063232,
+            "peer_merge_rate": 0.07494145199063232,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.8992974238875878
+          },
+          "raw_merge_rate_ratio": 9.26932251908397,
+          "peer_merge_rate_ratio": 6.213501908396947
+        },
+        "ge_2000_loc": {
+          "n": 689,
+          "maintainer": {
+            "n": 262,
+            "raw_merge_rate": 0.6946564885496184,
+            "peer_merge_rate": 0.46564885496183206,
+            "self_merge_rate": 0.22900763358778625,
+            "closed_unmerged_rate": 0.2786259541984733
+          },
+          "non_maintainer": {
+            "n": 427,
+            "raw_merge_rate": 0.07494145199063232,
+            "peer_merge_rate": 0.07494145199063232,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.8992974238875878
+          },
+          "closed_only": {
+            "n": 671,
+            "maint_raw_merge": 0.7137254901960784,
+            "non_raw_merge": 0.07692307692307693,
+            "ratio": 9.278431372549019
+          }
+        },
+        "ge_5000_loc": {
+          "n": 413,
+          "maintainer": {
+            "n": 111,
+            "raw_merge_rate": 0.7657657657657657,
+            "peer_merge_rate": 0.5675675675675675,
+            "self_merge_rate": 0.1981981981981982,
+            "closed_unmerged_rate": 0.22522522522522523
+          },
+          "non_maintainer": {
+            "n": 302,
+            "raw_merge_rate": 0.04966887417218543,
+            "peer_merge_rate": 0.04966887417218543,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.9403973509933775
+          },
+          "closed_only": {
+            "n": 409,
+            "maint_raw_merge": 0.7727272727272727,
+            "non_raw_merge": 0.05016722408026756,
+            "ratio": 15.403030303030302
+          }
+        }
+      },
+      "outsider_segments": {
+        "cold_start_first_pr": {
+          "n": 3465,
+          "raw_merge_rate": 0.2891774891774892,
+          "peer_merge_rate": 0.28773448773448773,
+          "self_merge_rate": 0.001443001443001443,
+          "closed_unmerged_rate": 0.6992784992784993
+        },
+        "mid_1_to_4_prior_merges": {
+          "n": 2056,
+          "raw_merge_rate": 0.5403696498054474,
+          "peer_merge_rate": 0.5389105058365758,
+          "self_merge_rate": 0.0014591439688715954,
+          "closed_unmerged_rate": 0.4377431906614786
+        },
+        "established_ge_5_prior_merges": {
+          "n": 6975,
+          "raw_merge_rate": 0.6732616487455197,
+          "peer_merge_rate": 0.672831541218638,
+          "self_merge_rate": 0.00043010752688172043,
+          "closed_unmerged_rate": 0.3042293906810036
+        },
+        "top_20_volume_non_maintainer_authors": {
+          "n": 4493,
+          "raw_merge_rate": 0.7006454484754062,
+          "peer_merge_rate": 0.7006454484754062,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.28399732917872245,
+          "n_authors": 20
+        },
+        "maintainer_reference": {
+          "n": 12312,
+          "raw_merge_rate": 0.799545159194282,
+          "peer_merge_rate": 0.592267706302794,
+          "self_merge_rate": 0.20727745289148797,
+          "closed_unmerged_rate": 0.19249512670565302
+        },
+        "reading": "Established and high-volume outsiders often approach maintainer raw merge rates on typical work; cold-start and large-LOC remain the exclusion zones."
+      },
+      "quality_matched": {
+        "score_definitions": {
+          "author_prep_score": "Body length bands + test-path touch only. No reviews/LOC/merge. High band >= 0.65; also report >= 0.5.",
+          "size_substance_score": "Ex-outcome size/files substance \u2014 NOT quality. Descriptive only.",
+          "engagement_score": "Reviews received \u2014 process only; not used for matching.",
+          "importance": "Excluded from claims (keyword classifier over-tags critical).",
+          "path_risk": "Path-based risk band (consensus/security/net/other).",
+          "concept_ack": "Received concept/approach ACK text \u2014 process signal, not author prep."
+        },
+        "thresholds": {
+          "author_prep_high": 0.65,
+          "author_prep_mid_high": 0.5,
+          "size_substance_high_quantile_cut": 0.4
+        },
+        "mean_scores": {
+          "maintainer_author_prep": 0.3915529564652372,
+          "non_maintainer_author_prep": 0.4031650128040974,
+          "maintainer_engagement": 0.2639294996751137,
+          "non_maintainer_engagement": 0.2266485275288092
+        },
+        "by_author_prep_band": {
+          "high": {
+            "n": 7492,
+            "mean_author_prep": 0.736312066203951,
+            "maintainer": {
+              "n": 3444,
+              "raw_merge_rate": 0.7604529616724739,
+              "peer_merge_rate": 0.616144018583043,
+              "self_merge_rate": 0.1443089430894309,
+              "closed_unmerged_rate": 0.218931475029036
+            },
+            "non_maintainer": {
+              "n": 4048,
+              "raw_merge_rate": 0.5901679841897233,
+              "peer_merge_rate": 0.5901679841897233,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.36141304347826086
+            }
+          },
+          "low_mid": {
+            "n": 12730,
+            "mean_author_prep": 0.25308719560094267,
+            "maintainer": {
+              "n": 6421,
+              "raw_merge_rate": 0.8042361002959041,
+              "peer_merge_rate": 0.5748325805949229,
+              "self_merge_rate": 0.22940351970098116,
+              "closed_unmerged_rate": 0.19202616414888646
+            },
+            "non_maintainer": {
+              "n": 6309,
+              "raw_merge_rate": 0.5151371057219845,
+              "peer_merge_rate": 0.5137105721984466,
+              "self_merge_rate": 0.0014265335235378032,
+              "closed_unmerged_rate": 0.4782057378348391
+            }
+          },
+          "mid_high": {
+            "n": 2241,
+            "mean_author_prep": 0.5,
+            "maintainer": {
+              "n": 1404,
+              "raw_merge_rate": 0.8404558404558404,
+              "peer_merge_rate": 0.5683760683760684,
+              "self_merge_rate": 0.2720797720797721,
+              "closed_unmerged_rate": 0.1581196581196581
+            },
+            "non_maintainer": {
+              "n": 837,
+              "raw_merge_rate": 0.6642771804062126,
+              "peer_merge_rate": 0.6642771804062126,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.3309438470728793
+            }
+          },
+          "none": {
+            "n": 2345,
+            "mean_author_prep": 0.0,
+            "maintainer": {
+              "n": 1043,
+              "raw_merge_rate": 0.8446788111217641,
+              "peer_merge_rate": 0.6529242569511026,
+              "self_merge_rate": 0.19175455417066156,
+              "closed_unmerged_rate": 0.15436241610738255
+            },
+            "non_maintainer": {
+              "n": 1302,
+              "raw_merge_rate": 0.4715821812596006,
+              "peer_merge_rate": 0.4700460829493088,
+              "self_merge_rate": 0.0015360983102918587,
+              "closed_unmerged_rate": 0.5284178187403994
+            }
+          }
+        },
+        "high_author_prep_ge_065": {
+          "n": 7492,
+          "mean_author_prep": 0.736312066203951,
+          "maintainer": {
+            "n": 3444,
+            "raw_merge_rate": 0.7604529616724739,
+            "peer_merge_rate": 0.616144018583043,
+            "self_merge_rate": 0.1443089430894309,
+            "closed_unmerged_rate": 0.218931475029036
+          },
+          "non_maintainer": {
+            "n": 4048,
+            "raw_merge_rate": 0.5901679841897233,
+            "peer_merge_rate": 0.5901679841897233,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.36141304347826086
+          },
+          "raw_merge_gap_pp": 17.02849774827506
+        },
+        "author_prep_ge_050": {
+          "n": 9733,
+          "mean_author_prep": 0.6819017774581322,
+          "maintainer": {
+            "n": 4848,
+            "raw_merge_rate": 0.7836221122112211,
+            "peer_merge_rate": 0.6023102310231023,
+            "self_merge_rate": 0.1813118811881188,
+            "closed_unmerged_rate": 0.20132013201320131
+          },
+          "non_maintainer": {
+            "n": 4885,
+            "raw_merge_rate": 0.6028659160696008,
+            "peer_merge_rate": 0.6028659160696008,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.3561924257932446
+          },
+          "raw_merge_gap_pp": 18.07561961416203
+        },
+        "high_size_substance_contrast": {
+          "n": 8415,
+          "mean_author_prep": 0.5652881758764112,
+          "maintainer": {
+            "n": 4312,
+            "raw_merge_rate": 0.7574211502782932,
+            "peer_merge_rate": 0.5732838589981447,
+            "self_merge_rate": 0.1841372912801484,
+            "closed_unmerged_rate": 0.22495361781076068
+          },
+          "non_maintainer": {
+            "n": 4103,
+            "raw_merge_rate": 0.4774555203509627,
+            "peer_merge_rate": 0.4774555203509627,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.47648062393370705
+          },
+          "raw_merge_gap_pp": 27.996562992733043,
+          "note": "High substance \u2248 larger PRs; outsider merge rates here often look worse \u2014 size exclusion, not 'low quality'."
+        },
+        "phase2": {
+          "by_path_risk": {
+            "consensus_sensitive": {
+              "n": 2251,
+              "maintainer": {
+                "n": 893,
+                "raw_merge_rate": 0.729003359462486,
+                "peer_merge_rate": 0.6002239641657335,
+                "self_merge_rate": 0.12877939529675253,
+                "closed_unmerged_rate": 0.24972004479283313
+              },
+              "non_maintainer": {
+                "n": 1358,
+                "raw_merge_rate": 0.34536082474226804,
+                "peer_merge_rate": 0.34536082474226804,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 0.6251840942562592
+              }
+            },
+            "networking": {
+              "n": 2375,
+              "maintainer": {
+                "n": 1122,
+                "raw_merge_rate": 0.7442067736185384,
+                "peer_merge_rate": 0.5793226381461676,
+                "self_merge_rate": 0.16488413547237077,
+                "closed_unmerged_rate": 0.24598930481283424
+              },
+              "non_maintainer": {
+                "n": 1253,
+                "raw_merge_rate": 0.5219473264166001,
+                "peer_merge_rate": 0.5211492418196328,
+                "self_merge_rate": 0.0007980845969672786,
+                "closed_unmerged_rate": 0.4405426975259378
+              }
+            },
+            "other": {
+              "n": 15878,
+              "maintainer": {
+                "n": 8008,
+                "raw_merge_rate": 0.8194305694305695,
+                "peer_merge_rate": 0.5896603396603397,
+                "self_merge_rate": 0.22977022977022976,
+                "closed_unmerged_rate": 0.1742007992007992
+              },
+              "non_maintainer": {
+                "n": 7870,
+                "raw_merge_rate": 0.5818297331639136,
+                "peer_merge_rate": 0.581702668360864,
+                "self_merge_rate": 0.00012706480304955527,
+                "closed_unmerged_rate": 0.4059720457433291
+              }
+            },
+            "security_sensitive": {
+              "n": 4203,
+              "maintainer": {
+                "n": 2278,
+                "raw_merge_rate": 0.786215978928885,
+                "peer_merge_rate": 0.607550482879719,
+                "self_merge_rate": 0.17866549604916593,
+                "closed_unmerged_rate": 0.20632133450395082
+              },
+              "non_maintainer": {
+                "n": 1925,
+                "raw_merge_rate": 0.5693506493506494,
+                "peer_merge_rate": 0.5693506493506494,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 0.4
+              }
+            },
+            "unknown": {
+              "n": 101,
+              "maintainer": {
+                "n": 11,
+                "raw_merge_rate": 0.45454545454545453,
+                "peer_merge_rate": 0.0,
+                "self_merge_rate": 0.45454545454545453,
+                "closed_unmerged_rate": 0.5454545454545454
+              },
+              "non_maintainer": {
+                "n": 90,
+                "raw_merge_rate": 0.12222222222222222,
+                "peer_merge_rate": 0.022222222222222223,
+                "self_merge_rate": 0.1,
+                "closed_unmerged_rate": 0.8777777777777778
+              }
+            }
+          },
+          "concept_ack_received": {
+            "n": 7718,
+            "mean_author_prep": 0.518158849442861,
+            "maintainer": {
+              "n": 4146,
+              "raw_merge_rate": 0.7904003859141341,
+              "peer_merge_rate": 0.6138446695610227,
+              "self_merge_rate": 0.17655571635311143,
+              "closed_unmerged_rate": 0.19319826338639653
+            },
+            "non_maintainer": {
+              "n": 3572,
+              "raw_merge_rate": 0.6797312430011199,
+              "peer_merge_rate": 0.6797312430011199,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.27855543113101905
+            },
+            "raw_merge_gap_pp": 11.066914291301423
+          },
+          "high_prep_and_nontrivial_tests": {
+            "n": 4679,
+            "mean_author_prep": 0.7447317802949348,
+            "maintainer": {
+              "n": 1996,
+              "raw_merge_rate": 0.7454909819639278,
+              "peer_merge_rate": 0.6152304609218436,
+              "self_merge_rate": 0.13026052104208416,
+              "closed_unmerged_rate": 0.22394789579158317
+            },
+            "non_maintainer": {
+              "n": 2683,
+              "raw_merge_rate": 0.5516213194185613,
+              "peer_merge_rate": 0.5516213194185613,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.3842713380544167
+            },
+            "raw_merge_gap_pp": 19.386966254536652
+          },
+          "ci_status": "unavailable_on_enriched_corpus"
+        },
+        "high_readiness_contrast": {
+          "n": 7492,
+          "mean_author_prep": 0.736312066203951,
+          "maintainer": {
+            "n": 3444,
+            "raw_merge_rate": 0.7604529616724739,
+            "peer_merge_rate": 0.616144018583043,
+            "self_merge_rate": 0.1443089430894309,
+            "closed_unmerged_rate": 0.218931475029036
+          },
+          "non_maintainer": {
+            "n": 4048,
+            "raw_merge_rate": 0.5901679841897233,
+            "peer_merge_rate": 0.5901679841897233,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.36141304347826086
+          },
+          "raw_merge_gap_pp": 17.02849774827506
+        },
+        "high_substance_contrast": {
+          "n": 8415,
+          "mean_author_prep": 0.5652881758764112,
+          "maintainer": {
+            "n": 4312,
+            "raw_merge_rate": 0.7574211502782932,
+            "peer_merge_rate": 0.5732838589981447,
+            "self_merge_rate": 0.1841372912801484,
+            "closed_unmerged_rate": 0.22495361781076068
+          },
+          "non_maintainer": {
+            "n": 4103,
+            "raw_merge_rate": 0.4774555203509627,
+            "peer_merge_rate": 0.4774555203509627,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.47648062393370705
+          },
+          "raw_merge_gap_pp": 27.996562992733043,
+          "note": "Alias of high_size_substance_contrast"
+        }
+      },
+      "close_proxies": {
+        "all_closed_unmerged": {
+          "n": 7815,
+          "counts": {
+            "no_reviews": 4880,
+            "staging_or_wip": 254,
+            "reviewed_then_closed": 2522,
+            "superseded_keyword": 18,
+            "had_nack": 141
+          },
+          "shares": {
+            "no_reviews": 0.6244401791426744,
+            "staging_or_wip": 0.032501599488163786,
+            "reviewed_then_closed": 0.32271273192578376,
+            "superseded_keyword": 0.0023032629558541267,
+            "had_nack": 0.01804222648752399
+          }
+        },
+        "maintainer_authored": {
+          "n": 2370,
+          "counts": {
+            "no_reviews": 1281,
+            "staging_or_wip": 104,
+            "superseded_keyword": 10,
+            "reviewed_then_closed": 942,
+            "had_nack": 33
+          },
+          "shares": {
+            "no_reviews": 0.540506329113924,
+            "staging_or_wip": 0.04388185654008439,
+            "superseded_keyword": 0.004219409282700422,
+            "reviewed_then_closed": 0.39746835443037976,
+            "had_nack": 0.013924050632911392
+          }
+        },
+        "non_maintainer_authored": {
+          "n": 5445,
+          "counts": {
+            "no_reviews": 3599,
+            "staging_or_wip": 150,
+            "reviewed_then_closed": 1580,
+            "had_nack": 108,
+            "superseded_keyword": 8
+          },
+          "shares": {
+            "no_reviews": 0.6609733700642791,
+            "staging_or_wip": 0.027548209366391185,
+            "reviewed_then_closed": 0.29017447199265384,
+            "had_nack": 0.019834710743801654,
+            "superseded_keyword": 0.0014692378328741965
+          }
+        },
+        "note": "no_reviews \u2248 abandoned / never engaged / ignored \u2014 not proven Core rejection. reviewed_then_closed is closer to contested non-merge. Explicit NACK and superseded keywords are rare in text."
+      },
+      "active_maintainer_sensitivity": {
+        "ever_maintainer": {
+          "maintainer": {
+            "n": 12312,
+            "raw_merge_rate": 0.799545159194282,
+            "peer_merge_rate": 0.592267706302794,
+            "self_merge_rate": 0.20727745289148797,
+            "closed_unmerged_rate": 0.19249512670565302
+          },
+          "non_maintainer": {
+            "n": 12496,
+            "raw_merge_rate": 0.5448943661971831,
+            "peer_merge_rate": 0.5440140845070423,
+            "self_merge_rate": 0.0008802816901408451,
+            "closed_unmerged_rate": 0.4357394366197183
+          }
+        },
+        "active_at_creation": {
+          "maintainer": {
+            "n": 8033,
+            "raw_merge_rate": 0.8197435578239761,
+            "peer_merge_rate": 0.5039213245362878,
+            "self_merge_rate": 0.31582223328768827,
+            "closed_unmerged_rate": 0.17191584713058633
+          },
+          "non_maintainer": {
+            "n": 16775,
+            "raw_merge_rate": 0.6001788375558867,
+            "peer_merge_rate": 0.598628912071535,
+            "self_merge_rate": 0.0015499254843517139,
+            "closed_unmerged_rate": 0.3835469448584203
+          }
+        },
+        "n_label_disagreement": 4279,
+        "note": "Active-at-creation uses timeline merge periods; people outside their estimated active window move to the non-maintainer side."
+      },
+      "first_pr_outsiders": {
+        "n_first_pr_non_maintainer": 3465,
+        "first_pr_non_maintainer_merge_rate": 0.2891774891774892,
+        "first_pr_non_maintainer_peer_merge_rate": 0.28773448773448773,
+        "n_first_pr_maintainer": 43,
+        "first_pr_maintainer_merge_rate": 0.5348837209302325,
+        "closed_unmerged_rate_first_pr_non": 0.6992784992784993
+      },
+      "stratified_by_pr_type": {
+        "bugfix": {
+          "n": 7537,
+          "maint_raw_merge": 0.8229591836734694,
+          "non_raw_merge": 0.5396737627868399,
+          "maint_peer_merge": 0.6150510204081633,
+          "non_peer_merge": 0.5388443461432126
+        },
+        "consensus": {
+          "n": 8514,
+          "maint_raw_merge": 0.7537830212875096,
+          "non_raw_merge": 0.5553629469122426,
+          "maint_peer_merge": 0.5886124647345473,
+          "non_peer_merge": 0.5542795232936077
+        },
+        "documentation": {
+          "n": 1048,
+          "maint_raw_merge": 0.8730434782608696,
+          "non_raw_merge": 0.5623678646934461,
+          "maint_peer_merge": 0.6504347826086957,
+          "non_peer_merge": 0.5581395348837209
+        },
+        "feature": {
+          "n": 3531,
+          "maint_raw_merge": 0.7965517241379311,
+          "non_raw_merge": 0.6236739251814629,
+          "maint_peer_merge": 0.578735632183908,
+          "non_peer_merge": 0.6231155778894473
+        },
+        "refactor": {
+          "n": 422,
+          "maint_raw_merge": 0.8034188034188035,
+          "non_raw_merge": 0.6223404255319149,
+          "maint_peer_merge": 0.6581196581196581,
+          "non_peer_merge": 0.6223404255319149
+        },
+        "unknown": {
+          "n": 3756,
+          "maint_raw_merge": 0.8245884773662552,
+          "non_raw_merge": 0.4381898454746137,
+          "maint_peer_merge": 0.5406378600823045,
+          "non_peer_merge": 0.4381898454746137
+        }
+      },
+      "stall_metrics": {
+        "open_n": 340,
+        "open_maint_share": 0.28823529411764703,
+        "closed_unmerged_n": 7815,
+        "closed_unmerged_maint_share": 0.30326295585412666,
+        "closed_unmerged_maint_rate": 0.19249512670565302,
+        "closed_unmerged_non_rate": 0.4357394366197183
+      }
+    },
+    "from_2022": {
+      "n_prs": 8292,
+      "n_maintainer_authored": 3880,
+      "bivariate_raw": {
+        "maintainer_merge_rate": 0.8172680412371134,
+        "non_maintainer_merge_rate": 0.5083862194016319,
+        "merge_rate_ratio_maint_over_non": 1.6075731600259227,
+        "maintainer_closed_unmerged_rate": 0.1595360824742268,
+        "non_maintainer_closed_unmerged_rate": 0.43676337262012693,
+        "maintainer_median_days_to_merge": 4.330439814814815,
+        "non_maintainer_median_days_to_merge": 10.684861111111111,
+        "time_ratio_non_over_maint": 2.4673847387411465,
+        "chi_square_merge": {
+          "chi2": 867.8024203042775,
+          "p_value": 9.802330767689157e-191,
+          "dof": 1
+        },
+        "n_maintainer": 3880,
+        "n_non_maintainer": 4412,
+        "note": "Raw rates include self-merges as successes \u2014 use bivariate_fair for peer-reviewed comparison."
+      },
+      "bivariate_fair": {
+        "maintainer": {
+          "n": 3880,
+          "raw_merge_rate": 0.8172680412371134,
+          "peer_merge_rate": 0.6278350515463917,
+          "self_merge_rate": 0.18943298969072164,
+          "closed_unmerged_rate": 0.1595360824742268
+        },
+        "non_maintainer": {
+          "n": 4412,
+          "raw_merge_rate": 0.5083862194016319,
+          "peer_merge_rate": 0.5079329102447869,
+          "self_merge_rate": 0.00045330915684496827,
+          "closed_unmerged_rate": 0.43676337262012693
+        },
+        "raw_merge_rate_ratio": 1.6075731600259227,
+        "peer_merge_rate_ratio": 1.2360590126830346,
+        "self_merge_share_of_maintainer_prs": 0.18943298969072164,
+        "self_merge_share_of_maintainer_merges": 0.23178807947019867,
+        "reading": "If peer_merge rates converge, the raw maintainer premium is largely self-merge privilege rather than outsider rejection on typical PRs."
+      },
+      "controlled_logistic_merge_with_prior": {
+        "n": 7960,
+        "include_prior_merges_control": true,
+        "outcome": "merged_including_self_merge",
+        "coefficients": {
+          "is_maintainer": -0.5019480727167335,
+          "log_changes": -0.42162722945676395,
+          "files_changed": -0.2754544612874326,
+          "total_reviews": 1.286702637373463,
+          "nack_count": -0.2725033028872396,
+          "log_prior_merges": 1.3385806360598287,
+          "consensus_related": 0.06311051533003588,
+          "author_prep_score": -0.021694234711082283,
+          "type_consensus": 0.06311051533003588,
+          "type_bugfix": 0.11614906627685465,
+          "type_unknown": 0.15532590206605904,
+          "type_feature": 0.2146920391246307,
+          "type_documentation": 0.5768626088216362,
+          "type_refactor": -0.10388460254440847
+        },
+        "odds_ratios": {
+          "is_maintainer": 0.6053502440236891,
+          "log_changes": 0.6559785232928917,
+          "files_changed": 0.7592270055272062,
+          "total_reviews": 3.6208276683631984,
+          "nack_count": 0.7614709141184862,
+          "log_prior_merges": 3.813626737820519,
+          "consensus_related": 1.065144547528106,
+          "author_prep_score": 0.9785393926929921,
+          "type_consensus": 1.065144547528106,
+          "type_bugfix": 1.1231632854243647,
+          "type_unknown": 1.1680385652635716,
+          "type_feature": 1.2394801267990898,
+          "type_documentation": 1.7804437105353157,
+          "type_refactor": 0.9013293025282888
+        },
+        "maintainer_odds_ratio": 0.6053502440236891,
+        "prior_merges_odds_ratio": 3.813626737820519,
+        "author_prep_odds_ratio": 0.9785393926929921,
+        "likelihood_ratio_test_add_maintainer": {
+          "lr_stat": 26.638771364863715,
+          "p_value": 2.452720716143482e-07,
+          "df": 1
+        },
+        "peer_merge_outcome": {
+          "maintainer_odds_ratio": 0.38160875097149094,
+          "note": "Dependent variable = merged AND not self-merged"
+        },
+        "features": [
+          "is_maintainer",
+          "log_changes",
+          "files_changed",
+          "total_reviews",
+          "nack_count",
+          "log_prior_merges",
+          "consensus_related",
+          "author_prep_score",
+          "type_consensus",
+          "type_bugfix",
+          "type_unknown",
+          "type_feature",
+          "type_documentation",
+          "type_refactor"
+        ]
+      },
+      "controlled_logistic_merge_without_prior": {
+        "n": 7960,
+        "include_prior_merges_control": false,
+        "outcome": "merged_including_self_merge",
+        "coefficients": {
+          "is_maintainer": 1.6801567693887336,
+          "log_changes": -0.437061943001083,
+          "files_changed": -0.4314219358953368,
+          "total_reviews": 1.4063541356118683,
+          "nack_count": -0.3053124922835282,
+          "consensus_related": -0.023984047049721548,
+          "author_prep_score": 0.1485267390917254,
+          "type_consensus": -0.023984047049721548,
+          "type_bugfix": -0.13311450948766318,
+          "type_unknown": -0.008658473810514239,
+          "type_feature": 0.12416134122100807,
+          "type_documentation": 0.3238258336110257,
+          "type_refactor": -0.0468159681622248
+        },
+        "odds_ratios": {
+          "is_maintainer": 5.366397191988901,
+          "log_changes": 0.6459314192407988,
+          "files_changed": 0.6495847698124125,
+          "total_reviews": 4.081049295464767,
+          "nack_count": 0.7368930650119483,
+          "consensus_related": 0.976301284519526,
+          "author_prep_score": 1.1601238180168814,
+          "type_consensus": 0.976301284519526,
+          "type_bugfix": 0.8753648487891219,
+          "type_unknown": 0.9913789028211961,
+          "type_feature": 1.1321985265565417,
+          "type_documentation": 1.38240651740012,
+          "type_refactor": 0.9542629962049202
+        },
+        "maintainer_odds_ratio": 5.366397191988901,
+        "prior_merges_odds_ratio": null,
+        "author_prep_odds_ratio": 1.1601238180168814,
+        "likelihood_ratio_test_add_maintainer": {
+          "lr_stat": 933.7335138526887,
+          "p_value": 4.557308133396909e-205,
+          "df": 1
+        },
+        "peer_merge_outcome": {
+          "maintainer_odds_ratio": 1.8708709204067304,
+          "note": "Dependent variable = merged AND not self-merged"
+        },
+        "features": [
+          "is_maintainer",
+          "log_changes",
+          "files_changed",
+          "total_reviews",
+          "nack_count",
+          "consensus_related",
+          "author_prep_score",
+          "type_consensus",
+          "type_bugfix",
+          "type_unknown",
+          "type_feature",
+          "type_documentation",
+          "type_refactor"
+        ]
+      },
+      "size_strata": {
+        "tiny_0_49": {
+          "loc_range": [
+            0,
+            50
+          ],
+          "n": 5091,
+          "maintainer": {
+            "n": 2463,
+            "raw_merge_rate": 0.8392204628501827,
+            "peer_merge_rate": 0.6374340235485181,
+            "self_merge_rate": 0.20178643930166465,
+            "closed_unmerged_rate": 0.15347137637028013
+          },
+          "non_maintainer": {
+            "n": 2628,
+            "raw_merge_rate": 0.5517503805175038,
+            "peer_merge_rate": 0.5509893455098934,
+            "self_merge_rate": 0.00076103500761035,
+            "closed_unmerged_rate": 0.4299847792998478
+          },
+          "raw_merge_rate_ratio": 1.5210147423243312,
+          "peer_merge_rate_ratio": 1.1568899267165094
+        },
+        "small_50_499": {
+          "loc_range": [
+            50,
+            500
+          ],
+          "n": 2575,
+          "maintainer": {
+            "n": 1129,
+            "raw_merge_rate": 0.8024800708591674,
+            "peer_merge_rate": 0.6306465899025686,
+            "self_merge_rate": 0.17183348095659876,
+            "closed_unmerged_rate": 0.1612046058458813
+          },
+          "non_maintainer": {
+            "n": 1446,
+            "raw_merge_rate": 0.5013831258644537,
+            "peer_merge_rate": 0.5013831258644537,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.39764868603042874
+          },
+          "raw_merge_rate_ratio": 1.6005326654653187,
+          "peer_merge_rate_ratio": 1.2578137503436058
+        },
+        "medium_500_1999": {
+          "loc_range": [
+            500,
+            2000
+          ],
+          "n": 396,
+          "maintainer": {
+            "n": 183,
+            "raw_merge_rate": 0.6830601092896175,
+            "peer_merge_rate": 0.546448087431694,
+            "self_merge_rate": 0.1366120218579235,
+            "closed_unmerged_rate": 0.16939890710382513
+          },
+          "non_maintainer": {
+            "n": 213,
+            "raw_merge_rate": 0.29577464788732394,
+            "peer_merge_rate": 0.29577464788732394,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.5305164319248826
+          },
+          "raw_merge_rate_ratio": 2.3093937028363256,
+          "peer_merge_rate_ratio": 1.8475149622690608
+        },
+        "large_2000_plus": {
+          "loc_range": [
+            2000,
+            null
+          ],
+          "n": 230,
+          "maintainer": {
+            "n": 105,
+            "raw_merge_rate": 0.6952380952380952,
+            "peer_merge_rate": 0.5142857142857142,
+            "self_merge_rate": 0.18095238095238095,
+            "closed_unmerged_rate": 0.26666666666666666
+          },
+          "non_maintainer": {
+            "n": 125,
+            "raw_merge_rate": 0.04,
+            "peer_merge_rate": 0.04,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.872
+          },
+          "raw_merge_rate_ratio": 17.38095238095238,
+          "peer_merge_rate_ratio": 12.857142857142856
+        },
+        "ge_2000_loc": {
+          "n": 230,
+          "maintainer": {
+            "n": 105,
+            "raw_merge_rate": 0.6952380952380952,
+            "peer_merge_rate": 0.5142857142857142,
+            "self_merge_rate": 0.18095238095238095,
+            "closed_unmerged_rate": 0.26666666666666666
+          },
+          "non_maintainer": {
+            "n": 125,
+            "raw_merge_rate": 0.04,
+            "peer_merge_rate": 0.04,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.872
+          },
+          "closed_only": {
+            "n": 215,
+            "maint_raw_merge": 0.7227722772277227,
+            "non_raw_merge": 0.043859649122807015,
+            "ratio": 16.479207920792078
+          }
+        },
+        "ge_5000_loc": {
+          "n": 130,
+          "maintainer": {
+            "n": 52,
+            "raw_merge_rate": 0.7692307692307693,
+            "peer_merge_rate": 0.6346153846153846,
+            "self_merge_rate": 0.1346153846153846,
+            "closed_unmerged_rate": 0.21153846153846154
+          },
+          "non_maintainer": {
+            "n": 78,
+            "raw_merge_rate": 0.01282051282051282,
+            "peer_merge_rate": 0.01282051282051282,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.9487179487179487
+          },
+          "closed_only": {
+            "n": 126,
+            "maint_raw_merge": 0.7843137254901961,
+            "non_raw_merge": 0.013333333333333334,
+            "ratio": 58.8235294117647
+          }
+        }
+      },
+      "outsider_segments": {
+        "cold_start_first_pr": {
+          "n": 1278,
+          "raw_merge_rate": 0.1596244131455399,
+          "peer_merge_rate": 0.15884194053208137,
+          "self_merge_rate": 0.000782472613458529,
+          "closed_unmerged_rate": 0.809076682316119
+        },
+        "mid_1_to_4_prior_merges": {
+          "n": 561,
+          "raw_merge_rate": 0.49019607843137253,
+          "peer_merge_rate": 0.48841354723707664,
+          "self_merge_rate": 0.0017825311942959,
+          "closed_unmerged_rate": 0.4295900178253119
+        },
+        "established_ge_5_prior_merges": {
+          "n": 2573,
+          "raw_merge_rate": 0.68558103381267,
+          "peer_merge_rate": 0.68558103381267,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.25340069957248346
+        },
+        "top_20_volume_non_maintainer_authors": {
+          "n": 1988,
+          "raw_merge_rate": 0.7112676056338029,
+          "peer_merge_rate": 0.7112676056338029,
+          "self_merge_rate": 0.0,
+          "closed_unmerged_rate": 0.22535211267605634,
+          "n_authors": 20
+        },
+        "maintainer_reference": {
+          "n": 3880,
+          "raw_merge_rate": 0.8172680412371134,
+          "peer_merge_rate": 0.6278350515463917,
+          "self_merge_rate": 0.18943298969072164,
+          "closed_unmerged_rate": 0.1595360824742268
+        },
+        "reading": "Established and high-volume outsiders often approach maintainer raw merge rates on typical work; cold-start and large-LOC remain the exclusion zones."
+      },
+      "quality_matched": {
+        "score_definitions": {
+          "author_prep_score": "Body length bands + test-path touch only. No reviews/LOC/merge. High band >= 0.65; also report >= 0.5.",
+          "size_substance_score": "Ex-outcome size/files substance \u2014 NOT quality. Descriptive only.",
+          "engagement_score": "Reviews received \u2014 process only; not used for matching.",
+          "importance": "Excluded from claims (keyword classifier over-tags critical).",
+          "path_risk": "Path-based risk band (consensus/security/net/other).",
+          "concept_ack": "Received concept/approach ACK text \u2014 process signal, not author prep."
+        },
+        "thresholds": {
+          "author_prep_high": 0.65,
+          "author_prep_mid_high": 0.5,
+          "size_substance_high_quantile_cut": 0.4
+        },
+        "mean_scores": {
+          "maintainer_author_prep": 0.46042525773195875,
+          "non_maintainer_author_prep": 0.5224841341795103,
+          "maintainer_engagement": 0.3916752577319587,
+          "non_maintainer_engagement": 0.3252266545784225
+        },
+        "by_author_prep_band": {
+          "high": {
+            "n": 3651,
+            "mean_author_prep": 0.7448233360723091,
+            "maintainer": {
+              "n": 1463,
+              "raw_merge_rate": 0.7751196172248804,
+              "peer_merge_rate": 0.6862611073137389,
+              "self_merge_rate": 0.08885850991114148,
+              "closed_unmerged_rate": 0.18181818181818182
+            },
+            "non_maintainer": {
+              "n": 2188,
+              "raw_merge_rate": 0.5781535648994516,
+              "peer_merge_rate": 0.5781535648994516,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.33226691042047535
+            }
+          },
+          "low_mid": {
+            "n": 3524,
+            "mean_author_prep": 0.2828603859250851,
+            "maintainer": {
+              "n": 1796,
+              "raw_merge_rate": 0.8307349665924276,
+              "peer_merge_rate": 0.5896436525612472,
+              "self_merge_rate": 0.2410913140311804,
+              "closed_unmerged_rate": 0.155902004454343
+            },
+            "non_maintainer": {
+              "n": 1728,
+              "raw_merge_rate": 0.4241898148148148,
+              "peer_merge_rate": 0.4236111111111111,
+              "self_merge_rate": 0.0005787037037037037,
+              "closed_unmerged_rate": 0.5515046296296297
+            }
+          },
+          "mid_high": {
+            "n": 751,
+            "mean_author_prep": 0.5,
+            "maintainer": {
+              "n": 470,
+              "raw_merge_rate": 0.8723404255319149,
+              "peer_merge_rate": 0.6212765957446809,
+              "self_merge_rate": 0.251063829787234,
+              "closed_unmerged_rate": 0.12340425531914893
+            },
+            "non_maintainer": {
+              "n": 281,
+              "raw_merge_rate": 0.693950177935943,
+              "peer_merge_rate": 0.693950177935943,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.2918149466192171
+            }
+          },
+          "none": {
+            "n": 366,
+            "mean_author_prep": 0.0,
+            "maintainer": {
+              "n": 151,
+              "raw_merge_rate": 0.8940397350993378,
+              "peer_merge_rate": 0.5364238410596026,
+              "self_merge_rate": 0.3576158940397351,
+              "closed_unmerged_rate": 0.09933774834437085
+            },
+            "non_maintainer": {
+              "n": 215,
+              "raw_merge_rate": 0.23255813953488372,
+              "peer_merge_rate": 0.22790697674418606,
+              "self_merge_rate": 0.004651162790697674,
+              "closed_unmerged_rate": 0.7674418604651163
+            }
+          }
+        },
+        "high_author_prep_ge_065": {
+          "n": 3651,
+          "mean_author_prep": 0.7448233360723091,
+          "maintainer": {
+            "n": 1463,
+            "raw_merge_rate": 0.7751196172248804,
+            "peer_merge_rate": 0.6862611073137389,
+            "self_merge_rate": 0.08885850991114148,
+            "closed_unmerged_rate": 0.18181818181818182
+          },
+          "non_maintainer": {
+            "n": 2188,
+            "raw_merge_rate": 0.5781535648994516,
+            "peer_merge_rate": 0.5781535648994516,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.33226691042047535
+          },
+          "raw_merge_gap_pp": 19.696605232542886
+        },
+        "author_prep_ge_050": {
+          "n": 4402,
+          "mean_author_prep": 0.7030554293502954,
+          "maintainer": {
+            "n": 1933,
+            "raw_merge_rate": 0.7987584066218314,
+            "peer_merge_rate": 0.6704604242110709,
+            "self_merge_rate": 0.12829798241076049,
+            "closed_unmerged_rate": 0.16761510605276772
+          },
+          "non_maintainer": {
+            "n": 2469,
+            "raw_merge_rate": 0.5913325232887808,
+            "peer_merge_rate": 0.5913325232887808,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.32766302146618065
+          },
+          "raw_merge_gap_pp": 20.742588333305058
+        },
+        "high_size_substance_contrast": {
+          "n": 3186,
+          "mean_author_prep": 0.6293942247332078,
+          "maintainer": {
+            "n": 1488,
+            "raw_merge_rate": 0.7862903225806451,
+            "peer_merge_rate": 0.6229838709677419,
+            "self_merge_rate": 0.16330645161290322,
+            "closed_unmerged_rate": 0.16801075268817203
+          },
+          "non_maintainer": {
+            "n": 1698,
+            "raw_merge_rate": 0.49411071849234395,
+            "peer_merge_rate": 0.49411071849234395,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.3945818610129564
+          },
+          "raw_merge_gap_pp": 29.21796040883012,
+          "note": "High substance \u2248 larger PRs; outsider merge rates here often look worse \u2014 size exclusion, not 'low quality'."
+        },
+        "phase2": {
+          "by_path_risk": {
+            "consensus_sensitive": {
+              "n": 827,
+              "maintainer": {
+                "n": 310,
+                "raw_merge_rate": 0.7419354838709677,
+                "peer_merge_rate": 0.6258064516129033,
+                "self_merge_rate": 0.11612903225806452,
+                "closed_unmerged_rate": 0.20967741935483872
+              },
+              "non_maintainer": {
+                "n": 517,
+                "raw_merge_rate": 0.3849129593810445,
+                "peer_merge_rate": 0.3849129593810445,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 0.5377176015473888
+              }
+            },
+            "networking": {
+              "n": 718,
+              "maintainer": {
+                "n": 256,
+                "raw_merge_rate": 0.765625,
+                "peer_merge_rate": 0.65234375,
+                "self_merge_rate": 0.11328125,
+                "closed_unmerged_rate": 0.203125
+              },
+              "non_maintainer": {
+                "n": 462,
+                "raw_merge_rate": 0.5411255411255411,
+                "peer_merge_rate": 0.5411255411255411,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 0.35714285714285715
+              }
+            },
+            "other": {
+              "n": 5337,
+              "maintainer": {
+                "n": 2724,
+                "raw_merge_rate": 0.8325991189427313,
+                "peer_merge_rate": 0.6226138032305433,
+                "self_merge_rate": 0.20998531571218795,
+                "closed_unmerged_rate": 0.14904552129221732
+              },
+              "non_maintainer": {
+                "n": 2613,
+                "raw_merge_rate": 0.513203214695752,
+                "peer_merge_rate": 0.513203214695752,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 0.4500574052812859
+              }
+            },
+            "security_sensitive": {
+              "n": 1388,
+              "maintainer": {
+                "n": 588,
+                "raw_merge_rate": 0.8112244897959183,
+                "peer_merge_rate": 0.6445578231292517,
+                "self_merge_rate": 0.16666666666666666,
+                "closed_unmerged_rate": 0.1598639455782313
+              },
+              "non_maintainer": {
+                "n": 800,
+                "raw_merge_rate": 0.56375,
+                "peer_merge_rate": 0.56375,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 0.3625
+              }
+            },
+            "unknown": {
+              "n": 22,
+              "maintainer": {
+                "n": 2,
+                "raw_merge_rate": 0.0,
+                "peer_merge_rate": 0.0,
+                "self_merge_rate": 0.0,
+                "closed_unmerged_rate": 1.0
+              },
+              "non_maintainer": {
+                "n": 20,
+                "raw_merge_rate": 0.1,
+                "peer_merge_rate": 0.0,
+                "self_merge_rate": 0.1,
+                "closed_unmerged_rate": 0.9
+              }
+            }
+          },
+          "concept_ack_received": {
+            "n": 3148,
+            "mean_author_prep": 0.5746505717916137,
+            "maintainer": {
+              "n": 1505,
+              "raw_merge_rate": 0.8132890365448505,
+              "peer_merge_rate": 0.6478405315614618,
+              "self_merge_rate": 0.1654485049833887,
+              "closed_unmerged_rate": 0.14551495016611296
+            },
+            "non_maintainer": {
+              "n": 1643,
+              "raw_merge_rate": 0.6853317102860621,
+              "peer_merge_rate": 0.6853317102860621,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.22398052343274497
+            },
+            "raw_merge_gap_pp": 12.795732625878841
+          },
+          "high_prep_and_nontrivial_tests": {
+            "n": 2245,
+            "mean_author_prep": 0.7549665924276169,
+            "maintainer": {
+              "n": 786,
+              "raw_merge_rate": 0.7531806615776081,
+              "peer_merge_rate": 0.6870229007633588,
+              "self_merge_rate": 0.06615776081424936,
+              "closed_unmerged_rate": 0.17938931297709923
+            },
+            "non_maintainer": {
+              "n": 1459,
+              "raw_merge_rate": 0.5298149417409185,
+              "peer_merge_rate": 0.5298149417409185,
+              "self_merge_rate": 0.0,
+              "closed_unmerged_rate": 0.3522960932145305
+            },
+            "raw_merge_gap_pp": 22.33657198366896
+          },
+          "ci_status": "unavailable_on_enriched_corpus"
+        },
+        "high_readiness_contrast": {
+          "n": 3651,
+          "mean_author_prep": 0.7448233360723091,
+          "maintainer": {
+            "n": 1463,
+            "raw_merge_rate": 0.7751196172248804,
+            "peer_merge_rate": 0.6862611073137389,
+            "self_merge_rate": 0.08885850991114148,
+            "closed_unmerged_rate": 0.18181818181818182
+          },
+          "non_maintainer": {
+            "n": 2188,
+            "raw_merge_rate": 0.5781535648994516,
+            "peer_merge_rate": 0.5781535648994516,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.33226691042047535
+          },
+          "raw_merge_gap_pp": 19.696605232542886
+        },
+        "high_substance_contrast": {
+          "n": 3186,
+          "mean_author_prep": 0.6293942247332078,
+          "maintainer": {
+            "n": 1488,
+            "raw_merge_rate": 0.7862903225806451,
+            "peer_merge_rate": 0.6229838709677419,
+            "self_merge_rate": 0.16330645161290322,
+            "closed_unmerged_rate": 0.16801075268817203
+          },
+          "non_maintainer": {
+            "n": 1698,
+            "raw_merge_rate": 0.49411071849234395,
+            "peer_merge_rate": 0.49411071849234395,
+            "self_merge_rate": 0.0,
+            "closed_unmerged_rate": 0.3945818610129564
+          },
+          "raw_merge_gap_pp": 29.21796040883012,
+          "note": "Alias of high_size_substance_contrast"
+        }
+      },
+      "close_proxies": {
+        "all_closed_unmerged": {
+          "n": 2546,
+          "counts": {
+            "reviewed_then_closed": 1037,
+            "no_reviews": 1369,
+            "superseded_keyword": 7,
+            "staging_or_wip": 42,
+            "had_nack": 91
+          },
+          "shares": {
+            "reviewed_then_closed": 0.40730557737627654,
+            "no_reviews": 0.5377062058130401,
+            "superseded_keyword": 0.0027494108405341712,
+            "staging_or_wip": 0.016496465043205028,
+            "had_nack": 0.03574234092694423
+          }
+        },
+        "maintainer_authored": {
+          "n": 619,
+          "counts": {
+            "reviewed_then_closed": 344,
+            "no_reviews": 244,
+            "had_nack": 17,
+            "superseded_keyword": 4,
+            "staging_or_wip": 10
+          },
+          "shares": {
+            "reviewed_then_closed": 0.555735056542811,
+            "no_reviews": 0.39418416801292405,
+            "had_nack": 0.027463651050080775,
+            "superseded_keyword": 0.006462035541195477,
+            "staging_or_wip": 0.01615508885298869
+          }
+        },
+        "non_maintainer_authored": {
+          "n": 1927,
+          "counts": {
+            "reviewed_then_closed": 693,
+            "no_reviews": 1125,
+            "superseded_keyword": 3,
+            "staging_or_wip": 32,
+            "had_nack": 74
+          },
+          "shares": {
+            "reviewed_then_closed": 0.35962636222106903,
+            "no_reviews": 0.5838090295796575,
+            "superseded_keyword": 0.0015568240788790867,
+            "staging_or_wip": 0.01660612350804359,
+            "had_nack": 0.038401660612350806
+          }
+        },
+        "note": "no_reviews \u2248 abandoned / never engaged / ignored \u2014 not proven Core rejection. reviewed_then_closed is closer to contested non-merge. Explicit NACK and superseded keywords are rare in text."
+      },
+      "active_maintainer_sensitivity": {
+        "ever_maintainer": {
+          "maintainer": {
+            "n": 3880,
+            "raw_merge_rate": 0.8172680412371134,
+            "peer_merge_rate": 0.6278350515463917,
+            "self_merge_rate": 0.18943298969072164,
+            "closed_unmerged_rate": 0.1595360824742268
+          },
+          "non_maintainer": {
+            "n": 4412,
+            "raw_merge_rate": 0.5083862194016319,
+            "peer_merge_rate": 0.5079329102447869,
+            "self_merge_rate": 0.00045330915684496827,
+            "closed_unmerged_rate": 0.43676337262012693
+          }
+        },
+        "active_at_creation": {
+          "maintainer": {
+            "n": 2407,
+            "raw_merge_rate": 0.8163689239717491,
+            "peer_merge_rate": 0.5122559202326548,
+            "self_merge_rate": 0.30411300373909433,
+            "closed_unmerged_rate": 0.15579559617781472
+          },
+          "non_maintainer": {
+            "n": 5885,
+            "raw_merge_rate": 0.5860662701784197,
+            "peer_merge_rate": 0.5852166525063721,
+            "self_merge_rate": 0.0008496176720475786,
+            "closed_unmerged_rate": 0.3689039932030586
+          }
+        },
+        "n_label_disagreement": 1473,
+        "note": "Active-at-creation uses timeline merge periods; people outside their estimated active window move to the non-maintainer side."
+      },
+      "first_pr_outsiders": {
+        "n_first_pr_non_maintainer": 1278,
+        "first_pr_non_maintainer_merge_rate": 0.1596244131455399,
+        "first_pr_non_maintainer_peer_merge_rate": 0.15884194053208137,
+        "n_first_pr_maintainer": 0,
+        "first_pr_maintainer_merge_rate": null,
+        "closed_unmerged_rate_first_pr_non": 0.809076682316119
+      },
+      "stratified_by_pr_type": {
+        "bugfix": {
+          "n": 2846,
+          "maint_raw_merge": 0.8290086493679308,
+          "non_raw_merge": 0.46686522710349965,
+          "maint_peer_merge": 0.6540252827677977,
+          "non_peer_merge": 0.466120625465376
+        },
+        "consensus": {
+          "n": 2979,
+          "maint_raw_merge": 0.7733990147783252,
+          "non_raw_merge": 0.5432790224032586,
+          "maint_peer_merge": 0.6788177339901478,
+          "non_peer_merge": 0.5432790224032586
+        },
+        "documentation": {
+          "n": 330,
+          "maint_raw_merge": 0.890625,
+          "non_raw_merge": 0.5,
+          "maint_peer_merge": 0.6354166666666666,
+          "non_peer_merge": 0.4927536231884058
+        },
+        "feature": {
+          "n": 948,
+          "maint_raw_merge": 0.7887640449438202,
+          "non_raw_merge": 0.610337972166998,
+          "maint_peer_merge": 0.5617977528089888,
+          "non_peer_merge": 0.610337972166998
+        },
+        "refactor": {
+          "n": 157,
+          "maint_raw_merge": 0.7816091954022989,
+          "non_raw_merge": 0.5428571428571428,
+          "maint_peer_merge": 0.6781609195402298,
+          "non_peer_merge": 0.5428571428571428
+        },
+        "unknown": {
+          "n": 1032,
+          "maint_raw_merge": 0.8620689655172413,
+          "non_raw_merge": 0.3426395939086294,
+          "maint_peer_merge": 0.5219435736677116,
+          "non_peer_merge": 0.3426395939086294
+        }
+      },
+      "stall_metrics": {
+        "open_n": 332,
+        "open_maint_share": 0.2710843373493976,
+        "closed_unmerged_n": 2546,
+        "closed_unmerged_maint_share": 0.24312647289866457,
+        "closed_unmerged_maint_rate": 0.1595360824742268,
+        "closed_unmerged_non_rate": 0.43676337262012693
+      }
+    }
+  },
+  "interpretation": "[all_time] raw maint/non=0.800/0.545; peer maint/non=0.592/0.544; cold=0.289; established=0.673; large\u22652k closed non=0.07692307692307693; author-prep\u22650.65 maint/non=0.7604529616724739/0.5901679841897233 (gap_pp=17.02849774827506). [from_2022] raw maint/non=0.817/0.508; peer maint/non=0.628/0.508; cold=0.160; established=0.686; large\u22652k closed non=0.043859649122807015; author-prep\u22650.65 maint/non=0.7751196172248804/0.5781535648994516 (gap_pp=19.696605232542886). Fair reading: self-merge drives most of the average-case raw gap; cold-start and large outsider PRs remain strongly disadvantaged; established outsiders do comparatively well on ordinary work; prior-merge controls absorb reputation and must not be the sole headline; author-prep matching (body+tests, no reviews) still shows an identity gap \u2014 size_substance is size-heavy and must not be read as quality.",
+  "claim_summary": {
+    "all_time": {
+      "raw_maint_vs_non_merge": [
+        0.799545159194282,
+        0.5448943661971831
+      ],
+      "peer_maint_vs_non_merge": [
+        0.592267706302794,
+        0.5440140845070423
+      ],
+      "self_merge_share_of_maintainer_merges": 0.2592442096708655,
+      "cold_start_merge": 0.2891774891774892,
+      "established_outsider_merge": 0.6732616487455197,
+      "top20_outsider_merge": 0.7006454484754062,
+      "large_2k_closed_non_merge": 0.07692307692307693,
+      "large_2k_closed_ratio": 9.278431372549019,
+      "large_5k_closed_non_merge": 0.05016722408026756,
+      "or_without_prior": 3.596131044530167,
+      "or_with_prior": 1.3632634936406833,
+      "author_prep_or": 1.0517210316451184,
+      "closed_unmerged_no_review_share_non": 0.6609733700642791,
+      "closed_unmerged_reviewed_share_non": 0.29017447199265384,
+      "high_author_prep_maint_merge": 0.7604529616724739,
+      "high_author_prep_non_merge": 0.5901679841897233,
+      "high_author_prep_gap_pp": 17.02849774827506,
+      "author_prep_ge_050_gap_pp": 18.07561961416203,
+      "mean_author_prep_maint_vs_non": [
+        0.3915529564652372,
+        0.4031650128040974
+      ],
+      "phase2_concept_ack_gap_pp": 11.066914291301423,
+      "phase2_high_prep_test_diff_gap_pp": 19.386966254536652,
+      "phase2_ci": "unavailable_on_enriched_corpus"
+    },
+    "from_2022": {
+      "raw_maint_vs_non_merge": [
+        0.8172680412371134,
+        0.5083862194016319
+      ],
+      "peer_maint_vs_non_merge": [
+        0.6278350515463917,
+        0.5079329102447869
+      ],
+      "self_merge_share_of_maintainer_merges": 0.23178807947019867,
+      "cold_start_merge": 0.1596244131455399,
+      "established_outsider_merge": 0.68558103381267,
+      "top20_outsider_merge": 0.7112676056338029,
+      "large_2k_closed_non_merge": 0.043859649122807015,
+      "large_2k_closed_ratio": 16.479207920792078,
+      "large_5k_closed_non_merge": 0.013333333333333334,
+      "or_without_prior": 5.366397191988901,
+      "or_with_prior": 0.6053502440236891,
+      "author_prep_or": 1.1601238180168814,
+      "closed_unmerged_no_review_share_non": 0.5838090295796575,
+      "closed_unmerged_reviewed_share_non": 0.35962636222106903,
+      "high_author_prep_maint_merge": 0.7751196172248804,
+      "high_author_prep_non_merge": 0.5781535648994516,
+      "high_author_prep_gap_pp": 19.696605232542886,
+      "author_prep_ge_050_gap_pp": 20.742588333305058,
+      "mean_author_prep_maint_vs_non": [
+        0.46042525773195875,
+        0.5224841341795103
+      ],
+      "phase2_concept_ack_gap_pp": 12.795732625878841,
+      "phase2_high_prep_test_diff_gap_pp": 22.33657198366896,
+      "phase2_ci": "unavailable_on_enriched_corpus"
+    }
+  }
+}

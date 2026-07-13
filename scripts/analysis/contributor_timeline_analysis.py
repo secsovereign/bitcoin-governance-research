@@ -67,50 +67,16 @@ def parse_date(date_str: str) -> Optional[datetime]:
         return None
 
 def calculate_contribution_quality_score(pr: Dict) -> float:
-    """Calculate quality score for a PR contribution (0.0 to 1.0)."""
-    score = 0.0
-    
-    # File changes (more changes = higher quality, up to a point)
-    additions = pr.get('additions', 0) or 0
-    deletions = pr.get('deletions', 0) or 0
-    total_changes = additions + deletions
-    
-    if total_changes > 0:
-        # Normalize: 100 lines = 0.3, 500 lines = 0.6, 1000+ lines = 0.8
-        if total_changes >= 1000:
-            score += 0.8
-        elif total_changes >= 500:
-            score += 0.6
-        elif total_changes >= 100:
-            score += 0.3
-        elif total_changes >= 50:
-            score += 0.2
-        else:
-            score += 0.1
-    
-    # Files changed (more files = higher complexity)
-    files_changed = pr.get('files_changed', 0) or 0
-    if files_changed > 0:
-        if files_changed >= 10:
-            score += 0.2
-        elif files_changed >= 5:
-            score += 0.1
-    
-    # PR was merged (merged PRs are higher quality)
-    if pr.get('merged', False):
-        score += 0.3
-    
-    # Has reviews (reviewed PRs are higher quality)
-    reviews = pr.get('reviews', [])
-    if len(reviews) > 0:
-        score += 0.1
-    
-    # Has substantial description
-    body = (pr.get('body') or '').strip()
-    if len(body) > 200:
-        score += 0.1
-    
-    return min(score, 1.0)
+    """Calculate quality score for a PR contribution (0.0 to 1.0).
+
+    Delegates to ``src.utils.pr_quality.contribution_quality_score`` with
+    ``include_merged=True`` (ranking / timeline filter). For merge-outcome
+    models use ``include_merged=False`` or ``author_prep_score`` instead —
+    see ``PR_QUALITY_SCORING_PLAN`` / ``src.utils.pr_quality``.
+    """
+    from src.utils.pr_quality import contribution_quality_score
+
+    return contribution_quality_score(pr, include_merged=True)
 
 def analyze_contributor_timeline(prs: List[Dict], min_contributions: int = 5, min_quality_score: float = 0.3) -> Dict[str, Any]:
     """Analyze contributor timeline from PR data."""

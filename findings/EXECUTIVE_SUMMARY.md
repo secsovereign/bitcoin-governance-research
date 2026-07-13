@@ -2,8 +2,8 @@
 
 **23,478 PRs | 8,890 Issues | 19,446 Emails | 433,048 IRC Messages | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-01-24  
-**Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer
+**Last Updated**: 2026-07-13  
+**Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
 
@@ -27,10 +27,11 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 **21 maintainers identified** (4 have never merged - may have other roles: reviewers, advisors, inactive).  
 **Current active maintainers**: 5 (fanquake, ryanofsky, hebasto, achow101, TheCharlatan).  
 **Historical maintainers**: 15 (no merge since 2023 or never merged, including laanwj, sipa, maflcko, gavinandresen, etc.).  
-**Top 3 control 81.1% of all merges** (laanwj 34.8%, fanquake 25.8%, maflcko 20.5%).  
+**Top 3 control 81.1% of all merges** (laanwj 34.8%, fanquake 25.8%, maflcko 20.5%) — all-time.  
+**Modern window (2022+):** `fanquake` alone merges **~50.4%**; top-2 **~71%**; top-3 **~83%** (`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`).  
 **Top 10 control 49.8% of all PRs** (increased from 42.7% - power is calcifying, not distributing).
 
-**Security implication**: If the top 3 are compromised, they could introduce malicious code affecting the entire Bitcoin network. This is a **single point of failure** in a system designed to have none.
+**Security implication**: If the top 3 are compromised, they could introduce malicious code affecting the entire Bitcoin network. This is a **single point of failure** in a system designed to have none. The modern picture is thinner still: one lead merger handles about half of recent merges.
 
 **Gini coefficient: 0.851** (extreme inequality). US income inequality is 0.49. Bitcoin Core's contribution inequality is **74% higher**.
 
@@ -56,7 +57,17 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 
 **Response time inequality: 1.41x** - Non-maintainers wait 41% longer to merge (145.4h vs 93.3h median). First review times are nearly equal (12.3h vs 12.4h), but merge decisions favor maintainers. **Implication**: No bias in initial review, but maintainer privilege in merge decisions.
 
-**Structural problem**: There's a **power asymmetry**. Some people have exclusive privileges (self-merge, weighted reviews) that others don't. This creates a **hierarchical structure**: Maintainers with exclusive rights, contributors without them, outsiders with uncertain path forward.
+**Identity vs merits (fair reading, July 2026 — `MAINTAINER_PREMIUM_REPORT.md`):**
+- Raw merge rates (~80% maint / ~55% non) are **mostly self-merge privilege**. Peer-merge (self-merge ≠ success): ~59% / ~54% all-time; gap wider since 2022 (~63% / ~51%).
+- **Do not** treat prior author merges as pure “PR merits” — that is reputation/access. Without that control, maintainer authorship multiplies merge odds ~3.6× all-time / ~5× since 2022.
+- **Cold start:** first-PR outsiders merge **~29%** all-time → **~16%** since 2022.
+- **Established outsiders** (prior ≥5 merges / top-volume authors) merge ~67–71% — ordinary work is not broadly blocked.
+- **Large outsider PRs almost never land** (closed ≥2k LOC: ~8% all-time / ~4% since 2022; ≥5k LOC since 2022: ~1%).
+- **Author-prep matched (not “quality”):** body + test paths only — mean prep equal/higher for outsiders; high band (≥0.65) still **~76% vs ~59%** all-time (~17 pp) and **~78% vs ~58%** since 2022 (~20 pp). Size-substance and review engagement are **not** quality.
+- **Path risk:** on consensus-sensitive paths, outsider merge drops to **~35%** vs maintainer **~73%** (all-time) — sharper than the average gap. Concept/approach ACK received narrows the gap (~11 pp) but does not erase it.
+- **High-prep closed outsiders (n=100 sample):** ~45% never received a formal review — non-engagement dominates; CI data unavailable on corpus.
+
+**Structural problem**: There's a **power asymmetry**. Some people have exclusive privileges (self-merge, weighted reviews) that others don't. This creates a **hierarchical structure**: Maintainers with exclusive rights, contributors without them, outsiders with uncertain path forward — especially on first PR and large/novel changes.
 
 **Cross-status reviews**: Only 72% of maintainer PRs receive non-maintainer reviews (recent period). 28% are reviewed only by other maintainers - **segregation**.
 
@@ -128,6 +139,8 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 
 **No Path Forward**: Non-maintainers: 0% self-merge (not permitted). No formal maintainer selection process (not publicly documented). No accountability mechanism (no challenge process). There's **no path to power** for outsiders. The guild structure is **closed**. This is not sustainable long-term.
 
+**Stalled feature-scale work (`STALLED_PROPOSALS_REPORT.md`)**: Dandelion’s Core implementation PR closed unmerged. Full Erlay protocol: **0/7** matched PRs merged (scaffolding/signaling merges ≠ delivery). Package relay shows multi-year lifetimes. Closed-unmerged is often non-engagement (~⅔ of non-maintainer closes have zero reviews) — not interchangeable with “NACK’d” — but the named full-protocol stalls remain.
+
 ---
 
 ## The Bottom Line
@@ -159,6 +172,9 @@ Bitcoin was designed to eliminate trusted intermediaries. Its reference implemen
 
 **Essential Reading**:
 - `MERGE_PATTERN_BREAKDOWN.md` - Detailed merge analysis
+- `MAINTAINER_PREMIUM_REPORT.md` - Identity vs merits (fair controls + quality matching)
+- `MERGE_CONCENTRATION_DEPUTIES_REPORT.md` - Modern merger share / funnels
+- `STALLED_PROPOSALS_REPORT.md` - Dandelion / Erlay / related case dossiers
 - `TEMPORAL_ANALYSIS_REPORT.md` - Temporal patterns
 - `NOVEL_INTERPRETATIONS.md` - Novel insights
 - `INTERDISCIPLINARY_ANALYSIS_REPORT.md` - Multi-disciplinary analysis

@@ -143,6 +143,11 @@
 30. **`ARCHITECTURAL_DIVERGENCE_FINAL_REPORT.md`** ⭐ CORE vs COMMONS (SINGLE FINAL REPORT)
     - Findings, methodology, validation, citations, exemplars, limitations, reproducibility
     - Recomputed from primary data (2026-07-12)
+31. **`MAINTAINER_PREMIUM_REPORT.md`** — Identity vs merits (fair pass: self-merge, author-prep matching, path-risk)
+32. **`STALLED_PROPOSALS_REPORT.md`** — Dandelion / Erlay / related case dossiers
+33. **`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`** — 2022+ fanquake share + co-review funnels
+
+Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`
 
 ---
 

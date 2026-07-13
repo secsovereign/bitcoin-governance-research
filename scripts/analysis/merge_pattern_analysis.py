@@ -22,6 +22,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
+from src.utils.maintainers import load_maintainer_login_set
 
 class MergePatternAnalyzer:
     """Analyze merge patterns in detail."""
@@ -29,12 +30,15 @@ class MergePatternAnalyzer:
     def __init__(self, data_dir: Path):
         """Initialize analyzer."""
         self.data_dir = data_dir
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        # Canonical set (lowercase). Keep display variants for compatibility.
+        self.maintainers = load_maintainer_login_set()
+        if not self.maintainers:
+            self.maintainers = {
+                'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
+                'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
+                'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
+                'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
+            }
     
     def load_prs(self) -> List[Dict[str, Any]]:
         """Load PRs with merged_by data."""
@@ -209,7 +213,51 @@ class MergePatternAnalyzer:
             'merger_author_matrix': {
                 'total_pairs': len(merger_author_pairs),
                 'top_pairs': {f"{k[0]}_merges_{k[1]}": v for k, v in merger_author_pairs.most_common(30)}
-            }
+            },
+            'high_volume_merger_deputies': self._high_volume_deputies(
+                merged_prs, merger_counts, friend_patterns
+            ),
+        }
+
+    def _high_volume_deputies(
+        self,
+        merged_prs: List[Dict[str, Any]],
+        merger_counts: Counter,
+        friend_patterns: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """For the top merger, who else co-reviews and who they preferentially merge.
+
+        Speaks to 'trusted friends as proxy deputy maintainers' claims.
+        """
+        if not merger_counts:
+            return {}
+        top_merger, top_n = merger_counts.most_common(1)[0]
+        total = sum(merger_counts.values()) or 1
+        # Authors whose PRs this merger handles ≥40% (strong funnel)
+        funnel = [
+            p for p in friend_patterns
+            if p['merger'] == top_merger and p['pct_of_author_prs'] >= 40
+        ]
+        # Co-reviewers on PRs merged by top_merger (non-author)
+        co_reviewers: Counter = Counter()
+        for pr in merged_prs:
+            if (pr.get('merged_by') or '').lower() != top_merger:
+                continue
+            author = (pr.get('author') or '').lower()
+            for review in pr.get('reviews') or []:
+                rev = (review.get('author') or '').lower()
+                if rev and rev != author and rev != top_merger:
+                    co_reviewers[rev] += 1
+        return {
+            'top_merger': top_merger,
+            'top_merger_count': top_n,
+            'top_merger_share_pct': round(100 * top_n / total, 2),
+            'authors_funneled_ge_40pct': funnel[:30],
+            'top_co_reviewers_on_their_merges': dict(co_reviewers.most_common(20)),
+            'note': (
+                'Co-reviewers frequently appear on PRs the lead merger lands; '
+                'funnel authors have ≥40% of their merges through this merger.'
+            ),
         }
     
     def analyze_individual_self_merge_patterns(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:

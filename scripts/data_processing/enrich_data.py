@@ -1,15 +1,23 @@
 #!/usr/bin/env python3
 """
-Data Enrichment Pipeline - Add maintainer tags, PR classifications, and metrics.
+Data enrichment — maintainer tags, PR classifications, and metrics.
 
-This script:
-1. Tags maintainers (who has merge permissions)
-2. Classifies PRs by type (bug fix, feature, consensus-related, etc.)
-3. Extracts decision outcomes (merged, rejected, closed)
-4. Calculates time-to-decision metrics
-5. Adds complexity metrics (LOC, files changed, etc.)
+Normal path (builds maintainer timeline first if missing/empty):
+
+    python scripts/data_processing/enrich_data.py
+
+Incremental refresh of tags + complexity on existing enriched_prs.jsonl
+(without rebuilding from cleaned):
+
+    python scripts/data_processing/enrich_data.py --refresh-existing
+
+Steps:
+1. Ensure maintainer timeline (canonical list + merged_by periods)
+2. Tag maintainers / classify PRs / decision outcomes / time-to-decision
+3. Complexity metrics (LOC from totals or files[])
 """
 
+import argparse
 import sys
 import json
 import shutil
@@ -32,6 +40,7 @@ sys.path.insert(0, str(project_root))
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.data_quality import DataQualityTracker
+from src.utils.maintainers import is_maintainer_at, normalize_login
 
 logger = setup_logger()
 
@@ -39,12 +48,15 @@ logger = setup_logger()
 class DataEnricher:
     """Enriches cleaned data with additional metadata and metrics."""
     
-    def __init__(self):
+    def __init__(self, *, ensure_timeline: bool = True):
         """Initialize data enricher."""
         self.data_dir = get_data_dir()
         self.processed_dir = self.data_dir / 'processed'
         self.analysis_dir = get_analysis_dir()
         
+        if ensure_timeline:
+            self._ensure_maintainer_timeline()
+
         # Load identity mappings
         self.identity_mappings = self._load_identity_mappings()
         self.maintainer_timeline = self._load_maintainer_timeline()
@@ -57,6 +69,59 @@ class DataEnricher:
             'prs_enriched': 0,
             'maintainers_identified': 0,
             'prs_classified': 0
+        }
+
+    def _ensure_maintainer_timeline(self) -> None:
+        """Build timeline if missing/empty so enrichment never tags against a void."""
+        from src.utils.maintainers import load_maintainer_timeline
+
+        timeline = load_maintainer_timeline()
+        path = self.processed_dir / "maintainer_timeline.json"
+        empty_file = (
+            not path.exists()
+            or not timeline
+            or (path.exists() and json.loads(path.read_text(encoding="utf-8")).get("total_maintainers", 0) == 0)
+        )
+        if empty_file:
+            logger.info("Maintainer timeline missing/empty — building before enrichment")
+            from scripts.data_processing.maintainer_timeline import MaintainerTimelineTracker
+
+            MaintainerTimelineTracker().build_timeline()
+
+    def refresh_existing_enriched_prs(self) -> Dict[str, int]:
+        """Re-apply maintainer tags + complexity on enriched_prs.jsonl in place."""
+        path = self.processed_dir / "enriched_prs.jsonl"
+        if not path.exists():
+            raise FileNotFoundError(f"Missing {path}; run full enrichment first")
+        tmp = path.with_suffix(".jsonl.tmp")
+        n = author_m = nonzero_complexity = 0
+        with open(path, encoding="utf-8") as infile, open(tmp, "w", encoding="utf-8") as outfile:
+            for line in infile:
+                pr = json.loads(line)
+                pr["maintainer_tags"] = self._tag_maintainers(pr)
+                pr["maintainer_involvement"] = self._calculate_maintainer_involvement(pr)
+                pr["complexity"] = self._calculate_complexity(pr)
+                if pr["maintainer_tags"].get("author_is_maintainer"):
+                    author_m += 1
+                if (pr["complexity"].get("total_changes") or 0) > 0:
+                    nonzero_complexity += 1
+                outfile.write(json.dumps(pr, ensure_ascii=False) + "\n")
+                n += 1
+                if n % 5000 == 0:
+                    logger.info("Refreshed %s PRs...", n)
+        tmp.replace(path)
+        logger.info(
+            "Refreshed %s PRs: author_is_maintainer=%s (%.1f%%), nonzero_complexity=%s (%.1f%%)",
+            n,
+            author_m,
+            100 * author_m / n if n else 0,
+            nonzero_complexity,
+            100 * nonzero_complexity / n if n else 0,
+        )
+        return {
+            "n": n,
+            "author_is_maintainer": author_m,
+            "nonzero_complexity": nonzero_complexity,
         }
     
     def enrich_all_data(self):
@@ -207,62 +272,48 @@ class DataEnricher:
             'maintainer_commenters': [],
             'any_maintainer_involvement': False
         }
-        
-        author = item.get('author')
-        if author:
-            unified_id = self.identity_mappings.get(author, author)
-            if self._is_maintainer(unified_id, item.get('created_at')):
-                tags['author_is_maintainer'] = True
-                tags['any_maintainer_involvement'] = True
-        
-        # Check merger
-        merged_by = item.get('merged_by')
-        if merged_by:
-            unified_id = self.identity_mappings.get(merged_by, merged_by)
-            if self._is_maintainer(unified_id, item.get('merged_at')):
-                tags['merged_by_maintainer'] = True
-                tags['any_maintainer_involvement'] = True
-        
-        # Check reviewers
+
+        def _login(raw: Any) -> str:
+            if isinstance(raw, dict):
+                raw = raw.get('login') or raw.get('author')
+            # Prefer GitHub login; identity map may remap but timeline is keyed by login
+            mapped = self.identity_mappings.get(raw, raw) if raw else raw
+            return normalize_login(mapped or raw)
+
+        author = _login(item.get('author'))
+        if author and self._is_maintainer(author, item.get('created_at')):
+            tags['author_is_maintainer'] = True
+            tags['any_maintainer_involvement'] = True
+
+        merged_by = _login(item.get('merged_by'))
+        if merged_by and self._is_maintainer(merged_by, item.get('merged_at')):
+            tags['merged_by_maintainer'] = True
+            tags['any_maintainer_involvement'] = True
+
         for review in item.get('reviews', []):
-            reviewer = review.get('author')
-            if reviewer:
-                unified_id = self.identity_mappings.get(reviewer, reviewer)
-                if self._is_maintainer(unified_id, review.get('submitted_at')):
-                    if unified_id not in tags['maintainer_reviewers']:
-                        tags['maintainer_reviewers'].append(unified_id)
-                        tags['any_maintainer_involvement'] = True
-        
-        # Check commenters
+            reviewer = _login(review.get('author'))
+            if reviewer and self._is_maintainer(reviewer, review.get('submitted_at')):
+                if reviewer not in tags['maintainer_reviewers']:
+                    tags['maintainer_reviewers'].append(reviewer)
+                    tags['any_maintainer_involvement'] = True
+
         for comment in item.get('comments', []):
-            commenter = comment.get('author')
-            if commenter:
-                unified_id = self.identity_mappings.get(commenter, commenter)
-                if self._is_maintainer(unified_id, comment.get('created_at')):
-                    if unified_id not in tags['maintainer_commenters']:
-                        tags['maintainer_commenters'].append(unified_id)
-                        tags['any_maintainer_involvement'] = True
-        
+            commenter = _login(comment.get('author'))
+            if commenter and self._is_maintainer(commenter, comment.get('created_at')):
+                if commenter not in tags['maintainer_commenters']:
+                    tags['maintainer_commenters'].append(commenter)
+                    tags['any_maintainer_involvement'] = True
+
         return tags
-    
+
     def _is_maintainer(self, unified_id: str, date: Optional[str] = None) -> bool:
-        """Check if user is/was a maintainer at given date."""
-        if unified_id in self.maintainer_timeline:
-            timeline = self.maintainer_timeline[unified_id]
-            
-            if date:
-                # Check if maintainer at specific date
-                item_date = datetime.fromisoformat(date.replace('Z', '+00:00'))
-                for period in timeline.get('periods', []):
-                    start = datetime.fromisoformat(period['start'].replace('Z', '+00:00'))
-                    end = datetime.fromisoformat(period['end'].replace('Z', '+00:00')) if period.get('end') else datetime.now()
-                    if start <= item_date <= end:
-                        return True
-            else:
-                # Check if ever a maintainer
-                return len(timeline.get('periods', [])) > 0
-        
-        return False
+        """Check if user is/was a maintainer (ever-maintainer; matches published analyses)."""
+        return is_maintainer_at(
+            unified_id,
+            when=date,
+            timeline=self.maintainer_timeline,
+            require_active_period=False,
+        )
     
     def _classify_pr(self, pr: Dict[str, Any]) -> Dict[str, Any]:
         """Classify PR by type."""
@@ -419,13 +470,40 @@ class DataEnricher:
             return None
     
     def _calculate_complexity(self, pr: Dict[str, Any]) -> Dict[str, Any]:
-        """Calculate PR complexity metrics."""
+        """Calculate PR complexity metrics.
+
+        Prefer top-level totals when present; otherwise sum ``files[]``.
+        (Cleaned PRs use ``total_additions`` / ``total_deletions``, not
+        ``additions`` / ``deletions`` — the old fields left complexity at 0.)
+        """
+        files = pr.get('files') or []
+        file_additions = sum(int(f.get('additions') or 0) for f in files if isinstance(f, dict))
+        file_deletions = sum(int(f.get('deletions') or 0) for f in files if isinstance(f, dict))
+
+        additions = pr.get('additions')
+        if additions is None:
+            additions = pr.get('total_additions')
+        if additions is None or (additions == 0 and file_additions > 0):
+            additions = file_additions
+
+        deletions = pr.get('deletions')
+        if deletions is None:
+            deletions = pr.get('total_deletions')
+        if deletions is None or (deletions == 0 and file_deletions > 0):
+            deletions = file_deletions
+
+        additions = int(additions or 0)
+        deletions = int(deletions or 0)
+        files_changed = pr.get('total_files_changed')
+        if not files_changed:
+            files_changed = len(files)
+
         return {
-            'additions': pr.get('additions', 0),
-            'deletions': pr.get('deletions', 0),
-            'total_changes': pr.get('additions', 0) + pr.get('deletions', 0),
-            'files_changed': len(pr.get('files', [])),
-            'commits': pr.get('commits', 0)
+            'additions': additions,
+            'deletions': deletions,
+            'total_changes': additions + deletions,
+            'files_changed': int(files_changed or 0),
+            'commits': int(pr.get('commits') or pr.get('total_commits') or 0),
         }
     
     def _calculate_review_metrics(self, pr: Dict[str, Any]) -> Dict[str, Any]:
@@ -493,19 +571,18 @@ class DataEnricher:
             return {}
     
     def _load_maintainer_timeline(self) -> Dict[str, Any]:
-        """Load maintainer timeline."""
-        timeline_file = self.data_dir / 'processed' / 'maintainer_timeline.json'
-        
-        if not timeline_file.exists():
-            logger.warning(f"Maintainer timeline not found: {timeline_file}")
-            return {}
-        
-        try:
-            with open(timeline_file, 'r') as f:
-                return json.load(f).get('maintainer_timeline', {})
-        except Exception as e:
-            logger.error(f"Error loading maintainer timeline: {e}")
-            return {}
+        """Load maintainer timeline (keys normalized to lowercase logins)."""
+        from src.utils.maintainers import load_maintainer_timeline
+
+        timeline = load_maintainer_timeline()
+        if not timeline:
+            logger.warning(
+                "Maintainer timeline still empty after ensure step — "
+                "check data/maintainers/canonical_maintainers.json and cleaned/enriched PRs"
+            )
+        else:
+            logger.info("Loaded maintainer timeline entries: %s", len(timeline))
+        return timeline
     
     def _load_release_signers(self) -> Dict[str, Any]:
         """Load release signer data."""
@@ -772,8 +849,18 @@ class DataEnricher:
 
 def main():
     """Main entry point."""
-    enricher = DataEnricher()
-    enricher.enrich_all_data()
+    parser = argparse.ArgumentParser(description="Enrich Bitcoin Core governance PR/issue data")
+    parser.add_argument(
+        "--refresh-existing",
+        action="store_true",
+        help="Re-tag maintainers + complexity on enriched_prs.jsonl only (no cleaned rebuild)",
+    )
+    args = parser.parse_args()
+    enricher = DataEnricher(ensure_timeline=True)
+    if args.refresh_existing:
+        enricher.refresh_existing_enriched_prs()
+    else:
+        enricher.enrich_all_data()
     return 0
 
 

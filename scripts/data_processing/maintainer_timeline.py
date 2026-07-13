@@ -1,320 +1,285 @@
 #!/usr/bin/env python3
 """
-Maintainer Timeline Tracker - Infer maintainer status from PR merge permissions.
+Maintainer Timeline Tracker
 
-This script:
-1. Analyzes PR merge data to identify who can merge PRs
-2. Builds timeline of maintainer status changes
-3. Assigns confidence scores to inferences
-4. Tracks maintainer activity patterns
+Builds ``data/processed/maintainer_timeline.json`` and refreshes
+``data/maintainers/maintainers_summary.json`` for enrichment and analyses.
+
+Bitcoin Core has no in-tree MAINTAINERS file. Timeline construction:
+
+1. Seed from ``data/maintainers/canonical_maintainers.json`` (documented set).
+2. Infer active periods from ``merged_by`` on cleaned/enriched PRs
+   (``merged=True``, not ``state=="merged"`` — that bug emptied the timeline).
+
+Run via ``enrich_data.py`` (builds timeline automatically) or directly before analyses.
 """
 
-import sys
-import json
-from pathlib import Path
-from typing import Dict, Any, List, Optional, Tuple
-from datetime import datetime, timedelta
-from collections import defaultdict
+from __future__ import annotations
 
-# Add project root to path
-project_root = Path(__file__).parent.parent.parent
+import json
+import sys
+from collections import defaultdict
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+project_root = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from src.utils.logger import setup_logger
-from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.logger import setup_logger  # noqa: E402
+from src.utils.maintainers import (  # noqa: E402
+    load_canonical_maintainers,
+    normalize_login,
+)
+from src.utils.paths import get_data_dir  # noqa: E402
 
 logger = setup_logger()
 
 
 class MaintainerTimelineTracker:
-    """Tracks maintainer status changes over time."""
-    
+    """Tracks maintainer status from canonical list + merge activity."""
+
     def __init__(self):
-        """Initialize tracker."""
         self.data_dir = get_data_dir()
-        self.processed_dir = self.data_dir / 'processed'
+        self.processed_dir = self.data_dir / "processed"
         self.processed_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Merge data by user
-        self.user_merges = defaultdict(list)  # user -> list of (date, pr_number)
-        self.user_activity = defaultdict(list)  # user -> list of (date, activity_type)
-        
-        # Maintainer timeline
-        self.maintainer_timeline = {}
-    
-    def build_timeline(self):
-        """Build maintainer timeline from PR data."""
+        self.maintainers_dir = self.data_dir / "maintainers"
+        self.maintainers_dir.mkdir(parents=True, exist_ok=True)
+
+        self.canonical = load_canonical_maintainers()
+        self.aliases = self.canonical.get("aliases") or {}
+        self.canonical_logins = [
+            normalize_login(x, self.aliases) for x in (self.canonical.get("github_logins") or [])
+        ]
+
+        self.user_merges: Dict[str, List[Tuple[str, int]]] = defaultdict(list)
+        self.maintainer_timeline: Dict[str, Any] = {}
+
+    def build_timeline(self) -> None:
         logger.info("=" * 60)
         logger.info("Maintainer Timeline Tracking")
         logger.info("=" * 60)
-        
-        # Load cleaned PR data
-        prs_file = self.processed_dir / 'cleaned_prs.jsonl'
-        
-        # Also load contributors data for additional context
-        contributors_file = self.data_dir / 'github' / 'collaborators.json'
-        self.contributors = self._load_contributors(contributors_file)
-        
-        if not prs_file.exists():
-            logger.warning(f"Cleaned PR data not found: {prs_file}")
-            logger.info("Run clean_data.py first")
+
+        prs_file = self._resolve_prs_file()
+        if prs_file is None:
+            logger.error("No PR JSONL found (cleaned_prs / enriched_prs)")
             return
-        
-        logger.info("Analyzing PR merge data...")
-        
-        # Collect merge data
+
+        logger.info("Using PR source: %s", prs_file)
         self._collect_merge_data(prs_file)
-        
-        # Infer maintainer status
-        self._infer_maintainer_status()
-        
-        # Build timeline
-        self._build_timeline()
-        
-        # Save results
+        self._seed_canonical()
+        self._apply_merge_inference()
         self._save_timeline()
-        
-        logger.info(f"Identified {len(self.maintainer_timeline)} maintainers")
+        self._save_summary()
+        logger.info("Identified %s maintainers", len(self.maintainer_timeline))
         logger.info("=" * 60)
-    
-    def _collect_merge_data(self, prs_file: Path):
-        """Collect merge data from PRs."""
+
+    def _resolve_prs_file(self) -> Optional[Path]:
+        # Prefer cleaned (pipeline order); fall back to enriched which already has merged_by
+        for name in ("cleaned_prs.jsonl", "enriched_prs.jsonl"):
+            path = self.processed_dir / name
+            if path.exists():
+                return path
+        raw = self.data_dir / "github" / "prs_raw.jsonl"
+        return raw if raw.exists() else None
+
+    def _collect_merge_data(self, prs_file: Path) -> None:
         merge_count = 0
-        
-        with open(prs_file, 'r') as f:
+        with open(prs_file, encoding="utf-8") as f:
             for line in f:
                 try:
                     pr = json.loads(line)
-                    
-                    # Only process merged PRs
-                    if pr.get('state') != 'merged' or not pr.get('merged_at'):
-                        continue
-                    
-                    merged_by = pr.get('merged_by')
-                    if not merged_by:
-                        # Try to infer from merge commit author
-                        merged_by = pr.get('merge_commit_author')
-                    
-                    if merged_by:
-                        merge_date = pr.get('merged_at')
-                        pr_number = pr.get('number')
-                        
-                        self.user_merges[merged_by].append((merge_date, pr_number))
-                        merge_count += 1
-                
-                except Exception as e:
-                    logger.warning(f"Error processing PR: {e}")
-        
-        logger.info(f"Collected {merge_count} merges from {len(self.user_merges)} users")
-    
-    def _infer_maintainer_status(self):
-        """Infer maintainer status from merge patterns."""
-        logger.info("Inferring maintainer status...")
-        
-        for user, merges in self.user_merges.items():
-            if len(merges) < 3:  # Need at least 3 merges to be considered maintainer
-                continue
-            
-            # Sort merges by date
-            merges.sort(key=lambda x: x[0])
-            
-            # Calculate merge frequency
-            first_merge = merges[0][0]
-            last_merge = merges[-1][0]
-            
-            try:
-                first_date = datetime.fromisoformat(first_merge.replace('Z', '+00:00'))
-                last_date = datetime.fromisoformat(last_merge.replace('Z', '+00:00'))
-                days_active = (last_date - first_date).days
-                
-                if days_active == 0:
-                    days_active = 1
-                
-                merge_rate = len(merges) / days_active
-                
-                # Criteria for maintainer:
-                # 1. At least 10 merges total
-                # 2. Or at least 5 merges and merge rate > 0.1 per day
-                # 3. Or at least 3 merges spanning > 90 days (consistent activity)
-                
-                is_maintainer = False
-                confidence = 'low'
-                
-                if len(merges) >= 10:
-                    is_maintainer = True
-                    confidence = 'high'
-                elif len(merges) >= 5 and merge_rate > 0.1:
-                    is_maintainer = True
-                    confidence = 'medium'
-                elif len(merges) >= 3 and days_active > 90:
-                    is_maintainer = True
-                    confidence = 'medium'
-                
-                if is_maintainer:
-                    # Add contributor ranking if available
-                    contrib_info = None
-                    if self.contributors and user in self.contributors.get('lookup', {}):
-                        contrib_data = self.contributors['lookup'][user]
-                        contrib_info = {
-                            'rank': contrib_data['rank'],
-                            'contributions': contrib_data['contributions']
-                        }
-                    
-                    self.maintainer_timeline[user] = {
-                        'estimated_start': first_merge,
-                        'estimated_end': None,  # Will be updated if activity stops
-                        'confidence': confidence,
-                        'evidence': ['merge_pattern'],
-                        'merge_count': len(merges),
-                        'merge_rate': merge_rate,
-                        'days_active': days_active,
-                        'first_merge': first_merge,
-                        'last_merge': last_merge,
-                        'contributor_ranking': contrib_info
-                    }
-            
-            except Exception as e:
-                logger.warning(f"Error processing user {user}: {e}")
-    
-    def _build_timeline(self):
-        """Build detailed timeline with periods."""
-        logger.info("Building detailed timeline...")
-        
-        for user, data in self.maintainer_timeline.items():
-            merges = self.user_merges[user]
-            merges.sort(key=lambda x: x[0])
-            
-            # Identify active periods
-            periods = []
-            current_period_start = None
-            current_period_end = None
-            
+                except json.JSONDecodeError:
+                    continue
+                # CRITICAL: GitHub PRs are state=closed when merged; use merged flag.
+                if not pr.get("merged") or not pr.get("merged_at"):
+                    continue
+                merged_by = pr.get("merged_by")
+                if isinstance(merged_by, dict):
+                    merged_by = merged_by.get("login")
+                if not merged_by:
+                    continue
+                login = normalize_login(merged_by, self.aliases)
+                if not login:
+                    continue
+                self.user_merges[login].append((pr["merged_at"], int(pr.get("number") or 0)))
+                merge_count += 1
+        logger.info(
+            "Collected %s merges from %s distinct mergers",
+            merge_count,
+            len(self.user_merges),
+        )
+
+    def _seed_canonical(self) -> None:
+        for login in self.canonical_logins:
+            self.maintainer_timeline[login] = {
+                "github_login": login,
+                "ever_maintainer": True,
+                "confidence": "documented",
+                "evidence": ["canonical_list"],
+                "merge_count": 0,
+                "periods": [],
+                "first_merge": None,
+                "last_merge": None,
+                "estimated_start": None,
+                "estimated_end": None,
+            }
+
+    def _apply_merge_inference(self) -> None:
+        logger.info("Inferring active periods from merge activity...")
+        # Also add high-volume mergers not on canonical list (rare historical access)
+        for login, merges in self.user_merges.items():
+            merges = sorted(merges, key=lambda x: x[0])
+            if login not in self.maintainer_timeline:
+                if len(merges) < 10:
+                    continue
+                self.maintainer_timeline[login] = {
+                    "github_login": login,
+                    "ever_maintainer": True,
+                    "confidence": "inferred_merger",
+                    "evidence": ["merge_pattern"],
+                    "merge_count": 0,
+                    "periods": [],
+                    "first_merge": None,
+                    "last_merge": None,
+                    "estimated_start": None,
+                    "estimated_end": None,
+                    "note": "Not on canonical list; inferred from ≥10 merges",
+                }
+
+            entry = self.maintainer_timeline[login]
+            entry["merge_count"] = len(merges)
+            entry["first_merge"] = merges[0][0]
+            entry["last_merge"] = merges[-1][0]
+            if "merge_pattern" not in entry["evidence"]:
+                entry["evidence"].append("merge_pattern")
+            if entry["confidence"] == "documented" and len(merges) >= 10:
+                entry["confidence"] = "high"
+            elif entry["confidence"] == "documented" and len(merges) >= 1:
+                entry["confidence"] = "medium"
+
+            periods = self._periods_from_merges(merges)
+            entry["periods"] = periods
+            if periods:
+                entry["estimated_start"] = periods[0]["start"]
+                entry["estimated_end"] = periods[-1]["end"]
+
+            by_year: Dict[int, int] = defaultdict(int)
             for merge_date, _ in merges:
                 try:
-                    merge_dt = datetime.fromisoformat(merge_date.replace('Z', '+00:00'))
-                    
-                    if current_period_start is None:
-                        current_period_start = merge_dt
-                        current_period_end = merge_dt
-                    else:
-                        # If gap > 180 days, start new period
-                        if (merge_dt - current_period_end).days > 180:
-                            periods.append({
-                                'start': current_period_start.isoformat(),
-                                'end': current_period_end.isoformat(),
-                                'type': 'inferred'
-                            })
-                            current_period_start = merge_dt
-                            current_period_end = merge_dt
-                        else:
-                            current_period_end = merge_dt
-                
-                except Exception as e:
-                    logger.warning(f"Error processing merge date: {e}")
-            
-            # Add final period
-            if current_period_start:
-                # If last merge was recent (< 90 days), period is ongoing
-                if (datetime.now() - current_period_end).days < 90:
-                    periods.append({
-                        'start': current_period_start.isoformat(),
-                        'end': None,  # Ongoing
-                        'type': 'inferred'
-                    })
-                else:
-                    periods.append({
-                        'start': current_period_start.isoformat(),
-                        'end': current_period_end.isoformat(),
-                        'type': 'inferred'
-                    })
-            
-            # Update timeline with periods
-            data['periods'] = periods
-            data['estimated_start'] = periods[0]['start'] if periods else data['estimated_start']
-            data['estimated_end'] = periods[-1]['end'] if periods and periods[-1]['end'] else None
-            
-            # Calculate merge count by year
-            merge_count_by_year = defaultdict(int)
-            for merge_date, _ in merges:
-                try:
-                    year = datetime.fromisoformat(merge_date.replace('Z', '+00:00')).year
-                    merge_count_by_year[year] += 1
+                    by_year[datetime.fromisoformat(merge_date.replace("Z", "+00:00")).year] += 1
                 except Exception:
                     pass
-            
-            data['merge_count_by_year'] = dict(merge_count_by_year)
-    
-    def _load_contributors(self, contributors_file: Path) -> Optional[Dict[str, Any]]:
-        """Load contributors data for context."""
-        if not contributors_file.exists():
-            return None
-        
-        try:
-            with open(contributors_file, 'r') as f:
-                data = json.load(f)
-                contributors = data.get('contributors', [])
-                
-                # Create lookup by login
-                lookup = {}
-                for contrib in contributors:
-                    login = contrib.get('login')
-                    if login:
-                        lookup[login] = {
-                            'rank': contributors.index(contrib) + 1,
-                            'contributions': contrib.get('contributions', 0),
-                            'name': contrib.get('name'),
-                            'email': contrib.get('email')
-                        }
-                
-                return {'lookup': lookup, 'total': len(contributors)}
-        except Exception as e:
-            logger.warning(f"Error loading contributors: {e}")
-            return None
-    
-    def _save_timeline(self):
-        """Save maintainer timeline to file."""
-        output_file = self.processed_dir / 'maintainer_timeline.json'
-        
-        output_data = {
-            'generated_at': datetime.now().isoformat(),
-            'total_maintainers': len(self.maintainer_timeline),
-            'maintainer_timeline': self.maintainer_timeline
+            entry["merge_count_by_year"] = dict(by_year)
+
+        # Documented maintainers with zero merges: open-ended documented period
+        for login, entry in self.maintainer_timeline.items():
+            if entry["merge_count"] == 0 and not entry["periods"]:
+                entry["periods"] = [
+                    {
+                        "start": "2009-01-03T00:00:00+00:00",
+                        "end": None,
+                        "type": "documented",
+                    }
+                ]
+                entry["estimated_start"] = entry["periods"][0]["start"]
+                entry["estimated_end"] = None
+
+    def _periods_from_merges(self, merges: List[Tuple[str, int]]) -> List[Dict[str, Any]]:
+        periods: List[Dict[str, Any]] = []
+        current_start: Optional[datetime] = None
+        current_end: Optional[datetime] = None
+        for merge_date, _ in merges:
+            try:
+                merge_dt = datetime.fromisoformat(merge_date.replace("Z", "+00:00"))
+            except Exception:
+                continue
+            if current_start is None:
+                current_start = merge_dt
+                current_end = merge_dt
+                continue
+            assert current_end is not None
+            if (merge_dt - current_end).days > 180:
+                periods.append(
+                    {
+                        "start": current_start.isoformat(),
+                        "end": current_end.isoformat(),
+                        "type": "inferred",
+                    }
+                )
+                current_start = merge_dt
+                current_end = merge_dt
+            else:
+                current_end = merge_dt
+        if current_start is not None and current_end is not None:
+            age_days = (datetime.now(timezone.utc) - current_end).days
+            periods.append(
+                {
+                    "start": current_start.isoformat(),
+                    "end": None if age_days < 365 else current_end.isoformat(),
+                    "type": "inferred",
+                }
+            )
+        return periods
+
+    def _save_timeline(self) -> None:
+        output_file = self.processed_dir / "maintainer_timeline.json"
+        payload = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "source": "canonical_maintainers.json + merged_by inference",
+            "total_maintainers": len(self.maintainer_timeline),
+            "maintainer_timeline": self.maintainer_timeline,
         }
-        
-        with open(output_file, 'w') as f:
-            json.dump(output_data, f, indent=2)
-        
-        logger.info(f"Maintainer timeline saved to {output_file}")
-        
-        # Generate summary
-        self._generate_summary()
-    
-    def _generate_summary(self):
-        """Generate summary statistics."""
+        output_file.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        logger.info("Wrote %s", output_file)
+
+        high = sum(1 for d in self.maintainer_timeline.values() if d["confidence"] == "high")
+        active = sum(1 for d in self.maintainer_timeline.values() if d.get("estimated_end") is None)
+        logger.info(
+            "Summary: total=%s high=%s active_open_ended=%s total_merges=%s",
+            len(self.maintainer_timeline),
+            high,
+            active,
+            sum(d["merge_count"] for d in self.maintainer_timeline.values()),
+        )
+
+    def _save_summary(self) -> None:
+        """Write maintainers_summary.json in the shape consumers expect."""
+        maintainers = []
+        for login, entry in sorted(
+            self.maintainer_timeline.items(), key=lambda x: -x[1].get("merge_count", 0)
+        ):
+            maintainers.append(
+                {
+                    "github": login,
+                    "name": login,
+                    "merge_count": entry.get("merge_count", 0),
+                    "confidence": entry.get("confidence"),
+                    "first_merge": entry.get("first_merge"),
+                    "last_merge": entry.get("last_merge"),
+                    "ever_maintainer": entry.get("ever_maintainer", True),
+                    "evidence": entry.get("evidence"),
+                }
+            )
         summary = {
-            'total_maintainers': len(self.maintainer_timeline),
-            'high_confidence': sum(1 for d in self.maintainer_timeline.values() if d['confidence'] == 'high'),
-            'medium_confidence': sum(1 for d in self.maintainer_timeline.values() if d['confidence'] == 'medium'),
-            'low_confidence': sum(1 for d in self.maintainer_timeline.values() if d['confidence'] == 'low'),
-            'active_maintainers': sum(1 for d in self.maintainer_timeline.values() if d['estimated_end'] is None),
-            'total_merges': sum(d['merge_count'] for d in self.maintainer_timeline.values())
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "total_versions": 1,
+            "unique_maintainers": [m["github"] for m in maintainers],
+            "maintainer_changes": [],
+            "timeline": [],
+            "maintainers": maintainers,
+            "total_maintainers": len(maintainers),
+            "source": "canonical_list + merge inference (no MAINTAINERS file in bitcoin/bitcoin)",
         }
-        
-        logger.info("Maintainer Timeline Summary:")
-        logger.info(f"  Total maintainers: {summary['total_maintainers']}")
-        logger.info(f"  High confidence: {summary['high_confidence']}")
-        logger.info(f"  Medium confidence: {summary['medium_confidence']}")
-        logger.info(f"  Active maintainers: {summary['active_maintainers']}")
-        logger.info(f"  Total merges: {summary['total_merges']}")
+        path = self.maintainers_dir / "maintainers_summary.json"
+        path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+        logger.info("Wrote %s (%s maintainers)", path, len(maintainers))
 
 
-def main():
-    """Main entry point."""
-    tracker = MaintainerTimelineTracker()
-    tracker.build_timeline()
+def main() -> int:
+    MaintainerTimelineTracker().build_timeline()
     return 0
 
 
-if __name__ == '__main__':
-    sys.exit(main())
-
+if __name__ == "__main__":
+    raise SystemExit(main())

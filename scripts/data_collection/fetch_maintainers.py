@@ -183,43 +183,66 @@ class MaintainerFetcher:
 def main():
     """Main entry point."""
     import argparse
-    
-    parser = argparse.ArgumentParser(description='Fetch current maintainers from Bitcoin Core')
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "Fetch maintainers from Bitcoin Core. Note: bitcoin/bitcoin has no "
+            "MAINTAINERS file; collaborators API usually 403s. Prefer "
+            "scripts/data_processing/maintainer_timeline.py which seeds "
+            "data/maintainers/canonical_maintainers.json and infers periods "
+            "from merged_by."
+        )
+    )
     parser.add_argument('--github-token', type=str, help='GitHub token (optional, for higher rate limits)')
     parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'data' / 'maintainers' / 'current_maintainers.json',
                        help='Output JSON file')
-    parser.add_argument('--compare', action='store_true', help='Compare with hardcoded list')
-    
+    parser.add_argument('--compare', action='store_true', help='Compare with canonical list')
+    parser.add_argument(
+        '--fallback-timeline',
+        action='store_true',
+        help='If fetch fails, build maintainer timeline from merge data instead',
+    )
+
     args = parser.parse_args()
-    
+
     fetcher = MaintainerFetcher(args.github_token)
     maintainers = fetcher.get_current_maintainers()
-    
+
     if maintainers:
         fetcher.save_maintainers(maintainers, args.output)
-        
+
         if args.compare:
             print("\n" + "="*80)
-            print("COMPARISON WITH HARDCODED LIST")
+            print("COMPARISON WITH CANONICAL LIST")
             print("="*80)
             comparison = fetcher.compare_with_hardcoded(maintainers)
-            
+
             print(f"Hardcoded count: {comparison['hardcoded_count']}")
             print(f"Fetched count: {comparison['fetched_count']}")
             print(f"In both: {len(comparison['in_both'])}")
-            
+
             if comparison['in_hardcoded_not_fetched']:
                 print(f"\nIn hardcoded but not in MAINTAINERS file ({len(comparison['in_hardcoded_not_fetched'])}):")
                 for m in comparison['in_hardcoded_not_fetched']:
                     print(f"  - {m}")
-            
+
             if comparison['in_fetched_not_hardcoded']:
                 print(f"\nIn MAINTAINERS file but not in hardcoded list ({len(comparison['in_fetched_not_hardcoded'])}):")
                 for m in comparison['in_fetched_not_hardcoded']:
                     print(f"  - {m}")
-    else:
-        print("Failed to fetch maintainers")
-        sys.exit(1)
+        return
+
+    print(
+        "Failed to fetch maintainers (expected: no MAINTAINERS file / "
+        "collaborators 403)."
+    )
+    if args.fallback_timeline or True:
+        print("Building maintainer timeline from canonical list + merged_by...")
+        from scripts.data_processing.maintainer_timeline import MaintainerTimelineTracker
+        MaintainerTimelineTracker().build_timeline()
+        print("OK — use data/processed/maintainer_timeline.json")
+        return
+    sys.exit(1)
 
 
 if __name__ == '__main__':

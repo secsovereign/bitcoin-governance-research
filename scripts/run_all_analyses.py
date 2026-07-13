@@ -42,15 +42,25 @@ def main():
     print("BITCOIN CORE GOVERNANCE ANALYSIS - FULL PIPELINE")
     print("=" * 70)
     print()
-    print("This will run all 10 core analysis scripts, then architectural divergence:")
+    print("This will run maintainer timeline (if needed), then core analyses:")
     print()
     
     scripts_dir = project_root / "scripts" / "analysis"
+    data_scripts = project_root / "scripts" / "data_processing"
+
+    # Timeline is also auto-built by enrich_data.py; keep here so analyses work
+    # even when enrichment was last run before the timeline repair.
+    prerequisite = [
+        (data_scripts / "maintainer_timeline.py", "Maintainer Timeline (canonical + merged_by)"),
+    ]
     
     # Define analysis scripts in recommended order
     # (some may depend on others, though currently all are independent)
     analyses = [
         ("contributor_analysis.py", "Contributor Analysis"),
+        ("maintainer_premium.py", "Maintainer Premium (identity vs merits)"),
+        ("author_prep_phase23_finish.py", "Author-prep sensitivity + closed-outsider sample"),
+        ("stalled_proposal_dossiers.py", "Stalled Proposal Dossiers"),
         ("bcap_state_of_mind.py", "BCAP State of Mind Analysis"),
         ("bcap_power_shift.py", "BCAP Power Shift Analysis"),
         ("bip_process_analysis.py", "BIP Process Analysis"),
@@ -69,6 +79,16 @@ def main():
     
     success_count = 0
     failed = []
+
+    for script_path, description in prerequisite:
+        if not script_path.exists():
+            print(f"⚠️  Warning: Script not found: {script_path}")
+            failed.append(str(script_path))
+            continue
+        if run_script(script_path, description):
+            success_count += 1
+        else:
+            failed.append(str(script_path))
     
     for script_name, description in analyses:
         script_path = scripts_dir / script_name
@@ -86,7 +106,8 @@ def main():
     print("=" * 70)
     print("PIPELINE SUMMARY")
     print("=" * 70)
-    print(f"Successful: {success_count}/{len(analyses)}")
+    total = len(prerequisite) + len(analyses)
+    print(f"Successful: {success_count}/{total}")
     
     if failed:
         print(f"Failed: {len(failed)}")

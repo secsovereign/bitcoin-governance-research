@@ -21,6 +21,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
+from src.utils.maintainers import load_maintainer_login_set
 
 class TemporalAnalyzer:
     """Comprehensive temporal analysis."""
@@ -28,11 +29,11 @@ class TemporalAnalyzer:
     def __init__(self, data_dir: Path):
         """Initialize."""
         self.data_dir = data_dir
-        self.maintainers = {
+        self.maintainers = load_maintainer_login_set() or {
             'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
+            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
+            'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
+            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
         }
     
     def load_prs(self) -> List[Dict[str, Any]]:
