@@ -1,6 +1,6 @@
 # Glossary and Context: Bitcoin Core Governance Analysis
 
-**Date**: 2026-01-07  
+**Date**: 2026-09-10  
 **Purpose**: Explain Bitcoin Core-specific terminology and concepts for non-experts
 
 ---
@@ -34,7 +34,7 @@
 - ACK with hash = 0.3 quality score (low quality)
 - Detailed review = 1.0 quality score (high quality)
 - ACKs after detailed reviews are ignored (completion signals, not separate reviews)
-- Cross-platform reviews (IRC, email) are included with same quality weighting
+- Cross-platform reviews (IRC, combined mailing lists, Delving, Bitcointalk) use the same quality weighting
 - Multiple reviews from same reviewer: We take MAX (not sum) per reviewer
 
 ---
@@ -87,12 +87,12 @@
 **Why it matters**: Self-merge bypasses final review by others. It's an exclusive privilege (only maintainers can do it).
 
 **In our analysis**: 
-- 26.5% of maintainer PRs are self-merged
+- 25.5% of maintainer-merged PRs are self-merged
 - 46.1% of self-merges have zero reviews (12.2% of all maintainer PRs)
 - No formal rules determine when self-merge is appropriate
 - Non-maintainers: 0% self-merge (not permitted)
 
-**The problem**: Not the rate (26.5%), but the structure:
+**The problem**: Not the rate (25.5%), but the structure:
 - Arbitrary authority (no formal rules)
 - Exclusive privilege (only maintainers)
 - No accountability (no challenge mechanism)
@@ -117,8 +117,8 @@
 
 **What it means**: A proposed code change. Someone writes code, submits it as a PR, and it gets reviewed before (potentially) being merged.
 
-**In our analysis**: We analyzed 23,478 PRs (2009-2025), including:
-- 9,235 maintainer merged PRs
+**In our analysis**: We analyzed 25,122 PRs (2009-2025), including:
+- 9,793 maintainer merged PRs
 - 15,840 total merged PRs
 - Review patterns, merge patterns, response times
 
@@ -138,7 +138,7 @@
 - ≥ 0.6: Extreme inequality
 
 **Bitcoin Core values**:
-- Contribution Gini: 0.851 (extreme inequality)
+- Authorship Gini: 0.851 historical / 0.834 recent (extreme); merge Gini 0.623 / 0.667
 - Review Gini: 0.922 (extreme inequality)
 
 **Why it matters**: High Gini = power concentration. A few people control most contributions/reviews.
@@ -171,8 +171,8 @@
 - Threshold: 0.5 for "meaningful review"
 
 **Bitcoin Core values** (quality-weighted, using MAX per reviewer with 0.3/0.5 thresholds):
-- Historical (2012-2020): 30.2% (with 0.3 threshold)
-- Recent (2021-2025): 3.4% (with 0.5 threshold)
+- Historical (2012-2020): 30.3% (with 0.3 threshold)
+- Recent (2021-2025): 3.3% (with 0.5 threshold)
 
 **Note**: Alternative calculations (SUM approach with 0.5 threshold) produce 34.1% historical. See `RESEARCH_METHODOLOGY.md` for details.
 
@@ -220,7 +220,7 @@
 
 **In our analysis**: We compare historical (2012-2020) vs recent (2021-2025) to show:
 - Process improvements (zero-review down 88.7%)
-- Structural persistence (self-merge stable at 26.5%)
+- Structural persistence (self-merge 25.5% in the current extract)
 - Power concentration (top 10 control increased from 42.7% to 49.8%)
 
 ---
@@ -252,7 +252,7 @@
 
 ## Common Misunderstandings
 
-### "26.5% isn't that bad"
+### "25.5% isn't that bad"
 
 **Response**: The rate isn't the problem. The problem is:
 - Arbitrary authority (no formal rules)
@@ -267,7 +267,7 @@
 ### "But processes improved"
 
 **Response**: Yes, processes improved (zero-review down 88.7%). But **structure didn't change**:
-- Self-merge rate stable (26.5%)
+- Self-merge rate 25.5% in the current extract
 - Power concentration increased (top 10: 42.7% → 49.8%)
 - No accountability mechanism added
 

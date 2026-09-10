@@ -24,6 +24,14 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.cross_platform_sources import (
+    audit_source_overlap,
+    extract_pr_numbers,
+    load_bitcointalk_posts,
+    load_delving_posts,
+    load_mailing_lists,
+    split_mailing_lists_by_name,
+)
 
 logger = setup_logger()
 
@@ -70,32 +78,72 @@ class CrossPlatformNetworkAnalyzer:
         logger.info("Cross-Platform Influence Networks Analysis")
         logger.info("=" * 60)
         
+        source_audit = audit_source_overlap()
+        logger.info("Source overlap audit: %s", source_audit)
+
         # Load data
         github_prs = self._load_core_prs()
         irc_messages = self._load_irc_messages()
-        emails = self._load_emails()
-        
-        logger.info(f"Loaded {len(github_prs)} GitHub PRs, {len(irc_messages)} IRC messages, {len(emails)} emails")
-        
+        all_emails, email_meta = load_mailing_lists(dedupe=True)
+        emails_by_list = split_mailing_lists_by_name(all_emails)
+        bitcoin_dev_emails = emails_by_list.get("bitcoin-dev", [])
+        cryptography_emails = emails_by_list.get("cryptography", [])
+        delving_posts, delving_meta = load_delving_posts()
+        bitcointalk_posts, bitcointalk_meta = load_bitcointalk_posts()
+
+        logger.info(
+            "Loaded %s GitHub PRs, %s IRC, %s emails (%s bitcoin-dev + %s cryptography, %s deduped), "
+            "%s Delving posts, %s Bitcointalk posts",
+            len(github_prs),
+            len(irc_messages),
+            len(all_emails),
+            len(bitcoin_dev_emails),
+            len(cryptography_emails),
+            email_meta.get("duplicates_removed", 0),
+            len(delving_posts),
+            len(bitcointalk_posts),
+        )
+
         # Build platform-specific networks
         github_network = self._build_github_network(github_prs)
         irc_network = self._build_irc_network(irc_messages)
-        email_network = self._build_email_network(emails)
-        
+        email_network = self._build_email_network(all_emails)
+        bitcoin_dev_network = self._build_email_network(bitcoin_dev_emails)
+        cryptography_network = self._build_email_network(cryptography_emails)
+        delving_network = self._build_forum_network(delving_posts, "delving")
+        bitcointalk_network = self._build_forum_network(bitcointalk_posts, "bitcointalk")
+
         # Resolve identities across platforms
-        identity_resolution = self._resolve_identities(github_prs, irc_messages, emails)
-        
+        identity_resolution = self._resolve_identities(
+            github_prs,
+            irc_messages,
+            all_emails,
+            delving_posts,
+            bitcointalk_posts,
+        )
+
         # Build cross-platform networks
         cross_platform_network = self._build_cross_platform_network(
             github_network, irc_network, email_network, identity_resolution
         )
-        
-        # Analyze influence flow (IRC → Email → GitHub)
-        influence_flow = self._analyze_influence_flow(irc_messages, emails, github_prs)
-        
+
+        # Analyze influence flow (informal channels → GitHub)
+        influence_flow = self._analyze_influence_flow(
+            irc_messages,
+            all_emails,
+            github_prs,
+            delving_posts,
+            bitcointalk_posts,
+        )
+
         # Identify hidden influencers
         hidden_influencers = self._identify_hidden_influencers(
-            github_network, irc_network, email_network, identity_resolution
+            github_network,
+            irc_network,
+            email_network,
+            delving_network,
+            bitcointalk_network,
+            identity_resolution,
         )
         
         # Analyze homophily patterns (maintainer clustering)
@@ -103,17 +151,31 @@ class CrossPlatformNetworkAnalyzer:
         
         # Save results
         results = {
+            'source_audit': source_audit,
+            'email_load_meta': email_meta,
+            'delving_meta': delving_meta,
+            'bitcointalk_meta': bitcointalk_meta,
             'github_network': github_network,
             'irc_network': irc_network,
             'email_network': email_network,
+            'bitcoin_dev_network': bitcoin_dev_network,
+            'cryptography_network': cryptography_network,
+            'delving_network': delving_network,
+            'bitcointalk_network': bitcointalk_network,
             'identity_resolution': identity_resolution,
             'cross_platform_network': cross_platform_network,
             'influence_flow': influence_flow,
             'hidden_influencers': hidden_influencers,
             'homophily_analysis': homophily_analysis,
             'statistics': self._generate_statistics(
-                github_network, irc_network, email_network,
-                cross_platform_network, identity_resolution, homophily_analysis
+                github_network,
+                irc_network,
+                email_network,
+                delving_network,
+                bitcointalk_network,
+                cross_platform_network,
+                identity_resolution,
+                homophily_analysis,
             ),
             'methodology': self._get_methodology()
         }
@@ -158,25 +220,6 @@ class CrossPlatformNetworkAnalyzer:
                 except:
                     continue
         return messages
-    
-    def _load_emails(self) -> List[Dict[str, Any]]:
-        """Load mailing list emails."""
-        email_file = self.mailing_dir / 'emails.jsonl'
-        if not email_file.exists():
-            parent_data_dir = self.data_dir.parent.parent / 'data' / 'mailing_lists' / 'emails.jsonl'
-            if parent_data_dir.exists():
-                email_file = parent_data_dir
-            else:
-                return []
-        
-        emails = []
-        with open(email_file, 'r') as f:
-            for line in f:
-                try:
-                    emails.append(json.loads(line))
-                except:
-                    continue
-        return emails
     
     def _build_github_network(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Build GitHub influence network (PR reviews, comments)."""
@@ -255,12 +298,40 @@ class CrossPlatformNetworkAnalyzer:
             'reply_network': {k: dict(v) for k, v in list(reply_network.items())[:50]},
             'total_actors': len(all_actors)
         }
-    
+
+    def _build_forum_network(self, posts: List[Dict[str, Any]], forum: str) -> Dict[str, Any]:
+        """Build forum influence network (Delving replies / Bitcointalk topic participation)."""
+        logger.info("Building %s network...", forum)
+        reply_network = defaultdict(lambda: Counter())
+        topic_participants = defaultdict(set)
+        all_actors: Set[str] = set()
+
+        for post in posts:
+            if forum == "delving":
+                author = (post.get("username") or "").lower()
+            else:
+                author = (post.get("author") or "").lower()
+            if not author:
+                continue
+            all_actors.add(author)
+            reply_network[author]["posts"] += 1
+            if forum == "delving" and post.get("reply_to_post_number"):
+                reply_network[author]["replies_sent"] += 1
+            topic_participants[post.get("topic_id")].add(author)
+
+        return {
+            'reply_network': {k: dict(v) for k, v in list(reply_network.items())[:50]},
+            'topics_active': len(topic_participants),
+            'total_actors': len(all_actors),
+        }
+
     def _resolve_identities(
         self,
         github_prs: List[Dict[str, Any]],
         irc_messages: List[Dict[str, Any]],
-        emails: List[Dict[str, Any]]
+        emails: List[Dict[str, Any]],
+        delving_posts: List[Dict[str, Any]],
+        bitcointalk_posts: List[Dict[str, Any]],
     ) -> Dict[str, Any]:
         """Resolve identities across platforms."""
         logger.info("Resolving identities across platforms...")
@@ -287,27 +358,46 @@ class CrossPlatformNetworkAnalyzer:
             author = self._extract_email_author(from_field).lower()
             if author:
                 email_users.add(author)
-        
+
+        delving_users = {
+            (post.get("username") or "").lower()
+            for post in delving_posts
+            if post.get("username")
+        }
+        bitcointalk_users = {
+            (post.get("author") or "").lower()
+            for post in bitcointalk_posts
+            if post.get("author")
+        }
+
         # Find overlaps (exact matches)
         github_irc_overlap = github_users & irc_users
         github_email_overlap = github_users & email_users
         irc_email_overlap = irc_users & email_users
+        github_delving_overlap = github_users & delving_users
+        github_bitcointalk_overlap = github_users & bitcointalk_users
         all_platform_overlap = github_users & irc_users & email_users
-        
+
         return {
             'github_users': len(github_users),
             'irc_users': len(irc_users),
             'email_users': len(email_users),
+            'delving_users': len(delving_users),
+            'bitcointalk_users': len(bitcointalk_users),
             'github_irc_overlap': len(github_irc_overlap),
             'github_email_overlap': len(github_email_overlap),
             'irc_email_overlap': len(irc_email_overlap),
+            'github_delving_overlap': len(github_delving_overlap),
+            'github_bitcointalk_overlap': len(github_bitcointalk_overlap),
             'all_platform_overlap': len(all_platform_overlap),
             'overlap_rate_github_irc': len(github_irc_overlap) / len(github_users) if github_users else 0,
             'overlap_rate_github_email': len(github_email_overlap) / len(github_users) if github_users else 0,
             'overlap_rate_irc_email': len(irc_email_overlap) / len(irc_users) if irc_users else 0,
+            'overlap_rate_github_delving': len(github_delving_overlap) / len(github_users) if github_users else 0,
             'overlap_examples': {
                 'github_irc': list(github_irc_overlap)[:20],
                 'github_email': list(github_email_overlap)[:20],
+                'github_delving': list(github_delving_overlap)[:20],
                 'all_platform': list(all_platform_overlap)[:20]
             }
         }
@@ -338,22 +428,26 @@ class CrossPlatformNetworkAnalyzer:
         self,
         irc_messages: List[Dict[str, Any]],
         emails: List[Dict[str, Any]],
-        github_prs: List[Dict[str, Any]]
+        github_prs: List[Dict[str, Any]],
+        delving_posts: List[Dict[str, Any]],
+        bitcointalk_posts: List[Dict[str, Any]],
     ) -> Dict[str, Any]:
-        """Analyze influence flow (IRC → Email → GitHub)."""
+        """Analyze influence flow (informal channels → GitHub)."""
         logger.info("Analyzing influence flow...")
         
         # Track PR mentions across platforms over time
         pr_mentions_by_platform = {
             'irc': defaultdict(list),
             'email': defaultdict(list),
+            'delving': defaultdict(list),
+            'bitcointalk': defaultdict(list),
             'github': defaultdict(list)
         }
         
         # IRC PR mentions
         for msg in irc_messages:
             message = msg.get('message', '') or ''
-            pr_numbers = re.findall(r'(?:PR|#)(\d{4,})', message, re.IGNORECASE)
+            pr_numbers = extract_pr_numbers(message)
             timestamp = msg.get('timestamp')
             for pr_num in pr_numbers:
                 if timestamp:
@@ -361,14 +455,27 @@ class CrossPlatformNetworkAnalyzer:
         
         # Email PR mentions
         for email in emails:
-            subject = (email.get('subject', '') or '').lower()
-            body = (email.get('body', '') or '').lower()
-            text = subject + ' ' + body
-            pr_numbers = re.findall(r'(?:PR|#)(\d{4,})', text, re.IGNORECASE)
+            text = f"{email.get('subject', '')} {email.get('body', '')}"
+            pr_numbers = extract_pr_numbers(text)
             timestamp = email.get('date')
             for pr_num in pr_numbers:
                 if timestamp:
                     pr_mentions_by_platform['email'][pr_num].append(timestamp)
+
+        for post in delving_posts:
+            text = f"{post.get('content', '')} {post.get('cooked_html', '')}"
+            pr_numbers = extract_pr_numbers(text)
+            timestamp = post.get('created_at')
+            for pr_num in pr_numbers:
+                if timestamp:
+                    pr_mentions_by_platform['delving'][pr_num].append(timestamp)
+
+        for post in bitcointalk_posts:
+            pr_numbers = extract_pr_numbers(post.get('content', '') or '')
+            timestamp = post.get('date')
+            for pr_num in pr_numbers:
+                if timestamp:
+                    pr_mentions_by_platform['bitcointalk'][pr_num].append(timestamp)
         
         # GitHub PR mentions (PR creation)
         for pr in github_prs:
@@ -379,17 +486,25 @@ class CrossPlatformNetworkAnalyzer:
         
         # Find PRs mentioned in IRC/Email before GitHub creation
         prs_discussed_before_github = []
-        for pr_num in set(list(pr_mentions_by_platform['irc'].keys()) + list(pr_mentions_by_platform['email'].keys())):
+        informal_keys = (
+            list(pr_mentions_by_platform['irc'].keys())
+            + list(pr_mentions_by_platform['email'].keys())
+            + list(pr_mentions_by_platform['delving'].keys())
+            + list(pr_mentions_by_platform['bitcointalk'].keys())
+        )
+        for pr_num in set(informal_keys):
             github_dates = pr_mentions_by_platform['github'].get(pr_num, [])
             irc_dates = pr_mentions_by_platform['irc'].get(pr_num, [])
             email_dates = pr_mentions_by_platform['email'].get(pr_num, [])
-            
-            if github_dates and (irc_dates or email_dates):
-                # Check if IRC/Email mentions happened before GitHub PR creation
+            delving_dates = pr_mentions_by_platform['delving'].get(pr_num, [])
+            bitcointalk_dates = pr_mentions_by_platform['bitcointalk'].get(pr_num, [])
+
+            if github_dates and (irc_dates or email_dates or delving_dates or bitcointalk_dates):
+                # Check if informal mentions happened before GitHub PR creation
                 try:
                     github_date = min([datetime.fromisoformat(d.replace('Z', '+00:00')) for d in github_dates])
                     informal_dates = []
-                    for d in irc_dates + email_dates:
+                    for d in irc_dates + email_dates + delving_dates + bitcointalk_dates:
                         try:
                             informal_dates.append(datetime.fromisoformat(d.replace('Z', '+00:00')))
                         except:
@@ -405,15 +520,96 @@ class CrossPlatformNetworkAnalyzer:
         return {
             'prs_mentioned_in_irc': len(pr_mentions_by_platform['irc']),
             'prs_mentioned_in_email': len(pr_mentions_by_platform['email']),
+            'prs_mentioned_in_delving': len(pr_mentions_by_platform['delving']),
+            'prs_mentioned_in_bitcointalk': len(pr_mentions_by_platform['bitcointalk']),
             'prs_discussed_before_github': len(prs_discussed_before_github),
-            'flow_rate': len(prs_discussed_before_github) / len(pr_mentions_by_platform['github']) if pr_mentions_by_platform['github'] else 0
+            'flow_rate': len(prs_discussed_before_github) / len(pr_mentions_by_platform['github']) if pr_mentions_by_platform['github'] else 0,
+            'by_era': self._influence_flow_by_era(pr_mentions_by_platform, github_prs),
         }
+
+    def _influence_flow_by_era(
+        self,
+        pr_mentions_by_platform: Dict[str, Any],
+        github_prs: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Split informal→GitHub flow by agenda-setting era."""
+        eras = [
+            ('early_2010_2014', 2010, 2014),
+            ('scaling_segwit_2015_2017', 2015, 2017),
+            ('taproot_2018_2021', 2018, 2021),
+            ('modern_2022_plus', 2022, 2030),
+        ]
+        pr_year = {}
+        for pr in github_prs:
+            created = pr.get('created_at')
+            number = str(pr.get('number', ''))
+            if not created or not number:
+                continue
+            try:
+                pr_year[number] = datetime.fromisoformat(created.replace('Z', '+00:00')).year
+            except (TypeError, ValueError):
+                continue
+
+        def _year(value: Any) -> Optional[int]:
+            try:
+                return datetime.fromisoformat(str(value).replace('Z', '+00:00')).year
+            except (TypeError, ValueError):
+                return None
+
+        out: Dict[str, Any] = {}
+        for era_name, start, end in eras:
+            github_in_era = {n for n, year in pr_year.items() if start <= year <= end}
+            channel_counts = {}
+            discussed_before = 0
+            for channel in ('irc', 'email', 'delving', 'bitcointalk'):
+                mentioned = set()
+                for pr_num, stamps in pr_mentions_by_platform[channel].items():
+                    if any((y := _year(ts)) is not None and start <= y <= end for ts in stamps):
+                        mentioned.add(pr_num)
+                channel_counts[channel] = len(mentioned)
+            informal_in_era = set()
+            for channel in ('irc', 'email', 'delving', 'bitcointalk'):
+                for pr_num, stamps in pr_mentions_by_platform[channel].items():
+                    years = [_year(ts) for ts in stamps]
+                    if any(y is not None and start <= y <= end for y in years):
+                        informal_in_era.add(pr_num)
+            for pr_num in informal_in_era & github_in_era:
+                github_dates = pr_mentions_by_platform['github'].get(pr_num, [])
+                informal_dates = []
+                for channel in ('irc', 'email', 'delving', 'bitcointalk'):
+                    informal_dates.extend(pr_mentions_by_platform[channel].get(pr_num, []))
+                try:
+                    gh = min(datetime.fromisoformat(d.replace('Z', '+00:00')) for d in github_dates)
+                    informal = []
+                    for d in informal_dates:
+                        try:
+                            informal.append(datetime.fromisoformat(str(d).replace('Z', '+00:00')))
+                        except (TypeError, ValueError):
+                            pass
+                    if informal and min(informal) < gh:
+                        discussed_before += 1
+                except (TypeError, ValueError):
+                    pass
+            out[era_name] = {
+                'start_year': start,
+                'end_year': end if end < 2030 else None,
+                'github_prs': len(github_in_era),
+                'prs_mentioned_in_irc': channel_counts['irc'],
+                'prs_mentioned_in_email': channel_counts['email'],
+                'prs_mentioned_in_delving': channel_counts['delving'],
+                'prs_mentioned_in_bitcointalk': channel_counts['bitcointalk'],
+                'prs_discussed_before_github': discussed_before,
+                'flow_rate': discussed_before / len(github_in_era) if github_in_era else 0,
+            }
+        return out
     
     def _identify_hidden_influencers(
         self,
         github_network: Dict[str, Any],
         irc_network: Dict[str, Any],
         email_network: Dict[str, Any],
+        delving_network: Dict[str, Any],
+        bitcointalk_network: Dict[str, Any],
         identity_resolution: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Identify hidden influencers (influential in one platform but not others)."""
@@ -431,15 +627,25 @@ class CrossPlatformNetworkAnalyzer:
             irc_actors.update(irc_network['mention_network'].keys())
         if 'reply_network' in email_network:
             email_actors.update(email_network['reply_network'].keys())
-        
+        delving_actors = set()
+        if 'reply_network' in delving_network:
+            delving_actors.update(delving_network['reply_network'].keys())
+        bitcointalk_actors = set()
+        if 'reply_network' in bitcointalk_network:
+            bitcointalk_actors.update(bitcointalk_network['reply_network'].keys())
+
         # Find hidden influencers
         irc_only = irc_actors - github_actors
         email_only = email_actors - github_actors
-        
+        delving_only = delving_actors - github_actors
+        bitcointalk_only = bitcointalk_actors - github_actors
+
         return {
             'irc_only_influencers': list(irc_only)[:20],
             'email_only_influencers': list(email_only)[:20],
-            'total_hidden_influencers': len(irc_only | email_only)
+            'delving_only_influencers': list(delving_only)[:20],
+            'bitcointalk_only_influencers': list(bitcointalk_only)[:20],
+            'total_hidden_influencers': len(irc_only | email_only | delving_only | bitcointalk_only)
         }
     
     def _extract_email_author(self, from_field: str) -> str:
@@ -461,13 +667,8 @@ class CrossPlatformNetworkAnalyzer:
         """Analyze homophily patterns (maintainer clustering) in review network."""
         logger.info("Analyzing homophily patterns...")
         
-        # Maintainer list
-        MAINTAINERS = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        MAINTAINERS = load_maintainer_login_set()
         
         # Count review patterns by maintainer status
         same_status_edges = 0
@@ -547,6 +748,8 @@ class CrossPlatformNetworkAnalyzer:
         github_network: Dict[str, Any],
         irc_network: Dict[str, Any],
         email_network: Dict[str, Any],
+        delving_network: Dict[str, Any],
+        bitcointalk_network: Dict[str, Any],
         cross_platform_network: Dict[str, Any],
         identity_resolution: Dict[str, Any],
         homophily_analysis: Dict[str, Any]
@@ -557,6 +760,9 @@ class CrossPlatformNetworkAnalyzer:
                 'github_actors': github_network.get('total_actors', 0),
                 'irc_actors': irc_network.get('total_actors', 0),
                 'email_actors': email_network.get('total_actors', 0),
+                'delving_actors': delving_network.get('total_actors', 0),
+                'bitcointalk_actors': bitcointalk_network.get('total_actors', 0),
+                'github_delving_overlap': identity_resolution.get('github_delving_overlap', 0),
                 'cross_platform_overlap': identity_resolution.get('all_platform_overlap', 0),
                 'hidden_influencers': cross_platform_network.get('multi_platform_activity', {}).get('all_platform', 0),
                 'homophily_coefficient': homophily_analysis.get('homophily_coefficient', 0.0),
@@ -568,22 +774,24 @@ class CrossPlatformNetworkAnalyzer:
         """Get methodology description."""
         return {
             'identity_resolution': 'Exact username matching across platforms',
-            'network_construction': 'Mention networks (IRC), reply networks (email), merge networks (GitHub)',
+            'network_construction': 'Mention networks (IRC), reply networks (email/forums), merge networks (GitHub)',
+            'mailing_lists': 'bitcoin-dev + cryptography combined with message_id dedupe',
+            'forums': 'Delving Bitcoin + Bitcointalk board 6 as separate channels from GitHub',
             'influence_flow': 'PR mentions across platforms tracked by timestamp',
             'hidden_influencers': 'Actors with high activity in informal channels but low in GitHub',
             'limitations': [
                 'Identity resolution based on exact matches (may miss variations)',
                 'Influence flow analysis requires timestamp parsing',
-                'Hidden influencers identified by platform activity comparison'
+                'Hidden influencers identified by platform activity comparison',
+                'Mailing lists deduped by message_id (~2 cross-list duplicates today)',
             ]
         }
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'cross_platform_networks.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        logger.info(f"Results saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('cross_platform_networks.json', results)
+        logger.info(f"Results saved to {', '.join(str(p) for p in written)}")
 
 
 def main():

@@ -21,6 +21,13 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.cross_platform_sources import (
+    audit_source_overlap,
+    extract_pr_numbers,
+    load_bitcointalk_posts,
+    load_delving_posts,
+    load_mailing_lists,
+)
 
 logger = setup_logger()
 
@@ -183,33 +190,58 @@ class EnhancedIdentityResolver:
         logger.info("Enhanced Identity Resolution")
         logger.info("=" * 60)
         
+        source_audit = audit_source_overlap()
+
         # Load data
         github_prs = self._load_prs()
         irc_messages = self._load_irc()
-        emails = self._load_emails()
-        
-        logger.info(f"Loaded {len(github_prs)} PRs, {len(irc_messages)} IRC, {len(emails)} emails")
-        
+        emails, email_meta = load_mailing_lists(dedupe=True)
+        delving_posts, _ = load_delving_posts()
+        bitcointalk_posts, _ = load_bitcointalk_posts()
+
+        logger.info(
+            "Loaded %s PRs, %s IRC, %s emails (%s deduped), %s Delving, %s Bitcointalk",
+            len(github_prs),
+            len(irc_messages),
+            len(emails),
+            email_meta.get("duplicates_removed", 0),
+            len(delving_posts),
+            len(bitcointalk_posts),
+        )
+
         # Method 1: Manual alias resolution
-        manual_matches = self._resolve_manual_aliases(github_prs, irc_messages, emails)
-        
+        manual_matches = self._resolve_manual_aliases(
+            github_prs, irc_messages, emails, delving_posts, bitcointalk_posts
+        )
+
         # Method 2: PR-mention linking
-        pr_mention_matches = self._resolve_pr_mentions(github_prs, irc_messages, emails)
-        
+        pr_mention_matches = self._resolve_pr_mentions(
+            github_prs, irc_messages, emails, delving_posts, bitcointalk_posts
+        )
+
         # Method 3: Calculate improved overlap
         improved_overlap = self._calculate_improved_overlap(
-            github_prs, irc_messages, emails, manual_matches, pr_mention_matches
+            github_prs,
+            irc_messages,
+            emails,
+            delving_posts,
+            manual_matches,
+            pr_mention_matches,
         )
-        
+
         # Save results
         results = {
+            'source_audit': source_audit,
+            'email_load_meta': email_meta,
             'manual_alias_resolution': manual_matches,
             'pr_mention_resolution': pr_mention_matches,
             'improved_overlap': improved_overlap,
             'methodology': {
                 'manual_aliases': f'{len(KNOWN_ALIASES)} documented maintainer identities',
-                'pr_mentions': 'IRC/email messages containing PR numbers matched to GitHub PR authors',
-                'sources': 'GitHub profiles, mailing list signatures, IRC registrations'
+                'pr_mentions': 'IRC/email/forum messages containing PR numbers matched to GitHub PR authors',
+                'mailing_lists': 'bitcoin-dev + cryptography with message_id dedupe',
+                'forums': 'Delving usernames often match GitHub handles; Bitcointalk uses legacy handles',
+                'sources': 'GitHub profiles, mailing list signatures, IRC registrations, forum posts'
             }
         }
         
@@ -220,7 +252,7 @@ class EnhancedIdentityResolver:
     
     def _load_prs(self) -> List[Dict]:
         """Load GitHub PRs."""
-        prs_file = self.data_dir.parent.parent / 'data' / 'github' / 'prs_raw.jsonl'
+        prs_file = self.data_dir / 'github' / 'prs_raw.jsonl'
         if not prs_file.exists():
             return []
         
@@ -235,7 +267,7 @@ class EnhancedIdentityResolver:
     
     def _load_irc(self) -> List[Dict]:
         """Load IRC messages."""
-        irc_file = self.data_dir.parent.parent / 'data' / 'irc' / 'messages.jsonl'
+        irc_file = self.data_dir / 'irc' / 'messages.jsonl'
         if not irc_file.exists():
             return []
         
@@ -248,26 +280,13 @@ class EnhancedIdentityResolver:
                     continue
         return messages
     
-    def _load_emails(self) -> List[Dict]:
-        """Load emails."""
-        email_file = self.data_dir.parent.parent / 'data' / 'mailing_lists' / 'emails.jsonl'
-        if not email_file.exists():
-            return []
-        
-        emails = []
-        with open(email_file) as f:
-            for line in f:
-                try:
-                    emails.append(json.loads(line))
-                except:
-                    continue
-        return emails
-    
     def _resolve_manual_aliases(
         self, 
         github_prs: List[Dict],
         irc_messages: List[Dict],
-        emails: List[Dict]
+        emails: List[Dict],
+        delving_posts: List[Dict],
+        bitcointalk_posts: List[Dict],
     ) -> Dict[str, Any]:
         """Resolve identities using manual alias mapping."""
         logger.info("Resolving manual aliases...")
@@ -346,6 +365,19 @@ class EnhancedIdentityResolver:
                 if in_irc or in_email or in_email_names:
                     cross_platform_unified.add(unified)
         
+        delving_users = {
+            (post.get("username") or "").lower()
+            for post in delving_posts
+            if post.get("username")
+        }
+        bitcointalk_users = {
+            (post.get("author") or "").lower()
+            for post in bitcointalk_posts
+            if post.get("author")
+        }
+        github_delving_exact = len(github_users & delving_users)
+        github_bitcointalk_exact = len(github_users & bitcointalk_users)
+
         return {
             'total_known_identities': len(KNOWN_ALIASES),
             'github_users_found': len(github_users),
@@ -356,6 +388,10 @@ class EnhancedIdentityResolver:
             'email_addresses_resolved': email_resolved,
             'email_names_found': len(email_names),
             'email_names_resolved': email_names_resolved,
+            'delving_users_found': len(delving_users),
+            'bitcointalk_users_found': len(bitcointalk_users),
+            'github_delving_exact_overlap': github_delving_exact,
+            'github_bitcointalk_exact_overlap': github_bitcointalk_exact,
             'cross_platform_unified_identities': len(cross_platform_unified),
             'unified_identities': list(cross_platform_unified)
         }
@@ -364,7 +400,9 @@ class EnhancedIdentityResolver:
         self,
         github_prs: List[Dict],
         irc_messages: List[Dict],
-        emails: List[Dict]
+        emails: List[Dict],
+        delving_posts: List[Dict],
+        bitcointalk_posts: List[Dict],
     ) -> Dict[str, Any]:
         """Resolve identities by linking PR mentions to PR authors."""
         logger.info("Resolving PR mentions...")
@@ -377,34 +415,37 @@ class EnhancedIdentityResolver:
             if number and author:
                 pr_authors[number] = author
         
-        # Find PR mentions in IRC
-        irc_pr_mentions = defaultdict(set)  # irc_nick → set of pr_authors
-        pr_pattern = re.compile(r'#(\d{4,6})\b')  # PR numbers are 4-6 digits
-        
-        for msg in irc_messages:
-            nick = (msg.get('nickname') or '').lower()
-            text = msg.get('message', '')
-            
-            for match in pr_pattern.findall(text):
-                pr_num = int(match)
-                if pr_num in pr_authors:
-                    irc_pr_mentions[nick].add(pr_authors[pr_num])
-        
-        # Find PR mentions in emails
-        email_pr_mentions = defaultdict(set)
-        
-        for email in emails:
-            from_field = email.get('from', '')
-            match = re.search(r'[\w.+-]+@[\w.-]+\.\w+', from_field)
-            if not match:
-                continue
-            email_addr = match.group().lower()
-            
-            body = email.get('body', '') + email.get('subject', '')
-            for match in pr_pattern.findall(body):
-                pr_num = int(match)
-                if pr_num in pr_authors:
-                    email_pr_mentions[email_addr].add(pr_authors[pr_num])
+        def _collect_mentions(messages, channel):
+            mentions = defaultdict(set)
+            for item in messages:
+                if channel == 'irc':
+                    actor = (item.get('nickname') or '').lower()
+                    text = item.get('message', '') or ''
+                elif channel == 'email':
+                    from_field = item.get('from', '')
+                    match = re.search(r'[\w.+-]+@[\w.-]+\.\w+', from_field)
+                    if not match:
+                        continue
+                    actor = match.group().lower()
+                    text = f"{item.get('body', '')} {item.get('subject', '')}"
+                elif channel == 'delving':
+                    actor = (item.get('username') or '').lower()
+                    text = f"{item.get('content', '')} {item.get('cooked_html', '')}"
+                else:
+                    actor = (item.get('author') or '').lower()
+                    text = item.get('content', '') or ''
+                if not actor:
+                    continue
+                for pr_num_str in extract_pr_numbers(text):
+                    pr_num = int(pr_num_str)
+                    if pr_num in pr_authors:
+                        mentions[actor].add(pr_authors[pr_num])
+            return mentions
+
+        irc_pr_mentions = _collect_mentions(irc_messages, 'irc')
+        email_pr_mentions = _collect_mentions(emails, 'email')
+        delving_pr_mentions = _collect_mentions(delving_posts, 'delving')
+        bitcointalk_pr_mentions = _collect_mentions(bitcointalk_posts, 'bitcointalk')
         
         # Find potential identity links (someone who mentions PRs by specific authors frequently)
         potential_links = []
@@ -425,8 +466,12 @@ class EnhancedIdentityResolver:
         return {
             'irc_users_mentioning_prs': len(irc_pr_mentions),
             'email_users_mentioning_prs': len(email_pr_mentions),
+            'delving_users_mentioning_prs': len(delving_pr_mentions),
+            'bitcointalk_users_mentioning_prs': len(bitcointalk_pr_mentions),
             'total_pr_mentions_irc': sum(len(v) for v in irc_pr_mentions.values()),
             'total_pr_mentions_email': sum(len(v) for v in email_pr_mentions.values()),
+            'total_pr_mentions_delving': sum(len(v) for v in delving_pr_mentions.values()),
+            'total_pr_mentions_bitcointalk': sum(len(v) for v in bitcointalk_pr_mentions.values()),
             'potential_identity_links': len(potential_links),
             'links': potential_links[:50]  # Top 50
         }
@@ -436,6 +481,7 @@ class EnhancedIdentityResolver:
         github_prs: List[Dict],
         irc_messages: List[Dict],
         emails: List[Dict],
+        delving_posts: List[Dict],
         manual_matches: Dict,
         pr_mentions: Dict
     ) -> Dict[str, Any]:
@@ -455,8 +501,14 @@ class EnhancedIdentityResolver:
             if nick:
                 irc_users.add(nick)
         
+        delving_users = {
+            (post.get("username") or "").lower()
+            for post in delving_posts
+            if post.get("username")
+        }
         original_overlap = len(github_users & irc_users)
-        
+        github_delving_overlap = len(github_users & delving_users)
+
         # Improved overlap (using alias mapping)
         improved_overlap = original_overlap
         
@@ -477,10 +529,12 @@ class EnhancedIdentityResolver:
         return {
             'original_github_irc_overlap': original_overlap,
             'improved_github_irc_overlap': improved_overlap,
+            'github_delving_exact_overlap': github_delving_overlap,
             'improvement': improved_overlap - original_overlap,
             'improvement_percentage': (improved_overlap - original_overlap) / original_overlap * 100 if original_overlap > 0 else 0,
             'github_users': len(github_users),
             'irc_users': len(irc_users),
+            'delving_users': len(delving_users),
             'unified_maintainers_found': manual_matches.get('cross_platform_unified_identities', 0)
         }
     
@@ -516,10 +570,9 @@ class EnhancedIdentityResolver:
     
     def _save_results(self, results: Dict):
         """Save results."""
-        output_file = self.findings_dir / 'enhanced_identity_resolution.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        logger.info(f"Saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('enhanced_identity_resolution.json', results)
+        logger.info(f"Saved to {', '.join(str(p) for p in written)}")
 
 
 def main():

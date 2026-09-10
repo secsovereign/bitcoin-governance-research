@@ -32,13 +32,6 @@ class MergePatternAnalyzer:
         self.data_dir = data_dir
         # Canonical set (lowercase). Keep display variants for compatibility.
         self.maintainers = load_maintainer_login_set()
-        if not self.maintainers:
-            self.maintainers = {
-                'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-                'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-                'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-                'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-            }
     
     def load_prs(self) -> List[Dict[str, Any]]:
         """Load PRs with merged_by data."""
@@ -254,10 +247,61 @@ class MergePatternAnalyzer:
             'top_merger_share_pct': round(100 * top_n / total, 2),
             'authors_funneled_ge_40pct': funnel[:30],
             'top_co_reviewers_on_their_merges': dict(co_reviewers.most_common(20)),
+            'recent_2022_plus': self._deputies_window(merged_prs, year_from=2022),
             'note': (
                 'Co-reviewers frequently appear on PRs the lead merger lands; '
                 'funnel authors have ≥40% of their merges through this merger.'
             ),
+        }
+
+    def _deputies_window(self, merged_prs: List[Dict[str, Any]], year_from: int) -> Dict[str, Any]:
+        window = []
+        for pr in merged_prs:
+            stamp = pr.get('merged_at') or pr.get('closed_at') or pr.get('created_at') or ''
+            if isinstance(stamp, str) and len(stamp) >= 4 and stamp[:4].isdigit() and int(stamp[:4]) >= year_from:
+                window.append(pr)
+        merger_counts: Counter = Counter()
+        author_total: Counter = Counter()
+        author_via: Dict[str, Counter] = defaultdict(Counter)
+        for pr in window:
+            merger = (pr.get('merged_by') or '').lower()
+            author = (pr.get('author') or '').lower()
+            if merger:
+                merger_counts[merger] += 1
+            if author:
+                author_total[author] += 1
+                if merger:
+                    author_via[author][merger] += 1
+        if not merger_counts:
+            return {}
+        top_merger, top_n = merger_counts.most_common(1)[0]
+        n = sum(merger_counts.values())
+        funnels = []
+        for author, total in author_total.items():
+            if total < 5:
+                continue
+            count = author_via[author].get(top_merger, 0)
+            pct = 100.0 * count / total if total else 0
+            if pct >= 40:
+                funnels.append({'author': author, 'count': count, 'pct': round(pct, 1), 'author_total': total})
+        funnels.sort(key=lambda r: r['count'], reverse=True)
+        co_reviewers: Counter = Counter()
+        for pr in window:
+            if (pr.get('merged_by') or '').lower() != top_merger:
+                continue
+            author = (pr.get('author') or '').lower()
+            for review in pr.get('reviews') or []:
+                rev = (review.get('author') or '').lower()
+                if rev and rev != author and rev != top_merger:
+                    co_reviewers[rev] += 1
+        return {
+            'top_merger': top_merger,
+            'top_merger_count': top_n,
+            'top_merger_share_pct': round(100 * top_n / n, 2) if n else 0,
+            'n_merged_prs': n,
+            'top5_mergers': dict(merger_counts.most_common(5)),
+            'authors_funneled_ge_40pct': funnels[:30],
+            'top_co_reviewers_on_their_merges': dict(co_reviewers.most_common(20)),
         }
     
     def analyze_individual_self_merge_patterns(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -436,21 +480,19 @@ def main():
     parser = argparse.ArgumentParser(description='Analyze merge patterns in detail')
     parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent / 'data',
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'merge_pattern_analysis.json',
-                       help='Output JSON file')
     
     args = parser.parse_args()
     
     analyzer = MergePatternAnalyzer(args.data_dir)
     results = analyzer.run_analysis()
     analyzer.print_results(results)
-    
-    # Save results
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"\nResults saved to: {args.output}")
+
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('merge_pattern_analysis.json', results)
+    deputies = (results.get('merge_relationships') or {}).get('high_volume_merger_deputies')
+    if deputies and deputies.get('recent_2022_plus'):
+        written.extend(save_analysis_json('high_volume_merger_deputies.json', deputies))
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
 
 
 if __name__ == '__main__':

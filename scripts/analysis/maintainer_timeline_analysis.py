@@ -68,14 +68,8 @@ def parse_date(date_str: str) -> Optional[datetime]:
 def analyze_maintainer_timeline(prs: List[Dict]) -> Dict[str, Any]:
     """Analyze maintainer timeline from PR data."""
     
-    # Known maintainers (from comprehensive_recent_analysis.py)
-    # Use lowercase for case-insensitive matching
-    known_maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-        'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    known_maintainers = load_maintainer_login_set()
     
     # Track maintainer activity
     maintainer_data = defaultdict(lambda: {
@@ -416,21 +410,21 @@ def main():
     print()
     
     # Save results
+    from src.utils.findings_io import save_analysis_json
     output_dir = script_dir / 'findings'
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    # Save timeline data
     timeline_output = {
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'total_maintainers': len(timeline),
         'timeline': timeline,
         'insights': insights
     }
-    
-    output_file = output_dir / 'maintainer_timeline_analysis.json'
-    with open(output_file, 'w') as f:
-        json.dump(timeline_output, f, indent=2)
-    print(f"Saved timeline data to {output_file}")
+    written = save_analysis_json('maintainer_timeline_analysis.json', timeline_output)
+    print(f"Saved timeline data to {', '.join(str(p) for p in written)}")
+    leftover = output_dir / 'maintainer_timeline_analysis.json'
+    if leftover.exists():
+        leftover.unlink()
     
     # Generate markdown report
     report_file = output_dir / 'MAINTAINER_TIMELINE_ANALYSIS.md'

@@ -39,13 +39,8 @@ class CrossRepoComparisonAnalyzer:
         self.findings_dir = self.analysis_dir / 'findings' / 'data'
         self.findings_dir.mkdir(parents=True, exist_ok=True)
         
-        # Maintainer list (Core repository)
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
     
     def run_analysis(self):
         """Run cross-repository comparison analysis."""
@@ -374,10 +369,9 @@ class CrossRepoComparisonAnalyzer:
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'cross_repo_comparison.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        logger.info(f"Results saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('cross_repo_comparison.json', results)
+        logger.info(f"Results saved to {', '.join(str(p) for p in written)}")
 
 
 def main():

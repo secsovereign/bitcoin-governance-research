@@ -155,14 +155,10 @@ class OptimizedMergedByBackfiller:
             print(f"Filtered to {len(prs):,} merged PRs")
         
         if maintainers_only:
-            maintainers = {
-                'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-                'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-                'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-                'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-            }
-            prs = [p for p in prs 
-                   if (p.get('author') or '').lower() in [m.lower() for m in maintainers]]
+            from src.utils.maintainers import load_maintainer_login_set
+            maintainers = load_maintainer_login_set()
+            prs = [p for p in prs
+                   if (p.get('author') or '').lower() in maintainers]
             print(f"Filtered to {len(prs):,} maintainer PRs")
         
         # Get PRs that need backfilling (don't have merged_by)

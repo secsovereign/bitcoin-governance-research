@@ -1,6 +1,45 @@
-data/processed/cleaned_prs.jsonl
-data/processed/enriched_prs.jsonl
+# Local corpora stay on disk. gitignore ≠ delete.
+# Never: git clean -fd / git clean -fdx (wipes ignored dumps).
+# Resync a missing dump: scripts/collect_all.py (skips files that exist).
+
+# ── Local corpora ──
+data/processed/
+data/irc/raw/
+data/mailing_lists/raw/
+data/mailing_lists/gnusha/
+data/mailing_lists/cryptography_raw/
+data/bitcointalk/*.bak
+data/satoshi_archive/nakamoto-archive/src/
+data/classification/batches/
+data/**/*.log
+
 *.jsonl
+*.bak
+*.gz
+*.mbox
+*.tgz
+*.rar
+*.zip
+
+# ── Keep small fixtures, manifests, curated docs ──
+!data/**/manifest.json
+!data/**/*_manifest.json
+!data/**/repair_manifest.json
+!data/github/samples/
+!data/github/samples/**
+!data/github/test/
+!data/github/test/**
+!data/irc/messages_sample.jsonl
+!data/mailing_lists/emails_sample.jsonl
+!data/satoshi_archive/nakamoto-archive/doc/
+!data/satoshi_archive/nakamoto-archive/doc/**
+!data/satoshi_archive/nakamoto-archive/README.md
+
+# Dated / oversized analysis extracts (keep the undated cite files)
+analysis/findings/data/code_turnover_analysis_*.json
+findings/data/code_turnover_analysis_*.json
+
+# ── Python / env ──
 __pycache__/
 *.pyc
 *.pyo

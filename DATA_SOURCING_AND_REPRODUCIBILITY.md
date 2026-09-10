@@ -1,7 +1,7 @@
 # Data Sourcing and Reproducibility
 
-**Date**: 2026-01-07  
-**Purpose**: Document data sources and enable reproducibility
+**Date**: 2026-09-10  
+**Purpose**: Document data sources and enable reproducibility. Raw corpora are gitignored; clones resync with `scripts/collect_all.py`.
 
 ---
 
@@ -14,7 +14,7 @@
 **Authentication**: Personal Access Token (required for higher rate limits)
 
 **Data Collected**:
-- Pull Requests (PRs): 23,478 PRs
+- Pull Requests (PRs): 25,122 PRs
 - Issues: 8,890 issues
 - Commits: Full commit history
 - Reviews: All PR reviews
@@ -25,47 +25,46 @@
 
 ### Secondary Sources
 
-**Mailing Lists**: Collected via `scripts/data_collection/mailing_list_collector.py`  
-**IRC Channels**: Collected via `scripts/data_collection/irc_collector.py`  
-**Satoshi Archive**: Collected via `scripts/data_collection/satoshi_archive_collector.py`
-  - Source: GitHub archive `lugaxker/nakamoto-archive` repository
-  - Contains 549 Satoshi Nakamoto communications (2008-2015)
-  - Includes emails, forum posts, code releases, documents
-  - Used for historical governance context analysis
-**Other**: Various collectors in `scripts/data_collection/`
+**Mailing Lists (bitcoin-dev)**: `scripts/data_collection/gnusha_collector.py`  
+**Source**: https://gnusha.org/pi/bitcoindev public-inbox  
+**Coverage**: 24,644 emails → `data/mailing_lists/emails.jsonl`
+
+**Mailing Lists (cryptography)**: `scripts/data_collection/cryptography_ml_collector.py`  
+**Source**: https://www.metzdowd.com/pipermail/cryptography/  
+**Coverage**: 26,420 emails → `data/mailing_lists/cryptography.jsonl`  
+**Dedupe**: 2 `message_id` overlaps with bitcoin-dev when analyses combine lists  
+**Local cache**: pipermail `.txt.gz` under `data/mailing_lists/cryptography_raw/` is gitignored (re-downloadable). Do not commit `*.bak` (e.g. Bitcointalk pre-reindex backup).
+
+**IRC Channels**: `scripts/data_collection/irc_collector.py` → `430,613` messages in `data/irc/messages.jsonl`
+
+**Delving Bitcoin**: `scripts/data_collection/delving_collector.py` → `4,662` posts
+
+**Bitcointalk (board 6)**: `scripts/data_collection/bitcointalk_collector.py` → `158,917` posts  
+**Gap**: topic `n_posts` exceeds stored posts by ~18k. That is a parser ceiling (unrecoverable by refetch), not a missing-download. Do not treat board totals as a completeness check.
+
+**Satoshi Archive**: `scripts/data_collection/satoshi_archive_collector.py` (549 communications, separate from board scrape)
+
+**Orchestration**: `scripts/collect_all.py` (initial) / `scripts/update_all.py` (incremental)
+
 
 ---
 
-## Raw Data Files
+## What is in git vs local
 
-### Large Files (Not Included in ZIP)
+**In git:** scripts, findings markdown, analysis JSON (`findings/data/`, `analysis/findings/data/`), samples, manifests, maintainer lists.
 
-**Location**: `data/github/`
+**Local only (resync):** every corpus under `data/` except samples/manifests/config. That includes GitHub JSONL, IRC raw HTML + messages, mailing-list dumps, Delving, Bitcointalk, processed JSONL, and Satoshi archive binaries. See `data/README.md`.
 
-| File | Size | Description | Included? |
-|------|------|-------------|------------|
-| `prs_raw.jsonl` | 230M | All PRs (23,478) | ❌ No (too large) |
-| `issues_raw.jsonl` | 50M | All issues (8,890) | ❌ No (too large) |
-| `commits_raw.jsonl` | 5.8M | Commit history | ❌ No (too large) |
-| `merged_by_mapping.jsonl` | 625K | Merged_by backfill data | ✅ Yes (critical) |
+Do not run `git clean -fd` / `git clean -fdx` — those delete ignored dumps. `collect_all.py` skips files that already exist.
 
-**Why Not Included**: Raw data files are too large (285M+ total). Scripts can regenerate them.
+```bash
+python scripts/collect_all.py
+python scripts/update_all.py
+```
 
 ### Analysis Result Files (Included)
 
-**Location**: `findings/*.json`
-
-| File | Size | Description | Included? |
-|------|------|-------------|-----------|
-| `merge_pattern_analysis.json` | ~100K | Merge pattern results | ✅ Yes |
-| `quick_insights.json` | ~50K | Quick insights results | ✅ Yes |
-| `temporal_analysis.json` | 28K | Temporal analysis results | ✅ Yes |
-| `novel_interpretations.json` | 28K | Novel interpretations | ✅ Yes |
-| `interdisciplinary_analysis.json` | ~50K | Interdisciplinary results | ✅ Yes |
-| `network_data.json` | 96K | Network data for visualization | ✅ Yes |
-| `validation_results.json` | 68K | Validation results | ✅ Yes |
-| `enhanced_funding_analysis.json` | ~50K | Enhanced funding results | ✅ Yes |
-| `funding_correlation.json` | ~10K | Funding correlation | ✅ Yes |
+**Location**: `findings/data/*.json` and `analysis/findings/data/*.json`
 | `review_quality_enhanced.json` | 148K | Review quality results | ✅ Yes |
 | `funding_analysis.json` | 4.4M | Large funding analysis | ⚠️ Consider excluding |
 
@@ -88,145 +87,27 @@
 
 3. **Collect Raw Data** (if needed):
    ```bash
-   python scripts/data_collection/github_collector.py
-   python scripts/data_collection/backfill_merged_by_optimized.py
-   python scripts/data_collection/mailing_list_collector.py
-   python scripts/data_collection/irc_collector.py
-   python scripts/data_collection/satoshi_archive_collector.py
+   python scripts/collect_all.py          # initial full collect
+   # or incremental:
+   python scripts/update_all.py
    ```
-   **Note**: This takes hours due to API rate limits (5,000 requests/hour for GitHub)
-   **Note**: Satoshi archive collection clones a GitHub repository (no API limits)
+   **Note**: GitHub collection takes hours (API rate limits). Forum/list collectors are separate long poles.
 
-4. **Run Analyses**:
+
+4. **Run analyses + reports**:
    ```bash
-   python scripts/analysis/merge_pattern_analysis.py
-   python scripts/analysis/temporal_analysis.py
-   python scripts/analysis/interdisciplinary_analysis.py
-   # ... etc
+   python scripts/run_all_analyses.py --reports
    ```
 
-### Data Stubs/Samples
-
-**For Large Files**: Create sample files showing structure
-
-**Example**: `data/github/prs_raw_sample.jsonl`
-- First 10 PRs from full dataset
-- Shows data structure
-- Enables understanding without full download
-
----
-
-## What's Included in ZIP
-
-### ✅ Included
-
-1. **All Scripts**:
-   - `scripts/analysis/*.py` - All analysis scripts
-   - `scripts/data_collection/*.py` - All collection scripts
-   - `scripts/validation/*.py` - Validation scripts
-   - `scripts/utils/*.py` - Utility scripts
-
-2. **Analysis Results** (JSON):
-   - All `findings/*.json` files (analysis results)
-   - `merged_by_mapping.jsonl` (critical for self-merge analysis)
-
-3. **All Reports**:
-   - All `findings/*.md` files
-   - Documentation
-
-### ❌ Not Included (Too Large)
-
-1. **Raw Data Files**:
-   - `prs_raw.jsonl` (230M)
-   - `issues_raw.jsonl` (50M)
-   - `commits_raw.jsonl` (5.8M)
-
-**Reason**: Can be regenerated using included scripts
-
-### ⚠️ Consider Excluding
-
-1. **Large Analysis Results**:
-   - `funding_analysis.json` (4.4M)
-
-**Reason**: Very large, may not be essential
-
----
-
-## Recommendations
-
-### Option 1: Include Analysis Results Only (Current)
-
-**Pros**: 
-- All analysis results available
-- Can verify calculations
-- No need to regenerate
-
-**Cons**: 
-- ZIP file larger (~5M from funding_analysis.json)
-- Still missing raw data
-
-### Option 2: Create Data Stubs
-
-**Action**: Create sample files for large datasets
-
-**Example**:
-- `data/github/prs_raw_sample.jsonl` (first 10 PRs)
-- `data/github/issues_raw_sample.jsonl` (first 10 issues)
-- Document structure in README
-
-**Pros**: 
-- Shows data structure
-- Enables understanding
-- Keeps ZIP small
-
-**Cons**: 
-- Can't run full analysis without full data
-
-### Option 3: Exclude Large Analysis Results
-
-**Action**: Exclude `funding_analysis.json` (4.4M)
-
-**Pros**: 
-- Smaller ZIP
-- Can regenerate if needed
-
-**Cons**: 
-- Missing some analysis results
-
----
-
-## Current ZIP Contents
-
-**Included**:
-- ✅ All scripts (can regenerate data)
-- ✅ All analysis result JSONs (including large ones)
-- ✅ All reports
-- ✅ `merged_by_mapping.jsonl` (critical)
-
-**Not Included**:
-- ❌ Raw data files (230M+)
-- ❌ Archive directory
-
-**Size**: 544K (without raw data)
-
----
-
-## Recommendation
-
-**Current approach is good**:
-1. ✅ Scripts included (can regenerate)
-2. ✅ Analysis results included (can verify)
-3. ✅ Critical data included (`merged_by_mapping.jsonl`)
-4. ❌ Raw data excluded (too large, can regenerate)
-
-**Optional Enhancement**: Create data stubs/samples for documentation purposes.
+Samples (structure only): `data/github/samples/`, `data/irc/messages_sample.jsonl`, `data/mailing_lists/emails_sample.jsonl`.
 
 ---
 
 ## Files
 
-- **This document**: `DATA_SOURCING_AND_REPRODUCIBILITY.md`
-- **Collection scripts**: `scripts/data_collection/`
-- **Analysis scripts**: `scripts/analysis/`
-- **Raw data**: `data/github/` (not in ZIP)
-- **Analysis results**: `findings/*.json` (in ZIP)
+- This document: `DATA_SOURCING_AND_REPRODUCIBILITY.md`
+- Local corpora map: `data/README.md`
+- Collectors: `scripts/data_collection/`
+- Analyses: `scripts/analysis/`
+- Reports: `scripts/reporting/`
+- Analysis JSON: `findings/data/`, `analysis/findings/data/`

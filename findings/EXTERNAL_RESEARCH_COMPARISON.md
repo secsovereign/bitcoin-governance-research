@@ -1,6 +1,6 @@
 # External Research Comparison: What Others Have Analyzed
 
-**Date**: 2026-01-07  
+**Date**: 2026-09-10  
 **Status**: ✅ **COMPREHENSIVE REVIEW COMPLETE**
 
 ---
@@ -22,8 +22,8 @@ This document compares our comprehensive analysis with external research on Bitc
 **Our Coverage**: ✅ **COVERED MORE THOROUGHLY**
 - We analyze **actual merge authority** (not just theoretical decentralization)
 - We quantify **power concentration** (81.1% top 3 control)
-- We document **self-merge patterns** (26.5% rate)
-- We measure **zero-review merges** (30.2% historical using MAX with 0.3/0.5 thresholds; 34.1% using SUM with 0.5 threshold)
+- We document **self-merge patterns** (25.5% of 9,793 maintainer-merged PRs)
+- We measure **zero-review merges** (30.3% historical using MAX with 0.3/0.5 thresholds; 34.1% using SUM with 0.5 threshold)
 - **Our analysis goes beyond theoretical claims to quantitative evidence**
 
 **What We Add**:
@@ -50,18 +50,18 @@ This document compares our comprehensive analysis with external research on Bitc
 - Need for realistic assessment of power dynamics
 
 **Our Coverage**: ✅ **COVERED MORE THOROUGHLY**
-- We provide **quantitative evidence** for power concentration (Gini 0.851)
+- We provide **quantitative evidence** for power concentration (authorship Gini 0.851 historical / 0.834 recent; merge Gini 0.623 / 0.667)
 - We document **actual governance failures** (zero-review merges, self-merges)
 - We analyze **temporal patterns** (how governance evolved)
 - We measure **cross-status review segregation** (homophily coefficient)
 - **Our analysis provides the quantitative foundation Walch's legal analysis needs**
 
 **What We Add**:
-- Specific metrics: 81.1% top 3 control, 26.5% self-merge rate
-- Review quality analysis (30.2% zero-review historical using MAX with 0.3/0.5 thresholds)
+- Specific metrics: 81.1% top 3 control, 25.5% self-merge rate
+- Review quality analysis (30.3% zero-review historical using MAX with 0.3/0.5 thresholds)
 - Maintainer timeline analysis (who joined, who left, when)
-- Contributor exit patterns (87.7% exit rate across 7,604 contributors)
-- Cross-platform review integration (IRC, email, GitHub)
+- Contributor exit patterns (90.7% exit rate across 7,827 contributors; selection, not collapse — see `GOVERNANCE_FRAMES.md`)
+- Cross-platform review integration (IRC, combined mailing lists, Delving, Bitcointalk, GitHub)
 
 ---
 
@@ -101,14 +101,14 @@ This document compares our comprehensive analysis with external research on Bitc
 
 **Our Coverage**: ✅ **DIFFERENT FOCUS BUT COMPLEMENTARY**
 - We analyze **review quantity and quality** (not just process description)
-- We measure **zero-review merges** (30.2% historical using MAX with 0.3/0.5 thresholds; 34.1% using SUM with 0.5 threshold)
+- We measure **zero-review merges** (30.3% historical using MAX with 0.3/0.5 thresholds; 34.1% using SUM with 0.5 threshold)
 - We track **review quality distribution** (quality-weighted scoring)
-- We analyze **cross-platform reviews** (IRC, email, GitHub)
+- We analyze **cross-platform reviews** (IRC, combined mailing lists, Delving, Bitcointalk, GitHub)
 - **Our analysis complements security audits by focusing on governance quality**
 
 **What We Add**:
 - Quantitative review metrics (quality-weighted, timeline-aware)
-- Zero-review rate analysis (30.2% historical using MAX with 0.3/0.5 thresholds, 3.4% recent)
+- Zero-review rate analysis (30.3% historical using MAX with 0.3/0.5 thresholds, 3.3% recent)
 - PR importance classification (trivial vs. critical PRs)
 - Review quality matrix (by PR importance)
 - Cross-platform review integration

@@ -113,12 +113,8 @@ def validate_contributor_timeline():
         timeline = data.get('timeline', {})
         
         # Check maintainer exclusion
-        maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-            'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        maintainers = load_maintainer_login_set()
         
         found_maintainers = [c for c in timeline.keys() if c.lower() in maintainers]
         if found_maintainers:
@@ -203,13 +199,9 @@ def validate_maintainer_list_consistency():
     issues = []
     warnings = []
     
-    # Known maintainers from comprehensive_recent_analysis.py
-    expected_maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-        'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-    }
+    # Known maintainers (canonical list + merged_by)
+    from src.utils.maintainers import load_maintainer_login_set
+    expected_maintainers = load_maintainer_login_set()
     
     # Check maintainer timeline
     timeline_file = findings_dir / 'maintainer_timeline_analysis.json'

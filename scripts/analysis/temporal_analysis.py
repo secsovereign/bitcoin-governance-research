@@ -29,12 +29,7 @@ class TemporalAnalyzer:
     def __init__(self, data_dir: Path):
         """Initialize."""
         self.data_dir = data_dir
-        self.maintainers = load_maintainer_login_set() or {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-            'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-        }
+        self.maintainers = load_maintainer_login_set()
     
     def load_prs(self) -> List[Dict[str, Any]]:
         """Load PRs with merged_by data."""
@@ -355,9 +350,34 @@ class TemporalAnalyzer:
         """Get period name for a year."""
         if 2012 <= year <= 2020:
             return 'historical'
-        elif 2021 <= year <= 2025:
+        if year >= 2021:
             return 'recent'
         return 'other'
+
+    def _gini(self, values: List[float]) -> float:
+        """Gini on non-negative values (must be sorted ascending)."""
+        xs = sorted(v for v in values if v > 0)
+        n = len(xs)
+        total = sum(xs)
+        if n < 2 or total <= 0:
+            return 0.0
+        gini_sum = sum((i + 1) * count for i, count in enumerate(xs))
+        gini = (2 * gini_sum) / (n * total) - (n + 1) / n
+        return max(0.0, min(1.0, gini))
+
+    def _concentration_block(self, counts: Dict[str, int]) -> Dict[str, Any]:
+        total = sum(counts.values())
+        sorted_desc = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+        top5 = sum(c for _, c in sorted_desc[:5])
+        top10 = sum(c for _, c in sorted_desc[:10])
+        return {
+            'total': total,
+            'unique': len(counts),
+            'gini_coefficient': self._gini(list(counts.values())),
+            'top5_share': top5 / total if total else 0,
+            'top10_share': top10 / total if total else 0,
+            'top': {name: count for name, count in sorted_desc[:10]},
+        }
     
     def _calculate_time_to_merge(self, pr: Dict[str, Any]) -> Optional[float]:
         """Calculate time to merge in days."""
@@ -564,15 +584,9 @@ class TemporalAnalyzer:
             n = len(sorted_mergers)
             if n == 0:
                 continue
-            
-            cumsum = 0
-            gini_sum = 0
-            for i, (_, count) in enumerate(sorted_mergers):
-                cumsum += count
-                gini_sum += (i + 1) * count
-            
-            gini = (2 * gini_sum) / (n * total_merges) - (n + 1) / n if n > 0 and total_merges > 0 else 0
-            
+
+            gini = self._gini([count for _, count in sorted_mergers])
+
             output[period] = {
                 'total_merges': total_merges,
                 'unique_mergers': len(sorted_mergers),
@@ -581,6 +595,47 @@ class TemporalAnalyzer:
                 'gini_coefficient': gini,
                 'top_mergers': {name: count for name, count in sorted_mergers[:10]}
             }
+
+        return output
+
+    def analyze_authorship_concentration_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """PR-authorship concentration by period (for Gini report)."""
+        print("Analyzing authorship concentration by period...")
+        by_period = defaultdict(Counter)
+        for pr in prs:
+            created = pr.get('created_at')
+            if not created:
+                continue
+            try:
+                year = datetime.fromisoformat(created.replace('Z', '+00:00')).year
+            except (TypeError, ValueError):
+                continue
+            author = (pr.get('author') or '').lower()
+            if author:
+                by_period[self._get_period(year)][author] += 1
+        return {period: self._concentration_block(counts) for period, counts in by_period.items()}
+
+    def analyze_review_concentration_temporal(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Reviewer-volume concentration by period (for Gini report)."""
+        print("Analyzing review concentration by period...")
+        by_period = defaultdict(Counter)
+        for pr in prs:
+            created = pr.get('created_at')
+            if not created:
+                continue
+            try:
+                year = datetime.fromisoformat(created.replace('Z', '+00:00')).year
+            except (TypeError, ValueError):
+                continue
+            period = self._get_period(year)
+            for review in pr.get('reviews') or []:
+                reviewer = (review.get('author') or review.get('user') or '')
+                if isinstance(reviewer, dict):
+                    reviewer = reviewer.get('login') or ''
+                reviewer = reviewer.lower()
+                if reviewer:
+                    by_period[period][reviewer] += 1
+        return {period: self._concentration_block(counts) for period, counts in by_period.items()}
         
         return output
     
@@ -1145,6 +1200,8 @@ class TemporalAnalyzer:
             'network_evolution': self.analyze_temporal_network_evolution(prs),
             'voting_bloc_temporal': self.analyze_voting_bloc_temporal(prs),
             'conflict_resolution_temporal': self.analyze_conflict_resolution_temporal(prs),
+            'authorship_concentration_temporal': self.analyze_authorship_concentration_temporal(prs),
+            'review_concentration_temporal': self.analyze_review_concentration_temporal(prs),
             'analysis_date': datetime.now().isoformat()
         }
         
@@ -1258,23 +1315,18 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Comprehensive temporal analysis')
-    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent.parent / 'data',
+    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent / 'data',
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'data' / 'temporal_analysis.json',
-                       help='Output JSON file')
     
     args = parser.parse_args()
     
     analyzer = TemporalAnalyzer(args.data_dir)
     results = analyzer.run_all_analyses()
     analyzer.print_results(results)
-    
-    # Save results
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(results, f, indent=2, default=str)
-    
-    print(f"\nResults saved to: {args.output}")
+
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('temporal_analysis.json', results)
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
 
 
 if __name__ == '__main__':

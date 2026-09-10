@@ -22,6 +22,7 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.mailing_lists import load_emails
 from src.schemas.analysis_results import create_result_template
 
 logger = setup_logger()
@@ -90,15 +91,7 @@ class LukeCaseStudyAnalyzer:
     
     def _load_emails(self) -> List[Dict[str, Any]]:
         """Load email data."""
-        emails_file = self.processed_dir / 'cleaned_emails.jsonl'
-        if not emails_file.exists():
-            return []
-        
-        emails = []
-        with open(emails_file, 'r') as f:
-            for line in f:
-                emails.append(json.loads(line))
-        return emails
+        return load_emails()
     
     def _load_irc(self) -> List[Dict[str, Any]]:
         """Load IRC data."""

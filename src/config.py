@@ -53,11 +53,13 @@ class Config:
                     'rate_limit_buffer': 0.9
                 },
                 'mailing_lists': {
+                    'source': 'gnusha',
                     'bitcoin_dev': {
-                        'archive_url': 'https://lists.linuxfoundation.org/pipermail/bitcoin-dev/'
+                        'archive_url': 'https://gnusha.org/pi/bitcoindev/',
+                        'git_url': 'https://gnusha.org/pi/bitcoindev'
                     },
                     'bitcoin_core_dev': {
-                        'archive_url': 'https://lists.linuxfoundation.org/pipermail/bitcoin-core-dev/'
+                        'archive_url': 'https://gnusha.org/pi/bitcoindev/'
                     }
                 },
                 'luke_case': {
@@ -79,12 +81,13 @@ class Config:
     def _apply_env_overrides(self):
         """Apply environment variable overrides to config."""
         # GitHub token
-        if os.getenv('GITHUB_TOKEN'):
+        token = os.getenv('GITHUB_TOKEN') or os.getenv('GH_TOKEN')
+        if token:
             if 'data_collection' not in self.config:
                 self.config['data_collection'] = {}
             if 'github' not in self.config['data_collection']:
                 self.config['data_collection']['github'] = {}
-            self.config['data_collection']['github']['token'] = os.getenv('GITHUB_TOKEN')
+            self.config['data_collection']['github']['token'] = token
         
         # Data directories
         if os.getenv('DATA_DIR'):

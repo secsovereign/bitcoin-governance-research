@@ -13,28 +13,27 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 
+project_root = Path(__file__).resolve().parents[2]
+import sys
+
+sys.path.insert(0, str(project_root))
+
 class EnhancedReviewQualityAnalyzer:
     """Enhanced review quality analysis with temporal and reviewer-specific metrics."""
     
     def __init__(self, data_dir: Path):
         """Initialize analyzer."""
         self.data_dir = data_dir
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
     
     def load_prs(self) -> List[Dict[str, Any]]:
-        """Load PRs from JSONL file."""
-        prs_file = self.data_dir / 'github' / 'prs_raw.jsonl'
-        prs = []
-        with open(prs_file) as f:
-            for line in f:
-                if line.strip():
-                    prs.append(json.loads(line))
-        return prs
+        """Load PRs with merged_by backfill when present."""
+        from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
+
+        prs_file = self.data_dir / "github" / "prs_raw.jsonl"
+        mapping = self.data_dir / "github" / "merged_by_mapping.jsonl"
+        return load_prs_with_merged_by(prs_file, mapping if mapping.exists() else None)
     
     def analyze_temporal_trends(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Analyze review quality trends by year."""
@@ -411,6 +410,9 @@ def main():
     """Main entry point."""
     import sys
     from pathlib import Path
+
+    project_root = Path(__file__).parent.parent.parent
+    sys.path.insert(0, str(project_root))
     
     if len(sys.argv) > 1:
         data_dir = Path(sys.argv[1])
@@ -422,13 +424,9 @@ def main():
     results = analyzer.run_enhanced_analysis()
     analyzer.print_results(results)
     
-    # Save results
-    output_file = data_dir.parent / 'findings' / 'review_quality_enhanced.json'
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_file, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"\nResults saved to: {output_file}")
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('review_quality_enhanced.json', results)
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
 
 
 if __name__ == '__main__':

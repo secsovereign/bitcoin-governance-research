@@ -241,12 +241,8 @@ def t_test_self_merge_stability(prs):
     if not SCIPY_AVAILABLE:
         return None
     
-    maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-        'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    maintainers = load_maintainer_login_set()
     
     # Calculate yearly self-merge rates
     yearly_rates = Counter()
@@ -315,17 +311,12 @@ def t_test_self_merge_stability(prs):
 
 def calculate_confidence_intervals(prs):
     """Calculate 95% confidence intervals for key metrics."""
-    maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-        'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    maintainers = load_maintainer_login_set()
     
-    # Self-merge rate
-    maintainer_merged = [p for p in prs if p.get('merged', False) and 
-                        (p.get('author', '').lower() in maintainers or 
-                         (p.get('merged_by') or '').lower() in maintainers)]
+    # Same denominator as merge_pattern: merged PRs authored by a maintainer
+    maintainer_merged = [p for p in prs if p.get('merged', False) and
+                        (p.get('author') or '').lower() in maintainers]
     self_merges = sum(1 for p in maintainer_merged 
                      if (p.get('author') or '').lower() == (p.get('merged_by') or '').lower())
     self_merge_ci = calculate_binomial_ci(self_merges, len(maintainer_merged))
@@ -406,15 +397,12 @@ def main():
         'confidence_intervals': ci_results
     }
     
-    # Save results
-    output_dir = script_dir / 'findings'
-    output_dir.mkdir(exist_ok=True)
-    
-    json_file = output_dir / 'statistical_significance_tests.json'
-    with open(json_file, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"\nResults saved to: {json_file}")
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('statistical_significance_tests.json', results)
+    leftover = script_dir / 'findings' / 'statistical_significance_tests.json'
+    if leftover.exists():
+        leftover.unlink()
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
     
     # Print summary
     print("\n" + "="*80)

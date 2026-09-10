@@ -363,11 +363,9 @@ class ReleaseSigningAnalyzer:
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'release_signing.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        
-        logger.info(f"Results saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('release_signing.json', results)
+        logger.info(f"Results saved to {', '.join(str(p) for p in written)}")
         
         # Generate summary
         self._generate_summary(results)

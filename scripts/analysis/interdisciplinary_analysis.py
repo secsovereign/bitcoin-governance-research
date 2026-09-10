@@ -31,12 +31,8 @@ class InterdisciplinaryAnalyzer:
     def __init__(self, data_dir: Path):
         """Initialize."""
         self.data_dir = data_dir
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
     
     def load_prs(self) -> List[Dict[str, Any]]:
         """Load PRs with merged_by data."""
@@ -551,21 +547,16 @@ def main():
     parser = argparse.ArgumentParser(description='Interdisciplinary analysis')
     parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent / 'data',
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'interdisciplinary_analysis.json',
-                       help='Output JSON file')
     
     args = parser.parse_args()
     
     analyzer = InterdisciplinaryAnalyzer(args.data_dir)
     results = analyzer.run_all_analyses()
     analyzer.print_results(results)
-    
-    # Save results
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(results, f, indent=2, default=str)
-    
-    print(f"\nResults saved to: {args.output}")
+
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('interdisciplinary_analysis.json', results)
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
 
 
 if __name__ == '__main__':

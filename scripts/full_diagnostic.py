@@ -19,8 +19,9 @@ ESSENTIAL_FINDINGS = [
     'EXECUTIVE_SUMMARY.md',
     'RESEARCH_METHODOLOGY.md',
     'GLOSSARY_AND_CONTEXT.md',
+    'GOVERNANCE_FRAMES.md',
     'MERGE_PATTERN_BREAKDOWN.md',
-    'CORE_VS_COMMONS_GOVERNANCE_COMPARISON.md',
+    'ARCHITECTURAL_DIVERGENCE_FINAL_REPORT.md',
     'TEMPORAL_ANALYSIS_REPORT.md',
     'INTERDISCIPLINARY_ANALYSIS_REPORT.md',
     'EXTERNAL_RESEARCH_COMPARISON.md',
@@ -32,13 +33,19 @@ ESSENTIAL_FINDINGS = [
 
 # Essential scripts
 ESSENTIAL_SCRIPTS = [
+    'scripts/collect_all.py',
+    'scripts/update_all.py',
+    'scripts/run_all_analyses.py',
     'scripts/data_collection/github_collector.py',
-    'scripts/data_collection/mailing_list_collector.py',
+    'scripts/data_collection/gnusha_collector.py',
+    'scripts/data_collection/cryptography_ml_collector.py',
     'scripts/data_collection/irc_collector.py',
+    'scripts/data_collection/delving_collector.py',
+    'scripts/data_collection/bitcointalk_collector.py',
     'scripts/data_collection/satoshi_archive_collector.py',
     'scripts/data_collection/backfill_merged_by_optimized.py',
+    'scripts/reporting/generate_findings_reports.py',
     'scripts/analysis/analyze_satoshi_governance.py',
-    'comprehensive_recent_analysis.py',
 ]
 
 # Essential data files

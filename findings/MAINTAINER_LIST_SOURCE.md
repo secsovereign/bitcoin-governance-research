@@ -1,13 +1,13 @@
 # Maintainer List Source Documentation
 
-**Date**: 2026-01-07  
+**Date**: 2026-09-10  
 **Purpose**: Document the source and validation of the maintainer list used in all analyses
 
 ---
 
 ## Maintainer List
 
-**Total Maintainers Identified**: 21
+**Total Maintainers Identified**: 22 (21 historical roster + `sedited`, inferred from merge keys)
 
 **List**:
 1. laanwj
@@ -31,15 +31,17 @@
 19. luke-jr
 20. glozow
 21. TheCharlatan
+22. sedited (inferred current merger; 2022+ top-5 merge share — not on the 2025 “active 5” writeup)
 
-### Current Active Maintainers (as of 2025)
+### Current Active Maintainers (as of 2026)
 
-**5 people** with merge authority who have merged since 2023:
+**Merge keys in recent use** (merged since 2023, including inferred):
 - fanquake
 - ryanofsky
 - hebasto
 - achow101
 - TheCharlatan
+- sedited
 
 ---
 
@@ -53,7 +55,7 @@
    - Cross-referenced with historical commit records
 
 2. **Historical Commit Records** (2009-2025)
-   - Analyzed 9,235 maintainer merged PRs
+   - Analyzed 9,793 maintainer merged PRs
    - Identified all users who have merged PRs
    - Verified maintainer status through merge activity patterns
 
@@ -86,7 +88,7 @@
    - **Method**: GitHub API (`repos/bitcoin/bitcoin/contributors`)
 
 4. **Historical Analysis** ✅ **VERIFIED**
-   - Verified maintainer status through merge activity (9,235 maintainer merged PRs)
+   - Verified maintainer status through merge activity (9,793 maintainer merged PRs)
    - Identified 17 people who have actually merged PRs (from maintainer list)
    - Identified 4 additional maintainers who have never merged (may have other roles)
    - **Cross-reference**: Top contributors from GitHub API match active mergers in our analysis
@@ -155,7 +157,7 @@
 ## Limitations and Acknowledgment
 
 **Limitation**: Maintainer list is based on:
-1. Merge activity analysis (9,235 maintainer merged PRs)
+1. Merge activity analysis (9,793 maintainer merged PRs)
 2. Historical commit records
 3. Cross-reference with external research
 
@@ -183,7 +185,7 @@
 - Power concentration metrics would be affected
 
 **Defense**: 
-- List is based on observable merge activity (9,235 PRs)
+- List is based on observable merge activity (9,793 PRs)
 - Cross-referenced with external research
 - More comprehensive than external research (21 vs. 13)
 - Acknowledged limitation: "If maintainers are missing or incorrectly included, analysis would need adjustment"
@@ -193,7 +195,7 @@
 ## Files Using Maintainer List
 
 **Hardcoded in**:
-- `comprehensive_recent_analysis.py` (legacy script, line 78-83). Current maintainer analysis uses `scripts/run_all_analyses.py`.
+- Current maintainer analysis uses `scripts/run_all_analyses.py`.
 - `scripts/analysis/maintainer_timeline_analysis.py` (line 72-77)
 - `scripts/analysis/contributor_timeline_analysis.py` (line 72-77)
 - Multiple other analysis scripts (see grep results)
@@ -202,5 +204,5 @@
 
 ---
 
-**Last Updated**: 2026-01-07  
+**Last Updated**: 2026-09-10  
 **Status**: ✅ Source documented, validation attempted, limitation acknowledged

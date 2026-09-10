@@ -1,14 +1,14 @@
 # Cross-Platform Influence Networks Report
 
-**Analysis Date**: 2026-01-18  
-**Data Sources**: GitHub PRs (23,615), IRC messages (433,048), Emails (19,446)  
+**Analysis Date**: 2026-09-10  
+**Data Sources**: GitHub PRs (25,122), IRC (198 actors / 51,064 ML messages deduped to 51,062), Delving (4,662 posts), Bitcointalk (158,917 posts)  
 **Purpose**: Build comprehensive influence networks across platforms and identify hidden influencers
 
 ---
 
 ## Overview
 
-This report analyzes influence networks across GitHub, IRC, and mailing lists, identifying actors who span multiple platforms and those who operate primarily in informal channels.
+This report analyzes influence networks across GitHub, IRC, mailing lists, Delving Bitcoin, and Bitcointalk (board 6), identifying actors who span multiple platforms and those who operate primarily in informal channels.
 
 ---
 
@@ -18,72 +18,84 @@ This report analyzes influence networks across GitHub, IRC, and mailing lists, i
 
 | Platform | Unique Actors |
 |----------|---------------|
-| **GitHub** | 2,989 |
-| **IRC** | 2,666 |
-| **Email** | 1,820 |
+| **GitHub** | 3,199 |
+| **IRC** | 198 |
+| **Email (combined ML)** | 2,508 |
+| **Delving** | 432 |
+| **Bitcointalk** | 15,455 |
 
-### 2. Identity Overlap
-
-#### Exact Username Matching (Lower Bound)
+### 2. Identity Overlap (exact username matching)
 
 | Overlap | Count | % of GitHub |
 |---------|-------|-------------|
-| GitHub-IRC | 236 | 9.8% |
-| GitHub-Email | 21 | 0.9% |
-| IRC-Email | 24 | 0.9% |
-| All Platforms | 10 | 0.4% |
+| GitHub–IRC | 234 | 9.0% |
+| GitHub–Email | 79 | 3.0% |
+| GitHub–Delving | 117 | 4.5% |
+| GitHub–Bitcointalk | 211 | — |
+| IRC–Email | 77 | 2.9% |
+| All platforms (4+) | 38 | — |
 
-#### Enhanced Resolution (Verified Maintainers)
+### 3. PR Discussion Across Platforms
 
-Using documented maintainer aliases, we verified **20 core maintainers** are present across all platforms:
+| Channel | PRs mentioned |
+|---------|---------------|
+| IRC | 19,612 |
+| Email (combined ML) | 6,705 |
+| Delving | 535 |
+| Bitcointalk | 632 |
+| Discussed off-GitHub before merge | 7,126 |
+| Informal→GitHub flow rate | 0.284 |
 
-| Maintainer | GitHub | IRC | Email |
-|------------|--------|-----|-------|
-| laanwj | ✓ | ✓ (wumpus) | ✓ |
-| sipa | ✓ | ✓ | ✓ |
-| gavinandresen | ✓ | ✓ | ✓ |
-| gmaxwell | ✓ | ✓ (nullc) | ✓ |
-| thebluematt | ✓ | ✓ | ✓ |
-| ... and 15 more | | | |
+### 3b. Informal→GitHub flow by era
+
+| Era | GitHub PRs | IRC mentions | Email | Delving | Bitcointalk | Discussed first | Flow rate |
+|-----|------------|--------------|-------|---------|-------------|-----------------|-----------|
+| Early (2010–2014) | 3,766 | 0 | 179 | 0 | 180 | 5 | 0.001 |
+| Scaling / SegWit (2015–2017) | 4,594 | 4,165 | 2,116 | 0 | 149 | 2,615 | 0.569 |
+| Taproot (2018–2021) | 8,141 | 8,504 | 3,790 | 0 | 169 | 4,477 | 0.550 |
+| Modern (2022+) | 8,609 | 7,710 | 727 | 535 | 161 | 21 | 0.002 |
+
+### 4. Enhanced Identity Resolution
+
+- **Manual alias identities verified**: 20
+- **GitHub–Delving exact overlap**: 117
+- **Delving users mentioning PRs**: 87
+- **Bitcointalk users mentioning PRs**: 246
 
 ---
 
 ## Implications
 
-1. **Core Governance Verified**: 21 maintainers confirmed across all platforms
-2. **Lower Bound**: 236 exact-match overlap is minimum; actual overlap likely higher
-3. **Platform Separation**: Non-maintainer overlap rates suggest distinct communities
-4. **Hidden Influencers**: Many IRC/email participants are not on GitHub
+1. **Governance extends beyond GitHub** — thousands of PR references appear in IRC, mailing lists, Delving, and Bitcointalk.
+2. **Email overlap was undercounted** — combining cryptography ML with bitcoin-dev raises GitHub–email links substantially vs bitcoin-dev alone.
+3. **Forums add distinct actors** — Delving and Bitcointalk contribute actors with limited GitHub presence.
+4. **Hidden influencers** — many high-activity informal participants never open GitHub PRs.
+5. **Agenda-setting is era-specific** — informal→GitHub *before PR open* is a 2015–2021 (IRC/email) pattern. 2022+ Delving/IRC volume is mostly talk *about* already-opened PRs.
 
 ---
 
 ## Methodology
 
-### Identity Resolution Methods
-
-1. **Exact Username Matching**: Baseline overlap (236 GitHub-IRC)
-2. **Enhanced Resolution**: Documented maintainer aliases verified 20 core contributors
-
 ### Data Sources
 
-- **Maintainer Aliases**: Publicly documented (GitHub profiles, mailing list signatures, IRC registrations)
-- **GitHub**: 23,615 PRs
-- **IRC**: 441,931 messages
-- **Email**: 19,351 messages
+- **bitcoin-dev (gnusha)**: 24,644 messages
+- **cryptography (metzdowd)**: 26,420 messages (2 cross-list duplicates removed when combined)
+- **Delving Bitcoin**: 4,662 posts (311 mention Core PRs)
+- **Bitcointalk board 6**: 158,917 posts
+- **Satoshi Bitcointalk archive**: separate curated export (not merged into board scrape)
 
 ### Limitations
 
-- Non-maintainer identity resolution requires manual research
-- Email format ("Name via bitcoin-dev") loses original email addresses
-- IRC nickname variations beyond documented ones not captured
+- Exact username matching is a lower bound on identity overlap.
+- Bitcointalk scrape covers board 6 only (~159k unique posts after key dedupe; ~18k gap vs topic metadata).
+- Delving postdates SegWit; zero keyword-filtered Delving traffic during SegWit is expected.
 
 ### Data Files
 
-- `analysis/findings/data/cross_platform_networks.json` - Basic network analysis
-- `analysis/findings/data/enhanced_identity_resolution.json` - Verified maintainer identities
+- `analysis/findings/data/cross_platform_networks.json`
+- `analysis/findings/data/enhanced_identity_resolution.json`
 
 ---
 
-## Data Source
+**Generated by**: `scripts/reporting/generate_cross_platform_reports.py`
 
-`analysis/findings/data/cross_platform_networks.json`

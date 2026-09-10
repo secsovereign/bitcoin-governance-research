@@ -40,13 +40,8 @@ class BIPProcessAnalyzer:
         self.findings_dir = self.analysis_dir / 'findings' / 'data'
         self.findings_dir.mkdir(parents=True, exist_ok=True)
         
-        # Maintainer list (from Core repository)
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
     
     def run_analysis(self):
         """Run BIP process analysis."""
@@ -157,28 +152,53 @@ class BIPProcessAnalyzer:
         return prs
     
     def _extract_bip_authors(self, bip: Dict[str, Any]) -> List[str]:
-        """Extract authors from BIP content."""
-        content = bip.get('content', '')
+        """Extract authors from the BIP preamble (`Authors:` / `Author:`)."""
+        content = bip.get('content', '') or ''
         if not content:
             return []
-        
-        # Look for Author: line in BIP content
-        author_pattern = r'Author:\s*(.+)'
-        match = re.search(author_pattern, content, re.IGNORECASE | re.MULTILINE)
-        if match:
-            authors_str = match.group(1).strip()
-            # Split by comma and clean up
-            authors = [a.strip() for a in authors_str.split(',')]
-            # Extract usernames/emails (try to normalize)
-            normalized = []
-            for author in authors:
-                # Remove email addresses if present, extract name
-                author = re.sub(r'<[^>]+>', '', author).strip()
-                if author:
-                    normalized.append(author.lower())
-            return normalized
-        
-        return []
+
+        preamble = content
+        pre_end = content.find('</pre>')
+        if content.lstrip().startswith('<pre>') and pre_end > 0:
+            preamble = content[:pre_end]
+
+        authors: List[str] = []
+        capturing = False
+        for raw_line in preamble.splitlines():
+            line = raw_line.rstrip()
+            header = re.match(r'^\s*Authors?:\s*(.*)$', line, re.IGNORECASE)
+            if header:
+                capturing = True
+                remainder = header.group(1).strip()
+                if remainder:
+                    authors.extend(self._split_bip_author_field(remainder))
+                continue
+            if capturing:
+                if re.match(r'^\s{2,}(\S.*)$', line) and not re.match(
+                    r'^\s+(BIP|Layer|Title|Status|Type|Assigned|License|Discussion|Version|Requires|Comments-URI|Comments-Summary|Post-History|Created):',
+                    line,
+                    re.IGNORECASE,
+                ):
+                    authors.extend(self._split_bip_author_field(line.strip()))
+                    continue
+                capturing = False
+
+        placeholders = ('list of authors', 'email addrs', 'your name here')
+        normalized = []
+        seen = set()
+        for author in authors:
+            cleaned = re.sub(r'<[^>]+>', '', author).strip().lower()
+            cleaned = re.sub(r'\s+', ' ', cleaned)
+            if not cleaned or any(p in cleaned for p in placeholders):
+                continue
+            if cleaned not in seen:
+                seen.add(cleaned)
+                normalized.append(cleaned)
+        return normalized
+
+    def _split_bip_author_field(self, value: str) -> List[str]:
+        parts = re.split(r'\s+and\s+|,\s*(?![^<]*>)', value)
+        return [p.strip(' ;') for p in parts if p.strip(' ;')]
     
     def _analyze_proposers(
         self,
@@ -264,7 +284,7 @@ class BIPProcessAnalyzer:
                 champion_prs[author].add(pr.get('number'))
             
             # Comments count as activity (approximate with comments_count)
-            comments = pr.get('comments_count', 0)
+            comments = pr.get('comments_count') or 0
             if comments > 0:
                 champion_activity[author] += comments
         
@@ -430,10 +450,9 @@ class BIPProcessAnalyzer:
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'bip_analysis.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        logger.info(f"Results saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('bip_analysis.json', results)
+        logger.info(f"Results saved to {', '.join(str(p) for p in written)}")
 
 
 def main():

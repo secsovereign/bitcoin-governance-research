@@ -1,7 +1,7 @@
 # Maintainer Premium: Identity vs Merits (Fair Pass)
 
-**Date:** 2026-07-13  
-**Status:** Fair/complete v7 (author-prep + Phase 2 path/ACK/test-diff signals)  
+**Date:** 2026-09-10  
+**Status:** Fair/complete v7.0 (author-prep + Phase 2 path/ACK/test-diff signals)  
 **Machine-readable:** `findings/data/maintainer_premium.json`  
 **Script:** `scripts/analysis/maintainer_premium.py`  
 **Quality helpers:** `src/utils/pr_quality.py`  
@@ -33,87 +33,58 @@ Do outcomes favor **who** submitted a change — via merge privilege, reputation
 
 | Window | Raw maint / non | Peer-merge maint / non | Self-merge share of maint merges |
 |--------|----------------:|-----------------------:|---------------------------------:|
-| All-time | 80.0% / 54.5% | **59.2% / 54.4%** | 25.9% |
-| 2022+ | 81.7% / 50.8% | **62.8% / 50.8%** | 23.2% |
+| All-time | 80.0% / 54.4% | **59.4% / 54.3%** | 25.8% |
+| 2022+ | 81.9% / 50.7% | **63.2% / 50.6%** | 22.8% |
+
+This share uses the premium timeline (`is_maintainer_at` on the enriched frame). The merge-pattern cite is **25.5% of 9,793** canonical-roster authored merges (`MERGE_PATTERN_BREAKDOWN.md`). Do not collapse the two.
 
 ### 2. Established outsiders are not broadly blocked
 
 | Segment (non-maintainers) | All-time merge | 2022+ merge |
 |---------------------------|---------------:|------------:|
-| First PR (cold start) | **28.9%** | **16.0%** |
-| Prior merges ≥5 | 67.3% | 68.6% |
-| Top-20 volume authors | 70.1% | 71.1% |
+| First PR (cold start) | **28.7%** | **16.1%** |
+| Prior merges ≥5 | 67.4% | 68.6% |
+| Top-20 volume authors | 69.8% | 71.1% |
 
 ### 3. Large outsider PRs almost never land
 
-Closed ≥2k LOC: non-maint **~7.7%** all-time / **~4.4%** since 2022. Closed ≥5k LOC since 2022: **~1.3%**.
+Closed ≥2k LOC: non-maint **7.6%** all-time / **5.0%** since 2022.
 
 ### 4. Author-prep matched gaps
 
-Mean author-prep equal/higher for outsiders. High band (**≥ 0.65**): **~76% / ~59%** all-time (**~17 pp**); **~78% / ~58%** since 2022 (**~20 pp**).
+Mean author-prep (maint / non): 0.392 / 0.407.  
+High band (≥ 0.65): **76.3% / 58.7%** all-time (**17.5 pp**); 2022+ **20.5 pp**.
 
 ### 5. Phase 2 signals (descriptive)
 
-| Stratum | All-time maint / non | Gap |
-|---------|---------------------:|----:|
-| Concept/approach ACK received | 79.0% / 68.0% | **~11 pp** |
-| High prep **and** nontrivial test diff (≥10 test LOC) | 74.5% / 55.2% | **~19 pp** |
-| Path risk: **consensus_sensitive** | 72.9% / **34.5%** | **~38 pp** |
-| Path risk: networking | 74.4% / 52.2% | ~22 pp |
-| Path risk: security_sensitive | 78.6% / 56.9% | ~22 pp |
-| Path risk: other | 81.9% / 58.2% | ~24 pp |
+| Signal | All-time gap | 2022+ gap |
+|--------|-------------:|----------:|
+| Concept/approach ACK received | 11.3 pp | 13.3 pp |
+| High prep ∧ nontrivial test diff | 20.1 pp | 23.5 pp |
+| CI | unavailable_on_enriched_corpus | unavailable_on_enriched_corpus |
 
-Consensus-path outsider failure is sharper than the average-case story. Concept ACK narrows but does not close the gap.
+### 6. Controlled logistic (sklearn)
 
-**CI:** unavailable on enriched corpus — closed as documented unavailable (`author_prep_sensitivity.json` → `ci_status`). Check-run collection is future backlog, not a soft claim.
+Outcome is raw merge (includes self-merge). `is_maintainer` OR **with** prior-merges control: 1.36. **Without** prior-merges control: 3.63. Prior-merge count absorbs much of the identity coefficient.
 
-### 6. Phase 3 sensitivity (`findings/data/author_prep_sensitivity.json`)
+### 7. Phase 3 sensitivity (`author_prep_sensitivity.json`)
 
-| Variant | Gap (pp) |
-|---------|---------:|
-| prep ≥ 0.65 (canonical) | **17.0** |
-| prep ≥ 0.50 | 18.1 |
-| body > 200 only | 22.7 |
-| body > 500 only | 25.9 |
-| tests touch only | 20.5 |
-| body > 200 ∧ tests (= prep ≥ 0.65 atoms) | 17.0 |
-| body > 500 ∧ tests | 17.8 |
-| prep ≥ 0.65 ∧ nontrivial test diff | 19.4 |
+| Variant | Gap (pp) | Non-maint merge | n_non |
+|---------|---------:|----------------:|------:|
+| prep_ge_065_canonical | 17.5 | 58.7% | 4,179 |
+| prep_ge_050 | 18.4 | 60.1% | 5,022 |
+| body_gt_200_only | 23.0 | 54.3% | 8,037 |
+| body_gt_500_only | 26.1 | 47.9% | 4,572 |
+| tests_touch_only | 20.9 | 57.8% | 5,442 |
+| body_gt_200_and_tests | 17.5 | 58.7% | 4,179 |
+| body_gt_500_and_tests | 18.4 | 53.5% | 2,642 |
+| prep_ge_065_and_nontrivial_test_diff | 20.1 | 54.7% | 2,788 |
 
-`corr(author_prep, log LOC) ≈ 0.38` (vs substance ~0.85); below 0.6 flag threshold.
 
-### 7. High-prep closed-outsider sample (n=100)
+## Reading
 
-Artifact: `findings/data/high_prep_outsider_closed_sample.json`  
-Pool: non-maintainer, closed-unmerged, author_prep ≥ 0.65; stratified by path_risk.
+Self-merge drives most of the average-case raw gap (80.0% vs 54.4% raw; 59.4% vs 54.3% peer). Cold-start first PRs land at 28.7% all-time (16.1% since 2022). Established outsiders do comparatively well (67.4%). Closed ≥2k LOC outsider PRs almost never land (7.6% all-time / 5.0% since 2022). Author-prep matching (body + tests, no reviews) still shows an identity gap; size_substance is size-heavy and must not be read as quality.
 
-| Primary code | Count |
-|--------------|------:|
-| no_reviews | **45** |
-| reviewed_then_closed | 31 |
-| nack_signal | 22 |
-| staging_or_wip | 2 |
+**n PRs**: 25,122 (maintainer-authored 12,418)
 
-Structured codes (reviews/keywords), not semantic “deserved merge” labels. Nearly half never got a formal review — non-engagement dominates this slice.
-
-### 8. Reputation channel (logistic)
-
-| Model | All-time maint OR | 2022+ maint OR |
-|-------|------------------:|---------------:|
-| **Without** prior-merge control | **~3.6** | **~5.4** |
-| **With** prior-merge control | ~1.36 | ~0.61 |
-
-## What this supports / does not support
-
-**Supports:** self-merge privilege; cold-start; large-PR outsider failure; author-prep matched gap; sharper consensus-path outsider gap; high-prep closed outsiders often unreviewed.
-
-**Does not support:** raw 80/55 as peer-review fairness; “outsiders have lower prep”; treating concept ACK or size-substance as quality; CI-based claims.
-
-## Reproduce
-
-```bash
-cd /home/user/src/bitcoin-governance-research && source venv/bin/activate
-python tests/test_pr_quality.py
-python scripts/analysis/maintainer_premium.py
-python scripts/analysis/author_prep_phase23_finish.py
-```
+**Generated by**: `scripts/reporting/generate_from_templates.py`

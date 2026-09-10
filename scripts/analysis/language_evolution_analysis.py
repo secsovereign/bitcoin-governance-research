@@ -22,6 +22,10 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
+from src.utils.cross_platform_sources import (
+    extract_text_author_timestamp,
+    load_all_informal_sources,
+)
 
 
 class LanguageEvolutionAnalyzer:
@@ -62,29 +66,9 @@ class LanguageEvolutionAnalyzer:
         mapping_file = self.data_dir / 'github' / 'merged_by_mapping.jsonl'
         return load_prs_with_merged_by(prs_file, mapping_file if mapping_file.exists() else None)
     
-    def load_emails(self) -> List[Dict[str, Any]]:
-        """Load email data."""
-        emails_file = self.data_dir / 'processed' / 'cleaned_emails.jsonl'
-        if not emails_file.exists():
-            return []
-        
-        emails = []
-        with open(emails_file, 'r') as f:
-            for line in f:
-                emails.append(json.loads(line))
-        return emails
-    
-    def load_irc(self) -> List[Dict[str, Any]]:
-        """Load IRC data."""
-        irc_file = self.data_dir / 'processed' / 'cleaned_irc.jsonl'
-        if not irc_file.exists():
-            return []
-        
-        messages = []
-        with open(irc_file, 'r') as f:
-            for line in f:
-                messages.append(json.loads(line))
-        return messages
+    def load_informal(self) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """Load combined mailing lists, IRC, Delving, and Bitcointalk."""
+        return load_all_informal_sources()
     
     def parse_timestamp(self, ts: Optional[str]) -> Optional[datetime]:
         """Parse timestamp."""
@@ -110,10 +94,12 @@ class LanguageEvolutionAnalyzer:
     
     def analyze_terminology_evolution(self, prs: List[Dict[str, Any]], 
                                      emails: List[Dict[str, Any]], 
-                                     irc_messages: List[Dict[str, Any]]) -> Dict[str, Any]:
+                                     irc_messages: List[Dict[str, Any]],
+                                     extra_informal: Optional[List[Tuple[Dict[str, Any], str]]] = None) -> Dict[str, Any]:
         """Analyze terminology usage over time."""
         print("Analyzing terminology evolution...")
-        
+        extra_informal = extra_informal or []
+
         # Track mentions by year
         mentions_by_year = defaultdict(lambda: defaultdict(int))
         first_mentions = {}  # term -> (year, author, platform, text_snippet)
@@ -200,6 +186,23 @@ class LanguageEvolutionAnalyzer:
                         'platform': 'irc',
                         'snippet': snippet
                     }
+
+        for record, platform in extra_informal:
+            text, author, ts = extract_text_author_timestamp(record, platform)
+            parsed = self.parse_timestamp(ts)
+            if not parsed:
+                continue
+            year = parsed.year
+            mentions = self.find_terminology_mentions(text)
+            for term in mentions:
+                mentions_by_year[year][term] += 1
+                if term not in first_mentions:
+                    first_mentions[term] = {
+                        'year': year,
+                        'author': author,
+                        'platform': platform,
+                        'snippet': text[:200],
+                    }
         
         # Calculate trends
         terminology_trends = {}
@@ -208,20 +211,27 @@ class LanguageEvolutionAnalyzer:
                          for year in sorted(mentions_by_year.keys())]
             
             if years_data:
-                first_year = years_data[0][0]
-                last_year = years_data[-1][0]
-                first_count = years_data[0][1]
-                last_count = years_data[-1][1]
+                nonzero = [(year, count) for year, count in years_data if count > 0]
+                if nonzero:
+                    first_year, first_count = nonzero[0]
+                    last_year, last_count = nonzero[-1]
+                else:
+                    first_year = last_year = years_data[0][0]
+                    first_count = last_count = 0
                 total_mentions = sum(count for _, count in years_data)
-                
+
                 terminology_trends[term] = {
                     'first_year': first_year,
                     'last_year': last_year,
                     'first_count': first_count,
                     'last_count': last_count,
                     'total_mentions': total_mentions,
-                    'years_active': last_year - first_year + 1,
-                    'trend': 'increasing' if last_count > first_count else 'decreasing' if last_count < first_count else 'stable',
+                    'years_active': last_year - first_year + 1 if nonzero else 0,
+                    'trend': (
+                        'increasing' if last_count > first_count
+                        else 'decreasing' if last_count < first_count
+                        else 'stable'
+                    ),
                     'yearly_counts': dict(years_data)
                 }
         
@@ -234,7 +244,8 @@ class LanguageEvolutionAnalyzer:
     
     def analyze_language_adoption(self, prs: List[Dict[str, Any]], 
                                  emails: List[Dict[str, Any]], 
-                                 irc_messages: List[Dict[str, Any]]) -> Dict[str, Any]:
+                                 irc_messages: List[Dict[str, Any]],
+                                 extra_informal: Optional[List[Tuple[Dict[str, Any], str]]] = None) -> Dict[str, Any]:
         """Analyze who adopts new terminology first."""
         print("Analyzing language adoption patterns...")
         
@@ -272,6 +283,12 @@ class LanguageEvolutionAnalyzer:
                 author = msg.get('nickname', '')
                 text = msg.get('message', '')
                 process_text(text, timestamp.year, author, 'irc')
+
+        for record, platform in extra_informal or []:
+            text, author, ts = extract_text_author_timestamp(record, platform)
+            parsed = self.parse_timestamp(ts)
+            if parsed:
+                process_text(text, parsed.year, author, platform)
         
         # Find early adopters
         early_adopters = {}
@@ -309,18 +326,34 @@ class LanguageEvolutionAnalyzer:
         print()
         
         prs = self.load_prs()
-        emails = self.load_emails()
-        irc_messages = self.load_irc()
-        
-        print(f"Loaded {len(prs):,} PRs, {len(emails):,} emails, {len(irc_messages):,} IRC messages")
+        sources, meta = self.load_informal()
+        emails = sources.get('emails') or []
+        irc_messages = sources.get('irc') or []
+        extra_informal = (
+            [(r, 'delving') for r in (sources.get('delving') or [])]
+            + [(r, 'bitcointalk') for r in (sources.get('bitcointalk') or [])]
+        )
+
+        print(
+            f"Loaded {len(prs):,} PRs, {len(emails):,} emails, {len(irc_messages):,} IRC, "
+            f"{len(sources.get('delving') or []):,} Delving, "
+            f"{len(sources.get('bitcointalk') or []):,} Bitcointalk"
+        )
         print()
         
-        evolution = self.analyze_terminology_evolution(prs, emails, irc_messages)
-        adoption = self.analyze_language_adoption(prs, emails, irc_messages)
-        
+        evolution = self.analyze_terminology_evolution(prs, emails, irc_messages, extra_informal)
+        adoption = self.analyze_language_adoption(prs, emails, irc_messages, extra_informal)
         results = {
             'terminology_evolution': evolution,
             'language_adoption': adoption,
+            'source_counts': {
+                'prs': len(prs),
+                'emails': len(emails),
+                'irc': len(irc_messages),
+                'delving': len(sources.get('delving') or []),
+                'bitcointalk': len(sources.get('bitcointalk') or []),
+                'email_meta': meta.get('email_load_meta'),
+            },
             'analysis_date': datetime.now().isoformat()
         }
         
@@ -362,21 +395,16 @@ def main():
     parser = argparse.ArgumentParser(description='Language evolution analysis')
     parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent / 'data',
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'data' / 'language_evolution.json',
-                       help='Output JSON file')
     
     args = parser.parse_args()
     
     analyzer = LanguageEvolutionAnalyzer(args.data_dir)
     results = analyzer.run_analysis()
     analyzer.print_results(results)
-    
-    # Save results
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(results, f, indent=2, default=str)
-    
-    print(f"\nResults saved to: {args.output}")
+
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('language_evolution.json', results)
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
 
 
 if __name__ == '__main__':

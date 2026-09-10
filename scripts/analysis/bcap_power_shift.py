@@ -26,6 +26,11 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.cross_platform_sources import (
+    audit_source_overlap,
+    load_all_informal_sources,
+    summarize_informal_activity,
+)
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
 
 logger = setup_logger()
@@ -71,13 +76,8 @@ class BCAPPowerShiftAnalyzer:
         self.findings_dir = self.analysis_dir / 'findings' / 'data'
         self.findings_dir.mkdir(parents=True, exist_ok=True)
         
-        # Maintainer list
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
     
     def run_analysis(self):
         """Run power shift analysis."""
@@ -87,12 +87,17 @@ class BCAPPowerShiftAnalyzer:
         
         # Load data
         prs = self._load_prs()
+        informal_sources, informal_meta = load_all_informal_sources()
         
         # Analyze SegWit period
-        segwit_analysis = self._analyze_consensus_period(prs, 'segwit')
+        segwit_analysis = self._analyze_consensus_period(
+            prs, 'segwit', informal_sources=informal_sources
+        )
         
         # Analyze Taproot period
-        taproot_analysis = self._analyze_consensus_period(prs, 'taproot')
+        taproot_analysis = self._analyze_consensus_period(
+            prs, 'taproot', informal_sources=informal_sources
+        )
         
         # Compare with baseline periods
         baseline_comparison = self._compare_with_baseline(prs)
@@ -102,6 +107,8 @@ class BCAPPowerShiftAnalyzer:
         
         # Save results
         results = {
+            'source_audit': audit_source_overlap(),
+            'informal_meta': informal_meta,
             'segwit_analysis': segwit_analysis,
             'taproot_analysis': taproot_analysis,
             'baseline_comparison': baseline_comparison,
@@ -116,13 +123,19 @@ class BCAPPowerShiftAnalyzer:
     def _analyze_consensus_period(
         self,
         prs: List[Dict[str, Any]],
-        period: str
+        period: str,
+        *,
+        informal_sources: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """Analyze power shifts during a consensus change period."""
         logger.info(f"Analyzing power shifts for {period}...")
         
         period_data = CONSENSUS_PERIODS[period]
         phases = period_data['phases']
+        keywords = {
+            'segwit': ['segwit', 'segregated witness', 'bip141', 'witness'],
+            'taproot': ['taproot', 'schnorr', 'bip340', 'bip341', 'bip342'],
+        }.get(period, [])
         
         # Get PRs for each phase
         phase_prs = {}
@@ -133,23 +146,38 @@ class BCAPPowerShiftAnalyzer:
         
         # Analyze power concentration in each phase
         phase_analyses = {}
-        for phase_name, phase_prs_list in phase_prs.items():
+        informal_by_phase = {}
+        for phase_name, (start_str, end_str) in phases.items():
+            start_date = datetime.fromisoformat(start_str).replace(tzinfo=timezone.utc)
+            end_date = datetime.fromisoformat(end_str).replace(tzinfo=timezone.utc)
+            phase_prs_list = phase_prs[phase_name]
             phase_analyses[phase_name] = self._analyze_phase(
                 phase_prs_list, phase_name, period
             )
+            if informal_sources:
+                informal_by_phase[phase_name] = summarize_informal_activity(
+                    informal_sources, start_date, end_date, keywords=keywords
+                )
         
         # Analyze overall period
         start_date = datetime.fromisoformat(period_data['start']).replace(tzinfo=timezone.utc)
         end_date = datetime.fromisoformat(period_data['end']).replace(tzinfo=timezone.utc)
         all_period_prs = self._filter_prs_by_date(prs, start_date, end_date)
         overall_analysis = self._analyze_phase(all_period_prs, 'overall', period)
+        overall_informal = {}
+        if informal_sources:
+            overall_informal = summarize_informal_activity(
+                informal_sources, start_date, end_date, keywords=keywords
+            )
         
         return {
             'period': period,
             'start_date': period_data['start'],
             'end_date': period_data['end'],
             'phase_analyses': phase_analyses,
+            'informal_by_phase': informal_by_phase,
             'overall_analysis': overall_analysis,
+            'overall_informal_activity': overall_informal,
             'total_prs': len(all_period_prs)
         }
     
@@ -365,7 +393,8 @@ class BCAPPowerShiftAnalyzer:
             'metrics': {
                 'power_concentration': 'Top 3/5 merge share, review share',
                 'review_patterns': 'Review rates, maintainer vs non-maintainer reviews',
-                'merge_authority': 'Self-merge rates, maintainer merge share'
+                'merge_authority': 'Self-merge rates, maintainer merge share',
+                'informal_activity': 'IRC, mailing lists, Delving, Bitcointalk volume/SOM during consensus phases',
             },
             'periods': {
                 'consensus_periods': CONSENSUS_PERIODS,
@@ -406,12 +435,9 @@ class BCAPPowerShiftAnalyzer:
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'bcap_power_shift.json'
-        
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
-        
-        logger.info(f"Saved results to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('bcap_power_shift.json', results)
+        logger.info(f"Saved results to {', '.join(str(p) for p in written)}")
 
 
 def main():

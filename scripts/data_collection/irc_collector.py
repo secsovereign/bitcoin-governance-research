@@ -19,7 +19,7 @@ import json
 import re
 from pathlib import Path
 from typing import Dict, Any, List, Optional
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
@@ -89,6 +89,59 @@ class IRCCollector:
             self._collect_channel(channel_name, base_url, skip_existing)
         
         logger.info("IRC log collection complete")
+
+    RAW_FILENAME_RE = re.compile(
+        r'^(bitcoin-core-dev|bitcoin-dev|bitcoin-core)_(\d{4}-\d{2}-\d{2})\.(html|txt)$'
+    )
+
+    def parse_existing_raw(self) -> int:
+        """Parse already-downloaded logs in data/irc/raw into messages.jsonl."""
+        files = sorted(p for p in self.raw_dir.iterdir() if p.is_file())
+        logger.info("Parsing %s existing IRC raw files into %s", len(files), self.messages_file)
+        tmp = self.messages_file.with_suffix(".jsonl.tmp")
+        seen = set()
+        parsed_files = 0
+        written = 0
+        empty_files = 0
+        with open(tmp, "w", encoding="utf-8") as out:
+            for i, path in enumerate(files, 1):
+                match = self.RAW_FILENAME_RE.match(path.name)
+                if not match:
+                    continue
+                channel = match.group(1)
+                try:
+                    text = path.read_text(encoding="utf-8", errors="replace")
+                except Exception as e:
+                    logger.debug("Could not read %s: %s", path.name, e)
+                    continue
+                messages = self._parse_irc_log(channel, text, path.name)
+                parsed_files += 1
+                if not messages:
+                    empty_files += 1
+                for msg in messages:
+                    msg_id = self._get_message_id(msg)
+                    if msg_id:
+                        if msg_id in seen:
+                            continue
+                        seen.add(msg_id)
+                    out.write(json.dumps(msg, ensure_ascii=False) + "\n")
+                    written += 1
+                if i % 500 == 0:
+                    logger.info(
+                        "Parsed %s/%s raw files, %s messages so far",
+                        i,
+                        len(files),
+                        written,
+                    )
+        tmp.replace(self.messages_file)
+        logger.info(
+            "IRC raw parse complete: %s files, %s messages, %s empty files -> %s",
+            parsed_files,
+            written,
+            empty_files,
+            self.messages_file,
+        )
+        return written
     
     def _get_message_id(self, msg: Dict[str, Any]) -> Optional[str]:
         """Generate a unique identifier for a message."""
@@ -320,7 +373,10 @@ class IRCCollector:
         messages = []
         
         try:
-            soup = BeautifulSoup(html_text, 'html.parser')
+            try:
+                soup = BeautifulSoup(html_text, 'lxml')
+            except Exception:
+                soup = BeautifulSoup(html_text, 'html.parser')
             
             # Chaincode.com format: messages are in a div with class "log-messages"
             # Each message is a div with data-timestamp attribute
@@ -331,70 +387,54 @@ class IRCCollector:
                 message_divs = log_container.find_all('div', recursive=False)
                 
                 for div in message_divs:
-                    # Skip info/topic messages (they're not regular chat)
-                    classes = div.get('class', [])
+                    classes = div.get('class', []) or []
                     if 'info' in classes or 'op-topic' in classes:
                         continue
-                    
-                    # Extract timestamp from data-timestamp attribute or time element
+
                     timestamp = None
-                    timestamp_attr = div.get('data-timestamp')
-                    if timestamp_attr:
-                        # Convert Unix timestamp to ISO format
+                    time_elem = div.find('time')
+                    if time_elem and time_elem.get('timestamp'):
+                        ts = time_elem.get('timestamp')
+                        timestamp = ts.replace('Z', '+00:00') if ts.endswith('Z') else ts
+                    elif div.get('data-timestamp'):
                         try:
-                            from datetime import datetime
-                            dt = datetime.fromtimestamp(int(timestamp_attr), tz=None)
+                            dt = datetime.fromtimestamp(
+                                int(div.get('data-timestamp')), tz=timezone.utc
+                            )
                             timestamp = dt.strftime('%Y-%m-%dT%H:%M:%S+00:00')
-                        except:
-                            pass
-                    
-                    # Try time element as fallback
-                    if not timestamp:
-                        time_elem = div.find('time')
-                        if time_elem:
-                            timestamp_attr = time_elem.get('timestamp')
-                            if timestamp_attr:
-                                timestamp = timestamp_attr
-                    
-                    # Extract nickname - look for spans/links with nick classes or patterns
-                    nickname = None
+                        except (TypeError, ValueError, OSError):
+                            timestamp = None
+
                     nick_elem = div.find(['span', 'a'], class_=re.compile(r'nick|user|author', re.I))
+                    nickname = nick_elem.get_text().strip() if nick_elem else None
+
+                    for el in div.find_all('time'):
+                        el.decompose()
+                    for el in div.find_all('a', class_=re.compile(r'time', re.I)):
+                        el.decompose()
                     if nick_elem:
-                        nickname = nick_elem.get_text().strip()
-                    else:
-                        # Try to extract from text pattern: <nickname> or nickname: message
-                        text = div.get_text()
-                        nick_match = re.search(r'<([^>]+)>', text)
-                        if nick_match:
-                            nickname = nick_match.group(1)
-                        else:
-                            # Try pattern: nickname: message
-                            nick_match = re.search(r'^(\w+):\s+', text)
-                            if nick_match:
-                                nickname = nick_match.group(1)
-                    
-                    # Extract message text
-                    text = div.get_text()
-                    # Remove timestamp and nickname from text if present
-                    if timestamp:
-                        # Remove time element text
-                        for time_elem in div.find_all('time'):
-                            time_elem.decompose()
+                        nick_elem.decompose()
+
+                    message_text = div.get_text(' ', strip=True)
+                    message_text = re.sub(r'^<\s*>\s*', '', message_text)
                     if nickname:
-                        # Remove nickname from text
-                        text = re.sub(rf'<{re.escape(nickname)}>', '', text)
-                        text = re.sub(rf'^{re.escape(nickname)}:\s*', '', text)
-                    
-                    message_text = text.strip()
-                    
-                    # Only create message if we have essential info
+                        message_text = re.sub(
+                            rf'^<?{re.escape(nickname)}>?[:\s]*', '', message_text
+                        ).strip()
+
+                    if not nickname:
+                        nick_match = re.search(r'<([^>]+)>', message_text)
+                        if nick_match:
+                            nickname = nick_match.group(1).strip()
+                            message_text = re.sub(r'<[^>]+>', '', message_text, count=1).strip()
+
                     if timestamp and nickname and message_text:
                         messages.append({
                             'channel': channel_name,
                             'timestamp': timestamp,
                             'nickname': nickname,
                             'message': message_text,
-                            'source': 'irc_html'
+                            'source': 'irc_html',
                         })
             
             # Fallback: if no structured messages found, try line-by-line parsing
@@ -520,11 +560,19 @@ def main():
                        help='Skip messages that already exist (default: True)')
     parser.add_argument('--no-skip-existing', dest='skip_existing', action='store_false',
                        help='Collect all messages, including duplicates')
+    parser.add_argument(
+        '--from-raw',
+        action='store_true',
+        help='Parse existing data/irc/raw logs instead of downloading',
+    )
     
     args = parser.parse_args()
     
     collector = IRCCollector()
-    collector.collect_all_channels(skip_existing=args.skip_existing)
+    if args.from_raw:
+        collector.parse_existing_raw()
+    else:
+        collector.collect_all_channels(skip_existing=args.skip_existing)
 
 
 if __name__ == '__main__':

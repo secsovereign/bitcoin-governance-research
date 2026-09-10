@@ -26,12 +26,8 @@ def quick_validate():
     rate_limiter = RateLimiter(max_calls=4500, time_window=3600)
     repo = github.get_repo("bitcoin/bitcoin")
     
-    maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-        'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    maintainers = load_maintainer_login_set()
     
     # Load PR numbers to check
     data_dir = Path(__file__).parent.parent.parent / 'data' / 'github'

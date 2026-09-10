@@ -1,15 +1,6 @@
 # Maintainer Timeline Analysis
 
-**Generated**: 2026-01-07 16:30:10 UTC  
-**Last Updated**: 2026-01-07
-
----
-
-## Note on Maintainer Count
-
-**External Research**: Stanford JBLP (2024) reports "13 maintainers over the past decade"  
-**Our Analysis**: **21 maintainers** identified (more comprehensive list including those with 0 merges)  
-**Difference**: We include maintainers who may have had other roles (reviewers, advisors) even if they never merged PRs. This provides a more complete picture of maintainer authority over time.
+**Generated**: 2026-09-10 14:45:36 UTC
 
 ---
 
@@ -19,7 +10,7 @@
 
 **Active Maintainers**: 5
 
-**Inactive Maintainers**: 8
+**Inactive Maintainers**: 9
 
 ---
 
@@ -29,72 +20,68 @@
 
 **Founders** (joined before 2012): 5
 - **thebluematt**: Joined 2011-03-21T21:15:49+00:00, 2 merges
-- **gavinandresen**: Joined 2011-04-12T17:43:48+00:00, 392 merges
-- **sipa**: Joined 2011-05-14T16:48:42+00:00, 303 merges
-- **laanwj**: Joined 2011-09-18T10:48:30+00:00, 3208 merges
+- **gavinandresen**: Joined 2011-04-05T23:36:55+00:00, 564 merges
+- **sipa**: Joined 2011-05-01T16:33:40+00:00, 545 merges
+- **laanwj**: Joined 2011-09-18T10:48:30+00:00, 5717 merges
 - **luke-jr**: Joined 2011-12-16T23:10:43+00:00, 1 merges
 
 **Early Maintainers** (joined 2012-2015): 2
-- **gmaxwell**: Joined 2012-02-11T23:14:02+00:00, 80 merges
-- **jonasschnelli**: Joined 2015-11-16T07:39:57+00:00, 160 merges
+- **gmaxwell**: Joined 2012-02-11T23:14:02+00:00, 104 merges
+- **jonasschnelli**: Joined 2015-11-16T07:39:57+00:00, 234 merges
 
-**Modern Maintainers** (joined 2016+): 6
-- **maflcko**: Joined 2016-04-25T13:00:04+00:00, 1891 merges
-- **fanquake**: Joined 2019-06-13T08:49:50+00:00, 2378 merges
-- **achow101**: Joined 2021-12-20T19:49:53+00:00, 308 merges
-- **glozow**: Joined 2022-07-26, 137 merges
-- **TheCharlatan**: Joined 2025
-- **ryanofsky**: Joined 2023-06-09T18:21:37+00:00, 67 merges
-- **hebasto**: Joined 2023-11-21T11:08:34+00:00, 46 merges
+**Modern Maintainers** (joined 2016+): 7
+- **maflcko**: Joined 2016-04-21T15:23:46+00:00, 3349 merges
+- **fanquake**: Joined 2019-06-13T08:49:50+00:00, 3797 merges
+- **achow101**: Joined 2021-12-20T19:49:53+00:00, 1164 merges
+- **hebasto**: Joined 2022-04-19T17:32:55+00:00, 121 merges
+- **glozow**: Joined 2022-07-12T14:59:26+00:00, 313 merges
+- **ryanofsky**: Joined 2023-05-17T17:27:55+00:00, 159 merges
+- **sedited**: Joined 2026-01-09T22:24:25+00:00, 262 merges
 
 ### Most Prolific
 
 **Most Prolific Mergers** (top 5):
-- **laanwj**: 3,208 merges
-- **fanquake**: 2,378 merges
-- **maflcko**: 1,891 merges
-- **gavinandresen**: 392 merges
-- **achow101**: 308 merges
+- **laanwj**: 5,717 merges
+- **fanquake**: 3,797 merges
+- **maflcko**: 3,349 merges
+- **achow101**: 1,164 merges
+- **gavinandresen**: 564 merges
 
 **Most Prolific Authors** (top 5):
-- **maflcko**: 2,501 PRs authored
-- **fanquake**: 1,392 PRs authored
-- **hebasto**: 1,192 PRs authored
+- **maflcko**: 2,660 PRs authored
+- **fanquake**: 1,515 PRs authored
+- **hebasto**: 1,295 PRs authored
 - **laanwj**: 951 PRs authored
-- **sipa**: 879 PRs authored
+- **sipa**: 894 PRs authored
 
 **Most Prolific Reviewers** (top 5):
-- **maflcko**: 11,480 reviews given
-- **hebasto**: 5,034 reviews given
-- **achow101**: 4,900 reviews given
-- **sipa**: 4,641 reviews given
-- **ryanofsky**: 4,496 reviews given
+- **maflcko**: 12,520 reviews given
+- **hebasto**: 5,666 reviews given
+- **achow101**: 5,358 reviews given
+- **sipa**: 4,882 reviews given
+- **ryanofsky**: 4,781 reviews given
 
 ### Longest Tenure
 
 - **laanwj**: 10.8 years (2011-09-18T10:48:30+00:00 - 2022-07-07T13:27:53+00:00)
-- **sipa**: 9.2 years (2011-05-14T16:48:42+00:00 - 2020-07-07T18:21:22+00:00)
-- **maflcko**: 6.8 years (2016-04-25T13:00:04+00:00 - 2023-02-16T14:13:00+00:00)
-- **fanquake**: 6.5 years (2019-06-13T08:49:50+00:00 - 2025-12-10T16:41:04+00:00)
+- **sipa**: 9.4 years (2011-05-01T16:33:40+00:00 - 2020-10-06T19:01:04+00:00)
+- **fanquake**: 7.2 years (2019-06-13T08:49:50+00:00 - 2026-08-21T12:40:29+00:00)
+- **maflcko**: 6.8 years (2016-04-21T15:23:46+00:00 - 2023-02-16T14:19:17+00:00)
 - **jonasschnelli**: 5.3 years (2015-11-16T07:39:57+00:00 - 2021-02-19T07:38:28+00:00)
 
 ### Patterns
 
-**High Self-Merge Rate** (>30%): 6
+**High Self-Merge Rate** (>30%): 2
 - **thebluematt**: 100.0%
-- **gavinandresen**: 31.4%
-- **sipa**: 47.2%
 - **luke-jr**: 100.0%
-- **maflcko**: 42.7%
-- **hebasto**: 37.0%
 
 **High Zero-Review Merge Rate** (>20%): 6
 - **thebluematt**: 100.0%
-- **gavinandresen**: 44.6%
-- **sipa**: 21.1%
-- **laanwj**: 23.7%
+- **gavinandresen**: 46.3%
+- **sipa**: 21.7%
+- **laanwj**: 25.2%
 - **luke-jr**: 100.0%
-- **gmaxwell**: 33.8%
+- **gmaxwell**: 34.6%
 
 ---
 
@@ -116,44 +103,42 @@
 
 ### gavinandresen
 
-- **Join Date**: 2011-04-12T17:43:48+00:00
+- **Join Date**: 2011-04-05T23:36:55+00:00
 - **Last Merge**: 2015-05-16T22:03:37+00:00
 - **Status**: Inactive
-- **Tenure**: 4.09 years
-- **Total Merges**: 392
+- **Tenure**: 4.11 years
+- **Total Merges**: 564
 - **Total Authored**: 222
 - **Total Reviews**: 0
-- **Self-Merge Rate**: 31.4%
-- **Zero-Review Merge Rate**: 44.6%
+- **Self-Merge Rate**: 21.8%
+- **Zero-Review Merge Rate**: 46.3%
 - **Recent Activity** (last 5 years):
-  - 2015: 2 merges
-  - 2014: 48 merges
-  - 2013: 140 merges
-  - 2012: 127 merges
-  - 2011: 75 merges
+  - 2015: 3 merges
+  - 2014: 65 merges
+  - 2013: 207 merges
+  - 2012: 169 merges
+  - 2011: 120 merges
 
 ### sipa
 
-- **Join Date**: 2011-05-14T16:48:42+00:00
-- **Last Merge**: 2020-07-07T18:21:22+00:00
+- **Join Date**: 2011-05-01T16:33:40+00:00
+- **Last Merge**: 2020-10-06T19:01:04+00:00
 - **Status**: Inactive
-- **Tenure**: 9.15 years
-- **Total Merges**: 303
-- **Total Authored**: 879
-- **Total Reviews**: 4,641
-- **Self-Merge Rate**: 47.2%
-- **Zero-Review Merge Rate**: 21.1%
-- **Activity Periods**: 4 distinct periods
-  - Period 1: 2011-05-14 to 2013-11-02
-  - Period 2: 2014-06-21 to 2015-04-28
-  - Period 3: 2015-10-28 to 2018-11-27
-  - Period 4: 2020-07-07 to 2020-07-07
+- **Tenure**: 9.43 years
+- **Total Merges**: 545
+- **Total Authored**: 894
+- **Total Reviews**: 4,882
+- **Self-Merge Rate**: 26.2%
+- **Zero-Review Merge Rate**: 21.7%
+- **Activity Periods**: 2 distinct periods
+  - Period 1: 2011-05-01 to 2019-04-06
+  - Period 2: 2020-07-07 to 2020-10-06
 - **Recent Activity** (last 5 years):
-  - 2020: 1 merges
-  - 2018: 19 merges
-  - 2017: 54 merges
-  - 2016: 50 merges
-  - 2015: 17 merges
+  - 2020: 3 merges
+  - 2019: 2 merges
+  - 2018: 42 merges
+  - 2017: 113 merges
+  - 2016: 82 merges
 
 ### laanwj
 
@@ -161,17 +146,17 @@
 - **Last Merge**: 2022-07-07T13:27:53+00:00
 - **Status**: Inactive
 - **Tenure**: 10.8 years
-- **Total Merges**: 3,208
+- **Total Merges**: 5,717
 - **Total Authored**: 951
-- **Total Reviews**: 3,039
-- **Self-Merge Rate**: 19.9%
-- **Zero-Review Merge Rate**: 23.7%
+- **Total Reviews**: 3,042
+- **Self-Merge Rate**: 11.2%
+- **Zero-Review Merge Rate**: 25.2%
 - **Recent Activity** (last 5 years):
-  - 2022: 103 merges
-  - 2021: 195 merges
-  - 2020: 240 merges
-  - 2019: 290 merges
-  - 2018: 391 merges
+  - 2022: 168 merges
+  - 2021: 325 merges
+  - 2020: 349 merges
+  - 2019: 468 merges
+  - 2018: 735 merges
 
 ### luke-jr
 
@@ -180,8 +165,8 @@
 - **Status**: Inactive
 - **Tenure**: None years
 - **Total Merges**: 1
-- **Total Authored**: 559
-- **Total Reviews**: 1,820
+- **Total Authored**: 564
+- **Total Reviews**: 1,870
 - **Self-Merge Rate**: 100.0%
 - **Zero-Review Merge Rate**: 100.0%
 - **Recent Activity** (last 5 years):
@@ -193,20 +178,20 @@
 - **Last Merge**: 2015-12-05T23:29:26+00:00
 - **Status**: Inactive
 - **Tenure**: 3.81 years
-- **Total Merges**: 80
+- **Total Merges**: 104
 - **Total Authored**: 157
-- **Total Reviews**: 349
-- **Self-Merge Rate**: 11.2%
-- **Zero-Review Merge Rate**: 33.8%
+- **Total Reviews**: 350
+- **Self-Merge Rate**: 8.7%
+- **Zero-Review Merge Rate**: 34.6%
 - **Activity Periods**: 3 distinct periods
   - Period 1: 2012-02-11 to 2014-04-22
-  - Period 2: 2015-01-10 to 2015-01-10
+  - Period 2: 2014-11-23 to 2015-01-10
   - Period 3: 2015-10-28 to 2015-12-05
 - **Recent Activity** (last 5 years):
-  - 2015: 14 merges
-  - 2014: 6 merges
-  - 2013: 12 merges
-  - 2012: 48 merges
+  - 2015: 21 merges
+  - 2014: 8 merges
+  - 2013: 14 merges
+  - 2012: 61 merges
 
 ### jonasschnelli
 
@@ -214,162 +199,152 @@
 - **Last Merge**: 2021-02-19T07:38:28+00:00
 - **Status**: Inactive
 - **Tenure**: 5.26 years
-- **Total Merges**: 160
+- **Total Merges**: 234
 - **Total Authored**: 395
 - **Total Reviews**: 907
-- **Self-Merge Rate**: 25.0%
-- **Zero-Review Merge Rate**: 5.6%
+- **Self-Merge Rate**: 17.1%
+- **Zero-Review Merge Rate**: 4.7%
 - **Recent Activity** (last 5 years):
   - 2021: 2 merges
-  - 2020: 30 merges
-  - 2019: 24 merges
-  - 2018: 27 merges
-  - 2017: 29 merges
+  - 2020: 44 merges
+  - 2019: 36 merges
+  - 2018: 42 merges
+  - 2017: 49 merges
 
 ### maflcko
 
-- **Join Date**: 2016-04-25T13:00:04+00:00
-- **Last Merge**: 2023-02-16T14:13:00+00:00
+- **Join Date**: 2016-04-21T15:23:46+00:00
+- **Last Merge**: 2023-02-16T14:19:17+00:00
 - **Status**: Inactive
-- **Tenure**: 6.81 years
-- **Total Merges**: 1,891
-- **Total Authored**: 2,501
-- **Total Reviews**: 11,480
-- **Self-Merge Rate**: 42.7%
-- **Zero-Review Merge Rate**: 9.8%
+- **Tenure**: 6.82 years
+- **Total Merges**: 3,349
+- **Total Authored**: 2,660
+- **Total Reviews**: 12,520
+- **Self-Merge Rate**: 24.1%
+- **Zero-Review Merge Rate**: 10.5%
 - **Recent Activity** (last 5 years):
-  - 2023: 45 merges
-  - 2022: 344 merges
-  - 2021: 394 merges
-  - 2020: 428 merges
-  - 2019: 290 merges
+  - 2023: 78 merges
+  - 2022: 598 merges
+  - 2021: 658 merges
+  - 2020: 685 merges
+  - 2019: 514 merges
 
 ### fanquake
 
 - **Join Date**: 2019-06-13T08:49:50+00:00
-- **Last Merge**: 2025-12-10T16:41:04+00:00
+- **Last Merge**: 2026-08-21T12:40:29+00:00
 - **Status**: Active
-- **Tenure**: 6.49 years
-- **Total Merges**: 2,378
-- **Total Authored**: 1,392
-- **Total Reviews**: 2,797
-- **Self-Merge Rate**: 27.0%
+- **Tenure**: 7.19 years
+- **Total Merges**: 3,797
+- **Total Authored**: 1,515
+- **Total Reviews**: 3,011
+- **Self-Merge Rate**: 18.1%
 - **Zero-Review Merge Rate**: 0.2%
 - **Recent Activity** (last 5 years):
-  - 2025: 421 merges
-  - 2024: 454 merges
-  - 2023: 522 merges
-  - 2022: 347 merges
-  - 2021: 309 merges
+  - 2026: 404 merges
+  - 2025: 659 merges
+  - 2024: 638 merges
+  - 2023: 743 merges
+  - 2022: 440 merges
 
 ### achow101
 
 - **Join Date**: 2021-12-20T19:49:53+00:00
-- **Last Merge**: 2025-11-21T23:28:50+00:00
+- **Last Merge**: 2026-08-20T21:13:43+00:00
 - **Status**: Active
-- **Tenure**: 3.92 years
-- **Total Merges**: 308
-- **Total Authored**: 457
-- **Total Reviews**: 4,900
-- **Self-Merge Rate**: 3.9%
-- **Zero-Review Merge Rate**: 0.0%
+- **Tenure**: 4.67 years
+- **Total Merges**: 1,164
+- **Total Authored**: 494
+- **Total Reviews**: 5,358
+- **Self-Merge Rate**: 1.3%
+- **Zero-Review Merge Rate**: 0.1%
 - **Recent Activity** (last 5 years):
-  - 2025: 75 merges
-  - 2024: 103 merges
-  - 2023: 87 merges
-  - 2022: 42 merges
-  - 2021: 1 merges
-
-### glozow
-
-- **Join Date**: 2022-07-26T09:55:19+00:00
-- **Last Merge**: 2025-11-12T15:17:04+00:00
-- **Status**: Inactive
-- **Tenure**: 3.3 years
-- **Total Merges**: 137
-- **Total Authored**: 153
-- **Total Reviews**: 2,498
-- **Self-Merge Rate**: 8.0%
-- **Zero-Review Merge Rate**: 0.0%
-- **Recent Activity** (last 5 years):
-  - 2025: 61 merges
-  - 2024: 47 merges
-  - 2023: 17 merges
-  - 2022: 12 merges
-
-### TheCharlatan
-
-- **Join Date**: 2025
-- **Status**: Active
-
-### ryanofsky
-
-- **Join Date**: 2023-06-09T18:21:37+00:00
-- **Last Merge**: 2025-12-09T01:12:03+00:00
-- **Status**: Active
-- **Tenure**: 2.5 years
-- **Total Merges**: 67
-- **Total Authored**: 336
-- **Total Reviews**: 4,496
-- **Self-Merge Rate**: 1.5%
-- **Zero-Review Merge Rate**: 0.0%
-- **Recent Activity** (last 5 years):
-  - 2025: 22 merges
-  - 2024: 37 merges
-  - 2023: 8 merges
+  - 2026: 203 merges
+  - 2025: 231 merges
+  - 2024: 349 merges
+  - 2023: 248 merges
+  - 2022: 131 merges
 
 ### hebasto
 
-- **Join Date**: 2023-11-21T11:08:34+00:00
-- **Last Merge**: 2025-12-04T13:52:10+00:00
+- **Join Date**: 2022-04-19T17:32:55+00:00
+- **Last Merge**: 2026-08-18T12:48:22+00:00
 - **Status**: Active
-- **Tenure**: 2.04 years
-- **Total Merges**: 46
-- **Total Authored**: 1,192
-- **Total Reviews**: 5,034
-- **Self-Merge Rate**: 37.0%
+- **Tenure**: 4.33 years
+- **Total Merges**: 121
+- **Total Authored**: 1,295
+- **Total Reviews**: 5,666
+- **Self-Merge Rate**: 19.0%
 - **Zero-Review Merge Rate**: 0.0%
-- **Activity Periods**: 2 distinct periods
-  - Period 1: 2023-11-21 to 2024-08-01
-  - Period 2: 2025-02-06 to 2025-12-04
+- **Activity Periods**: 3 distinct periods
+  - Period 1: 2022-04-19 to 2022-04-19
+  - Period 2: 2023-11-21 to 2024-08-01
+  - Period 3: 2025-02-06 to 2026-08-18
 - **Recent Activity** (last 5 years):
-  - 2025: 40 merges
+  - 2026: 55 merges
+  - 2025: 59 merges
   - 2024: 3 merges
   - 2023: 3 merges
+  - 2022: 1 merges
 
-### petertodd
+### glozow
 
-- **Join Date**: None
-- **Last Merge**: None
+- **Join Date**: 2022-07-12T14:59:26+00:00
+- **Last Merge**: 2026-01-13T23:36:00+00:00
 - **Status**: Inactive
-- **Tenure**: None years
-- **Total Merges**: 0
-- **Total Authored**: 85
-- **Total Reviews**: 26
+- **Tenure**: 3.51 years
+- **Total Merges**: 313
+- **Total Authored**: 156
+- **Total Reviews**: 2,519
+- **Self-Merge Rate**: 3.5%
+- **Zero-Review Merge Rate**: 0.3%
+- **Recent Activity** (last 5 years):
+  - 2026: 12 merges
+  - 2025: 130 merges
+  - 2024: 99 merges
+  - 2023: 42 merges
+  - 2022: 30 merges
+
+### ryanofsky
+
+- **Join Date**: 2023-05-17T17:27:55+00:00
+- **Last Merge**: 2026-07-09T00:49:57+00:00
+- **Status**: Active
+- **Tenure**: 3.14 years
+- **Total Merges**: 159
+- **Total Authored**: 362
+- **Total Reviews**: 4,781
+- **Self-Merge Rate**: 0.6%
+- **Zero-Review Merge Rate**: 0.0%
+- **Recent Activity** (last 5 years):
+  - 2026: 17 merges
+  - 2025: 50 merges
+  - 2024: 71 merges
+  - 2023: 21 merges
+
+### sedited
+
+- **Join Date**: 2026-01-09T22:24:25+00:00
+- **Last Merge**: 2026-08-19T16:38:14+00:00
+- **Status**: Active
+- **Tenure**: 0.61 years
+- **Total Merges**: 262
+- **Total Authored**: 108
+- **Total Reviews**: 2,188
 - **Self-Merge Rate**: 0.0%
 - **Zero-Review Merge Rate**: 0.0%
+- **Recent Activity** (last 5 years):
+  - 2026: 262 merges
 
-### promag
-
-- **Join Date**: None
-- **Last Merge**: None
-- **Status**: Inactive
-- **Tenure**: None years
-- **Total Merges**: 0
-- **Total Authored**: 307
-- **Total Reviews**: 3,252
-- **Self-Merge Rate**: 0.0%
-- **Zero-Review Merge Rate**: 0.0%
-
-### theuni
+### jonatack
 
 - **Join Date**: None
 - **Last Merge**: None
 - **Status**: Inactive
 - **Tenure**: None years
 - **Total Merges**: 0
-- **Total Authored**: 363
-- **Total Reviews**: 1,153
+- **Total Authored**: 343
+- **Total Reviews**: 3,991
 - **Self-Merge Rate**: 0.0%
 - **Zero-Review Merge Rate**: 0.0%
 
@@ -380,8 +355,8 @@
 - **Status**: Inactive
 - **Tenure**: None years
 - **Total Merges**: 0
-- **Total Authored**: 294
-- **Total Reviews**: 2,900
+- **Total Authored**: 319
+- **Total Reviews**: 3,285
 - **Self-Merge Rate**: 0.0%
 - **Zero-Review Merge Rate**: 0.0%
 
@@ -392,8 +367,32 @@
 - **Status**: Inactive
 - **Tenure**: None years
 - **Total Merges**: 0
-- **Total Authored**: 223
-- **Total Reviews**: 2,264
+- **Total Authored**: 240
+- **Total Reviews**: 2,428
+- **Self-Merge Rate**: 0.0%
+- **Zero-Review Merge Rate**: 0.0%
+
+### theuni
+
+- **Join Date**: None
+- **Last Merge**: None
+- **Status**: Inactive
+- **Tenure**: None years
+- **Total Merges**: 0
+- **Total Authored**: 371
+- **Total Reviews**: 1,218
+- **Self-Merge Rate**: 0.0%
+- **Zero-Review Merge Rate**: 0.0%
+
+### petertodd
+
+- **Join Date**: None
+- **Last Merge**: None
+- **Status**: Inactive
+- **Tenure**: None years
+- **Total Merges**: 0
+- **Total Authored**: 85
+- **Total Reviews**: 26
 - **Self-Merge Rate**: 0.0%
 - **Zero-Review Merge Rate**: 0.0%
 
@@ -409,15 +408,15 @@
 - **Self-Merge Rate**: 0.0%
 - **Zero-Review Merge Rate**: 0.0%
 
-### jonatack
+### promag
 
 - **Join Date**: None
 - **Last Merge**: None
 - **Status**: Inactive
 - **Tenure**: None years
 - **Total Merges**: 0
-- **Total Authored**: 342
-- **Total Reviews**: 3,973
+- **Total Authored**: 307
+- **Total Reviews**: 3,256
 - **Self-Merge Rate**: 0.0%
 - **Zero-Review Merge Rate**: 0.0%
 

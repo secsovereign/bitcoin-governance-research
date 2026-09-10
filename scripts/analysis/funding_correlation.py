@@ -62,12 +62,10 @@ def analyze_funding_correlation(data_dir: Path):
     # Compare outcomes
     def analyze_group(group_prs, group_name):
         merged = [p for p in group_prs if p.get('merged', False)]
-        maintainer_prs = [p for p in group_prs 
-                          if (p.get('author') or '').lower() in 
-                          ['laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-                           'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-                           'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-                           'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan']]
+        from src.utils.maintainers import load_maintainer_login_set
+        maintainers = load_maintainer_login_set()
+        maintainer_prs = [p for p in group_prs
+                          if (p.get('author') or '').lower() in maintainers]
         
         maintainer_merged = [p for p in merged if p in maintainer_prs]
         

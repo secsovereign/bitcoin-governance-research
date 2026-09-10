@@ -16,6 +16,7 @@ import shutil
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 from datetime import datetime
+import argparse
 import re
 try:
     from tqdm import tqdm
@@ -31,6 +32,7 @@ sys.path.insert(0, str(project_root))
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir
 from src.utils.data_quality import DataQualityTracker
+from src.utils.jsonl_merge import append_jsonl, iter_jsonl, load_jsonl_keys
 
 logger = setup_logger()
 
@@ -252,8 +254,72 @@ class DataCleaner:
                     self.stats['github_commits']['errors'] += 1
         
         logger.info(f"Cleaned {self.stats['github_commits']['processed']} commits")
-        if self.stats['github_commits']['errors'] > 0:
-            logger.warning(f"Encountered {self.stats['github_commits']['errors']} errors")
+    
+    def append_new_github_data(self):
+        """Append only PRs/issues/commits that are not yet in cleaned jsonl files."""
+        self._append_new_prs()
+        self._append_new_issues()
+        self._append_new_commits()
+
+    def _append_new_prs(self):
+        input_file = self.data_dir / "github" / "prs_raw.jsonl"
+        output_file = self.processed_dir / "cleaned_prs.jsonl"
+        if not input_file.exists():
+            logger.warning("PR raw file not found: %s", input_file)
+            return
+        existing = load_jsonl_keys(output_file, lambda pr: pr.get("number"))
+        new_rows = []
+        for pr in iter_jsonl(input_file):
+            if pr.get("number") in existing:
+                continue
+            cleaned = self._clean_pr(pr)
+            if cleaned:
+                new_rows.append(cleaned)
+                self.stats["github_prs"]["processed"] += 1
+            else:
+                self.stats["github_prs"]["errors"] += 1
+        added = append_jsonl(output_file, new_rows)
+        logger.info("Appended %s new cleaned PRs", added)
+
+    def _append_new_issues(self):
+        input_file = self.data_dir / "github" / "issues_raw.jsonl"
+        output_file = self.processed_dir / "cleaned_issues.jsonl"
+        if not input_file.exists():
+            logger.warning("Issue raw file not found: %s", input_file)
+            return
+        existing = load_jsonl_keys(output_file, lambda issue: issue.get("number"))
+        new_rows = []
+        for issue in iter_jsonl(input_file):
+            if issue.get("number") in existing:
+                continue
+            cleaned = self._clean_issue(issue)
+            if cleaned:
+                new_rows.append(cleaned)
+                self.stats["github_issues"]["processed"] += 1
+            else:
+                self.stats["github_issues"]["errors"] += 1
+        added = append_jsonl(output_file, new_rows)
+        logger.info("Appended %s new cleaned issues", added)
+
+    def _append_new_commits(self):
+        input_file = self.data_dir / "github" / "commits_raw.jsonl"
+        output_file = self.processed_dir / "cleaned_commits.jsonl"
+        if not input_file.exists():
+            logger.warning("Commit raw file not found: %s", input_file)
+            return
+        existing = load_jsonl_keys(output_file, lambda commit: commit.get("sha"))
+        new_rows = []
+        for commit in iter_jsonl(input_file):
+            if commit.get("sha") in existing:
+                continue
+            cleaned = self._clean_commit(commit)
+            if cleaned:
+                new_rows.append(cleaned)
+                self.stats["github_commits"]["processed"] += 1
+            else:
+                self.stats["github_commits"]["errors"] += 1
+        added = append_jsonl(output_file, new_rows)
+        logger.info("Appended %s new cleaned commits", added)
     
     def _clean_commit(self, commit: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """Clean a single commit record."""
@@ -412,16 +478,20 @@ class DataCleaner:
         """Clean a single IRC message."""
         cleaned = message.copy()
         
-        # Normalize timestamp
-        if 'timestamp' in cleaned and cleaned['timestamp']:
+        if cleaned.get('timestamp'):
             cleaned['timestamp'] = self._normalize_timestamp(cleaned['timestamp'])
         
-        # Clean text
-        if 'content' in cleaned and cleaned['content']:
-            cleaned['content'] = self._clean_text(cleaned['content'])
+        nickname = cleaned.get('nickname') or cleaned.get('author') or cleaned.get('nick')
+        content = cleaned.get('message') or cleaned.get('content') or cleaned.get('text') or ''
+        if content:
+            content = self._clean_text(content)
         
-        # Ensure required fields
-        if not cleaned.get('author') or not cleaned.get('timestamp'):
+        cleaned['nickname'] = nickname
+        cleaned['author'] = nickname
+        cleaned['message'] = content
+        cleaned['content'] = content
+        
+        if not nickname or not cleaned.get('timestamp') or not content:
             return None
         
         return cleaned
@@ -496,7 +566,60 @@ class DataCleaner:
 
 def main():
     """Main entry point."""
+    parser = argparse.ArgumentParser(description="Clean collected data")
+    parser.add_argument(
+        "--emails-only",
+        action="store_true",
+        help="Clean mailing-list emails.jsonl into processed/cleaned_emails.jsonl only",
+    )
+    parser.add_argument(
+        "--irc-only",
+        action="store_true",
+        help="Clean data/irc/messages.jsonl into processed/cleaned_irc.jsonl only",
+    )
+    parser.add_argument(
+        "--commits-only",
+        action="store_true",
+        help="Clean data/github/commits_raw.jsonl into processed/cleaned_commits.jsonl only",
+    )
+    parser.add_argument(
+        "--append-new",
+        action="store_true",
+        help="Append only new GitHub PRs/issues/commits to cleaned jsonl files",
+    )
+    args = parser.parse_args()
+
     cleaner = DataCleaner()
+    if args.append_new:
+        cleaner.append_new_github_data()
+        return 0
+    if args.emails_only:
+        logger.info("Cleaning mailing-list emails only")
+        cleaner._clean_emails()
+        logger.info(
+            "Emails cleaned: %s processed, %s dropped",
+            cleaner.stats["emails"]["processed"],
+            cleaner.stats["emails"]["errors"],
+        )
+        return 0
+    if args.irc_only:
+        logger.info("Cleaning IRC messages only")
+        cleaner._clean_irc_messages()
+        logger.info(
+            "IRC cleaned: %s processed, %s dropped",
+            cleaner.stats["irc_messages"]["processed"],
+            cleaner.stats["irc_messages"]["errors"],
+        )
+        return 0
+    if args.commits_only:
+        logger.info("Cleaning GitHub commits only")
+        cleaner._clean_github_commits()
+        logger.info(
+            "Commits cleaned: %s processed, %s dropped",
+            cleaner.stats["github_commits"]["processed"],
+            cleaner.stats["github_commits"]["errors"],
+        )
+        return 0
     cleaner.clean_all_data()
     return 0
 

@@ -29,6 +29,11 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.cross_platform_sources import (
+    audit_source_overlap,
+    load_all_informal_sources,
+    summarize_informal_activity,
+)
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
 
 logger = setup_logger()
@@ -81,6 +86,7 @@ class BCAPStateOfMindAnalyzer:
         # Load data
         prs = self._load_prs()
         issues = self._load_issues()
+        informal_sources, informal_meta = load_all_informal_sources()
         
         # Identify consensus-related PRs/issues
         segwit_prs, segwit_issues = self._identify_consensus_prs(prs, issues, 'segwit')
@@ -90,10 +96,14 @@ class BCAPStateOfMindAnalyzer:
         logger.info(f"Identified {len(taproot_prs)} Taproot PRs and {len(taproot_issues)} Taproot issues")
         
         # Analyze SOM for SegWit
-        segwit_som = self._analyze_period_som(segwit_prs, segwit_issues, 'segwit')
+        segwit_som = self._analyze_period_som(
+            segwit_prs, segwit_issues, 'segwit', informal_sources=informal_sources
+        )
         
         # Analyze SOM for Taproot
-        taproot_som = self._analyze_period_som(taproot_prs, taproot_issues, 'taproot')
+        taproot_som = self._analyze_period_som(
+            taproot_prs, taproot_issues, 'taproot', informal_sources=informal_sources
+        )
         
         # Track SOM shifts over time
         som_shifts = self._track_som_shifts(segwit_som, taproot_som)
@@ -103,6 +113,8 @@ class BCAPStateOfMindAnalyzer:
         
         # Save results
         results = {
+            'source_audit': audit_source_overlap(),
+            'informal_meta': informal_meta,
             'segwit_analysis': segwit_som,
             'taproot_analysis': taproot_som,
             'som_shifts': som_shifts,
@@ -191,7 +203,9 @@ class BCAPStateOfMindAnalyzer:
         self,
         prs: List[Dict[str, Any]],
         issues: List[Dict[str, Any]],
-        period: str
+        period: str,
+        *,
+        informal_sources: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """Analyze SOM for a consensus change period."""
         logger.info(f"Analyzing SOM for {period}...")
@@ -200,6 +214,18 @@ class BCAPStateOfMindAnalyzer:
         # Make dates timezone-aware for comparison
         start_date = datetime.fromisoformat(period_data['start']).replace(tzinfo=timezone.utc)
         end_date = datetime.fromisoformat(period_data['end']).replace(tzinfo=timezone.utc)
+        keywords = period_data['keywords']
+        informal_activity = {}
+        informal_som = {}
+        if informal_sources:
+            informal_activity = summarize_informal_activity(
+                informal_sources, start_date, end_date, keywords=keywords
+            )
+            informal_som = {
+                channel: stats.get("som", {})
+                for channel, stats in informal_activity.items()
+                if isinstance(stats, dict) and stats.get("som")
+            }
         
         # Track developer activity and sentiment
         developer_activity = defaultdict(lambda: {
@@ -259,7 +285,9 @@ class BCAPStateOfMindAnalyzer:
             'temporal_distribution': temporal_distribution,
             'total_developers': len(developer_som),
             'related_prs_count': len(prs),
-            'related_issues_count': len(issues)
+            'related_issues_count': len(issues),
+            'informal_activity': informal_activity,
+            'informal_som': informal_som,
         }
     
     def _classify_developer_som(
@@ -483,6 +511,7 @@ class BCAPStateOfMindAnalyzer:
             },
             'classification_method': {
                 'activity_analysis': 'Count PRs, reviews, comments during consensus period',
+                'informal_channels': 'IRC, bitcoin-dev + cryptography ML, Delving, Bitcointalk (keyword-filtered)',
                 'sentiment_analysis': 'Keyword detection for advocacy/opposition',
                 'confidence_levels': 'High/medium/low based on activity volume and sentiment strength'
             },
@@ -538,12 +567,9 @@ class BCAPStateOfMindAnalyzer:
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'bcap_som_analysis.json'
-        
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
-        
-        logger.info(f"Saved results to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('bcap_som_analysis.json', results)
+        logger.info(f"Saved results to {', '.join(str(p) for p in written)}")
 
 
 def main():

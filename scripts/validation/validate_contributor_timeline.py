@@ -61,12 +61,8 @@ def validate_contributor_timeline():
     
     # 2. Maintainer exclusion
     print("2. MAINTAINER EXCLUSION")
-    maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-        'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    maintainers = load_maintainer_login_set()
     found_maintainers = [c for c in timeline.keys() if c.lower() in maintainers]
     
     if found_maintainers:

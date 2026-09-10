@@ -241,16 +241,12 @@ def main():
     print()
     
     results = uniform_threshold_analysis()
-    
-    # Save results
-    output_dir = script_dir / 'findings'
-    output_dir.mkdir(exist_ok=True)
-    
-    json_file = output_dir / 'uniform_threshold_analysis.json'
-    with open(json_file, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"Results saved to: {json_file}")
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('uniform_threshold_analysis.json', results)
+    leftover = script_dir / 'findings' / 'uniform_threshold_analysis.json'
+    if leftover.exists():
+        leftover.unlink()
+    print(f"Results saved to: {', '.join(str(p) for p in written)}")
     
     # Print summary
     print("\n" + "="*80)

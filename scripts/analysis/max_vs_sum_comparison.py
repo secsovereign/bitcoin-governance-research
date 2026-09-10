@@ -202,12 +202,8 @@ def calculate_zero_review_rate(
     other_merge_zero = 0
     other_merge_total = 0
     
-    maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-        'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    maintainers = load_maintainer_login_set()
     
     for pr in prs:
         if not pr.get('merged', False):
@@ -344,16 +340,12 @@ def main():
     print()
     
     results = compare_max_vs_sum()
-    
-    # Save results
-    output_dir = script_dir / 'findings'
-    output_dir.mkdir(exist_ok=True)
-    
-    json_file = output_dir / 'max_vs_sum_comparison.json'
-    with open(json_file, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"Results saved to: {json_file}")
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('max_vs_sum_comparison.json', results)
+    leftover = script_dir / 'findings' / 'max_vs_sum_comparison.json'
+    if leftover.exists():
+        leftover.unlink()
+    print(f"Results saved to: {', '.join(str(p) for p in written)}")
     
     # Print summary
     print("\n" + "="*80)

@@ -1,0 +1,1345 @@
+{
+  "created_at": "2026-07-12T07:55:52.342015+00:00",
+  "seed": 42,
+  "per_category_target": 5,
+  "categories": [
+    "debt_compensation",
+    "refactor",
+    "consensus_change",
+    "networking_change",
+    "rpc_change",
+    "dependency_maintenance",
+    "test_ci_build",
+    "documentation",
+    "other",
+    "new_feature"
+  ],
+  "count": 50,
+  "counts_by_machine_primary": {
+    "debt_compensation": 5,
+    "refactor": 5,
+    "consensus_change": 5,
+    "networking_change": 5,
+    "rpc_change": 5,
+    "dependency_maintenance": 5,
+    "test_ci_build": 5,
+    "documentation": 5,
+    "other": 5,
+    "new_feature": 5
+  },
+  "instructions": "Set human_primary to taxonomy category; human_agree true/false vs machine_primary; optional human_notes. Then run score_stratified_validation.py.",
+  "prs": [
+    {
+      "number": 3537,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "low",
+      "machine_ambiguous": true,
+      "tier_used": "2b",
+      "title": "update copyright year to 2014",
+      "labels": [],
+      "files": [
+        "src/clientversion.h"
+      ],
+      "body": "",
+      "human_primary": "documentation",
+      "human_agree": false,
+      "human_notes": "copyright year bump"
+    },
+    {
+      "number": 28052,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "blockstorage: XOR blocksdir *.dat files",
+      "labels": [
+        "Block storage"
+      ],
+      "files": [
+        "doc/files.md",
+        "doc/release-notes-28052.md",
+        "src/init.cpp",
+        "src/kernel/blockmanager_opts.h",
+        "src/node/blockmanager_args.cpp",
+        "src/node/blockstorage.cpp",
+        "src/node/blockstorage.h",
+        "src/test/streams_tests.cpp",
+        "test/functional/feature_loadblock.py",
+        "test/functional/feature_reindex.py"
+      ],
+      "body": "Currently the *.dat files in the blocksdir store the data received from remote peers as-is. This may be problematic when a program other than Bitcoin Core tries to interpret them by accident. For example, an anti-virus program or other program may scan them and move them into quarantine, or delete them, or corrupt them. This may cause Bitcoin Core to fail a reorg, or fail to reply to block requests (via P2P, RPC, REST, ...). Fix this, similar to https://github.com/bitcoin/bitcoin/pull/6650, by rolling a random XOR pattern over the dat files when writing or reading them. Obviously this can only protect against programs that accidentally and unintentionally are trying to mess with the dat files. Any program that intentionally wants to mess with the dat files can still trivially do so. The XO",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "blocksdir XOR is a disk-privacy feature; Block storage label over-fired debt"
+    },
+    {
+      "number": 33512,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "coins: use dirty entry count for flush warnings and disk space checks",
+      "labels": [
+        "UTXO Db and Indexes"
+      ],
+      "files": [
+        "src/coins.cpp",
+        "src/coins.h",
+        "src/test/coins_tests.cpp",
+        "src/test/fuzz/coins_view.cpp",
+        "src/txdb.cpp",
+        "src/validation.cpp"
+      ],
+      "body": "### Problem Now that non-wiping flushes are possible (#28280, #28233), the cache may be mostly clean at flush time. But the flush warning, disk-space check, and benchmark logging still used total cache size, so a node with a 10 GiB cache that only needs to write a small fraction of dirty entries could still trigger a scary warning via the disk-space checks. The previous `DynamicMemoryUsage` metric was also fundamentally wrong for estimating disk writes, even before non-wiping flushes. In-memory coin size differs from on-disk write size due to LevelDB overhead, log doubling, and compaction. The warning also only fired in `FlushStateToDisk`, so `AssumeUTXO` snapshot loads never warned at all. ### Fix This PR tracks the actual number of dirty entries via `m_dirty_count` in `CCoinsViewCache`, ",
+      "human_primary": "debt_compensation",
+      "human_agree": true,
+      "human_notes": "UTXO flush/disk-space accounting on hot path"
+    },
+    {
+      "number": 2236,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [],
+      "machine_confidence": "low",
+      "machine_ambiguous": true,
+      "tier_used": "2b",
+      "title": "Support large files on 32-bit Linux",
+      "labels": [],
+      "files": [
+        "bitcoin-qt.pro",
+        "src/makefile.unix"
+      ],
+      "body": "",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "32-bit large-file portability, not debt workaround"
+    },
+    {
+      "number": 14086,
+      "machine_primary": "debt_compensation",
+      "machine_secondary": [
+        "test_ci_build"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "appveyor: Use clcache to speed up build",
+      "labels": [
+        "Tests"
+      ],
+      "files": [
+        "appveyor.yml",
+        "build_msvc/libbitcoinconsensus/libbitcoinconsensus.vcxproj"
+      ],
+      "body": "https://ci.appveyor.com/project/ken2812221/bitcoin/build/patch-4.407 The build time reduced from 18 mins to 7 mins. - clcache is a third-party software, act much like ccache. (Compile-time cache) - `*.iobj` and `*.ipdb` is a MSVC built-in cache. (Link-time cache)",
+      "human_primary": "test_ci_build",
+      "human_agree": false,
+      "human_notes": "appveyor clcache is CI speedup"
+    },
+    {
+      "number": 26409,
+      "machine_primary": "refactor",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "refactor: Silence GCC Wmissing-field-initializers in ChainstateManagerOpts",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/kernel/chainstatemanager_opts.h"
+      ],
+      "body": "The `std::optional` fields in the struct that fall back to chain param defaults if not provided should be initialized to `std::nullopt`. This already happens with the current code. However, for consistency with `check_block_index` and to silence a GCC warning, add the \"missing\" `{}`.",
+      "human_primary": "refactor",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 27170,
+      "machine_primary": "refactor",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "refactor: Stop using gArgs global in system.cpp",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/bitcoin-cli.cpp",
+        "src/bitcoin-wallet.cpp",
+        "src/bitcoind.cpp",
+        "src/init.cpp",
+        "src/init/common.cpp",
+        "src/qt/bitcoin.cpp",
+        "src/qt/guiutil.cpp",
+        "src/rpc/request.cpp",
+        "src/util/system.cpp",
+        "src/util/system.h"
+      ],
+      "body": "Most of the code in `util/system.cpp` that was hardcoded to use the global `ArgsManager` instance `gArgs` has been changed to stop using it (for example in https://github.com/bitcoin/bitcoin/pull/20092). But a few hardcoded references to `gArgs` remain. This commit removes the last ones so these functions aren't reading or writing global state. Noticed these `gArgs` references while reviewing #27073",
+      "human_primary": "refactor",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 29961,
+      "machine_primary": "refactor",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "refactor: remove remaining unused code from cpp-subprocess",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/util/subprocess.h"
+      ],
+      "body": "This PR removes remaining code that is unused within the cpp-subprocess module (templates and commented out code). Happy to add more removals if anyone finds more unused parts. Note that there are some API functions of the `Popen` class that we don't use, e.g. `wait()`, `pid()`, `poll()`, `kill()`, but they sound IMHO common enough to be useful in the future, so not sure how deep we should go there.",
+      "human_primary": "refactor",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 11151,
+      "machine_primary": "refactor",
+      "machine_secondary": [],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "1+2b",
+      "title": "Fix header guards using reserved identifiers",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/cuckoocache.h",
+        "src/prevector.h"
+      ],
+      "body": "Identifiers beginning with an underscore followed immediately by an uppercase letter are reserved.",
+      "human_primary": "refactor",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 31072,
+      "machine_primary": "refactor",
+      "machine_secondary": [
+        "other"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "refactor: Clean up messy strformat and bilingual_str usages",
+      "labels": [
+        "Refactoring"
+      ],
+      "files": [
+        "src/httpserver.cpp",
+        "src/index/base.cpp",
+        "src/init.cpp",
+        "src/init/common.cpp",
+        "src/net.cpp",
+        "src/node/chainstatemanager_args.cpp",
+        "src/node/interface_ui.cpp",
+        "src/node/mempool_args.cpp",
+        "src/qt/bitcoin.cpp",
+        "src/test/result_tests.cpp",
+        "src/validation.cpp",
+        "src/wallet/feebumper.cpp",
+        "src/wallet/salvage.cpp",
+        "src/wallet/wallet.cpp"
+      ],
+      "body": "This PR cleans up string formatting in the codebase so other PRs adding compile time checking can be simpler and easier to review (specifically #30928, #31061, #31074, and #31149). Currently these PRs are hard to review because in addition to changing formatting APIs, they have to update callers that are using the API's in unusual ways. Clean up these callers now so later PRs can be simpler. Specifically: - Use string literals instead of `std::string` format strings to enable more compile-time checking. - Avoid using untranslated bilingual strings as format strings. Use originals so they can by checked at compile time. - Favor `Untranslated(strprintf(...))` over `strprintf(Untranslated(...), ...)` for consistency and to prevent translated and untranslated strings from being unintentionally",
+      "human_primary": "refactor",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 30282,
+      "machine_primary": "consensus_change",
+      "machine_secondary": [
+        "test_ci_build"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "2a",
+      "title": "Revert \"contrib: macdeploy: monkey-patch gen-sdk to be deterministic\"",
+      "labels": [],
+      "files": [
+        "contrib/macdeploy/gen-sdk"
+      ],
+      "body": "This reverts commit ba30a5407e065e9d6dd037351e83f56a43f38f19. We no-longer support Python 3.8, so remove the monkey patching.",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "macdeploy revert; not consensus"
+    },
+    {
+      "number": 7935,
+      "machine_primary": "consensus_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Versionbits: GBT support",
+      "labels": [
+        "Mining"
+      ],
+      "files": [
+        "qa/rpc-tests/bip9-softforks.py",
+        "src/consensus/params.h",
+        "src/main.cpp",
+        "src/main.h",
+        "src/rpc/mining.cpp",
+        "src/versionbits.cpp",
+        "src/versionbits.h"
+      ],
+      "body": "Versionbits was released in 0.12.1, but only included updates for the consensus layer. Due to the low-level design of GBT, it is currently not possible to use in practice, since the client has no way to identify the meaning of the block version anymore. Miners and pools can as a hack override/ignore the block version entirely, but this is not really a solution. This change adds the necessary versionbits information to GBT so that miners can implement it safely. It also detects when the client is outdated, but can still safely use the template as-is, and uses the GBT version/force and/or rules/force mutability flags to indicate that. This enables older miners that only support at least BIP 34 (block v2) to work with the newer bitcoind. Obviously this is a very short-term benefit in practice",
+      "human_primary": "consensus_change",
+      "human_agree": true,
+      "human_notes": "versionbits GBT / soft-fork signaling"
+    },
+    {
+      "number": 34164,
+      "machine_primary": "consensus_change",
+      "machine_secondary": [
+        "test_ci_build"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "validation: add reusable coins view for ConnectBlock",
+      "labels": [
+        "Validation"
+      ],
+      "files": [
+        "src/coins.cpp",
+        "src/coins.h",
+        "src/test/coins_tests.cpp",
+        "src/test/fuzz/coins_view.cpp",
+        "src/test/fuzz/coinscache_sim.cpp",
+        "src/validation.cpp",
+        "src/validation.h"
+      ],
+      "body": "This is the first commit of #31132, which can be merged as an independent change. It has a small benefit on its own, but will help in moving the parent PR forward. Add a `Reset()` method to `CCoinsViewCache` that clears `cacheCoins`, `cachedCoinsUsage`, and `hashBlock` without flushing to the `base` view. This allows efficiently reusing a cache instance across multiple blocks. Add `CCoinsViewCache::CreateResetGuard` method to return a `CCoinsViewCache::ResetGuard`. The `ResetGuard` automatically calls `Reset()` on destruction. This RAII pattern ensures the cache is always properly reset between blocks. Add `m_connect_block_view` as a persistent `CCoinsViewCache` for `ConnectBlock`, avoiding repeated memory allocations.",
+      "human_primary": "debt_compensation",
+      "human_agree": false,
+      "human_notes": "reusable coins view for ConnectBlock is validation perf structure"
+    },
+    {
+      "number": 34345,
+      "machine_primary": "consensus_change",
+      "machine_secondary": [],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "2a",
+      "title": "clang-format: use AngleBracket for main includes",
+      "labels": [],
+      "files": [
+        "src/.clang-format"
+      ],
+      "body": "This project uses angle brackets instead of quotes for project-specific headers. Setting [`MainIncludeChar`](https://clang.llvm.org/docs/ClangFormatStyleOptions.html#mainincludechar) enables `clang-format` to automatically detect the main header, so it can be kept as the top group of includes. For example, without this change, `clang-format` would demote `<signet.h>` from being the main header in `src/signet.cpp`. With this change, the order is preserved. On 5e49f5d63c74512c8f46fe7de7deb0341f13244a: ``` % clang-format src/signet.cpp | head -n 15 // Copyright (c) 2019-present The Bitcoin Core developers // Distributed under the MIT software license, see the accompanying // file COPYING or http://www.opensource.org/licenses/mit-license.php. #include <consensus/merkle.h> #include <consensus/p",
+      "human_primary": "refactor",
+      "human_agree": false,
+      "human_notes": "clang-format config only"
+    },
+    {
+      "number": 29726,
+      "machine_primary": "consensus_change",
+      "machine_secondary": [
+        "new_feature"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "assumeutxo: Fix -reindex before snapshot was validated",
+      "labels": [],
+      "files": [
+        "src/validation.cpp",
+        "test/functional/feature_assumeutxo.py"
+      ],
+      "body": "In c711ca186f8d8a28810be0beedcb615ddcf93163 logic was introduced that `-reindex` and `-reindex-chainstate` will delete the snapshot chainstate. This doesn't work currently, instead of deleting the snapshot chainstate the node crashes with an assert (this can be triggered by applying the added test commit on master). Fix this, and another bug that would prevent the new active chainstate from having a mempool after `-reindex` has deleted the snapshot (also covered by the test).",
+      "human_primary": "consensus_change",
+      "human_agree": true,
+      "human_notes": "assumeutxo validation/reindex correctness"
+    },
+    {
+      "number": 19473,
+      "machine_primary": "networking_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "net: Add -networkactive option",
+      "labels": [
+        "P2P",
+        "Settings"
+      ],
+      "files": [
+        "src/init.cpp",
+        "src/net.cpp",
+        "src/net.h",
+        "test/functional/feature_config_args.py",
+        "test/functional/rpc_net.py"
+      ],
+      "body": "Some Bitcoin Core activity is completely local (offline), e.g., reindexing. The `setnetworkactive` RPC command is already present. This PR adds the corresponding command-line argument / config option, and allows to start the client with disabled p2p network by providing `-networkactive=0` or `-nonetworkactive`. This was done while reviewing #16981.",
+      "human_primary": "networking_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 18910,
+      "machine_primary": "networking_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "p2p: add MAX_FEELER_CONNECTIONS constant",
+      "labels": [
+        "P2P"
+      ],
+      "files": [
+        "src/init.cpp",
+        "src/net.h",
+        "src/test/denialofservice_tests.cpp"
+      ],
+      "body": "Extracted from #16003.",
+      "human_primary": "networking_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 869,
+      "machine_primary": "networking_change",
+      "machine_secondary": [],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "Fix #626: RecvLine wrong error message",
+      "labels": [],
+      "files": [
+        "src/irc.cpp",
+        "src/irc.h",
+        "src/net.cpp",
+        "src/net.h"
+      ],
+      "body": "Also moved RecvLine to net.cpp.",
+      "human_primary": "networking_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 32200,
+      "machine_primary": "networking_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "net: Add Tor extended SOCKS5 error codes",
+      "labels": [
+        "P2P"
+      ],
+      "files": [
+        "src/netbase.cpp"
+      ],
+      "body": "Add support for reporting Tor extended SOCKS5 error codes as defined here: - https://spec.torproject.org/socks-extensions.html#extended-error-codes - https://gitlab.torproject.org/tpo/core/arti/-/blob/main/crates/tor-socksproto/src/msg.rs?ref_type=heads#L183 These give a more direct indication of the problem in case of errors connecting to hidden services, for example: ``` 2025-04-02T10:34:13Z [net] Socks5() connect to [elided].onion:8333 failed: onion service descriptor can not be found ``` In the C Tor implementation, to get these one should set the \"ExtendedErrors\" flag on the \"SocksPort\" definition, introduced in version 0.4.3.1. In Arti, extended error codes are always enabled. Also, report the raw error code in case of unknown reply values.",
+      "human_primary": "networking_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 19988,
+      "machine_primary": "networking_change",
+      "machine_secondary": [
+        "debt_compensation",
+        "test_ci_build"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": true,
+      "tier_used": "1+2a+2b",
+      "title": "Overhaul transaction request logic",
+      "labels": [
+        "P2P"
+      ],
+      "files": [
+        "doc/release-notes-19988.md",
+        "src/Makefile.am",
+        "src/Makefile.test.include",
+        "src/limitedmap.h",
+        "src/net.h",
+        "src/net_permissions.cpp",
+        "src/net_permissions.h",
+        "src/net_processing.cpp",
+        "src/net_processing.h",
+        "src/primitives/transaction.h",
+        "src/test/fuzz/txrequest.cpp",
+        "src/test/limitedmap_tests.cpp",
+        "src/test/txrequest_tests.cpp",
+        "src/txrequest.cpp",
+        "src/txrequest.h"
+      ],
+      "body": "This replaces the transaction request logic with an encapsulated class that maintains all the state surrounding it. By keeping it stand alone, it can be easily tested (using included unit tests and fuzz tests). The major changes are: * Announcements from outbound (and whitelisted) peers are now always preferred over those from inbound peers. This used to be the case for the first request (by delaying the first request from inbound peers), and a bias afters. The 2s delay for requests from inbound peers still exists, but after that, if viable outbound peers remain for any given transaction, they will always be tried first. * No more hard cap of 100 in flight transactions per peer, as there is less need for it (memory usage is linear in the number of announcements, but independent from the nu",
+      "human_primary": "networking_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 9962,
+      "machine_primary": "rpc_change",
+      "machine_secondary": [
+        "documentation"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "2a",
+      "title": "[trivial] Fix typo in rpc/protocol.h",
+      "labels": [],
+      "files": [
+        "src/rpc/protocol.h"
+      ],
+      "body": "The typo was introduced in commit 338bf065a454fee76d9dfa9c7a36161cac72309f, which was merged yesterday. Changes summarized to facilitate reviewing: * exampled \u2192 example",
+      "human_primary": "documentation",
+      "human_agree": false,
+      "human_notes": "typo in header"
+    },
+    {
+      "number": 11288,
+      "machine_primary": "rpc_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "More user-friendly error message when partially signing",
+      "labels": [
+        "RPC/REST/ZMQ"
+      ],
+      "files": [
+        "src/rpc/rawtransaction.cpp"
+      ],
+      "body": "When partially signing a transaction using `signrawtransaction`, if the wallet doesn't have access to a key, it will output a scary error message `\"error\": \"Operation not valid with the current stack size\"`, yet it will partially sign the transaction anyway. This puts a lot of users off, because they don't realise the signing actually succeeded for some inputs. This catches that specific error when signing, and outputs a friendlier message which says `Unable to sign input, invalid stack size (possibly missing key)`. This is the best way I could think of to fix the issue, but please let me know if you come up with a better way to do it :) Fixes https://github.com/bitcoin/bitcoin/issues/9988",
+      "human_primary": "rpc_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 10267,
+      "machine_primary": "rpc_change",
+      "machine_secondary": [
+        "test_ci_build"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "New -includeconf argument for including external configuration files",
+      "labels": [
+        "RPC/REST/ZMQ"
+      ],
+      "files": [
+        "doc/release-notes-pr10267.md",
+        "src/bitcoin-cli.cpp",
+        "src/bitcoind.cpp",
+        "src/init.cpp",
+        "src/interfaces/node.cpp",
+        "src/interfaces/node.h",
+        "src/qt/bitcoin.cpp",
+        "src/util.cpp",
+        "src/util.h",
+        "test/functional/feature_includeconf.py",
+        "test/functional/test_runner.py"
+      ],
+      "body": "Fixes: #10071. Done: - adds `-includeconf=<path>`, where `<path>` is relative to `datadir` or to the path of the file being read, if in a file - protects against circular includes - updates help docs ~~~Thoughts:~~~ - ~~~I am not sure how to test this in a neat manner. Feedback on this would be nice. Will dig/think though.~~~",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "includeconf is settings/init, not RPC surface"
+    },
+    {
+      "number": 14596,
+      "machine_primary": "rpc_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Bugfix: RPC: Add address_type named param for createmultisig",
+      "labels": [
+        "RPC/REST/ZMQ"
+      ],
+      "files": [
+        "src/rpc/misc.cpp"
+      ],
+      "body": "",
+      "human_primary": "rpc_change",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 18032,
+      "machine_primary": "rpc_change",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "rpc: Output a descriptor in createmultisig and addmultisigaddress",
+      "labels": [
+        "Wallet",
+        "RPC/REST/ZMQ"
+      ],
+      "files": [
+        "doc/descriptors.md",
+        "src/rpc/misc.cpp",
+        "src/wallet/rpcwallet.cpp",
+        "test/functional/rpc_createmultisig.py",
+        "test/functional/test_framework/descriptors.py"
+      ],
+      "body": "Give a descriptor from `createmultisig` and `addmultisigaddress`. Extracted from #16528 with `addmultisgaddress` and tests added.",
+      "human_primary": "rpc_change",
+      "human_agree": true,
+      "human_notes": "descriptor output on multisig RPCs"
+    },
+    {
+      "number": 27721,
+      "machine_primary": "dependency_maintenance",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "depends: remove redundant stdlib option",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "depends/hosts/darwin.mk"
+      ],
+      "body": "Like #27628, this is another dependency of #21778, though it doesn't become obvious until used with a newer clang. This should be a no-op. Use of -stdlib++-isystem gets rid of any system c++ header include paths and negates the need for this option. In newer versions of clangs the combo produces an annoying warning that actually causes problems during configure.",
+      "human_primary": "dependency_maintenance",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 9646,
+      "machine_primary": "dependency_maintenance",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "depends: Fix cross build for qt5.7",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "build-aux/m4/bitcoin_qt.m4",
+        "depends/packages/packages.mk",
+        "depends/packages/qt.mk",
+        "depends/packages/zlib.mk",
+        "depends/patches/qt/mac-qmake.conf"
+      ],
+      "body": "Fixes #9585. The qt build is a mess, but this gets it building for 5.7. Going forward, we need to split it up into smaller parts, where the native tools (qmake/rcc/uic/etc.) are separate from the target libs. That will let us eliminate all of the cross-build hacks. Includes a temp commit to have Travis build for Windows.",
+      "human_primary": "dependency_maintenance",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 24792,
+      "machine_primary": "dependency_maintenance",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Update libsecp256k1 subtree to current master",
+      "labels": [
+        "Upstream"
+      ],
+      "files": [
+        "build_msvc/libsecp256k1/libsecp256k1.vcxproj",
+        "configure.ac",
+        "src/key.cpp",
+        "src/secp256k1/.cirrus.yml",
+        "src/secp256k1/.gitattributes",
+        "src/secp256k1/.gitignore",
+        "src/secp256k1/Makefile.am",
+        "src/secp256k1/README.md",
+        "src/secp256k1/build-aux/m4/bitcoin_secp.m4",
+        "src/secp256k1/ci/cirrus.sh",
+        "src/secp256k1/ci/linux-debian.Dockerfile",
+        "src/secp256k1/configure.ac",
+        "src/secp256k1/doc/CHANGELOG.md",
+        "src/secp256k1/doc/release-process.md",
+        "src/secp256k1/examples/EXAMPLES_COPYING"
+      ],
+      "body": "The motivation for this bump is some small build cleanups, including [dropping the `--enable-experimental`](https://github.com/bitcoin-core/secp256k1/commit/80cf4eea5fa0162350614c08f2252a07f9d7804b) flag from the libsecp configure invocation, as well as some [now-redundant](https://github.com/bitcoin-core/secp256k1/pull/1090) `pkg-config` variable exporting from our own configure. We also get the benefit of a slightly more efficient libsecp configure due to https://github.com/bitcoin-core/secp256k1/pull/1088. This also includes a change in our code to migrate from using the [now deprecated](https://github.com/bitcoin-core/secp256k1/commit/99e6568fc6ea2768f5355eb4617283086f756931) `secp256k1_schnorrsig_sign` to `secp256k1_schnorrsig_sign32`. Guix Build (on x86_64): ```bash b9f6ad90c75f7edd7",
+      "human_primary": "dependency_maintenance",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 35313,
+      "machine_primary": "dependency_maintenance",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a",
+      "title": "Bump leveldb subtree",
+      "labels": [],
+      "files": [
+        "cmake/leveldb.cmake",
+        "src/leveldb/CMakeLists.txt",
+        "src/leveldb/db/autocompact_test.cc",
+        "src/leveldb/db/db_test.cc",
+        "src/leveldb/db/version_set.cc",
+        "src/leveldb/util/env_posix.cc",
+        "src/leveldb/util/env_windows.cc",
+        "src/leveldb/util/hash.cc"
+      ],
+      "body": "Includes: * https://github.com/bitcoin-core/leveldb-subtree/pull/52 * https://github.com/bitcoin-core/leveldb-subtree/pull/53 * https://github.com/bitcoin-core/leveldb-subtree/pull/55 * https://github.com/bitcoin-core/leveldb-subtree/pull/59 * https://github.com/bitcoin-core/leveldb-subtree/pull/60 * https://github.com/bitcoin-core/leveldb-subtree/pull/61",
+      "human_primary": "dependency_maintenance",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 29960,
+      "machine_primary": "dependency_maintenance",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "depends: pass verbose through to cmake based makefiles",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "depends/funcs.mk"
+      ],
+      "body": "While testing https://github.com/bitcoin/bitcoin/pull/29708 I was not able to enable verbose output to check which flags were being given to the compiler. With this PR, running depends with V=1 will enable verbose output from makefiles generated by cmake. How to test: ```shell make -C depends libnatpmp V=1 ```",
+      "human_primary": "dependency_maintenance",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 1042,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "Remove USE_SSL #define",
+      "labels": [],
+      "files": [
+        "bitcoin-qt.pro",
+        "contrib/debian/rules",
+        "contrib/gitian-descriptors/gitian-win32.yml",
+        "contrib/gitian-descriptors/gitian.yml",
+        "doc/release-process.txt",
+        "src/bitcoinrpc.cpp",
+        "src/init.cpp",
+        "src/makefile.linux-mingw",
+        "src/makefile.mingw",
+        "src/makefile.osx",
+        "src/makefile.unix",
+        "src/rpcdump.cpp"
+      ],
+      "body": "This removes all uses of the USE_SSL preprocessor #define. It used to be necessary because Satoshi and I couldn't figure out how to get OpenSSL's libssl to compile on Windows properly (so we were linking against only libcrypto). That issue is long gone, so lets simplify the code and get rid of USE_SSL.",
+      "human_primary": "refactor",
+      "human_agree": false,
+      "human_notes": "remove USE_SSL define; structural cleanup"
+    },
+    {
+      "number": 19160,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "multiprocess: Add basic spawn and IPC support",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "build_msvc/bitcoind/bitcoind.vcxproj",
+        "depends/packages/native_libmultiprocess.mk",
+        "doc/multiprocess.md",
+        "src/Makefile.am",
+        "src/bitcoind.cpp",
+        "src/init/bitcoin-node.cpp",
+        "src/init/bitcoind.cpp",
+        "src/interfaces/README.md",
+        "src/interfaces/echo.cpp",
+        "src/interfaces/echo.h",
+        "src/interfaces/init.cpp",
+        "src/interfaces/init.h",
+        "src/interfaces/ipc.h",
+        "src/ipc/capnp/.gitignore",
+        "src/ipc/capnp/echo.capnp"
+      ],
+      "body": "This PR is part of the [process separation project](https://github.com/bitcoin/bitcoin/projects/10). --- This PR adds basic process spawning and IPC method call support to `bitcoin-node` executables built with `--enable-multiprocess`[*]. These changes are used in https://github.com/bitcoin/bitcoin/pull/10102 to let node, gui, and wallet functionality run in different processes, and extended in https://github.com/bitcoin/bitcoin/pull/19460 and https://github.com/bitcoin/bitcoin/pull/19461 after that to allow gui and wallet processes to be started and stopped independently and connect to the node over a socket. These changes can also be used to implement new functionality outside the `bitcoin-node` process like external indexes or pluggable transports (https://github.com/bitcoin/bitcoin/pull",
+      "human_primary": "new_feature",
+      "human_agree": false,
+      "human_notes": "multiprocess spawn/IPC is net-new capability"
+    },
+    {
+      "number": 22406,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "build: remove --enable-determinism configure option",
+      "labels": [
+        "Build system"
+      ],
+      "files": [
+        "configure.ac"
+      ],
+      "body": "This was added by me a while back, with the intention of expanding what this did. That hasn't happened, and this hasn't gained much use. There's also been some discussion of some configure option fatigue, so just remove it for now. Note that `-Wl,--no-insert-timestamp` is also already used in the Guix build.",
+      "human_primary": "test_ci_build",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 24852,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [
+        "debt_compensation",
+        "other"
+      ],
+      "machine_confidence": "medium",
+      "machine_ambiguous": true,
+      "tier_used": "1+2a+2b",
+      "title": "util: optimize HexStr",
+      "labels": [
+        "Build system",
+        "Utils/log/libs"
+      ],
+      "files": [
+        "src/Makefile.bench.include",
+        "src/bench/strencodings.cpp",
+        "src/test/util_tests.cpp",
+        "src/util/strencodings.cpp"
+      ],
+      "body": "In my benchmark, this rewrite improves runtime 27% (g++) to 46% (clang++) for the benchmark `HexStrBench`: g++ 11.2.0 | ns/byte | byte/s | err% | ins/byte | cyc/byte | IPC | bra/byte | miss% | total | benchmark |--------------------:|--------------------:|--------:|----------------:|----------------:|-------:|---------------:|--------:|----------:|:---------- | 0.94 | 1,061,381,310.36 | 0.7% | 12.00 | 3.01 | 3.990 | 1.00 | 0.0% | 0.01 | `HexStrBench` master | 0.68 | 1,465,366,544.25 | 1.7% | 6.00 | 2.16 | 2.778 | 1.00 | 0.0% | 0.01 | `HexStrBench` branch clang++ 13.0.1 | ns/byte | byte/s | err% | ins/byte | cyc/byte | IPC | bra/byte | miss% | total | benchmark |--------------------:|--------------------:|--------:|----------------:|----------------:|-------:|---------------:|--------:|----",
+      "human_primary": "debt_compensation",
+      "human_agree": false,
+      "human_notes": "HexStr optimize is micro-perf"
+    },
+    {
+      "number": 29496,
+      "machine_primary": "test_ci_build",
+      "machine_secondary": [
+        "other",
+        "consensus_change"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "policy: bump TX_MAX_STANDARD_VERSION to 3",
+      "labels": [
+        "TX fees and policy"
+      ],
+      "files": [
+        "doc/bips.md",
+        "src/policy/policy.h",
+        "src/policy/v3_policy.cpp",
+        "src/policy/v3_policy.h",
+        "src/test/fuzz/package_eval.cpp",
+        "src/test/fuzz/tx_pool.cpp",
+        "src/test/txvalidation_tests.cpp",
+        "src/test/util/txmempool.cpp",
+        "src/validation.cpp",
+        "test/functional/mempool_accept.py",
+        "test/functional/mempool_accept_v3.py",
+        "test/functional/wallet_create_tx.py"
+      ],
+      "body": "Make `nVersion=3` (which is currently nonstandard on mainnet) standard. Note that we will treat these transactions as Topologically Restricted Until Confirmation (TRUC). Spec is in BIP 431 and implementation is in #28948, #29306, and #29873 See #27463 for overall project tracking, and #29319 for information about relevance to cluster mempool.",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "standardness/policy bump, not test/CI"
+    },
+    {
+      "number": 27574,
+      "machine_primary": "documentation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "doc: Add post branch-off note about fuzz input pruning",
+      "labels": [
+        "Docs"
+      ],
+      "files": [
+        "doc/release-process.md"
+      ],
+      "body": "",
+      "human_primary": "documentation",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 8121,
+      "machine_primary": "documentation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "[Doc] Update implemented BIPs list",
+      "labels": [
+        "Docs"
+      ],
+      "files": [
+        "doc/bips.md"
+      ],
+      "body": "",
+      "human_primary": "documentation",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 22926,
+      "machine_primary": "documentation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "doc: Set PYTHONUTF8=1 for functional tests on Windows",
+      "labels": [
+        "Docs",
+        "Tests"
+      ],
+      "files": [
+        "test/README.md"
+      ],
+      "body": "The `PYTHONUTF8` environment variable is defined in [PEP 540](https://www.python.org/dev/peps/pep-0540/), and it is actually used in our CI: https://github.com/bitcoin/bitcoin/blob/5e3380b9f59481fc18e05b9d651c3c733abe4053/.cirrus.yml#L89 This PR documents such usage to avoid users' [errors](https://github.com/bitcoin/bitcoin/pull/22922#issuecomment-915511037).",
+      "human_primary": "documentation",
+      "human_agree": true,
+      "human_notes": "test README env note"
+    },
+    {
+      "number": 31954,
+      "machine_primary": "documentation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a",
+      "title": "doc: update fuzz instructions when on macOS",
+      "labels": [
+        "Docs",
+        "macOS"
+      ],
+      "files": [
+        "doc/fuzzing.md"
+      ],
+      "body": "Fixes: #31049 Updates the instructions for fuzzing on macOS to use `lld` instead of `ld`. Tested instructions on M1 Mac running 14.6.1",
+      "human_primary": "documentation",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 32241,
+      "machine_primary": "documentation",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "[29.x] 29.0 final changes",
+      "labels": [
+        "Backport"
+      ],
+      "files": [
+        "CMakeLists.txt",
+        "doc/man/bitcoin-cli.1",
+        "doc/man/bitcoin-qt.1",
+        "doc/man/bitcoin-tx.1",
+        "doc/man/bitcoin-util.1",
+        "doc/man/bitcoin-wallet.1",
+        "doc/man/bitcoind.1",
+        "doc/release-notes.md"
+      ],
+      "body": "There weren't any reports from rc2 and rc3 binaries have been up since April 2 (1 week ago).",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "release finalization/backport bundle"
+    },
+    {
+      "number": 15202,
+      "machine_primary": "other",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "gui: Add Close All Wallets action",
+      "labels": [
+        "GUI",
+        "Wallet"
+      ],
+      "files": [
+        "src/qt/bitcoingui.cpp",
+        "src/qt/bitcoingui.h",
+        "src/qt/walletcontroller.cpp",
+        "src/qt/walletcontroller.h"
+      ],
+      "body": "This PR adds the action to close all wallets. <img width=\"405\" alt=\"Screenshot 2020-06-01 at 01 06 12\" src=\"https://user-images.githubusercontent.com/3534524/83365986-25a8b980-a3a4-11ea-9613-24dcd8eaa55c.png\">",
+      "human_primary": "other",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 29136,
+      "machine_primary": "other",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "wallet: `addhdkey` RPC to add just keys to wallets via new `unused(KEY)` descriptor",
+      "labels": [
+        "Wallet"
+      ],
+      "files": [
+        "doc/release-notes-29136.md",
+        "src/script/descriptor.cpp",
+        "src/script/descriptor.h",
+        "src/test/descriptor_tests.cpp",
+        "src/wallet/rpc/backup.cpp",
+        "src/wallet/rpc/wallet.cpp",
+        "src/wallet/test/walletload_tests.cpp",
+        "src/wallet/wallet.cpp",
+        "test/functional/wallet_hd.py",
+        "test/functional/wallet_importdescriptors.py"
+      ],
+      "body": "It is sometimes useful for the wallet to have keys that it can sign with but are not (initially) involved in any scripts, e.g. for setting up a multisig. Ryanofsky [suggested](https://github.com/bitcoin/bitcoin/pull/26728#issuecomment-1867721948) A `unused(KEY)` descriptor which allows for a key to be specified, but produces no scripts. These can be imported into the wallet, and subsequently retrieved with `gethdkeys`. Additionally, `listdescriptors` will output these descriptors so that they can be easily backed up. In order to make it easier for people to add HD keys to their wallet, and to generate a new one if they want to rotate their descriptors, an `addhdkey` RPC is also added. Without arguments, it will generate a new HD key and add it to the wallet via a `unused(KEY)` descriptor. ",
+      "human_primary": "other",
+      "human_agree": true,
+      "human_notes": "wallet RPC/descriptor; other by taxonomy"
+    },
+    {
+      "number": 15874,
+      "machine_primary": "other",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Resolve the qt/guiutil <-> qt/optionsmodel CD",
+      "labels": [
+        "GUI",
+        "Refactoring"
+      ],
+      "files": [
+        "src/qt/guiutil.cpp",
+        "src/qt/guiutil.h",
+        "src/qt/intro.cpp",
+        "src/qt/intro.h",
+        "src/qt/optionsmodel.cpp",
+        "test/lint/lint-circular-dependencies.sh"
+      ],
+      "body": "This pull request attempts to resolve the `qt/guiutil` <-> `qt/optionsmodel` circular dependency. The `Intro` class in `qt/intro` has a static member function `getDefaultDataDirectory` which is used by `qt/optionsmodel` and creates the circular dependency `qt/guiutil -> qt/walletmodel -> qt/optionsmodel -> qt/intro -> qt/guiutil`. This circular dependency is resolved by moving `Intro::getDefaultDataDirectory` to `GUIUtil::getDefaultDataDirectory` without modifying the implementation.",
+      "human_primary": "other",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 1259,
+      "machine_primary": "other",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "2a+2b",
+      "title": "GUI: allow easier use of the testnet icon",
+      "labels": [],
+      "files": [
+        "src/qt/bitcoingui.cpp"
+      ],
+      "body": "- change global setWindowIcon() calls to qApp->setWindowIcon() as all parent windows will then use this set icon",
+      "human_primary": "other",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 16366,
+      "machine_primary": "other",
+      "machine_secondary": [
+        "test_ci_build"
+      ],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "init: Use InitError for all errors in bitcoind/qt",
+      "labels": [
+        "GUI",
+        "Tests"
+      ],
+      "files": [
+        "src/bitcoind.cpp",
+        "src/interfaces/node.cpp",
+        "src/interfaces/node.h",
+        "src/qt/bitcoin.cpp",
+        "src/qt/bitcoin.h",
+        "src/qt/bitcoingui.cpp",
+        "test/functional/feature_config_args.py",
+        "test/functional/feature_includeconf.py"
+      ],
+      "body": "Using the same InitError for startup error in the daemon and the gui makes it possible to run the tests with the gui again: ```sh BITCOIND=bitcoin-qt ./test/functional/test_runner.py feature_includeconf feature_config_args",
+      "human_primary": "other",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 24,
+      "machine_primary": "new_feature",
+      "machine_secondary": [],
+      "machine_confidence": "medium",
+      "machine_ambiguous": false,
+      "tier_used": "1+2b",
+      "title": "Gettransaction",
+      "labels": [
+        "Feature"
+      ],
+      "files": [
+        "rpc.cpp"
+      ],
+      "body": "Adds a \"details\" array to gettransaction output. e.g. { \"amount\" : 0.00000000, \"fee\" : 0.00000000, \"confirmations\" : 609, \"txid\" : \"b593920033b905c0e7c1d82d5b3e15a114841fa916719e968add3212e07c73a0\", \"time\" : 1294342907, \"details\" : [ { \"account\" : \"Test2\", \"address\" : \"mtQArCTnZHGsPf89jus6khxriYsJbU673P\", \"category\" : \"send\", \"amount\" : -11.00000000, \"fee\" : 0.00000000 }, { \"account\" : \"Test1\", \"address\" : \"mtQArCTnZHGsPf89jus6khxriYsJbU673P\", \"category\" : \"receive\", \"amount\" : 11.00000000 } ] }",
+      "human_primary": "new_feature",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 4287,
+      "machine_primary": "new_feature",
+      "machine_secondary": [],
+      "machine_confidence": "low",
+      "machine_ambiguous": true,
+      "tier_used": "2a+2b",
+      "title": "Remove side effect in assertion in ProcessGetData",
+      "labels": [],
+      "files": [
+        "src/main.cpp"
+      ],
+      "body": "A side-effect was introduced into an assertion in 7a0e84d. This commit fixes that.",
+      "human_primary": "refactor",
+      "human_agree": false,
+      "human_notes": "assertion cleanup; not a feature"
+    },
+    {
+      "number": 30625,
+      "machine_primary": "new_feature",
+      "machine_secondary": [],
+      "machine_confidence": "low",
+      "machine_ambiguous": true,
+      "tier_used": "2a",
+      "title": "chainparams: Handle Testnet4 in GetNetworkForMagic",
+      "labels": [],
+      "files": [
+        "src/kernel/chainparams.cpp"
+      ],
+      "body": "Found during testing: The recently introduced `GetNetworkForMagic()` doesn't handle Testnet4 yet.",
+      "human_primary": "other",
+      "human_agree": false,
+      "human_notes": "testnet4 magic handling"
+    },
+    {
+      "number": 574,
+      "machine_primary": "new_feature",
+      "machine_secondary": [],
+      "machine_confidence": "high",
+      "machine_ambiguous": false,
+      "tier_used": "1+2a+2b",
+      "title": "Dumpprivkey",
+      "labels": [
+        "Feature"
+      ],
+      "files": [
+        "bitcoin-qt.pro",
+        "src/base58.h",
+        "src/bitcoinrpc.cpp",
+        "src/db.cpp",
+        "src/key.cpp",
+        "src/key.h",
+        "src/keystore.cpp",
+        "src/keystore.h",
+        "src/main.cpp",
+        "src/main.h",
+        "src/makefile.mingw",
+        "src/makefile.osx",
+        "src/makefile.unix",
+        "src/rpcdump.cpp",
+        "src/wallet.cpp"
+      ],
+      "body": "Introduces three new RPC calls: - dumpprivkey: retrieve the private key corresponding to an address - importprivkey: add a private key to your wallet - removeprivkey: delete a private key from your wallet",
+      "human_primary": "new_feature",
+      "human_agree": true,
+      "human_notes": null
+    },
+    {
+      "number": 283,
+      "machine_primary": "new_feature",
+      "machine_secondary": [
+        "rpc_change"
+      ],
+      "machine_confidence": "low",
+      "machine_ambiguous": true,
+      "tier_used": "2a",
+      "title": "Add RPC call estimatetxfee",
+      "labels": [],
+      "files": [],
+      "body": "This change is per discussion at http://forum.bitcoin.org/index.php?topic=8153.0; Added ability to estimate the transaction fee for a given transfer amount. Use case concerns transferring BTC out of an \"account\", and being able to determine if the account has enough BTC to cover transfer + fees.",
+      "human_primary": "new_feature",
+      "human_agree": true,
+      "human_notes": null
+    }
+  ],
+  "validation": {
+    "validator": "cursor_tier3_human_review",
+    "date": "2026-07-12",
+    "n": 50,
+    "agree": 34,
+    "accuracy": 0.68,
+    "per_machine_category": {
+      "debt_compensation": {
+        "n": 5,
+        "agree": 1,
+        "accuracy": 0.2
+      },
+      "refactor": {
+        "n": 5,
+        "agree": 5,
+        "accuracy": 1.0
+      },
+      "consensus_change": {
+        "n": 5,
+        "agree": 2,
+        "accuracy": 0.4
+      },
+      "networking_change": {
+        "n": 5,
+        "agree": 5,
+        "accuracy": 1.0
+      },
+      "rpc_change": {
+        "n": 5,
+        "agree": 3,
+        "accuracy": 0.6
+      },
+      "dependency_maintenance": {
+        "n": 5,
+        "agree": 5,
+        "accuracy": 1.0
+      },
+      "test_ci_build": {
+        "n": 5,
+        "agree": 1,
+        "accuracy": 0.2
+      },
+      "documentation": {
+        "n": 5,
+        "agree": 4,
+        "accuracy": 0.8
+      },
+      "other": {
+        "n": 5,
+        "agree": 5,
+        "accuracy": 1.0
+      },
+      "new_feature": {
+        "n": 5,
+        "agree": 3,
+        "accuracy": 0.6
+      }
+    },
+    "disagreements": [
+      {
+        "number": 3537,
+        "machine": "debt_compensation",
+        "human": "documentation",
+        "title": "update copyright year to 2014"
+      },
+      {
+        "number": 28052,
+        "machine": "debt_compensation",
+        "human": "other",
+        "title": "blockstorage: XOR blocksdir *.dat files"
+      },
+      {
+        "number": 2236,
+        "machine": "debt_compensation",
+        "human": "other",
+        "title": "Support large files on 32-bit Linux"
+      },
+      {
+        "number": 14086,
+        "machine": "debt_compensation",
+        "human": "test_ci_build",
+        "title": "appveyor: Use clcache to speed up build"
+      },
+      {
+        "number": 30282,
+        "machine": "consensus_change",
+        "human": "other",
+        "title": "Revert \"contrib: macdeploy: monkey-patch gen-sdk to be deterministic\""
+      },
+      {
+        "number": 34164,
+        "machine": "consensus_change",
+        "human": "debt_compensation",
+        "title": "validation: add reusable coins view for ConnectBlock"
+      },
+      {
+        "number": 34345,
+        "machine": "consensus_change",
+        "human": "refactor",
+        "title": "clang-format: use AngleBracket for main includes"
+      },
+      {
+        "number": 9962,
+        "machine": "rpc_change",
+        "human": "documentation",
+        "title": "[trivial] Fix typo in rpc/protocol.h"
+      },
+      {
+        "number": 10267,
+        "machine": "rpc_change",
+        "human": "other",
+        "title": "New -includeconf argument for including external configuration files"
+      },
+      {
+        "number": 1042,
+        "machine": "test_ci_build",
+        "human": "refactor",
+        "title": "Remove USE_SSL #define"
+      },
+      {
+        "number": 19160,
+        "machine": "test_ci_build",
+        "human": "new_feature",
+        "title": "multiprocess: Add basic spawn and IPC support"
+      },
+      {
+        "number": 24852,
+        "machine": "test_ci_build",
+        "human": "debt_compensation",
+        "title": "util: optimize HexStr"
+      },
+      {
+        "number": 29496,
+        "machine": "test_ci_build",
+        "human": "other",
+        "title": "policy: bump TX_MAX_STANDARD_VERSION to 3"
+      },
+      {
+        "number": 32241,
+        "machine": "documentation",
+        "human": "other",
+        "title": "[29.x] 29.0 final changes"
+      },
+      {
+        "number": 4287,
+        "machine": "new_feature",
+        "human": "refactor",
+        "title": "Remove side effect in assertion in ProcessGetData"
+      },
+      {
+        "number": 30625,
+        "machine": "new_feature",
+        "human": "other",
+        "title": "chainparams: Handle Testnet4 in GetNetworkForMagic"
+      }
+    ]
+  }
+}

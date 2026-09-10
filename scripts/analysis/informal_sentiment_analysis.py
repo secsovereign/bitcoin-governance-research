@@ -23,6 +23,15 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.cross_platform_sources import (
+    audit_source_overlap,
+    extract_pr_numbers,
+    extract_text_author_timestamp,
+    load_bitcointalk_posts,
+    load_delving_posts,
+    load_mailing_lists,
+    split_mailing_lists_by_name,
+)
 
 logger = setup_logger()
 
@@ -58,13 +67,8 @@ class InformalSentimentAnalyzer:
         self.findings_dir = self.analysis_dir / 'findings' / 'data'
         self.findings_dir.mkdir(parents=True, exist_ok=True)
         
-        # Maintainer list (for cross-reference)
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
     
     def run_analysis(self):
         """Run informal sentiment analysis."""
@@ -72,40 +76,90 @@ class InformalSentimentAnalyzer:
         logger.info("IRC/Email Sentiment Analysis")
         logger.info("=" * 60)
         
+        source_audit = audit_source_overlap()
+
         # Load data
         irc_messages = self._load_irc_messages()
-        emails = self._load_emails()
+        all_emails, email_meta = load_mailing_lists(dedupe=True)
+        emails_by_list = split_mailing_lists_by_name(all_emails)
+        bitcoin_dev_emails = emails_by_list.get("bitcoin-dev", [])
+        cryptography_emails = emails_by_list.get("cryptography", [])
+        delving_posts, _ = load_delving_posts()
+        bitcointalk_posts, _ = load_bitcointalk_posts()
         core_prs = self._load_core_prs()
-        
-        logger.info(f"Loaded {len(irc_messages)} IRC messages, {len(emails)} emails")
-        
+
+        logger.info(
+            "Loaded %s IRC, %s emails (%s deduped), %s Delving, %s Bitcointalk",
+            len(irc_messages),
+            len(all_emails),
+            email_meta.get("duplicates_removed", 0),
+            len(delving_posts),
+            len(bitcointalk_posts),
+        )
+
         # Analyze sentiment
         irc_sentiment = self._analyze_channel_sentiment(irc_messages, 'irc')
-        email_sentiment = self._analyze_channel_sentiment(emails, 'email')
-        
+        email_sentiment = self._analyze_channel_sentiment(all_emails, 'email')
+        bitcoin_dev_sentiment = self._analyze_channel_sentiment(bitcoin_dev_emails, 'email')
+        cryptography_sentiment = self._analyze_channel_sentiment(cryptography_emails, 'email')
+        delving_sentiment = self._analyze_channel_sentiment(delving_posts, 'delving')
+        bitcointalk_sentiment = self._analyze_channel_sentiment(bitcointalk_posts, 'bitcointalk')
+
         # Analyze SOM on informal channels
         irc_som = self._analyze_channel_som(irc_messages, 'irc')
-        email_som = self._analyze_channel_som(emails, 'email')
-        
+        email_som = self._analyze_channel_som(all_emails, 'email')
+        bitcoin_dev_som = self._analyze_channel_som(bitcoin_dev_emails, 'email')
+        cryptography_som = self._analyze_channel_som(cryptography_emails, 'email')
+        delving_som = self._analyze_channel_som(delving_posts, 'delving')
+        bitcointalk_som = self._analyze_channel_som(bitcointalk_posts, 'bitcointalk')
+
         # Analyze influence networks
         irc_influence = self._analyze_influence_network(irc_messages, 'irc')
-        email_influence = self._analyze_influence_network(emails, 'email')
-        
+        email_influence = self._analyze_influence_network(all_emails, 'email')
+        delving_influence = self._analyze_influence_network(delving_posts, 'delving')
+        bitcointalk_influence = self._analyze_influence_network(bitcointalk_posts, 'bitcointalk')
+
         # Cross-reference with GitHub PRs
-        correlation_analysis = self._analyze_pr_correlation(irc_messages, emails, core_prs)
-        
+        correlation_analysis = self._analyze_pr_correlation(
+            irc_messages,
+            all_emails,
+            delving_posts,
+            bitcointalk_posts,
+            core_prs,
+        )
+
         # Save results
         results = {
+            'source_audit': source_audit,
+            'email_load_meta': email_meta,
             'irc_sentiment': irc_sentiment,
             'email_sentiment': email_sentiment,
+            'bitcoin_dev_sentiment': bitcoin_dev_sentiment,
+            'cryptography_sentiment': cryptography_sentiment,
+            'delving_sentiment': delving_sentiment,
+            'bitcointalk_sentiment': bitcointalk_sentiment,
             'irc_som': irc_som,
             'email_som': email_som,
+            'bitcoin_dev_som': bitcoin_dev_som,
+            'cryptography_som': cryptography_som,
+            'delving_som': delving_som,
+            'bitcointalk_som': bitcointalk_som,
             'irc_influence': irc_influence,
             'email_influence': email_influence,
+            'delving_influence': delving_influence,
+            'bitcointalk_influence': bitcointalk_influence,
             'pr_correlation': correlation_analysis,
             'statistics': self._generate_statistics(
-                irc_sentiment, email_sentiment, irc_som, email_som,
-                irc_influence, email_influence, correlation_analysis
+                irc_sentiment,
+                email_sentiment,
+                delving_sentiment,
+                bitcointalk_sentiment,
+                cryptography_sentiment,
+                irc_som,
+                email_som,
+                irc_influence,
+                email_influence,
+                correlation_analysis,
             ),
             'methodology': self._get_methodology()
         }
@@ -137,36 +191,6 @@ class InformalSentimentAnalyzer:
                     continue
         
         return messages
-    
-    def _load_emails(self) -> List[Dict[str, Any]]:
-        """Load mailing list emails."""
-        email_file = self.mailing_dir / 'emails.jsonl'
-        if not email_file.exists():
-            # Fall back to parent commons-research data directory
-            # get_data_dir() returns publication-package/data, so parent.parent is commons-research
-            parent_data_dir = self.data_dir.parent.parent / 'data' / 'mailing_lists' / 'emails.jsonl'
-            if parent_data_dir.exists():
-                email_file = parent_data_dir
-            else:
-                # Try one more level up
-                alt_path = Path('/home/acolyte/src/BitcoinCommons/commons-research/data/mailing_lists/emails.jsonl')
-                if alt_path.exists():
-                    email_file = alt_path
-                else:
-                    logger.warning(f"Email file not found: {email_file}")
-                    return []
-        
-        emails = []
-        with open(email_file, 'r') as f:
-            for i, line in enumerate(f):
-                try:
-                    emails.append(json.loads(line))
-                    if (i + 1) % 5000 == 0:
-                        logger.info(f"Loaded {i + 1} emails...")
-                except json.JSONDecodeError:
-                    continue
-        
-        return emails
     
     def _load_core_prs(self) -> List[Dict[str, Any]]:
         """Load Core repository PRs."""
@@ -204,18 +228,8 @@ class InformalSentimentAnalyzer:
         sentiment_over_time = defaultdict(lambda: Counter())
         
         for msg in messages:
-            # Extract text based on channel type
-            if channel_type == 'irc':
-                text = (msg.get('message', '') or '').lower()
-                author = (msg.get('nickname', '') or '').lower()
-                timestamp = msg.get('timestamp')
-            else:  # email
-                text = ((msg.get('body', '') or '') + ' ' + (msg.get('subject', '') or '')).lower()
-                from_field = msg.get('from', '')
-                # Extract email/name from from field
-                author = self._extract_email_author(from_field).lower()
-                timestamp = msg.get('date')
-            
+            raw_text, author, timestamp = extract_text_author_timestamp(msg, channel_type)
+            text = raw_text.lower()
             if not text or not author:
                 continue
             
@@ -272,15 +286,8 @@ class InformalSentimentAnalyzer:
         som_counts = Counter()
         
         for msg in messages:
-            # Extract text and author
-            if channel_type == 'irc':
-                text = (msg.get('message', '') or '').lower()
-                author = (msg.get('nickname', '') or '').lower()
-            else:  # email
-                text = ((msg.get('body', '') or '') + ' ' + (msg.get('subject', '') or '')).lower()
-                from_field = msg.get('from', '')
-                author = self._extract_email_author(from_field).lower()
-            
+            raw_text, author, _ = extract_text_author_timestamp(msg, channel_type)
+            text = raw_text.lower()
             if not text or not author:
                 continue
             
@@ -325,31 +332,25 @@ class InformalSentimentAnalyzer:
         mention_network = defaultdict(lambda: Counter())
         
         for msg in messages:
+            raw_text, author, _ = extract_text_author_timestamp(msg, channel_type)
+            text = raw_text.lower()
+            if not author:
+                continue
+
             if channel_type == 'email':
-                from_field = msg.get('from', '')
-                author = self._extract_email_author(from_field).lower()
-                in_reply_to = msg.get('in_reply_to', '')
-                
-                # Extract original author from in_reply_to (simplified)
-                if in_reply_to:
-                    # This is a reply - but we need to find the original author
-                    # For now, we'll track reply frequency
+                if msg.get('in_reply_to'):
                     reply_network[author]['replies_sent'] += 1
-                
-                # Count mentions in body
-                body = (msg.get('body', '') or '').lower()
-                mentions = self._extract_mentions(body)
-                for mention in mentions:
+                for mention in self._extract_mentions(text):
                     mention_network[author][mention] += 1
-            
+            elif channel_type == 'delving':
+                reply_network[author]['posts'] += 1
+                if msg.get('reply_to_post_number'):
+                    reply_network[author]['replies_sent'] += 1
+            elif channel_type == 'bitcointalk':
+                reply_network[author]['posts'] += 1
             else:  # IRC
-                author = (msg.get('nickname', '') or '').lower()
-                message = (msg.get('message', '') or '').lower()
-                
-                # Extract @mentions
-                mentions = re.findall(r'@(\w+)', message)
-                for mention in mentions:
-                    mention_network[author][mention] += 1
+                for mention in re.findall(r'@(\w+)', text):
+                    mention_network[author][mention.lower()] += 1
         
         # Calculate network metrics
         top_repliers = sorted(
@@ -377,6 +378,8 @@ class InformalSentimentAnalyzer:
         self,
         irc_messages: List[Dict[str, Any]],
         emails: List[Dict[str, Any]],
+        delving_posts: List[Dict[str, Any]],
+        bitcointalk_posts: List[Dict[str, Any]],
         core_prs: List[Dict[str, Any]]
     ) -> Dict[str, Any]:
         """Analyze correlation between informal channels and GitHub PR outcomes."""
@@ -385,25 +388,30 @@ class InformalSentimentAnalyzer:
         # Extract PR numbers from IRC/email (simplified)
         pr_mentions_irc = defaultdict(lambda: Counter())
         pr_mentions_email = defaultdict(lambda: Counter())
-        
-        # Look for PR mentions in IRC
+        pr_mentions_delving = defaultdict(lambda: Counter())
+        pr_mentions_bitcointalk = defaultdict(lambda: Counter())
+
         for msg in irc_messages:
-            message = msg.get('message', '') or ''
-            pr_numbers = re.findall(r'(?:PR|#)(\d{4,})', message, re.IGNORECASE)
-            for pr_num in pr_numbers:
-                author = (msg.get('nickname', '') or '').lower()
+            _, author, _ = extract_text_author_timestamp(msg, 'irc')
+            for pr_num in extract_pr_numbers(msg.get('message', '') or ''):
                 pr_mentions_irc[pr_num][author] += 1
-        
-        # Look for PR mentions in emails
+
         for email in emails:
-            subject = (email.get('subject', '') or '').lower()
-            body = (email.get('body', '') or '').lower()
-            text = subject + ' ' + body
-            pr_numbers = re.findall(r'(?:PR|#)(\d{4,})', text, re.IGNORECASE)
-            for pr_num in pr_numbers:
-                from_field = email.get('from', '')
-                author = self._extract_email_author(from_field).lower()
+            text = f"{email.get('subject', '')} {email.get('body', '')}"
+            _, author, _ = extract_text_author_timestamp(email, 'email')
+            for pr_num in extract_pr_numbers(text):
                 pr_mentions_email[pr_num][author] += 1
+
+        for post in delving_posts:
+            text = f"{post.get('content', '')} {post.get('cooked_html', '')}"
+            _, author, _ = extract_text_author_timestamp(post, 'delving')
+            for pr_num in extract_pr_numbers(text):
+                pr_mentions_delving[pr_num][author] += 1
+
+        for post in bitcointalk_posts:
+            _, author, _ = extract_text_author_timestamp(post, 'bitcointalk')
+            for pr_num in extract_pr_numbers(post.get('content', '') or ''):
+                pr_mentions_bitcointalk[pr_num][author] += 1
         
         # Correlate with PR outcomes
         pr_outcomes = {}
@@ -415,7 +423,14 @@ class InformalSentimentAnalyzer:
         # Calculate correlation
         mentioned_prs_irc = set(pr_mentions_irc.keys())
         mentioned_prs_email = set(pr_mentions_email.keys())
-        all_mentioned = mentioned_prs_irc | mentioned_prs_email
+        mentioned_prs_delving = set(pr_mentions_delving.keys())
+        mentioned_prs_bitcointalk = set(pr_mentions_bitcointalk.keys())
+        all_mentioned = (
+            mentioned_prs_irc
+            | mentioned_prs_email
+            | mentioned_prs_delving
+            | mentioned_prs_bitcointalk
+        )
         
         merged_mentioned = sum(1 for pr_num in all_mentioned if pr_outcomes.get(pr_num))
         merged_rate_mentioned = merged_mentioned / len(all_mentioned) if all_mentioned else 0
@@ -427,6 +442,8 @@ class InformalSentimentAnalyzer:
         return {
             'prs_mentioned_in_irc': len(mentioned_prs_irc),
             'prs_mentioned_in_email': len(mentioned_prs_email),
+            'prs_mentioned_in_delving': len(mentioned_prs_delving),
+            'prs_mentioned_in_bitcointalk': len(mentioned_prs_bitcointalk),
             'total_unique_prs_mentioned': len(all_mentioned),
             'merged_rate_mentioned': merged_rate_mentioned,
             'overall_merge_rate': overall_merge_rate,
@@ -487,6 +504,9 @@ class InformalSentimentAnalyzer:
         self,
         irc_sentiment: Dict[str, Any],
         email_sentiment: Dict[str, Any],
+        delving_sentiment: Dict[str, Any],
+        bitcointalk_sentiment: Dict[str, Any],
+        cryptography_sentiment: Dict[str, Any],
         irc_som: Dict[str, Any],
         email_som: Dict[str, Any],
         irc_influence: Dict[str, Any],
@@ -498,9 +518,13 @@ class InformalSentimentAnalyzer:
             'summary': {
                 'irc_messages': irc_sentiment.get('total_messages', 0),
                 'email_messages': email_sentiment.get('total_messages', 0),
+                'cryptography_messages': cryptography_sentiment.get('total_messages', 0),
+                'delving_messages': delving_sentiment.get('total_messages', 0),
+                'bitcointalk_messages': bitcointalk_sentiment.get('total_messages', 0),
                 'irc_sentiment_positive': irc_sentiment.get('sentiment_distribution', {}).get('positive', 0),
                 'email_sentiment_positive': email_sentiment.get('sentiment_distribution', {}).get('positive', 0),
                 'prs_mentioned_informally': correlation.get('total_unique_prs_mentioned', 0),
+                'prs_mentioned_in_delving': correlation.get('prs_mentioned_in_delving', 0),
                 'merge_rate_mentioned': correlation.get('merged_rate_mentioned', 0)
             }
         }
@@ -510,22 +534,24 @@ class InformalSentimentAnalyzer:
         return {
             'sentiment_analysis': 'Keyword-based classification (positive/negative/neutral)',
             'som_classification': 'BCAP SOM framework applied to informal channels using keyword detection',
-            'influence_network': 'Reply patterns (email) and @mentions (IRC)',
-            'pr_correlation': 'PR number mentions in IRC/email correlated with merge outcomes',
+            'influence_network': 'Reply patterns (email/forums) and @mentions (IRC)',
+            'mailing_lists': 'bitcoin-dev + cryptography with message_id dedupe for combined email metrics',
+            'forums': 'Delving and Bitcointalk scored as separate channels',
+            'pr_correlation': 'PR number mentions across informal channels correlated with merge outcomes',
             'limitations': [
                 'Keyword-based sentiment may miss nuanced sentiment',
                 'Email author extraction may be incomplete',
                 'PR correlation requires PR number mentions (may miss some)',
-                'Large dataset requires efficient processing'
+                'Large dataset requires efficient processing',
+                'Cryptography list is mostly pre-bitcoin-dev era; kept separate in per-list breakdowns',
             ]
         }
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'informal_sentiment.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        logger.info(f"Results saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('informal_sentiment.json', results)
+        logger.info(f"Results saved to {', '.join(str(p) for p in written)}")
 
 
 def main():

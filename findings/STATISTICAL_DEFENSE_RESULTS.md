@@ -1,6 +1,6 @@
 # Statistical Defense Results
 
-**Date**: 2026-01-07  
+**Date**: 2026-09-10  
 **Status**: ✅ **COMPLETE** (Priority 1 analyses implemented)
 
 ---
@@ -12,8 +12,8 @@ All Priority 1 statistical defense analyses have been successfully implemented a
 **Key Findings**:
 1. ✅ **Quality weighting is robust** - Results consistent across thresholds (±12% variation, but patterns remain)
 2. ✅ **MAX vs. SUM produce same patterns** - Both approaches validate findings (MAX is 0.3% more conservative)
-3. ✅ **Uniform threshold validates improvement** - Even with same threshold (0.5) for both eras, improvement is shown (37.1% improvement)
-4. ⚠️ **Statistical tests require scipy** - Need to install scipy for chi-square and t-tests
+3. ✅ **Uniform threshold validates improvement** - Even with same threshold (0.5) for both eras, improvement is shown (37.2% improvement)
+4. ✅ **Statistical tests ran** - chi-square, t-test, and 95% CIs in `findings/data/statistical_significance_tests.json`
 
 ---
 
@@ -30,8 +30,8 @@ All Priority 1 statistical defense analyses have been successfully implemented a
 
 **Character Threshold Results** (40, 50, 60 chars):
 - **No significant variation**: All character thresholds produce identical results
-- **Historical**: 30.2% (consistent across 40/50/60)
-- **Recent**: 3.4% (consistent across 40/50/60)
+- **Historical**: 30.2% (consistent across 40/50/60) — sensitivity extract, not the 30.3% era-threshold cite
+- **Recent**: 3.4% (consistent across 40/50/60) — same extract; cite 3.3% for the era-threshold result
 
 ### Key Metrics
 
@@ -63,15 +63,15 @@ All Priority 1 statistical defense analyses have been successfully implemented a
 
 **MAX Approach** (with 0.5 threshold for both eras - sensitivity test):
 - Historical zero-review: **34.4%**
-- Recent zero-review: **3.4%**
-- Improvement: **31.0%**
+- Recent zero-review: **3.3%**
+- Improvement: **31.1%**
 
-**Note**: This is a sensitivity test using uniform 0.5 threshold. The actual methodology uses MAX per reviewer with era-appropriate thresholds (0.3 historical, 0.5 recent), which produces 30.2% historical zero-review rate as documented in `RESEARCH_METHODOLOGY.md`.
+**Note**: This is a sensitivity test using uniform 0.5 threshold. The actual methodology uses MAX per reviewer with era-appropriate thresholds (0.3 historical, 0.5 recent), which produces 30.3% historical / 3.3% recent as documented in `RESEARCH_METHODOLOGY.md`.
 
 **SUM Approach** (alternative):
 - Historical zero-review: **34.1%**
-- Recent zero-review: **3.2%**
-- Improvement: **30.9%**
+- Recent zero-review: **3.1%**
+- Improvement: **31.0%**
 
 **Difference** (MAX - SUM):
 - Historical: **+0.3%** (MAX is more conservative)
@@ -99,27 +99,27 @@ All Priority 1 statistical defense analyses have been successfully implemented a
 **Both Show Improvement**: ✅ **YES**
 
 **Current Approach** (0.3 historical, 0.5 recent):
-- Historical: **30.2%**
-- Recent: **3.4%**
-- Improvement: **26.8%**
+- Historical: **30.3%**
+- Recent: **3.3%**
+- Improvement: **27.0%**
 
 **Uniform Approach** (0.5 for both eras):
 - Historical: **40.5%**
-- Recent: **3.4%**
-- Improvement: **37.1%**
+- Recent: **3.3%**
+- Improvement: **37.2%**
 
 ### Key Findings
 
 1. ✅ **Both approaches show improvement** (historical > recent)
-2. ✅ **Uniform threshold shows LARGER improvement** (37.1% vs. 26.8%)
+2. ✅ **Uniform threshold shows LARGER improvement** (37.2% vs. 27.0%)
 3. ✅ **Uniform threshold is more conservative** (higher historical rate)
 
 ### Conclusion
 
 **✅ Different thresholds are justified, but uniform threshold also validates improvement**
-- Current approach (different thresholds) shows 26.8% improvement
-- Uniform approach (same threshold) shows 37.1% improvement (even larger!)
-- **Defense**: "Different thresholds (0.3 vs. 0.5) reflect available review mechanisms in each era. However, even with uniform threshold (0.5 for both), improvement is validated and actually larger (37.1% vs. 26.8%)."
+- Current approach (different thresholds) shows 27.0% improvement
+- Uniform approach (same threshold) shows 37.2% improvement (even larger)
+- **Defense**: "Different thresholds (0.3 vs. 0.5) reflect available review mechanisms in each era. However, even with uniform threshold (0.5 for both), improvement is validated and actually larger (37.2% vs. 27.0%)."
 
 ---
 
@@ -127,7 +127,7 @@ All Priority 1 statistical defense analyses have been successfully implemented a
 
 ### Status
 
-✅ **COMPLETE** - Manual calculations performed (no scipy required)
+✅ **COMPLETE** - `scipy` chi-square / t-test + binomial CIs
 
 ### Results
 
@@ -149,31 +149,31 @@ All Priority 1 statistical defense analyses have been successfully implemented a
 
 **Detailed Results**:
 
-1. **Chi-Square Test**: Historical (30.2%) vs. Recent (3.4%) zero-review rate
-   - **Chi-square**: 1,668.85
+1. **Chi-Square Test**: Historical (30.3%) vs. Recent (3.3%) zero-review rate
+   - **Chi-square**: 1,732.07
    - **p-value**: < 0.001 (highly significant)
-   - **Cramer's V**: 0.3276 (large effect size)
+   - **Cramer's V**: 0.3316 (large effect size)
    - **Conclusion**: Difference is statistically significant, not due to chance
 
-2. **T-Test**: Self-merge rate stability over time
-   - **t-statistic**: 0.83
-   - **p-value**: > 0.05 (not significantly different)
-   - **Stable**: ✅ Yes (historical 29.7% vs. recent 26.3%, no significant difference)
-   - **Slope**: -0.012 (slight decline, but not significant)
-   - **Conclusion**: Self-merge rate is stable, not declining
+2. **T-Test**: Self-merge rate, historical vs recent yearly means
+   - **t-statistic**: 0.80
+   - **p-value**: 0.44 (period means not significantly different)
+   - **Yearly means**: historical 29.7% vs recent 25.4%
+   - **Linear slope**: -0.013 (p = 0.028) — a small year-by-year decline
+   - **Conclusion**: Period averages are not different at 5%. Do not cite “stable, not declining”; the trend line is slightly down.
 
 3. **Confidence Intervals** (95% CI):
-   - **Self-merge rate**: 26.5% [25.6%, 27.4%]
-   - **Zero-review (historical)**: 30.2% [29.3%, 31.2%]
-   - **Zero-review (recent)**: 3.4% [2.9%, 3.9%]
+   - **Self-merge rate**: 25.5% [24.7%, 26.4%] (maintainer-authored merged PRs; same denominator as `MERGE_PATTERN_BREAKDOWN.md`)
+   - **Zero-review (historical)**: 30.3% [29.3%, 31.2%]
+   - **Zero-review (recent)**: 3.3% [2.9%, 3.7%]
 
-**Complete Results**: See `data/statistical_significance_tests.json` for full details.
+**Complete Results**: See `findings/data/statistical_significance_tests.json` for full details.
 
 ### Implementation
 
 Script: `scripts/analysis/statistical_significance_tests.py`
 - ✅ Executed successfully
-- Results saved to: `data/statistical_significance_tests.json`
+- Results saved to: `findings/data/statistical_significance_tests.json`
 
 ---
 
@@ -194,9 +194,9 @@ Script: `scripts/analysis/statistical_significance_tests.py`
 
 2. **MAX vs. SUM**: "Both approaches show same patterns. MAX is more conservative (0.3% difference) and reflects actual review input (one reviewer = one review input). SUM would produce similar rates but MAX is methodologically sound."
 
-3. **Timeline Thresholds**: "Different thresholds (0.3 vs. 0.5) reflect available review mechanisms. However, even with uniform threshold (0.5 for both), improvement is validated and actually larger (37.1% vs. 26.8%)."
+3. **Timeline Thresholds**: "Different thresholds (0.3 vs. 0.5) reflect available review mechanisms. However, even with uniform threshold (0.5 for both), improvement is validated and actually larger (37.2% vs. 27.0%)."
 
-4. **Statistical Significance**: "All differences are statistically significant (p < 0.001, large effect sizes). Chi-square test: 1,668.85 (p < 0.001, Cramer's V = 0.33, large effect). Self-merge rate is stable (t = 0.83, p > 0.05)."
+4. **Statistical Significance**: "Zero-review historical vs recent is significant (chi-square 1,732.07, p < 0.001, Cramer's V = 0.33). Self-merge period means are not different (t = 0.80, p = 0.44); the year-by-year slope is slightly down (p = 0.028)."
 
 ---
 
@@ -213,7 +213,7 @@ Script: `scripts/analysis/statistical_significance_tests.py`
 
 ### Immediate (Required)
 
-1. ✅ **Statistical tests**: Complete (manual calculations, no scipy required)
+1. ✅ **Statistical tests**: Complete (`scipy` + binomial CIs)
 2. ✅ **Update methodology document** with results: Complete
 
 ### Optional (Enhancements)
@@ -234,4 +234,4 @@ All Priority 1 analyses are complete and validate that methodological choices ar
 
 ---
 
-**Last Updated**: 2026-01-07
+**Last Updated**: 2026-09-10

@@ -22,6 +22,7 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.mailing_lists import iter_emails
 
 logger = setup_logger()
 
@@ -239,29 +240,17 @@ class DeveloperHistoryGenerator:
         """Collect mailing list activity for a user."""
         activities = []
         
-        emails_file = self.data_dir / 'mailing_lists' / 'emails.jsonl'
-        if not emails_file.exists():
-            return activities
-        
-        with open(emails_file, 'r') as f:
-            for line in f:
-                try:
-                    email_data = json.loads(line)
-                    
-                    # Check if this email matches
-                    from_field = email_data.get('from', '')
-                    if email in from_field:
-                        activities.append({
-                            'timestamp': email_data.get('date'),
-                            'type': 'email',
-                            'source': 'mailing_list',
-                            'list_name': email_data.get('list_name'),
-                            'subject': email_data.get('subject'),
-                            'body_preview': email_data.get('original_text', '')[:100],
-                        })
-                
-                except json.JSONDecodeError:
-                    continue
+        for email_data in iter_emails():
+            from_field = email_data.get('from', '')
+            if email in from_field:
+                activities.append({
+                    'timestamp': email_data.get('date'),
+                    'type': 'email',
+                    'source': 'mailing_list',
+                    'list_name': email_data.get('list_name'),
+                    'subject': email_data.get('subject'),
+                    'body_preview': email_data.get('original_text', '')[:100],
+                })
         
         return activities
     

@@ -49,13 +49,14 @@ logger = setup_logger()
 class BIPsCollector:
     """Collector for Bitcoin Improvement Proposals."""
 
-    def __init__(self, skip_files: bool = False, fresh: bool = False, with_comments: bool = False):
+    def __init__(self, skip_files: bool = False, fresh: bool = False, with_comments: bool = False, skip_discussions: bool = False):
         self.token = config.get("data_collection.github.token") or os.getenv("GITHUB_TOKEN")
         self.repo_owner = "bitcoin"
         self.repo_name = "bips"
         self.data_dir = get_data_dir() / "bips"
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.skip_files = skip_files
+        self.skip_discussions = skip_discussions
         self.fresh = fresh
         self.with_comments = with_comments
         self.max_retries = 5
@@ -88,7 +89,10 @@ class BIPsCollector:
             self._collect_bip_files()
         else:
             logger.info("Skipping BIP file collection (--skip-files)")
-        self._collect_bip_discussions()
+        if not self.skip_discussions:
+            self._collect_bip_discussions()
+        else:
+            logger.info("Skipping BIP issues/PRs (--skip-discussions)")
         logger.info("BIPs collection complete")
 
     def _load_existing_numbers(self, path: Path) -> Set[int]:
@@ -369,11 +373,13 @@ class BIPsCollector:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Collect BIPs data from bitcoin/bips")
     parser.add_argument("--skip-files", action="store_true", help="Skip BIP mediawiki clone/parse")
+    parser.add_argument("--skip-discussions", action="store_true", help="Skip BIP repo issues/PRs (GitHub API)")
     parser.add_argument("--fresh", action="store_true", help="Backup and rewrite issues/PRs from scratch")
     parser.add_argument("--with-comments", action="store_true", help="Fetch issue comment bodies (slow)")
     args = parser.parse_args()
     BIPsCollector(
         skip_files=args.skip_files,
+        skip_discussions=args.skip_discussions,
         fresh=args.fresh,
         with_comments=args.with_comments,
     ).collect()

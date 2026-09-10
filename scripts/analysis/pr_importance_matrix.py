@@ -8,10 +8,17 @@ addressing the question: "Do trivial/housekeeping PRs need less review?"
 
 import json
 import re
+import sys
 from pathlib import Path
 from collections import Counter, defaultdict
 from typing import Dict, Any, List, Tuple
 from enum import Enum
+
+project_root = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(project_root))
+from src.utils.maintainers import load_maintainer_login_set
+
+MAINTAINERS = load_maintainer_login_set()
 
 class PRImportance(Enum):
     """PR importance levels."""
@@ -206,14 +213,7 @@ def create_pr_review_matrix(prs: list, calculate_weighted_review_count) -> Dict[
         # Track self-merge and maintainer status
         author = (pr.get('author', '') or '').lower()
         merged_by = (pr.get('merged_by', '') or '').lower()
-        maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-            'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
-        
-        if author in maintainers:
+        if author in MAINTAINERS:
             stats[importance.value]['maintainer_pr'] += 1
             if merged_by == author:
                 stats[importance.value]['self_merge'] += 1
@@ -247,12 +247,7 @@ def analyze_by_pr_type(prs: list, calculate_weighted_review_count) -> Dict[str, 
             continue
         
         zero_review = [p for p in type_prs if calculate_weighted_review_count(p) < 0.5]
-        maintainer_prs = [p for p in type_prs if (p.get('author', '') or '').lower() in {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-            'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }]
+        maintainer_prs = [p for p in type_prs if (p.get('author', '') or '').lower() in MAINTAINERS]
         
         maintainer_zero = [p for p in maintainer_prs if calculate_weighted_review_count(p) < 0.5]
         

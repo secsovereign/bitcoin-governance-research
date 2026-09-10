@@ -1,9 +1,9 @@
 # Bitcoin Core Governance Analysis
 
-**23,478 PRs | 8,890 Issues | 19,446 Emails | 433,048 IRC Messages | 339 Releases | 2010-2026**
+**25,122 PRs | 8,890 Issues | 51,062 Emails (2 ML lists) | 430,613 IRC | 4,662 Delving | 158,917 Bitcointalk | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-07-13  
-**Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, email), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
+**Last Updated**: 2026-09-10 (informal-channel integration: cryptography ML, Delving, Bitcointalk)
+**Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, combined mailing lists, Delving, Bitcointalk), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
 
@@ -19,28 +19,38 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 
 ---
 
+## How to cut this corpus
+
+All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting them.
+
+1. **Agenda-setting vs decision, by era.** Informal talk *before* a PR exists is a 2015–2021 IRC/email pattern (flow ~0.55–0.57). 2022+ Delving/IRC volume is mostly commentary on already-opened PRs (flow 0.002).
+2. **Funnel / deputy graph is the informal org chart.** `MAINTAINERS` is a roster. 2022+: `fanquake` ~50% of merges; top-3 ~83%.
+3. **Power is not portable.** BIP-repo top-10 ∩ Core top-10 is two people (`sipa`, `achow101`). Activity on BIPs/Delving/lists does not imply Core merge keys.
+4. **Exit is selection, not collapse.** 90.7% of 7,827 contributors are inactive at 1 year (725 still active, window frozen to last GitHub event in the dump). Participants and one-timers leave; the continuing set is small and already inside the merge graph.
+
+---
+
 ## The Numbers: What They Mean
 
 ### Power Concentration = Single Points of Failure
 
-**17 maintainers have merged PRs**; 2 non-maintainers with historical merge access.  
-**21 maintainers identified** (4 have never merged - may have other roles: reviewers, advisors, inactive).  
-**Current active maintainers**: 5 (fanquake, ryanofsky, hebasto, achow101, TheCharlatan).  
-**Historical maintainers**: 15 (no merge since 2023 or never merged, including laanwj, sipa, maflcko, gavinandresen, etc.).  
+**Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`), including inferred merger `sedited`.  
+**Current merge-key users** (merged since 2023): fanquake, ryanofsky, hebasto, achow101, TheCharlatan, sedited.  
+**Historical**: laanwj, sipa, maflcko, and others with no recent merges. See `MAINTAINER_LIST_SOURCE.md`.  
 **Top 3 control 81.1% of all merges** (laanwj 34.8%, fanquake 25.8%, maflcko 20.5%) — all-time.  
 **Modern window (2022+):** `fanquake` alone merges **~50.4%**; top-2 **~71%**; top-3 **~83%** (`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`).  
-**Top 10 control 49.8% of all PRs** (increased from 42.7% - power is calcifying, not distributing).
+**Top 10 authorship share: 42.7% historical → 47.8% recent** (authorship concentrating). Merge keys stay tight: top-3 merge share ~81% in both periods (`GINI_COEFFICIENT_EXPLANATION.md`).
 
 **Security implication**: If the top 3 are compromised, they could introduce malicious code affecting the entire Bitcoin network. This is a **single point of failure** in a system designed to have none. The modern picture is thinner still: one lead merger handles about half of recent merges.
 
-**Gini coefficient: 0.851** (extreme inequality). US income inequality is 0.49. Bitcoin Core's contribution inequality is **74% higher**.
+**Gini (say which one):** authorship 0.851 historical / 0.834 recent; merge-authority 0.623 / 0.667. US income Gini is ~0.49. Do not cite 0.851 as “the” Gini.
 
-**Voting bloc cohesion: 89.3%** - Reviewers vote together 89% of the time, indicating strong voting blocs. 214 strong blocs (>80% cohesion) identified. Top bloc: fanquake ↔ laanwj (100% cohesion, 13/13 together). **Implication**: Voting blocs are structural, not temporary - reviewers consistently align on decisions.
+**Voting blocs:** high-cohesion pairs exist but **n is tiny** (often 3–7 joint appearances). Conflict-PR cohesion 77.8% (10 pairs) vs non-conflict 100% (38) — treat as suggestive, not a voting machine. See `CONFLICT_RESOLUTION_ANALYSIS.md`.
 
 ### Arbitrary Authority = No Accountability
 
-**26.5% self-merge rate** (2,446 of 9,235 maintainer PRs).  
-**46.1% of self-merges have zero reviews** (1,127 PRs, 12.2% of all maintainer PRs).  
+**25.5% self-merge rate** (2,501 of 9,793 maintainer-merged PRs).  
+**45.1% of self-merges have zero reviews** (1,129 PRs, 11.6% of all maintainer-merged PRs).  
 **No formal, publicly documented rules** - review requirements vary from 0 to 14+ reviews with no documented standard.
 
 **Security implication**: Maintainers can merge their own code with zero review and no justification required. There's no accountability mechanism, no challenge process, no oversight. This is **arbitrary authority** - decisions based on individual discretion, not rules.
@@ -51,7 +61,7 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 
 ### Exclusive Privilege = Structural Inequality
 
-**Maintainers: 26.5% can self-merge.**  
+**Maintainers: 25.5% of their merged PRs are self-merged.**  
 **Non-maintainers: 0% can self-merge** (not permitted).  
 **Maintainer reviews carry 5.5x more weight** than non-maintainer reviews.
 
@@ -74,7 +84,7 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 ### Process vs Structure: The Efficiency Trap
 
 **Process improvements** (2012-2020 → 2021-2025):
-- Zero-review merges: 30.2% → 3.4% (88.7% reduction) ✅
+- Zero-review merges: 30.3% → 3.3% (89.1% reduction) ✅
 - Response time: 30.6 → 8.1 hours (73% faster) ✅
 - Cross-status reviews: 50% → 72% (more integration) ✅
 
@@ -84,15 +94,15 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 - Critical PRs: 23.2% zero-review (better, but still high)
 
 **Structural persistence**:
-- Self-merge rate: 26.5% (stable) ❌
-- Top 10 control: 42.7% → 49.8% (worse) ❌
+- Self-merge rate: 25.5% (still concentrated privilege) ❌
+- Top 10 authorship: 42.7% → 47.8% (worse) ❌
 - Review weight bias: 5.5:1 (unchanged) ❌
-- Gini coefficient: 0.851 → 0.837 (unchanged) ❌
-- Network concentration: 90%+ top3 concentration persists over 16 years ❌
+- Authorship Gini: 0.851 → 0.834 (still extreme) ❌
+- Top-3 merge share ~81% in both historical and recent windows ❌
 
 **The pattern**: The **workflow got efficient**. The **power structure didn't change**. Concentrated authority got better at processing PRs, but concentration remains.
 
-**Coordination costs**: Average 22.0 messages per PR. Governance complexity scales 3.8x with code complexity (low: 15.6 msgs, medium: 43.9 msgs, high: 59.7 msgs). **Implication**: Complex code requires significantly more governance overhead.
+**Coordination costs**: Average **20.1 messages** per PR (reviews + comments; 15,884 PRs with file data). Load scales **4.3×** from low- to high-complexity (13.6 → 58.3 msgs). See `COORDINATION_COSTS_ANALYSIS.md`.
 
 ---
 
@@ -107,9 +117,9 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 - Implement censorship mechanisms
 - Create network splits
 
-**12.2% of maintainer PRs merge with zero review** - potential security risk. No review means no detection of malicious code.
+**11.6% of maintainer-merged PRs are zero-review self-merges** — potential security risk. No review means no detection of malicious code.
 
-**5,128 conflicts identified** (1,469 NACKs, 899 CHANGES_REQUESTED, 3,823 heated discussions). Average resolution time: 103.2 days. 2,649 conflicts resulted in PRs being merged anyway. **Implication**: Conflicts are common, resolution is slow, and many conflicts don't prevent merges.
+**2,671 conflicts** across 20,166 PRs (13.2%). Average resolution 132.2 days. 2026 days are right-censored (year not complete). Pair-level “blocs” have small n. See `CONFLICT_RESOLUTION_ANALYSIS.md`.
 
 ### 2. Single Points of Failure
 
@@ -133,9 +143,9 @@ Bitcoin Core is the reference implementation that most Bitcoin nodes run. Change
 
 ## The Long-Term Problem
 
-**Massive Contributor Churn**: 87.7% of 7,604 contributors have exited (no activity in 1 year). Only 935 remain active. 42.5% contributed once and left. Even high-quality contributors (50%+ merge rate) exit at 83.5%. The contributor pool is **not growing** - it's churning.
+**Massive Contributor Churn**: 90.7% of 7,827 contributors have no activity in 1 year (window = last GitHub event in the dump). Only 725 remain active. 42.2% contributed once. Even high-quality authors (50%+ merge rate) exit at 83.0%. Read as **selection into a thin continuing set**, not collapse — participants-only exit 95.3%; established authors 58.1%; maintainers among that set 23.8%. See `GOVERNANCE_FRAMES.md` and `CONTRIBUTOR_ANALYSIS.md`.
 
-**Power Calcification**: Top 10 control increased from 42.7% → 49.8% (recent period). Gini coefficient: 0.851 (extreme inequality, unchanged). Self-merge rate: 26.5% (stable, not declining). Power is **concentrating over time**, not distributing. Authority is **stabilizing in fewer hands**, not democratizing. This is the opposite of decentralization.
+**Power Calcification**: Top-10 authorship 42.7% → 47.8%. Authorship Gini 0.851 → 0.834 (still extreme). Self-merge 25.5%. Top-3 merge share stays ~81%. Power is **not distributing**. See `GOVERNANCE_FRAMES.md`.
 
 **No Path Forward**: Non-maintainers: 0% self-merge (not permitted). No formal maintainer selection process (not publicly documented). No accountability mechanism (no challenge process). There's **no path to power** for outsiders. The guild structure is **closed**. This is not sustainable long-term.
 
@@ -158,19 +168,22 @@ Bitcoin was designed to eliminate trusted intermediaries. Its reference implemen
 
 ## Data Sources
 
-**23,478 PRs** (GitHub) - Formal decisions, review patterns, merge authority  
+**25,122 PRs** (GitHub) - Formal decisions, review patterns, merge authority  
 **8,890 Issues** (GitHub) - Discussions, problem-solving, coordination  
-**19,446 Emails** (Mailing Lists) - Consensus-building, rationale, historical context  
-**433,048 IRC Messages** - Real-time coordination, informal decision-making  
+**51,062 Emails** (bitcoin-dev + cryptography ML, deduped) - Consensus-building, rationale  
+**430,613 IRC Messages** - Real-time coordination, informal decision-making  
+**4,662 Delving posts** - Modern spec/governance forum (2023+)  
+**158,917 Bitcointalk posts** (board 6) - Historical public forum discourse  
 **339 Releases** - Protocol evolution, release signing authority
 
-**Total**: 1+ million data points across 16+ years, synthesized to reveal governance patterns.
+**Total**: 1+ million GitHub/informal data points across 16+ years, synthesized to reveal governance patterns.
 
 ---
 
 **Core Reports**: See `README.md` for full navigation
 
 **Essential Reading**:
+- `GOVERNANCE_FRAMES.md` - How to cut this corpus (era / funnel / identity / exit)
 - `MERGE_PATTERN_BREAKDOWN.md` - Detailed merge analysis
 - `MAINTAINER_PREMIUM_REPORT.md` - Identity vs merits (fair controls + quality matching)
 - `MERGE_CONCENTRATION_DEPUTIES_REPORT.md` - Modern merger share / funnels

@@ -1,4 +1,68 @@
 {
+  "source_audit": {
+    "mailing_lists": {
+      "bitcoin_dev_count": 24644,
+      "cryptography_count": 26420,
+      "message_id_overlap": 2,
+      "overlap_note": "Dedupe by message_id when combining mailing lists for aggregate email metrics."
+    },
+    "forums": {
+      "delving_posts": 4662,
+      "delving_posts_mentioning_core_prs": 311,
+      "bitcointalk_posts": 158917,
+      "note": "Forums are separate channels; PR mentions are links, not duplicate PR records."
+    },
+    "satoshi_bitcointalk_overlap": "Not merged \u2014 Satoshi archive uses separate curated export."
+  },
+  "informal_meta": {
+    "source_audit": {
+      "mailing_lists": {
+        "bitcoin_dev_count": 24644,
+        "cryptography_count": 26420,
+        "message_id_overlap": 2,
+        "overlap_note": "Dedupe by message_id when combining mailing lists for aggregate email metrics."
+      },
+      "forums": {
+        "delving_posts": 4662,
+        "delving_posts_mentioning_core_prs": 311,
+        "bitcointalk_posts": 158917,
+        "note": "Forums are separate channels; PR mentions are links, not duplicate PR records."
+      },
+      "satoshi_bitcointalk_overlap": "Not merged \u2014 Satoshi archive uses separate curated export."
+    },
+    "email_load_meta": {
+      "lists_requested": [
+        "bitcoin-dev",
+        "cryptography"
+      ],
+      "per_list_counts": {
+        "bitcoin-dev": 24644,
+        "cryptography": 26420
+      },
+      "dedupe_enabled": true,
+      "duplicates_removed": 2,
+      "duplicate_message_ids": [
+        "<20170223181409.ga6085@savin.petertodd.org>",
+        "<20170223212802.ga7608@savin.petertodd.org>"
+      ],
+      "total_loaded": 51062
+    },
+    "irc_meta": {
+      "source": "irc",
+      "path": "/mnt/bulk/bitcoin-governance-research/data/irc/messages.jsonl",
+      "count": 430613
+    },
+    "delving_meta": {
+      "source": "delving_bitcoin",
+      "path": "/mnt/bulk/bitcoin-governance-research/data/delving/posts.jsonl",
+      "count": 4662
+    },
+    "bitcointalk_meta": {
+      "source": "bitcointalk_board_6",
+      "path": "/mnt/bulk/bitcoin-governance-research/data/bitcointalk/posts.jsonl",
+      "count": 158917
+    }
+  },
   "segwit_analysis": {
     "period": "segwit",
     "start_date": "2015-12-07",
@@ -8,15 +72,15 @@
         "phase": "pre_signal",
         "merged_prs": 998,
         "power_concentration": {
-          "top3_merge_share": 0.9355877616747182,
+          "top3_merge_share": 0.9478957915831663,
           "top5_merge_share": 1.0,
           "top3_review_share": 0.29694323144104806,
           "top5_review_share": 0.4331877729257642,
           "merge_counts": {
-            "laanwj": 498,
-            "sipa": 42,
-            "maflcko": 41,
-            "jonasschnelli": 40
+            "laanwj": 805,
+            "sipa": 74,
+            "maflcko": 67,
+            "jonasschnelli": 52
           }
         },
         "review_patterns": {
@@ -28,24 +92,24 @@
         },
         "merge_authority": {
           "self_merge_rate": 14.829659318637276,
-          "maintainer_merged": 621,
+          "maintainer_merged": 998,
           "non_maintainer_merged": 0,
-          "maintainer_merge_share": 62.22444889779559
+          "maintainer_merge_share": 100.0
         }
       },
       "signaling": {
         "phase": "signaling",
         "merged_prs": 900,
         "power_concentration": {
-          "top3_merge_share": 0.9512670565302144,
+          "top3_merge_share": 0.9588888888888889,
           "top5_merge_share": 1.0,
           "top3_review_share": 0.26458776281596974,
           "top5_review_share": 0.39759036144578314,
           "merge_counts": {
-            "laanwj": 345,
-            "maflcko": 89,
-            "sipa": 54,
-            "jonasschnelli": 24,
+            "laanwj": 592,
+            "maflcko": 166,
+            "sipa": 105,
+            "jonasschnelli": 36,
             "meshcollider": 1
           }
         },
@@ -58,24 +122,25 @@
         },
         "merge_authority": {
           "self_merge_rate": 8.555555555555555,
-          "maintainer_merged": 512,
+          "maintainer_merged": 899,
           "non_maintainer_merged": 1,
-          "maintainer_merge_share": 56.888888888888886
+          "maintainer_merge_share": 99.8888888888889
         }
       },
       "activation": {
         "phase": "activation",
         "merged_prs": 80,
         "power_concentration": {
-          "top3_merge_share": 0.9761904761904762,
+          "top3_merge_share": 0.95,
           "top5_merge_share": 1.0,
           "top3_review_share": 0.4279176201372998,
           "top5_review_share": 0.5697940503432495,
           "merge_counts": {
-            "laanwj": 29,
-            "maflcko": 11,
-            "meshcollider": 1,
-            "sipa": 1
+            "laanwj": 52,
+            "maflcko": 21,
+            "sipa": 3,
+            "jonasschnelli": 3,
+            "meshcollider": 1
           }
         },
         "review_patterns": {
@@ -87,9 +152,922 @@
         },
         "merge_authority": {
           "self_merge_rate": 8.75,
-          "maintainer_merged": 41,
+          "maintainer_merged": 79,
           "non_maintainer_merged": 1,
-          "maintainer_merge_share": 51.24999999999999
+          "maintainer_merge_share": 98.75
+        }
+      }
+    },
+    "informal_by_phase": {
+      "pre_signal": {
+        "email": {
+          "messages": 429,
+          "unique_authors": 107,
+          "som": {
+            "channel": "email",
+            "classified_messages": 390,
+            "som_counts": {
+              "som5": 13,
+              "som1": 52,
+              "som3": 76,
+              "som2": 233,
+              "som6": 16
+            },
+            "som_distribution": {
+              "som5": 0.03333333333333333,
+              "som1": 0.13333333333333333,
+              "som3": 0.19487179487179487,
+              "som2": 0.5974358974358974,
+              "som6": 0.041025641025641026
+            },
+            "unique_authors": 102,
+            "top_authors": [
+              [
+                "jl2012",
+                44
+              ],
+              [
+                "pete",
+                25
+              ],
+              [
+                "aj",
+                17
+              ],
+              [
+                "luke",
+                16
+              ],
+              [
+                "greg",
+                12
+              ],
+              [
+                "lf-lists",
+                12
+              ],
+              [
+                "jtimon",
+                11
+              ],
+              [
+                "j",
+                10
+              ],
+              [
+                "pieter.wuille",
+                10
+              ],
+              [
+                "jgarzik",
+                9
+              ],
+              [
+                "elombrozo",
+                9
+              ],
+              [
+                "gavinandresen",
+                8
+              ],
+              [
+                "mark",
+                8
+              ],
+              [
+                "tomz",
+                8
+              ],
+              [
+                "kanzure",
+                7
+              ],
+              [
+                "adam",
+                7
+              ],
+              [
+                "voisine",
+                7
+              ],
+              [
+                "sergio.d.lerner",
+                7
+              ],
+              [
+                "roconnor",
+                7
+              ],
+              [
+                "tier.nolan",
+                6
+              ]
+            ]
+          }
+        },
+        "irc": {
+          "messages": 1617,
+          "unique_authors": 167,
+          "som": {
+            "channel": "irc",
+            "classified_messages": 592,
+            "som_counts": {
+              "som3": 304,
+              "som2": 232,
+              "som6": 31,
+              "som1": 22,
+              "som5": 3
+            },
+            "som_distribution": {
+              "som3": 0.5135135135135135,
+              "som2": 0.3918918918918919,
+              "som6": 0.052364864864864864,
+              "som1": 0.037162162162162164,
+              "som5": 0.005067567567567568
+            },
+            "unique_authors": 77,
+            "top_authors": [
+              [
+                "sipa",
+                83
+              ],
+              [
+                "gmaxwell",
+                56
+              ],
+              [
+                "wumpus",
+                39
+              ],
+              [
+                "luke-jr",
+                38
+              ],
+              [
+                "jl2012",
+                30
+              ],
+              [
+                "morcos",
+                26
+              ],
+              [
+                "bsm117532",
+                23
+              ],
+              [
+                "sdaftuar",
+                19
+              ],
+              [
+                "achow101",
+                17
+              ],
+              [
+                "petertodd",
+                16
+              ],
+              [
+                "bluematt",
+                16
+              ],
+              [
+                "jtimon",
+                16
+              ],
+              [
+                "dcousens",
+                12
+              ],
+              [
+                "goatpig",
+                12
+              ],
+              [
+                "btcdrak",
+                11
+              ],
+              [
+                "instagibbs",
+                11
+              ],
+              [
+                "cfields",
+                10
+              ],
+              [
+                "chris_stewart_5",
+                10
+              ],
+              [
+                "bsm1175321",
+                10
+              ],
+              [
+                "kanzure",
+                9
+              ]
+            ]
+          }
+        },
+        "delving": {
+          "messages": 0,
+          "unique_authors": 0,
+          "som": {
+            "channel": "delving",
+            "classified_messages": 0,
+            "som_counts": {},
+            "som_distribution": {},
+            "unique_authors": 0,
+            "top_authors": []
+          }
+        },
+        "bitcointalk": {
+          "messages": 519,
+          "unique_authors": 154,
+          "som": {
+            "channel": "bitcointalk",
+            "classified_messages": 468,
+            "som_counts": {
+              "som2": 243,
+              "som1": 48,
+              "som3": 170,
+              "som5": 3,
+              "som6": 4
+            },
+            "som_distribution": {
+              "som2": 0.5192307692307693,
+              "som1": 0.10256410256410256,
+              "som3": 0.36324786324786323,
+              "som5": 0.00641025641025641,
+              "som6": 0.008547008547008548
+            },
+            "unique_authors": 146,
+            "top_authors": [
+              [
+                "achow101",
+                47
+              ],
+              [
+                "bitusher",
+                32
+              ],
+              [
+                "jl777",
+                25
+              ],
+              [
+                "gmaxwell",
+                17
+              ],
+              [
+                "johnyj",
+                15
+              ],
+              [
+                "franky1",
+                13
+              ],
+              [
+                "jet cash",
+                12
+              ],
+              [
+                "sebastianju",
+                10
+              ],
+              [
+                "lauda",
+                9
+              ],
+              [
+                "jbreher",
+                9
+              ],
+              [
+                "amaclin",
+                9
+              ],
+              [
+                "sat0shifanclub",
+                8
+              ],
+              [
+                "rizzlarolla",
+                8
+              ],
+              [
+                "sturle",
+                8
+              ],
+              [
+                "jorgestolfi",
+                8
+              ],
+              [
+                "roadtrain",
+                7
+              ],
+              [
+                "pianist",
+                7
+              ],
+              [
+                "icebreaker",
+                7
+              ],
+              [
+                "2112",
+                7
+              ],
+              [
+                "carlton banks",
+                6
+              ]
+            ]
+          }
+        },
+        "mailing_list_bitcoin-dev": {
+          "messages": 397,
+          "unique_authors": 86
+        },
+        "mailing_list_cryptography": {
+          "messages": 32,
+          "unique_authors": 21
+        }
+      },
+      "signaling": {
+        "email": {
+          "messages": 631,
+          "unique_authors": 137,
+          "som": {
+            "channel": "email",
+            "classified_messages": 615,
+            "som_counts": {
+              "som2": 445,
+              "som3": 86,
+              "som1": 68,
+              "som6": 13,
+              "som5": 3
+            },
+            "som_distribution": {
+              "som2": 0.7235772357723578,
+              "som3": 0.13983739837398373,
+              "som1": 0.11056910569105691,
+              "som6": 0.02113821138211382,
+              "som5": 0.004878048780487805
+            },
+            "unique_authors": 134,
+            "top_authors": [
+              [
+                "jl2012",
+                29
+              ],
+              [
+                "james.hilliard1",
+                28
+              ],
+              [
+                "sergio.d.lerner",
+                28
+              ],
+              [
+                "greg",
+                26
+              ],
+              [
+                "erik",
+                24
+              ],
+              [
+                "jtimon",
+                23
+              ],
+              [
+                "lf-lists",
+                21
+              ],
+              [
+                "jaredr26",
+                20
+              ],
+              [
+                "luke",
+                18
+              ],
+              [
+                "praxeology_guy",
+                16
+              ],
+              [
+                "jacob.eliosoff",
+                14
+              ],
+              [
+                "truthcoin",
+                13
+              ],
+              [
+                "hampus.sjoberg",
+                11
+              ],
+              [
+                "jaejoon",
+                11
+              ],
+              [
+                "shaolinfry",
+                10
+              ],
+              [
+                "eric",
+                10
+              ],
+              [
+                "teekhan42",
+                9
+              ],
+              [
+                "vitteaymeric",
+                9
+              ],
+              [
+                "chris",
+                9
+              ],
+              [
+                "tomz",
+                9
+              ]
+            ]
+          }
+        },
+        "irc": {
+          "messages": 603,
+          "unique_authors": 74,
+          "som": {
+            "channel": "irc",
+            "classified_messages": 220,
+            "som_counts": {
+              "som2": 98,
+              "som3": 103,
+              "som6": 6,
+              "som1": 9,
+              "som5": 4
+            },
+            "som_distribution": {
+              "som2": 0.44545454545454544,
+              "som3": 0.4681818181818182,
+              "som6": 0.02727272727272727,
+              "som1": 0.04090909090909091,
+              "som5": 0.01818181818181818
+            },
+            "unique_authors": 59,
+            "top_authors": [
+              [
+                "gmaxwell",
+                25
+              ],
+              [
+                "luke-jr",
+                23
+              ],
+              [
+                "chris_stewart_5",
+                22
+              ],
+              [
+                "sipa",
+                17
+              ],
+              [
+                "jtimon",
+                9
+              ],
+              [
+                "bluematt",
+                9
+              ],
+              [
+                "bitcoin-git",
+                8
+              ],
+              [
+                "rgrant",
+                8
+              ],
+              [
+                "achow101",
+                5
+              ],
+              [
+                "sdaftuar",
+                5
+              ],
+              [
+                "morcos",
+                5
+              ],
+              [
+                "jeremyrubin",
+                5
+              ],
+              [
+                "instagibbs",
+                4
+              ],
+              [
+                "bincap",
+                4
+              ],
+              [
+                "murchandamus",
+                4
+              ],
+              [
+                "praxeology",
+                4
+              ],
+              [
+                "dcousens",
+                3
+              ],
+              [
+                "roasbeef",
+                3
+              ],
+              [
+                "da2ce7",
+                3
+              ],
+              [
+                "mmgen",
+                3
+              ]
+            ]
+          }
+        },
+        "delving": {
+          "messages": 0,
+          "unique_authors": 0,
+          "som": {
+            "channel": "delving",
+            "classified_messages": 0,
+            "som_counts": {},
+            "som_distribution": {},
+            "unique_authors": 0,
+            "top_authors": []
+          }
+        },
+        "bitcointalk": {
+          "messages": 591,
+          "unique_authors": 225,
+          "som": {
+            "channel": "bitcointalk",
+            "classified_messages": 508,
+            "som_counts": {
+              "som3": 150,
+              "som2": 295,
+              "som6": 23,
+              "som1": 39,
+              "som5": 1
+            },
+            "som_distribution": {
+              "som3": 0.2952755905511811,
+              "som2": 0.5807086614173228,
+              "som6": 0.045275590551181105,
+              "som1": 0.07677165354330709,
+              "som5": 0.001968503937007874
+            },
+            "unique_authors": 200,
+            "top_authors": [
+              [
+                "achow101",
+                57
+              ],
+              [
+                "piotr_n",
+                19
+              ],
+              [
+                "carlton banks",
+                15
+              ],
+              [
+                "gmaxwell",
+                13
+              ],
+              [
+                "jonald_fyookball",
+                12
+              ],
+              [
+                "stdset",
+                11
+              ],
+              [
+                "praxeology",
+                11
+              ],
+              [
+                "quickseller",
+                9
+              ],
+              [
+                "aliashraf",
+                9
+              ],
+              [
+                "d5000",
+                7
+              ],
+              [
+                "amaclin",
+                7
+              ],
+              [
+                "classicsucks",
+                7
+              ],
+              [
+                "dannyhamilton",
+                6
+              ],
+              [
+                "cr1776",
+                6
+              ],
+              [
+                "alicewondermiscreations",
+                6
+              ],
+              [
+                "bitusher",
+                6
+              ],
+              [
+                "jubalix",
+                6
+              ],
+              [
+                "tiernolan",
+                5
+              ],
+              [
+                "yogafan00000",
+                5
+              ],
+              [
+                "inbitwetrust",
+                5
+              ]
+            ]
+          }
+        },
+        "mailing_list_bitcoin-dev": {
+          "messages": 616,
+          "unique_authors": 123
+        },
+        "mailing_list_cryptography": {
+          "messages": 15,
+          "unique_authors": 14
+        }
+      },
+      "activation": {
+        "email": {
+          "messages": 2,
+          "unique_authors": 2,
+          "som": {
+            "channel": "email",
+            "classified_messages": 2,
+            "som_counts": {
+              "som2": 2
+            },
+            "som_distribution": {
+              "som2": 1.0
+            },
+            "unique_authors": 2,
+            "top_authors": [
+              [
+                "gsanders87",
+                1
+              ],
+              [
+                "\"write2mark1 at gmail.com\"",
+                1
+              ]
+            ]
+          }
+        },
+        "irc": {
+          "messages": 90,
+          "unique_authors": 22,
+          "som": {
+            "channel": "irc",
+            "classified_messages": 31,
+            "som_counts": {
+              "som3": 19,
+              "som6": 2,
+              "som2": 9,
+              "som5": 1
+            },
+            "som_distribution": {
+              "som3": 0.6129032258064516,
+              "som6": 0.06451612903225806,
+              "som2": 0.2903225806451613,
+              "som5": 0.03225806451612903
+            },
+            "unique_authors": 16,
+            "top_authors": [
+              [
+                "gmaxwell",
+                9
+              ],
+              [
+                "luke-jr",
+                5
+              ],
+              [
+                "wumpus",
+                2
+              ],
+              [
+                "praxeology",
+                2
+              ],
+              [
+                "bluematt",
+                2
+              ],
+              [
+                "yoghurt114",
+                1
+              ],
+              [
+                "intcat",
+                1
+              ],
+              [
+                "jonasschnelli",
+                1
+              ],
+              [
+                "wallet42",
+                1
+              ],
+              [
+                "john",
+                1
+              ],
+              [
+                "murch",
+                1
+              ],
+              [
+                "* kallewoof",
+                1
+              ],
+              [
+                "venzen",
+                1
+              ],
+              [
+                "sdaftuar",
+                1
+              ],
+              [
+                "warren",
+                1
+              ],
+              [
+                "sipa",
+                1
+              ]
+            ]
+          }
+        },
+        "delving": {
+          "messages": 0,
+          "unique_authors": 0,
+          "som": {
+            "channel": "delving",
+            "classified_messages": 0,
+            "som_counts": {},
+            "som_distribution": {},
+            "unique_authors": 0,
+            "top_authors": []
+          }
+        },
+        "bitcointalk": {
+          "messages": 77,
+          "unique_authors": 49,
+          "som": {
+            "channel": "bitcointalk",
+            "classified_messages": 62,
+            "som_counts": {
+              "som1": 7,
+              "som3": 22,
+              "som2": 31,
+              "som6": 2
+            },
+            "som_distribution": {
+              "som1": 0.11290322580645161,
+              "som3": 0.3548387096774194,
+              "som2": 0.5,
+              "som6": 0.03225806451612903
+            },
+            "unique_authors": 39,
+            "top_authors": [
+              [
+                "achow101",
+                4
+              ],
+              [
+                "jubalix",
+                4
+              ],
+              [
+                "frodek",
+                3
+              ],
+              [
+                "nibor",
+                3
+              ],
+              [
+                "gmaxwell",
+                2
+              ],
+              [
+                "yinoye",
+                2
+              ],
+              [
+                "heretik",
+                2
+              ],
+              [
+                "techpriest",
+                2
+              ],
+              [
+                "ranochigo",
+                2
+              ],
+              [
+                "d5000",
+                2
+              ],
+              [
+                "telematico",
+                2
+              ],
+              [
+                "billybobzorton",
+                2
+              ],
+              [
+                "hcp",
+                2
+              ],
+              [
+                "tiernolan",
+                2
+              ],
+              [
+                "gentlemand",
+                2
+              ],
+              [
+                "alexgr",
+                2
+              ],
+              [
+                "aleksej996",
+                2
+              ],
+              [
+                "iamtom123",
+                1
+              ],
+              [
+                "pereira4",
+                1
+              ],
+              [
+                "skyline247",
+                1
+              ]
+            ]
+          }
+        },
+        "mailing_list_bitcoin-dev": {
+          "messages": 1,
+          "unique_authors": 1
+        },
+        "mailing_list_cryptography": {
+          "messages": 1,
+          "unique_authors": 1
         }
       }
     },
@@ -97,15 +1075,15 @@
       "phase": "overall",
       "merged_prs": 1978,
       "power_concentration": {
-        "top3_merge_share": 0.9438775510204082,
+        "top3_merge_share": 0.9529828109201214,
         "top5_merge_share": 1.0,
         "top3_review_share": 0.25038693035253656,
         "top5_review_share": 0.3893379191745486,
         "merge_counts": {
-          "laanwj": 872,
-          "maflcko": 141,
-          "sipa": 97,
-          "jonasschnelli": 64,
+          "laanwj": 1449,
+          "maflcko": 254,
+          "sipa": 182,
+          "jonasschnelli": 91,
           "meshcollider": 2
         }
       },
@@ -118,9 +1096,346 @@
       },
       "merge_authority": {
         "self_merge_rate": 11.729019211324571,
-        "maintainer_merged": 1174,
+        "maintainer_merged": 1976,
         "non_maintainer_merged": 2,
-        "maintainer_merge_share": 59.35288169868554
+        "maintainer_merge_share": 99.89888776541962
+      }
+    },
+    "overall_informal_activity": {
+      "email": {
+        "messages": 1062,
+        "unique_authors": 199,
+        "som": {
+          "channel": "email",
+          "classified_messages": 1007,
+          "som_counts": {
+            "som5": 16,
+            "som1": 120,
+            "som3": 162,
+            "som2": 680,
+            "som6": 29
+          },
+          "som_distribution": {
+            "som5": 0.015888778550148957,
+            "som1": 0.11916583912611718,
+            "som3": 0.1608738828202582,
+            "som2": 0.6752730883813307,
+            "som6": 0.028798411122144985
+          },
+          "unique_authors": 192,
+          "top_authors": [
+            [
+              "jl2012",
+              73
+            ],
+            [
+              "greg",
+              38
+            ],
+            [
+              "sergio.d.lerner",
+              35
+            ],
+            [
+              "jtimon",
+              34
+            ],
+            [
+              "luke",
+              34
+            ],
+            [
+              "lf-lists",
+              33
+            ],
+            [
+              "pete",
+              33
+            ],
+            [
+              "james.hilliard1",
+              28
+            ],
+            [
+              "erik",
+              24
+            ],
+            [
+              "aj",
+              22
+            ],
+            [
+              "jaredr26",
+              20
+            ],
+            [
+              "tomz",
+              17
+            ],
+            [
+              "praxeology_guy",
+              16
+            ],
+            [
+              "truthcoin",
+              15
+            ],
+            [
+              "pieter.wuille",
+              14
+            ],
+            [
+              "jacob.eliosoff",
+              14
+            ],
+            [
+              "mark",
+              13
+            ],
+            [
+              "roconnor",
+              13
+            ],
+            [
+              "tier.nolan",
+              11
+            ],
+            [
+              "eric",
+              11
+            ]
+          ]
+        }
+      },
+      "irc": {
+        "messages": 2310,
+        "unique_authors": 209,
+        "som": {
+          "channel": "irc",
+          "classified_messages": 843,
+          "som_counts": {
+            "som3": 426,
+            "som2": 339,
+            "som6": 39,
+            "som1": 31,
+            "som5": 8
+          },
+          "som_distribution": {
+            "som3": 0.505338078291815,
+            "som2": 0.40213523131672596,
+            "som6": 0.046263345195729534,
+            "som1": 0.036773428232502965,
+            "som5": 0.009489916963226572
+          },
+          "unique_authors": 114,
+          "top_authors": [
+            [
+              "sipa",
+              101
+            ],
+            [
+              "gmaxwell",
+              90
+            ],
+            [
+              "luke-jr",
+              66
+            ],
+            [
+              "wumpus",
+              43
+            ],
+            [
+              "chris_stewart_5",
+              32
+            ],
+            [
+              "morcos",
+              31
+            ],
+            [
+              "jl2012",
+              31
+            ],
+            [
+              "bluematt",
+              27
+            ],
+            [
+              "jtimon",
+              25
+            ],
+            [
+              "sdaftuar",
+              25
+            ],
+            [
+              "bsm117532",
+              25
+            ],
+            [
+              "achow101",
+              22
+            ],
+            [
+              "petertodd",
+              16
+            ],
+            [
+              "dcousens",
+              15
+            ],
+            [
+              "instagibbs",
+              15
+            ],
+            [
+              "cfields",
+              12
+            ],
+            [
+              "goatpig",
+              12
+            ],
+            [
+              "btcdrak",
+              11
+            ],
+            [
+              "kanzure",
+              11
+            ],
+            [
+              "jonasschnelli",
+              10
+            ]
+          ]
+        }
+      },
+      "delving": {
+        "messages": 0,
+        "unique_authors": 0,
+        "som": {
+          "channel": "delving",
+          "classified_messages": 0,
+          "som_counts": {},
+          "som_distribution": {},
+          "unique_authors": 0,
+          "top_authors": []
+        }
+      },
+      "bitcointalk": {
+        "messages": 1187,
+        "unique_authors": 365,
+        "som": {
+          "channel": "bitcointalk",
+          "classified_messages": 1038,
+          "som_counts": {
+            "som3": 342,
+            "som2": 569,
+            "som1": 94,
+            "som5": 4,
+            "som6": 29
+          },
+          "som_distribution": {
+            "som3": 0.32947976878612717,
+            "som2": 0.5481695568400771,
+            "som1": 0.0905587668593449,
+            "som5": 0.0038535645472061657,
+            "som6": 0.027938342967244702
+          },
+          "unique_authors": 326,
+          "top_authors": [
+            [
+              "achow101",
+              108
+            ],
+            [
+              "bitusher",
+              38
+            ],
+            [
+              "gmaxwell",
+              32
+            ],
+            [
+              "jl777",
+              25
+            ],
+            [
+              "carlton banks",
+              21
+            ],
+            [
+              "piotr_n",
+              21
+            ],
+            [
+              "johnyj",
+              16
+            ],
+            [
+              "amaclin",
+              16
+            ],
+            [
+              "jet cash",
+              15
+            ],
+            [
+              "franky1",
+              15
+            ],
+            [
+              "icebreaker",
+              12
+            ],
+            [
+              "jonald_fyookball",
+              12
+            ],
+            [
+              "cr1776",
+              11
+            ],
+            [
+              "aliashraf",
+              11
+            ],
+            [
+              "stdset",
+              11
+            ],
+            [
+              "praxeology",
+              11
+            ],
+            [
+              "sebastianju",
+              10
+            ],
+            [
+              "quickseller",
+              10
+            ],
+            [
+              "jubalix",
+              10
+            ],
+            [
+              "d5000",
+              9
+            ]
+          ]
+        }
+      },
+      "mailing_list_bitcoin-dev": {
+        "messages": 1014,
+        "unique_authors": 166
+      },
+      "mailing_list_cryptography": {
+        "messages": 48,
+        "unique_authors": 33
       }
     },
     "total_prs": 2861
@@ -132,152 +1447,1472 @@
     "phase_analyses": {
       "pre_signal": {
         "phase": "pre_signal",
-        "merged_prs": 3132,
+        "merged_prs": 3128,
         "power_concentration": {
-          "top3_merge_share": 0.9084228377614472,
-          "top5_merge_share": 0.9903900508762012,
-          "top3_review_share": 0.27190202503088573,
-          "top5_review_share": 0.37659128753290005,
+          "top3_merge_share": 0.9194373401534527,
+          "top5_merge_share": 0.9852941176470589,
+          "top3_review_share": 0.27242399784772664,
+          "top5_review_share": 0.3772935162765671,
           "merge_counts": {
-            "laanwj": 749,
-            "maflcko": 658,
-            "fanquake": 200,
-            "meshcollider": 80,
-            "jonasschnelli": 65,
-            "sipa": 15,
-            "achow101": 1,
+            "laanwj": 1288,
+            "maflcko": 1266,
+            "fanquake": 322,
+            "meshcollider": 109,
+            "jonasschnelli": 97,
+            "sipa": 40,
+            "achow101": 5,
             "glozow": 1
           }
         },
         "review_patterns": {
-          "avg_reviews_per_pr": 5.952745849297574,
-          "maintainer_review_share": 65.4044196524351,
-          "non_maintainer_review_share": 34.595580347564905,
-          "zero_review_rate": 30.268199233716476,
-          "avg_response_time_hours": 1793.3329284965077
+          "avg_reviews_per_pr": 5.952046035805626,
+          "maintainer_review_share": 65.61929315715975,
+          "non_maintainer_review_share": 34.380706842840254,
+          "zero_review_rate": 30.274936061381077,
+          "avg_response_time_hours": 1790.8379185764077
         },
         "merge_authority": {
-          "self_merge_rate": 13.218390804597702,
-          "maintainer_merged": 1689,
-          "non_maintainer_merged": 80,
-          "maintainer_merge_share": 53.9272030651341
+          "self_merge_rate": 13.23529411764706,
+          "maintainer_merged": 3019,
+          "non_maintainer_merged": 109,
+          "maintainer_merge_share": 96.51534526854219
         }
       },
       "signaling": {
         "phase": "signaling",
-        "merged_prs": 1618,
+        "merged_prs": 1619,
         "power_concentration": {
-          "top3_merge_share": 0.9449192782526116,
-          "top5_merge_share": 0.99335232668566,
-          "top3_review_share": 0.2697378057712026,
-          "top5_review_share": 0.3925589570821737,
+          "top3_merge_share": 0.9512044471896233,
+          "top5_merge_share": 0.9913526868437307,
+          "top3_review_share": 0.26732960731654204,
+          "top5_review_share": 0.38905422080278723,
           "merge_counts": {
-            "maflcko": 464,
-            "fanquake": 275,
-            "laanwj": 256,
-            "meshcollider": 37,
-            "jonasschnelli": 14,
-            "achow101": 5,
-            "sipa": 1,
-            "glozow": 1
+            "maflcko": 739,
+            "laanwj": 417,
+            "fanquake": 384,
+            "meshcollider": 47,
+            "jonasschnelli": 18,
+            "achow101": 8,
+            "sipa": 3,
+            "glozow": 2,
+            "sedited": 1
           }
         },
         "review_patterns": {
-          "avg_reviews_per_pr": 8.467861557478368,
-          "maintainer_review_share": 61.82760382453836,
-          "non_maintainer_review_share": 38.17239617546164,
-          "zero_review_rate": 19.406674907292953,
-          "avg_response_time_hours": 1504.0415066621251
+          "avg_reviews_per_pr": 8.539221741815936,
+          "maintainer_review_share": 62.00361663652802,
+          "non_maintainer_review_share": 37.99638336347198,
+          "zero_review_rate": 19.394688079061147,
+          "avg_response_time_hours": 1814.2891771147279
         },
         "merge_authority": {
-          "self_merge_rate": 18.046971569839307,
-          "maintainer_merged": 1016,
-          "non_maintainer_merged": 37,
-          "maintainer_merge_share": 62.79357231149567
+          "self_merge_rate": 18.035824583075975,
+          "maintainer_merged": 1572,
+          "non_maintainer_merged": 47,
+          "maintainer_merge_share": 97.0969734403953
         }
       },
       "activation": {
         "phase": "activation",
-        "merged_prs": 567,
+        "merged_prs": 568,
         "power_concentration": {
-          "top3_merge_share": 0.9675675675675676,
-          "top5_merge_share": 0.9972972972972973,
-          "top3_review_share": 0.24371460928652322,
-          "top5_review_share": 0.34110985277463196,
+          "top3_merge_share": 0.9507042253521126,
+          "top5_merge_share": 0.9964788732394366,
+          "top3_review_share": 0.24354911724762335,
+          "top5_review_share": 0.3408782254413762,
           "merge_counts": {
-            "maflcko": 153,
-            "fanquake": 135,
-            "laanwj": 70,
-            "meshcollider": 10,
-            "glozow": 1,
-            "achow101": 1
+            "maflcko": 248,
+            "fanquake": 179,
+            "laanwj": 113,
+            "meshcollider": 19,
+            "achow101": 7,
+            "glozow": 2
           }
         },
         "review_patterns": {
-          "avg_reviews_per_pr": 7.931216931216931,
-          "maintainer_review_share": 51.76784523015343,
-          "non_maintainer_review_share": 48.23215476984657,
-          "zero_review_rate": 15.167548500881834,
-          "avg_response_time_hours": 1358.6884123366196
+          "avg_reviews_per_pr": 7.922535211267606,
+          "maintainer_review_share": 51.84444444444445,
+          "non_maintainer_review_share": 48.15555555555555,
+          "zero_review_rate": 15.140845070422534,
+          "avg_response_time_hours": 1357.7841737037036
         },
         "merge_authority": {
-          "self_merge_rate": 20.458553791887123,
-          "maintainer_merged": 360,
-          "non_maintainer_merged": 10,
-          "maintainer_merge_share": 63.49206349206349
+          "self_merge_rate": 20.422535211267608,
+          "maintainer_merged": 549,
+          "non_maintainer_merged": 19,
+          "maintainer_merge_share": 96.65492957746478
+        }
+      }
+    },
+    "informal_by_phase": {
+      "pre_signal": {
+        "email": {
+          "messages": 497,
+          "unique_authors": 86,
+          "som": {
+            "channel": "email",
+            "classified_messages": 470,
+            "som_counts": {
+              "som3": 88,
+              "som2": 326,
+              "som1": 46,
+              "som6": 6,
+              "som5": 4
+            },
+            "som_distribution": {
+              "som3": 0.18723404255319148,
+              "som2": 0.6936170212765957,
+              "som1": 0.09787234042553192,
+              "som6": 0.01276595744680851,
+              "som5": 0.00851063829787234
+            },
+            "unique_authors": 84,
+            "top_authors": [
+              [
+                "zmnscpxj",
+                80
+              ],
+              [
+                "aj",
+                31
+              ],
+              [
+                "jl2012",
+                26
+              ],
+              [
+                "roconnor",
+                25
+              ],
+              [
+                "erik",
+                20
+              ],
+              [
+                "jlrubin",
+                19
+              ],
+              [
+                "pieter.wuille",
+                19
+              ],
+              [
+                "tamas.blummer",
+                19
+              ],
+              [
+                "eric",
+                18
+              ],
+              [
+                "greg",
+                17
+              ],
+              [
+                "decker.christian",
+                15
+              ],
+              [
+                "apoelstra",
+                12
+              ],
+              [
+                "lf-lists",
+                10
+              ],
+              [
+                "lloyd.fourn",
+                9
+              ],
+              [
+                "kanzure",
+                7
+              ],
+              [
+                "rusty",
+                7
+              ],
+              [
+                "rsomsen",
+                7
+              ],
+              [
+                "belcher",
+                6
+              ],
+              [
+                "gsanders87",
+                5
+              ],
+              [
+                "jonasdnick",
+                5
+              ]
+            ]
+          }
+        },
+        "irc": {
+          "messages": 173,
+          "unique_authors": 26,
+          "som": {
+            "channel": "irc",
+            "classified_messages": 66,
+            "som_counts": {
+              "som2": 30,
+              "som3": 33,
+              "som1": 3
+            },
+            "som_distribution": {
+              "som2": 0.45454545454545453,
+              "som3": 0.5,
+              "som1": 0.045454545454545456
+            },
+            "unique_authors": 15,
+            "top_authors": [
+              [
+                "elichai2",
+                15
+              ],
+              [
+                "sipa",
+                13
+              ],
+              [
+                "jeremyrubin",
+                9
+              ],
+              [
+                "luke-jr",
+                5
+              ],
+              [
+                "gmaxwell",
+                5
+              ],
+              [
+                "jnewbery",
+                5
+              ],
+              [
+                "meshcollider",
+                2
+              ],
+              [
+                "achow101",
+                2
+              ],
+              [
+                "stevenroose",
+                2
+              ],
+              [
+                "aj",
+                2
+              ],
+              [
+                "provoostenator",
+                2
+              ],
+              [
+                "cubicearths",
+                1
+              ],
+              [
+                "bitcoinenthusias",
+                1
+              ],
+              [
+                "hugohn",
+                1
+              ],
+              [
+                "fanquake",
+                1
+              ]
+            ]
+          }
+        },
+        "delving": {
+          "messages": 0,
+          "unique_authors": 0,
+          "som": {
+            "channel": "delving",
+            "classified_messages": 0,
+            "som_counts": {},
+            "som_distribution": {},
+            "unique_authors": 0,
+            "top_authors": []
+          }
+        },
+        "bitcointalk": {
+          "messages": 251,
+          "unique_authors": 85,
+          "som": {
+            "channel": "bitcointalk",
+            "classified_messages": 219,
+            "som_counts": {
+              "som1": 36,
+              "som3": 75,
+              "som2": 103,
+              "som6": 5
+            },
+            "som_distribution": {
+              "som1": 0.1643835616438356,
+              "som3": 0.3424657534246575,
+              "som2": 0.4703196347031963,
+              "som6": 0.0228310502283105
+            },
+            "unique_authors": 75,
+            "top_authors": [
+              [
+                "aliashraf",
+                19
+              ],
+              [
+                "carlton banks",
+                17
+              ],
+              [
+                "achow101",
+                13
+              ],
+              [
+                "cellard",
+                12
+              ],
+              [
+                "doomad",
+                11
+              ],
+              [
+                "gmaxwell",
+                11
+              ],
+              [
+                "abcbits",
+                9
+              ],
+              [
+                "rath_",
+                7
+              ],
+              [
+                "fillippone",
+                7
+              ],
+              [
+                "coding enthusiast",
+                6
+              ],
+              [
+                "figmentofmyass",
+                6
+              ],
+              [
+                "legaulois",
+                4
+              ],
+              [
+                "bob123",
+                4
+              ],
+              [
+                "heretik",
+                4
+              ],
+              [
+                "wind_fury",
+                4
+              ],
+              [
+                "franky1",
+                3
+              ],
+              [
+                "anonymous kid",
+                3
+              ],
+              [
+                "hosseinamin",
+                3
+              ],
+              [
+                "squatter",
+                3
+              ],
+              [
+                "jeremyrubin",
+                3
+              ]
+            ]
+          }
+        },
+        "mailing_list_bitcoin-dev": {
+          "messages": 486,
+          "unique_authors": 79
+        },
+        "mailing_list_cryptography": {
+          "messages": 11,
+          "unique_authors": 7
+        }
+      },
+      "signaling": {
+        "email": {
+          "messages": 413,
+          "unique_authors": 84,
+          "som": {
+            "channel": "email",
+            "classified_messages": 400,
+            "som_counts": {
+              "som2": 296,
+              "som3": 39,
+              "som1": 53,
+              "som6": 11,
+              "som5": 1
+            },
+            "som_distribution": {
+              "som2": 0.74,
+              "som3": 0.0975,
+              "som1": 0.1325,
+              "som6": 0.0275,
+              "som5": 0.0025
+            },
+            "unique_authors": 83,
+            "top_authors": [
+              [
+                "zmnscpxj",
+                35
+              ],
+              [
+                "lf-lists",
+                34
+              ],
+              [
+                "jlrubin",
+                29
+              ],
+              [
+                "michaelfolkson",
+                25
+              ],
+              [
+                "aj",
+                17
+              ],
+              [
+                "rsomsen",
+                13
+              ],
+              [
+                "willtech",
+                13
+              ],
+              [
+                "eric",
+                13
+              ],
+              [
+                "luke",
+                12
+              ],
+              [
+                "bitcoin-dev",
+                11
+              ],
+              [
+                "dave",
+                11
+              ],
+              [
+                "arielluaces",
+                11
+              ],
+              [
+                "belcher",
+                9
+              ],
+              [
+                "roconnor",
+                9
+              ],
+              [
+                "prayank",
+                8
+              ],
+              [
+                "jtimon",
+                8
+              ],
+              [
+                "rusty",
+                7
+              ],
+              [
+                "erik",
+                7
+              ],
+              [
+                "antoine.riard",
+                6
+              ],
+              [
+                "lloyd.fourn",
+                6
+              ]
+            ]
+          }
+        },
+        "irc": {
+          "messages": 503,
+          "unique_authors": 50,
+          "som": {
+            "channel": "irc",
+            "classified_messages": 188,
+            "som_counts": {
+              "som2": 90,
+              "som3": 85,
+              "som6": 5,
+              "som1": 6,
+              "som5": 2
+            },
+            "som_distribution": {
+              "som2": 0.4787234042553192,
+              "som3": 0.4521276595744681,
+              "som6": 0.026595744680851064,
+              "som1": 0.031914893617021274,
+              "som5": 0.010638297872340425
+            },
+            "unique_authors": 45,
+            "top_authors": [
+              [
+                "sipa",
+                26
+              ],
+              [
+                "luke-jr",
+                16
+              ],
+              [
+                "aj",
+                13
+              ],
+              [
+                "achow101",
+                12
+              ],
+              [
+                "jeremyrubin",
+                11
+              ],
+              [
+                "bitcoin-git",
+                11
+              ],
+              [
+                "michaelfolkson",
+                9
+              ],
+              [
+                "jnewbery",
+                8
+              ],
+              [
+                "@gribble",
+                8
+              ],
+              [
+                "ariard",
+                7
+              ],
+              [
+                "provoostenator",
+                7
+              ],
+              [
+                "gribble",
+                7
+              ],
+              [
+                "sdaftuar",
+                5
+              ],
+              [
+                "moneyball",
+                4
+              ],
+              [
+                "wumpus",
+                4
+              ],
+              [
+                "somethingsomethi",
+                3
+              ],
+              [
+                "jonatack",
+                3
+              ],
+              [
+                "kallewoof",
+                2
+              ],
+              [
+                "gmaxwell",
+                2
+              ],
+              [
+                "marcofalke",
+                2
+              ]
+            ]
+          }
+        },
+        "delving": {
+          "messages": 0,
+          "unique_authors": 0,
+          "som": {
+            "channel": "delving",
+            "classified_messages": 0,
+            "som_counts": {},
+            "som_distribution": {},
+            "unique_authors": 0,
+            "top_authors": []
+          }
+        },
+        "bitcointalk": {
+          "messages": 297,
+          "unique_authors": 65,
+          "som": {
+            "channel": "bitcointalk",
+            "classified_messages": 254,
+            "som_counts": {
+              "som2": 121,
+              "som3": 86,
+              "som1": 33,
+              "som6": 13,
+              "som5": 1
+            },
+            "som_distribution": {
+              "som2": 0.4763779527559055,
+              "som3": 0.33858267716535434,
+              "som1": 0.12992125984251968,
+              "som6": 0.051181102362204724,
+              "som5": 0.003937007874015748
+            },
+            "unique_authors": 61,
+            "top_authors": [
+              [
+                "gmaxwell",
+                26
+              ],
+              [
+                "wind_fury",
+                25
+              ],
+              [
+                "carlton banks",
+                18
+              ],
+              [
+                "karartma1",
+                14
+              ],
+              [
+                "fillippone",
+                14
+              ],
+              [
+                "notatether",
+                12
+              ],
+              [
+                "pooya87",
+                12
+              ],
+              [
+                "acquafredda",
+                8
+              ],
+              [
+                "dkbit98",
+                7
+              ],
+              [
+                "achow101",
+                7
+              ],
+              [
+                "aliashraf",
+                7
+              ],
+              [
+                "charles-tim",
+                6
+              ],
+              [
+                "doomad",
+                6
+              ],
+              [
+                "xmready",
+                6
+              ],
+              [
+                "piotr_n",
+                5
+              ],
+              [
+                "pmalek",
+                5
+              ],
+              [
+                "abcbits",
+                5
+              ],
+              [
+                "cygan",
+                4
+              ],
+              [
+                "nibor",
+                4
+              ],
+              [
+                "franky1",
+                4
+              ]
+            ]
+          }
+        },
+        "mailing_list_bitcoin-dev": {
+          "messages": 411,
+          "unique_authors": 82
+        },
+        "mailing_list_cryptography": {
+          "messages": 2,
+          "unique_authors": 2
+        }
+      },
+      "activation": {
+        "email": {
+          "messages": 144,
+          "unique_authors": 48,
+          "som": {
+            "channel": "email",
+            "classified_messages": 139,
+            "som_counts": {
+              "som2": 90,
+              "som1": 27,
+              "som3": 18,
+              "som6": 4
+            },
+            "som_distribution": {
+              "som2": 0.6474820143884892,
+              "som1": 0.19424460431654678,
+              "som3": 0.12949640287769784,
+              "som6": 0.02877697841726619
+            },
+            "unique_authors": 46,
+            "top_authors": [
+              [
+                "jlrubin",
+                13
+              ],
+              [
+                "michaelfolkson",
+                11
+              ],
+              [
+                "billy.tetrud",
+                10
+              ],
+              [
+                "antoine.riard",
+                9
+              ],
+              [
+                "zmnscpxj",
+                8
+              ],
+              [
+                "aj",
+                8
+              ],
+              [
+                "roconnor",
+                6
+              ],
+              [
+                "achow101-lists",
+                6
+              ],
+              [
+                "eric",
+                6
+              ],
+              [
+                "jtimon",
+                5
+              ],
+              [
+                "prayank",
+                5
+              ],
+              [
+                "bitcoin-dev",
+                4
+              ],
+              [
+                "zachgrw",
+                3
+              ],
+              [
+                "giacomo.caironi",
+                3
+              ],
+              [
+                "luke",
+                2
+              ],
+              [
+                "salvatore.ingala",
+                2
+              ],
+              [
+                "erik",
+                2
+              ],
+              [
+                "lf-lists",
+                2
+              ],
+              [
+                "eth3rs",
+                2
+              ],
+              [
+                "dave",
+                2
+              ]
+            ]
+          }
+        },
+        "irc": {
+          "messages": 205,
+          "unique_authors": 38,
+          "som": {
+            "channel": "irc",
+            "classified_messages": 77,
+            "som_counts": {
+              "som2": 42,
+              "som3": 34,
+              "som5": 1
+            },
+            "som_distribution": {
+              "som2": 0.5454545454545454,
+              "som3": 0.44155844155844154,
+              "som5": 0.012987012987012988
+            },
+            "unique_authors": 30,
+            "top_authors": [
+              [
+                "michaelfolkson",
+                23
+              ],
+              [
+                "sipa",
+                10
+              ],
+              [
+                "lucaferr",
+                4
+              ],
+              [
+                "achow101",
+                3
+              ],
+              [
+                "jeremyrubin",
+                3
+              ],
+              [
+                "chris_stewart_5",
+                3
+              ],
+              [
+                "@gribble",
+                2
+              ],
+              [
+                "harding",
+                2
+              ],
+              [
+                "prayank",
+                2
+              ],
+              [
+                "s3rk",
+                2
+              ],
+              [
+                "luke-jr",
+                2
+              ],
+              [
+                "_aj_",
+                2
+              ],
+              [
+                "pinheadmz",
+                2
+              ],
+              [
+                "laanwj",
+                1
+              ],
+              [
+                "zndtoshi",
+                1
+              ],
+              [
+                "bitcoin-git",
+                1
+              ],
+              [
+                "guest18",
+                1
+              ],
+              [
+                "ariard",
+                1
+              ],
+              [
+                "roconnor",
+                1
+              ],
+              [
+                "meshcollider",
+                1
+              ]
+            ]
+          }
+        },
+        "delving": {
+          "messages": 0,
+          "unique_authors": 0,
+          "som": {
+            "channel": "delving",
+            "classified_messages": 0,
+            "som_counts": {},
+            "som_distribution": {},
+            "unique_authors": 0,
+            "top_authors": []
+          }
+        },
+        "bitcointalk": {
+          "messages": 134,
+          "unique_authors": 41,
+          "som": {
+            "channel": "bitcointalk",
+            "classified_messages": 111,
+            "som_counts": {
+              "som3": 35,
+              "som2": 66,
+              "som1": 7,
+              "som6": 2,
+              "som5": 1
+            },
+            "som_distribution": {
+              "som3": 0.3153153153153153,
+              "som2": 0.5945945945945946,
+              "som1": 0.06306306306306306,
+              "som6": 0.018018018018018018,
+              "som5": 0.009009009009009009
+            },
+            "unique_authors": 38,
+            "top_authors": [
+              [
+                "pooya87",
+                11
+              ],
+              [
+                "cygan",
+                9
+              ],
+              [
+                "garlonicon",
+                8
+              ],
+              [
+                "o_e_l_e_o",
+                7
+              ],
+              [
+                "dabs",
+                6
+              ],
+              [
+                "gmaxwell",
+                6
+              ],
+              [
+                "achow101",
+                5
+              ],
+              [
+                "shymaa-arafat",
+                4
+              ],
+              [
+                "blockchainym",
+                4
+              ],
+              [
+                "abcbits",
+                4
+              ],
+              [
+                "notatether",
+                4
+              ],
+              [
+                "thecodebear",
+                3
+              ],
+              [
+                "kano",
+                3
+              ],
+              [
+                "charles-tim",
+                3
+              ],
+              [
+                "wind_fury",
+                3
+              ],
+              [
+                "titular",
+                3
+              ],
+              [
+                "jayjuangee",
+                2
+              ],
+              [
+                "ranochigo",
+                2
+              ],
+              [
+                "pmalek",
+                2
+              ],
+              [
+                "vjudeu",
+                2
+              ]
+            ]
+          }
+        },
+        "mailing_list_bitcoin-dev": {
+          "messages": 140,
+          "unique_authors": 44
+        },
+        "mailing_list_cryptography": {
+          "messages": 4,
+          "unique_authors": 4
         }
       }
     },
     "overall_analysis": {
       "phase": "overall",
-      "merged_prs": 5317,
+      "merged_prs": 5315,
       "power_concentration": {
-        "top3_merge_share": 0.9273182957393483,
-        "top5_merge_share": 0.9918546365914787,
-        "top3_review_share": 0.23038761380363082,
-        "top5_review_share": 0.33721310581693287,
+        "top3_merge_share": 0.9324553151458137,
+        "top5_merge_share": 0.9870178739416745,
+        "top3_review_share": 0.23189233278955954,
+        "top5_review_share": 0.33841761827079936,
         "merge_counts": {
-          "maflcko": 1275,
-          "laanwj": 1075,
-          "fanquake": 610,
-          "meshcollider": 127,
-          "jonasschnelli": 79,
-          "sipa": 16,
-          "achow101": 7,
-          "glozow": 3
+          "maflcko": 2253,
+          "laanwj": 1818,
+          "fanquake": 885,
+          "meshcollider": 175,
+          "jonasschnelli": 115,
+          "sipa": 43,
+          "achow101": 20,
+          "glozow": 5,
+          "sedited": 1
         }
       },
       "review_patterns": {
-        "avg_reviews_per_pr": 6.929095354523227,
-        "maintainer_review_share": 62.40974974214212,
-        "non_maintainer_review_share": 37.59025025785788,
-        "zero_review_rate": 25.35264246755689,
-        "avg_response_time_hours": 1632.6962051990783
+        "avg_reviews_per_pr": 6.950705550329257,
+        "maintainer_review_share": 62.588311723465885,
+        "non_maintainer_review_share": 37.411688276534115,
+        "zero_review_rate": 25.343367826904984,
+        "avg_response_time_hours": 1746.8640073446481
       },
       "merge_authority": {
-        "self_merge_rate": 15.45984577769419,
-        "maintainer_merged": 3065,
-        "non_maintainer_merged": 127,
-        "maintainer_merge_share": 57.64528869663344
+        "self_merge_rate": 15.465663217309503,
+        "maintainer_merged": 5140,
+        "non_maintainer_merged": 175,
+        "maintainer_merge_share": 96.7074317968015
       }
     },
-    "total_prs": 7871
+    "overall_informal_activity": {
+      "email": {
+        "messages": 1054,
+        "unique_authors": 157,
+        "som": {
+          "channel": "email",
+          "classified_messages": 1009,
+          "som_counts": {
+            "som3": 145,
+            "som2": 712,
+            "som1": 126,
+            "som6": 21,
+            "som5": 5
+          },
+          "som_distribution": {
+            "som3": 0.14370664023785926,
+            "som2": 0.7056491575817642,
+            "som1": 0.12487611496531219,
+            "som6": 0.02081268582755203,
+            "som5": 0.004955401387512388
+          },
+          "unique_authors": 152,
+          "top_authors": [
+            [
+              "zmnscpxj",
+              123
+            ],
+            [
+              "jlrubin",
+              61
+            ],
+            [
+              "aj",
+              56
+            ],
+            [
+              "lf-lists",
+              46
+            ],
+            [
+              "roconnor",
+              40
+            ],
+            [
+              "eric",
+              37
+            ],
+            [
+              "michaelfolkson",
+              36
+            ],
+            [
+              "erik",
+              29
+            ],
+            [
+              "jl2012",
+              26
+            ],
+            [
+              "rsomsen",
+              20
+            ],
+            [
+              "antoine.riard",
+              20
+            ],
+            [
+              "pieter.wuille",
+              19
+            ],
+            [
+              "tamas.blummer",
+              19
+            ],
+            [
+              "bitcoin-dev",
+              18
+            ],
+            [
+              "greg",
+              17
+            ],
+            [
+              "luke",
+              17
+            ],
+            [
+              "dave",
+              17
+            ],
+            [
+              "belcher",
+              16
+            ],
+            [
+              "apoelstra",
+              16
+            ],
+            [
+              "lloyd.fourn",
+              16
+            ]
+          ]
+        }
+      },
+      "irc": {
+        "messages": 881,
+        "unique_authors": 78,
+        "som": {
+          "channel": "irc",
+          "classified_messages": 331,
+          "som_counts": {
+            "som2": 162,
+            "som3": 152,
+            "som1": 9,
+            "som6": 5,
+            "som5": 3
+          },
+          "som_distribution": {
+            "som2": 0.48942598187311176,
+            "som3": 0.459214501510574,
+            "som1": 0.027190332326283987,
+            "som6": 0.015105740181268883,
+            "som5": 0.00906344410876133
+          },
+          "unique_authors": 68,
+          "top_authors": [
+            [
+              "sipa",
+              49
+            ],
+            [
+              "michaelfolkson",
+              32
+            ],
+            [
+              "luke-jr",
+              23
+            ],
+            [
+              "jeremyrubin",
+              23
+            ],
+            [
+              "achow101",
+              17
+            ],
+            [
+              "elichai2",
+              16
+            ],
+            [
+              "aj",
+              15
+            ],
+            [
+              "jnewbery",
+              13
+            ],
+            [
+              "bitcoin-git",
+              12
+            ],
+            [
+              "@gribble",
+              10
+            ],
+            [
+              "provoostenator",
+              9
+            ],
+            [
+              "ariard",
+              8
+            ],
+            [
+              "gmaxwell",
+              7
+            ],
+            [
+              "gribble",
+              7
+            ],
+            [
+              "sdaftuar",
+              5
+            ],
+            [
+              "meshcollider",
+              4
+            ],
+            [
+              "moneyball",
+              4
+            ],
+            [
+              "wumpus",
+              4
+            ],
+            [
+              "lucaferr",
+              4
+            ],
+            [
+              "somethingsomethi",
+              3
+            ]
+          ]
+        }
+      },
+      "delving": {
+        "messages": 0,
+        "unique_authors": 0,
+        "som": {
+          "channel": "delving",
+          "classified_messages": 0,
+          "som_counts": {},
+          "som_distribution": {},
+          "unique_authors": 0,
+          "top_authors": []
+        }
+      },
+      "bitcointalk": {
+        "messages": 682,
+        "unique_authors": 146,
+        "som": {
+          "channel": "bitcointalk",
+          "classified_messages": 584,
+          "som_counts": {
+            "som3": 196,
+            "som2": 290,
+            "som1": 76,
+            "som6": 20,
+            "som5": 2
+          },
+          "som_distribution": {
+            "som3": 0.3356164383561644,
+            "som2": 0.4965753424657534,
+            "som1": 0.13013698630136986,
+            "som6": 0.03424657534246575,
+            "som5": 0.003424657534246575
+          },
+          "unique_authors": 135,
+          "top_authors": [
+            [
+              "gmaxwell",
+              43
+            ],
+            [
+              "carlton banks",
+              36
+            ],
+            [
+              "wind_fury",
+              32
+            ],
+            [
+              "aliashraf",
+              27
+            ],
+            [
+              "achow101",
+              25
+            ],
+            [
+              "pooya87",
+              25
+            ],
+            [
+              "fillippone",
+              21
+            ],
+            [
+              "abcbits",
+              18
+            ],
+            [
+              "doomad",
+              17
+            ],
+            [
+              "notatether",
+              16
+            ],
+            [
+              "karartma1",
+              14
+            ],
+            [
+              "cygan",
+              13
+            ],
+            [
+              "cellard",
+              12
+            ],
+            [
+              "garlonicon",
+              9
+            ],
+            [
+              "charles-tim",
+              9
+            ],
+            [
+              "o_e_l_e_o",
+              9
+            ],
+            [
+              "franky1",
+              8
+            ],
+            [
+              "pmalek",
+              8
+            ],
+            [
+              "acquafredda",
+              8
+            ],
+            [
+              "dkbit98",
+              8
+            ]
+          ]
+        }
+      },
+      "mailing_list_bitcoin-dev": {
+        "messages": 1037,
+        "unique_authors": 145
+      },
+      "mailing_list_cryptography": {
+        "messages": 17,
+        "unique_authors": 12
+      }
+    },
+    "total_prs": 7867
   },
   "baseline_comparison": {
     "segwit": {
       "phase": "baseline",
       "merged_prs": 437,
       "power_concentration": {
-        "top3_merge_share": 0.9540229885057471,
-        "top5_merge_share": 0.9961685823754789,
+        "top3_merge_share": 0.9565217391304348,
+        "top5_merge_share": 0.9977116704805492,
         "top3_review_share": 0.6022727272727273,
         "top5_review_share": 0.7954545454545454,
         "merge_counts": {
-          "laanwj": 228,
-          "gmaxwell": 13,
-          "sipa": 8,
+          "laanwj": 384,
+          "gmaxwell": 20,
+          "sipa": 14,
+          "jgarzik": 10,
           "jonasschnelli": 8,
-          "jgarzik": 3,
           "maflcko": 1
         }
       },
@@ -289,25 +2924,25 @@
         "avg_response_time_hours": 15632.125190387016
       },
       "merge_authority": {
-        "self_merge_rate": 17.391304347826086,
-        "maintainer_merged": 258,
-        "non_maintainer_merged": 3,
-        "maintainer_merge_share": 59.03890160183066
+        "self_merge_rate": 18.07780320366133,
+        "maintainer_merged": 427,
+        "non_maintainer_merged": 10,
+        "maintainer_merge_share": 97.7116704805492
       }
     },
     "taproot": {
       "phase": "baseline",
       "merged_prs": 558,
       "power_concentration": {
-        "top3_merge_share": 0.9634551495016611,
+        "top3_merge_share": 0.9498207885304659,
         "top5_merge_share": 1.0,
         "top3_review_share": 0.3291981845688351,
         "top5_review_share": 0.47594553706505294,
         "merge_counts": {
-          "laanwj": 202,
-          "maflcko": 69,
-          "sipa": 19,
-          "jonasschnelli": 10,
+          "laanwj": 354,
+          "maflcko": 140,
+          "sipa": 36,
+          "jonasschnelli": 27,
           "meshcollider": 1
         }
       },
@@ -320,24 +2955,24 @@
       },
       "merge_authority": {
         "self_merge_rate": 7.168458781362006,
-        "maintainer_merged": 300,
+        "maintainer_merged": 557,
         "non_maintainer_merged": 1,
-        "maintainer_merge_share": 53.76344086021505
+        "maintainer_merge_share": 99.82078853046595
       }
     }
   },
   "statistics": {
     "segwit": {
       "power_concentration": {
-        "top3_merge_share": 0.9438775510204082,
+        "top3_merge_share": 0.9529828109201214,
         "top5_merge_share": 1.0,
         "top3_review_share": 0.25038693035253656,
         "top5_review_share": 0.3893379191745486,
         "merge_counts": {
-          "laanwj": 872,
-          "maflcko": 141,
-          "sipa": 97,
-          "jonasschnelli": 64,
+          "laanwj": 1449,
+          "maflcko": 254,
+          "sipa": 182,
+          "jonasschnelli": 91,
           "meshcollider": 2
         }
       },
@@ -350,40 +2985,41 @@
       },
       "merge_authority": {
         "self_merge_rate": 11.729019211324571,
-        "maintainer_merged": 1174,
+        "maintainer_merged": 1976,
         "non_maintainer_merged": 2,
-        "maintainer_merge_share": 59.35288169868554
+        "maintainer_merge_share": 99.89888776541962
       }
     },
     "taproot": {
       "power_concentration": {
-        "top3_merge_share": 0.9273182957393483,
-        "top5_merge_share": 0.9918546365914787,
-        "top3_review_share": 0.23038761380363082,
-        "top5_review_share": 0.33721310581693287,
+        "top3_merge_share": 0.9324553151458137,
+        "top5_merge_share": 0.9870178739416745,
+        "top3_review_share": 0.23189233278955954,
+        "top5_review_share": 0.33841761827079936,
         "merge_counts": {
-          "maflcko": 1275,
-          "laanwj": 1075,
-          "fanquake": 610,
-          "meshcollider": 127,
-          "jonasschnelli": 79,
-          "sipa": 16,
-          "achow101": 7,
-          "glozow": 3
+          "maflcko": 2253,
+          "laanwj": 1818,
+          "fanquake": 885,
+          "meshcollider": 175,
+          "jonasschnelli": 115,
+          "sipa": 43,
+          "achow101": 20,
+          "glozow": 5,
+          "sedited": 1
         }
       },
       "review_patterns": {
-        "avg_reviews_per_pr": 6.929095354523227,
-        "maintainer_review_share": 62.40974974214212,
-        "non_maintainer_review_share": 37.59025025785788,
-        "zero_review_rate": 25.35264246755689,
-        "avg_response_time_hours": 1632.6962051990783
+        "avg_reviews_per_pr": 6.950705550329257,
+        "maintainer_review_share": 62.588311723465885,
+        "non_maintainer_review_share": 37.411688276534115,
+        "zero_review_rate": 25.343367826904984,
+        "avg_response_time_hours": 1746.8640073446481
       },
       "merge_authority": {
-        "self_merge_rate": 15.45984577769419,
-        "maintainer_merged": 3065,
-        "non_maintainer_merged": 127,
-        "maintainer_merge_share": 57.64528869663344
+        "self_merge_rate": 15.465663217309503,
+        "maintainer_merged": 5140,
+        "non_maintainer_merged": 175,
+        "maintainer_merge_share": 96.7074317968015
       }
     },
     "baseline_comparison": {
@@ -391,16 +3027,16 @@
         "phase": "baseline",
         "merged_prs": 437,
         "power_concentration": {
-          "top3_merge_share": 0.9540229885057471,
-          "top5_merge_share": 0.9961685823754789,
+          "top3_merge_share": 0.9565217391304348,
+          "top5_merge_share": 0.9977116704805492,
           "top3_review_share": 0.6022727272727273,
           "top5_review_share": 0.7954545454545454,
           "merge_counts": {
-            "laanwj": 228,
-            "gmaxwell": 13,
-            "sipa": 8,
+            "laanwj": 384,
+            "gmaxwell": 20,
+            "sipa": 14,
+            "jgarzik": 10,
             "jonasschnelli": 8,
-            "jgarzik": 3,
             "maflcko": 1
           }
         },
@@ -412,25 +3048,25 @@
           "avg_response_time_hours": 15632.125190387016
         },
         "merge_authority": {
-          "self_merge_rate": 17.391304347826086,
-          "maintainer_merged": 258,
-          "non_maintainer_merged": 3,
-          "maintainer_merge_share": 59.03890160183066
+          "self_merge_rate": 18.07780320366133,
+          "maintainer_merged": 427,
+          "non_maintainer_merged": 10,
+          "maintainer_merge_share": 97.7116704805492
         }
       },
       "taproot": {
         "phase": "baseline",
         "merged_prs": 558,
         "power_concentration": {
-          "top3_merge_share": 0.9634551495016611,
+          "top3_merge_share": 0.9498207885304659,
           "top5_merge_share": 1.0,
           "top3_review_share": 0.3291981845688351,
           "top5_review_share": 0.47594553706505294,
           "merge_counts": {
-            "laanwj": 202,
-            "maflcko": 69,
-            "sipa": 19,
-            "jonasschnelli": 10,
+            "laanwj": 354,
+            "maflcko": 140,
+            "sipa": 36,
+            "jonasschnelli": 27,
             "meshcollider": 1
           }
         },
@@ -443,9 +3079,9 @@
         },
         "merge_authority": {
           "self_merge_rate": 7.168458781362006,
-          "maintainer_merged": 300,
+          "maintainer_merged": 557,
           "non_maintainer_merged": 1,
-          "maintainer_merge_share": 53.76344086021505
+          "maintainer_merge_share": 99.82078853046595
         }
       }
     }
@@ -457,7 +3093,8 @@
     "metrics": {
       "power_concentration": "Top 3/5 merge share, review share",
       "review_patterns": "Review rates, maintainer vs non-maintainer reviews",
-      "merge_authority": "Self-merge rates, maintainer merge share"
+      "merge_authority": "Self-merge rates, maintainer merge share",
+      "informal_activity": "IRC, mailing lists, Delving, Bitcointalk volume/SOM during consensus phases"
     },
     "periods": {
       "consensus_periods": {

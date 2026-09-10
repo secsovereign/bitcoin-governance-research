@@ -190,6 +190,38 @@ def test_directory_structure():
         print(f"  ✗ Directory structure test failed: {e}")
         return False
 
+def test_local_corpora():
+    """Check local dumps exist. Does not download or write."""
+    print("\nTesting local corpora (read-only)...")
+    from src.utils.paths import get_data_dir
+
+    data = get_data_dir()
+    expected = [
+        ("data/github/prs_raw.jsonl", data / "github" / "prs_raw.jsonl", 1_000_000),
+        ("data/github/issues_raw.jsonl", data / "github" / "issues_raw.jsonl", 100_000),
+        ("data/github/merged_by_mapping.jsonl", data / "github" / "merged_by_mapping.jsonl", 1_000),
+        ("data/irc/messages.jsonl", data / "irc" / "messages.jsonl", 1_000_000),
+        ("data/mailing_lists/emails.jsonl", data / "mailing_lists" / "emails.jsonl", 1_000_000),
+        ("data/mailing_lists/cryptography.jsonl", data / "mailing_lists" / "cryptography.jsonl", 100_000),
+        ("data/delving/posts.jsonl", data / "delving" / "posts.jsonl", 10_000),
+        ("data/bitcointalk/posts.jsonl", data / "bitcointalk" / "posts.jsonl", 100_000),
+    ]
+    missing = 0
+    for label, path, min_bytes in expected:
+        if path.exists() and path.stat().st_size >= min_bytes:
+            mb = path.stat().st_size / (1024 * 1024)
+            print(f"  ✓ {label} ({mb:.1f} MB)")
+        elif path.exists():
+            print(f"  ! {label} exists but is small ({path.stat().st_size} bytes)")
+            missing += 1
+        else:
+            print(f"  - {label} not present (run scripts/collect_all.py)")
+            missing += 1
+    if missing:
+        print("  (missing dumps are OK on a fresh clone; do not git clean -fdx)")
+    return True
+
+
 def main():
     """Run all validation tests."""
     print("=" * 60)
@@ -205,6 +237,7 @@ def main():
     results.append(("Rate Limiter", test_rate_limiter()))
     results.append(("Dependencies", test_dependencies()))
     results.append(("Directory Structure", test_directory_structure()))
+    results.append(("Local corpora", test_local_corpora()))
     
     print("\n" + "=" * 60)
     print("Validation Summary")

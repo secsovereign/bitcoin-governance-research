@@ -226,7 +226,7 @@ This methodology measures **technical debt** - code that represents accumulated 
 1. **PR File Changes**: `prs_raw.jsonl` contains:
    - `files` array with `filename`, `additions`, `deletions`, `changes`
    - `merged_at` date for timing
-   - 23,478 PRs with file-level data
+   - 25,122 PRs with file-level data
 
 2. **Commit Data**: `commits_raw.jsonl` contains:
    - Commit SHA, date, author

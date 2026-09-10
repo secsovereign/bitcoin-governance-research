@@ -1,6 +1,6 @@
 # BIP Process Analysis Report
 
-**Analysis Date**: 2026-01-18  
+**Analysis Date**: 2026-09-10  
 **Data Sources**: BIP repository (GitHub), Bitcoin Core repository  
 **Purpose**: Analyze governance patterns in the Bitcoin Improvement Proposal (BIP) process and compare to Core repository governance
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This report analyzes the governance patterns within the Bitcoin Improvement Proposal (BIP) repository, examining how proposals are made, reviewed, and championed. The analysis compares BIP governance to Bitcoin Core repository governance to understand power distribution and process differences.
+This report analyzes the governance patterns within the Bitcoin Improvement Proposal (BIP) repository: who proposes, who champions, how often BIPs show up in Core PRs, and how BIP-repo merge power compares to Core.
 
 ---
 
@@ -16,63 +16,99 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 
 ### 1. Proposer Concentration
 
-**Total BIPs**: 189  
-**Total Proposers**: 91  
+**Total BIPs**: 211  
+**Total Proposers**: 168  
 **Proposal Concentration**:
-- Top 3 proposers: 23.3% of all BIPs
-- Top 5 proposers: 30.2% of all BIPs
-- Top 10 proposers: 41.8% of all BIPs
-- Gini Coefficient: 0.433
+- Top 3 proposers: 27.5% of all BIPs
+- Top 5 proposers: 37.0% of all BIPs
+- Top 10 proposers: 51.2% of all BIPs
+- Gini Coefficient: 0.432
 
 **Top Proposers**:
-- Pieter Wuille: 21 BIPs (11.1%)
-- Gavin Andresen: 12 BIPs (6.3%)
-- Luke Dashjr: 11 BIPs (5.8%)
+- pieter wuille: 27 BIP(s)
+- ava chow: 18 BIP(s)
+- luke dashjr: 13 BIP(s)
+- gavin andresen: 12 BIP(s)
+- matt corallo: 8 BIP(s)
+- btcdrak: 7 BIP(s)
+- johnson lau: 6 BIP(s)
+- eric lombrozo: 6 BIP(s)
+- mark friedenbach: 6 BIP(s)
+- anthony towns: 5 BIP(s)
+- jonas schnelli: 5 BIP(s)
+- amir taaki: 5 BIP(s)
+- jonas nick: 4 BIP(s)
+- suhas daftuar: 4 BIP(s)
+- karl-johan alm: 4 BIP(s)
+
 
 ### 2. Champion Activity
 
-**Total Champions**: 684 unique participants in BIP PRs
+**Total Champions**: 733 unique participants in BIP PRs
 
 **Top Champions** (by PR activity):
 1. achow101: 314 activities
 2. kallewoof: 246 activities
 3. nicolasdorier: 236 activities
-4. luke-jr: 214 activities
-5. ysangkok: 203 activities
+4. ajtowns: 221 activities
+5. luke-jr: 214 activities
+6. ysangkok: 203 activities
+7. sipa: 198 activities
+8. jl2012: 195 activities
+9. thebluematt: 165 activities
+10. casey: 145 activities
 
-### 3. Repository Comparison
+
+### 3. Implementation Pipeline
+
+- **BIPs with at least one Core PR mention**: 114 / 210 (54.3%)
+- Mentions are a lower bound — not every implementation cites a BIP number.
+
+### 4. Repository Comparison
 
 **Actor Overlap**:
-- BIP authors: 684
-- Core authors: 0
-- Overlapping authors: 0
-- Overlap rate: 0.0%
+- BIP authors: 733
+- Core authors: 2,592
+- Overlapping authors: 284
+- Overlap rate (of BIP authors): 38.7%
 
 **BIP Merge Concentration**:
-- Total merged PRs: 1,208
-- Unique mergers: 419
-- Top mergers include achow101 (54 merges), jl2012 (44 merges), sipa (36 merges)
+- Total merged PRs: 1,297
+- Unique mergers: 443
+- Top mergers:
+  - achow101: 54 merges
+  - jl2012: 44 merges
+  - jonatack: 39 merges
+  - sipa: 36 merges
+  - luke-jr: 29 merges
+  - murchandamus: 25 merges
+  - kallewoof: 25 merges
+  - btcdrak: 25 merges
+  - ysangkok: 24 merges
+  - JeremyRubin: 22 merges
+
 
 ---
 
 ## Methodology
 
-- **Proposer Extraction**: Authors extracted from BIP content using Author: field
-- **Champion Identification**: Based on activity frequency (PRs authored, comments)
+- **Proposer Extraction**: `Authors:` / `Author:` field in the BIP preamble (`<pre>` header)
+- **Champion Identification**: Activity frequency (PRs authored, comments)
 - **Implementation Tracking**: BIP number mentions in Core PR titles/bodies
-- **Repo Comparison**: Actor overlap and merge concentration comparison
+- **Repo Comparison**: Actor overlap and merge concentration
 
 **Limitations**:
-- BIP author extraction may miss some authors
-- Champion analysis limited by available comment data
+- Preamble parsing can miss nonstandard headers
+- Champion analysis is limited by available comment data
 - Implementation tracking based on BIP mentions (may miss some)
 
 ---
 
 ## Implications
 
-1. **Proposal Concentration**: 23.3% of BIPs proposed by top 3 individuals indicates significant proposal concentration
-2. **Actor Overlap**: Low overlap between BIP and Core repositories suggests separate governance processes
-3. **Champion Network**: Large champion network (684 participants) suggests active community engagement in BIP review
+1. **Proposal concentration** is real but far milder than Core merge concentration.
+2. **Champion network** (733 participants) is broader than the proposer set — review labor is more distributed than authorship.
+3. **About half of BIPs** leave a detectable trace in Core PRs; the rest stay spec-only, stalled, or implemented without a BIP citation.
 
-**Data Source**: `analysis/findings/data/bip_analysis.json`
+**Data Source**: `analysis/findings/data/bip_analysis.json`  
+**Generated by**: `scripts/reporting/generate_from_templates.py`

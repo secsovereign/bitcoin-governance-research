@@ -5,11 +5,9 @@ Code Complexity vs Governance Complexity Correlation Analysis
 Analyzes correlation between code complexity and governance complexity.
 """
 
-import json
 import sys
 from pathlib import Path
-from typing import Dict, List, Any
-from collections import defaultdict
+from typing import Any, Dict
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
@@ -17,6 +15,8 @@ sys.path.insert(0, str(project_root))
 
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
 from scripts.analysis.pr_importance_matrix import analyze_complexity_correlation
+from src.utils.findings_io import save_analysis_json
+from src.utils.paths import get_data_dir
 
 
 def simple_review_count(pr: Dict[str, Any]) -> float:
@@ -35,10 +35,8 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Code Complexity vs Governance Complexity Analysis')
-    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent.parent / 'data',
+    parser.add_argument('--data-dir', type=Path, default=get_data_dir(),
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'data' / 'complexity_correlation.json',
-                       help='Output JSON file')
     
     args = parser.parse_args()
     
@@ -97,12 +95,8 @@ def main():
                 print(f"  Avg decision time: {stats.get('avg_decision_time', 0):.1f} days")
             print()
     
-    # Save results
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(results, f, indent=2, default=str)
-    
-    print(f"Results saved to: {args.output}")
+    written = save_analysis_json("complexity_correlation.json", results)
+    print("Results saved to: " + ", ".join(str(p) for p in written))
 
 
 if __name__ == '__main__':

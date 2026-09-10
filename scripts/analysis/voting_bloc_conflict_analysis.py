@@ -29,12 +29,8 @@ class VotingBlocConflictAnalyzer:
     def __init__(self, data_dir: Path):
         """Initialize."""
         self.data_dir = data_dir
-        self.maintainers = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        self.maintainers = load_maintainer_login_set()
         
         self.nack_keywords = [
             'nack', 'nacked', 'nacking',
@@ -253,23 +249,18 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Voting Bloc + Conflict Analysis')
-    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent.parent / 'data',
+    parser.add_argument('--data-dir', type=Path, default=Path(__file__).parent.parent.parent / 'data',
                        help='Data directory')
-    parser.add_argument('--output', type=Path, default=Path(__file__).parent.parent.parent / 'findings' / 'data' / 'voting_bloc_conflict.json',
-                       help='Output JSON file')
     
     args = parser.parse_args()
     
     analyzer = VotingBlocConflictAnalyzer(args.data_dir)
     results = analyzer.run_analysis()
     analyzer.print_results(results)
-    
-    # Save results
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.output, 'w') as f:
-        json.dump(results, f, indent=2, default=str)
-    
-    print(f"\nResults saved to: {args.output}")
+
+    from src.utils.findings_io import save_analysis_json
+    written = save_analysis_json('voting_bloc_conflict.json', results)
+    print(f"\nResults saved to: {', '.join(str(p) for p in written)}")
 
 
 if __name__ == '__main__':

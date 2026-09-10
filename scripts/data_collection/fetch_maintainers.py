@@ -159,12 +159,8 @@ class MaintainerFetcher:
     
     def compare_with_hardcoded(self, maintainers: Dict[str, Any]) -> Dict[str, Any]:
         """Compare fetched maintainers with hardcoded list."""
-        hardcoded = {
-            'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-            'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-            'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-            'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-        }
+        from src.utils.maintainers import load_maintainer_login_set
+        hardcoded = load_maintainer_login_set()
         
         fetched_lower = {m.lower() for m in maintainers['usernames']}
         hardcoded_lower = {m.lower() for m in hardcoded}

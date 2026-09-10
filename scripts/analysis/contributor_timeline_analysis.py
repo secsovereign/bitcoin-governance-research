@@ -81,14 +81,8 @@ def calculate_contribution_quality_score(pr: Dict) -> float:
 def analyze_contributor_timeline(prs: List[Dict], min_contributions: int = 5, min_quality_score: float = 0.3) -> Dict[str, Any]:
     """Analyze contributor timeline from PR data."""
     
-    # Known maintainers (exclude from contributor analysis)
-    # Use lowercase for case-insensitive matching
-    known_maintainers = {
-        'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-        'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'sjors',
-        'promag', 'instagibbs', 'thebluematt', 'jonatack', 'gmaxwell',
-        'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'thecharlatan'
-    }
+    from src.utils.maintainers import load_maintainer_login_set
+    known_maintainers = load_maintainer_login_set()
     
     # Track contributor activity
     contributor_data = defaultdict(lambda: {
@@ -432,10 +426,10 @@ def main():
     print()
     
     # Save results
+    from src.utils.findings_io import save_analysis_json
     output_dir = script_dir / 'findings'
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    # Save timeline data
     timeline_output = {
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'filtering_criteria': {
@@ -446,11 +440,11 @@ def main():
         'timeline': timeline,
         'insights': insights
     }
-    
-    output_file = output_dir / 'contributor_timeline_analysis.json'
-    with open(output_file, 'w') as f:
-        json.dump(timeline_output, f, indent=2)
-    print(f"Saved timeline data to {output_file}")
+    written = save_analysis_json('contributor_timeline_analysis.json', timeline_output)
+    print(f"Saved timeline data to {', '.join(str(p) for p in written)}")
+    leftover = output_dir / 'contributor_timeline_analysis.json'
+    if leftover.exists():
+        leftover.unlink()
     
     # Generate markdown report
     report_file = output_dir / 'CONTRIBUTOR_TIMELINE_ANALYSIS.md'

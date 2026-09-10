@@ -27,6 +27,12 @@ sys.path.insert(0, str(project_root))
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.temporal_utils import get_year, count_by_period, calculate_trend
+from src.utils.cross_platform_sources import (
+    audit_source_overlap,
+    extract_text_author_timestamp,
+    load_all_informal_sources,
+    split_mailing_lists_by_name,
+)
 from scripts.utils.load_prs_with_merged_by import load_prs_with_merged_by
 
 logger = setup_logger()
@@ -52,13 +58,8 @@ FUNDING_SOURCES = [
     'gemini', 'okcoin', 'grayscale', 'spiral', 'brink'
 ]
 
-# Maintainer list
-MAINTAINERS = {
-    'laanwj', 'sipa', 'maflcko', 'fanquake', 'hebasto', 'jnewbery',
-    'ryanofsky', 'achow101', 'theuni', 'jonasschnelli', 'Sjors',
-    'promag', 'instagibbs', 'TheBlueMatt', 'jonatack', 'gmaxwell',
-    'gavinandresen', 'petertodd', 'luke-jr', 'glozow', 'TheCharlatan'
-}
+from src.utils.maintainers import load_maintainer_login_set
+MAINTAINERS = load_maintainer_login_set()
 
 
 class FundingAnalyzer:
@@ -81,12 +82,23 @@ class FundingAnalyzer:
         # Load data
         prs = self._load_prs()
         issues = self._load_issues()
-        emails = self._load_emails()
+        informal_sources, informal_meta = load_all_informal_sources()
+        emails = informal_sources.get("emails") or []
+        emails_by_list = informal_sources.get("emails_by_list") or split_mailing_lists_by_name(emails)
+        email_meta = informal_meta.get("email_load_meta") or {}
         
         # Analyze funding mentions
         pr_analysis = self._analyze_prs(prs)
         issue_analysis = self._analyze_issues(issues)
         email_analysis = self._analyze_emails(emails)
+        email_by_list_analysis = {
+            list_name: self._analyze_emails(list_emails)
+            for list_name, list_emails in emails_by_list.items()
+        }
+        forum_analysis = self._analyze_forum_posts(
+            informal_sources.get("delving") or [],
+            informal_sources.get("bitcointalk") or [],
+        )
         
         # Analyze temporal patterns
         temporal_analysis = self._analyze_temporal_patterns(prs)
@@ -99,9 +111,14 @@ class FundingAnalyzer:
         
         # Save results
         results = {
+            'source_audit': audit_source_overlap(),
+            'email_load_meta': email_meta,
+            'informal_meta': informal_meta,
             'pr_analysis': pr_analysis,
             'issue_analysis': issue_analysis,
             'email_analysis': email_analysis,
+            'email_by_list_analysis': email_by_list_analysis,
+            'forum_analysis': forum_analysis,
             'temporal_analysis': temporal_analysis,
             'correlation_analysis': correlation_analysis,
             'maintainer_analysis': maintainer_analysis,
@@ -145,23 +162,6 @@ class FundingAnalyzer:
                 if line.strip():
                     issues.append(json.loads(line))
         return issues
-    
-    def _load_emails(self) -> List[Dict[str, Any]]:
-        """Load email data."""
-        emails_file = self.data_dir / 'mailing_lists' / 'emails.jsonl'
-        if not emails_file.exists():
-            emails_file = self.data_dir.parent.parent / 'data' / 'mailing_lists' / 'emails.jsonl'
-        
-        if not emails_file.exists():
-            logger.warning("Emails file not found")
-            return []
-        
-        emails = []
-        with open(emails_file) as f:
-            for line in f:
-                if line.strip():
-                    emails.append(json.loads(line))
-        return emails
     
     def _extract_funding_info(self, text: str) -> Dict[str, Any]:
         """Extract funding information from text."""
@@ -292,6 +292,34 @@ class FundingAnalyzer:
             'top_funding_types': dict(funding_types.most_common(10)),
             'top_funding_sources': dict(funding_sources.most_common(10))
         }
+
+    def _analyze_forum_posts(
+        self,
+        delving_posts: List[Dict[str, Any]],
+        bitcointalk_posts: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Analyze funding mentions in Delving and Bitcointalk posts."""
+        results: Dict[str, Any] = {}
+        for channel, posts in (("delving", delving_posts), ("bitcointalk", bitcointalk_posts)):
+            with_funding = 0
+            funding_types = Counter()
+            funding_sources = Counter()
+            for post in posts:
+                text, _, _ = extract_text_author_timestamp(post, channel)
+                funding_info = self._extract_funding_info(text)
+                if funding_info["has_funding"]:
+                    with_funding += 1
+                    funding_types.update(funding_info["types"])
+                    funding_sources.update(funding_info["sources"])
+            total = len(posts)
+            results[channel] = {
+                "total_posts": total,
+                "posts_with_funding_mentions": with_funding,
+                "funding_mention_rate": with_funding / total if total > 0 else 0.0,
+                "top_funding_types": dict(funding_types.most_common(10)),
+                "top_funding_sources": dict(funding_sources.most_common(10)),
+            }
+        return results
     
     def _analyze_temporal_patterns(self, prs: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Analyze funding mention patterns over time."""
@@ -423,8 +451,14 @@ class FundingAnalyzer:
     def _get_methodology(self) -> Dict[str, Any]:
         """Return methodology description."""
         return {
-            'description': 'Analysis of funding mentions in Bitcoin Core PRs, issues, and emails',
-            'data_sources': ['GitHub PRs', 'GitHub Issues', 'Mailing Lists'],
+            'description': 'Analysis of funding mentions in Bitcoin Core PRs, issues, and informal channels',
+            'data_sources': [
+                'GitHub PRs',
+                'GitHub Issues',
+                'Mailing Lists (bitcoin-dev + cryptography, message_id dedupe)',
+                'Delving Bitcoin',
+                'Bitcointalk board 6',
+            ],
             'funding_patterns': list(FUNDING_PATTERNS.keys()),
             'funding_sources_checked': FUNDING_SOURCES,
             'limitations': [
@@ -437,10 +471,9 @@ class FundingAnalyzer:
     
     def _save_results(self, results: Dict[str, Any]):
         """Save analysis results."""
-        output_file = self.findings_dir / 'funding_analysis.json'
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
-        logger.info(f"Results saved to {output_file}")
+        from src.utils.findings_io import save_analysis_json
+        written = save_analysis_json('funding_analysis.json', results)
+        logger.info(f"Results saved to {', '.join(str(p) for p in written)}")
     
     def _print_summary(self, results: Dict[str, Any]):
         """Print analysis summary."""
@@ -459,8 +492,23 @@ class FundingAnalyzer:
               f"({issue['funding_mention_rate']*100:.1f}%) have funding mentions")
         
         email = results['email_analysis']
-        print(f"Emails: {email['emails_with_funding_mentions']:,}/{email['total_emails']:,} "
+        print(f"Emails (combined ML): {email['emails_with_funding_mentions']:,}/{email['total_emails']:,} "
               f"({email['funding_mention_rate']*100:.1f}%) have funding mentions")
+        for list_name, list_stats in results.get('email_by_list_analysis', {}).items():
+            print(
+                f"  {list_name}: {list_stats['emails_with_funding_mentions']:,}/"
+                f"{list_stats['total_emails']:,} "
+                f"({list_stats['funding_mention_rate']*100:.1f}%)"
+            )
+        forum = results.get('forum_analysis', {})
+        for channel in ('delving', 'bitcointalk'):
+            if channel in forum:
+                stats = forum[channel]
+                print(
+                    f"{channel.title()}: {stats['posts_with_funding_mentions']:,}/"
+                    f"{stats['total_posts']:,} "
+                    f"({stats['funding_mention_rate']*100:.1f}%) have funding mentions"
+                )
         
         print()
         print("Top funding types mentioned:")

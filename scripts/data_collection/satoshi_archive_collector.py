@@ -42,6 +42,7 @@ sys.path.insert(0, str(project_root))
 from src.config import config
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir
+from src.utils.mailing_lists import iter_emails
 from src.utils.rate_limiter import RateLimiter
 
 logger = setup_logger()
@@ -640,49 +641,38 @@ class SatoshiArchiveCollector:
         """Extract Satoshi emails from existing mailing list data."""
         communications = []
         
-        mailing_list_file = get_data_dir() / 'mailing_lists' / 'emails.jsonl'
-        if not mailing_list_file.exists():
-            logger.warning("Mailing list data not found, skipping extraction")
-            return communications
-        
-        # Satoshi email patterns (more comprehensive)
         satoshi_patterns = [
             r'satoshi.*nakamoto',
             r'satoshi@vistomail\.com',
             r'satoshi@anonymousspeech\.com',
-            r'satoshi@bitcoin\.org',  # Possible early email
+            r'satoshi@bitcoin\.org',
         ]
         
         try:
-            logger.info(f"Scanning {mailing_list_file} for Satoshi emails...")
-            with open(mailing_list_file, 'r') as f:
-                for line_num, line in enumerate(f, 1):
-                    try:
-                        email = json.loads(line)
-                        from_field = (email.get('from', '') or '').lower()
-                        
-                        # Check if from Satoshi
-                        is_satoshi = any(re.search(pattern, from_field) for pattern in satoshi_patterns)
-                        
-                        if is_satoshi:
-                            comm = {
-                                'source': 'mailing_list',
-                                'message_id': email.get('message_id'),
-                                'from': email.get('from'),
-                                'to': email.get('to'),
-                                'date': email.get('date'),
-                                'subject': email.get('subject'),
-                                'content': email.get('body', ''),
-                                'list': email.get('list', ''),
-                                'collected_at': datetime.utcnow().isoformat(),
-                            }
-                            communications.append(comm)
-                        
-                        if line_num % 10000 == 0:
-                            logger.debug(f"Scanned {line_num} emails, found {len(communications)} Satoshi emails so far...")
-                    
-                    except json.JSONDecodeError:
-                        continue
+            logger.info("Scanning mailing list emails for Satoshi...")
+            for line_num, email in enumerate(iter_emails(prefer_cleaned=False), 1):
+                from_field = (email.get('from', '') or '').lower()
+                is_satoshi = any(re.search(pattern, from_field) for pattern in satoshi_patterns)
+                
+                if is_satoshi:
+                    communications.append({
+                        'source': 'mailing_list',
+                        'message_id': email.get('message_id'),
+                        'from': email.get('from'),
+                        'to': email.get('to'),
+                        'date': email.get('date'),
+                        'subject': email.get('subject'),
+                        'content': email.get('body', ''),
+                        'list': email.get('list_name') or email.get('list', ''),
+                        'collected_at': datetime.utcnow().isoformat(),
+                    })
+                
+                if line_num % 10000 == 0:
+                    logger.debug(
+                        "Scanned %s emails, found %s Satoshi emails so far...",
+                        line_num,
+                        len(communications),
+                    )
         
         except Exception as e:
             logger.error(f"Error extracting from mailing lists: {e}")

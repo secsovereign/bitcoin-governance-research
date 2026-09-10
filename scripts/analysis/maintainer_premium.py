@@ -178,12 +178,10 @@ class MaintainerPremiumAnalyzer:
             "claim_summary": self._claim_summary(by_window),
         }
 
-        payload = json.dumps(results, indent=2, default=str) + "\n"
-        # Canonical cite path for reports; analysis/ keeps a thin compat file for older reporters.
-        findings_path = self.findings_dir / "maintainer_premium.json"
-        findings_path.write_text(payload, encoding="utf-8")
+        from src.utils.findings_io import save_analysis_json
+        save_analysis_json("maintainer_premium.json", results)
 
-        # Backward compat: synthesize_timeline / generate_executive_summary expect statistics.json
+        # Also write analysis/maintainer_premium/statistics.json for older readers.
         stats_compat = {
             "metrics": {
                 "maintainer_merge_rate": (results.get("bivariate") or {}).get(
@@ -213,7 +211,7 @@ class MaintainerPremiumAnalyzer:
         legacy_dup = self.analysis_dir / "maintainer_premium.json"
         if legacy_dup.exists():
             legacy_dup.unlink()
-        logger.info("Wrote %s and %s", findings_path, self.analysis_dir / "statistics.json")
+        logger.info("Wrote maintainer_premium.json plus statistics.json")
         return results
 
     def _analyze_window(self, df: pd.DataFrame) -> Dict[str, Any]:

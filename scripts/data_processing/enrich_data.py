@@ -40,6 +40,7 @@ sys.path.insert(0, str(project_root))
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.data_quality import DataQualityTracker
+from src.utils.jsonl_merge import append_jsonl, iter_jsonl, load_jsonl_keys
 from src.utils.maintainers import is_maintainer_at, normalize_login
 
 logger = setup_logger()
@@ -123,6 +124,25 @@ class DataEnricher:
             "author_is_maintainer": author_m,
             "nonzero_complexity": nonzero_complexity,
         }
+
+    def append_new_enriched_prs(self) -> int:
+        """Enrich and append PRs present in cleaned_prs but missing from enriched_prs."""
+        input_file = self.processed_dir / "cleaned_prs.jsonl"
+        output_file = self.processed_dir / "enriched_prs.jsonl"
+        if not input_file.exists():
+            raise FileNotFoundError(f"Missing {input_file}; run clean_data first")
+        existing = load_jsonl_keys(output_file, lambda pr: pr.get("number"))
+        new_rows = []
+        for pr in iter_jsonl(input_file):
+            if pr.get("number") in existing:
+                continue
+            enriched = self._enrich_pr(pr)
+            if enriched:
+                new_rows.append(enriched)
+                self.stats["prs_enriched"] += 1
+        added = append_jsonl(output_file, new_rows)
+        logger.info("Appended %s newly enriched PRs", added)
+        return added
     
     def enrich_all_data(self):
         """Enrich all cleaned data."""
@@ -855,9 +875,16 @@ def main():
         action="store_true",
         help="Re-tag maintainers + complexity on enriched_prs.jsonl only (no cleaned rebuild)",
     )
+    parser.add_argument(
+        "--append-new",
+        action="store_true",
+        help="Enrich and append PRs that are cleaned but not yet enriched",
+    )
     args = parser.parse_args()
     enricher = DataEnricher(ensure_timeline=True)
-    if args.refresh_existing:
+    if args.append_new:
+        enricher.append_new_enriched_prs()
+    elif args.refresh_existing:
         enricher.refresh_existing_enriched_prs()
     else:
         enricher.enrich_all_data()

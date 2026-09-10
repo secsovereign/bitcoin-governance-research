@@ -1,81 +1,125 @@
 # Informal Communication Sentiment Analysis Report
 
-**Analysis Date**: 2026-01-18  
-**Data Sources**: IRC messages (441,931), Mailing list emails (19,351)  
-**Purpose**: Analyze sentiment and State of Mind (SOM) in informal communication channels
+**Analysis Date**: 2026-09-10  
+**Data Sources**: IRC (430,613), combined mailing lists (51,062), cryptography ML (26,418), Delving (4,650), Bitcointalk (158,917)  
+**Purpose**: Analyze sentiment and BCAP State of Mind (SOM) across informal channels
 
 ---
 
 ## Overview
 
-This report analyzes sentiment and engagement patterns in IRC and mailing list communications, applying BCAP's State of Mind framework to understand informal governance dynamics.
+This report analyzes sentiment and engagement patterns across IRC, mailing lists (bitcoin-dev + cryptography), Delving Bitcoin, and Bitcointalk, applying BCAP's State of Mind framework to informal governance dynamics.
 
 ---
 
 ## Key Findings
 
-### 1. IRC Sentiment Distribution
+### 1. IRC Sentiment
 
-**Total IRC Messages**: 441,931
-
-| Sentiment | Percentage | Count |
-|-----------|------------|-------|
-| Neutral | 65.4% | 289,221 |
-| Negative | 24.3% | 107,349 |
-| Positive | 10.3% | 45,361 |
-
-### 2. Email Sentiment Distribution
-
-**Total Emails**: 19,351
+**Total messages**: 430,613
 
 | Sentiment | Percentage | Count |
 |-----------|------------|-------|
-| Neutral | 39.9% | 7,730 |
-| Negative | 39.7% | 7,687 |
-| Positive | 20.3% | 3,934 |
+| Positive | 10.0% | 42,917 |
+| Neutral | 65.9% | 283,611 |
+| Negative | 24.2% | 104,085 |
 
-### 3. State of Mind (SOM) Distribution
+### 2. Combined Email Sentiment (bitcoin-dev + cryptography, deduped)
+
+**Total messages**: 51,062
+
+| Sentiment | Percentage | Count |
+|-----------|------------|-------|
+| Positive | 25.8% | 13,149 |
+| Neutral | 30.2% | 15,428 |
+| Negative | 44.0% | 22,485 |
+
+### 3. Cryptography ML Sentiment (standalone)
+
+**Total messages**: 26,418
+
+| Sentiment | Percentage | Count |
+|-----------|------------|-------|
+| Positive | 21.3% | 5,626 |
+| Neutral | 32.0% | 8,463 |
+| Negative | 46.7% | 12,329 |
+
+### 4. Delving Sentiment
+
+**Total messages**: 4,650
+
+| Sentiment | Percentage | Count |
+|-----------|------------|-------|
+| Positive | 24.2% | 1,125 |
+| Neutral | 34.4% | 1,599 |
+| Negative | 41.4% | 1,926 |
+
+### 5. Bitcointalk Sentiment
+
+**Total messages**: 158,917
+
+| Sentiment | Percentage | Count |
+|-----------|------------|-------|
+| Positive | 17.2% | 27,313 |
+| Neutral | 36.7% | 58,344 |
+| Negative | 46.1% | 73,260 |
+
+### 6. State of Mind (SOM) Distribution
 
 **IRC SOM**:
-| SOM | Description | Percentage |
-|-----|-------------|------------|
-| SOM3 | Apathetic/Undecided | 46.6% |
-| SOM2 | Supportive | 45.4% |
-| SOM1 | Passionate Advocate | 3.9% |
-| SOM6 | Passionately Against | 3.1% |
-| SOM5 | Not Supportive | 1.1% |
 
-**Email SOM**:
 | SOM | Description | Percentage |
 |-----|-------------|------------|
-| SOM2 | Supportive | 59.1% |
-| SOM3 | Apathetic/Undecided | 23.3% |
-| SOM1 | Passionate Advocate | 12.9% |
-| SOM6 | Passionately Against | 2.8% |
-| SOM5 | Not Supportive | 1.8% |
+| SOM1 | Passionate advocate | 3.9% |
+| SOM2 | Supportive | 44.1% |
+| SOM3 | Apathetic/undecided | 47.6% |
+| SOM5 | Not supportive, not fighting | 1.1% |
+| SOM6 | Passionately against | 3.2% |
+
+**Combined email SOM**:
+
+| SOM | Description | Percentage |
+|-----|-------------|------------|
+| SOM1 | Passionate advocate | 13.8% |
+| SOM2 | Supportive | 60.5% |
+| SOM3 | Apathetic/undecided | 22.8% |
+| SOM5 | Not supportive, not fighting | 0.6% |
+| SOM6 | Passionately against | 2.3% |
+
+**Delving SOM**:
+
+| SOM | Description | Percentage |
+|-----|-------------|------------|
+| SOM1 | Passionate advocate | 13.8% |
+| SOM2 | Supportive | 55.8% |
+| SOM3 | Apathetic/undecided | 26.8% |
+| SOM5 | Not supportive, not fighting | 1.1% |
+| SOM6 | Passionately against | 2.5% |
+
+### 7. PR Mention Correlation
+
+- **Unique PRs mentioned informally**: 20,958
+- **Merge rate (mentioned PRs)**: 64.3%
+- **Overall merge rate**: 67.1%
+- **PRs mentioned in Delving**: 535
+- **PRs mentioned in Bitcointalk**: 632
 
 ---
 
 ## Key Insights
 
-1. **IRC is Primary Channel**: 441,931 IRC messages vs 19,351 emails (23:1 ratio)
-2. **IRC is More Neutral**: 65.4% neutral (technical discussion)
-3. **Email is More Polarized**: 40% negative vs IRC's 24%
-4. **Email Shows More Passion**: 12.9% SOM1 (passionate advocate) vs IRC's 3.9%
-5. **Both Channels Supportive**: SOM2 (supportive) is dominant in both
+1. **Cryptography ML shifts blended email sentiment** — more negative than bitcoin-dev alone.
+2. **IRC remains high-volume but neutral** — technical chat dominates.
+3. **Bitcointalk is the largest informal corpus** — sentiment skews negative on keyword measures.
+4. **Delving is GitHub-adjacent** — smaller volume but high maintainer overlap.
 
 ---
 
 ## Methodology Limitations
 
-⚠️ **Keyword-Based Sentiment**: This analysis uses keyword matching, not ML/BERT. Results are indicative, not definitive.
+Keyword-based sentiment/SOM classification (not ML/BERT). Results are directional.
 
-- May miss sarcasm and context
-- Keyword lists may not capture domain-specific sentiment
-- Consider as directional, not precise
+**Data file**: `analysis/findings/data/informal_sentiment.json`
 
----
+**Generated by**: `scripts/reporting/generate_cross_platform_reports.py`
 
-## Data Source
-
-`analysis/findings/data/informal_sentiment.json`

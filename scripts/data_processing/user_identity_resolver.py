@@ -19,6 +19,7 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.mailing_lists import iter_emails
 import re
 
 logger = setup_logger()
@@ -151,42 +152,28 @@ class UserIdentityResolver:
         """Extract users from mailing list data."""
         users = {}
         
-        emails_file = self.data_dir / 'mailing_lists' / 'emails.jsonl'
-        if not emails_file.exists():
-            return users
-        
-        logger.info(f"Extracting users from {emails_file.name}...")
-        with open(emails_file, 'r') as f:
-            for line in f:
-                try:
-                    email = json.loads(line)
-                    
-                    # Parse "From" field
-                    from_field = email.get('from', '')
-                    # Format: "Name <email@example.com>" or "email@example.com"
-                    
-                    email_match = re.search(r'<([^>]+)>', from_field)
-                    if email_match:
-                        email_addr = email_match.group(1)
-                        name = from_field.split('<')[0].strip().strip('"')
-                    else:
-                        email_addr = from_field.strip()
-                        name = None
-                    
-                    if email_addr and '@' in email_addr:
-                        if email_addr not in users:
-                            users[email_addr] = {
-                                'email': email_addr,
-                                'name': name,
-                                'first_seen': email.get('date'),
-                                'sources': ['mailing_list'],
-                                'emails': [],
-                            }
-                        
-                        users[email_addr]['emails'].append(email.get('message_id'))
+        logger.info("Extracting users from mailing list emails...")
+        for email in iter_emails():
+            from_field = email.get('from', '')
+            email_match = re.search(r'<([^>]+)>', from_field)
+            if email_match:
+                email_addr = email_match.group(1)
+                name = from_field.split('<')[0].strip().strip('"')
+            else:
+                email_addr = from_field.strip()
+                name = None
+            
+            if email_addr and '@' in email_addr:
+                if email_addr not in users:
+                    users[email_addr] = {
+                        'email': email_addr,
+                        'name': name,
+                        'first_seen': email.get('date'),
+                        'sources': ['mailing_list'],
+                        'emails': [],
+                    }
                 
-                except json.JSONDecodeError:
-                    continue
+                users[email_addr]['emails'].append(email.get('message_id'))
         
         return users
     
@@ -460,12 +447,8 @@ class UserIdentityResolver:
         # This would parse git log of MAINTAINERS file
         # For now, use a known maintainer list or parse from GitHub data
         
-        # Known maintainers (would be loaded from MAINTAINERS file git history)
-        known_maintainers = [
-            'sipa', 'laanwj', 'MarcoFalke', 'achow101', 'gmaxwell',
-            'jnewbery', 'fanquake', 'hebasto', 'ryanofsky', 'Sjors',
-            # Add more as identified
-        ]
+        from src.utils.maintainers import load_maintainer_login_set
+        known_maintainers = sorted(load_maintainer_login_set())
         
         for maintainer in known_maintainers:
             # Find unified ID for this maintainer

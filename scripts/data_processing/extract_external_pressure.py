@@ -19,6 +19,7 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir
+from src.utils.mailing_lists import iter_emails
 
 logger = setup_logger()
 
@@ -86,46 +87,41 @@ class ExternalPressureExtractor:
         """Extract pressure indicators from mailing lists."""
         logger.info("Extracting from mailing lists...")
         
-        emails_file = self.data_dir / "mailing_lists" / "emails.jsonl"
-        if not emails_file.exists():
-            logger.warning(f"Mailing lists file not found: {emails_file}")
-            return {'total_emails': 0, 'emails_with_pressure': [], 'pressure_counts': {}}
-        
         emails_with_pressure = []
         pressure_counts = defaultdict(int)
-        
-        with open(emails_file, 'r') as f:
-            for line_num, line in enumerate(f, 1):
-                try:
-                    email = json.loads(line)
-                    pressure_info = self._analyze_text_for_pressure(
-                        email.get('body', '') + ' ' + email.get('subject', ''),
-                        email.get('from', ''),
-                        email.get('date', '')
+        line_num = 0
+
+        for line_num, email in enumerate(iter_emails(), 1):
+            try:
+                pressure_info = self._analyze_text_for_pressure(
+                    email.get('body', '') + ' ' + email.get('subject', ''),
+                    email.get('from', ''),
+                    email.get('date', '')
+                )
+
+                if pressure_info['has_pressure']:
+                    email['pressure_indicators'] = pressure_info
+                    emails_with_pressure.append({
+                        'email_id': email.get('message_id') or email.get('id'),
+                        'date': email.get('date'),
+                        'from': email.get('from'),
+                        'subject': email.get('subject'),
+                        'pressure_types': pressure_info['pressure_types'],
+                        'keywords_found': pressure_info['keywords_found'],
+                        'pressure_score': pressure_info['pressure_score']
+                    })
+                    for ptype in pressure_info['pressure_types']:
+                        pressure_counts[ptype] += 1
+
+                if line_num % 1000 == 0:
+                    logger.info(
+                        "Processed %s emails, found %s with pressure indicators",
+                        line_num,
+                        len(emails_with_pressure),
                     )
-                    
-                    if pressure_info['has_pressure']:
-                        email['pressure_indicators'] = pressure_info
-                        emails_with_pressure.append({
-                            'email_id': email.get('id'),
-                            'date': email.get('date'),
-                            'from': email.get('from'),
-                            'subject': email.get('subject'),
-                            'pressure_types': pressure_info['pressure_types'],
-                            'keywords_found': pressure_info['keywords_found'],
-                            'pressure_score': pressure_info['pressure_score']
-                        })
-                        
-                        # Count pressure types
-                        for ptype in pressure_info['pressure_types']:
-                            pressure_counts[ptype] += 1
-                    
-                    if line_num % 1000 == 0:
-                        logger.info(f"Processed {line_num} emails, found {len(emails_with_pressure)} with pressure indicators")
-                
-                except Exception as e:
-                    logger.debug(f"Error processing email line {line_num}: {e}")
-                    continue
+            except Exception as e:
+                logger.debug("Error processing email line %s: %s", line_num, e)
+                continue
         
         logger.info(f"Found {len(emails_with_pressure)} emails with pressure indicators")
         

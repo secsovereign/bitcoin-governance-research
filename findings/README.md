@@ -1,6 +1,10 @@
 # Bitcoin Core Governance Analysis: Findings Directory
 
-**Start here**: `EXECUTIVE_SUMMARY.md`
+**Start here**: `EXECUTIVE_SUMMARY.md` then `GOVERNANCE_FRAMES.md`.
+
+**What uses which data:** GitHub merge/review reports (merge pattern, contributor retention, review-body quality, Gini, temporal) are **GitHub-only**. Informal channels (IRC, both mailing lists, Delving, Bitcointalk) are in `CROSS_PLATFORM_NETWORKS.md`, `INFORMAL_SENTIMENT_ANALYSIS.md`, `LANGUAGE_EVOLUTION.md`, `REVIEW_QUALITY_ENHANCED_ANALYSIS.md` (mention counts only), and the era table in `GOVERNANCE_FRAMES.md`. Do not treat a GitHub exit rate as “the whole community left.”
+
+**Cite stored Bitcointalk posts (158,917), not topic `n_posts`.** The metadata field over-counts by ~18k (parser ceiling). Satoshi / architectural-divergence / technical-debt markdown files are separate dated analyses, not this report pipeline.
 
 ---
 
@@ -12,17 +16,23 @@
    - Summary of all findings
    - Key metrics and insights
 
-2. **`GLOSSARY_AND_CONTEXT.md`** ⭐ FOR NON-EXPERTS
+2. **`GOVERNANCE_FRAMES.md`** ⭐ HOW TO CUT THIS CORPUS
+   - Agenda-setting vs decision by era
+   - Funnel / deputy graph as informal org chart
+   - Multiplex identity (power is not portable)
+   - Exit as selection, not collapse
+
+3. **`GLOSSARY_AND_CONTEXT.md`** ⭐ FOR NON-EXPERTS
    - Bitcoin Core terminology explained
    - ACK, NACK, maintainer, merge authority, etc.
    - Why metrics matter
    - Historical context
 
-3. **`MERGE_PATTERN_BREAKDOWN.md`**
+4. **`MERGE_PATTERN_BREAKDOWN.md`**
    - Detailed merge analysis
    - Self-merge breakdown, friend patterns, individual maintainer patterns
 
-4. **`TEMPORAL_ANALYSIS_REPORT.md`**
+5. **`TEMPORAL_ANALYSIS_REPORT.md`**
    - Temporal patterns (yearly, quarterly, generational)
    - Process improvements vs structural persistence
    - Speed hack (time-to-merge) by period
@@ -34,7 +44,7 @@
    - Voting bloc temporal evolution
    - Conflict resolution temporal evolution
 
-5. **`NOVEL_INTERPRETATIONS.md`**
+6. **`NOVEL_INTERPRETATIONS.md`**
    - Behavioral clusters, power hierarchy, review reciprocity
    - Novel insights from data
 
@@ -103,19 +113,19 @@
 18. **`MAINTAINER_TIMELINE_ANALYSIS.md`** - Maintainer activity timeline (includes current vs historical distinction)
 19. **`CONTRIBUTOR_TIMELINE_ANALYSIS.md`** - Contributor activity timeline
 20. **`CONTRIBUTOR_ANALYSIS.md`** ⭐ CONTRIBUTOR RETENTION
-    - 7,604 total contributors analyzed
-    - 87.7% exit rate (1-year threshold)
+    - 7,827 total contributors analyzed
+    - 90.7% exit rate (1-year threshold)
     - Breakdown by type (authors vs participants)
 21. **`BCAP_INTEGRATION_REPORT.md`** - BCAP framework integration analysis
     - State of Mind (SOM) analysis during SegWit/Taproot
     - Power shift analysis during consensus changes
     - Based on [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap)
-22. **`CROSS_PLATFORM_NETWORKS.md`** - Cross-platform influence analysis
-    - GitHub/IRC/Email overlap analysis
+22. **`CROSS_PLATFORM_NETWORKS.md`** - Cross-platform influence analysis (GitHub, IRC, ML lists, Delving, Bitcointalk)
+    - GitHub / IRC / ML / Delving / Bitcointalk overlap analysis
     - Verified maintainer identities across platforms
-23. **`INFORMAL_SENTIMENT_ANALYSIS.md`** - IRC/Email sentiment analysis
+23. **`INFORMAL_SENTIMENT_ANALYSIS.md`** - Informal-channel sentiment/SOM (IRC, ML lists, Delving, Bitcointalk)
     - Sentiment distribution across informal channels
-    - State of Mind (SOM) analysis on IRC/email
+    - State of Mind (SOM) analysis on informal channels
 24. **`BIP_PROCESS_ANALYSIS.md`** - BIP governance analysis
     - Proposer/champion patterns
     - BIP-to-Core implementation pipeline
@@ -126,13 +136,13 @@
     - Actor overlap analysis
     - Governance pattern comparison
 27. **`CONFLICT_RESOLUTION_ANALYSIS.md`** ⭐ CONFLICT ANALYSIS
-    - 5,128 conflicts identified (NACKs, CHANGES_REQUESTED, heated discussions)
+    - Conflicts from temporal + voting-bloc detectors (see generated report for current n)
     - Resolution paths and timing analysis
     - Temporal evolution of conflicts
     - Voting bloc behavior during conflicts
 28. **`COORDINATION_COSTS_ANALYSIS.md`** ⭐ COORDINATION OVERHEAD
-    - Communication volume per PR (22.0 messages average)
-    - Coordination costs by complexity (3.8x scaling)
+    - Communication volume per PR (reviews + comments; see generated report)
+    - Coordination costs by complexity (high vs low band)
     - Participant and decision time analysis
     - Governance complexity scaling with code complexity
 29. **`TECHNICAL_DEBT_ANALYSIS.md`** ⭐ TECHNICAL DEBT
@@ -146,6 +156,7 @@
 31. **`MAINTAINER_PREMIUM_REPORT.md`** — Identity vs merits (fair pass: self-merge, author-prep matching, path-risk)
 32. **`STALLED_PROPOSALS_REPORT.md`** — Dandelion / Erlay / related case dossiers
 33. **`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`** — 2022+ fanquake share + co-review funnels
+34. **`LANGUAGE_EVOLUTION.md`** — terminology trends across GitHub + informal channels
 
 Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`
 
@@ -155,11 +166,13 @@ Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `h
 
 **Quick Overview** (5 minutes):
 1. `EXECUTIVE_SUMMARY.md`
+2. `GOVERNANCE_FRAMES.md`
 
 **Full Understanding** (30 minutes):
 1. `EXECUTIVE_SUMMARY.md`
-2. `MERGE_PATTERN_BREAKDOWN.md`
-3. `TEMPORAL_ANALYSIS_REPORT.md`
+2. `GOVERNANCE_FRAMES.md`
+3. `MERGE_PATTERN_BREAKDOWN.md`
+4. `TEMPORAL_ANALYSIS_REPORT.md`
 
 **Deep Dive** (2+ hours):
 - Read all Core Reports
@@ -189,5 +202,12 @@ All JSON data files are organized in the `data/` subdirectory for cleaner organi
 
 ---
 
-**Last Updated**: 2026-07-12  
-**Status**: ✅ Complete and validated (technical debt analysis added)
+**Regenerate cross-platform reports** (after re-running analyses):
+
+```bash
+venv/bin/python scripts/reporting/generate_findings_reports.py
+# or: venv/bin/python scripts/run_all_analyses.py --reports
+```
+
+**Last Updated**: 2026-09-10  
+**Status**: Governance frames + cross-platform reports regenerated from integrated informal sources

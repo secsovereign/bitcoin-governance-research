@@ -1,13 +1,13 @@
 # Research Methodology: Comprehensive Analysis
 
-**Date**: 2026-01-07  
+**Date**: 2026-09-10  
 **Status**: ✅ **COMPLETE DOCUMENTATION**
 
 ---
 
 ## Executive Summary
 
-**Methodological Note**: This analysis is based on publicly available GitHub data covering 9,235 maintainer merged PRs (2010-2026). All claims are based on observable patterns in public data and acknowledge limitations of data visibility.
+**Methodological Note**: This analysis is based on publicly available GitHub data covering 9,793 maintainer merged PRs (2010-2026). All claims are based on observable patterns in public data and acknowledge limitations of data visibility.
 
 ---
 
@@ -21,13 +21,13 @@
 
 **Primary Sources**:
 1. **GitHub Repository Analysis** (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
-2. **Historical Commit Records** (2010-2026): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
+2. **Historical Commit Records** (2010-2026): Analyzed 9,793 maintainer merged PRs to identify all users who have merged PRs
 3. **External Research Cross-Reference**: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 21 (more comprehensive, includes those with 0 merges)
 
 **Validation Attempts**:
 - ⚠️ **MAINTAINERS File**: Bitcoin Core does not maintain a MAINTAINERS file in the repository
 - ⚠️ **GitHub API**: Collaborator data requires API permissions (not publicly accessible)
-- ✅ **Historical Analysis**: Verified through merge activity (9,235 maintainer merged PRs)
+- ✅ **Historical Analysis**: Verified through merge activity (9,793 maintainer merged PRs)
 
 **Maintainer Categories**:
 - **17 Active Mergers**: Maintainers who have merged at least one PR; 2 non-maintainers with historical merge access
@@ -93,15 +93,22 @@ This document provides a comprehensive, incremental analysis of the research met
 ### 2.1 Data Sources
 
 **Primary Source**: GitHub API (`bitcoin/bitcoin` repository)  
-**Secondary Sources**: Mailing Lists (bitcoin-dev, bitcoin-core-dev), IRC Channels (#bitcoin-core-dev)
+**Secondary Sources**:
+- Mailing lists: **bitcoin-dev** (gnusha.org public-inbox, 24,644 messages)
+- Mailing lists: **cryptography** (metzdowd pipermail, 26,420 messages; 2 cross-list duplicates removed when combined)
+- IRC: `#bitcoin-core-dev` and related logs
+- **Delving Bitcoin** (4,662 posts)
+- **Bitcointalk board 6** (158,917 posts; Satoshi archive kept separate)
 
-**Total Data Collected**:
-- **23,615 Pull Requests** (PRs)
+**Total Informal + GitHub Data (2026-09 refresh)**:
+- **25,122 Pull Requests**
 - **8,890 Issues**
-- **19,446 Emails** (mailing lists)
-- **433,048 IRC Messages**
+- **51,062 Emails** (combined ML, deduped)
+- **430,613 IRC Messages**
+- **4,662 Delving posts**
+- **158,917 Bitcointalk posts**
 - **339 Releases**
-- **549 Satoshi Nakamoto Communications** (2008-2015) - Historical governance context
+- **549 Satoshi Nakamoto Communications** (2008-2015)
 
 ### 2.2 GitHub Data Collection
 
@@ -116,13 +123,13 @@ This document provides a comprehensive, incremental analysis of the research met
 
 **Primary Sources**:
 1. GitHub Repository Analysis (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
-2. Historical Commit Records (2010-2026): Analyzed 9,235 maintainer merged PRs to identify all users who have merged PRs
+2. Historical Commit Records (2010-2026): Analyzed 9,793 maintainer merged PRs to identify all users who have merged PRs
 3. External Research Cross-Reference: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 21 (more comprehensive, includes those with 0 merges)
 
 **Validation Attempts**:
 - ⚠️ **MAINTAINERS File**: Bitcoin Core does not maintain a MAINTAINERS file in the repository
 - ⚠️ **GitHub API**: Collaborator data requires API permissions (not publicly accessible)
-- ✅ **Historical Analysis**: Verified through merge activity (9,235 maintainer merged PRs)
+- ✅ **Historical Analysis**: Verified through merge activity (9,793 maintainer merged PRs)
 
 **Acknowledgment**: Maintainer list is based on observable merge activity and historical records. Bitcoin Core does not maintain a public MAINTAINERS file. If maintainers are missing or incorrectly included, analysis would need adjustment. See `MAINTAINER_LIST_SOURCE.md` for complete documentation.
 
@@ -230,25 +237,25 @@ This document provides a comprehensive, incremental analysis of the research met
 - Match to maintainer list
 - Create mapping file: `data/github/merged_by_mapping.jsonl`
 
-**Coverage**: 99.9% (9,222 of 9,235 maintainer merged PRs have `merged_by` data)
+**Coverage**: 9,793 maintainer-merged PRs with `merged_by` in the current extract (`MERGE_PATTERN_BREAKDOWN.md`)
 
 **Critical for**: Self-merge analysis (determining if maintainer merged their own PR)
 
 ### 2.3 Mailing List Data Collection
 
-**Script**: `scripts/data_collection/mailing_list_collector.py`  
+**Script**: `scripts/data_collection/gnusha_collector.py`  
 **Sources**:
-- Primary: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/
-- Backup: https://gnusha.org/bitcoin-dev/
+- Primary: https://gnusha.org/pi/bitcoindev (public-inbox git mirror)
+- Mirror clone: `git clone --mirror https://gnusha.org/pi/bitcoindev`
 
 **Collection Process**:
-1. Download monthly archives (mbox format)
-2. Parse emails: headers (From, Date, Subject, In-Reply-To, References), body text
+1. Clone or fetch the gnusha public-inbox git repository
+2. Parse every message blob: headers (From, Date, Subject, In-Reply-To, References), body text
 3. Identify quoted text and thread structure
 4. Store as JSON Lines: `data/mailing_lists/emails.jsonl`
 
 **Data Collected**:
-- **19,446 emails** from 2008-present
+- **24,644 emails** from 2011-06-11 through 2026-08-23
 - Full thread structure
 - All participants and discussion content
 
@@ -266,11 +273,35 @@ This document provides a comprehensive, incremental analysis of the research met
 4. Store as JSON Lines: `data/irc/messages.jsonl`
 
 **Data Collected**:
-- **433,048 IRC messages**
+- **430,613 IRC messages**
 - Real-time coordination
 - Informal decision-making
 
 **Purpose**: Cross-platform review analysis, real-time coordination patterns
+
+
+### 2.6 Cryptography Mailing List Collection
+
+**Script**: `scripts/data_collection/cryptography_ml_collector.py`  
+**Source**: https://www.metzdowd.com/pipermail/cryptography/  
+**Output**: `data/mailing_lists/cryptography.jsonl`
+
+**Data Collected**: **26,420 messages** (deduped with bitcoin-dev by `message_id` when combined: 2 overlap)
+
+### 2.7 Delving Bitcoin Collection
+
+**Script**: `scripts/data_collection/delving_collector.py`  
+**Output**: `data/delving/{topics,posts}.jsonl`
+
+**Data Collected**: **4,662 posts**
+
+### 2.8 Bitcointalk Collection
+
+**Script**: `scripts/data_collection/bitcointalk_collector.py`  
+**Scope**: Board 6 (Development & Technical Discussion)  
+**Output**: `data/bitcointalk/{topics,posts}.jsonl`
+
+**Data Collected**: **158,917 posts** (~159k unique after stable-key dedupe; Satoshi archive kept separate)
 
 ### 2.5 Satoshi Archive Data Collection
 
@@ -502,8 +533,8 @@ This document provides a comprehensive, incremental analysis of the research met
 **Rationale**: Different standards for different eras reflect available review mechanisms
 
 **Result** (using MAX per reviewer with 0.3/0.5 thresholds):
-- **Historical (2012-2020)**: 30.2% zero-review rate (with 0.3 threshold)
-- **Recent (2021-2025)**: 3.4% zero-review rate (with 0.5 threshold)
+- **Historical (2012-2020)**: 30.3% zero-review rate (with 0.3 threshold)
+- **Recent (2021-2025)**: 3.3% zero-review rate (with 0.5 threshold)
 
 **Note**: Alternative calculations (SUM approach with 0.5 threshold) produce 34.1% historical. The main analysis uses MAX per reviewer with era-appropriate thresholds (0.3 historical, 0.5 recent) as documented in section 4.1.3. See `STATISTICAL_DEFENSE_RESULTS.md` for sensitivity analysis.
 
@@ -524,15 +555,15 @@ is_self_merge = (merged_by and author and
 #### 4.2.2 Data Requirements
 
 **Required**: `merged_by_mapping.jsonl` file with merged_by data  
-**Coverage**: 99.9% (9,222 of 9,235 maintainer merged PRs - 13 PRs missing merged_by data)
+**Coverage**: 9,793 maintainer-merged PRs with `merged_by` in the current extract
 
 **Missing Data**: 13 PRs (0.1%) - excluded from self-merge calculations
 
 #### 4.2.3 Metrics Calculated
 
-1. **Overall self-merge rate**: 26.5% (2,446 of 9,235 maintainer merged PRs)
-2. **Per-maintainer rates**: Individual maintainer self-merge rates (laanwj: 77.1%, fanquake: 51.2%, etc.)
-3. **Temporal trends**: Self-merge rate over time (stable at 26.5%)
+1. **Overall self-merge rate**: 25.5% (2,501 of 9,793 maintainer merged PRs)
+2. **Per-maintainer rates**: Individual maintainer self-merge rates (laanwj: 77.1%, fanquake: 50.4%, etc.)
+3. **Temporal trends**: Self-merge rate over time (25.5% in the current extract)
 4. **Zero-review self-merges**: 46.1% of self-merges have zero reviews (1,127 PRs)
 
 ### 4.3 Power Concentration Analysis
@@ -694,7 +725,7 @@ def calculate_gini(values: List[float]) -> float:
 **Script**: `scripts/validation/comprehensive_dataset_validation.py`
 
 **Checks**:
-1. **Key Metrics**: Verify consistency across all documents (30.2% historical zero-review, 3.4% recent zero-review, 26.5% self-merge, 81.1% top 3 control)
+1. **Key Metrics**: Verify consistency across all documents (30.3% historical zero-review, 3.3% recent zero-review, 25.5% self-merge, ~81% top-3 merge share)
 2. **JSON Data Files**: Validate structure and content
 3. **Maintainer Lists**: Verify consistency (21 maintainers)
 4. **Date Consistency**: Verify all dates are valid and reasonable
@@ -721,14 +752,14 @@ def calculate_gini(values: List[float]) -> float:
    
 3. **Uniform Threshold Analysis**: Test using same threshold (0.5) for both eras
    - **Result**: ✅ Both approaches validate improvement
-   - **Uniform threshold shows larger improvement**: 37.1% vs. 26.8% (more conservative)
+   - **Uniform threshold shows larger improvement**: 37.2% vs. 27.0% (more conservative)
    
 4. **Statistical Significance Tests**: Chi-square test, t-test, confidence intervals
-   - **Status**: ✅ Complete (manual calculations, no scipy required)
-   - **Results**: See `data/statistical_significance_tests.json` for detailed results
-   - **Chi-square test**: Chi-square = 1,668.85, p < 0.001, Cramer's V = 0.33 (large effect) - validates that historical vs. recent difference is statistically significant
-   - **T-test**: t = 0.83, p > 0.05 - validates that self-merge rate is stable (not declining, historical 29.7% vs. recent 26.3%)
-   - **Confidence intervals**: 95% CI for all key metrics (self-merge: 26.5% [25.6%, 27.4%], zero-review historical: 30.2% [29.3%, 31.2%], zero-review recent: 3.4% [2.9%, 3.9%])
+   - **Status**: ✅ Complete (`scipy` chi-square / t-test)
+   - **Results**: See `findings/data/statistical_significance_tests.json`
+   - **Chi-square test**: Chi-square = 1,732.07, p < 0.001, Cramer's V = 0.33 (large effect) - validates that historical vs. recent difference is statistically significant
+   - **T-test**: t = 0.80, p = 0.44 (period means not different: historical 29.7% vs recent 25.4%). Year-by-year slope −0.013 (p = 0.028). Do not cite “stable, not declining.”
+   - **Confidence intervals**: 95% CI for all key metrics (self-merge: 25.5% [24.7%, 26.4%], zero-review historical: 30.3% [29.3%, 31.2%], zero-review recent: 3.3% [2.9%, 3.7%])
 
 **Result**: ✅ All Priority 1 statistical validations complete. Methodological choices are robust and defensible.
 
@@ -816,7 +847,7 @@ def calculate_gini(values: List[float]) -> float:
 
 **Validation**: 
 - ✅ **MAX vs. SUM Comparison**: Both approaches show same patterns
-  - MAX: Historical 34.4%, Recent 3.4% (improvement: 31.0%)
+  - MAX: Historical 34.4%, Recent 3.3% (improvement: 31.1%)
   - SUM: Historical 34.1%, Recent 3.2% (improvement: 30.9%)
   - Difference: MAX is 0.3% more conservative (historical), 0.2% (recent)
   - **Conclusion**: Both approaches validate findings. MAX is more conservative and reflects actual review input.
@@ -829,8 +860,8 @@ def calculate_gini(values: List[float]) -> float:
 
 **Validation**: 
 - ✅ **Uniform Threshold Analysis**: Even with same threshold (0.5) for both eras, improvement is validated
-  - Current approach (0.3/0.5): Historical 30.2%, Recent 3.4% (improvement: 26.8%)
-  - Uniform approach (0.5/0.5): Historical 40.5%, Recent 3.4% (improvement: 37.1%)
+  - Current approach (0.3/0.5): Historical 30.3%, Recent 3.3% (improvement: 27.0%)
+  - Uniform approach (0.5/0.5): Historical 40.5%, Recent 3.3% (improvement: 37.2%)
   - **Conclusion**: Different thresholds are justified (reflect available mechanisms), but uniform threshold also validates improvement (and shows larger improvement).
 - ✅ Thresholds produce reasonable zero-review rates
 
@@ -865,7 +896,7 @@ def calculate_gini(values: List[float]) -> float:
 
 **All data can be regenerated**:
 - GitHub data: `scripts/data_collection/github_collector.py`
-- Mailing lists: `scripts/data_collection/mailing_list_collector.py`
+- Mailing lists: `scripts/data_collection/gnusha_collector.py`
 - IRC: `scripts/data_collection/irc_collector.py`
 - Merged_by: `scripts/data_collection/backfill_merged_by_optimized.py`
 - Satoshi archive: `scripts/data_collection/satoshi_archive_collector.py`
@@ -881,7 +912,7 @@ def calculate_gini(values: List[float]) -> float:
 
 **All analyses can be reproduced**:
 - Main analysis pipeline: `scripts/run_all_analyses.py` (runs 10 core analysis scripts)
-- Legacy analysis: `comprehensive_recent_analysis.py` (historical analysis)
+- Analysis pipeline: `scripts/run_all_analyses.py`
 - Individual analyses: `scripts/analysis/*.py`
 - Satoshi governance: `scripts/analysis/analyze_satoshi_governance.py`
 - Validation: `scripts/validation/*.py`
@@ -922,7 +953,7 @@ def calculate_gini(values: List[float]) -> float:
 
 ### 8.2 Key Refinements
 
-1. **Self-merge calculation**: Fixed from 100% to 26.5% (corrected merged_by handling)
+1. **Self-merge calculation**: Fixed from 100% (corrected merged_by handling); current extract 25.5% of 9,793
 2. **Review counting**: Added quality weighting, timeline awareness, cross-platform integration
 3. **PR classification**: Added 5-tier importance system
 4. **Timeline analysis**: Added maintainer and contributor timeline analyses
