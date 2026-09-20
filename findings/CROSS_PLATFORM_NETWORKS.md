@@ -1,7 +1,7 @@
 # Cross-Platform Influence Networks Report
 
-**Analysis Date**: 2026-09-10  
-**Data Sources**: GitHub PRs (25,122), IRC (198 actors / 51,064 ML messages deduped to 51,062), Delving (4,662 posts), Bitcointalk (158,917 posts)  
+**Analysis Date**: 2026-09-20  
+**Data Sources**: GitHub PRs (25,122), IRC (2,534 actors / 51,064 ML messages deduped to 51,062), Delving (4,662 posts), Bitcointalk (158,917 posts)  
 **Purpose**: Build comprehensive influence networks across platforms and identify hidden influencers
 
 ---
@@ -18,22 +18,22 @@ This report analyzes influence networks across GitHub, IRC, mailing lists, Delvi
 
 | Platform | Unique Actors |
 |----------|---------------|
-| **GitHub** | 3,199 |
-| **IRC** | 198 |
-| **Email (combined ML)** | 2,508 |
+| **GitHub** | 2,615 |
+| **IRC** | 2,534 |
+| **Email (combined ML)** | 2,512 |
 | **Delving** | 432 |
 | **Bitcointalk** | 15,455 |
 
-### 2. Identity Overlap (exact username matching)
+### 2. Identity Overlap (canonical nick/email join)
 
 | Overlap | Count | % of GitHub |
 |---------|-------|-------------|
-| GitHub–IRC | 234 | 9.0% |
-| GitHub–Email | 79 | 3.0% |
-| GitHub–Delving | 117 | 4.5% |
-| GitHub–Bitcointalk | 211 | — |
-| IRC–Email | 77 | 2.9% |
-| All platforms (4+) | 38 | — |
+| GitHub–IRC | 236 | 9.0% |
+| GitHub–Email | 90 | 3.4% |
+| GitHub–Delving | 119 | 4.6% |
+| GitHub–Bitcointalk | 212 | — |
+| IRC–Email | 87 | 3.4% |
+| All platforms (4+) | 48 | — |
 
 ### 3. PR Discussion Across Platforms
 
@@ -44,7 +44,7 @@ This report analyzes influence networks across GitHub, IRC, mailing lists, Delvi
 | Delving | 535 |
 | Bitcointalk | 632 |
 | Discussed off-GitHub before merge | 7,126 |
-| Informal→GitHub flow rate | 0.284 |
+| Informal→GitHub flow rate | 0.281 |
 
 ### 3b. Informal→GitHub flow by era
 
@@ -53,12 +53,12 @@ This report analyzes influence networks across GitHub, IRC, mailing lists, Delvi
 | Early (2010–2014) | 3,766 | 0 | 179 | 0 | 180 | 5 | 0.001 |
 | Scaling / SegWit (2015–2017) | 4,594 | 4,165 | 2,116 | 0 | 149 | 2,615 | 0.569 |
 | Taproot (2018–2021) | 8,141 | 8,504 | 3,790 | 0 | 169 | 4,477 | 0.550 |
-| Modern (2022+) | 8,609 | 7,710 | 727 | 535 | 161 | 21 | 0.002 |
+| Modern (2022+) | 8,821 | 7,710 | 727 | 535 | 161 | 21 | 0.002 |
 
 ### 4. Enhanced Identity Resolution
 
-- **Manual alias identities verified**: 20
-- **GitHub–Delving exact overlap**: 117
+- **Manual alias identities verified**: 21
+- **GitHub–Delving exact overlap**: 119
 - **Delving users mentioning PRs**: 87
 - **Bitcointalk users mentioning PRs**: 246
 

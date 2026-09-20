@@ -24,6 +24,12 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.maintainers import (
+    canonicalize_actor,
+    display_name_for,
+    load_canonical_maintainers,
+    load_maintainer_login_set,
+)
 
 logger = setup_logger()
 
@@ -40,8 +46,8 @@ class BIPProcessAnalyzer:
         self.findings_dir = self.analysis_dir / 'findings' / 'data'
         self.findings_dir.mkdir(parents=True, exist_ok=True)
         
-        from src.utils.maintainers import load_maintainer_login_set
         self.maintainers = load_maintainer_login_set()
+        self.identity_doc = load_canonical_maintainers()
     
     def run_analysis(self):
         """Run BIP process analysis."""
@@ -194,7 +200,17 @@ class BIPProcessAnalyzer:
             if cleaned not in seen:
                 seen.add(cleaned)
                 normalized.append(cleaned)
-        return normalized
+        return [self._canonical_bip_author(a) for a in normalized]
+
+    def _canonical_bip_author(self, name: str) -> str:
+        """Collapse documented display-name variants to one proposer key."""
+        key = canonicalize_actor(name=name, doc=self.identity_doc)
+        if not key:
+            return name
+        label = display_name_for(key, self.identity_doc)
+        if label and label != key:
+            return label.lower()
+        return key
 
     def _split_bip_author_field(self, value: str) -> List[str]:
         parts = re.split(r'\s+and\s+|,\s*(?![^<]*>)', value)

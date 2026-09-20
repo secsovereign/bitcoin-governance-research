@@ -1,6 +1,6 @@
 # Language Evolution
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Sources**: GitHub PRs plus combined mailing lists, IRC, Delving, Bitcointalk  
 **Machine-readable**: `analysis/findings/data/language_evolution.json`
 

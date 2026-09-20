@@ -1,6 +1,6 @@
 # Stalled Proposals: Case Dossiers (Fair Cite)
 
-**Date:** 2026-09-10  
+**Date:** 2026-09-20  
 **Status:** Fair cite v2.1  
 **Machine-readable:** `findings/data/stalled_proposal_dossiers.json`  
 **Script:** `scripts/analysis/stalled_proposal_dossiers.py`  

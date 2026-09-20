@@ -1,6 +1,6 @@
 # Novel Interpretations
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Machine-readable**: `findings/data/novel_interpretations.json`
 
 These are **descriptive clusters** from merge/review graphs, not psychological diagnoses.

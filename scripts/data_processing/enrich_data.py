@@ -41,7 +41,7 @@ from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.data_quality import DataQualityTracker
 from src.utils.jsonl_merge import append_jsonl, iter_jsonl, load_jsonl_keys
-from src.utils.maintainers import is_maintainer_at, normalize_login
+from src.utils.maintainers import canonicalize_actor, is_maintainer_at, normalize_login
 
 logger = setup_logger()
 
@@ -634,13 +634,17 @@ class DataEnricher:
                         signers_data['signing_stats']['signed'] += 1
                         signer_email = release.get('signer_email')
                         if signer_email:
-                            signers_data['signing_stats']['unique_signers'].add(signer_email)
-                            if signer_email not in signers_data['signers']:
-                                signers_data['signers'][signer_email] = {
+                            signer_key = canonicalize_actor(
+                                email=signer_email,
+                                name=release.get("signer_name"),
+                            ) or str(signer_email).lower()
+                            signers_data['signing_stats']['unique_signers'].add(signer_key)
+                            if signer_key not in signers_data['signers']:
+                                signers_data['signers'][signer_key] = {
                                     'name': release.get('signer_name'),
                                     'release_count': 0
                                 }
-                            signers_data['signers'][signer_email]['release_count'] += 1
+                            signers_data['signers'][signer_key]['release_count'] += 1
                     else:
                         signers_data['signing_stats']['unsigned'] += 1
             

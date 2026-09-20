@@ -1,6 +1,6 @@
 # Merge Concentration and Deputy Patterns
 
-**Date:** 2026-09-10  
+**Date:** 2026-09-20  
 **Status:** Fair interpretation  
 **Machine-readable:** `findings/data/high_volume_merger_deputies.json`  
 **Related:** `scripts/analysis/merge_pattern_analysis.py`  

@@ -2,7 +2,7 @@
 
 **25,122 PRs | 8,890 Issues | 51,062 Emails (2 ML lists) | 430,613 IRC | 4,662 Delving | 158,917 Bitcointalk | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-09-10 (informal-channel integration: cryptography ML, Delving, Bitcointalk)
+**Last Updated**: 2026-09-20 (informal-channel integration: cryptography ML, Delving, Bitcointalk)
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, combined mailing lists, Delving, Bitcointalk), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
@@ -34,8 +34,8 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 ### Power Concentration = Single Points of Failure
 
-**Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`), including inferred merger `sedited`.  
-**Current merge-key users** (merged since 2023): fanquake, ryanofsky, hebasto, achow101, TheCharlatan, sedited.  
+**Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`). That is 21 humans: `TheCharlatan` and `sedited` are the same person after a GitHub rename. Merge stats in this dump use `sedited` (0 `TheCharlatan` merges).  
+**Current merge-key users** (merged since 2023): fanquake, achow101, sedited, glozow, ryanofsky, hebasto, maflcko.  
 **Historical**: laanwj, sipa, maflcko, and others with no recent merges. See `MAINTAINER_LIST_SOURCE.md`.  
 **Top 3 control 81.1% of all merges** (laanwj 34.8%, fanquake 25.8%, maflcko 20.5%) — all-time.  
 **Modern window (2022+):** `fanquake` alone merges **~50.4%**; top-2 **~71%**; top-3 **~83%** (`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`).  

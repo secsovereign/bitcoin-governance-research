@@ -1,6 +1,6 @@
 # Informal Communication Sentiment Analysis Report
 
-**Analysis Date**: 2026-09-10  
+**Analysis Date**: 2026-09-20  
 **Data Sources**: IRC (430,613), combined mailing lists (51,062), cryptography ML (26,418), Delving (4,650), Bitcointalk (158,917)  
 **Purpose**: Analyze sentiment and BCAP State of Mind (SOM) across informal channels
 

@@ -22,6 +22,12 @@ sys.path.insert(0, str(project_root))
 
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
+from src.utils.maintainers import (
+    canonicalize_actor,
+    display_name_for,
+    load_canonical_maintainers,
+    load_maintainer_login_set,
+)
 
 logger = setup_logger()
 
@@ -37,6 +43,15 @@ class ReleaseSigningAnalyzer:
         self.analysis_dir = get_analysis_dir()
         self.findings_dir = self.analysis_dir / 'findings' / 'data'
         self.findings_dir.mkdir(parents=True, exist_ok=True)
+        self.identity_doc = load_canonical_maintainers()
+
+    def _signer_id(self, release: Dict[str, Any]) -> str:
+        """One person, even when GPG uid name/email variants differ."""
+        return canonicalize_actor(
+            email=release.get("signer_email"),
+            name=release.get("signer_name"),
+            doc=self.identity_doc,
+        )
     
     def run_analysis(self):
         """Run release signing analysis."""
@@ -140,20 +155,30 @@ class ReleaseSigningAnalyzer:
         """Analyze concentration of release signing authority."""
         signed_releases = [r for r in releases if r.get('is_signed')]
         
-        # Count signings per signer
+        # Count signings per canonical person (not raw GPG uid).
         signer_counts = Counter()
-        signer_details = defaultdict(lambda: {'count': 0, 'releases': []})
-        
+        signer_details = defaultdict(lambda: {
+            'count': 0,
+            'releases': [],
+            'emails': set(),
+            'name_variants': set(),
+        })
+
         for release in signed_releases:
-            signer_email = release.get('signer_email')
-            signer_name = release.get('signer_name')
-            
-            if signer_email:
-                signer_key = signer_email.lower()
-                signer_counts[signer_key] += 1
-                signer_details[signer_key]['count'] += 1
-                signer_details[signer_key]['name'] = signer_name
-                signer_details[signer_key]['releases'].append(release.get('tag'))
+            signer_key = self._signer_id(release)
+            if not signer_key:
+                continue
+            signer_counts[signer_key] += 1
+            detail = signer_details[signer_key]
+            detail['count'] += 1
+            if release.get('signer_email'):
+                detail['emails'].add(str(release.get('signer_email')).lower())
+            if release.get('signer_name'):
+                detail['name_variants'].add(str(release.get('signer_name')))
+            detail['releases'].append(release.get('tag'))
+            detail['name'] = display_name_for(signer_key, self.identity_doc)
+            if detail['name'] == signer_key and release.get('signer_name'):
+                detail['name'] = release.get('signer_name')
         
         # Calculate concentration metrics
         total_signed = len(signed_releases)
@@ -177,7 +202,16 @@ class ReleaseSigningAnalyzer:
             'signing_rate': total_signed / len(releases) if releases else 0,
             'unique_signers': len(signer_counts),
             'signer_counts': dict(signer_counts),
-            'signer_details': dict(signer_details),
+            'signer_details': {
+                key: {
+                    'count': detail['count'],
+                    'name': detail.get('name') or display_name_for(key, self.identity_doc),
+                    'emails': sorted(detail['emails']),
+                    'name_variants': sorted(detail['name_variants']),
+                    'releases': detail['releases'],
+                }
+                for key, detail in signer_details.items()
+            },
             'concentration_metrics': {
                 'gini_coefficient': gini,
                 'hhi': hhi,
@@ -186,12 +220,14 @@ class ReleaseSigningAnalyzer:
             },
             'top_signers': [
                 {
-                    'email': email,
-                    'name': signer_details[email]['name'],
+                    'id': key,
+                    'email': sorted(signer_details[key]['emails'])[0] if signer_details[key]['emails'] else key,
+                    'emails': sorted(signer_details[key]['emails']),
+                    'name': signer_details[key].get('name') or display_name_for(key, self.identity_doc),
                     'count': count,
-                    'share': signer_shares[email]
+                    'share': signer_shares[key],
                 }
-                for email, count in signer_counts.most_common(10)
+                for key, count in signer_counts.most_common(10)
             ]
         }
     
@@ -214,7 +250,7 @@ class ReleaseSigningAnalyzer:
                 
                 if release.get('is_signed'):
                     by_year[year]['signed'] += 1
-                    signer = release.get('signer_email')
+                    signer = self._signer_id(release)
                     if signer:
                         by_year[year]['signers'].add(signer)
             except Exception:
@@ -247,25 +283,21 @@ class ReleaseSigningAnalyzer:
             if not release.get('is_signed'):
                 continue
             
-            signer_email = release.get('signer_email')
-            if not signer_email:
+            signer_key = self._signer_id(release)
+            if not signer_key:
                 continue
-            
-            # Check if signer is a maintainer
-            # Need to match email to maintainer timeline
-            is_maintainer = False
-            for maintainer_id, data in maintainer_timeline.items():
-                # This would need identity mapping - simplified for now
-                if signer_email.lower() in maintainer_id.lower():
-                    is_maintainer = True
-                    break
-            
-            if signer_email not in signer_maintainer_status:
-                signer_maintainer_status[signer_email] = {
+
+            is_maintainer = (
+                signer_key in load_maintainer_login_set()
+                or signer_key in maintainer_timeline
+            )
+
+            if signer_key not in signer_maintainer_status:
+                signer_maintainer_status[signer_key] = {
                     'is_maintainer': is_maintainer,
                     'release_count': 0
                 }
-            signer_maintainer_status[signer_email]['release_count'] += 1
+            signer_maintainer_status[signer_key]['release_count'] += 1
         
         maintainer_signers = sum(1 for s in signer_maintainer_status.values() if s['is_maintainer'])
         non_maintainer_signers = len(signer_maintainer_status) - maintainer_signers
@@ -296,23 +328,19 @@ class ReleaseSigningAnalyzer:
             if not release.get('is_signed'):
                 continue
             
-            signer_email = release.get('signer_email')
-            signer_name = release.get('signer_name')
-            
-            # Try to match signer to contributor
-            # Match by email or name
-            matched_contrib = None
-            for login, contrib_data in contributor_lookup.items():
-                # Simple matching - would need better identity resolution
-                if signer_name and signer_name.lower() in login.lower():
-                    matched_contrib = contrib_data
-                    break
-            
+            signer_key = self._signer_id(release)
+            matched_contrib = contributor_lookup.get(signer_key)
+            if matched_contrib is None:
+                for login, contrib_data in contributor_lookup.items():
+                    if canonicalize_actor(login=login, doc=self.identity_doc) == signer_key:
+                        matched_contrib = contrib_data
+                        break
+
             if matched_contrib:
                 signer_contributions.append(matched_contrib['contributions'])
                 if matched_contrib['rank'] <= 10:
                     top_contributor_signers.append({
-                        'signer': signer_email,
+                        'signer': signer_key,
                         'contributor_rank': matched_contrib['rank'],
                         'contributions': matched_contrib['contributions']
                     })

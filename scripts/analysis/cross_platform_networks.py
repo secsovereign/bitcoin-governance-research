@@ -32,6 +32,13 @@ from src.utils.cross_platform_sources import (
     load_mailing_lists,
     split_mailing_lists_by_name,
 )
+from src.utils.maintainers import (
+    canonicalize_actor,
+    canonicalize_nick,
+    documented_identities,
+    normalize_login,
+)
+from email.utils import parseaddr
 
 logger = setup_logger()
 
@@ -54,23 +61,30 @@ class CrossPlatformNetworkAnalyzer:
         self._build_identity_mappings()
     
     def _build_identity_mappings(self):
-        """Build identity mappings (GitHub username ↔ IRC nickname ↔ Email)."""
-        # Known mappings for maintainers (common patterns)
-        known_mappings = {
-            'sipa': {'irc': 'sipa', 'github': 'sipa'},
-            'laanwj': {'irc': 'laanwj', 'github': 'laanwj'},
-            'maflcko': {'irc': 'maflcko', 'github': 'maflcko'},
-            'fanquake': {'irc': 'fanquake', 'github': 'fanquake'},
-            'jnewbery': {'irc': 'jnewbery', 'github': 'jnewbery'},
-            'ryanofsky': {'irc': 'ryanofsky', 'github': 'ryanofsky'},
-            'achow101': {'irc': 'achow101', 'github': 'achow101'},
-        }
-        
-        for unified_id, platforms in known_mappings.items():
-            for platform, username in platforms.items():
-                key = f"{platform}:{username.lower()}"
-                if key not in self.identity_mappings:
-                    self.identity_mappings[key] = unified_id
+        """Build identity mappings from canonical_maintainers.json."""
+        for unified_id, platforms in documented_identities().items():
+            for gh in platforms.get("github") or []:
+                self.identity_mappings[f"github:{gh.lower()}"] = unified_id
+            for irc in platforms.get("irc") or []:
+                self.identity_mappings[f"irc:{irc.lower()}"] = unified_id
+            for email in platforms.get("email") or []:
+                self.identity_mappings[f"email:{email.lower()}"] = unified_id
+
+    def _canon_github(self, login: Optional[str]) -> str:
+        return normalize_login(login)
+
+    def _canon_irc(self, nick: Optional[str]) -> str:
+        return canonicalize_nick(nick)
+
+    def _canon_email_from(self, from_field: str) -> str:
+        name, email = parseaddr(from_field or "")
+        key = canonicalize_actor(email=email, name=name)
+        # Documented aliases collapse to a GitHub login (no '@').
+        if key and "@" not in key:
+            return key
+        # Undocumented From: lines keep the historical local-part / display-name
+        # key so exact GitHub-login overlap still works.
+        return self._extract_email_author(from_field).lower()
     
     def run_analysis(self):
         """Run cross-platform network analysis."""
@@ -230,8 +244,8 @@ class CrossPlatformNetworkAnalyzer:
         all_actors = set()
         
         for pr in prs:
-            author = (pr.get('author') or '').lower()
-            merged_by = (pr.get('merged_by') or '').lower()
+            author = self._canon_github(pr.get('author'))
+            merged_by = self._canon_github(pr.get('merged_by'))
             
             if author:
                 all_actors.add(author)
@@ -243,7 +257,9 @@ class CrossPlatformNetworkAnalyzer:
             
             # Also track reviewers
             for review in (pr.get('reviews') or []):
-                reviewer = (review.get('author') or review.get('user', {}).get('login', '') or '').lower()
+                reviewer = self._canon_github(
+                    review.get('author') or review.get('user', {}).get('login', '')
+                )
                 if reviewer:
                     all_actors.add(reviewer)
                     if author:
@@ -262,13 +278,13 @@ class CrossPlatformNetworkAnalyzer:
         mention_network = defaultdict(lambda: Counter())
         
         for msg in messages:
-            nickname = (msg.get('nickname') or '').lower()
+            nickname = self._canon_irc(msg.get('nickname'))
             message = (msg.get('message') or '').lower()
             
             # Extract @mentions
             mentions = re.findall(r'@(\w+)', message)
             for mention in mentions:
-                mention_network[nickname][mention.lower()] += 1
+                mention_network[nickname][self._canon_irc(mention)] += 1
         
         return {
             'mention_network': {k: dict(v) for k, v in list(mention_network.items())[:50]},
@@ -284,7 +300,7 @@ class CrossPlatformNetworkAnalyzer:
         
         for email in emails:
             from_field = email.get('from', '')
-            author = self._extract_email_author(from_field).lower()
+            author = self._canon_email_from(from_field)
             
             if author:
                 all_actors.add(author)
@@ -339,23 +355,23 @@ class CrossPlatformNetworkAnalyzer:
         # Extract unique users per platform
         github_users = set()
         for pr in github_prs:
-            author = (pr.get('author') or '').lower()
+            author = self._canon_github(pr.get('author'))
             if author:
                 github_users.add(author)
-            merged_by = (pr.get('merged_by') or '').lower()
+            merged_by = self._canon_github(pr.get('merged_by'))
             if merged_by:
                 github_users.add(merged_by)
         
         irc_users = set()
         for msg in irc_messages:
-            nickname = (msg.get('nickname') or '').lower()
+            nickname = self._canon_irc(msg.get('nickname'))
             if nickname:
                 irc_users.add(nickname)
         
         email_users = set()
         for email in emails:
             from_field = email.get('from', '')
-            author = self._extract_email_author(from_field).lower()
+            author = self._canon_email_from(from_field)
             if author:
                 email_users.add(author)
 

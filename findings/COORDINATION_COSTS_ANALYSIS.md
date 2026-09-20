@@ -1,6 +1,6 @@
 # Coordination Costs Analysis
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Purpose**: Communication volume, participants, and decision time per PR  
 **Machine-readable**: `analysis/findings/data/complexity_correlation.json`
 

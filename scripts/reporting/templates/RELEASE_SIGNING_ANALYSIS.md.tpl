@@ -42,6 +42,7 @@ This report analyzes who signs Bitcoin Core releases, tracking signing authority
 
 - Identified signers on signed releases: {{transparency.identification_rate|pct}}
 - Cryptographic verification of detached signatures in this corpus: {{transparency.verification_rate|pct}} (identity from filename/email, not GPG verify)
+- Documented email and display-name variants of the same person are counted once (for example `laanwj@gmail.com`, `laanwj@protonmail.com`, and the GitHub noreply address are Wladimir J. van der Laan)
 
 ---
 

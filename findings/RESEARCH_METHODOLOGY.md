@@ -414,10 +414,11 @@ This document provides a comprehensive, incremental analysis of the research met
 - Manual mapping for known maintainers
 - Pattern matching (similar names, email domains)
 - Temporal correlation (activity patterns)
+- Canonical aliases in `data/maintainers/canonical_maintainers.json` (`aliases`, `email_aliases`, `name_aliases`) via `src.utils.maintainers.canonicalize_actor`
 
 **Status**: ⚠️ **PARTIAL** - Manual mapping for maintainers, automated for others
 
-**Limitation**: Some identities may not be resolved, affecting cross-platform analysis
+**Limitation**: Some identities may not be resolved, affecting cross-platform analysis. Release-signing counts must use the canonical actor, not the raw GPG uid. Wladimir J. van der Laan signed as `laanwj@gmail.com`, `laanwj@protonmail.com`, and `126646+laanwj@users.noreply.github.com`; those are one signer.
 
 ---
 

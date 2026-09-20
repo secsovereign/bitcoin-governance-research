@@ -1,6 +1,6 @@
 # How to cut this corpus
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Machine-readable**: `analysis/findings/data/governance_frames.json`  
 **Use this before quoting all-time rates.**
 
@@ -17,10 +17,10 @@ Informal channels put topics on the table. GitHub finalizes. Those are different
 | Early (2010–2014) | 3,766 | 0 | 179 | 0 | 180 | 5 | 0.001 |
 | SegWit (2015–2017) | 4,594 | 4,165 | 2,116 | 0 | 149 | 2,615 | 0.569 |
 | Taproot (2018–2021) | 8,141 | 8,504 | 3,790 | 0 | 169 | 4,477 | 0.550 |
-| 2022+ | 8,609 | 7,710 | 727 | 535 | 161 | 21 | 0.002 |
+| 2022+ | 8,821 | 7,710 | 727 | 535 | 161 | 21 | 0.002 |
 
 
-All-time flow is **0.284** (7,126 PRs discussed off-GitHub first). That average is almost entirely **2015–2021 IRC/email**. 2022+ Delving and IRC are loud and almost never first.
+All-time flow is **0.281** (7,126 PRs discussed off-GitHub first). That average is almost entirely **2015–2021 IRC/email**. 2022+ Delving and IRC are loud and almost never first.
 
 **Cite as**: which era, which channel, before or after the PR number existed.  
 **Do not cite**: “the community decided on Delving” as if that were SegWit-style agenda-setting.
@@ -98,7 +98,7 @@ Only **sipa** (36 BIP → 545 Core), **achow101** (54 BIP → 1164 Core) sit in 
 BIP top 10: luke-jr, btcdrak, achow101, jl2012, ysangkok, jonatack, murchandamus, sipa, jeremyrubin, kallewoof  
 Core top 10: achow101, maflcko, laanwj, sedited, sipa, jgarzik, gavinandresen, glozow, jonasschnelli, fanquake
 
-Cross-platform exact username overlap is a lower bound: GitHub–Delving 117, GitHub–Bitcointalk 211, verified aliases 20. High informal activity without Core merge keys is common (Delving-only names include people who *are* Core-adjacent on GitHub under a different handle — treat the “only” lists as unmatched strings, not proof of absence).
+Cross-platform exact username overlap is a lower bound: GitHub–Delving 119, GitHub–Bitcointalk 212, verified aliases 21. High informal activity without Core merge keys is common (Delving-only names include people who *are* Core-adjacent on GitHub under a different handle — treat the “only” lists as unmatched strings, not proof of absence).
 
 **Cite as**: activity on BIPs / Delving / lists does not imply Core merge authority.  
 **Do not cite**: a BIP champion as a Core decision-maker without the merge graph.

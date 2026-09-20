@@ -1,6 +1,6 @@
 # Cross-Repository Comparison Report
 
-**Analysis Date**: 2026-09-10  
+**Analysis Date**: 2026-09-20  
 **Data Sources**: Bitcoin Core repository, BIPs repository  
 **Purpose**: Compare governance patterns between Core and BIPs repositories
 

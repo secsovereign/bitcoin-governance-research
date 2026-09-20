@@ -7,7 +7,7 @@
 
 ## Maintainer List
 
-**Total Maintainers Identified**: 22 (21 historical roster + `sedited`, inferred from merge keys)
+**Total Maintainers Identified**: 22 GitHub logins (21 humans). `TheCharlatan` renamed to `sedited`; keep both logins in the roster, do not double-count them as people.
 
 **List**:
 1. laanwj
@@ -35,13 +35,14 @@
 
 ### Current Active Maintainers (as of 2026)
 
-**Merge keys in recent use** (merged since 2023, including inferred):
+**Merge keys in recent use** (merged since 2023):
 - fanquake
+- achow101
+- sedited
+- glozow
 - ryanofsky
 - hebasto
-- achow101
-- TheCharlatan
-- sedited
+- maflcko
 
 ---
 

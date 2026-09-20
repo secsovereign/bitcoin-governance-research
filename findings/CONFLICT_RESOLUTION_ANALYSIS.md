@@ -1,6 +1,6 @@
 # Conflict Resolution Analysis
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Sources**: `temporal_analysis.json` (conflict_resolution_temporal) and `voting_bloc_conflict.json`
 
 ---

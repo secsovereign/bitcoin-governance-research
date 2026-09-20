@@ -1,6 +1,6 @@
 # BCAP Framework Integration Report
 
-**Analysis Date**: 2026-09-10  
+**Analysis Date**: 2026-09-20  
 **Framework**: BCAP (Bitcoin Consensus Analysis Project)  
 **Reference**: [bitcoin-cap/bcap](https://github.com/bitcoin-cap/bcap)  
 **Purpose**: Apply BCAP SOM and power-shift concepts to Bitcoin Core governance during SegWit and Taproot

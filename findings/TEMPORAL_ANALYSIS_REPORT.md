@@ -1,6 +1,6 @@
 # Comprehensive Temporal Analysis Report
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Purpose**: Self-merge, era, power, conflict, and concentration patterns over time  
 **Machine-readable**: `analysis/findings/data/temporal_analysis.json`
 

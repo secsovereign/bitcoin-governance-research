@@ -13,9 +13,14 @@ loading the inferred timeline used by enrichment.
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional, Set
+
+_GITHUB_NOREPLY = re.compile(
+    r"^(?:\d+\+)?([a-z0-9][a-z0-9-]*)@users\.noreply\.github\.com$"
+)
 
 from src.utils.paths import get_data_dir, get_project_root
 
@@ -80,6 +85,136 @@ def normalize_login(login: Optional[str], aliases: Optional[Dict[str, str]] = No
     if lower in aliases:
         return str(aliases[lower]).lower()
     return lower
+
+
+def _norm_person_name(name: Optional[str]) -> str:
+    if not name:
+        return ""
+    cleaned = re.sub(r"[._]+", " ", str(name)).strip().lower()
+    return re.sub(r"\s+", " ", cleaned)
+
+
+def canonicalize_actor(
+    login: Optional[str] = None,
+    email: Optional[str] = None,
+    name: Optional[str] = None,
+    doc: Optional[Dict[str, Any]] = None,
+) -> str:
+    """Collapse documented login / email / name variants to one key.
+
+    Priority: GitHub login, then email alias or ``users.noreply.github.com``,
+    then display-name alias. Unknown emails stay as the lowercased address so
+    unsigned identities are not invented.
+    """
+    data = doc if doc is not None else load_canonical_maintainers()
+    aliases = data.get("aliases") or {}
+    email_aliases = {
+        str(k).strip().lower(): str(v).strip().lower()
+        for k, v in (data.get("email_aliases") or {}).items()
+    }
+    name_aliases = {
+        _norm_person_name(k): str(v).strip().lower()
+        for k, v in (data.get("name_aliases") or {}).items()
+    }
+
+    if login:
+        key = normalize_login(login, aliases)
+        if key:
+            return key
+
+    if email:
+        lowered = str(email).strip().lower()
+        if lowered in email_aliases:
+            return normalize_login(email_aliases[lowered], aliases)
+        noreply = _GITHUB_NOREPLY.match(lowered)
+        if noreply:
+            return normalize_login(noreply.group(1), aliases)
+
+    if name:
+        named = name_aliases.get(_norm_person_name(name))
+        if named:
+            return normalize_login(named, aliases)
+
+    if email:
+        return str(email).strip().lower()
+    if name:
+        return _norm_person_name(name)
+    return ""
+
+
+def canonicalize_nick(nick: Optional[str], doc: Optional[Dict[str, Any]] = None) -> str:
+    """Collapse documented IRC nicks. Does not change the GitHub maintainer login set.
+
+    ``TheCharlatan`` on IRC maps to ``sedited``. ``normalize_login("TheCharlatan")``
+    stays ``thecharlatan``.
+    """
+    if not nick:
+        return ""
+    data = doc if doc is not None else load_canonical_maintainers()
+    aliases = data.get("aliases") or {}
+    nicks = {
+        str(k).strip().lower(): str(v).strip().lower()
+        for k, v in (data.get("nick_aliases") or {}).items()
+    }
+    lower = re.sub(r"^[@*]\s*", "", str(nick).strip().lower())
+    if lower in nicks:
+        return normalize_login(nicks[lower], aliases)
+    return normalize_login(lower, aliases)
+
+
+def documented_identities(doc: Optional[Dict[str, Any]] = None) -> Dict[str, Dict[str, Any]]:
+    """Unified-id → github / email / irc / real_name lists from the canonical file."""
+    data = doc if doc is not None else load_canonical_maintainers()
+    aliases = data.get("aliases") or {}
+    out: Dict[str, Dict[str, Any]] = {}
+
+    def bucket(key: str) -> Dict[str, Any]:
+        key = normalize_login(key, aliases)
+        if key not in out:
+            out[key] = {"github": [], "email": [], "irc": [], "real_name": ""}
+        return out[key]
+
+    for login in data.get("github_logins") or []:
+        key = normalize_login(login, aliases)
+        b = bucket(key)
+        low = str(login).strip().lower()
+        if low not in b["github"]:
+            b["github"].append(low)
+        if key not in b["irc"]:
+            b["irc"].append(key)
+
+    for src, dst in (data.get("aliases") or {}).items():
+        b = bucket(str(dst))
+        low = str(src).strip().lower()
+        if low not in b["github"]:
+            b["github"].append(low)
+
+    for src, dst in (data.get("email_aliases") or {}).items():
+        b = bucket(str(dst))
+        low = str(src).strip().lower()
+        if low not in b["email"]:
+            b["email"].append(low)
+
+    for src, dst in (data.get("nick_aliases") or {}).items():
+        b = bucket(str(dst))
+        low = str(src).strip().lower()
+        if low not in b["irc"]:
+            b["irc"].append(low)
+
+    for key, name in (data.get("display_names") or {}).items():
+        b = bucket(str(key))
+        b["real_name"] = str(name)
+
+    return out
+
+
+def display_name_for(key: Optional[str], doc: Optional[Dict[str, Any]] = None) -> str:
+    """Preferred public name for a canonical actor key."""
+    if not key:
+        return ""
+    data = doc if doc is not None else load_canonical_maintainers()
+    names = {str(k).lower(): v for k, v in (data.get("display_names") or {}).items()}
+    return str(names.get(str(key).lower()) or key)
 
 
 def load_maintainer_login_set() -> Set[str]:

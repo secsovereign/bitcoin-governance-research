@@ -28,134 +28,14 @@ from src.utils.cross_platform_sources import (
     load_delving_posts,
     load_mailing_lists,
 )
+from src.utils.maintainers import (
+    canonicalize_actor,
+    canonicalize_nick,
+    documented_identities,
+    normalize_login,
+)
 
 logger = setup_logger()
-
-# Known maintainer aliases (publicly documented)
-# Sources: GitHub profiles, mailing list signatures, IRC registrations
-KNOWN_ALIASES = {
-    # GitHub username: {platform: [known aliases]}
-    'laanwj': {
-        'github': ['laanwj'],
-        'email': ['laanwj@gmail.com', 'laanwj@protonmail.com', 'wladimir.j.vanderlaan@gmail.com'],
-        'irc': ['laanwj', 'wumpus'],
-        'real_name': 'Wladimir J. van der Laan'
-    },
-    'sipa': {
-        'github': ['sipa'],
-        'email': ['pieter@wuille.net', 'pieter.wuille@gmail.com'],
-        'irc': ['sipa'],
-        'real_name': 'Pieter Wuille'
-    },
-    'gavinandresen': {
-        'github': ['gavinandresen'],
-        'email': ['gavinandresen@gmail.com', 'gavin@bitcoin.org'],
-        'irc': ['gavinandresen', 'gavin'],
-        'real_name': 'Gavin Andresen'
-    },
-    'gmaxwell': {
-        'github': ['gmaxwell'],
-        'email': ['greg@xiph.org', 'gmaxwell@gmail.com'],
-        'irc': ['gmaxwell', 'nullc'],
-        'real_name': 'Gregory Maxwell'
-    },
-    'TheBlueMatt': {
-        'github': ['TheBlueMatt'],
-        'email': ['matt@bluematt.me', 'matt.corallo@gmail.com'],
-        'irc': ['BlueMatt', 'TheBlueMatt'],
-        'real_name': 'Matt Corallo'
-    },
-    'luke-jr': {
-        'github': ['luke-jr'],
-        'email': ['luke-jr+git@dashjr.org', 'luke@dashjr.org'],
-        'irc': ['luke-jr', 'Luke-Jr'],
-        'real_name': 'Luke Dashjr'
-    },
-    'petertodd': {
-        'github': ['petertodd'],
-        'email': ['pete@petertodd.org'],
-        'irc': ['petertodd', 'TD-Linux'],
-        'real_name': 'Peter Todd'
-    },
-    'jgarzik': {
-        'github': ['jgarzik'],
-        'email': ['jgarzik@bitpay.com', 'jgarzik@gmail.com'],
-        'irc': ['jgarzik'],
-        'real_name': 'Jeff Garzik'
-    },
-    'fanquake': {
-        'github': ['fanquake'],
-        'email': ['fanquake@gmail.com'],
-        'irc': ['fanquake'],
-        'real_name': 'fanquake'
-    },
-    'maflcko': {
-        'github': ['maflcko', 'MarcoFalke'],
-        'email': ['falke.marco@gmail.com'],
-        'irc': ['maflcko', 'MarcoFalke'],
-        'real_name': 'Marco Falke'
-    },
-    'achow101': {
-        'github': ['achow101'],
-        'email': ['achow101@gmail.com', 'achow101-hierarchical@gmail.com'],
-        'irc': ['achow101'],
-        'real_name': 'Andrew Chow'
-    },
-    'jnewbery': {
-        'github': ['jnewbery'],
-        'email': ['john@johnnewbery.com'],
-        'irc': ['jnewbery'],
-        'real_name': 'John Newbery'
-    },
-    'ryanofsky': {
-        'github': ['ryanofsky'],
-        'email': ['russ@yanofsky.org'],
-        'irc': ['ryanofsky'],
-        'real_name': 'Russell Yanofsky'
-    },
-    'hebasto': {
-        'github': ['hebasto'],
-        'email': ['hebasto@gmail.com'],
-        'irc': ['hebasto'],
-        'real_name': 'Hennadii Stepanov'
-    },
-    'glozow': {
-        'github': ['glozow'],
-        'email': ['gloriajzhao@gmail.com'],
-        'irc': ['glozow'],
-        'real_name': 'Gloria Zhao'
-    },
-    'jonatack': {
-        'github': ['jonatack'],
-        'email': ['jon@atack.com'],
-        'irc': ['jonatack'],
-        'real_name': 'Jon Atack'
-    },
-    'instagibbs': {
-        'github': ['instagibbs'],
-        'email': ['gsanders87@gmail.com'],
-        'irc': ['instagibbs'],
-        'real_name': 'Gregory Sanders'
-    },
-    'theuni': {
-        'github': ['theuni'],
-        'email': ['cory@coryfields.com'],
-        'irc': ['cfields', 'theuni'],
-        'real_name': 'Cory Fields'
-    },
-    'jonasschnelli': {
-        'github': ['jonasschnelli'],
-        'email': ['dev@jonasschnelli.ch'],
-        'irc': ['jonasschnelli'],
-        'real_name': 'Jonas Schnelli'
-    },
-    'promag': {
-        'github': ['promag'],
-        'email': ['joao.da.silva@joaodacruz.com'],
-        'irc': ['promag'],
-        'real_name': 'João Barbosa'
-    },
-}
 
 
 class EnhancedIdentityResolver:
@@ -172,11 +52,12 @@ class EnhancedIdentityResolver:
         self.email_to_unified = {}
         self.irc_to_unified = {}
         
+        self.identities = documented_identities()
         self._build_alias_lookups()
     
     def _build_alias_lookups(self):
-        """Build lookup tables from known aliases."""
-        for unified_id, aliases in KNOWN_ALIASES.items():
+        """Build lookup tables from canonical_maintainers.json."""
+        for unified_id, aliases in self.identities.items():
             for gh in aliases.get('github', []):
                 self.github_to_unified[gh.lower()] = unified_id
             for email in aliases.get('email', []):
@@ -237,7 +118,7 @@ class EnhancedIdentityResolver:
             'pr_mention_resolution': pr_mention_matches,
             'improved_overlap': improved_overlap,
             'methodology': {
-                'manual_aliases': f'{len(KNOWN_ALIASES)} documented maintainer identities',
+                'manual_aliases': f'{len(self.identities)} documented identities from canonical_maintainers.json',
                 'pr_mentions': 'IRC/email/forum messages containing PR numbers matched to GitHub PR authors',
                 'mailing_lists': 'bitcoin-dev + cryptography with message_id dedupe',
                 'forums': 'Delving usernames often match GitHub handles; Bitcointalk uses legacy handles',
@@ -294,17 +175,17 @@ class EnhancedIdentityResolver:
         # Find GitHub users
         github_users = set()
         for pr in github_prs:
-            author = (pr.get('author') or '').lower()
+            author = normalize_login(pr.get('author'))
             if author:
                 github_users.add(author)
-            merged_by = (pr.get('merged_by') or '').lower()
+            merged_by = normalize_login(pr.get('merged_by'))
             if merged_by:
                 github_users.add(merged_by)
         
         # Find IRC users
         irc_users = set()
         for msg in irc_messages:
-            nick = (msg.get('nickname') or '').lower()
+            nick = canonicalize_nick(msg.get('nickname'))
             if nick:
                 irc_users.add(nick)
         
@@ -333,7 +214,7 @@ class EnhancedIdentityResolver:
         
         # Also check email names against real_name
         name_to_unified = {}
-        for unified_id, aliases in KNOWN_ALIASES.items():
+        for unified_id, aliases in self.identities.items():
             real_name = aliases.get('real_name', '').lower()
             if real_name:
                 name_to_unified[real_name] = unified_id
@@ -352,7 +233,7 @@ class EnhancedIdentityResolver:
             unified = self.github_to_unified.get(u)
             if unified:
                 # Check if this unified ID also appears in IRC or email
-                aliases = KNOWN_ALIASES.get(unified, {})
+                aliases = self.identities.get(unified, {})
                 irc_aliases = [a.lower() for a in aliases.get('irc', [])]
                 email_aliases = [a.lower() for a in aliases.get('email', [])]
                 real_name = aliases.get('real_name', '').lower()
@@ -379,7 +260,7 @@ class EnhancedIdentityResolver:
         github_bitcointalk_exact = len(github_users & bitcointalk_users)
 
         return {
-            'total_known_identities': len(KNOWN_ALIASES),
+            'total_known_identities': len(self.identities),
             'github_users_found': len(github_users),
             'github_users_resolved': github_resolved,
             'irc_users_found': len(irc_users),
@@ -419,14 +300,14 @@ class EnhancedIdentityResolver:
             mentions = defaultdict(set)
             for item in messages:
                 if channel == 'irc':
-                    actor = (item.get('nickname') or '').lower()
+                    actor = canonicalize_nick(item.get('nickname'))
                     text = item.get('message', '') or ''
                 elif channel == 'email':
                     from_field = item.get('from', '')
                     match = re.search(r'[\w.+-]+@[\w.-]+\.\w+', from_field)
                     if not match:
                         continue
-                    actor = match.group().lower()
+                    actor = canonicalize_actor(email=match.group())
                     text = f"{item.get('body', '')} {item.get('subject', '')}"
                 elif channel == 'delving':
                     actor = (item.get('username') or '').lower()
@@ -488,43 +369,29 @@ class EnhancedIdentityResolver:
         """Calculate improved overlap using all resolution methods."""
         logger.info("Calculating improved overlap...")
         
-        # Original overlap (exact matching)
-        github_users = set()
+        github_raw = set()
+        irc_raw = set()
+        github_canon = set()
+        irc_canon = set()
         for pr in github_prs:
             author = (pr.get('author') or '').lower()
             if author:
-                github_users.add(author)
-        
-        irc_users = set()
+                github_raw.add(author)
+                github_canon.add(normalize_login(author))
         for msg in irc_messages:
             nick = (msg.get('nickname') or '').lower()
             if nick:
-                irc_users.add(nick)
+                irc_raw.add(nick)
+                irc_canon.add(canonicalize_nick(nick))
         
         delving_users = {
             (post.get("username") or "").lower()
             for post in delving_posts
             if post.get("username")
         }
-        original_overlap = len(github_users & irc_users)
-        github_delving_overlap = len(github_users & delving_users)
-
-        # Improved overlap (using alias mapping)
-        improved_overlap = original_overlap
-        
-        # Add matches from known aliases
-        for unified_id, aliases in KNOWN_ALIASES.items():
-            github_names = [a.lower() for a in aliases.get('github', [])]
-            irc_names = [a.lower() for a in aliases.get('irc', [])]
-            
-            # Check if this person is in both
-            in_github = any(g in github_users for g in github_names)
-            in_irc = any(i in irc_users for i in irc_names)
-            
-            if in_github and in_irc:
-                # Check if already counted in original
-                if not any(g in irc_users for g in github_names):
-                    improved_overlap += 1
+        original_overlap = len(github_raw & irc_raw)
+        github_delving_overlap = len(github_raw & delving_users)
+        improved_overlap = len(github_canon & irc_canon)
         
         return {
             'original_github_irc_overlap': original_overlap,
@@ -532,8 +399,8 @@ class EnhancedIdentityResolver:
             'github_delving_exact_overlap': github_delving_overlap,
             'improvement': improved_overlap - original_overlap,
             'improvement_percentage': (improved_overlap - original_overlap) / original_overlap * 100 if original_overlap > 0 else 0,
-            'github_users': len(github_users),
-            'irc_users': len(irc_users),
+            'github_users': len(github_raw),
+            'irc_users': len(irc_raw),
             'delving_users': len(delving_users),
             'unified_maintainers_found': manual_matches.get('cross_platform_unified_identities', 0)
         }

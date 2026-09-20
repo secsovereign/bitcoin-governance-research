@@ -20,6 +20,7 @@ sys.path.insert(0, str(project_root))
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.mailing_lists import iter_emails
+from src.utils.maintainers import canonicalize_actor, canonicalize_nick
 import re
 
 logger = setup_logger()
@@ -164,8 +165,9 @@ class UserIdentityResolver:
                 name = None
             
             if email_addr and '@' in email_addr:
-                if email_addr not in users:
-                    users[email_addr] = {
+                actor_key = canonicalize_actor(email=email_addr, name=name) or email_addr.lower()
+                if actor_key not in users:
+                    users[actor_key] = {
                         'email': email_addr,
                         'name': name,
                         'first_seen': email.get('date'),
@@ -173,7 +175,7 @@ class UserIdentityResolver:
                         'emails': [],
                     }
                 
-                users[email_addr]['emails'].append(email.get('message_id'))
+                users[actor_key]['emails'].append(email.get('message_id'))
         
         return users
     
@@ -190,7 +192,7 @@ class UserIdentityResolver:
             for line in f:
                 try:
                     msg = json.loads(line)
-                    nickname = msg.get('nickname')
+                    nickname = canonicalize_nick(msg.get('nickname'))
                     
                     if nickname:
                         if nickname not in users:
@@ -227,11 +229,15 @@ class UserIdentityResolver:
                     
                     signer_email = release.get('signer_email')
                     signer_name = release.get('signer_name')
+                    signer_key = canonicalize_actor(
+                        email=signer_email, name=signer_name
+                    ) or (str(signer_email).lower() if signer_email else "")
                     
-                    if signer_email:
-                        if signer_email not in users:
-                            users[signer_email] = {
+                    if signer_key:
+                        if signer_key not in users:
+                            users[signer_key] = {
                                 'email': signer_email,
+                                'emails': [signer_email] if signer_email else [],
                                 'name': signer_name,
                                 'first_seen': release.get('tagger_date_iso'),
                                 'sources': ['release_signing'],
@@ -239,8 +245,12 @@ class UserIdentityResolver:
                                 'releases': []
                             }
                         
-                        users[signer_email]['release_count'] += 1
-                        users[signer_email]['releases'].append(release.get('tag'))
+                        users[signer_key]['release_count'] += 1
+                        users[signer_key]['releases'].append(release.get('tag'))
+                        if signer_email:
+                            emails = users[signer_key].setdefault('emails', [])
+                            if signer_email not in emails:
+                                emails.append(signer_email)
                 
                 except json.JSONDecodeError:
                     continue

@@ -1,6 +1,6 @@
 # Enhanced Funding Analysis Report
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Purpose**: Funding mentions across GitHub and informal channels  
 **Methodology**: Keyword extraction; combined mailing lists (bitcoin-dev + cryptography, message_id dedupe)
 

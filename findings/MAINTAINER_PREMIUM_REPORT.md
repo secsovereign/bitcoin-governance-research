@@ -1,6 +1,6 @@
 # Maintainer Premium: Identity vs Merits (Fair Pass)
 
-**Date:** 2026-09-10  
+**Date:** 2026-09-20  
 **Status:** Fair/complete v7.0 (author-prep + Phase 2 path/ACK/test-diff signals)  
 **Machine-readable:** `findings/data/maintainer_premium.json`  
 **Script:** `scripts/analysis/maintainer_premium.py`  

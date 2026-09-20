@@ -1,6 +1,6 @@
 # Gini Coefficient: Explanation and Bitcoin Core Analysis
 
-**Date**: 2026-09-10  
+**Date**: 2026-09-20  
 **Machine-readable**: `analysis/findings/data/temporal_analysis.json` (`authorship_concentration_temporal`, `review_concentration_temporal`, `power_concentration_temporal`)
 
 ---

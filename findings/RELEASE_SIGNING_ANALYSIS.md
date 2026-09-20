@@ -1,6 +1,6 @@
 # Release Signing Authority Analysis Report
 
-**Analysis Date**: 2026-09-10  
+**Analysis Date**: 2026-09-20  
 **Data Sources**: Bitcoin Core release signatures  
 **Purpose**: Analyze release signing authority concentration and patterns
 
@@ -18,23 +18,21 @@ This report analyzes who signs Bitcoin Core releases, tracking signing authority
 
 **Total Releases**: 339  
 **Signed Releases**: 286 (84.4%)  
-**Unique Signers**: 9
+**Unique Signers**: 7
 
 **Concentration Metrics**:
-- Gini Coefficient: 0.545
-- Top 5 Signers: 92.0% of all signed releases
+- Gini Coefficient: 0.591
+- Top 5 Signers: 97.2% of all signed releases
 - Top 10 Signers: 98.6% of all signed releases
 
 **Top Signers**:
-1. Wladimir J. van der Laan: 105 releases (36.7%)
+1. Wladimir J. van der Laan: 146 releases (51.0%)
 2. fanquake: 55 releases (19.2%)
 3. Gavin Andresen: 53 releases (18.5%)
-4. W. J. van der Laan: 35 releases (12.2%)
-5. glozow: 15 releases (5.2%)
-6. Ava Chow: 9 releases (3.1%)
-7. laanwj: 6 releases (2.1%)
-8. Luke Dashjr: 3 releases (1.0%)
-9. Gregory Maxwell: 1 releases (0.3%)
+4. glozow: 15 releases (5.2%)
+5. Ava Chow: 9 releases (3.1%)
+6. Luke Dashjr: 3 releases (1.0%)
+7. Gregory Maxwell: 1 releases (0.3%)
 
 
 ### 2. Temporal Patterns (recent years)
@@ -53,12 +51,13 @@ This report analyzes who signs Bitcoin Core releases, tracking signing authority
 
 - Identified signers on signed releases: 98.6%
 - Cryptographic verification of detached signatures in this corpus: 0.0% (identity from filename/email, not GPG verify)
+- Documented email and display-name variants of the same person are counted once (for example `laanwj@gmail.com`, `laanwj@protonmail.com`, and the GitHub noreply address are Wladimir J. van der Laan)
 
 ---
 
 ## Implications
 
-1. **High concentration**: 92.0% of signed releases come from the top 5 identities.
+1. **High concentration**: 97.2% of signed releases come from the top 5 identities.
 2. **Historical continuity**: Wladimir van der Laan remains the all-time volume leader; recent years show a smaller active signer set.
 3. **Transition**: `fanquake` and `glozow` appear in the recent signer set — signing authority moved with merge authority, not independently of it.
 

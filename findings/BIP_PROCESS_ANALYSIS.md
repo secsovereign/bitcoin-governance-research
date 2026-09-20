@@ -1,6 +1,6 @@
 # BIP Process Analysis Report
 
-**Analysis Date**: 2026-09-10  
+**Analysis Date**: 2026-09-20  
 **Data Sources**: BIP repository (GitHub), Bitcoin Core repository  
 **Purpose**: Analyze governance patterns in the Bitcoin Improvement Proposal (BIP) process and compare to Core repository governance
 
@@ -17,12 +17,12 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 ### 1. Proposer Concentration
 
 **Total BIPs**: 211  
-**Total Proposers**: 168  
+**Total Proposers**: 166  
 **Proposal Concentration**:
 - Top 3 proposers: 27.5% of all BIPs
 - Top 5 proposers: 37.0% of all BIPs
-- Top 10 proposers: 51.2% of all BIPs
-- Gini Coefficient: 0.432
+- Top 10 proposers: 52.1% of all BIPs
+- Gini Coefficient: 0.438
 
 **Top Proposers**:
 - pieter wuille: 27 BIP(s)
@@ -30,6 +30,7 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 - luke dashjr: 13 BIP(s)
 - gavin andresen: 12 BIP(s)
 - matt corallo: 8 BIP(s)
+- karl-johan alm: 7 BIP(s)
 - btcdrak: 7 BIP(s)
 - johnson lau: 6 BIP(s)
 - eric lombrozo: 6 BIP(s)
@@ -37,9 +38,8 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 - anthony towns: 5 BIP(s)
 - jonas schnelli: 5 BIP(s)
 - amir taaki: 5 BIP(s)
+- gregory sanders: 4 BIP(s)
 - jonas nick: 4 BIP(s)
-- suhas daftuar: 4 BIP(s)
-- karl-johan alm: 4 BIP(s)
 
 
 ### 2. Champion Activity
@@ -61,16 +61,16 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 
 ### 3. Implementation Pipeline
 
-- **BIPs with at least one Core PR mention**: 114 / 210 (54.3%)
+- **BIPs with at least one Core PR mention**: 115 / 210 (54.8%)
 - Mentions are a lower bound — not every implementation cites a BIP number.
 
 ### 4. Repository Comparison
 
 **Actor Overlap**:
 - BIP authors: 733
-- Core authors: 2,592
-- Overlapping authors: 284
-- Overlap rate (of BIP authors): 38.7%
+- Core authors: 2,615
+- Overlapping authors: 285
+- Overlap rate (of BIP authors): 38.9%
 
 **BIP Merge Concentration**:
 - Total merged PRs: 1,297

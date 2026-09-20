@@ -79,7 +79,7 @@ def generate_cross_platform_networks_report(cp: Dict[str, Any], identity: Dict[s
         "# Cross-Platform Influence Networks Report",
         "",
         f"**Analysis Date**: {today}  ",
-        f"**Data Sources**: GitHub PRs ({_fmt_int(int(github_prs))}), IRC ({_fmt_int(stats.get('irc_actors', id_res.get('irc_users', 0)))} actors / "
+        f"**Data Sources**: GitHub PRs ({_fmt_int(int(github_prs))}), IRC ({_fmt_int(id_res.get('irc_users', stats.get('irc_actors', 0)))} actors / "
         f"{_fmt_int(ml.get('bitcoin_dev_count', 0) + ml.get('cryptography_count', 0))} ML messages deduped to {_fmt_int(email_meta.get('total_loaded', 0))}), "
         f"Delving ({_fmt_int(forums.get('delving_posts', 0))} posts), "
         f"Bitcointalk ({_fmt_int(forums.get('bitcointalk_posts', 0))} posts)  ",
@@ -100,13 +100,13 @@ def generate_cross_platform_networks_report(cp: Dict[str, Any], identity: Dict[s
         "",
         "| Platform | Unique Actors |",
         "|----------|---------------|",
-        f"| **GitHub** | {_fmt_int(stats.get('github_actors', id_res.get('github_users', 0)))} |",
-        f"| **IRC** | {_fmt_int(stats.get('irc_actors', id_res.get('irc_users', 0)))} |",
-        f"| **Email (combined ML)** | {_fmt_int(stats.get('email_actors', id_res.get('email_users', 0)))} |",
-        f"| **Delving** | {_fmt_int(stats.get('delving_actors', id_res.get('delving_users', 0)))} |",
-        f"| **Bitcointalk** | {_fmt_int(stats.get('bitcointalk_actors', id_res.get('bitcointalk_users', 0)))} |",
+        f"| **GitHub** | {_fmt_int(id_res.get('github_users', stats.get('github_actors', 0)))} |",
+        f"| **IRC** | {_fmt_int(id_res.get('irc_users', stats.get('irc_actors', 0)))} |",
+        f"| **Email (combined ML)** | {_fmt_int(id_res.get('email_users', stats.get('email_actors', 0)))} |",
+        f"| **Delving** | {_fmt_int(id_res.get('delving_users', stats.get('delving_actors', 0)))} |",
+        f"| **Bitcointalk** | {_fmt_int(id_res.get('bitcointalk_users', stats.get('bitcointalk_actors', 0)))} |",
         "",
-        "### 2. Identity Overlap (exact username matching)",
+        "### 2. Identity Overlap (canonical nick/email join)",
         "",
         "| Overlap | Count | % of GitHub |",
         "|---------|-------|-------------|",

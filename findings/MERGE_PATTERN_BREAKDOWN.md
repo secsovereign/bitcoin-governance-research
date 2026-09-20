@@ -1,6 +1,6 @@
 # Detailed Merge Pattern Breakdown
 
-**Analysis Date**: 2026-09-10  
+**Analysis Date**: 2026-09-20  
 **Data Source**: 9,793 maintainer-merged PRs with `merged_by`  
 **Machine-readable**: `findings/data/merge_pattern_analysis.json`
 
