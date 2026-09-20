@@ -8,7 +8,11 @@ from typing import Dict, Any
 # Load environment variables (optional)
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    try:
+        load_dotenv()
+    except OSError:
+        # Owner-only .env; GITHUB_TOKEN may already be in the process env (Actions).
+        pass
 except ImportError:
     # dotenv not installed, continue without it
     pass
