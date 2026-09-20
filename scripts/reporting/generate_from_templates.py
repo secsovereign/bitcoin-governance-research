@@ -576,6 +576,33 @@ def ctx_frames(data: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def ctx_archive_gems(data: Dict[str, Any]) -> Dict[str, Any]:
+    rows = []
+    for g in data.get("gems") or []:
+        quote = (g.get("quote") or "").replace("|", "/")
+        if len(quote) < 60:
+            continue
+        if "following sections might be updated" in quote.lower():
+            continue
+        rows.append(
+            {
+                "era": g.get("era") or "",
+                "frame": g.get("frame") or "",
+                "pr": g.get("pr") if g.get("pr") is not None else "—",
+                "quote_short": quote[:220] + ("…" if len(quote) > 220 else ""),
+            }
+        )
+        if len(rows) >= 24:
+            break
+    return {
+        "generated_date": date.today().isoformat(),
+        "method": data.get("method"),
+        "n_candidates": data.get("n_candidates"),
+        "n_gems": data.get("n_gems"),
+        "gems": rows,
+    }
+
+
 def ctx_language(data: Dict[str, Any]) -> Dict[str, Any]:
     trends = ((data.get("terminology_evolution") or {}).get("terminology_trends") or {})
     terms = []
@@ -774,6 +801,12 @@ def generate_all() -> List[str]:
     frames = _maybe(analysis / "governance_frames.json") or _maybe(findings_data / "governance_frames.json")
     if frames:
         jobs.append(("GOVERNANCE_FRAMES.md", TEMPLATES / "GOVERNANCE_FRAMES.md.tpl", ctx_frames(frames)))
+
+    gems = _maybe(analysis / "archive_gems.json") or _maybe(findings_data / "archive_gems.json")
+    if gems:
+        jobs.append(
+            ("ARCHIVE_GEMS_INDEX.md", TEMPLATES / "ARCHIVE_GEMS.md.tpl", ctx_archive_gems(gems))
+        )
 
     for name, tpl, ctx in jobs:
         if not tpl.exists():

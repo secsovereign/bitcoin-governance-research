@@ -22,6 +22,10 @@
    - Multiplex identity (power is not portable)
    - Exit as selection, not collapse
 
+2b. **`ARCHIVE_GEMS.md`** ⭐ QUOTES THE FRAMES POINTED AT
+   - Satoshi, stalled BIPs, list → GitHub, process NACKs
+   - Machine list: `ARCHIVE_GEMS_INDEX.md`
+
 3. **`GLOSSARY_AND_CONTEXT.md`** ⭐ FOR NON-EXPERTS
    - Bitcoin Core terminology explained
    - ACK, NACK, maintainer, merge authority, etc.

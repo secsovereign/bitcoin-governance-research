@@ -93,6 +93,7 @@ def main():
         ("maintainer_premium.py", "Maintainer Premium (identity vs merits)"),
         ("author_prep_phase23_finish.py", "Author-prep sensitivity + closed-outsider sample"),
         ("stalled_proposal_dossiers.py", "Stalled Proposal Dossiers"),
+        ("archive_gems.py", "Archive gems (cited excerpts)"),
         ("bcap_state_of_mind.py", "BCAP State of Mind Analysis"),
         ("bcap_power_shift.py", "BCAP Power Shift Analysis"),
         ("bip_process_analysis.py", "BIP Process Analysis"),
