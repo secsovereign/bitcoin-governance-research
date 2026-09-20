@@ -54,9 +54,10 @@ def main() -> int:
             failed.append("irc")
 
     if not args.skip_github:
-        if run("scripts/data_collection/github_collector.py", "--prs-only") != 0:
+        gh_since = ["--updated-since"] if args.github_only else []
+        if run("scripts/data_collection/github_collector.py", "--prs-only", *gh_since) != 0:
             failed.append("github-prs")
-        if run("scripts/data_collection/github_collector.py", "--issues-only") != 0:
+        if run("scripts/data_collection/github_collector.py", "--issues-only", *gh_since) != 0:
             failed.append("github-issues")
         if run("scripts/data_collection/github_commits_collector.py") != 0:
             failed.append("github-commits")

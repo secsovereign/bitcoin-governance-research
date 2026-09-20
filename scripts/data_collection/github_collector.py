@@ -20,8 +20,13 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.config import config
+from src.utils.github_jsonl import (
+    aware_utc,
+    default_updated_since,
+    parse_iso_datetime,
+    rewrite_jsonl_by_number,
+)
 from src.utils.logger import setup_logger
-from src.utils.rate_limiter import RateLimiter
 from src.utils.paths import get_data_dir
 
 try:
@@ -31,6 +36,8 @@ except ImportError:
     print("Run: pip install PyGithub")
     sys.exit(1)
 
+
+from src.utils.rate_limiter import RateLimiter
 
 logger = setup_logger()
 
@@ -271,6 +278,83 @@ class GitHubCollector:
         
         logger.info(f"PR collection complete: {collected} new PRs collected, {skipped} skipped (already collected), {errors} errors")
     
+    def collect_updated_prs(self, since: datetime) -> int:
+        """Rewrite PRs with updated_at >= since. No full-dump backup. No get_files()."""
+        cutoff = aware_utc(since)
+        if cutoff is None:
+            raise ValueError("updated-since cutoff required")
+        logger.info(
+            f"Updating PRs with updated_at >= {cutoff.isoformat()} "
+            f"(no full dump backup, skip files)"
+        )
+        updates: Dict[int, Dict[str, Any]] = {}
+        pulls = self.repo.get_pulls(state="all", sort="updated", direction="desc")
+        collected = 0
+        errors = 0
+        for pr in pulls:
+            updated = aware_utc(pr.updated_at)
+            if updated is not None and updated < cutoff:
+                break
+            self.rate_limiter.wait_if_needed()
+            if collected % self._check_rate_limit_every == 0:
+                self._check_and_wait_for_rate_limit()
+            try:
+                pr_data = self._extract_pr_data(pr, include_files=False)
+            except Exception as e:
+                logger.error(f"Error extracting updated PR {pr.number}: {e}")
+                errors += 1
+                continue
+            num = pr_data.get("number")
+            if isinstance(num, int) and "error" not in pr_data:
+                updates[num] = pr_data
+                collected += 1
+                if collected % 50 == 0:
+                    logger.info(f"Fetched {collected} updated PRs (cutoff {cutoff.date()})")
+        n = rewrite_jsonl_by_number(self.prs_file, updates)
+        logger.info(
+            f"PR updated-since complete: fetched {collected}, wrote {n} lines, {errors} errors"
+        )
+        return collected
+
+    def collect_updated_issues(self, since: datetime) -> int:
+        """Rewrite issues with updated_at >= since. No full-dump backup."""
+        cutoff = aware_utc(since)
+        if cutoff is None:
+            raise ValueError("updated-since cutoff required")
+        logger.info(
+            f"Updating issues with updated_at >= {cutoff.isoformat()} (no full dump backup)"
+        )
+        updates: Dict[int, Dict[str, Any]] = {}
+        issues = self.repo.get_issues(state="all", sort="updated", direction="desc")
+        collected = 0
+        errors = 0
+        for issue in issues:
+            if issue.pull_request:
+                continue
+            updated = aware_utc(issue.updated_at)
+            if updated is not None and updated < cutoff:
+                break
+            self.rate_limiter.wait_if_needed()
+            if collected % self._check_rate_limit_every == 0:
+                self._check_and_wait_for_rate_limit()
+            try:
+                issue_data = self._extract_issue_data(issue)
+            except Exception as e:
+                logger.error(f"Error extracting updated issue {issue.number}: {e}")
+                errors += 1
+                continue
+            num = issue_data.get("number")
+            if isinstance(num, int) and "error" not in issue_data:
+                updates[num] = issue_data
+                collected += 1
+                if collected % 50 == 0:
+                    logger.info(f"Fetched {collected} updated issues (cutoff {cutoff.date()})")
+        n = rewrite_jsonl_by_number(self.issues_file, updates)
+        logger.info(
+            f"Issue updated-since complete: fetched {collected}, wrote {n} lines, {errors} errors"
+        )
+        return collected
+
     def collect_prs_limited(self, limit: int):
         """Collect a limited number of PRs for testing."""
         logger.info(f"Starting LIMITED PR collection ({limit} PRs) from {self.repo_owner}/{self.repo_name}")
@@ -294,7 +378,7 @@ class GitHubCollector:
         
         logger.info(f"Limited PR collection complete: {collected} PRs collected")
     
-    def _extract_pr_data(self, pr) -> Dict[str, Any]:
+    def _extract_pr_data(self, pr, include_files: bool = True) -> Dict[str, Any]:
         """Extract all relevant data from a PR object."""
         try:
             # Basic PR data
@@ -362,19 +446,21 @@ class GitHubCollector:
                 for comment in review_comments
             ]
             
-            # Files changed
-            self.rate_limiter.wait_if_needed()
-            files = pr.get_files()
-            pr_data['files'] = [
-                {
-                    'filename': file.filename,
-                    'additions': file.additions,
-                    'deletions': file.deletions,
-                    'changes': file.changes,
-                    'status': file.status,
-                }
-                for file in files
-            ]
+            if include_files:
+                self.rate_limiter.wait_if_needed()
+                files = pr.get_files()
+                pr_data['files'] = [
+                    {
+                        'filename': file.filename,
+                        'additions': file.additions,
+                        'deletions': file.deletions,
+                        'changes': file.changes,
+                        'status': file.status,
+                    }
+                    for file in files
+                ]
+            else:
+                pr_data['files'] = []
             
             # Calculate derived fields
             if pr_data['created_at'] and pr_data['merged_at']:
@@ -640,7 +726,15 @@ def main():
                        help='Only collect PRs, skip issues')
     parser.add_argument('--issues-only', action='store_true',
                        help='Only collect issues, skip PRs')
-    
+    parser.add_argument(
+        '--updated-since',
+        nargs='?',
+        const='auto',
+        default=None,
+        help='Rewrite PRs/issues updated at or after this ISO time. '
+        'Bare flag uses dump mtime (catch-up) or 48h overlap. No full-dump backup.',
+    )
+
     args = parser.parse_args()
     
     collector = GitHubCollector()
@@ -648,11 +742,23 @@ def main():
     logger.info("Starting GitHub data collection")
     if args.limit:
         logger.info(f"LIMIT MODE: Collecting only {args.limit} items (for testing)")
+
+    since = None
+    if args.updated_since:
+        if args.updated_since == "auto":
+            dump = collector.prs_file if not args.issues_only else collector.issues_file
+            since = default_updated_since(dump)
+            logger.info(f"updated-since auto cutoff {since.isoformat()} from {dump}")
+        else:
+            since = parse_iso_datetime(args.updated_since)
+            logger.info(f"updated-since {since.isoformat()}")
     
     # Collect PRs
     if not args.issues_only:
         if args.limit:
             collector.collect_prs_limited(args.limit)
+        elif since is not None:
+            collector.collect_updated_prs(since)
         else:
             collector.collect_all_prs()
     
@@ -660,6 +766,10 @@ def main():
     if not args.prs_only:
         if args.limit:
             collector.collect_issues_limited(args.limit)
+        elif since is not None:
+            if args.updated_since == "auto":
+                since = default_updated_since(collector.issues_file)
+            collector.collect_updated_issues(since)
         else:
             collector.collect_all_issues()
     
