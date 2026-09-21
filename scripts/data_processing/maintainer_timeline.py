@@ -30,6 +30,7 @@ from src.utils.logger import setup_logger  # noqa: E402
 from src.utils.maintainers import (  # noqa: E402
     load_canonical_maintainers,
     normalize_login,
+    write_merge_capability,
 )
 from src.utils.paths import get_data_dir  # noqa: E402
 
@@ -71,6 +72,7 @@ class MaintainerTimelineTracker:
         self._apply_merge_inference()
         self._save_timeline()
         self._save_summary()
+        self._save_capability()
         logger.info("Identified %s maintainers", len(self.maintainer_timeline))
         logger.info("=" * 60)
 
@@ -274,6 +276,16 @@ class MaintainerTimelineTracker:
         path = self.maintainers_dir / "maintainers_summary.json"
         path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
         logger.info("Wrote %s (%s maintainers)", path, len(maintainers))
+
+    def _save_capability(self) -> None:
+        counts = {login: len(merges) for login, merges in self.user_merges.items()}
+        payload = write_merge_capability(counts, generated_from=str(self._resolve_prs_file() or ""))
+        logger.info(
+            "Merge capability: %s key holders, %s roster without keys, %s historical keys not on roster",
+            payload["counts"]["unique_mergers"],
+            payload["counts"]["roster_without_keys"],
+            payload["counts"]["historical_keys_not_on_roster"],
+        )
 
 
 def main() -> int:

@@ -452,7 +452,10 @@ class ContributorAnalyzer:
                 for bucket, authors_list in merge_rate_buckets.items()
             },
             'maintainer_relationships': {
-                'note': 'Analysis excludes maintainers - only non-maintainer contributors with 5+ merged PRs',
+                'note': (
+                    'Non-maintainer author-success only (5+ authored PRs that a merge-key '
+                    'holder merged). Non-maintainers cannot merge; 0 as merger is lack of keys.'
+                ),
                 'single_maintainer_dominant': {
                     'total': len(maintainer_relationship['single_maintainer_dominant']),
                     'definition': 'One maintainer merged 50%+ of their PRs (non-maintainers only)',

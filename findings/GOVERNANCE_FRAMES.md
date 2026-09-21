@@ -77,7 +77,8 @@ Detail: `CROSS_PLATFORM_NETWORKS.md`
 Self-merge among maintainer-authored merges (all-time): 25.5%.
 
 **Cite as**: who the current filter is, and which authors funnel through them.  
-**Do not cite**: all-time laanwj share as the present picture.
+**Do not cite**: all-time laanwj share as the present picture.  
+**Do not cite**: a reviewer’s 0 merges as unused privilege. They cannot merge unless they appear as GitHub `merged_by`.
 
 Detail: `MERGE_CONCENTRATION_DEPUTIES_REPORT.md`, `MERGE_PATTERN_BREAKDOWN.md`
 
@@ -109,20 +110,20 @@ Detail: `CROSS_REPO_COMPARISON.md`, `BIP_PROCESS_ANALYSIS.md`
 
 ## 4. Exit as selection, not collapse
 
-**90.7%** of 7,827 contributors have no activity in 365 days (725 still active). That headline is true and misleading until split:
+**89.3%** of 7,971 contributors have no activity in 365 days (850 still active). That headline is true and misleading until split:
 
 | Segment | n | 1-year exit |
 |---------|--:|------------:|
-| All contributors | 7,827 | 90.7% |
-| Participants only (never authored a PR) | 5,235 | 95.3% |
-| One-time (exactly 1 activity) | — | 92.9% (42.2% of all) |
-| PR authors | 2,592 | 81.6% |
-| High-quality authors (50%+ merge) | 873 | 83.0% |
-| Established authors (5+ merged PRs) | 203 | 58.1% |
-| … of whom maintainers | — | 23.8% |
-| … of whom non-maintainers | — | 62.1% |
+| All contributors | 7,971 | 89.3% |
+| Participants only (never authored a PR) | 5,356 | 93.3% |
+| One-time (exactly 1 activity) | — | 91.4% (42.4% of all) |
+| PR authors | 2,615 | 81.1% |
+| High-quality authors (50%+ merge) | 879 | 82.3% |
+| Established authors (5+ authored PRs a key holder merged) | 207 | 56.0% |
+| … of whom maintainers | — | 19.0% |
+| … of whom non-maintainers | — | 60.2% |
 
-The process keeps a small continuing set. High merge-rate authors still leave at 83.0% — quality does not retain. Maintainers among the established set leave much less.
+The process keeps a small continuing set. High merge-rate authors still leave at 82.3% — quality does not retain. Maintainers among the established set leave much less.
 
 **Cite as**: selection into a thin continuing core.  
 **Do not cite**: 91% exit as “the project is dying.”

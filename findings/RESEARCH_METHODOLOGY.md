@@ -15,23 +15,25 @@
 
 ### Maintainer List Source
 
-**Total Maintainers Identified**: 20
+**Total Maintainers Identified**: 22 GitHub logins (21 humans) on the roster. Merge keys are a separate set (23 unique `merged_by`).
 
 **Source Documentation**: See `MAINTAINER_LIST_SOURCE.md` for complete documentation.
 
 **Primary Sources**:
 1. **GitHub Repository Analysis** (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
 2. **Historical Commit Records** (2010-2026): Analyzed 9,793 maintainer merged PRs to identify all users who have merged PRs
-3. **External Research Cross-Reference**: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 21 (more comprehensive, includes those with 0 merges)
+3. **External Research Cross-Reference**: Stanford JBLP (2024) reports "13 maintainers" - our roster is 22 logins / 21 humans. Roster ≠ merge keys (23 unique `merged_by`).
 
 **Validation Attempts**:
 - ⚠️ **MAINTAINERS File**: Bitcoin Core does not maintain a MAINTAINERS file in the repository
 - ⚠️ **GitHub API**: Collaborator data requires API permissions (not publicly accessible)
 - ✅ **Historical Analysis**: Verified through merge activity (9,793 maintainer merged PRs)
 
-**Maintainer Categories**:
-- **17 Active Mergers**: Maintainers who have merged at least one PR; 2 non-maintainers with historical merge access
-- **5 Maintainers Who Never Merged**: Identified as maintainers but have never merged a PR (may have other roles: reviewers, advisors, inactive)
+**Person roles** (`data/maintainers/merge_capability.json`):
+- **Merge keys**: 23 unique GitHub `merged_by` logins. These are the only people who can merge.
+- **Roster without keys**: 8 canonical logins with no observed `merged_by`. Do not cite as unused privilege.
+- **Cannot merge**: everyone else. They have not merged because they cannot. Reviewer/ACK/author is not merge authority.
+- Non-maintainer “merge rate” is author-success (a key holder merged their PR).
 
 **Acknowledgment**: Maintainer list is based on observable merge activity and historical records. Bitcoin Core does not maintain a public MAINTAINERS file. If maintainers are missing or incorrectly included, analysis would need adjustment. See `MAINTAINER_LIST_SOURCE.md` for complete documentation.
 
@@ -117,14 +119,15 @@ This document provides a comprehensive, incremental analysis of the research met
 **Complete Documentation**: See `MAINTAINER_LIST_SOURCE.md` for full source documentation, validation attempts, and limitations.
 
 **Summary**:
-- **Total Maintainers Identified**: 20
-- **17 Active Mergers**: Maintainers who have merged at least one PR; 2 non-maintainers with historical merge access
-- **5 Maintainers Who Never Merged**: Identified as maintainers but have never merged a PR (may have other roles: reviewers, advisors, inactive)
+- **Roster**: 22 GitHub logins / 21 humans (`canonical_maintainers.json`)
+- **Merge keys**: 23 unique `merged_by` logins (`merge_capability.json`). Only these people can merge.
+- **Roster without keys**: 8 logins. Do not cite as unused privilege.
+- **Cannot merge**: everyone else. Zero as merger is lack of keys. Reviewer/ACK is not merge authority.
 
 **Primary Sources**:
 1. GitHub Repository Analysis (2024-2025): Analyzed Bitcoin Core repository for users with merge authority
-2. Historical Commit Records (2010-2026): Analyzed 9,793 maintainer merged PRs to identify all users who have merged PRs
-3. External Research Cross-Reference: Stanford JBLP (2024) reports "13 maintainers" - our analysis identified 21 (more comprehensive, includes those with 0 merges)
+2. Historical Commit Records (2010-2026): Analyzed GitHub `merged_by` on merged PRs (23 unique key holders)
+3. External Research Cross-Reference: Stanford JBLP (2024) reports "13 maintainers" - our roster is 22 logins / 21 humans. Roster ≠ merge keys.
 
 **Validation Attempts**:
 - ⚠️ **MAINTAINERS File**: Bitcoin Core does not maintain a MAINTAINERS file in the repository
@@ -398,7 +401,7 @@ This document provides a comprehensive, incremental analysis of the research met
 **Enrichment Steps**:
 1. **PR Classification**: Classify PRs by importance (Trivial, Low, Normal, High, Critical)
 2. **Review Quality Scoring**: Assign quality scores to reviews (0.2-1.0)
-3. **Maintainer Identification**: Tag maintainers vs. non-maintainers
+3. **Maintainer Identification**: Tag roster vs merge keys vs cannot-merge (`author_role`, `author_has_merge_keys`, `author_cannot_merge`)
 4. **Temporal Markers**: Add period classifications (historical vs. recent)
 
 **Output**: Enriched data files with additional analysis-ready fields
@@ -668,7 +671,7 @@ def calculate_gini(values: List[float]) -> float:
 - **Quantitative metrics**: Merges, authored PRs, reviews given, self-merges, zero-review merges
 - **Qualitative insights**: Founders, early/modern, prolific, high self-merge/zero-review, longest tenure
 
-**Result**: 21 maintainers identified, 17 with merge activity, 4 with 0 merges (may have other roles)
+**Result**: Roster vs merge keys are different sets. 23 unique `merged_by`; 8 roster logins have no observed keys (not unused privilege).
 
 #### 4.5.4 Contributor Timeline Analysis
 

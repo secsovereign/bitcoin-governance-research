@@ -49,33 +49,53 @@
 
 ---
 
-### Maintainer
+### Maintainer (roster)
 
-**What it means**: A person with **merge authority** - the ability to merge code into Bitcoin Core's main branch.
+**What it means in this dataset**: A GitHub login on the **canonical roster** (`data/maintainers/canonical_maintainers.json`). That is a social/historical label used for maintainer-vs-outsider *author* splits.
 
-**How many**: Currently ~15-20 people have merge authority (varies over time).
+**It is not automatically merge keys.** Some roster logins never appear as GitHub `merged_by` in this dump (`roster_without_keys` in `data/maintainers/merge_capability.json`). Do not cite that as “they had keys and chose not to merge.”
 
-**How they get status**: Not publicly documented. Appears to be by invitation/consensus of existing maintainers.
+**How they get status**: Not publicly documented. GitHub collaborators API is closed. There is no in-tree `MAINTAINERS` file.
 
-**Why it matters**: Maintainers have exclusive privileges:
-- Can merge their own code (self-merge)
-- Can merge others' code
-- Reviews from maintainers carry more weight
-- No formal accountability mechanism visible
+**In our analysis**: `author_is_maintainer` / ever-maintainer is the roster identity label. Merge privilege is a separate field.
 
-**In our analysis**: We compare maintainer vs non-maintainer patterns to reveal power asymmetry.
+---
+
+### Merge keys (observed)
+
+**What it means**: The technical ability to land code on `bitcoin/bitcoin` master. In this dump that is **only** logins that appear as GitHub `merged_by`.
+
+**Who has them**: 23 unique `merged_by` logins. 14 of 22 roster logins. Plus historical holders not on the current roster (`jgarzik`, `meshcollider`, and a handful of early one-off mergers).
+
+**Everyone else cannot merge.** A zero as merger is lack of keys, not unused privilege. Reviewer, ACK, commenter, BIP author, Delving poster — none of those grant keys.
+
+**In our analysis**: `person_role` / `has_merge_keys` / `cannot_merge`. See `merge_capability.json`.
+
+---
+
+### Reviewer
+
+**What it means**: Someone who left a GitHub review or an ACK/NACK. Behavioral, not a permission bit.
+
+**Why it matters**: High-volume reviewers are not merge-key holders unless they also appear as `merged_by`. Co-reviewer recurrence is observational, not deputy rights.
+
+---
+
+### Author-success vs merging
+
+**Non-maintainer “merge rate”** is the share of *their authored PRs* that a **key holder** merged. They did not merge. They cannot. 0% self-merge is structural.
+
+**Maintainer self-merge** is a key holder merging their own PR — an exclusive privilege.
 
 ---
 
 ### Merge Authority
 
-**What it means**: The technical ability to merge code into Bitcoin Core's main branch. Only maintainers have this.
+**What it means**: Same as merge keys. Only observed `merged_by` logins have it.
 
-**Why it matters**: Merge authority = final say over what code enters Bitcoin Core. This is concentrated in ~15-20 people.
-
-**In our analysis**: We show that merge authority is:
-- Exclusive to maintainers (non-maintainers: 0%)
-- Concentrated (top 3 = 81% of merges)
+**In our analysis**: Merge authority is:
+- Exclusive to key holders (everyone else: cannot merge)
+- Concentrated (top 3 ≈ 81% of merges)
 - Unaccountable (no formal challenge mechanism)
 
 ---

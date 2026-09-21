@@ -34,7 +34,7 @@ Bitcoin Core has experienced **{{retention.exit_rate_1yr|pct}} contributor exit*
 - **{{quality.high_quality_authors|int}} authors** with 50%+ PR merge rate
 - Exit rate: **{{quality.high_quality_exit_rate_1yr|pct}}**
 
-### Established Authors (5+ merged PRs)
+### Established Authors (5+ authored PRs a key holder merged)
 
 - **{{established_authors.total|int}} authors** (non-maintainers: {{established_authors.non_maintainers|int}}, maintainers: {{established_authors.maintainers|int}})
 - Exit rate: **{{established_authors.exit_rate_1yr|pct}}** (non-maintainers {{established_authors.non_maintainer_exit_rate|pct}}, maintainers {{established_authors.maintainer_exit_rate|pct}})

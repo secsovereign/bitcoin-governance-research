@@ -20,7 +20,7 @@ sys.path.insert(0, str(project_root))
 from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.mailing_lists import iter_emails
-from src.utils.maintainers import canonicalize_actor, canonicalize_nick
+from src.utils.maintainers import canonicalize_actor, canonicalize_nick, person_role
 import re
 
 logger = setup_logger()
@@ -479,6 +479,12 @@ class UserIdentityResolver:
         for unified_id, profile in self.unified_profiles.items():
             # Add maintainer status
             profile['is_maintainer'] = unified_id in self.maintainers
+            github = profile.get('github_username')
+            profile['person_role'] = person_role(github) if github else (
+                'roster_without_keys' if unified_id in self.maintainers else 'cannot_merge'
+            )
+            profile['has_merge_keys'] = profile['person_role'] == 'merge_keys'
+            profile['cannot_merge'] = profile['person_role'] == 'cannot_merge'
             
             # Calculate activity metrics
             profile['total_prs'] = len(profile.get('prs', []))

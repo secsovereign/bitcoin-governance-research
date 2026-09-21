@@ -104,7 +104,8 @@ def compose() -> Dict[str, Any]:
             "hidden_delving": (hidden.get("delving_only_influencers") or [])[:8],
             "bip_proposers": (bip.get("proposer_analysis") or {}).get("total_proposers"),
             "reading": (
-                "The unit is person-in-channel. BIP-repo activity is a weak predictor of Core merge keys."
+                "The unit is person-in-channel. BIP-repo activity is a weak predictor of Core merge keys. "
+                "A reviewer with 0 merges cannot merge; that zero is lack of keys, not unused privilege."
             ),
         },
         "exit_as_selection": {

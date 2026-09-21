@@ -58,7 +58,8 @@ Detail: `CROSS_PLATFORM_NETWORKS.md`
 Self-merge among maintainer-authored merges (all-time): {{informal_org_chart.self_merge_rate|pct}}.
 
 **Cite as**: who the current filter is, and which authors funnel through them.  
-**Do not cite**: all-time laanwj share as the present picture.
+**Do not cite**: all-time laanwj share as the present picture.  
+**Do not cite**: a reviewer’s 0 merges as unused privilege. They cannot merge unless they appear as GitHub `merged_by`.
 
 Detail: `MERGE_CONCENTRATION_DEPUTIES_REPORT.md`, `MERGE_PATTERN_BREAKDOWN.md`
 
@@ -99,7 +100,7 @@ Detail: `CROSS_REPO_COMPARISON.md`, `BIP_PROCESS_ANALYSIS.md`
 | One-time (exactly 1 activity) | — | {{exit_as_selection.one_time_exit|pct}} ({{exit_as_selection.one_time_share|pct}} of all) |
 | PR authors | {{exit_as_selection.authors_total|int}} | {{exit_as_selection.authors_exit|pct}} |
 | High-quality authors (50%+ merge) | {{exit_as_selection.high_quality_authors|int}} | {{exit_as_selection.high_quality_exit|pct}} |
-| Established authors (5+ merged PRs) | {{exit_as_selection.established_total|int}} | {{exit_as_selection.established_exit|pct}} |
+| Established authors (5+ authored PRs a key holder merged) | {{exit_as_selection.established_total|int}} | {{exit_as_selection.established_exit|pct}} |
 | … of whom maintainers | — | {{exit_as_selection.established_maint_exit|pct}} |
 | … of whom non-maintainers | — | {{exit_as_selection.established_non_exit|pct}} |
 

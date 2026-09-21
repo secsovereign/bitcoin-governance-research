@@ -46,6 +46,8 @@ This share uses the premium timeline (`is_maintainer_at` on the enriched frame).
 | Prior merges ≥5 | 67.4% | 68.6% |
 | Top-20 volume authors | 69.8% | 71.1% |
 
+Non-maintainer “merge rate” is **author-success**: a merge-key holder merged their PR. They cannot merge. 0% self-merge is structural, not inactivity.
+
 ### 3. Large outsider PRs almost never land
 
 Closed ≥2k LOC: non-maint **7.6%** all-time / **5.0%** since 2022.

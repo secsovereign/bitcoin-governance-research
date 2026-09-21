@@ -71,7 +71,7 @@ def validate_maintainer_timeline():
         timeline = data.get('timeline', {})
         
         # Check for required fields
-        # Note: Maintainers with 0 merges are valid (they may have other roles)
+        # Roster-without-keys is valid. Do not treat merge_count 0 as unused privilege.
         for maintainer, info in timeline.items():
             total_merges = info.get('total_merges', 0)
             
@@ -213,17 +213,14 @@ def validate_maintainer_list_consistency():
             timeline = data.get('timeline', {})
             timeline_maintainers = set(timeline.keys())
             
-            # Check for missing maintainers (case-insensitive)
-            # Note: Maintainers with 0 merges won't have join_date but should still be in timeline
+            # Roster members with no observed merged_by have no join_date from merge activity.
+            # That is missing keys in this dump, not "they chose not to merge."
             expected_lower = {m.lower() for m in expected_maintainers}
             timeline_lower = {m.lower() for m in timeline_maintainers}
             missing = expected_lower - timeline_lower
             
-            # Check if missing maintainers actually have 0 merges (then it's OK they're missing join_date)
             if missing:
-                # This is actually OK - maintainers with 0 merges may not appear in timeline
-                # They're still maintainers but just never merged PRs
-                warnings.append(f"Maintainer timeline missing (may have 0 merges): {missing}")
+                warnings.append(f"Maintainer timeline missing (roster without observed merge keys): {missing}")
             
             # Check for extra maintainers
             extra = {m.lower() for m in timeline_maintainers} - {m.lower() for m in expected_maintainers}

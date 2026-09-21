@@ -41,7 +41,14 @@ from src.utils.logger import setup_logger
 from src.utils.paths import get_data_dir, get_analysis_dir
 from src.utils.data_quality import DataQualityTracker
 from src.utils.jsonl_merge import append_jsonl, iter_jsonl, load_jsonl_keys
-from src.utils.maintainers import canonicalize_actor, is_maintainer_at, normalize_login
+from src.utils.maintainers import (
+    canonicalize_actor,
+    is_maintainer_at,
+    normalize_login,
+    person_role,
+    ROLE_CANNOT_MERGE,
+    ROLE_MERGE_KEYS,
+)
 
 logger = setup_logger()
 
@@ -287,8 +294,12 @@ class DataEnricher:
         """Tag maintainer involvement in PR/issue."""
         tags = {
             'author_is_maintainer': False,
+            'author_has_merge_keys': False,
+            'author_cannot_merge': False,
+            'author_role': ROLE_CANNOT_MERGE,
             'merged_by_maintainer': False,
             'maintainer_reviewers': [],
+            'outsider_reviewers': [],
             'maintainer_commenters': [],
             'any_maintainer_involvement': False
         }
@@ -301,9 +312,14 @@ class DataEnricher:
             return normalize_login(mapped or raw)
 
         author = _login(item.get('author'))
-        if author and self._is_maintainer(author, item.get('created_at')):
-            tags['author_is_maintainer'] = True
-            tags['any_maintainer_involvement'] = True
+        if author:
+            role = person_role(author)
+            tags['author_role'] = role
+            tags['author_has_merge_keys'] = role == ROLE_MERGE_KEYS
+            tags['author_cannot_merge'] = role == ROLE_CANNOT_MERGE
+            if self._is_maintainer(author, item.get('created_at')):
+                tags['author_is_maintainer'] = True
+                tags['any_maintainer_involvement'] = True
 
         merged_by = _login(item.get('merged_by'))
         if merged_by and self._is_maintainer(merged_by, item.get('merged_at')):
@@ -312,10 +328,15 @@ class DataEnricher:
 
         for review in item.get('reviews', []):
             reviewer = _login(review.get('author'))
-            if reviewer and self._is_maintainer(reviewer, review.get('submitted_at')):
+            if not reviewer:
+                continue
+            if self._is_maintainer(reviewer, review.get('submitted_at')):
                 if reviewer not in tags['maintainer_reviewers']:
                     tags['maintainer_reviewers'].append(reviewer)
                     tags['any_maintainer_involvement'] = True
+            elif person_role(reviewer) == ROLE_CANNOT_MERGE:
+                if reviewer not in tags['outsider_reviewers']:
+                    tags['outsider_reviewers'].append(reviewer)
 
         for comment in item.get('comments', []):
             commenter = _login(comment.get('author'))

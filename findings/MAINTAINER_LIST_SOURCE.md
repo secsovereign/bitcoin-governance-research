@@ -1,7 +1,7 @@
 # Maintainer List Source Documentation
 
-**Date**: 2026-09-10  
-**Purpose**: Document the source and validation of the maintainer list used in all analyses
+**Date**: 2026-09-20  
+**Purpose**: Document the source and validation of the maintainer list used in all analyses. Roster ≠ merge keys.
 
 ---
 
@@ -62,8 +62,8 @@
 
 3. **External Research Cross-Reference**
    - Stanford JBLP (2024): Reports "13 maintainers over the past decade"
-   - Our analysis: Identified 21 maintainers (more comprehensive, includes those with 0 merges)
-   - Difference: We include maintainers who may have had other roles (reviewers, advisors) even if they never merged PRs
+   - Our analysis: 22 GitHub logins (21 humans) on the canonical roster; 23 unique `merged_by` logins have merge keys
+   - Difference: roster includes logins with no observed keys; merge keys include historical holders not on the current roster. These are different sets.
 
 ### Validation Attempts
 
@@ -90,52 +90,42 @@
 
 4. **Historical Analysis** ✅ **VERIFIED**
    - Verified maintainer status through merge activity (9,793 maintainer merged PRs)
-   - Identified 17 people who have actually merged PRs (from maintainer list)
-   - Identified 4 additional maintainers who have never merged (may have other roles)
+   - Identified 8 roster logins with no observed `merged_by` (not unused privilege — no keys in this dump)
+   - Identified historical key holders not on the current roster (`jgarzik`, `meshcollider`, plus early one-offs)
    - **Cross-reference**: Top contributors from GitHub API match active mergers in our analysis
 
 ---
 
-## Maintainer Categories
+## Maintainer vs merge keys vs everyone else
 
-### Active Mergers (17 people)
-**Definition**: People who have merged at least one PR
+**Pin**: only observed GitHub `merged_by` logins have merge keys. Everyone else **cannot merge**. A zero as merger is lack of keys, not unused privilege. Reviewer/ACK is not merge authority. Roster membership is not the same set as merge keys. Machine-readable: `data/maintainers/merge_capability.json`.
 
-**List**:
-- laanwj (3,208 merges)
-- fanquake (2,378 merges)
-- maflcko (1,891 merges)
-- sipa (752 merges)
-- hebasto (868 merges)
-- achow101 (361 merges)
-- jnewbery (314 merges)
-- theuni (294 merges)
-- thebluematt (292 merges)
-- luke-jr (282 merges)
-- ryanofsky (273 merges)
-- jonasschnelli (260 merges)
-- jonatack (253 merges)
-- promag (204 merges)
-- gavinandresen (180 merges)
-- glozow (137 merges)
-- TheCharlatan
+| Role | Meaning | In this dump |
+|------|---------|--------------|
+| **Merge keys** | Login appears as `merged_by` | 23 unique mergers |
+| **Roster maintainer** | Canonical `github_logins` | 22 logins / 21 humans |
+| **Roster without keys** | On roster, never `merged_by` | 8 logins |
+| **Cannot merge** | Everyone else | Reviewers, authors, commenters |
 
-**Plus 2 non-maintainers with historical merge access** (identified through merge activity analysis)
+Non-maintainer “merge rate” in other reports is **author-success** (a key holder merged their PR), never that they merged.
 
-### Maintainers Who Never Merged (4 people)
-**Definition**: Identified as maintainers but have never merged a PR
+### Observed merge-key holders (23)
 
-**List**:
-- instagibbs
-- gmaxwell
-- petertodd
-- sjors
+High volume: `laanwj` (5717), `fanquake` (3797), `maflcko` (3349), `achow101` (1164), `gavinandresen` (564), `sipa` (545), `glozow` (313), `jgarzik` (286), `sedited` (262), `jonasschnelli` (234), `meshcollider` (177), `ryanofsky` (159), `hebasto` (121), `gmaxwell` (104).
 
-**Possible Roles**:
-- Code reviewers
-- Advisors
-- Inactive status
-- Other maintainer responsibilities (not merge authority)
+Also on roster with keys: `thebluematt` (2), `luke-jr` (1).
+
+Historical keys **not** on the current roster: `jgarzik`, `meshcollider`, plus early one-offs (`lost-tty`, `alexwaters`, `dooglus`, `rspigler`, `alexanderkjeldaas`, `codeshark`, `sassame`). They had keys when they merged. They are not “non-maintainers who mysteriously merged.”
+
+### Roster without observed keys (8)
+
+`instagibbs`, `jnewbery`, `jonatack`, `petertodd`, `promag`, `sjors`, `thecharlatan`, `theuni`.
+
+Do **not** cite as unused merge privilege. This dump has no `merged_by` for them. `thecharlatan` is the pre-rename GitHub login; keys in this dump sit on `sedited`.
+
+### Current merge-key users (merged since 2023)
+
+fanquake, achow101, sedited, glozow, ryanofsky, hebasto, maflcko.
 
 ---
 
@@ -165,16 +155,16 @@
 **Acknowledgment**: 
 - Bitcoin Core does not maintain a public MAINTAINERS file
 - GitHub API collaborator data is not publicly accessible
-- Some maintainers may have other roles (reviewers, advisors) even if they never merge PRs
-- If maintainers are missing or incorrectly included, analysis would need adjustment
+- Some roster logins have no observed `merged_by`; do not cite that as unused privilege
+- Everyone else cannot merge. Reviewer/author status does not grant keys.
 
 **Validation**:
-- ✅ 17 maintainers have actually merged PRs (verified through data)
-- ✅ 21 maintainers identified (includes those with 0 merges)
-- ✅ Top contributors from GitHub API match our active maintainer list
+- ✅ 23 unique `merged_by` logins have merge keys (`merge_capability.json`)
+- ✅ 14 of 22 roster logins have observed keys; 8 do not
+- ✅ Top contributors from GitHub API match active merge-key holders
 - ✅ No MAINTAINERS file exists in repository (verified via GitHub API)
 - ⚠️ Collaborator list requires push access (cannot verify via API)
-- ✅ External research (Stanford JBLP) reports 13 maintainers - our list is more comprehensive
+- ✅ External research (Stanford JBLP) reports 13 maintainers — our roster is a broader social label, not a larger key set
 
 ---
 

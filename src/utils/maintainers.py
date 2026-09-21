@@ -254,6 +254,18 @@ def _parse_dt(value: Optional[str]) -> Optional[datetime]:
         return None
 
 
+ROLE_MERGE_KEYS = "merge_keys"
+ROLE_ROSTER_WITHOUT_KEYS = "roster_without_keys"
+ROLE_CANNOT_MERGE = "cannot_merge"
+
+PERSON_ROLE_PIN = (
+    "Only observed GitHub merged_by logins have merge keys. "
+    "Everyone else cannot merge: a zero as merger is lack of keys, not unused privilege. "
+    "Non-maintainer 'merge rate' is author-success (a key holder merged their PR). "
+    "Reviewer/ACK is not merge authority. Roster membership is not the same set as merge keys."
+)
+
+
 def is_maintainer_at(
     login: Optional[str],
     when: Optional[str] = None,
@@ -261,11 +273,14 @@ def is_maintainer_at(
     *,
     require_active_period: bool = False,
 ) -> bool:
-    """Return whether ``login`` is a maintainer.
+    """Return whether ``login`` is on the maintainer roster (ever-maintainer).
 
-    Default behavior matches historical analyses: membership in the
-    canonical/timeline set (ever-maintainer). If ``require_active_period``
-    is True and periods exist, require ``when`` to fall inside a period.
+    This is the identity label used by published maintainer-vs-outsider splits.
+    It is **not** proof of merge keys. Use ``person_role`` / ``has_merge_keys``.
+
+    Default: membership in the canonical/timeline set. If
+    ``require_active_period`` is True and periods exist, require ``when``
+    to fall inside a period.
     """
     key = normalize_login(login)
     if not key:
@@ -303,3 +318,143 @@ def is_maintainer_at(
         if start <= item_date <= end:
             return True
     return False
+
+
+_capability_cache: Optional[Dict[str, Any]] = None
+
+
+def merge_capability_path() -> Path:
+    return _maintainers_dir() / "merge_capability.json"
+
+
+def load_merge_capability() -> Dict[str, Any]:
+    """Observed merge-key holders vs roster vs cannot-merge."""
+    global _capability_cache
+    if _capability_cache is not None:
+        return _capability_cache
+    path = merge_capability_path()
+    if not path.exists():
+        _capability_cache = {
+            "pin": PERSON_ROLE_PIN,
+            "observed_mergers": {},
+            "merge_key_holders": [],
+            "roster_without_keys": [],
+            "historical_keys_not_on_roster": [],
+        }
+        return _capability_cache
+    _capability_cache = json.loads(path.read_text(encoding="utf-8"))
+    return _capability_cache
+
+
+def load_observed_merger_set() -> Set[str]:
+    data = load_merge_capability()
+    holders = data.get("merge_key_holders") or []
+    if holders:
+        return {str(x).strip().lower() for x in holders if x}
+    observed = data.get("observed_mergers") or {}
+    return {str(k).strip().lower() for k, n in observed.items() if n}
+
+
+def has_merge_keys(login: Optional[str]) -> bool:
+    """True only if this login appears as GitHub ``merged_by`` in the dump."""
+    key = normalize_login(login)
+    return bool(key) and key in load_observed_merger_set()
+
+
+def person_role(login: Optional[str]) -> str:
+    """Classify a GitHub login into merge_keys / roster_without_keys / cannot_merge."""
+    key = normalize_login(login)
+    if not key:
+        return ROLE_CANNOT_MERGE
+    if has_merge_keys(key):
+        return ROLE_MERGE_KEYS
+    if key in load_maintainer_login_set():
+        return ROLE_ROSTER_WITHOUT_KEYS
+    return ROLE_CANNOT_MERGE
+
+
+def cannot_merge(login: Optional[str]) -> bool:
+    """True for people who have not merged because they cannot (no observed keys)."""
+    return person_role(login) == ROLE_CANNOT_MERGE
+
+
+def write_merge_capability(
+    counts: Dict[str, int],
+    generated_from: str = "",
+) -> Dict[str, Any]:
+    """Write ``merge_capability.json`` from login → merge-count."""
+    global _capability_cache
+    roster = load_maintainer_login_set()
+    holders = sorted(k for k, n in counts.items() if n)
+    roster_without = sorted(roster - set(holders))
+    historical = sorted(set(holders) - roster)
+    payload = {
+        "generated_from": generated_from,
+        "pin": PERSON_ROLE_PIN,
+        "roles": {
+            ROLE_MERGE_KEYS: (
+                "Login appears as GitHub merged_by. Technical ability to land "
+                "code on bitcoin/bitcoin. The only people who can merge."
+            ),
+            ROLE_ROSTER_WITHOUT_KEYS: (
+                "On the canonical maintainer roster but never appears as "
+                "merged_by in this dump. Do not cite as unused privilege."
+            ),
+            ROLE_CANNOT_MERGE: (
+                "Not in observed merged_by. They have not merged because they "
+                "cannot. Reviewer/author/commenter status does not grant keys."
+            ),
+        },
+        "observed_mergers": dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))),
+        "merge_key_holders": holders,
+        "roster_without_keys": roster_without,
+        "historical_keys_not_on_roster": historical,
+        "counts": {
+            "unique_mergers": len(holders),
+            "roster_logins": len(roster),
+            "roster_with_keys": len(roster & set(holders)),
+            "roster_without_keys": len(roster_without),
+            "historical_keys_not_on_roster": len(historical),
+        },
+    }
+    out = merge_capability_path()
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    _capability_cache = payload
+    return payload
+
+
+def rebuild_merge_capability(prs_file: Optional[Path] = None) -> Dict[str, Any]:
+    """Scan PR JSONL ``merged_by`` and write ``merge_capability.json``."""
+    from collections import Counter
+
+    path = prs_file
+    if path is None:
+        for candidate in (
+            get_data_dir() / "processed" / "cleaned_prs.jsonl",
+            get_data_dir() / "processed" / "enriched_prs.jsonl",
+            get_data_dir() / "github" / "prs_raw.jsonl",
+        ):
+            if candidate.exists():
+                path = candidate
+                break
+    if path is None or not path.exists():
+        raise FileNotFoundError("No PR JSONL found to count merged_by")
+
+    aliases = load_canonical_maintainers().get("aliases") or {}
+    counts: Counter[str] = Counter()
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            try:
+                pr = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if not pr.get("merged"):
+                continue
+            merged_by = pr.get("merged_by")
+            if isinstance(merged_by, dict):
+                merged_by = merged_by.get("login")
+            key = normalize_login(merged_by, aliases)
+            if key:
+                counts[key] += 1
+    return write_merge_capability(dict(counts), generated_from=str(path))

@@ -35,6 +35,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 ### Power Concentration = Single Points of Failure
 
 **Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`). That is 21 humans: `TheCharlatan` and `sedited` are the same person after a GitHub rename. Merge stats in this dump use `sedited` (0 `TheCharlatan` merges).  
+**Merge keys ≠ roster.** Only 23 GitHub logins appear as `merged_by`. Everyone else **cannot merge** — a zero as merger is lack of keys, not unused privilege. Reviewer/ACK is not merge authority. Non-maintainer “merge rate” is author-success (a key holder merged their PR). See `GLOSSARY_AND_CONTEXT.md` and `data/maintainers/merge_capability.json`.  
 **Current merge-key users** (merged since 2023): fanquake, achow101, sedited, glozow, ryanofsky, hebasto, maflcko.  
 **Historical**: laanwj, sipa, maflcko, and others with no recent merges. See `MAINTAINER_LIST_SOURCE.md`.  
 **Top 3 control 81.1% of all merges** (laanwj 34.8%, fanquake 25.8%, maflcko 20.5%) — all-time.  
@@ -130,7 +131,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 ### 3. Trust Minimization Violation
 
 **Bitcoin's principle**: Eliminate trusted third parties.  
-**Bitcoin Core's reality**: 17 maintainers have merge authority (plus 2 with historical access); top 3 control 81.1% of merges.  
+**Bitcoin Core's reality**: 23 unique GitHub logins have merge keys; most people in this corpus cannot merge. Top 3 control 81.1% of merges.  
 **The contradiction**: Bitcoin removes trust from money, but requires trust in Bitcoin Core governance (concentrated merge authority).
 
 ### 4. Economic Capture Risk

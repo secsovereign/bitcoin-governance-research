@@ -28,7 +28,7 @@
 
 3. **`GLOSSARY_AND_CONTEXT.md`** ⭐ FOR NON-EXPERTS
    - Bitcoin Core terminology explained
-   - ACK, NACK, maintainer, merge authority, etc.
+   - ACK, NACK, maintainer roster vs merge keys vs cannot-merge
    - Why metrics matter
    - Historical context
 
