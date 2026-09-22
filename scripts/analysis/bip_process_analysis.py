@@ -77,6 +77,8 @@ class BIPProcessAnalyzer:
         
         # Compare BIP repository vs Core repository
         repo_comparison = self._compare_repositories(bip_prs, core_prs)
+
+        dump_catalog = self._analyze_dump_catalog(bips, bip_prs, bip_issues)
         
         # Save results
         results = {
@@ -85,6 +87,7 @@ class BIPProcessAnalyzer:
             'opposition_analysis': opposition_analysis,
             'implementation_analysis': implementation_analysis,
             'repo_comparison': repo_comparison,
+            'dump_catalog': dump_catalog,
             'statistics': self._generate_statistics(
                 proposer_analysis, champion_analysis, opposition_analysis,
                 implementation_analysis, repo_comparison
@@ -215,6 +218,57 @@ class BIPProcessAnalyzer:
     def _split_bip_author_field(self, value: str) -> List[str]:
         parts = re.split(r'\s+and\s+|,\s*(?![^<]*>)', value)
         return [p.strip(' ;') for p in parts if p.strip(' ;')]
+
+    def _header_field(self, content: str, name: str) -> str:
+        m = re.search(rf'(?im)^\s*{re.escape(name)}:\s*(.+)$', content or '')
+        return m.group(1).strip() if m else ''
+
+    def _count_rows(self, values: List[str]) -> List[Dict[str, Any]]:
+        counts = Counter(v.strip() if (v or '').strip() else '(missing)' for v in values)
+        return [
+            {'name': name, 'count': n}
+            for name, n in sorted(counts.items(), key=lambda x: (-x[1], x[0]))
+        ]
+
+    def _analyze_dump_catalog(
+        self,
+        bips: List[Dict[str, Any]],
+        bip_prs: List[Dict[str, Any]],
+        bip_issues: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Dump-literal Status/Type/Layer and PR/issue state totals. Not live GitHub."""
+        logger.info("Counting dump catalog Status/Type/Layer and PR/issue state...")
+        wiki_file = self.bips_dir / 'bips.jsonl'
+        as_of = None
+        if wiki_file.exists():
+            as_of = datetime.fromtimestamp(
+                wiki_file.stat().st_mtime, tz=timezone.utc
+            ).date().isoformat()
+        return {
+            'as_of': as_of,
+            'note': 'Dump strings from data/bips jsonl. Not live GitHub. Closed is a Status value. Merged is the dump bool.',
+            'wiki': len(bips),
+            'status': self._count_rows(
+                [self._header_field(bip.get('content') or '', 'Status') for bip in bips]
+            ),
+            'type': self._count_rows(
+                [self._header_field(bip.get('content') or '', 'Type') for bip in bips]
+            ),
+            'layer': self._count_rows(
+                [self._header_field(bip.get('content') or '', 'Layer') for bip in bips]
+            ),
+            'prs': {
+                'n': len(bip_prs),
+                'open': sum(1 for p in bip_prs if str(p.get('state') or '').lower() == 'open'),
+                'closed': sum(1 for p in bip_prs if str(p.get('state') or '').lower() == 'closed'),
+                'merged': sum(1 for p in bip_prs if p.get('merged') is True),
+            },
+            'issues': {
+                'n': len(bip_issues),
+                'open': sum(1 for i in bip_issues if str(i.get('state') or '').lower() == 'open'),
+                'closed': sum(1 for i in bip_issues if str(i.get('state') or '').lower() == 'closed'),
+            },
+        }
     
     def _analyze_proposers(
         self,
@@ -456,6 +510,7 @@ class BIPProcessAnalyzer:
             'opposition_detection': 'Based on PR/issue state (closed without merge)',
             'implementation_tracking': 'BIP number mentions in Core PR titles/bodies',
             'repo_comparison': 'Actor overlap and merge concentration comparison',
+            'dump_catalog': 'Preamble Status/Type/Layer and PR/issue state as printed in the dump. Not live GitHub. Closed is not merged.',
             'limitations': [
                 'BIP author extraction may miss some authors',
                 'Champion analysis limited by available comment data',

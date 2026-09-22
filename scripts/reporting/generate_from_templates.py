@@ -108,6 +108,13 @@ def ctx_bip(data: Dict[str, Any]) -> Dict[str, Any]:
     )
     ctx["champion_analysis"] = dict(champ)
     ctx["champion_analysis"]["top_champions"] = _pairs(champ.get("top_champions"), 10)
+    catalog = dict(data.get("dump_catalog") or {})
+    catalog.setdefault("status", [])
+    catalog.setdefault("type", [])
+    catalog.setdefault("layer", [])
+    catalog.setdefault("prs", {})
+    catalog.setdefault("issues", {})
+    ctx["dump_catalog"] = catalog
     return ctx
 
 

@@ -12,6 +12,40 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 
 ---
 
+## Dump catalog
+
+Not live GitHub. Counts are dump strings from `data/bips/bips.jsonl`, `bips_prs.jsonl`, and `bips_issues.jsonl`. As-of {{dump_catalog.as_of}} (wiki dump file mtime). Closed is a Status value. Merged is the dump bool.
+
+**Wiki records**: {{dump_catalog.wiki|int}}
+
+**Status**:
+{% for item in dump_catalog.status %}
+- {{item.name}}: {{item.count|int}}
+{% endfor %}
+
+**Type**:
+{% for item in dump_catalog.type %}
+- {{item.name}}: {{item.count|int}}
+{% endfor %}
+
+**Layer**:
+{% for item in dump_catalog.layer %}
+- {{item.name}}: {{item.count|int}}
+{% endfor %}
+
+**bitcoin/bips pull requests (dump)**:
+- total: {{dump_catalog.prs.n|int}}
+- open: {{dump_catalog.prs.open|int}}
+- closed: {{dump_catalog.prs.closed|int}}
+- merged: {{dump_catalog.prs.merged|int}} (merged true; closed is not merged)
+
+**bitcoin/bips issues (dump)**:
+- total: {{dump_catalog.issues.n|int}}
+- open: {{dump_catalog.issues.open|int}}
+- closed: {{dump_catalog.issues.closed|int}}
+
+---
+
 ## Key Findings
 
 ### 1. Proposer Concentration
@@ -63,6 +97,7 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 
 ## Methodology
 
+- **Dump catalog**: preamble `Status` / `Type` / `Layer` and bitcoin/bips PR/issue `state` / `merged` as printed in the dump. Not live GitHub. Closed is not merged.
 - **Proposer Extraction**: `Authors:` / `Author:` field in the BIP preamble (`<pre>` header)
 - **Champion Identification**: Activity frequency (PRs authored, comments)
 - **Implementation Tracking**: BIP number mentions in Core PR titles/bodies

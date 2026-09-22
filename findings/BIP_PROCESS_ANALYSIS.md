@@ -1,6 +1,6 @@
 # BIP Process Analysis Report
 
-**Analysis Date**: 2026-09-20  
+**Analysis Date**: 2026-09-22  
 **Data Sources**: BIP repository (GitHub), Bitcoin Core repository  
 **Purpose**: Analyze governance patterns in the Bitcoin Improvement Proposal (BIP) process and compare to Core repository governance
 
@@ -9,6 +9,49 @@
 ## Overview
 
 This report analyzes the governance patterns within the Bitcoin Improvement Proposal (BIP) repository: who proposes, who champions, how often BIPs show up in Core PRs, and how BIP-repo merge power compares to Core.
+
+---
+
+## Dump catalog
+
+Not live GitHub. Counts are dump strings from `data/bips/bips.jsonl`, `bips_prs.jsonl`, and `bips_issues.jsonl`. As-of 2026-08-24 (wiki dump file mtime). Closed is a Status value. Merged is the dump bool.
+
+**Wiki records**: 211
+
+**Status**:
+- Deployed: 78
+- Closed: 57
+- Draft: 53
+- Complete: 22
+- (missing): 1
+
+
+**Type**:
+- Specification: 162
+- Informational: 43
+- Process: 5
+- (missing): 1
+
+
+**Layer**:
+- Applications: 94
+- Consensus (soft fork): 50
+- Peer Services: 29
+- (missing): 22
+- Consensus (hard fork): 12
+- API/RPC: 4
+
+
+**bitcoin/bips pull requests (dump)**:
+- total: 2,017
+- open: 82
+- closed: 1,935
+- merged: 1,297 (merged true; closed is not merged)
+
+**bitcoin/bips issues (dump)**:
+- total: 1,847
+- open: 60
+- closed: 1,787
 
 ---
 
@@ -68,7 +111,7 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 
 **Actor Overlap**:
 - BIP authors: 733
-- Core authors: 2,615
+- Core authors: 2,617
 - Overlapping authors: 285
 - Overlap rate (of BIP authors): 38.9%
 
@@ -92,6 +135,7 @@ This report analyzes the governance patterns within the Bitcoin Improvement Prop
 
 ## Methodology
 
+- **Dump catalog**: preamble `Status` / `Type` / `Layer` and bitcoin/bips PR/issue `state` / `merged` as printed in the dump. Not live GitHub. Closed is not merged.
 - **Proposer Extraction**: `Authors:` / `Author:` field in the BIP preamble (`<pre>` header)
 - **Champion Identification**: Activity frequency (PRs authored, comments)
 - **Implementation Tracking**: BIP number mentions in Core PR titles/bodies
