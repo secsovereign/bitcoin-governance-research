@@ -369,6 +369,248 @@ class BIPsCollector:
         self._collect_issues()
         self._collect_prs()
 
+    def _comment_sidecar(self) -> Path:
+        return self.data_dir / "bips_pr_comments.jsonl"
+
+    def _load_issue_comment_counts(self) -> Dict[int, int]:
+        counts: Dict[int, int] = {}
+        if not self.issues_file.exists():
+            return counts
+        with open(self.issues_file, "r", encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                number = obj.get("number")
+                comments = obj.get("comments")
+                if isinstance(number, int):
+                    counts[number] = len(comments) if isinstance(comments, list) else 0
+        return counts
+
+    def _load_sidecar_numbers(self) -> Set[int]:
+        return self._load_existing_numbers(self._comment_sidecar())
+
+    def _get_json(self, url: str) -> Any:
+        """One GitHub JSON body. None on 404. Does not follow every page."""
+        self.rate_limiter.wait_if_needed()
+        resp = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                resp = self.session.get(url, timeout=60)
+                if resp.status_code in (403, 429, 502, 503, 504) and attempt < self.max_retries:
+                    reset = resp.headers.get("X-RateLimit-Reset")
+                    wait = 30
+                    if reset and str(reset).isdigit():
+                        wait = max(5, int(reset) - int(time.time()) + 2)
+                    logger.warning("HTTP %s on %s; sleeping %ss", resp.status_code, url, min(wait, 120))
+                    time.sleep(min(wait, 120))
+                    continue
+                if resp.status_code == 404:
+                    return None
+                resp.raise_for_status()
+                return resp.json()
+            except Exception as exc:
+                if attempt >= self.max_retries:
+                    raise
+                wait = min(60, 5 * attempt)
+                logger.warning("REST error (attempt %s/%s): %s; sleep %ss", attempt, self.max_retries, exc, wait)
+                time.sleep(wait)
+        raise RuntimeError(f"Failed to fetch {url}")
+
+    def _map_comment(self, item: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        body = str(item.get("body") or "").strip()
+        if not body:
+            return None
+        user = item.get("user") if isinstance(item.get("user"), dict) else {}
+        row: Dict[str, Any] = {
+            "author": (user or {}).get("login") or "",
+            "body": body[:500],
+            "created_at": item.get("created_at") or "",
+        }
+        path = item.get("path")
+        if isinstance(path, str) and path.strip():
+            row["path"] = path.strip()
+        line = item.get("line")
+        if not isinstance(line, int) or line <= 0:
+            line = item.get("original_line")
+        if isinstance(line, int) and line > 0:
+            row["line"] = line
+        return row
+
+    def _capped_comments(self, url: str, total: int) -> List[Dict[str, Any]]:
+        """At most 12 bodies: the whole thread, or the first 6 and last 6."""
+
+        def page(n: int) -> List[Dict[str, Any]]:
+            payload = self._get_json(f"{url}?per_page=100&page={n}")
+            if payload is None:
+                return []
+            if not isinstance(payload, list):
+                raise RuntimeError(f"Unexpected payload from {url}")
+            return [item for item in payload if isinstance(item, dict)]
+
+        first = page(1)
+        if total <= 12:
+            chosen = first[:12]
+        elif total <= 100:
+            chosen = first[:6] + first[-6:]
+        else:
+            last_page = max(1, (total + 99) // 100)
+            last = page(last_page)
+            chosen = first[:6] + last[-6:]
+        seen: Set[int] = set()
+        rows: List[Dict[str, Any]] = []
+        for item in chosen:
+            item_id = item.get("id")
+            if isinstance(item_id, int):
+                if item_id in seen:
+                    continue
+                seen.add(item_id)
+            mapped = self._map_comment(item)
+            if mapped:
+                rows.append(mapped)
+        return rows
+
+    def backfill_comments(self) -> None:
+        """Write missing conversation and review-line bodies. Does not rewrite the PR or issue dumps."""
+        if not self.token:
+            proc = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True, check=False)
+            tok = proc.stdout.strip()
+            if proc.returncode == 0 and tok:
+                self.token = tok
+                self.session.headers.update(self._github_headers())
+                self.rate_limiter = RateLimiter(max_calls=4500, time_window=3600)
+        issue_counts = self._load_issue_comment_counts()
+        done = self._load_sidecar_numbers()
+        sidecar = self._comment_sidecar()
+        want: List[Dict[str, Any]] = []
+        seen: Set[int] = set()
+        for obj in self._read_jsonl(self.prs_file):
+            number = obj.get("number")
+            if not isinstance(number, int) or number in seen or number in done:
+                continue
+            seen.add(number)
+            comments_count = int(obj.get("comments_count") or 0)
+            review_count = int(obj.get("review_comments_count") or 0)
+            need_comments = comments_count > 0 and issue_counts.get(number, 0) < comments_count
+            need_reviews = review_count > 0
+            if need_comments or need_reviews:
+                obj["_need_comments"] = need_comments
+                obj["_need_reviews"] = need_reviews
+                obj["_comments_count"] = comments_count
+                obj["_review_count"] = review_count
+                want.append(obj)
+        logger.info("BIP comment backfill: %s pull requests, sidecar %s", len(want), sidecar)
+        wrote = 0
+        for obj in want:
+            number = int(obj["number"])
+            row: Dict[str, Any] = {"number": number}
+            missing = False
+            if obj["_need_comments"]:
+                comments = self._capped_comments(
+                    f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/issues/{number}/comments",
+                    int(obj["_comments_count"]),
+                )
+                if comments is None:
+                    missing = True
+                else:
+                    row["comments"] = comments
+            if obj["_need_reviews"]:
+                reviews = self._capped_comments(
+                    f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/pulls/{number}/comments",
+                    int(obj["_review_count"]),
+                )
+                if reviews is None:
+                    missing = True
+                else:
+                    row["review_comments"] = reviews
+            if missing and "comments" not in row and "review_comments" not in row:
+                row["comments"] = []
+                row["review_comments"] = []
+            self._append_jsonl(sidecar, row)
+            wrote += 1
+            if wrote == 1 or wrote % 25 == 0:
+                logger.info("BIP comment backfill wrote %s/%s last=#%s", wrote, len(want), number)
+        logger.info("BIP comment backfill complete: %s -> %s", wrote, sidecar)
+
+    def backfill_reviews(self) -> None:
+        """Append pull-review bodies. Does not rewrite the PR dump or the comment sidecar."""
+        if not self.token:
+            proc = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True, check=False)
+            tok = proc.stdout.strip()
+            if proc.returncode == 0 and tok:
+                self.token = tok
+                self.session.headers.update(self._github_headers())
+                self.rate_limiter = RateLimiter(max_calls=4500, time_window=3600)
+        sidecar = self.data_dir / "bips_pr_reviews.jsonl"
+        done = self._load_existing_numbers(sidecar)
+        want: List[int] = []
+        seen: Set[int] = set()
+        for obj in self._read_jsonl(self.prs_file):
+            number = obj.get("number")
+            if not isinstance(number, int) or number in seen or number in done:
+                continue
+            seen.add(number)
+            want.append(number)
+        logger.info("BIP review backfill: %s pull requests, sidecar %s", len(want), sidecar)
+        wrote = 0
+        for number in want:
+            first = self._get_json(
+                f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/pulls/{number}/reviews?per_page=100&page=1"
+            )
+            items: List[Dict[str, Any]] = []
+            if isinstance(first, list):
+                items = [item for item in first if isinstance(item, dict)]
+            if len(items) >= 100:
+                second = self._get_json(
+                    f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/pulls/{number}/reviews?per_page=100&page=2"
+                )
+                if isinstance(second, list):
+                    items.extend(item for item in second if isinstance(item, dict))
+            if len(items) > 12:
+                items = items[:6] + items[-6:]
+            seen_ids: Set[int] = set()
+            rows: List[Dict[str, Any]] = []
+            for item in items:
+                item_id = item.get("id")
+                if isinstance(item_id, int):
+                    if item_id in seen_ids:
+                        continue
+                    seen_ids.add(item_id)
+                if not item.get("created_at") and item.get("submitted_at"):
+                    item = dict(item)
+                    item["created_at"] = item.get("submitted_at")
+                mapped = self._map_comment(item)
+                if not mapped:
+                    continue
+                state = item.get("state")
+                if isinstance(state, str) and state:
+                    mapped["state"] = state
+                rows.append(mapped)
+            self._append_jsonl(sidecar, {"number": number, "reviews": rows})
+            wrote += 1
+            if wrote == 1 or wrote % 25 == 0:
+                logger.info("BIP review backfill wrote %s/%s last=#%s", wrote, len(want), number)
+        logger.info("BIP review backfill complete: %s -> %s", wrote, sidecar)
+
+    def _read_jsonl(self, path: Path) -> Iterator[Dict[str, Any]]:
+        if not path.exists():
+            return
+        with open(path, "r", encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(obj, dict):
+                    yield obj
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Collect BIPs data from bitcoin/bips")
@@ -376,13 +618,29 @@ def main() -> None:
     parser.add_argument("--skip-discussions", action="store_true", help="Skip BIP repo issues/PRs (GitHub API)")
     parser.add_argument("--fresh", action="store_true", help="Backup and rewrite issues/PRs from scratch")
     parser.add_argument("--with-comments", action="store_true", help="Fetch issue comment bodies (slow)")
+    parser.add_argument(
+        "--comments-only",
+        action="store_true",
+        help="Append missing PR conversation and review comments to bips_pr_comments.jsonl",
+    )
+    parser.add_argument(
+        "--reviews-only",
+        action="store_true",
+        help="Append pull-review bodies to bips_pr_reviews.jsonl",
+    )
     args = parser.parse_args()
-    BIPsCollector(
+    collector = BIPsCollector(
         skip_files=args.skip_files,
         skip_discussions=args.skip_discussions,
         fresh=args.fresh,
         with_comments=args.with_comments,
-    ).collect()
+    )
+    if args.comments_only:
+        collector.backfill_comments()
+    elif args.reviews_only:
+        collector.backfill_reviews()
+    else:
+        collector.collect()
 
 
 if __name__ == "__main__":
