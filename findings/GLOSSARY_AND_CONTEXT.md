@@ -109,13 +109,13 @@
 **In our analysis**: 
 - 25.5% of maintainer-merged PRs are self-merged
 - 46.1% of self-merges have zero reviews (12.2% of all maintainer PRs)
-- No formal rules determine when self-merge is appropriate
+- `CONTRIBUTING.md` sets no numeric minimum for when self-merge is appropriate
 - Non-maintainers: 0% self-merge (not permitted)
 
 **The problem**: Not the rate (25.5%), but the structure:
-- Arbitrary authority (no formal rules)
-- Exclusive privilege (only maintainers)
-- No accountability (no challenge mechanism)
+- `CONTRIBUTING.md` sets no numeric minimum for when self-merge is appropriate
+- Exclusive privilege (only merge-key holders can merge)
+- No public challenge procedure in this corpus
 
 ---
 
@@ -125,11 +125,9 @@
 
 **Why it matters**: "Rough consensus" is undefined. It means whatever maintainers decide it means. This creates arbitrary authority.
 
-**In our analysis**: We show that "rough consensus" results in:
-- Discretionary standards (review requirements vary 0-14+)
-- No formal rules
-- No accountability
-- Power concentration
+**In our analysis**: Observed review counts still vary from 0 to 14+. Merge stays with people who hold keys. What the written judgment looked like is the next paragraph.
+
+The written rule is `CONTRIBUTING.md` (not `CONTRIBUTORS.md`): merge rests with merge maintainers, who judge contributor consensus and may weigh reviewers by merit. What that looked like is `REVEALED_ROUGH_CONSENSUS.md` — GitHub ACK/NACK plus peer comments and IRC/mail/Delving/Bitcointalk PR **mentions**. Compare before-2016 vs 2016+ on observed discussion, not on zero GitHub Review objects. A mention is not an ACK.
 
 ---
 
@@ -259,11 +257,11 @@
 **Our analysis reveals**:
 - Power concentration (top 3 = 81.1% of merges)
 - Exclusive privileges (maintainers vs non-maintainers)
-- No accountability (no formal challenge mechanism)
-- Arbitrary authority (no formal rules)
+- No public challenge procedure in this corpus
+- `CONTRIBUTING.md` is the written rule and sets no numeric review minimum
 
 **The problem**: Not the specific numbers, but the **structure**:
-- Arbitrary authority (discretionary, not rule-based)
+- Discretion inside `CONTRIBUTING.md` (weigh reviewers by merit; no numeric minimum)
 - Exclusive privilege (some have it, others don't)
 - No accountability (no oversight or challenge)
 - Concentration (power in few hands)
@@ -275,9 +273,9 @@
 ### "25.5% isn't that bad"
 
 **Response**: The rate isn't the problem. The problem is:
-- Arbitrary authority (no formal rules)
-- Exclusive privilege (only maintainers)
-- No accountability (no challenge mechanism)
+- `CONTRIBUTING.md` sets no numeric minimum
+- Exclusive privilege (only merge-key holders can merge)
+- No public challenge procedure in this corpus
 - Concentration (top 10 = 49.8% of PRs)
 
 **Even at 1%, the structural problems remain.**
@@ -299,8 +297,8 @@
 
 **Response**: This isn't about maintainer quality. It's about **governance structure**:
 - Why do exclusive privileges exist?
-- Why no formal rules?
-- Why no accountability?
+- Why does `CONTRIBUTING.md` set no numeric minimum?
+- Why is there no public challenge procedure in this corpus?
 - Why concentration?
 
 **The question isn't whether maintainers do good work. The question is why this structure exists.**
@@ -311,11 +309,11 @@
 
 ### Key Documents
 
-1. **`EXECUTIVE_SUMMARY.md`**: Start here - 37-line overview
-2. **`GLOSSARY_AND_CONTEXT.md`**: This document - terminology explained
-3. **`GINI_COEFFICIENT_EXPLANATION.md`**: Gini coefficient explained
-4. **`RESEARCH_METHODOLOGY.md`**: Complete methodology including quality weighting
-5. **`EXECUTIVE_SUMMARY.md`**: Full metrics and findings
+1. **`EXECUTIVE_SUMMARY.md`**: Start here, then the later-measurements section
+2. **`GOVERNANCE_FRAMES.md`**: How to cut all-time rates
+3. **`GLOSSARY_AND_CONTEXT.md`**: This document
+4. **`REVEALED_ROUGH_CONSENSUS.md`**: What `CONTRIBUTING.md` judgment looked like
+5. **`RESEARCH_METHODOLOGY.md`**: Quality-weighted counting and the older validation suite
 
 ### Understanding the Numbers
 

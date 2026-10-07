@@ -33,6 +33,16 @@ python scripts/reporting/generate_findings_reports.py
 | `PR_IMPORTANCE_ANALYSIS.md.tpl` | `findings/PR_IMPORTANCE_ANALYSIS.md` |
 | `RELEASE_SIGNING_ANALYSIS.md.tpl` | `findings/RELEASE_SIGNING_ANALYSIS.md` |
 | `LANGUAGE_EVOLUTION.md.tpl` | `findings/LANGUAGE_EVOLUTION.md` |
+| `REJECTION_ANATOMY.md.tpl` | `findings/REJECTION_ANATOMY.md` |
+| `STALLED_AGREEMENT_LEDGER.md.tpl` | `findings/STALLED_AGREEMENT_LEDGER.md` |
+| `VOCABULARY_AUDIT.md.tpl` | `findings/VOCABULARY_AUDIT.md` |
+| `CONTRIBUTOR_CROSS_REF.md.tpl` | `findings/CONTRIBUTOR_CROSS_REF.md` |
+| `REVEALED_ROUGH_CONSENSUS.md.tpl` | `findings/REVEALED_ROUGH_CONSENSUS.md` |
+| `INGROUP_REVIEW_TREATMENT.md.tpl` | `findings/INGROUP_REVIEW_TREATMENT.md` |
+| `NEWCOMER_BAR.md.tpl` | `findings/NEWCOMER_BAR.md` |
+| `COMMONS_MECHANISMS.md.tpl` | `findings/COMMONS_MECHANISMS.md` |
+| `FIRST_YEAR_TRAJECTORY.md.tpl` | `findings/FIRST_YEAR_TRAJECTORY.md` |
+| `GAP_CLOSURE.md.tpl` | `findings/GAP_CLOSURE.md` |
 | `INTERDISCIPLINARY_ANALYSIS_REPORT.md.tpl` | `findings/INTERDISCIPLINARY_ANALYSIS_REPORT.md` |
 | `NOVEL_INTERPRETATIONS.md.tpl` | `findings/NOVEL_INTERPRETATIONS.md` |
 | `GINI_COEFFICIENT_EXPLANATION.md.tpl` | `findings/GINI_COEFFICIENT_EXPLANATION.md` |
@@ -50,7 +60,7 @@ Context builders live in `generate_from_templates.py` (`ctx_*`). Add a new repor
 - `ENHANCED_FUNDING_ANALYSIS_REPORT.md`
 - `BCAP_INTEGRATION_REPORT.md`
 
-Hand-edited (patched, not regenerated): `EXECUTIVE_SUMMARY.md`, Satoshi reports, methodology, glossary.
+Hand-edited (patched, not regenerated): `EXECUTIVE_SUMMARY.md`, Satoshi reports, methodology, glossary. `GOVERNANCE_FRAMES.md.tpl` section 5 is static text; the four frames above it are filled from JSON.
 
 ## JSON locations
 

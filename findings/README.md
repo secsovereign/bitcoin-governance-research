@@ -161,8 +161,18 @@
 32. **`STALLED_PROPOSALS_REPORT.md`** — Dandelion / Erlay / related case dossiers
 33. **`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`** — 2022+ fanquake share + co-review funnels
 34. **`LANGUAGE_EVOLUTION.md`** — terminology trends across GitHub + informal channels
+35. **`REJECTION_ANATOMY.md`** — high-stakes episode rows (objections empty until BTCDecoded cites)
+36. **`STALLED_AGREEMENT_LEDGER.md`** — stated-agreement / unmerged candidates (`nack_exists` unknown until cited); not `STALLED_PROPOSALS.md`
+37. **`VOCABULARY_AUDIT.md`** — phrase × process/technical context (counts empty)
+38. **`CONTRIBUTOR_CROSS_REF.md`** — same person across episodes via `canonical_key`; not an identity store
+39. **`REVEALED_ROUGH_CONSENSUS.md`** — ACK/NACK/review vectors on PRs a merge-key holder merged (`CONTRIBUTING.md` judgment, not a vote)
+40. **`INGROUP_REVIEW_TREATMENT.md`** — in-group versus out-group review treatment on decided pull requests
+41. **`NEWCOMER_BAR.md`** — newcomer versus incumbent slopes, and the project-wide reviewer-load test
+42. **`COMMONS_MECHANISMS.md`** — six confirmed attention effects and the shared-indicator rank
+43. **`FIRST_YEAR_TRAJECTORY.md`** — first-year merge gap, the 340 patch-content leavers, and the silence slope
+44. **`GAP_CLOSURE.md`** — lagged principle scores, the cross-repository limit, the false-negative timeline, and subsystem silence
 
-Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`
+Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`
 
 ---
 
@@ -177,6 +187,12 @@ Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `h
 2. `GOVERNANCE_FRAMES.md`
 3. `MERGE_PATTERN_BREAKDOWN.md`
 4. `TEMPORAL_ANALYSIS_REPORT.md`
+
+**Later measurements** (after the frames):
+1. `REVEALED_ROUGH_CONSENSUS.md`
+2. `NEWCOMER_BAR.md` and `INGROUP_REVIEW_TREATMENT.md`
+3. `COMMONS_MECHANISMS.md` and `FIRST_YEAR_TRAJECTORY.md`
+4. `GAP_CLOSURE.md` for the tables those two close with
 
 **Deep Dive** (2+ hours):
 - Read all Core Reports
@@ -213,5 +229,5 @@ venv/bin/python scripts/reporting/generate_findings_reports.py
 # or: venv/bin/python scripts/run_all_analyses.py --reports
 ```
 
-**Last Updated**: 2026-09-10  
-**Status**: Governance frames + cross-platform reports regenerated from integrated informal sources
+**Last Updated**: 2026-10-07  
+**Status**: Frames unchanged. Items 35–44 are the episode ledger, revealed consensus, and the five measurement passes.

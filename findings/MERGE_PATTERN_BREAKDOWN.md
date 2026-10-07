@@ -6,6 +6,8 @@
 
 **Note**: “Friend” and “janitor” are descriptive labels for observable merge graphs, not proof of informal office.
 
+ACK/NACK mix on merged vs closed PRs: `REVEALED_ROUGH_CONSENSUS.md` (`CONTRIBUTING.md` judgment, not a vote).
+
 ---
 
 ## 1. Self-Merge Rate Breakdown
@@ -19,6 +21,8 @@
 | **Zero reviews** | 1,129 | 45.1% | 11.5% |
 | **One review** | 425 | 17.0% | 4.3% |
 | **Two+ reviews** | 947 | 37.9% | 9.7% |
+
+Zero reviews here are GitHub **Review objects** on roster-authored maintainer-merges. Pre-2016 dumps lack that API. Discussion elsewhere (peer comments, IRC/mail mentions) is in `REVEALED_ROUGH_CONSENSUS.md`, not this table.
 
 ---
 

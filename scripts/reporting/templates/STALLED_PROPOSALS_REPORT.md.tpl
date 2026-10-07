@@ -10,6 +10,8 @@
 
 Which named “research-complete / delayed” proposals have **GitHub timelines strong enough to cite**, without counting scaffolding as delivery or noisy keywords as proof?
 
+PR matcher **counts**. Qualitative episode anatomy and stated-agreement NACK status: `REJECTION_ANATOMY.md`, `STALLED_AGREEMENT_LEDGER.md`.
+
 ## Docket
 
 | Proposal | PRs | Merged | Closed unmerged | Open | Longest unmerged (days) | Cite as |

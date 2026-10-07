@@ -978,6 +978,22 @@ def calculate_gini(values: List[float]) -> float:
 
 ---
 
+## 9a. Measurement passes (2026-10)
+
+These sit outside the quality-weighted review counts above. Fit 2010–2023, confirm 2024–2026. Bootstrap 1000, seed 7. Year fixed effects are a control. Pre-2016 GitHub Review objects are missing and are not coded as zero. Reports and scripts:
+
+| Pass | Script | Report |
+|------|--------|--------|
+| Revealed consensus | `scripts/analysis/revealed_rough_consensus.py` | `REVEALED_ROUGH_CONSENSUS.md` |
+| In-group treatment and newcomer slopes | `scripts/analysis/rsd_ingroup_test.py` | `INGROUP_REVIEW_TREATMENT.md`, `NEWCOMER_BAR.md` |
+| Commons mechanisms | `scripts/analysis/commons_dynamics_test.py` | `COMMONS_MECHANISMS.md` |
+| First-year trajectory | `scripts/analysis/first_year_signal_test.py` | `FIRST_YEAR_TRAJECTORY.md` |
+| Gap closure | `scripts/analysis/gap_closure_test.py` | `GAP_CLOSURE.md` |
+
+The joint Benjamini-Hochberg family for passes 1–5 is size 159 and lives in `findings/data/gap_closure_analysis.json`. Quoted q-values in the earlier pass reports are the family those reports were written against. They were not rewritten. `scripts/run_all_analyses.py` does not call these scripts.
+
+---
+
 ## 9. Summary: Methodology Checklist
 
 ### ✅ Research Design

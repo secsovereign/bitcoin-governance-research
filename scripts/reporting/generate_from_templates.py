@@ -16,6 +16,7 @@ project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from pass_validation import validate_all
 from template_engine import render_file
 from src.utils.logger import setup_logger
 from src.utils.paths import get_analysis_dir, get_findings_dir
@@ -610,6 +611,136 @@ def ctx_archive_gems(data: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _ledger_cell(value: Any) -> str:
+    """Flatten ledger lists/empties for the one-level template engine."""
+    if value is None or value == "" or value == []:
+        return "—"
+    if isinstance(value, list):
+        parts: List[str] = []
+        for item in value:
+            if isinstance(item, dict):
+                parts.append(
+                    str(
+                        item.get("text")
+                        or item.get("passage_id")
+                        or item.get("canonical_key")
+                        or item.get("phrase")
+                        or ""
+                    )
+                )
+            else:
+                parts.append(str(item))
+        joined = ", ".join(p for p in parts if p)
+        return joined or "—"
+    return str(value)
+
+
+def _flatten_episode(row: Dict[str, Any]) -> Dict[str, Any]:
+    out = dict(row)
+    for key in (
+        "venue",
+        "outcome",
+        "parent_episode",
+        "technical_objections",
+        "process_objections",
+        "corpus_cites",
+        "existing_findings",
+        "github_anchors",
+    ):
+        out[key] = _ledger_cell(row.get(key))
+    return out
+
+
+def _flatten_stall(row: Dict[str, Any]) -> Dict[str, Any]:
+    out = dict(row)
+    for key in (
+        "first_proposed",
+        "last_activity",
+        "stated_reason_for_stall",
+        "nack_source",
+        "corpus_cites",
+        "existing_findings",
+    ):
+        out[key] = _ledger_cell(row.get(key))
+    out["nack_exists"] = row.get("nack_exists") or "unknown"
+    return out
+
+
+def _flatten_phrase(row: Dict[str, Any]) -> Dict[str, Any]:
+    out = dict(row)
+    out["episode_ids"] = _ledger_cell(row.get("episode_ids"))
+    out["corpus_cites"] = _ledger_cell(row.get("corpus_cites"))
+    out["count"] = row.get("count")
+    return out
+
+
+def _flatten_contributor(row: Dict[str, Any]) -> Dict[str, Any]:
+    out = dict(row)
+    out["canonical_key"] = row.get("canonical_key") or "—"
+    out["github_handle"] = row.get("github_handle") or "—"
+    out["episodes_involved"] = _ledger_cell(row.get("episodes_involved"))
+    out["episode_roles"] = _ledger_cell(row.get("episode_roles"))
+    out["corpus_cites"] = _ledger_cell(row.get("corpus_cites"))
+    return out
+
+
+def ctx_episode_ledger(data: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "generated_date": date.today().isoformat(),
+        "pin": data.get("pin") or "",
+        "episodes": [_flatten_episode(row) for row in (data.get("episodes") or [])],
+        "agreement_stalls": [_flatten_stall(row) for row in (data.get("agreement_stalls") or [])],
+        "phrases": [_flatten_phrase(row) for row in (data.get("phrases") or [])],
+        "contributors": [_flatten_contributor(row) for row in (data.get("contributors") or [])],
+        "contributor_count": len(data.get("contributors") or []),
+    }
+
+
+def ctx_revealed_consensus(data: Dict[str, Any]) -> Dict[str, Any]:
+    all_w = data.get("windows", {}).get("all_time") or {}
+    pre2016 = data.get("windows", {}).get("before_2016") or {}
+    y2016 = data.get("windows", {}).get("from_2016") or {}
+    y2022 = data.get("windows", {}).get("from_2022") or {}
+    path = all_w.get("by_path_risk") or {}
+    rows = []
+    for band in (
+        "consensus_sensitive",
+        "networking",
+        "security_sensitive",
+        "other",
+        "unknown",
+    ):
+        pair = path.get(band) or {}
+        merged = pair.get("merged") or {}
+        closed = pair.get("closed_unmerged") or {}
+        mr = merged.get("rates") or {}
+        cr = closed.get("rates") or {}
+        rows.append(
+            {
+                "band": band,
+                "merged_n": merged.get("n"),
+                "merged_zero": mr.get("zero_reviews"),
+                "merged_keys_ack": mr.get("at_least_one_merge_keys_ack"),
+                "merged_nack": mr.get("has_nack"),
+                "closed_n": closed.get("n"),
+                "closed_nack": cr.get("has_nack"),
+            }
+        )
+    return {
+        "generated_date": date.today().isoformat(),
+        "version": data.get("version") or "1.0",
+        "pin": data.get("pin") or "",
+        "all": all_w,
+        "pre2016": pre2016,
+        "y2016": y2016,
+        "y2022": y2022,
+        "path_rows": rows,
+        "coverage_reviews": (data.get("coverage") or {}).get("github_reviews_api") or "",
+        "coverage_path": (data.get("coverage") or {}).get("path_risk") or "",
+        "informal_index": data.get("informal_index") or {},
+    }
+
+
 def ctx_language(data: Dict[str, Any]) -> Dict[str, Any]:
     trends = ((data.get("terminology_evolution") or {}).get("terminology_trends") or {})
     terms = []
@@ -630,6 +761,603 @@ def ctx_language(data: Dict[str, Any]) -> Dict[str, Any]:
         "source_counts": data.get("source_counts") or {},
         "terms": terms,
         "early": early,
+    }
+
+
+def _fmt(value: Any, digits: int = 3) -> str:
+    if value is None or isinstance(value, bool):
+        return "—"
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return "—"
+    if number != number:
+        return "—"
+    return f"{number:.{digits}f}"
+
+
+def _pct(value: Any) -> str:
+    if value is None or isinstance(value, bool):
+        return "—"
+    try:
+        return f"{float(value) * 100:.1f}%"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _pp(value: Any) -> str:
+    if value is None or isinstance(value, bool):
+        return "—"
+    try:
+        return f"{float(value) * 100:.1f} percentage points"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _ci(ci: Any) -> str:
+    if not isinstance(ci, list) or len(ci) != 2:
+        return "—"
+    return f"{_fmt(ci[0])} to {_fmt(ci[1])}"
+
+
+def _ci_pp(ci: Any) -> str:
+    if not isinstance(ci, list) or len(ci) != 2:
+        return "—"
+    try:
+        return f"{float(ci[0]) * 100:.1f} to {float(ci[1]) * 100:.1f} percentage points"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _rate_block(block: Dict[str, Any]) -> Dict[str, Any]:
+    comp = (block or {}).get("comparison") or {}
+    inn = comp.get("in_group") if isinstance(comp.get("in_group"), dict) else {}
+    out = comp.get("out_group") if isinstance(comp.get("out_group"), dict) else {}
+    diff = comp.get("difference_in_minus_out") if isinstance(comp.get("difference_in_minus_out"), dict) else {}
+    return {"in": inn, "out": out, "diff": diff}
+
+
+def _sentences(value: Any) -> List[Dict[str, str]]:
+    if isinstance(value, list):
+        return [{"text": str(item)} for item in value]
+    if isinstance(value, str) and value.strip():
+        return [{"text": value.strip()}]
+    return []
+
+
+def ctx_ingroup(data: Dict[str, Any]) -> Dict[str, Any]:
+    blocks = (data.get("blocks") or {}).get("A") or {}
+    merge = _rate_block(blocks.get("1_merge_rate") or {})
+    silence = _rate_block(blocks.get("3b_no_peer_response_rate") or {})
+    tone = _rate_block(blocks.get("2_mean_sentiment") or {})
+    hours = _rate_block(blocks.get("3_time_to_first_response_hours") or {})
+    mech = data.get("mechanism_disambiguation") or {}
+    scores = mech.get("scores") or {}
+    params = data.get("parameters") or {}
+    sources = data.get("data_sources") or {}
+    return {
+        "generated_date": date.today().isoformat(),
+        "pin": data.get("pin") or "",
+        "top_n": params.get("top_n"),
+        "defined_from": sources.get("ingroup_defined_from") or "—",
+        "headline_window": params.get("headline_window") or "—",
+        "n_prs": sources.get("n_prs_used"),
+        "merge_in": _pct(merge["in"].get("estimate")),
+        "merge_out": _pct(merge["out"].get("estimate")),
+        "merge_gap": _pp(merge["diff"].get("estimate")),
+        "merge_ci": _ci_pp(merge["diff"].get("ci95")),
+        "silence_in": _pct(silence["in"].get("estimate")),
+        "silence_out": _pct(silence["out"].get("estimate")),
+        "silence_gap": _pp(silence["diff"].get("estimate")),
+        "tone_in": _fmt(tone["in"].get("estimate")),
+        "tone_out": _fmt(tone["out"].get("estimate")),
+        "tone_gap": _fmt(tone["diff"].get("estimate")),
+        "hours_in": _fmt(hours["in"].get("estimate"), 1),
+        "hours_out": _fmt(hours["out"].get("estimate"), 1),
+        "hours_gap": _fmt(hours["diff"].get("estimate"), 1),
+        "score_filter": scores.get("active_social_filtering"),
+        "score_dropout": scores.get("passive_dropout"),
+        "score_access": scores.get("structural_access_asymmetry"),
+        "resemblance": mech.get("resemblance") or "—",
+        "unmet": _sentences(mech.get("conditions_not_met_or_unknown")),
+        "cannot": _sentences(data.get("what_this_cannot_prove")),
+    }
+
+
+def ctx_newcomer(data: Dict[str, Any]) -> Dict[str, Any]:
+    slope = (data.get("period_trend") or {}).get("merge_rate_slope_per_year") or {}
+    draw = data.get("drawbridge") or {}
+    interactions = {row.get("outcome"): row for row in (draw.get("interaction") or []) if isinstance(row, dict)}
+    merge_x = interactions.get("merge") or {}
+    silence_x = interactions.get("no_response") or {}
+    capacity = (data.get("review_capacity") or {}).get("correlation_prs_per_reviewer_with_newcomer_no_response") or {}
+    raw = (data.get("year_controlled_group_gap") or {}).get("without_year_fixed_effects") or {}
+    year = (data.get("year_controlled_group_gap") or {}).get("with_year_fixed_effects") or {}
+    cohort = data.get("cohort_control") or {}
+    two = cohort.get("two_year_cohorts") or {}
+    supported = (data.get("interpretation") or {}).get("supported") or []
+    return {
+        "generated_date": date.today().isoformat(),
+        "pin": data.get("pin") or "",
+        "supported": ", ".join(supported) or "none",
+        "merge_slope": _pp(slope.get("estimate")),
+        "merge_slope_ci": _ci_pp(slope.get("ci95")),
+        "incumbent_slope": _pp((draw.get("incumbent_merge_slope") or {}).get("slope_merge_rate_per_year")),
+        "newcomer_slope": _pp((draw.get("newcomer_merge_slope") or {}).get("slope_merge_rate_per_year")),
+        "merge_interaction": _pp(merge_x.get("interaction_per_year")),
+        "merge_interaction_ci": _ci_pp(merge_x.get("ci95")),
+        "silence_interaction": _pp(silence_x.get("interaction_per_year")),
+        "silence_interaction_ci": _ci_pp(silence_x.get("ci95")),
+        "capacity_r": _fmt(capacity.get("pearson_r")),
+        "capacity_ci": _ci(capacity.get("ci95")),
+        "capacity_years": capacity.get("n_years"),
+        "logit_raw": _fmt(raw.get("in_group_log_odds")),
+        "or_raw": _fmt(raw.get("odds_ratio"), 2),
+        "logit_year": _fmt(year.get("in_group_log_odds")),
+        "or_year": _fmt(year.get("odds_ratio"), 2),
+        "logit_year_ci": _ci(year.get("ci95_log_odds")),
+        "logit_n": year.get("n"),
+        "cohort_d": _fmt(two.get("pooled_cohens_d"), 2),
+        "rolling_n": (data.get("rolling_ingroup") or {}).get("n_ever_entered"),
+        "fraction_remaining": _pct(cohort.get("fraction_of_raw_merge_gap_remaining_after_two_year_fe")),
+        "cohort_fe_gap": _pp((cohort.get("cohort_fe_merge_rate_two_year") or {}).get("estimate")),
+    }
+
+
+PRINCIPLE_LABELS = {
+    "P1": "P1 boundaries",
+    "P2": "P2 congruence",
+    "P3": "P3 collective choice",
+    "P4": "P4 monitoring",
+    "P5": "P5 sanctions",
+    "P6": "P6 conflict resolution",
+    "P7": "P7 organizing rights",
+    "P8": "P8 nested decisions",
+}
+SUBSYSTEM_COLUMNS = ("consensus", "core", "wallet", "p2p", "rpc", "gui", "test", "docs", "build", "other")
+
+
+def _md_table(headers: List[str], rows: List[List[str]]) -> str:
+    head = "| " + " | ".join(headers) + " |"
+    rule = "| " + " | ".join("---" for _ in headers) + " |"
+    body = ["| " + " | ".join(row) + " |" for row in rows]
+    return "\n".join([head, rule, *body])
+
+
+def _cell_map(gap: Dict[str, Any]) -> Dict[Tuple[int, str], Dict[str, Any]]:
+    found: Dict[Tuple[int, str], Dict[str, Any]] = {}
+    for cell in gap.get("subsystem_year_cells") or []:
+        found[(int(cell["year"]), str(cell["subsystem"]))] = cell
+    return found
+
+
+def _endpoint(cells: Dict[Tuple[int, str], Dict[str, Any]], year: int, subsystem: str, field: str, digits: int = 0) -> str:
+    cell = cells.get((year, subsystem))
+    if not cell:
+        return "—"
+    value = cell.get(field)
+    if field == "silence_rate":
+        return _pct(value) if value is not None else "—"
+    if value is None:
+        return "—"
+    if digits:
+        return _fmt(value, digits)
+    return str(int(value))
+
+
+def ctx_commons(data: Dict[str, Any], confirmed: List[Dict[str, Any]], gap: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    effects = []
+    for row in confirmed:
+        note = str(row.get("note") or "").replace("\n", " ").strip()
+        effects.append({
+            "id": row.get("id"),
+            "estimate": _fmt(row.get("estimate")),
+            "ci": _ci(row.get("ci95")),
+            "q": _fmt(row.get("q")),
+            "holdout": _fmt(row.get("holdout_estimate")),
+            "n": row.get("n"),
+            "note": note[:420],
+        })
+    ranks = []
+    bitcoin_full_health = "—"
+    bitcoin_full_principles = "—"
+    for row in data.get("cross_repo_ranking") or []:
+        if not row.get("ranked"):
+            continue
+        if row.get("repo") == "bitcoin/bitcoin":
+            bitcoin_full_health = _fmt(row.get("full_profile_health"), 2)
+            bitcoin_full_principles = _fmt(row.get("full_profile_principle_score"), 2)
+        ranks.append({
+            "repo": row.get("repo"),
+            "health": _fmt(row.get("mean_health"), 2),
+            "principles": _fmt(row.get("mean_principle_score"), 2),
+            "years": row.get("n_years"),
+            "full_health": _fmt(row.get("full_profile_health"), 2),
+            "full_principles": _fmt(row.get("full_profile_principle_score"), 2),
+        })
+    return {
+        "generated_date": date.today().isoformat(),
+        "pin": data.get("pin") or "",
+        "effects": effects,
+        "ranks": ranks,
+        "bitcoin_full_health": bitcoin_full_health,
+        "bitcoin_full_principles": bitcoin_full_principles,
+        "cannot": _sentences(data.get("what_this_cannot_prove")),
+        **_commons_followup(gap),
+    }
+
+
+def _commons_followup(gap: Optional[Dict[str, Any]]) -> Dict[str, str]:
+    if not gap:
+        return {
+            "lag_text": "The lagged principle test is not in the findings data.",
+            "cross_repo_text": "The cross-repository rerun of the six effects is not in the findings data.",
+        }
+    principles = (gap.get("principles") or {}).get("principles") or {}
+    p6 = ((principles.get("P6") or {}).get("lagged_health") or {}).get("t_plus_1") or {}
+    p8 = ((principles.get("P8") or {}).get("lagged_health") or {}).get("t_plus_1") or {}
+    lag_text = (
+        f"On bitcoin/bitcoin, the conflict-resolution score (P6) in year t has Spearman r={_fmt(p6.get('estimate'))} "
+        f"with the health index in t+1 (n={p6.get('n')}, interval {_ci(p6.get('ci95'))}, q={_fmt(p6.get('q'))}). "
+        f"That is the only positive lag that clears the passes 1–5 threshold. It is LOW POWER. "
+        f"The nested-decision score (P8) runs the other way: r={_fmt(p8.get('estimate'))}, q={_fmt(p8.get('q'))}. "
+        "P5 and P7 have no scored year. 2024–2026 does not contain enough pairs to confirm the lags."
+    )
+    cross = gap.get("cross_repo") or {}
+    n_repos = len(cross.get("rows") or [])
+    cross_repo_text = (
+        f"{n_repos} comparison repositories have at least seven years of history. "
+        "Their pull-request dumps store author, title, body, timestamps, merged state, and comments_count. "
+        "Review objects, comment authors, file paths, and meeting lists are absent, so E2, E3, E5, E7, E9, and E12 "
+        "are DATA UNAVAILABLE on every one of them. The Spearman correlation of effect size with health is "
+        "DATA UNAVAILABLE. Whether those effects are specific to poorly governed repositories or ambient to "
+        "open source development is not identified. The Bitcoin Core row in the effect list above is the reference."
+    )
+    return {"lag_text": lag_text, "cross_repo_text": cross_repo_text}
+
+
+def _trajectory_followup(gap: Optional[Dict[str, Any]]) -> Dict[str, str]:
+    if not gap:
+        return {
+            "followup_fn": "The false-negative timeline is not in the findings data.",
+            "followup_silence": "The subsystem silence test is not in the findings data.",
+        }
+    fn = gap.get("false_negative_timeline") or {}
+    slope = fn.get("slope") or {}
+    sub = gap.get("subsystem_silence") or {}
+    models = sub.get("models") or {}
+    followup_fn = (
+        f"The {fn.get('n_false_negative')} patch-content leavers are classified {fn.get('classification')}. "
+        f"{_pct(fn.get('share_before_2018'))} entered before 2018 and {_pct(fn.get('share_2018_or_later'))} entered in 2018 or later. "
+        f"The false-negative rate changes by {_pp(slope.get('estimate'))} per year of entry "
+        f"(interval {_ci_pp(slope.get('ci95'))}, q={_fmt(slope.get('q'))}). "
+        "The positive-slope test does not clear the threshold, so the filter is present across the whole series."
+    )
+    followup_silence = (
+        f"Subsystem reviewer capacity is classified {sub.get('classification')}. "
+        f"On newcomer pull requests in the review-object era, silence rises {_pp(models.get('year_slope_without_reviewers'))} per year "
+        f"before the subsystem's active-reviewer count and {_pp(models.get('year_slope_with_reviewers'))} per year after it. "
+        "The slope widens. Those figures are percentage points per calendar year. "
+        "They are a different scale from the standardized coefficients 0.014 and 0.039 above."
+    )
+    return {"followup_fn": followup_fn, "followup_silence": followup_silence}
+
+
+def ctx_trajectory(data: Dict[str, Any], rows: List[Dict[str, Any]], gap: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    dec = data.get("decomposition") or {}
+    ci = dec.get("ci95") or {}
+    fn = data.get("false_negatives") or {}
+    content = fn.get("content_only") or {}
+    groups = data.get("groups") or {}
+    params = data.get("parameters") or {}
+    capacity = data.get("capacity") or {}
+    year = capacity.get("year_coefficient") or {}
+    usable = []
+    withheld = []
+    for row in rows:
+        view = {
+            "id": row.get("id"),
+            "g1_mean": _fmt(row.get("g1_mean"), 2),
+            "g2_mean": _fmt(row.get("g2_mean"), 2),
+            "g1_median": _fmt(row.get("g1_median"), 2),
+            "g2_median": _fmt(row.get("g2_median"), 2),
+            "gap": _fmt(row.get("gap"), 3),
+            "d": _fmt(row.get("cohens_d"), 2),
+            "smd": _fmt(row.get("smd"), 2),
+            "q": _fmt(row.get("q"), 3),
+            "flag": row.get("flag") or "—",
+            "holdout": row.get("holdout_same_sign"),
+            "n_g1": row.get("n_g1"),
+            "n_g2": row.get("n_g2"),
+            "note": row.get("note") or "",
+        }
+        if row.get("usable"):
+            usable.append(view)
+        elif row.get("note"):
+            withheld.append(view)
+    return {
+        "generated_date": date.today().isoformat(),
+        "pin": data.get("pin") or "",
+        "n_g1": groups.get("n_g1"),
+        "n_g2": groups.get("n_g2"),
+        "reference_d": _fmt(params.get("pass2_reference_d"), 2),
+        "d_raw": _fmt(dec.get("d_raw"), 2),
+        "d_raw_ci": _ci(ci.get("d_raw")),
+        "d_size": _fmt(dec.get("d_after_size_controls"), 2),
+        "d_content": _fmt(dec.get("d_after_patch_content"), 2),
+        "d_content_ci": _ci(ci.get("d_after_patch_content")),
+        "d_reception": _fmt(dec.get("d_after_review_reception"), 2),
+        "d_reception_ci": _ci(ci.get("d_after_review_reception")),
+        "d_s": _fmt(dec.get("d_after_S"), 2),
+        "d_s_ci": _ci(ci.get("d_after_S")),
+        "d_both": _fmt(dec.get("d_after_both"), 2),
+        "rule_text": (dec.get("rule") or {}).get("text") or "",
+        "usable": usable,
+        "withheld": withheld,
+        "fn_full": fn.get("n_false_negative"),
+        "fn_g2": fn.get("n_g2"),
+        "fn_full_s": _fmt(fn.get("s_difference"), 2),
+        "fn_full_d": _fmt(fn.get("cohens_d"), 2),
+        "fn_content": content.get("n_false_negative"),
+        "fn_content_s": _fmt(content.get("s_difference"), 2),
+        "fn_content_d": _fmt(content.get("cohens_d"), 2),
+        "fn_content_flag": content.get("effect_size_flag") or "—",
+        "silence_predictors": ", ".join(capacity.get("predictors_with_q_below_05") or []) or "none",
+        "year_without": _fmt(year.get("standardized_year_without_S"), 3),
+        "year_with": _fmt(year.get("standardized_year_with_S"), 3),
+        "cannot": _sentences(data.get("what_this_cannot_prove")),
+        **_trajectory_followup(gap),
+    }
+
+
+def ctx_gap(gap: Dict[str, Any]) -> Dict[str, Any]:
+    principles = gap.get("principles") or {}
+    blocks = principles.get("principles") or {}
+    principle_rows = []
+    series = []
+    timeseries = gap.get("principle_health_timeseries") or {}
+    for key in ("P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"):
+        block = blocks.get(key) or {}
+        decline = block.get("largest_decline") or {}
+        lags = block.get("lagged_health") or {}
+        t1 = lags.get("t_plus_1") or {}
+        t2 = lags.get("t_plus_2") or {}
+        label = PRINCIPLE_LABELS.get(key, key)
+        if decline.get("status") == "ok":
+            drop = f"{decline.get('year')}"
+            score = _fmt(decline.get("score"))
+            before = f"{decline.get('year_before')} ({_fmt(decline.get('score_year_before'))})"
+            after_score = decline.get("score_year_after")
+            after = f"{decline.get('year_after')} ({_fmt(after_score)})" if after_score is not None else "—"
+        else:
+            drop, score, before, after = "DATA UNAVAILABLE", "—", "—", "—"
+        power = " LOW POWER" if t1.get("low_power") else ""
+        principle_rows.append({
+            "label": label,
+            "decline": drop,
+            "score": score,
+            "before": before,
+            "after": after,
+            "r1": _fmt(t1.get("estimate")),
+            "ci1": _ci(t1.get("ci95")),
+            "q1": (_fmt(t1.get("q")) + power) if t1.get("estimate") is not None else "—",
+            "r2": _fmt(t2.get("estimate")),
+            "q2": _fmt(t2.get("q")),
+        })
+        rows = []
+        for point in timeseries.get(key) or []:
+            if point.get("score") is None:
+                continue
+            rows.append([
+                str(point.get("year")),
+                _fmt(point.get("score")),
+                _fmt(point.get("health")),
+                _fmt(point.get("health_next_year")),
+            ])
+        if rows:
+            series.append({
+                "label": label,
+                "table": _md_table(["Year", "Score", "Health", "Health next year"], rows),
+            })
+    def _pair(items: Any) -> str:
+        names = list(items or [])
+        if len(names) == 2:
+            return f"{names[0]} and {names[1]}"
+        return ", ".join(names)
+
+    p6 = ((blocks.get("P6") or {}).get("lagged_health") or {}).get("t_plus_1") or {}
+    p6_lag2 = ((blocks.get("P6") or {}).get("lagged_health") or {}).get("t_plus_2") or {}
+    principle_lead = (
+        f"Ranked by the t+1 correlation, the top two are {_pair(principles.get('load_bearing_principles'))} "
+        f"and the bottom two are {_pair(principles.get('least_associated_principles'))}. "
+        f"A positive correlation means a lower score in year t lines up with a lower health index in t+1. "
+        f"P6 is r={_fmt(p6.get('estimate'))} (n={p6.get('n')}, interval {_ci(p6.get('ci95'))}, q={_fmt(p6.get('q'))}). "
+        f"The t+2 correlation is r={_fmt(p6_lag2.get('estimate'))}, q={_fmt(p6_lag2.get('q'))}. "
+        "P1 is second in the ranking and does not clear the threshold. Every lag is LOW POWER. "
+        "P8 clears the threshold in the opposite direction: a higher nested-decision score lines up with a lower later health index."
+    )
+    cross = gap.get("cross_repo") or {}
+    repo_rows = []
+    for row in cross.get("rows") or []:
+        repo_rows.append({
+            "repo": row.get("repo"),
+            "health": _fmt(row.get("health"), 2),
+            "years": row.get("n_years"),
+            "effects": "E2, E3, E5, E7, E9, and E12 are DATA UNAVAILABLE.",
+        })
+    short_rows = []
+    for row in cross.get("excluded_short_history") or []:
+        short_rows.append({
+            "repo": row.get("repo"),
+            "reason": row.get("reason"),
+            "health": _fmt(row.get("health"), 2),
+        })
+    reference_rows = []
+    for effect_id, row in (cross.get("bitcoin_reference") or {}).items():
+        kind = row.get("effect_size_kind") or "—"
+        d_note = row.get("cohens_d_note") or ""
+        if kind == "cohens_d":
+            d_note = f"Cohen's d={_fmt(row.get('cohens_d'))}."
+        reference_rows.append({
+            "id": effect_id,
+            "estimate": _fmt(row.get("estimate")),
+            "ci": _ci(row.get("ci95")),
+            "kind": kind,
+            "q": _fmt(row.get("q")),
+            "holdout": row.get("holdout_same_sign"),
+            "d_note": d_note,
+        })
+    spearman_rows = []
+    for effect_id, row in (cross.get("spearman_effect_vs_health") or {}).items():
+        if row.get("status") == "ok":
+            text = f"r={_fmt(row.get('estimate'))}, n={row.get('n')}, q={_fmt(row.get('q'))}."
+        else:
+            text = f"DATA UNAVAILABLE. {row.get('reason') or ''}".strip()
+        spearman_rows.append({"id": effect_id, "text": text})
+    fn = gap.get("false_negative_timeline") or {}
+    slope = fn.get("slope") or {}
+    cohorts = []
+    for row in fn.get("cohorts") or []:
+        cohorts.append({
+            "cohort": row.get("cohort"),
+            "leavers": row.get("n_leavers"),
+            "false_negatives": row.get("n_false_negative"),
+            "rate": _pct(row.get("false_negative_rate")),
+        })
+    fn_lead = (
+        f"Classification: {fn.get('classification')}. "
+        f"{fn.get('n_false_negative')} of {fn.get('n_leavers')} training leavers sit in the top patch-content quartile of later top-20 entrants. "
+        f"The recount matches the pass-4 count of {fn.get('pass4_n_false_negative')}. "
+        f"{fn.get('n_before_2018')} ({_pct(fn.get('share_before_2018'))}) entered before 2018 and "
+        f"{fn.get('n_2018_or_later')} ({_pct(fn.get('share_2018_or_later'))}) entered in 2018 or later. "
+        f"The rate changes by {_pp(slope.get('estimate'))} per year of entry "
+        f"(interval {_ci_pp(slope.get('ci95'))}, q={_fmt(slope.get('q'))})."
+    )
+    fn_holdout = (
+        f"On the training cutoff, {_pct(fn.get('holdout_false_negative_rate'))} of "
+        f"{fn.get('holdout_n_leavers')} leavers who entered in 2024–2026 are in the same patch-content quartile. "
+        "That rate is a description of the holdout. It is not a second test."
+    )
+    sub = gap.get("subsystem_silence") or {}
+    models = sub.get("models") or {}
+    logistic = models.get("logistic") or {}
+    fe = models.get("logistic_year_fixed_effects") or {}
+    entropy = sub.get("entropy_slope") or {}
+    corr = sub.get("reviewer_silence_correlation") or {}
+    silence_lead = (
+        f"Classification: {sub.get('classification')}. "
+        f"The logistic coefficient on a subsystem's active reviewers is {_fmt(logistic.get('reviewer_coefficient'))} log-odds per standard deviation "
+        f"(interval {_ci(logistic.get('ci95'))}, q={_fmt(logistic.get('q'))}, n={models.get('n')}). "
+        f"The 2024–2026 coefficient is {_fmt(sub.get('holdout_reviewer_coefficient'))}, same sign={sub.get('holdout_same_sign')}. "
+        f"With year dummies in place of the linear year term, the coefficient is {_fmt(fe.get('reviewer_coefficient'))} "
+        f"(interval {_ci(fe.get('ci95'))}). That check is outside the correction family."
+    )
+    silence_slopes = (
+        f"Silence rises {_pp(models.get('year_slope_without_reviewers'))} per year "
+        f"(interval {_ci_pp(models.get('year_slope_without_reviewers_ci95'))}) before reviewer count, and "
+        f"{_pp(models.get('year_slope_with_reviewers'))} per year "
+        f"(interval {_ci_pp(models.get('year_slope_with_reviewers_ci95'))}) after it. "
+        "The slope widens. Reviewer count is associated with less silence in the cross-section, and the time trend remains."
+    )
+    silence_other = (
+        f"Pearson r of active reviewers with the newcomer silence rate, across subsystem-years, is {_fmt(corr.get('estimate'))} "
+        f"(n={corr.get('n')}, interval {_ci(corr.get('ci95'))}, q={_fmt(corr.get('q'))}). "
+        f"Cohen's d for silence in high-reviewer versus low-reviewer cells is {_fmt(sub.get('silence_cohens_d_high_minus_low_reviewers'))} "
+        f"({sub.get('silence_effect_size_flag') or '—'}). "
+        f"Entropy changes by {_fmt(entropy.get('estimate'))} bits per year "
+        f"(interval {_ci(entropy.get('ci95'))}, q={_fmt(entropy.get('q'))}, n={entropy.get('n')} years). "
+        f"Newcomer pull requests in the corpus: {sub.get('n_newcomer_prs')}."
+    )
+    def _bits(value: Any) -> str:
+        try:
+            number = float(value)
+        except (TypeError, ValueError):
+            return "—"
+        if abs(number) < 0.005:
+            return "0.00"
+        return _fmt(number, 2)
+
+    entropy_rows = []
+    by_year = {int(row["year"]): row for row in sub.get("entropy_by_year") or []}
+    for year in sorted(by_year):
+        entropy_rows.append({"year": year, "entropy": _bits(by_year[year].get("entropy_bits"))})
+    early = by_year.get(2011) or {}
+    mid = by_year.get(2016) or {}
+    late = by_year.get(2023) or {}
+    entropy_shape = (
+        f"2010 is three newcomer pull requests and entropy {_bits((by_year.get(2010) or {}).get('entropy_bits'))}. "
+        f"The series is {_bits(early.get('entropy_bits'))} bits in 2011, {_bits(mid.get('entropy_bits'))} in 2016, "
+        f"and {_bits(late.get('entropy_bits'))} in 2023. The positive slope is the rise out of the early years."
+    )
+    cells = _cell_map(gap)
+    years = sorted({year for year, _name in cells})
+    count_rows = []
+    for year in years:
+        count_rows.append([
+            str(year),
+            *[_endpoint(cells, year, name, "newcomer_prs") if (year, name) in cells else "0" for name in SUBSYSTEM_COLUMNS],
+        ])
+    count_table = _md_table(["Year", *SUBSYSTEM_COLUMNS], count_rows)
+    endpoint_rows = []
+    for name in SUBSYSTEM_COLUMNS:
+        endpoint_rows.append({
+            "subsystem": name,
+            "n2016": _endpoint(cells, 2016, name, "newcomer_prs"),
+            "s2016": _endpoint(cells, 2016, name, "silence_rate"),
+            "r2016": _endpoint(cells, 2016, name, "active_reviewers"),
+            "n2023": _endpoint(cells, 2023, name, "newcomer_prs"),
+            "s2023": _endpoint(cells, 2023, name, "silence_rate"),
+            "r2023": _endpoint(cells, 2023, name, "active_reviewers"),
+        })
+    gui = cells.get((2023, "gui")) or {}
+    core = cells.get((2023, "core")) or {}
+    cell_reading = (
+        f"In 2023, GUI newcomer silence is {_pct(gui.get('silence_rate'))} "
+        f"({gui.get('newcomer_prs')} pull requests, {gui.get('active_reviewers')} active reviewers). "
+        f"Core newcomer silence is {_pct(core.get('silence_rate'))} "
+        f"({core.get('newcomer_prs')} pull requests, {core.get('active_reviewers')} active reviewers). "
+        "The project-wide year slope still widens once reviewer count is held fixed."
+    )
+    closes = [
+        f"Gap 1. P6's t+1 correlation with later health is {_fmt(p6.get('estimate'))} (q={_fmt(p6.get('q'))}) on {p6.get('n')} years, marked LOW POWER. P5 and P7 stay unscored.",
+        "Gap 2 stays open. Comparison repositories lack review objects, participant identities, and meeting lists, so the six effects cannot be placed against health.",
+        f"Gap 3. The {fn.get('n_false_negative')} patch-content false negatives are {fn.get('classification')}.",
+        f"Gap 4. The silence trend is {sub.get('classification')}. The reviewer coefficient is negative and the year slope widens.",
+    ]
+    cross_lead = cross.get("note") or ""
+    return {
+        "generated_date": date.today().isoformat(),
+        "pin": (
+            f"Fit {(gap.get('fit_years') or ['—', '—'])[0]}–{(gap.get('fit_years') or ['—', '—'])[1]}, "
+            f"confirm {(gap.get('holdout_years') or ['—', '—'])[0]}–{(gap.get('holdout_years') or ['—', '—'])[1]}. "
+            f"Bootstrap {gap.get('bootstrap')}, seed {gap.get('seed')}. "
+            f"Benjamini-Hochberg family size {gap.get('bh_family_size')}, passes 1–5. "
+            "Year enters the silence model as a linear term because year dummies would absorb the slope under test. "
+            "The other shared controls are log lines changed, files touched, and author tenure."
+        ),
+        "principle_lead": principle_lead,
+        "principle_rows": principle_rows,
+        "principle_series": series,
+        "holdout_lags": "2024–2026 does not contain enough paired years to confirm any lagged correlation.",
+        "cross_lead": cross_lead,
+        "repo_rows": repo_rows,
+        "short_rows": short_rows,
+        "reference_rows": reference_rows,
+        "spearman_rows": spearman_rows,
+        "interpretations": _sentences(cross.get("interpretation")),
+        "fn_lead": fn_lead,
+        "cohorts": cohorts,
+        "fn_holdout": fn_holdout,
+        "silence_lead": silence_lead,
+        "silence_slopes": silence_slopes,
+        "silence_other": silence_other,
+        "entropy_rows": entropy_rows,
+        "entropy_shape": entropy_shape,
+        "count_table": count_table,
+        "endpoint_rows": endpoint_rows,
+        "cell_reading": cell_reading,
+        "closes": _sentences(closes),
+        "cannot": _sentences(gap.get("what_this_cannot_prove")),
     }
 
 
@@ -813,6 +1541,66 @@ def generate_all() -> List[str]:
     if gems:
         jobs.append(
             ("ARCHIVE_GEMS_INDEX.md", TEMPLATES / "ARCHIVE_GEMS.md.tpl", ctx_archive_gems(gems))
+        )
+
+    ledger = _maybe(findings_data / "governance_episode_ledger.json") or _maybe(
+        analysis / "governance_episode_ledger.json"
+    )
+    if ledger:
+        ledger_ctx = ctx_episode_ledger(ledger)
+        jobs.append(
+            ("REJECTION_ANATOMY.md", TEMPLATES / "REJECTION_ANATOMY.md.tpl", ledger_ctx)
+        )
+        jobs.append(
+            (
+                "STALLED_AGREEMENT_LEDGER.md",
+                TEMPLATES / "STALLED_AGREEMENT_LEDGER.md.tpl",
+                ledger_ctx,
+            )
+        )
+        jobs.append(
+            ("VOCABULARY_AUDIT.md", TEMPLATES / "VOCABULARY_AUDIT.md.tpl", ledger_ctx)
+        )
+        jobs.append(
+            (
+                "CONTRIBUTOR_CROSS_REF.md",
+                TEMPLATES / "CONTRIBUTOR_CROSS_REF.md.tpl",
+                ledger_ctx,
+            )
+        )
+
+    p1 = _maybe(findings_data / "rsd_ingroup_analysis.json") or _maybe(analysis / "rsd_ingroup_analysis.json")
+    p2 = _maybe(findings_data / "rsd_ingroup_analysis_v2.json") or _maybe(analysis / "rsd_ingroup_analysis_v2.json")
+    p3 = _maybe(findings_data / "commons_dynamics_analysis.json") or _maybe(analysis / "commons_dynamics_analysis.json")
+    p4 = _maybe(findings_data / "first_year_signal_analysis.json") or _maybe(analysis / "first_year_signal_analysis.json")
+    p5 = _maybe(findings_data / "gap_closure_analysis.json") or _maybe(analysis / "gap_closure_analysis.json")
+    if p1 and p2 and p3 and p4:
+        bundle = validate_all(p1, p2, p3, p4)
+        jobs.append(("INGROUP_REVIEW_TREATMENT.md", TEMPLATES / "INGROUP_REVIEW_TREATMENT.md.tpl", ctx_ingroup(p1)))
+        jobs.append(("NEWCOMER_BAR.md", TEMPLATES / "NEWCOMER_BAR.md.tpl", ctx_newcomer(p2)))
+        jobs.append((
+            "COMMONS_MECHANISMS.md",
+            TEMPLATES / "COMMONS_MECHANISMS.md.tpl",
+            ctx_commons(p3, bundle["confirmed_effects"], p5),
+        ))
+        jobs.append((
+            "FIRST_YEAR_TRAJECTORY.md",
+            TEMPLATES / "FIRST_YEAR_TRAJECTORY.md.tpl",
+            ctx_trajectory(p4, bundle["trajectory_rows"], p5),
+        ))
+    if p5:
+        jobs.append(("GAP_CLOSURE.md", TEMPLATES / "GAP_CLOSURE.md.tpl", ctx_gap(p5)))
+
+    revealed = _maybe(findings_data / "revealed_rough_consensus.json") or _maybe(
+        analysis / "revealed_rough_consensus.json"
+    )
+    if revealed:
+        jobs.append(
+            (
+                "REVEALED_ROUGH_CONSENSUS.md",
+                TEMPLATES / "REVEALED_ROUGH_CONSENSUS.md.tpl",
+                ctx_revealed_consensus(revealed),
+            )
         )
 
     for name, tpl, ctx in jobs:

@@ -14,6 +14,16 @@ collect  →  analyze  →  report
 
 Flags on the analysis runner: `--github-only`, `--cross-platform-only`.
 
+The five measurement scripts are not in that runner. Run them on their own, in order, with `PYTHONPATH=. ./venv/bin/python`:
+
+| Script | Report |
+|--------|--------|
+| `analysis/revealed_rough_consensus.py` | `findings/REVEALED_ROUGH_CONSENSUS.md` |
+| `analysis/rsd_ingroup_test.py` | `INGROUP_REVIEW_TREATMENT.md`, `NEWCOMER_BAR.md` |
+| `analysis/commons_dynamics_test.py` | `COMMONS_MECHANISMS.md` |
+| `analysis/first_year_signal_test.py` | `FIRST_YEAR_TRAJECTORY.md` |
+| `analysis/gap_closure_test.py` | `GAP_CLOSURE.md` |
+
 ## Layout
 
 | Dir | Role |

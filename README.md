@@ -10,6 +10,7 @@ Quantitative analysis of Bitcoin Core governance from public communications (201
 2. Review and merge decision patterns (including self-merge)
 3. Informal channels vs GitHub (agenda-setting vs decision, by era)
 4. Whether activity on BIPs / lists / forums predicts Core authority
+5. Later passes: who the bar moved against, what `CONTRIBUTING.md` judgment looked like, and which attention patterns the corpus can actually score (`findings/EXECUTIVE_SUMMARY.md`, section “Later measurements”)
 
 ## Layout
 

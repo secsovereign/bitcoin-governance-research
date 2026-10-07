@@ -1,0 +1,2526 @@
+{
+  "pin": "Population-level behavioral proxies only. In-group is the time-varying top-N peer reviewers, not a psychological class and not the merge-key set. This file does not show that rejection sensitive dysphoria, negativity bias, or in-group preference caused any Bitcoin Core outcome.",
+  "version": "1.0",
+  "parameters": {
+    "top_n": 20,
+    "bootstrap": 1000,
+    "seed": 7,
+    "headline_window": "created_at >= 2016-01-01"
+  },
+  "data_sources": {
+    "prs": "processed/enriched_prs.jsonl",
+    "n_pr_rows_read": 25122,
+    "n_prs_used": 25117,
+    "identity": "analysis/user_identities/identity_mappings.json",
+    "identity_notes": [
+      "Join table is analysis/user_identities/identity_mappings.json (7972 GitHub logins, 2526 IRC nicks). findings/data/enhanced_identity_resolution.json is a short manual alias list, not a per-login map, so it is not the join."
+    ],
+    "irc": "irc/messages.jsonl",
+    "irc_messages_used": 419323,
+    "irc_channels": {
+      "bitcoin-core-dev": 419323
+    },
+    "irc_filtered_to_bitcoin_channels": true,
+    "review_volume": "peer GitHub review objects only (not issue comments)",
+    "n_review_events": 75476,
+    "n_distinct_reviewers": 1049,
+    "ingroup_defined_from": "2016-09-23T00:11:27+00:00",
+    "n_unidentified_prs": 6052,
+    "n_primary_prs": 19065,
+    "final_top_reviewers": [
+      "maflcko",
+      "ryanofsky",
+      "hebasto",
+      "promag",
+      "jonatack",
+      "laanwj",
+      "fanquake",
+      "sjors",
+      "l0rinc",
+      "jnewbery",
+      "sedited",
+      "sipa",
+      "vasild",
+      "luke-jr",
+      "thestack",
+      "stickies-v",
+      "instagibbs",
+      "practicalswift",
+      "glozow",
+      "furszy"
+    ]
+  },
+  "method_notes": [
+    "In-group is time-varying: top-N by cumulative peer GitHub review objects with submitted_at < PR created_at. Self-reviews and bots are excluded. Ties break by identity string descending.",
+    "Before N distinct reviewers exist, group is unidentified and those PRs are left out of group comparisons, not dumped into out-group.",
+    "Headline windows are PRs created on or after 2016-01-01. Earlier review-object counts are an API hole.",
+    "Bootstrap is the percentile interval of the analysis unit (PR or contributor), 95%, independent resamples. It is not clustered on reviewer."
+  ],
+  "blocks": {
+    "A": {
+      "1_merge_rate": {
+        "name": "merge_rate_decided_from_2016",
+        "comparison": {
+          "kind": "rate",
+          "in_group": {
+            "n": 9804,
+            "estimate": 0.8016115871073032,
+            "ci95": [
+              0.7930436556507547,
+              0.8086597307221542
+            ]
+          },
+          "out_group": {
+            "n": 8891,
+            "estimate": 0.5433584523675627,
+            "ci95": [
+              0.5324457316387358,
+              0.5534838600832303
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.25825313473974043,
+            "ci95": [
+              0.24530256329651084,
+              0.2718901649360419
+            ]
+          },
+          "cohens_d": 0.5754304217925726,
+          "effect_size_flag": "medium"
+        },
+        "notes": [
+          "Open PRs are excluded (not yet a rejection)."
+        ]
+      },
+      "1b_merge_rate_wherever_defined": {
+        "name": "merge_rate_decided_wherever_group_defined",
+        "comparison": {
+          "kind": "rate",
+          "in_group": {
+            "n": 9804,
+            "estimate": 0.8016115871073032,
+            "ci95": [
+              0.7943696450428397,
+              0.8092640758873929
+            ]
+          },
+          "out_group": {
+            "n": 8891,
+            "estimate": 0.5433584523675627,
+            "ci95": [
+              0.5334579912270836,
+              0.5536019570352042
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.25825313473974043,
+            "ci95": [
+              0.24513314610500317,
+              0.2713898971408612
+            ]
+          },
+          "cohens_d": 0.5754304217925726,
+          "effect_size_flag": "medium"
+        },
+        "notes": [
+          "Includes pre-2016 once the top-N exists. Prefer the 2016+ row."
+        ]
+      },
+      "2_mean_sentiment": {
+        "name": "mean_review_sentiment_from_2016",
+        "comparison": {
+          "kind": "score",
+          "in_group": {
+            "n": 9683,
+            "estimate": 0.5668267966111122,
+            "ci95": [
+              0.558360758866224,
+              0.5746334249399493
+            ]
+          },
+          "out_group": {
+            "n": 8077,
+            "estimate": 0.374732278023883,
+            "ci95": [
+              0.36507045407396044,
+              0.3838027535045959
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.19209451858722926,
+            "ci95": [
+              0.1797715029151822,
+              0.20475922562484597
+            ]
+          },
+          "cohens_d": 0.4596645417785429,
+          "effect_size_flag": "small"
+        },
+        "notes": [
+          "PR-level mean. Uses peer review-object sentiment when any exist (enriched labels, else keywords). Otherwise peer issue/line comments. +1 positive, 0 neutral, -1 negative. Author and bots excluded."
+        ]
+      },
+      "2b_any_negative_tone": {
+        "name": "any_negative_tone_rate_from_2016",
+        "comparison": {
+          "kind": "rate",
+          "in_group": {
+            "n": 9683,
+            "estimate": 0.04389135598471548,
+            "ci95": [
+              0.03996437054631829,
+              0.04802230713621811
+            ]
+          },
+          "out_group": {
+            "n": 8077,
+            "estimate": 0.08319920762659404,
+            "ci95": [
+              0.07676117370310759,
+              0.08951343320539805
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": -0.039307851641878555,
+            "ci95": [
+              -0.04583310952233467,
+              -0.031813072325106516
+            ]
+          },
+          "cohens_d": -0.16381671119701335,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "notes": [
+          "Share of PRs whose scored peer texts include at least one negative tone. The mean can hide a rare negative tail."
+        ]
+      },
+      "3_time_to_first_response_hours": {
+        "name": "hours_to_first_peer_response_from_2016",
+        "comparison": {
+          "kind": "hours",
+          "in_group": {
+            "n": 9683,
+            "estimate": 75.58232314365382,
+            "ci95": [
+              62.856030703151,
+              93.57272415860557
+            ]
+          },
+          "out_group": {
+            "n": 8077,
+            "estimate": 74.43166996822254,
+            "ci95": [
+              64.87549812997813,
+              85.31197743163027
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 1.1506531754312874,
+            "ci95": [
+              -18.148042464963552,
+              21.296433432613092
+            ]
+          },
+          "cohens_d": 0.0017517667949532637,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "notes": [
+          "First peer review object, else first peer comment. PRs with no peer response are excluded here and reported as a rate."
+        ]
+      },
+      "3b_no_peer_response_rate": {
+        "name": "no_peer_response_rate_from_2016",
+        "comparison": {
+          "kind": "rate",
+          "in_group": {
+            "n": 9939,
+            "estimate": 0.025757118422376497,
+            "ci95": [
+              0.02283931985109166,
+              0.028775530737498743
+            ]
+          },
+          "out_group": {
+            "n": 9126,
+            "estimate": 0.11494630725399956,
+            "ci95": [
+              0.10782380013149244,
+              0.12130177514792899
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": -0.08918918883162305,
+            "ci95": [
+              -0.09658883852909718,
+              -0.08140411440755076
+            ]
+          },
+          "cohens_d": -0.35881202784610633,
+          "effect_size_flag": "small"
+        },
+        "notes": []
+      },
+      "3c_time_to_decision_hours": {
+        "name": "hours_to_merge_or_close_from_2016",
+        "comparison": {
+          "kind": "hours",
+          "in_group": {
+            "n": 9804,
+            "estimate": 1213.153623067682,
+            "ci95": [
+              1145.213910890963,
+              1283.757640294211
+            ]
+          },
+          "out_group": {
+            "n": 8891,
+            "estimate": 1511.4595502005775,
+            "ci95": [
+              1441.7075998411315,
+              1587.9057549355468
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": -298.3059271328955,
+            "ci95": [
+              -401.34364268339596,
+              -201.28485502041272
+            ]
+          },
+          "cohens_d": -0.08534730367866551,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "notes": []
+      },
+      "3d_review_cycles": {
+        "name": "peer_review_object_count_from_2016",
+        "comparison": {
+          "kind": "count",
+          "in_group": {
+            "n": 9939,
+            "estimate": 3.633061676224972,
+            "ci95": [
+              3.5051313009357075,
+              3.767889123654291
+            ]
+          },
+          "out_group": {
+            "n": 9126,
+            "estimate": 4.244795090948937,
+            "ci95": [
+              4.087864343633574,
+              4.403621520929214
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": -0.611733414723965,
+            "ci95": [
+              -0.8178445858659588,
+              -0.40696725948734364
+            ]
+          },
+          "cohens_d": -0.0837602459207662,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "notes": [
+          "Count of peer GitHub review objects. Pre-2016 this is mostly zero because the Reviews API is absent; this row is 2016+."
+        ]
+      },
+      "4_justification_vocabulary": {
+        "total": {
+          "name": "justification_hits_per_pr_from_2016",
+          "comparison": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.15605191669182011,
+              "ci95": [
+                0.13784082905724923,
+                0.17698209075359694
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.25213675213675213,
+              "ci95": [
+                0.2176199868507561,
+                0.2944444444444444
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.09608483544493202,
+              "ci95": [
+                -0.14397592573078424,
+                -0.057292172918841734
+              ]
+            },
+            "cohens_d": -0.06773310803149042,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          },
+          "notes": [
+            "Sum of appearances of security, consensus risk, conservative/conservatism, break(s/ing) consensus, NACK, dangerous in peer review bodies, line comments, and issue comments. Hedged 'not a NACK' is removed before the NACK count. Normalized by PR (zeros included)."
+          ]
+        },
+        "per_term_per_pr": {
+          "security": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.055941241573598956,
+              "ci95": [
+                0.044571888519971826,
+                0.0680199215212798
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.06180144641683103,
+              "ci95": [
+                0.05007670392285777,
+                0.073531667762437
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.005860204843232075,
+              "ci95": [
+                -0.022267686933688007,
+                0.010088194792970845
+              ]
+            },
+            "cohens_d": -0.010164814169566732,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          },
+          "consensus_risk": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.00010957703265395574,
+              "ci95": [
+                0.0,
+                0.0003287310979618672
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.00010957703265395574,
+              "ci95": [
+                -0.0003287310979618672,
+                0.0
+              ]
+            },
+            "cohens_d": -0.015130000945168722,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          },
+          "conservative": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.008250326994667472,
+              "ci95": [
+                0.00553375591105745,
+                0.011170640909548241
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.025531448608371685,
+              "ci95": [
+                0.01873767258382643,
+                0.03419077361385054
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.017281121613704212,
+              "ci95": [
+                -0.02594281229900817,
+                -0.01036019009184163
+              ]
+            },
+            "cohens_d": -0.061111323874459736,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          },
+          "break_consensus": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.00030184123151222455,
+              "ci95": [
+                0.0,
+                0.0007042962068618574
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.00010957703265395574,
+              "ci95": [
+                0.0,
+                0.0003287310979618672
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.00019226419885826881,
+              "ci95": [
+                -0.0001385340782587061,
+                0.0006036824630244491
+              ]
+            },
+            "cohens_d": 0.013274530340923895,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          },
+          "nack": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.07636583157259282,
+              "ci95": [
+                0.06549954723815272,
+                0.08783579837005735
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.13971071663379356,
+              "ci95": [
+                0.11834319526627218,
+                0.16502849002849002
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.06334488506120074,
+              "ci95": [
+                -0.09229542897407254,
+                -0.036430386931617514
+              ]
+            },
+            "cohens_d": -0.06894938664443859,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          },
+          "dangerous": {
+            "kind": "count",
+            "in_group": {
+              "n": 9939,
+              "estimate": 0.015192675319448637,
+              "ci95": [
+                0.012476104235838616,
+                0.018213602978166817
+              ]
+            },
+            "out_group": {
+              "n": 9126,
+              "estimate": 0.02487398641244795,
+              "ci95": [
+                0.019833442910365987,
+                0.030681569143107604
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.009681311092999315,
+              "ci95": [
+                -0.016209199919641305,
+                -0.0037597416231120286
+              ]
+            },
+            "cohens_d": -0.04480435987891809,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          }
+        }
+      }
+    },
+    "B": {
+      "5_return_within_90d_after_neutral_or_negative_first_response": {
+        "comparison": {
+          "kind": "rate",
+          "in_group": null,
+          "out_group": {
+            "n": 985,
+            "estimate": 0.2862944162436548,
+            "ci95": [
+              0.25888324873096447,
+              0.3147208121827411
+            ]
+          },
+          "difference_in_minus_out": null,
+          "cohens_d": null,
+          "effect_size_flag": "effect size unavailable"
+        },
+        "negative_only_sensitivity": {
+          "kind": "rate",
+          "in_group": null,
+          "out_group": {
+            "n": 61,
+            "estimate": 0.19672131147540983,
+            "ci95": [
+              0.09836065573770492,
+              0.29508196721311475
+            ]
+          },
+          "difference_in_minus_out": null,
+          "cohens_d": null,
+          "effect_size_flag": "effect size unavailable"
+        },
+        "notes": [
+          "Unit is the contributor. First peer response on their history. Included when that tone is neutral or negative. Outcome is another PR in the next 90 days. Censored when the log ends inside those 90 days. Group is in-group status on that PR, not a final label. Neutral is the common enriched label, so the negative-only row is the stricter cut.",
+          "If the in-group cell is empty, nobody was already in the top-N when their first peer response arrived. First responses sit earlier than reviewer-volume rank, so the in-group contrast is unidentified. The out-group figure is the newcomer return rate only."
+        ],
+        "n_skipped_positive_first_response": 460,
+        "n_skipped_censored": 55,
+        "n_skipped_unidentified_group": 493
+      },
+      "6_entry_cohort_survival": {
+        "cohorts": [
+          {
+            "year": 2010,
+            "n": 2,
+            "active_6m": {
+              "n_observable": 2,
+              "fraction": 1.0
+            },
+            "active_12m": {
+              "n_observable": 2,
+              "fraction": 1.0
+            },
+            "active_24m": {
+              "n_observable": 2,
+              "fraction": 1.0
+            },
+            "active_48m": {
+              "n_observable": 2,
+              "fraction": 1.0
+            },
+            "n_became_ingroup": 0,
+            "n_left_by_24m": 0
+          },
+          {
+            "year": 2011,
+            "n": 91,
+            "active_6m": {
+              "n_observable": 91,
+              "fraction": 0.24175824175824176
+            },
+            "active_12m": {
+              "n_observable": 91,
+              "fraction": 0.21978021978021978
+            },
+            "active_24m": {
+              "n_observable": 91,
+              "fraction": 0.17582417582417584
+            },
+            "active_48m": {
+              "n_observable": 91,
+              "fraction": 0.13186813186813187
+            },
+            "n_became_ingroup": 6,
+            "n_left_by_24m": 75
+          },
+          {
+            "year": 2012,
+            "n": 50,
+            "active_6m": {
+              "n_observable": 50,
+              "fraction": 0.32
+            },
+            "active_12m": {
+              "n_observable": 50,
+              "fraction": 0.3
+            },
+            "active_24m": {
+              "n_observable": 50,
+              "fraction": 0.26
+            },
+            "active_48m": {
+              "n_observable": 50,
+              "fraction": 0.22
+            },
+            "n_became_ingroup": 3,
+            "n_left_by_24m": 37
+          },
+          {
+            "year": 2013,
+            "n": 108,
+            "active_6m": {
+              "n_observable": 108,
+              "fraction": 0.21296296296296297
+            },
+            "active_12m": {
+              "n_observable": 108,
+              "fraction": 0.19444444444444445
+            },
+            "active_24m": {
+              "n_observable": 108,
+              "fraction": 0.14814814814814814
+            },
+            "active_48m": {
+              "n_observable": 108,
+              "fraction": 0.08333333333333333
+            },
+            "n_became_ingroup": 2,
+            "n_left_by_24m": 92
+          },
+          {
+            "year": 2014,
+            "n": 170,
+            "active_6m": {
+              "n_observable": 170,
+              "fraction": 0.3176470588235294
+            },
+            "active_12m": {
+              "n_observable": 170,
+              "fraction": 0.27647058823529413
+            },
+            "active_24m": {
+              "n_observable": 170,
+              "fraction": 0.21176470588235294
+            },
+            "active_48m": {
+              "n_observable": 170,
+              "fraction": 0.12352941176470589
+            },
+            "n_became_ingroup": 7,
+            "n_left_by_24m": 133
+          },
+          {
+            "year": 2015,
+            "n": 125,
+            "active_6m": {
+              "n_observable": 125,
+              "fraction": 0.256
+            },
+            "active_12m": {
+              "n_observable": 125,
+              "fraction": 0.216
+            },
+            "active_24m": {
+              "n_observable": 125,
+              "fraction": 0.16
+            },
+            "active_48m": {
+              "n_observable": 125,
+              "fraction": 0.112
+            },
+            "n_became_ingroup": 6,
+            "n_left_by_24m": 104
+          },
+          {
+            "year": 2016,
+            "n": 130,
+            "active_6m": {
+              "n_observable": 130,
+              "fraction": 0.26153846153846155
+            },
+            "active_12m": {
+              "n_observable": 130,
+              "fraction": 0.2153846153846154
+            },
+            "active_24m": {
+              "n_observable": 130,
+              "fraction": 0.16153846153846155
+            },
+            "active_48m": {
+              "n_observable": 130,
+              "fraction": 0.08461538461538462
+            },
+            "n_became_ingroup": 8,
+            "n_left_by_24m": 108
+          },
+          {
+            "year": 2017,
+            "n": 224,
+            "active_6m": {
+              "n_observable": 224,
+              "fraction": 0.1875
+            },
+            "active_12m": {
+              "n_observable": 224,
+              "fraction": 0.13839285714285715
+            },
+            "active_24m": {
+              "n_observable": 224,
+              "fraction": 0.09375
+            },
+            "active_48m": {
+              "n_observable": 224,
+              "fraction": 0.06696428571428571
+            },
+            "n_became_ingroup": 3,
+            "n_left_by_24m": 203
+          },
+          {
+            "year": 2018,
+            "n": 263,
+            "active_6m": {
+              "n_observable": 263,
+              "fraction": 0.21292775665399238
+            },
+            "active_12m": {
+              "n_observable": 263,
+              "fraction": 0.17870722433460076
+            },
+            "active_24m": {
+              "n_observable": 263,
+              "fraction": 0.13307984790874525
+            },
+            "active_48m": {
+              "n_observable": 263,
+              "fraction": 0.09505703422053231
+            },
+            "n_became_ingroup": 7,
+            "n_left_by_24m": 226
+          },
+          {
+            "year": 2019,
+            "n": 182,
+            "active_6m": {
+              "n_observable": 182,
+              "fraction": 0.16483516483516483
+            },
+            "active_12m": {
+              "n_observable": 182,
+              "fraction": 0.12087912087912088
+            },
+            "active_24m": {
+              "n_observable": 182,
+              "fraction": 0.0989010989010989
+            },
+            "active_48m": {
+              "n_observable": 182,
+              "fraction": 0.06043956043956044
+            },
+            "n_became_ingroup": 2,
+            "n_left_by_24m": 164
+          },
+          {
+            "year": 2020,
+            "n": 164,
+            "active_6m": {
+              "n_observable": 164,
+              "fraction": 0.18902439024390244
+            },
+            "active_12m": {
+              "n_observable": 164,
+              "fraction": 0.17073170731707318
+            },
+            "active_24m": {
+              "n_observable": 164,
+              "fraction": 0.10365853658536585
+            },
+            "active_48m": {
+              "n_observable": 164,
+              "fraction": 0.06097560975609756
+            },
+            "n_became_ingroup": 2,
+            "n_left_by_24m": 147
+          },
+          {
+            "year": 2021,
+            "n": 188,
+            "active_6m": {
+              "n_observable": 188,
+              "fraction": 0.12234042553191489
+            },
+            "active_12m": {
+              "n_observable": 188,
+              "fraction": 0.09574468085106383
+            },
+            "active_24m": {
+              "n_observable": 188,
+              "fraction": 0.047872340425531915
+            },
+            "active_48m": {
+              "n_observable": 188,
+              "fraction": 0.031914893617021274
+            },
+            "n_became_ingroup": 0,
+            "n_left_by_24m": 179
+          },
+          {
+            "year": 2022,
+            "n": 153,
+            "active_6m": {
+              "n_observable": 153,
+              "fraction": 0.13725490196078433
+            },
+            "active_12m": {
+              "n_observable": 153,
+              "fraction": 0.11764705882352941
+            },
+            "active_24m": {
+              "n_observable": 153,
+              "fraction": 0.058823529411764705
+            },
+            "active_48m": {
+              "n_observable": 105,
+              "fraction": 0.01904761904761905
+            },
+            "n_became_ingroup": 1,
+            "n_left_by_24m": 144
+          },
+          {
+            "year": 2023,
+            "n": 142,
+            "active_6m": {
+              "n_observable": 142,
+              "fraction": 0.14084507042253522
+            },
+            "active_12m": {
+              "n_observable": 142,
+              "fraction": 0.09154929577464789
+            },
+            "active_24m": {
+              "n_observable": 142,
+              "fraction": 0.07746478873239436
+            },
+            "active_48m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "n_became_ingroup": 0,
+            "n_left_by_24m": 131
+          },
+          {
+            "year": 2024,
+            "n": 150,
+            "active_6m": {
+              "n_observable": 150,
+              "fraction": 0.15333333333333332
+            },
+            "active_12m": {
+              "n_observable": 150,
+              "fraction": 0.11333333333333333
+            },
+            "active_24m": {
+              "n_observable": 92,
+              "fraction": 0.08695652173913043
+            },
+            "active_48m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "n_became_ingroup": 1,
+            "n_left_by_24m": 84
+          },
+          {
+            "year": 2025,
+            "n": 252,
+            "active_6m": {
+              "n_observable": 252,
+              "fraction": 0.0992063492063492
+            },
+            "active_12m": {
+              "n_observable": 151,
+              "fraction": 0.09271523178807947
+            },
+            "active_24m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "active_48m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "n_became_ingroup": 0,
+            "n_left_by_24m": 0
+          },
+          {
+            "year": 2026,
+            "n": 195,
+            "active_6m": {
+              "n_observable": 47,
+              "fraction": 0.02127659574468085
+            },
+            "active_12m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "active_24m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "active_48m": {
+              "n_observable": 0,
+              "fraction": null
+            },
+            "n_became_ingroup": 0,
+            "n_left_by_24m": 0
+          }
+        ],
+        "survival_by_retrospective_label": {
+          "became": {
+            "6m": {
+              "n_active": 46,
+              "n_observable": 48,
+              "fraction": 0.9583333333333334
+            },
+            "12m": {
+              "n_active": 46,
+              "n_observable": 48,
+              "fraction": 0.9583333333333334
+            },
+            "24m": {
+              "n_active": 43,
+              "n_observable": 48,
+              "fraction": 0.8958333333333334
+            },
+            "48m": {
+              "n_active": 36,
+              "n_observable": 47,
+              "fraction": 0.7659574468085106
+            }
+          },
+          "never": {
+            "6m": {
+              "n_active": 409,
+              "n_observable": 2393,
+              "fraction": 0.17091516924362724
+            },
+            "12m": {
+              "n_active": 322,
+              "n_observable": 2245,
+              "fraction": 0.14342984409799556
+            },
+            "24m": {
+              "n_active": 209,
+              "n_observable": 2036,
+              "fraction": 0.10265225933202357
+            },
+            "48m": {
+              "n_active": 113,
+              "n_observable": 1755,
+              "fraction": 0.06438746438746439
+            }
+          }
+        },
+        "n_became_ingroup_later": 48,
+        "n_left_by_24m_never_ingroup": 1827,
+        "n_still_active_24m_never_ingroup": 209,
+        "n_already_ingroup_at_first_pr": 0,
+        "first_year_sentiment_became_vs_left": {
+          "kind": "score",
+          "in_group": {
+            "n": 48,
+            "estimate": 0.32788162458997333,
+            "ci95": [
+              0.2859688916355873,
+              0.36975541112455124
+            ]
+          },
+          "out_group": {
+            "n": 1400,
+            "estimate": 0.20823803076217595,
+            "ci95": [
+              0.18872925266206914,
+              0.22738751654825054
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.11964359382779738,
+            "ci95": [
+              0.07449196128552524,
+              0.16167034474643965
+            ]
+          },
+          "cohens_d": 0.327699758112427,
+          "effect_size_flag": "small"
+        },
+        "first_year_merge_became_vs_left": {
+          "kind": "rate",
+          "in_group": {
+            "n": 48,
+            "estimate": 0.6766339746152124,
+            "ci95": [
+              0.6122571370518181,
+              0.733103863743401
+            ]
+          },
+          "out_group": {
+            "n": 1826,
+            "estimate": 0.3058747196114052,
+            "ci95": [
+              0.2872112802050852,
+              0.3263373453038089
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.37075925500380713,
+            "ci95": [
+              0.30705586513822225,
+              0.43206390511780546
+            ]
+          },
+          "cohens_d": 0.8814684024056919,
+          "effect_size_flag": "large"
+        },
+        "notes": [
+          "Active at a horizon means some later PR is at or after that horizon. People whose first PR is too close to the dump end are not in that denominator.",
+          "became = entered the time-varying top-N after their first PR. left = never entered and no PR at or after 24 months, among people observable that long.",
+          "The outcome split is the group definition. Similar first-year treatment is the evidence. The survival gap between these two labels is not a separate finding.",
+          "Retrospective in-group membership was not knowable at entry. A fixed snapshot would have hidden that."
+        ]
+      }
+    },
+    "C": {
+      "7_irc_silence_proxy": {
+        "available": true,
+        "weak_proxy": true,
+        "reason": "",
+        "rule": "Weak proxy. A concept-like IRC line (explicit idea phrasing, length >= 40) gets a negative or ambiguous reply in the same channel within 2 hours (nick mention, or one of the next 8 messages). The speaker then has no PR in the next 90 days and no IRC message after day 14 through day 90. Speech inside the first 14 days is allowed. Events still inside the log's last 90 days are censored. This is not observed preemptive withdrawal.",
+        "n_response_events_uncensored": 322,
+        "n_response_events_censored": 0,
+        "n_silent_events": 14,
+        "n_people": 69,
+        "n_people_silent": 13,
+        "by_class_silent_flags": {
+          "ever_ingroup": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pr_author_never_ingroup": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "no_pr": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "n_irc_discussants": 2428,
+        "n_irc_and_pr": 236,
+        "n_irc_never_pr": 2192,
+        "conversion_rate_irc_discussant_submitted_a_pr": {
+          "n": 2428,
+          "estimate": 0.09719934102141681,
+          "ci95": [
+            0.08525535420098847,
+            0.10955518945634267
+          ]
+        },
+        "silence_rate_ever_ingroup_vs_everyone_else": {
+          "kind": "rate",
+          "in_group": {
+            "n": 30,
+            "estimate": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "out_group": {
+            "n": 39,
+            "estimate": 0.3333333333333333,
+            "ci95": [
+              0.1794871794871795,
+              0.48717948717948717
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": -0.3333333333333333,
+            "ci95": [
+              -0.48717948717948717,
+              -0.20512820512820512
+            ]
+          },
+          "cohens_d": -0.9268086959962983,
+          "effect_size_flag": "large"
+        },
+        "elevated_uncertainty": true
+      },
+      "8_draft_abandonment_snapshot": {
+        "timestamp_gap": "DATA UNAVAILABLE",
+        "comparison_abandoned_closed_unreviewed_drafts": {
+          "kind": "rate",
+          "in_group": {
+            "n": 301,
+            "estimate": 0.15282392026578073,
+            "ci95": [
+              0.10963455149501661,
+              0.19277408637873747
+            ]
+          },
+          "out_group": {
+            "n": 383,
+            "estimate": 0.12532637075718014,
+            "ci95": [
+              0.09399477806788512,
+              0.15926892950391644
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.02749754950860059,
+            "ci95": [
+              -0.02542439041315718,
+              0.07638593721537433
+            ]
+          },
+          "cohens_d": 0.07981157108839956,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "notes": [
+          "Abandonment here is a collected draft=true PR that closed unmerged with no peer response. It is not time from draft creation to publish. Open drafts are excluded."
+        ]
+      }
+    },
+    "D": {
+      "9_irc_presocialization": {
+        "available": true,
+        "elevated_uncertainty": true,
+        "match_rate": 0.09115488605639242,
+        "definition": "Topic preface: in the 48 hours before created_at, the submitter's IRC identity posted in a bitcoin* channel and the line contained a title token (length >= 5, stopwords removed) or a bitcoin/bitcoin pull URL or the phrase 'pull request'. Presence is any such post, without the topic match. Unresolved authors (never seen in IRC) are not in the preface comparison.",
+        "merge_rate_prefaced_vs_not": {
+          "kind": "rate",
+          "in_group": {
+            "n": 1880,
+            "estimate": 0.7659574468085106,
+            "ci95": [
+              0.7478590425531916,
+              0.7856382978723404
+            ]
+          },
+          "out_group": {
+            "n": 11333,
+            "estimate": 0.7821406511956234,
+            "ci95": [
+              0.7741970352069178,
+              0.7899077914056296
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": -0.016183204387112737,
+            "ci95": [
+              -0.03698599082701434,
+              0.0025939663119002804
+            ]
+          },
+          "cohens_d": -0.03905698588527906,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "hours_to_response_prefaced_vs_not": {
+          "kind": "hours",
+          "in_group": {
+            "n": 1824,
+            "estimate": 98.18452576754385,
+            "ci95": [
+              53.3228000350268,
+              169.6320304428606
+            ]
+          },
+          "out_group": {
+            "n": 11283,
+            "estimate": 77.00714816784345,
+            "ci95": [
+              66.83458311299201,
+              88.78908411929942
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 21.177377599700392,
+            "ci95": [
+              -24.378992093828813,
+              91.98444664721787
+            ]
+          },
+          "cohens_d": 0.028906697781185927,
+          "effect_size_flag": "negligible effect size regardless of p-value"
+        },
+        "preface_rate_ingroup_vs_outgroup": {
+          "kind": "rate",
+          "in_group": {
+            "n": 9939,
+            "estimate": 0.14578931482040447,
+            "ci95": [
+              0.1387463527517859,
+              0.15273166314518563
+            ]
+          },
+          "out_group": {
+            "n": 9126,
+            "estimate": 0.047337278106508875,
+            "ci95": [
+              0.04317335086565856,
+              0.05183267587113741
+            ]
+          },
+          "difference_in_minus_out": {
+            "estimate": 0.0984520367138956,
+            "ci95": [
+              0.09060635673135382,
+              0.1065380337150636
+            ]
+          },
+          "cohens_d": 0.3347112360314434,
+          "effect_size_flag": "small"
+        },
+        "n_primary_resolved": 13441,
+        "n_primary_prefaced": 1881,
+        "n_primary_present_48h": 5649,
+        "merge_gap_within_preface": {
+          "strata": [
+            {
+              "stratum": "no topic preface",
+              "usable": true,
+              "n_in": 7651,
+              "n_out": 3682,
+              "estimate_in": 0.8174094889556921,
+              "estimate_out": 0.7088538837588267,
+              "comparison": {
+                "kind": "rate",
+                "in_group": {
+                  "n": 7651,
+                  "estimate": 0.8174094889556921,
+                  "ci95": [
+                    0.8094366749444517,
+                    0.8262972160501895
+                  ]
+                },
+                "out_group": {
+                  "n": 3682,
+                  "estimate": 0.7088538837588267,
+                  "ci95": [
+                    0.6933663769690386,
+                    0.7224334600760456
+                  ]
+                },
+                "difference_in_minus_out": {
+                  "estimate": 0.10855560519686536,
+                  "ci95": [
+                    0.09113613345108097,
+                    0.1254252221310567
+                  ]
+                },
+                "cohens_d": 0.2649735553721874,
+                "effect_size_flag": "small"
+              }
+            },
+            {
+              "stratum": "topic preface",
+              "usable": true,
+              "n_in": 1448,
+              "n_out": 432,
+              "estimate_in": 0.7727900552486188,
+              "estimate_out": 0.7430555555555556,
+              "comparison": {
+                "kind": "rate",
+                "in_group": {
+                  "n": 1448,
+                  "estimate": 0.7727900552486188,
+                  "ci95": [
+                    0.7506733425414365,
+                    0.7941988950276243
+                  ]
+                },
+                "out_group": {
+                  "n": 432,
+                  "estimate": 0.7430555555555556,
+                  "ci95": [
+                    0.7037037037037037,
+                    0.7847222222222222
+                  ]
+                },
+                "difference_in_minus_out": {
+                  "estimate": 0.029734499693063188,
+                  "ci95": [
+                    -0.017921910169838427,
+                    0.07641670503376313
+                  ]
+                },
+                "cohens_d": 0.07022138610662568,
+                "effect_size_flag": "negligible effect size regardless of p-value"
+              }
+            }
+          ],
+          "weighted_gap": 0.10027881434182341,
+          "n_usable_strata": 2
+        },
+        "sentiment_gap_within_preface": {
+          "strata": [
+            {
+              "stratum": "no topic preface",
+              "usable": true,
+              "n_in": 7598,
+              "n_out": 3685,
+              "estimate_in": 0.5935682171561961,
+              "estimate_out": 0.453272538017807,
+              "comparison": {
+                "kind": "score",
+                "in_group": {
+                  "n": 7598,
+                  "estimate": 0.5935682171561961,
+                  "ci95": [
+                    0.5847335686140327,
+                    0.6026086658281025
+                  ]
+                },
+                "out_group": {
+                  "n": 3685,
+                  "estimate": 0.453272538017807,
+                  "ci95": [
+                    0.4408640644602905,
+                    0.46567729642580413
+                  ]
+                },
+                "difference_in_minus_out": {
+                  "estimate": 0.14029567913838914,
+                  "ci95": [
+                    0.12488815796306635,
+                    0.15641565271727054
+                  ]
+                },
+                "cohens_d": 0.3474937454025814,
+                "effect_size_flag": "small"
+              }
+            },
+            {
+              "stratum": "topic preface",
+              "usable": true,
+              "n_in": 1399,
+              "n_out": 425,
+              "estimate_in": 0.5096203768698503,
+              "estimate_out": 0.4339398049176086,
+              "comparison": {
+                "kind": "score",
+                "in_group": {
+                  "n": 1399,
+                  "estimate": 0.5096203768698503,
+                  "ci95": [
+                    0.486813933005229,
+                    0.5294820761358074
+                  ]
+                },
+                "out_group": {
+                  "n": 425,
+                  "estimate": 0.4339398049176086,
+                  "ci95": [
+                    0.40039701370121306,
+                    0.47097128654231973
+                  ]
+                },
+                "difference_in_minus_out": {
+                  "estimate": 0.0756805719522417,
+                  "ci95": [
+                    0.0327088350962705,
+                    0.1171655122447838
+                  ]
+                },
+                "cohens_d": 0.18633259419033205,
+                "effect_size_flag": "negligible effect size regardless of p-value"
+              }
+            }
+          ],
+          "weighted_gap": 0.13361406829797243,
+          "n_usable_strata": 2
+        },
+        "vocab_gap_within_preface": {
+          "strata": [
+            {
+              "stratum": "no topic preface",
+              "usable": true,
+              "n_in": 7775,
+              "n_out": 3785,
+              "estimate_in": 0.14135048231511255,
+              "estimate_out": 0.28058124174372523,
+              "comparison": {
+                "kind": "count",
+                "in_group": {
+                  "n": 7775,
+                  "estimate": 0.14135048231511255,
+                  "ci95": [
+                    0.12256913183279743,
+                    0.16361093247588424
+                  ]
+                },
+                "out_group": {
+                  "n": 3785,
+                  "estimate": 0.28058124174372523,
+                  "ci95": [
+                    0.21531704095112286,
+                    0.36064068692206075
+                  ]
+                },
+                "difference_in_minus_out": {
+                  "estimate": -0.13923075942861268,
+                  "ci95": [
+                    -0.2283862471169407,
+                    -0.07276368046145944
+                  ]
+                },
+                "cohens_d": -0.09154079678102403,
+                "effect_size_flag": "negligible effect size regardless of p-value"
+              }
+            },
+            {
+              "stratum": "topic preface",
+              "usable": true,
+              "n_in": 1449,
+              "n_out": 432,
+              "estimate_in": 0.19185645272601795,
+              "estimate_out": 0.3611111111111111,
+              "comparison": {
+                "kind": "count",
+                "in_group": {
+                  "n": 1449,
+                  "estimate": 0.19185645272601795,
+                  "ci95": [
+                    0.14009661835748793,
+                    0.26640786749482404
+                  ]
+                },
+                "out_group": {
+                  "n": 432,
+                  "estimate": 0.3611111111111111,
+                  "ci95": [
+                    0.21521990740740743,
+                    0.5301504629629629
+                  ]
+                },
+                "difference_in_minus_out": {
+                  "estimate": -0.16925465838509315,
+                  "ci95": [
+                    -0.3695799545663676,
+                    -0.009996836899010828
+                  ]
+                },
+                "cohens_d": -0.11977149615846933,
+                "effect_size_flag": "negligible effect size regardless of p-value"
+              }
+            }
+          ],
+          "weighted_gap": -0.14230648253726805,
+          "n_usable_strata": 2
+        }
+      },
+      "10_reviewer_requests": {
+        "available": false,
+        "reason": "DATA UNAVAILABLE: no requested_reviewers or review-request field on enriched_prs.jsonl or prs_raw.jsonl."
+      }
+    }
+  },
+  "stratification": {
+    "lines_merge": {
+      "strata": [
+        {
+          "stratum": "0-50 lines",
+          "usable": true,
+          "n_in": 6290,
+          "n_out": 5568,
+          "estimate_in": 0.8198728139904611,
+          "estimate_out": 0.5779454022988506,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 6290,
+              "estimate": 0.8198728139904611,
+              "ci95": [
+                0.8100158982511924,
+                0.829570747217806
+              ]
+            },
+            "out_group": {
+              "n": 5568,
+              "estimate": 0.5779454022988506,
+              "ci95": [
+                0.5642959770114943,
+                0.5912356321839081
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.24192741169161047,
+              "ci95": [
+                0.22616834015176432,
+                0.2580009919275259
+              ]
+            },
+            "cohens_d": 0.5508238994020754,
+            "effect_size_flag": "medium"
+          }
+        },
+        {
+          "stratum": "51-200",
+          "usable": true,
+          "n_in": 2222,
+          "n_out": 1838,
+          "estimate_in": 0.7911791179117912,
+          "estimate_out": 0.573449401523395,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 2222,
+              "estimate": 0.7911791179117912,
+              "ci95": [
+                0.774077407740774,
+                0.8082808280828083
+              ]
+            },
+            "out_group": {
+              "n": 1838,
+              "estimate": 0.573449401523395,
+              "ci95": [
+                0.5516866158868335,
+                0.5952257889009793
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.21772971638839622,
+              "ci95": [
+                0.18910817632361715,
+                0.24609847954327535
+              ]
+            },
+            "cohens_d": 0.48533848037396693,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "201-1000",
+          "usable": true,
+          "n_in": 990,
+          "n_out": 1035,
+          "estimate_in": 0.7494949494949495,
+          "estimate_out": 0.48792270531400966,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 990,
+              "estimate": 0.7494949494949495,
+              "ci95": [
+                0.7242424242424242,
+                0.7747474747474747
+              ]
+            },
+            "out_group": {
+              "n": 1035,
+              "estimate": 0.48792270531400966,
+              "ci95": [
+                0.45893719806763283,
+                0.5178743961352656
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.2615722441809399,
+              "ci95": [
+                0.22120882740447967,
+                0.301600790513834
+              ]
+            },
+            "cohens_d": 0.5580415366578662,
+            "effect_size_flag": "medium"
+          }
+        },
+        {
+          "stratum": "1001+",
+          "usable": true,
+          "n_in": 302,
+          "n_out": 450,
+          "estimate_in": 0.6688741721854304,
+          "estimate_out": 0.12,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 302,
+              "estimate": 0.6688741721854304,
+              "ci95": [
+                0.6158940397350994,
+                0.7185430463576159
+              ]
+            },
+            "out_group": {
+              "n": 450,
+              "estimate": 0.12,
+              "ci95": [
+                0.09111111111111111,
+                0.1511111111111111
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.5488741721854304,
+              "ci95": [
+                0.4868013245033112,
+                0.6085684326710816
+              ]
+            },
+            "cohens_d": 1.4053235888634839,
+            "effect_size_flag": "large"
+          }
+        }
+      ],
+      "weighted_gap": 0.2497074693906518,
+      "n_usable_strata": 4
+    },
+    "lines_sentiment": {
+      "strata": [
+        {
+          "stratum": "0-50 lines",
+          "usable": true,
+          "n_in": 6169,
+          "n_out": 5076,
+          "estimate_in": 0.6164370918308244,
+          "estimate_out": 0.41656396764464837,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 6169,
+              "estimate": 0.6164370918308244,
+              "ci95": [
+                0.6064343704170232,
+                0.6273836104696977
+              ]
+            },
+            "out_group": {
+              "n": 5076,
+              "estimate": 0.41656396764464837,
+              "ci95": [
+                0.403771264652113,
+                0.4289791451822378
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.19987312418617603,
+              "ci95": [
+                0.18383885647740736,
+                0.21540711802965923
+              ]
+            },
+            "cohens_d": 0.4588228457526229,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "51-200",
+          "usable": true,
+          "n_in": 2210,
+          "n_out": 1769,
+          "estimate_in": 0.5052462505253168,
+          "estimate_out": 0.3327944302995817,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 2210,
+              "estimate": 0.5052462505253168,
+              "ci95": [
+                0.4888755091760304,
+                0.5214263018931574
+              ]
+            },
+            "out_group": {
+              "n": 1769,
+              "estimate": 0.3327944302995817,
+              "ci95": [
+                0.3160679416921248,
+                0.3489441758611457
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.17245182022573508,
+              "ci95": [
+                0.1466521771764021,
+                0.19723779192911917
+              ]
+            },
+            "cohens_d": 0.45494210804327423,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "201-1000",
+          "usable": true,
+          "n_in": 1007,
+          "n_out": 1005,
+          "estimate_in": 0.4305012795713646,
+          "estimate_out": 0.28235292385815325,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 1007,
+              "estimate": 0.4305012795713646,
+              "ci95": [
+                0.407763805659145,
+                0.4513235452000564
+              ]
+            },
+            "out_group": {
+              "n": 1005,
+              "estimate": 0.28235292385815325,
+              "ci95": [
+                0.260330012127155,
+                0.3046064296779307
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.14814835571321133,
+              "ci95": [
+                0.11670141258186213,
+                0.17997979115417057
+              ]
+            },
+            "cohens_d": 0.4225562266602754,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "1001+",
+          "usable": true,
+          "n_in": 297,
+          "n_out": 227,
+          "estimate_in": 0.45681632960178253,
+          "estimate_out": 0.1751360095033642,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 297,
+              "estimate": 0.45681632960178253,
+              "ci95": [
+                0.40877512400313687,
+                0.5014925893056419
+              ]
+            },
+            "out_group": {
+              "n": 227,
+              "estimate": 0.1751360095033642,
+              "ci95": [
+                0.13591620182478187,
+                0.22002582163394194
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.28168032009841837,
+              "ci95": [
+                0.2251784098007765,
+                0.3477827240645966
+              ]
+            },
+            "cohens_d": 0.7494526012083679,
+            "effect_size_flag": "medium"
+          }
+        }
+      ],
+      "weighted_gap": 0.18973056561872892,
+      "n_usable_strata": 4
+    },
+    "files_merge": {
+      "strata": [
+        {
+          "stratum": "0-1 files",
+          "usable": true,
+          "n_in": 3652,
+          "n_out": 3959,
+          "estimate_in": 0.8318729463307777,
+          "estimate_out": 0.5448345541803485,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 3652,
+              "estimate": 0.8318729463307777,
+              "ci95": [
+                0.8192702628696604,
+                0.8430996714129244
+              ]
+            },
+            "out_group": {
+              "n": 3959,
+              "estimate": 0.5448345541803485,
+              "ci95": [
+                0.5289214448092953,
+                0.5597373074008588
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.28703839215042914,
+              "ci95": [
+                0.2666656338089736,
+                0.3064454469926827
+              ]
+            },
+            "cohens_d": 0.6480934190003771,
+            "effect_size_flag": "medium"
+          }
+        },
+        {
+          "stratum": "2-3 files",
+          "usable": true,
+          "n_in": 2675,
+          "n_out": 2062,
+          "estimate_in": 0.8130841121495327,
+          "estimate_out": 0.5935984481086324,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 2675,
+              "estimate": 0.8130841121495327,
+              "ci95": [
+                0.7977570093457944,
+                0.8276635514018692
+              ]
+            },
+            "out_group": {
+              "n": 2062,
+              "estimate": 0.5935984481086324,
+              "ci95": [
+                0.5732298739088264,
+                0.6129970902036858
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.2194856640409003,
+              "ci95": [
+                0.19400346728065476,
+                0.24448213783913633
+              ]
+            },
+            "cohens_d": 0.5023279308925513,
+            "effect_size_flag": "medium"
+          }
+        },
+        {
+          "stratum": "4-10 files",
+          "usable": true,
+          "n_in": 2365,
+          "n_out": 1783,
+          "estimate_in": 0.7813953488372093,
+          "estimate_out": 0.5905776780706674,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 2365,
+              "estimate": 0.7813953488372093,
+              "ci95": [
+                0.7661627906976745,
+                0.7966173361522199
+              ]
+            },
+            "out_group": {
+              "n": 1783,
+              "estimate": 0.5905776780706674,
+              "ci95": [
+                0.5681295569265283,
+                0.6146943353897925
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.19081767076654188,
+              "ci95": [
+                0.16486097261071495,
+                0.22009457419675368
+              ]
+            },
+            "cohens_d": 0.4251705659072518,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "11+ files",
+          "usable": true,
+          "n_in": 1112,
+          "n_out": 1087,
+          "estimate_in": 0.7176258992805755,
+          "estimate_out": 0.36522539098436063,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 1112,
+              "estimate": 0.7176258992805755,
+              "ci95": [
+                0.6915467625899281,
+                0.7437050359712231
+              ]
+            },
+            "out_group": {
+              "n": 1087,
+              "estimate": 0.36522539098436063,
+              "ci95": [
+                0.33760349586016564,
+                0.39466421343146274
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.3524005082962149,
+              "ci95": [
+                0.3128078608870034,
+                0.39267516529554647
+              ]
+            },
+            "cohens_d": 0.756027540985331,
+            "effect_size_flag": "medium"
+          }
+        }
+      ],
+      "weighted_gap": 0.25910192298234314,
+      "n_usable_strata": 4
+    },
+    "files_sentiment": {
+      "strata": [
+        {
+          "stratum": "0-1 files",
+          "usable": true,
+          "n_in": 3558,
+          "n_out": 3469,
+          "estimate_in": 0.6450219536585358,
+          "estimate_out": 0.41822304912197805,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 3558,
+              "estimate": 0.6450219536585358,
+              "ci95": [
+                0.631287283995581,
+                0.6582141274835349
+              ]
+            },
+            "out_group": {
+              "n": 3469,
+              "estimate": 0.41822304912197805,
+              "ci95": [
+                0.40284071218480594,
+                0.4328340672911215
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.2267989045365577,
+              "ci95": [
+                0.20640341653751798,
+                0.2477512607999381
+              ]
+            },
+            "cohens_d": 0.5099465519825994,
+            "effect_size_flag": "medium"
+          }
+        },
+        {
+          "stratum": "2-3 files",
+          "usable": true,
+          "n_in": 2639,
+          "n_out": 2005,
+          "estimate_in": 0.5609807002728412,
+          "estimate_out": 0.3724676624693609,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 2639,
+              "estimate": 0.5609807002728412,
+              "ci95": [
+                0.5456002442875122,
+                0.5754612642485488
+              ]
+            },
+            "out_group": {
+              "n": 2005,
+              "estimate": 0.3724676624693609,
+              "ci95": [
+                0.35404250017894057,
+                0.3883445535992237
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.18851303780348028,
+              "ci95": [
+                0.16384754354717504,
+                0.21294663930602667
+              ]
+            },
+            "cohens_d": 0.458224137711357,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "4-10 files",
+          "usable": true,
+          "n_in": 2362,
+          "n_out": 1736,
+          "estimate_in": 0.5022979122396252,
+          "estimate_out": 0.33777881046426333,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 2362,
+              "estimate": 0.5022979122396252,
+              "ci95": [
+                0.48740830448882466,
+                0.5181885012890799
+              ]
+            },
+            "out_group": {
+              "n": 1736,
+              "estimate": 0.33777881046426333,
+              "ci95": [
+                0.3197888293346504,
+                0.35496130849911517
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.16451910177536183,
+              "ci95": [
+                0.1402298381878692,
+                0.1871075044058032
+              ]
+            },
+            "cohens_d": 0.43013916209602654,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "11+ files",
+          "usable": true,
+          "n_in": 1124,
+          "n_out": 867,
+          "estimate_in": 0.46862991435792434,
+          "estimate_out": 0.2799482975521699,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 1124,
+              "estimate": 0.46862991435792434,
+              "ci95": [
+                0.44463949333984193,
+                0.49083035870639186
+              ]
+            },
+            "out_group": {
+              "n": 867,
+              "estimate": 0.2799482975521699,
+              "ci95": [
+                0.25760582136642424,
+                0.3027624585648699
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.18868161680575446,
+              "ci95": [
+                0.15738719837437914,
+                0.22185780227825905
+              ]
+            },
+            "cohens_d": 0.5143916512538501,
+            "effect_size_flag": "medium"
+          }
+        }
+      ],
+      "weighted_gap": 0.19981752669133515,
+      "n_usable_strata": 4
+    },
+    "prior_prs_merge": {
+      "strata": [
+        {
+          "stratum": "0 prior PRs",
+          "usable": false,
+          "n_in": 0,
+          "n_out": 1922,
+          "estimate_in": null,
+          "estimate_out": 0.2611862643080125,
+          "comparison": {
+            "kind": "rate",
+            "in_group": null,
+            "out_group": {
+              "n": 1922,
+              "estimate": 0.2611862643080125,
+              "ci95": [
+                0.24036160249739855,
+                0.2820109261186264
+              ]
+            },
+            "difference_in_minus_out": null,
+            "cohens_d": null,
+            "effect_size_flag": "effect size unavailable"
+          }
+        },
+        {
+          "stratum": "1-2 prior",
+          "usable": false,
+          "n_in": 2,
+          "n_out": 1118,
+          "estimate_in": 0.5,
+          "estimate_out": 0.407871198568873,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 2,
+              "estimate": 0.5,
+              "ci95": [
+                0.0,
+                1.0
+              ]
+            },
+            "out_group": {
+              "n": 1118,
+              "estimate": 0.407871198568873,
+              "ci95": [
+                0.38014311270125223,
+                0.4356216457960644
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.092128801431127,
+              "ci95": [
+                -0.4275491949910555,
+                0.6100402504472272
+              ]
+            },
+            "cohens_d": 0.1872940893044531,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          }
+        },
+        {
+          "stratum": "3-10 prior",
+          "usable": false,
+          "n_in": 9,
+          "n_out": 1469,
+          "estimate_in": 0.8888888888888888,
+          "estimate_out": 0.5486725663716814,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 9,
+              "estimate": 0.8888888888888888,
+              "ci95": [
+                0.6666666666666666,
+                1.0
+              ]
+            },
+            "out_group": {
+              "n": 1469,
+              "estimate": 0.5486725663716814,
+              "ci95": [
+                0.5221238938053098,
+                0.5745405037440435
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.34021632251720746,
+              "ci95": [
+                0.11048899478103014,
+                0.4669843430905378
+              ]
+            },
+            "cohens_d": 0.684470878135214,
+            "effect_size_flag": "medium"
+          }
+        },
+        {
+          "stratum": "11+ prior",
+          "usable": true,
+          "n_in": 9793,
+          "n_out": 4382,
+          "estimate_in": 0.8015929745736751,
+          "estimate_out": 0.6999087174806025,
+          "comparison": {
+            "kind": "rate",
+            "in_group": {
+              "n": 9793,
+              "estimate": 0.8015929745736751,
+              "ci95": [
+                0.7936281017052997,
+                0.8095578474420504
+              ]
+            },
+            "out_group": {
+              "n": 4382,
+              "estimate": 0.6999087174806025,
+              "ci95": [
+                0.6862106344135098,
+                0.7124600638977636
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.1016842570930726,
+              "ci95": [
+                0.08523837200008223,
+                0.11656653347292133
+              ]
+            },
+            "cohens_d": 0.24318954863846168,
+            "effect_size_flag": "small"
+          }
+        }
+      ],
+      "weighted_gap": 0.1016842570930726,
+      "n_usable_strata": 1
+    },
+    "prior_prs_sentiment": {
+      "strata": [
+        {
+          "stratum": "0 prior PRs",
+          "usable": false,
+          "n_in": 0,
+          "n_out": 1314,
+          "estimate_in": null,
+          "estimate_out": 0.22046498235434225,
+          "comparison": {
+            "kind": "score",
+            "in_group": null,
+            "out_group": {
+              "n": 1314,
+              "estimate": 0.22046498235434225,
+              "ci95": [
+                0.1965143552495477,
+                0.24474574535707405
+              ]
+            },
+            "difference_in_minus_out": null,
+            "cohens_d": null,
+            "effect_size_flag": "effect size unavailable"
+          }
+        },
+        {
+          "stratum": "1-2 prior",
+          "usable": false,
+          "n_in": 2,
+          "n_out": 956,
+          "estimate_in": 0.25,
+          "estimate_out": 0.27536170664958365,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 2,
+              "estimate": 0.25,
+              "ci95": [
+                0.0,
+                0.5
+              ]
+            },
+            "out_group": {
+              "n": 956,
+              "estimate": 0.27536170664958365,
+              "ci95": [
+                0.24782303892468505,
+                0.30244920829129013
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.02536170664958365,
+              "ci95": [
+                -0.2927917402955308,
+                0.2414272806100191
+              ]
+            },
+            "cohens_d": -0.057873169541541744,
+            "effect_size_flag": "negligible effect size regardless of p-value"
+          }
+        },
+        {
+          "stratum": "3-10 prior",
+          "usable": false,
+          "n_in": 9,
+          "n_out": 1417,
+          "estimate_in": 0.23809523809523808,
+          "estimate_out": 0.3503613535315865,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 9,
+              "estimate": 0.23809523809523808,
+              "ci95": [
+                0.015873015873015872,
+                0.5555555555555556
+              ]
+            },
+            "out_group": {
+              "n": 1417,
+              "estimate": 0.3503613535315865,
+              "ci95": [
+                0.32994256321399457,
+                0.3708237781544774
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": -0.1122661154363484,
+              "ci95": [
+                -0.3429342167280744,
+                0.20029134464014767
+              ]
+            },
+            "cohens_d": -0.27084385970266556,
+            "effect_size_flag": "small"
+          }
+        },
+        {
+          "stratum": "11+ prior",
+          "usable": true,
+          "n_in": 9672,
+          "n_out": 4390,
+          "estimate_in": 0.5671982024857881,
+          "estimate_out": 0.4504131647549059,
+          "comparison": {
+            "kind": "score",
+            "in_group": {
+              "n": 9672,
+              "estimate": 0.5671982024857881,
+              "ci95": [
+                0.55905231941409,
+                0.5752628059276791
+              ]
+            },
+            "out_group": {
+              "n": 4390,
+              "estimate": 0.4504131647549059,
+              "ci95": [
+                0.43839868940665494,
+                0.46214397946169333
+              ]
+            },
+            "difference_in_minus_out": {
+              "estimate": 0.11678503773088222,
+              "ci95": [
+                0.10201902173542159,
+                0.13203215227451212
+              ]
+            },
+            "cohens_d": 0.28516728254228896,
+            "effect_size_flag": "small"
+          }
+        }
+      ],
+      "weighted_gap": 0.11678503773088222,
+      "n_usable_strata": 1
+    },
+    "note": "Usable stratum: at least 30 finite observations on each side. Prior-PR bins are partly circular with later reviewer status."
+  },
+  "confounds": {
+    "quality": {
+      "flag": true,
+      "text": "Out-group authors may submit different work. Lines changed, files touched, and prior PR count are partial proxies. A remaining gap is still not proof of hostility. Prior-PR strata are partly circular with who later reviews a lot.",
+      "merge_gap_persists_lines": {
+        "persists": true,
+        "reason": "same sign and at least half the raw gap remains inside strata",
+        "weighted_gap": 0.2497074693906518,
+        "raw_gap": 0.25825313473974043
+      },
+      "sentiment_gap_persists_lines": {
+        "persists": true,
+        "reason": "same sign and at least half the raw gap remains inside strata",
+        "weighted_gap": 0.18973056561872892,
+        "raw_gap": 0.19209451858722926
+      },
+      "sentiment_shrinks_after_lines": false
+    },
+    "circularity": {
+      "flag": true,
+      "overlap_final_top_reviewers_vs_top_submitters": 0.75,
+      "overlap_count": 15,
+      "top_n": 20,
+      "text": "Final top-N reviewers versus top-N PR authors. Overlap above 50% means the in-group/out-group cut is weaker than a newcomers-versus-regulars story: the same people are on both sides."
+    },
+    "survival_bias": {
+      "flag": true,
+      "addressed_by": "metric_6",
+      "text": "A fixed end-of-sample reviewer list would treat everyone who left as out-group and hide the dropout path. Metric 6 uses the time-varying set plus a retrospective 'later entered top-N' label. That label is not available at the first PR."
+    },
+    "irc_nick_resolution": {
+      "flag": true,
+      "match_rate_pr_authors_seen_in_irc": 0.09115488605639242,
+      "n_pr_authors": 2589,
+      "n_pr_authors_seen_in_irc": 236,
+      "threshold": 0.6,
+      "text": "Match rate is the share of PR-author identities that appear at least once in the IRC log under the same unified id (or the same login string when the map has no IRC row). Below 60%, metrics 7 and 9 have elevated uncertainty."
+    }
+  },
+  "mechanism_disambiguation": {
+    "resemblance": "mixed",
+    "scores": {
+      "active_social_filtering": 2,
+      "passive_dropout": 1,
+      "structural_access_asymmetry": 1
+    },
+    "conditions_met": {
+      "active_social_filtering": [
+        "sentiment gap persists after lines-changed strata",
+        "IRC topic-preface merge effect is negligible"
+      ],
+      "passive_dropout": [
+        "IRC silence proxy is higher outside the ever-in-group set (d <= -0.2)"
+      ],
+      "structural_access_asymmetry": [
+        "justification vocabulary |d| < 0.2 inside both preface strata"
+      ]
+    },
+    "conditions_not_met_or_unknown": [
+      "active: vocabulary |d| < 0.2",
+      "early treatment similarity not met (needs both |d| < 0.2)",
+      "sentiment gap does not shrink by half after lines strata",
+      "structural: preface does not account for most of the in/out merge gap under the stated rule"
+    ],
+    "reading": "Scores count pre-specified conditions, not a model probability. A lead of 2 or more, with at least 2 conditions, is reported as the closer fingerprint. Otherwise the pattern is mixed or absent. Do not treat the label as a cause."
+  },
+  "what_this_cannot_prove": [
+    "We cannot observe psychological state. Nothing here is a diagnosis of rejection sensitive dysphoria, negativity bias, or any other trait in a person.",
+    "A population difference in merge rate, tone, attrition, or vocabulary is consistent with those mechanisms and does not require them.",
+    "Alternative explanations this design cannot rule out include a quality difference the proxies miss, topic selection, when the PR was opened, and structural access (who is already in the review channel).",
+    "The social-filtering reading needs both an asymmetric justification vocabulary and a sentiment gap that remains after the complexity and experience strata. Either one alone is not that reading.",
+    "Preemptive withdrawal is only the IRC-silence proxy defined in metric 7. This dataset cannot show who almost submitted a PR and did not."
+  ],
+  "data_unavailable": [
+    {
+      "metric": "8_draft_to_submission_gap",
+      "reason": "DATA UNAVAILABLE: enriched and raw PR rows have a draft boolean, not draft-creation versus ready-for-review timestamps."
+    },
+    {
+      "metric": "10_reviewer_request_patterns",
+      "reason": "DATA UNAVAILABLE: no requested_reviewers or review-request field on enriched_prs.jsonl or prs_raw.jsonl."
+    }
+  ],
+  "plain_text_summary": "Population-level behavioral proxies only. In-group is the time-varying top-N peer reviewers, not a psychological class and not the merge-key set. This file does not show that rejection sensitive dysphoria, negativity bias, or in-group preference caused any Bitcoin Core outcome.\n\nPRs used 25117 of 25122 read from processed/enriched_prs.jsonl. Review events 75476. Distinct reviewers 1049. Top-N defined from 2016-09-23T00:11:27+00:00. Unidentified PRs 6052. Headline PRs 19065.\nFinal top reviewers (labels, not a psych class): maflcko, ryanofsky, hebasto, promag, jonatack, laanwj, fanquake, sjors, l0rinc, jnewbery, sedited, sipa, vasild, luke-jr, thestack, stickies-v, instagibbs, practicalswift, glozow, furszy\nIdentity: analysis/user_identities/identity_mappings.json\n\nBLOCK A \u2014 Active social filtering\n1. Merge rate, decided PRs, 2016+\n  in-group: 80.2% (95% CI 79.3\u201380.9%)  n=9804\n  out-group: 54.3% (95% CI 53.2\u201355.3%)  n=8891\n  difference (in-group minus out-group): 25.8 pp (95% CI 24.5\u201327.2 pp)  Cohen's d=0.58  medium\n1b. Merge rate wherever the top-N is already defined (coverage-mixed)\n  in-group: 80.2% (95% CI 79.4\u201380.9%)  n=9804\n  out-group: 54.3% (95% CI 53.3\u201355.4%)  n=8891\n  difference (in-group minus out-group): 25.8 pp (95% CI 24.5\u201327.1 pp)  Cohen's d=0.58  medium\n2. Mean review sentiment, 2016+\n  in-group: 0.567 (95% CI 0.558\u20130.575)  n=9683\n  out-group: 0.375 (95% CI 0.365\u20130.384)  n=8077\n  difference (in-group minus out-group): 0.192 (95% CI 0.180\u20130.205)  Cohen's d=0.46  small\n2b. Any-negative-tone rate, 2016+\n  in-group: 4.4% (95% CI 4.0\u20134.8%)  n=9683\n  out-group: 8.3% (95% CI 7.7\u20139.0%)  n=8077\n  difference (in-group minus out-group): -3.9 pp (95% CI -4.6\u2013-3.2 pp)  Cohen's d=-0.16  negligible effect size regardless of p-value\n3. Hours to first peer response, 2016+\n  in-group: 75.6h (95% CI 62.9\u201393.6)  n=9683\n  out-group: 74.4h (95% CI 64.9\u201385.3)  n=8077\n  difference (in-group minus out-group): 1.2h (95% CI -18.1\u201321.3)  Cohen's d=0.00  negligible effect size regardless of p-value\n3b. No peer response rate, 2016+\n  in-group: 2.6% (95% CI 2.3\u20132.9%)  n=9939\n  out-group: 11.5% (95% CI 10.8\u201312.1%)  n=9126\n  difference (in-group minus out-group): -8.9 pp (95% CI -9.7\u2013-8.1 pp)  Cohen's d=-0.36  small\n3c. Hours to merge or close, 2016+\n  in-group: 1213.2h (95% CI 1145.2\u20131283.8)  n=9804\n  out-group: 1511.5h (95% CI 1441.7\u20131587.9)  n=8891\n  difference (in-group minus out-group): -298.3h (95% CI -401.3\u2013-201.3)  Cohen's d=-0.09  negligible effect size regardless of p-value\n3d. Peer review-object count, 2016+\n  in-group: 3.633 (95% CI 3.505\u20133.768)  n=9939\n  out-group: 4.245 (95% CI 4.088\u20134.404)  n=9126\n  difference (in-group minus out-group): -0.612 (95% CI -0.818\u2013-0.407)  Cohen's d=-0.08  negligible effect size regardless of p-value\n4. Justification vocabulary hits per PR, 2016+\n  in-group: 0.156 (95% CI 0.138\u20130.177)  n=9939\n  out-group: 0.252 (95% CI 0.218\u20130.294)  n=9126\n  difference (in-group minus out-group): -0.096 (95% CI -0.144\u2013-0.057)  Cohen's d=-0.07  negligible effect size regardless of p-value\n   term security\n  in-group: 0.056 (95% CI 0.045\u20130.068)  n=9939\n  out-group: 0.062 (95% CI 0.050\u20130.074)  n=9126\n  difference (in-group minus out-group): -0.006 (95% CI -0.022\u20130.010)  Cohen's d=-0.01  negligible effect size regardless of p-value\n   term consensus_risk\n  in-group: 0.000 (95% CI 0.000\u20130.000)  n=9939\n  out-group: 0.000 (95% CI 0.000\u20130.000)  n=9126\n  difference (in-group minus out-group): -0.000 (95% CI -0.000\u20130.000)  Cohen's d=-0.02  negligible effect size regardless of p-value\n   term conservative\n  in-group: 0.008 (95% CI 0.006\u20130.011)  n=9939\n  out-group: 0.026 (95% CI 0.019\u20130.034)  n=9126\n  difference (in-group minus out-group): -0.017 (95% CI -0.026\u2013-0.010)  Cohen's d=-0.06  negligible effect size regardless of p-value\n   term break_consensus\n  in-group: 0.000 (95% CI 0.000\u20130.001)  n=9939\n  out-group: 0.000 (95% CI 0.000\u20130.000)  n=9126\n  difference (in-group minus out-group): 0.000 (95% CI -0.000\u20130.001)  Cohen's d=0.01  negligible effect size regardless of p-value\n   term nack\n  in-group: 0.076 (95% CI 0.065\u20130.088)  n=9939\n  out-group: 0.140 (95% CI 0.118\u20130.165)  n=9126\n  difference (in-group minus out-group): -0.063 (95% CI -0.092\u2013-0.036)  Cohen's d=-0.07  negligible effect size regardless of p-value\n   term dangerous\n  in-group: 0.015 (95% CI 0.012\u20130.018)  n=9939\n  out-group: 0.025 (95% CI 0.020\u20130.031)  n=9126\n  difference (in-group minus out-group): -0.010 (95% CI -0.016\u2013-0.004)  Cohen's d=-0.04  negligible effect size regardless of p-value\n\nBLOCK B \u2014 Attrition and dropout\n5. Another PR within 90 days after a neutral or negative first response\n  in-group: n/a\n  out-group: 28.6% (95% CI 25.9\u201331.5%)  n=985\n  difference: n/a  effect size unavailable\n5b. Negative-only first response (sensitivity)\n  in-group: n/a\n  out-group: 19.7% (95% CI 9.8\u201329.5%)  n=61\n  difference: n/a  effect size unavailable\n  Unit is the contributor. First peer response on their history. Included when that tone is neutral or negative. Outcome is another PR in the next 90 days. Censored when the log ends inside those 90 days. Group is in-group status on that PR, not a final label. Neutral is the common enriched label, so the negative-only row is the stricter cut.\n  If the in-group cell is empty, nobody was already in the top-N when their first peer response arrived. First responses sit earlier than reviewer-volume rank, so the in-group contrast is unidentified. The out-group figure is the newcomer return rate only.\n6. Entry cohorts. Later entered top-N: 48. Left by 24 months and never in top-N: 1827. Still active at 24 months and never in top-N: 209. Already in top-N at first PR: 0.\n6a. First-year sentiment, later-in-group minus leavers\n  later-in-group: 0.328 (95% CI 0.286\u20130.370)  n=48\n  leavers: 0.208 (95% CI 0.189\u20130.227)  n=1400\n  difference (later-in-group minus leavers): 0.120 (95% CI 0.074\u20130.162)  Cohen's d=0.33  small\n6b. First-year merge rate, later-in-group minus leavers\n  later-in-group: 67.7% (95% CI 61.2\u201373.3%)  n=48\n  leavers: 30.6% (95% CI 28.7\u201332.6%)  n=1826\n  difference (later-in-group minus leavers): 37.1 pp (95% CI 30.7\u201343.2 pp)  Cohen's d=0.88  large\n6c. Still active at horizon (retrospective label; not a treatment effect)\n  became: 6m 95.8% (n=48); 12m 95.8% (n=48); 24m 89.6% (n=48); 48m 76.6% (n=47)\n  never: 6m 17.1% (n=2393); 12m 14.3% (n=2245); 24m 10.3% (n=2036); 48m 6.4% (n=1755)\n6d. Cohort year, share still active among people observable at that horizon\n  2010: n=2 6m 100%/2 12m 100%/2 24m 100%/2 48m 100%/2 became 0 left24 0\n  2011: n=91 6m 24%/91 12m 22%/91 24m 18%/91 48m 13%/91 became 6 left24 75\n  2012: n=50 6m 32%/50 12m 30%/50 24m 26%/50 48m 22%/50 became 3 left24 37\n  2013: n=108 6m 21%/108 12m 19%/108 24m 15%/108 48m 8%/108 became 2 left24 92\n  2014: n=170 6m 32%/170 12m 28%/170 24m 21%/170 48m 12%/170 became 7 left24 133\n  2015: n=125 6m 26%/125 12m 22%/125 24m 16%/125 48m 11%/125 became 6 left24 104\n  2016: n=130 6m 26%/130 12m 22%/130 24m 16%/130 48m 8%/130 became 8 left24 108\n  2017: n=224 6m 19%/224 12m 14%/224 24m 9%/224 48m 7%/224 became 3 left24 203\n  2018: n=263 6m 21%/263 12m 18%/263 24m 13%/263 48m 10%/263 became 7 left24 226\n  2019: n=182 6m 16%/182 12m 12%/182 24m 10%/182 48m 6%/182 became 2 left24 164\n  2020: n=164 6m 19%/164 12m 17%/164 24m 10%/164 48m 6%/164 became 2 left24 147\n  2021: n=188 6m 12%/188 12m 10%/188 24m 5%/188 48m 3%/188 became 0 left24 179\n  2022: n=153 6m 14%/153 12m 12%/153 24m 6%/153 48m 2%/105 became 1 left24 144\n  2023: n=142 6m 14%/142 12m 9%/142 24m 8%/142 48m n/a/0 became 0 left24 131\n  2024: n=150 6m 15%/150 12m 11%/150 24m 9%/92 48m n/a/0 became 1 left24 84\n  2025: n=252 6m 10%/252 12m 9%/151 24m n/a/0 48m n/a/0 became 0 left24 0\n  2026: n=195 6m 2%/47 12m n/a/0 24m n/a/0 48m n/a/0 became 0 left24 0\n\nBLOCK C \u2014 Preemptive withdrawal proxy\n7. IRC discussants 2428; also submitted a PR 236; never in the PR record 2192.\n  conversion (IRC discussant submitted a PR): 9.7% (95% CI 8.5\u201311.0%)  n=2428\n  concept-reply events uncensored 322; censored 0; silent events 14; people 69; people silent 13.\n  WEAK PROXY. Weak proxy. A concept-like IRC line (explicit idea phrasing, length >= 40) gets a negative or ambiguous reply in the same channel within 2 hours (nick mention, or one of the next 8 messages). The speaker then has no PR in the next 90 days and no IRC message after day 14 through day 90. Speech inside the first 14 days is allowed. Events still inside the log's last 90 days are censored. This is not observed preemptive withdrawal.\n  silence rate, ever-in-group minus everyone else\n  ever-in-group: 0.0% (95% CI 0.0\u20130.0%)  n=30\n  everyone-else: 33.3% (95% CI 17.9\u201348.7%)  n=39\n  difference (ever-in-group minus everyone-else): -33.3 pp (95% CI -48.7\u2013-20.5 pp)  Cohen's d=-0.93  large\n  CONFOUND: IRC match rate under 60% or IRC missing \u2014 elevated uncertainty.\n8. Draft creation versus publish timestamps: DATA UNAVAILABLE\n  snapshot: closed unmerged draft with no peer response, among decided drafts, 2016+\n  in-group: 15.3% (95% CI 11.0\u201319.3%)  n=301\n  out-group: 12.5% (95% CI 9.4\u201315.9%)  n=383\n  difference (in-group minus out-group): 2.7 pp (95% CI -2.5\u20137.6 pp)  Cohen's d=0.08  negligible effect size regardless of p-value\n\nBLOCK D \u2014 Structural access asymmetry\n9. Primary resolved 13441; topic-prefaced 1881; any IRC in prior 48h 5649. Match rate 9.1%.\n  merge rate, topic-prefaced minus not (resolved authors)\n  prefaced: 76.6% (95% CI 74.8\u201378.6%)  n=1880\n  not-prefaced: 78.2% (95% CI 77.4\u201379.0%)  n=11333\n  difference (prefaced minus not-prefaced): -1.6 pp (95% CI -3.7\u20130.3 pp)  Cohen's d=-0.04  negligible effect size regardless of p-value\n  hours to first response, topic-prefaced minus not\n  prefaced: 98.2h (95% CI 53.3\u2013169.6)  n=1824\n  not-prefaced: 77.0h (95% CI 66.8\u201388.8)  n=11283\n  difference (prefaced minus not-prefaced): 21.2h (95% CI -24.4\u201392.0)  Cohen's d=0.03  negligible effect size regardless of p-value\n  topic-preface rate, in-group minus out-group\n  in-group: 14.6% (95% CI 13.9\u201315.3%)  n=9939\n  out-group: 4.7% (95% CI 4.3\u20135.2%)  n=9126\n  difference (in-group minus out-group): 9.8 pp (95% CI 9.1\u201310.7 pp)  Cohen's d=0.33  small\n  CONFOUND: IRC match rate under 60% \u2014 elevated uncertainty on this block.\n10. DATA UNAVAILABLE: no requested_reviewers or review-request field on enriched_prs.jsonl or prs_raw.jsonl.\n\nCONFOUND FLAGS\nQuality confound: flagged. Out-group authors may submit different work. Lines changed, files touched, and prior PR count are partial proxies. A remaining gap is still not proof of hostility. Prior-PR strata are partly circular with who later reviews a lot.\n  lines strata, merge gap persists: True (same sign and at least half the raw gap remains inside strata)\n  lines strata, sentiment gap persists: True (same sign and at least half the raw gap remains inside strata)\nCircularity: overlap 15/20 = 75.0%. Flagged=True. Final top-N reviewers versus top-N PR authors. Overlap above 50% means the in-group/out-group cut is weaker than a newcomers-versus-regulars story: the same people are on both sides.\nSurvival bias: flagged as a design risk that metric 6 is there to show. A fixed end-of-sample reviewer list would treat everyone who left as out-group and hide the dropout path. Metric 6 uses the time-varying set plus a retrospective 'later entered top-N' label. That label is not available at the first PR.\nIRC resolution: match rate 9.1% (236/2589). Flagged=True. Match rate is the share of PR-author identities that appear at least once in the IRC log under the same unified id (or the same login string when the map has no IRC row). Below 60%, metrics 7 and 9 have elevated uncertainty.\n\nMECHANISM DISAMBIGUATION\nCloser fingerprint: mixed\nCondition counts: active_social_filtering=2, passive_dropout=1, structural_access_asymmetry=1\n  met active_social_filtering: sentiment gap persists after lines-changed strata; IRC topic-preface merge effect is negligible\n  met passive_dropout: IRC silence proxy is higher outside the ever-in-group set (d <= -0.2)\n  met structural_access_asymmetry: justification vocabulary |d| < 0.2 inside both preface strata\n  not met or unknown:\n    - active: vocabulary |d| < 0.2\n    - early treatment similarity not met (needs both |d| < 0.2)\n    - sentiment gap does not shrink by half after lines strata\n    - structural: preface does not account for most of the in/out merge gap under the stated rule\nScores count pre-specified conditions, not a model probability. A lead of 2 or more, with at least 2 conditions, is reported as the closer fingerprint. Otherwise the pattern is mixed or absent. Do not treat the label as a cause.\n\nWHAT THIS CANNOT PROVE\n1. We cannot observe psychological state. Nothing here is a diagnosis of rejection sensitive dysphoria, negativity bias, or any other trait in a person.\n2. A population difference in merge rate, tone, attrition, or vocabulary is consistent with those mechanisms and does not require them.\n3. Alternative explanations this design cannot rule out include a quality difference the proxies miss, topic selection, when the PR was opened, and structural access (who is already in the review channel).\n4. The social-filtering reading needs both an asymmetric justification vocabulary and a sentiment gap that remains after the complexity and experience strata. Either one alone is not that reading.\n5. Preemptive withdrawal is only the IRC-silence proxy defined in metric 7. This dataset cannot show who almost submitted a PR and did not.\n\nDATA UNAVAILABLE\n- 8_draft_to_submission_gap: DATA UNAVAILABLE: enriched and raw PR rows have a draft boolean, not draft-creation versus ready-for-review timestamps.\n- 10_reviewer_request_patterns: DATA UNAVAILABLE: no requested_reviewers or review-request field on enriched_prs.jsonl or prs_raw.jsonl."
+}

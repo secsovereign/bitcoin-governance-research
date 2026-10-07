@@ -1,0 +1,745 @@
+{
+  "pin": "Do not infer objections. technical_objections, process_objections, nack_exists (beyond unknown), nack_source, stated_reason_for_stall, episode_roles, and corpus_cites come only from BTCDecoded Intelligence search / find_discourse / find_incident / get_passage returns, with source pinned to github | irc | mail | delving | bips. GitHub matcher counts in stalled_proposal_dossiers.json and quotes in archive_gems.json are anchors (existing_findings / github_anchors), not corpus_cites and not substitutes for NACK or objection cells. This file is not an identity store: contributors[].canonical_key joins canonical_maintainers.json; do not copy aliases, emails, or merge keys here. person_role() is merge-capability, not episode role.",
+  "nack_exists_enum": [
+    "unknown",
+    "yes",
+    "no",
+    "partial"
+  ],
+  "episode_role_enum": [
+    "technical-objector",
+    "process-objector",
+    "merger",
+    "reviewer",
+    "redirector"
+  ],
+  "contributor_schema": [
+    "canonical_key",
+    "github_handle",
+    "episodes_involved",
+    "episode_roles",
+    "corpus_cites"
+  ],
+  "corpus_cite_schema": [
+    "source",
+    "passage_id",
+    "when"
+  ],
+  "objection_schema": [
+    "text",
+    "source",
+    "answered",
+    "basis",
+    "cite"
+  ],
+  "episodes": [
+    {
+      "episode_id": "blocksize-2015",
+      "proposal": "Block size increase / blocksize wars",
+      "venue": "bitcoin-dev",
+      "technical_objections": [
+        {
+          "text": "having miners -- or any group -- vote on block size is not an intrinsically good thing.",
+          "source": "mail",
+          "answered": "",
+          "basis": "",
+          "cite": "7bb2fa3257fb3233839f824429337941611e2820340a7eaf6ae5f9dac04a6217"
+        },
+        {
+          "text": "The trouble is this requires maintaining a hash tree commitment over validator state, which turns out to be insanely expensive. \u2026 if you also want this commitment scheme for fraud proofs, then you should be arguing for a block size limit decrease (to 500kB), not increase.",
+          "source": "mail",
+          "answered": "",
+          "basis": "",
+          "cite": "6f6f7d58549247ea96a42ed22c5156367d6590ee67f0aa028639caada3f2f9bd"
+        }
+      ],
+      "process_objections": [],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "mail",
+          "passage_id": "7bb2fa3257fb3233839f824429337941611e2820340a7eaf6ae5f9dac04a6217",
+          "when": "2015-08-29"
+        },
+        {
+          "source": "mail",
+          "passage_id": "6f6f7d58549247ea96a42ed22c5156367d6590ee67f0aa028639caada3f2f9bd",
+          "when": "2015-06-28"
+        }
+      ],
+      "existing_findings": [
+        "governance_timeline.json"
+      ],
+      "github_anchors": []
+    },
+    {
+      "episode_id": "taproot-activation",
+      "proposal": "Taproot activation method",
+      "venue": "bitcoin-dev",
+      "technical_objections": [],
+      "process_objections": [
+        {
+          "text": "Some participants expressed concern of having \"Bitcoin Core\" in the name e.g. \"Bitcoin Core + Taproot\" as it would be confusing to users and give them the mistaken impression that it had been signed off by Bitcoin Core maintainers.",
+          "source": "mail",
+          "answered": "",
+          "basis": "",
+          "cite": "5ee0fe7bc0814af2d1f5d5d062b2220e11fad8ca623e41eef3914157c66b2433"
+        },
+        {
+          "text": "The activation mechanism(s) for this alternative release is Speedy Trial (BIP 8, consistent use of block height) followed by BIP 8 (1 year, LOT=true).",
+          "source": "mail",
+          "answered": "",
+          "basis": "",
+          "cite": "5ee0fe7bc0814af2d1f5d5d062b2220e11fad8ca623e41eef3914157c66b2433"
+        }
+      ],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "mail",
+          "passage_id": "5ee0fe7bc0814af2d1f5d5d062b2220e11fad8ca623e41eef3914157c66b2433",
+          "when": "2021-04-14"
+        },
+        {
+          "source": "bips",
+          "passage_id": "0414138197d4a84afb02af3ee3e075d4a5b94e1c8a146c0be524093a0af442c9",
+          "when": "2020-01-19"
+        },
+        {
+          "source": "github",
+          "passage_id": "50c0284c0b1fcc3b6ebdb397da9e00ac1c53159f1e28dbe5e0d3812c5f705962",
+          "when": "2021-04-15"
+        }
+      ],
+      "existing_findings": [],
+      "github_anchors": [
+        "bitcoin/bitcoin#21701"
+      ]
+    },
+    {
+      "episode_id": "op-return-2024",
+      "proposal": "OP_RETURN / datacarrier policy",
+      "venue": "GitHub PR",
+      "technical_objections": [
+        {
+          "text": "Approach NACK for me -- there's no point having a limit that's trivially avoided by just having many OP_RETURNs, and forcing people to waste blockspace by encoding redundant nValue and `OP_RETURN OP_PUSH` instructions",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "73521ece63aba5a118cf4a4af585e46d9b16a184299534f2666d7a51b3c7a45b"
+        }
+      ],
+      "process_objections": [],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "73521ece63aba5a118cf4a4af585e46d9b16a184299534f2666d7a51b3c7a45b",
+          "when": "2025-04-30"
+        }
+      ],
+      "existing_findings": [
+        "ARCHIVE_GEMS.md"
+      ],
+      "github_anchors": [
+        "bitcoin/bitcoin#32381"
+      ]
+    },
+    {
+      "episode_id": "dandelion-pr13947",
+      "proposal": "Dandelion / BIP156 transaction origin privacy",
+      "venue": "GitHub PR",
+      "technical_objections": [
+        {
+          "text": "we still need to figure out what the right behavior is for transaction chains and replacement transactions \u2026 and generally how to prevent DoS attacks during stem routing",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "ee24474a93a3a82c72028970ab5b9cda8b76c37da670170fbd24b8b703750066"
+        },
+        {
+          "text": "If we use a stempool \u2026 I'm not sure I understand how we could share a stempool across multiple inbound peers without leaking dandelion routing information to an adversary",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "ee24474a93a3a82c72028970ab5b9cda8b76c37da670170fbd24b8b703750066"
+        },
+        {
+          "text": "Neither `dandeliontx` or `dandelionacc` are mentioned and/or specified in the BIP.",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "d7c99966b47748e485ba9efb5c569b9d37e8393c7871f181a8cc673cc92d32ff"
+        }
+      ],
+      "process_objections": [
+        {
+          "text": "Needs functional tests.",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "d7c99966b47748e485ba9efb5c569b9d37e8393c7871f181a8cc673cc92d32ff"
+        }
+      ],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "3dd0ecf40408cdce77c772976af0d3f3d7ce99d314d22bc3faffed041c7e0f7e",
+          "when": "2018-08-12"
+        },
+        {
+          "source": "github",
+          "passage_id": "ee24474a93a3a82c72028970ab5b9cda8b76c37da670170fbd24b8b703750066",
+          "when": "2018-08-13"
+        },
+        {
+          "source": "github",
+          "passage_id": "d7c99966b47748e485ba9efb5c569b9d37e8393c7871f181a8cc673cc92d32ff",
+          "when": "2018-09-02"
+        },
+        {
+          "source": "github",
+          "passage_id": "0f5a668721b4ce773a44632f0b0b984c504a555469def512b0a19d11008a632b",
+          "when": "2020-10-20"
+        },
+        {
+          "source": "bips",
+          "passage_id": "e3fe29cd1c91a2990382da92a104ccf56babaeaab120b74f2fe9f2f1b7c64a07",
+          "when": "2017-06-09"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md",
+        "ARCHIVE_GEMS.md"
+      ],
+      "github_anchors": [
+        "bitcoin/bitcoin#13947",
+        "bitcoin/bitcoin#20203"
+      ]
+    },
+    {
+      "episode_id": "utxo-commitments",
+      "proposal": "UTXO commitments vs AssumeUTXO",
+      "venue": "bitcoin-dev",
+      "technical_objections": [
+        {
+          "text": "A soft-fork to make (U)TXO commitments always required is problematic, because we can't change the format of those commitments in the future in another soft-fork - the exact form is baked in stone.",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "3ec77c6ca322a8075b81313746314f3dbb4b668a9dafccebbc97c7741a033855"
+        },
+        {
+          "text": "The trouble is this requires maintaining a hash tree commitment over validator state, which turns out to be insanely expensive. \u2026 that ends up requiring 15 - 22x more I/O during block validation.",
+          "source": "mail",
+          "answered": "",
+          "basis": "",
+          "cite": "6f6f7d58549247ea96a42ed22c5156367d6590ee67f0aa028639caada3f2f9bd"
+        },
+        {
+          "text": "My objection is that `assumeUTXO` makes the most critical part of the codebase harder to read and reason about, and this PR extends that model further.",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "5074841b738fea4e44bd8331bfcc281a2cc78dcbcfe001a745d2debe9842f431"
+        }
+      ],
+      "process_objections": [],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "3ec77c6ca322a8075b81313746314f3dbb4b668a9dafccebbc97c7741a033855",
+          "when": "2014-09-23"
+        },
+        {
+          "source": "mail",
+          "passage_id": "6f6f7d58549247ea96a42ed22c5156367d6590ee67f0aa028639caada3f2f9bd",
+          "when": "2015-06-28"
+        },
+        {
+          "source": "github",
+          "passage_id": "22d2d6a9d60b08b979efbeb5a9c0a8c3b41cf3f0b9fb78494ffd617de2b3f492",
+          "when": "2019-03-15"
+        },
+        {
+          "source": "github",
+          "passage_id": "5074841b738fea4e44bd8331bfcc281a2cc78dcbcfe001a745d2debe9842f431",
+          "when": "2026-05-19"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md"
+      ],
+      "github_anchors": [
+        "bitcoin/bitcoin#3977",
+        "bitcoin/bitcoin#15605"
+      ]
+    },
+    {
+      "episode_id": "erlay",
+      "proposal": "Erlay set-reconciliation relay",
+      "venue": "GitHub PR",
+      "technical_objections": [],
+      "process_objections": [
+        {
+          "text": "This is not to be merged. Functionality will be spread across multiple smaller PRs to ease the review process.",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "80f98485057ba50a2e480ee0cec38e669baa9b838ec2d98c3123c6c4885dd15a"
+        }
+      ],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "mail",
+          "passage_id": "98e4c756dd91f5b9397f6ac25051d5630c26c33376846165459329fbc91598b5",
+          "when": "2019-05-27"
+        },
+        {
+          "source": "github",
+          "passage_id": "f42f37ccaed32ae73f5a7df1b8d120f36bd7fd2720dd15f493c4308a3893a5df",
+          "when": "2021-03-23"
+        },
+        {
+          "source": "github",
+          "passage_id": "80f98485057ba50a2e480ee0cec38e669baa9b838ec2d98c3123c6c4885dd15a",
+          "when": "2024-06-12"
+        },
+        {
+          "source": "bips",
+          "passage_id": "0a2983f841556e06a375607e308725eafd8dfc96c7e7d5ffab055d4ecb05c3ab",
+          "when": "2019-09-25"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md",
+        "ARCHIVE_GEMS.md"
+      ],
+      "github_anchors": [
+        "bitcoin/bitcoin#21515",
+        "bitcoin/bitcoin#18261",
+        "bitcoin/bitcoin#30277"
+      ]
+    },
+    {
+      "episode_id": "bip-editor-dashjr",
+      "proposal": "BIP editor process / Luke Dashjr",
+      "venue": "bitcoin-dev",
+      "technical_objections": [],
+      "process_objections": [
+        {
+          "text": "Off-list BIP-related correspondence should be sent (or CC'd) to the BIP editors.",
+          "source": "bips",
+          "answered": "",
+          "basis": "",
+          "cite": "401eaf732dbd29fc3116749541cc5d22a93d8a73c924b82abfccc81e2c7a7911"
+        },
+        {
+          "text": "admissions from Luke that he has not had the time to actively work on the BIPs repo \u2026 I think it is prudent for us to look at adding more BIPs editors.",
+          "source": "mail",
+          "answered": "",
+          "basis": "",
+          "cite": "f3caacf5b89f926b3bcfc03e5be9596f31708d9935bb252666e5d465be1e50f7"
+        }
+      ],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "bips",
+          "passage_id": "58498aa8c91f23f12944bba7a5bbd51a651dd8b8805d74a07df036b0a2652b09",
+          "when": "2011-09-19"
+        },
+        {
+          "source": "bips",
+          "passage_id": "401eaf732dbd29fc3116749541cc5d22a93d8a73c924b82abfccc81e2c7a7911",
+          "when": "2016-02-03"
+        },
+        {
+          "source": "bips",
+          "passage_id": "37a7e8163339d67892cf45776b823d69e8b6d0712c61cad8f2f8806088140871",
+          "when": "2016-01-06"
+        },
+        {
+          "source": "mail",
+          "passage_id": "f3caacf5b89f926b3bcfc03e5be9596f31708d9935bb252666e5d465be1e50f7",
+          "when": "2024-02-27"
+        },
+        {
+          "source": "mail",
+          "passage_id": "437704059ef5defe4baac183c59bf2650181648c4d8d6aabab58aea54d960709",
+          "when": "2024-03-27"
+        }
+      ],
+      "existing_findings": [],
+      "github_anchors": [
+        "bitcoin/bips#271"
+      ]
+    },
+    {
+      "episode_id": "kernel-extraction",
+      "proposal": "libbitcoinkernel extraction",
+      "venue": "GitHub PR",
+      "technical_objections": [
+        {
+          "text": "NACK. This is pretty literally the opposite of what we want to be doing with the kernel. \u2026 Hiding this away into `libbitcoin_util` only makes this harder/impossible to do",
+          "source": "github",
+          "answered": "",
+          "basis": "",
+          "cite": "6e6ebfdecf884e548dbb64a734e036e1f4d0bfb5d080463c7106569b33d001aa"
+        }
+      ],
+      "process_objections": [],
+      "outcome": "",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "6760b0bf63931b62aad281510bd179efed6d82809436d63ae098c7db221e4c61",
+          "when": "2022-02-11"
+        },
+        {
+          "source": "github",
+          "passage_id": "6e6ebfdecf884e548dbb64a734e036e1f4d0bfb5d080463c7106569b33d001aa",
+          "when": "2023-03-20"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md"
+      ],
+      "github_anchors": [
+        "bitcoin/bitcoin#24322",
+        "bitcoin/bitcoin#27285"
+      ],
+      "parent_episode": "wallet-node-split"
+    }
+  ],
+  "agreement_stalls": [
+    {
+      "proposal": "Dandelion / BIP156",
+      "episode_id": "dandelion-pr13947",
+      "first_proposed": "2017-06-09",
+      "last_activity": "2020-10-20",
+      "stated_reason_for_stall": "BIP 156 never got implemented in Bitcoin Core \u2026 Reasons: (TLDR: Denial of Service)",
+      "nack_exists": "unknown",
+      "nack_source": "",
+      "corpus_cites": [
+        {
+          "source": "bips",
+          "passage_id": "e3fe29cd1c91a2990382da92a104ccf56babaeaab120b74f2fe9f2f1b7c64a07",
+          "when": "2017-06-09"
+        },
+        {
+          "source": "github",
+          "passage_id": "0f5a668721b4ce773a44632f0b0b984c504a555469def512b0a19d11008a632b",
+          "when": "2020-10-20"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md",
+        "ARCHIVE_GEMS.md"
+      ]
+    },
+    {
+      "proposal": "UTXO commitments",
+      "episode_id": "utxo-commitments",
+      "first_proposed": "2014-09-23",
+      "last_activity": "2026-05-19",
+      "stated_reason_for_stall": "A soft-fork to make (U)TXO commitments always required is problematic, because we can't change the format of those commitments in the future in another soft-fork - the exact form is baked in stone.",
+      "nack_exists": "unknown",
+      "nack_source": "",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "3ec77c6ca322a8075b81313746314f3dbb4b668a9dafccebbc97c7741a033855",
+          "when": "2014-09-23"
+        },
+        {
+          "source": "mail",
+          "passage_id": "6f6f7d58549247ea96a42ed22c5156367d6590ee67f0aa028639caada3f2f9bd",
+          "when": "2015-06-28"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md"
+      ]
+    },
+    {
+      "proposal": "Erlay",
+      "episode_id": "erlay",
+      "first_proposed": "2019-05-27",
+      "last_activity": "2024-06-12",
+      "stated_reason_for_stall": "This is not to be merged. Functionality will be spread across multiple smaller PRs to ease the review process.",
+      "nack_exists": "unknown",
+      "nack_source": "",
+      "corpus_cites": [
+        {
+          "source": "mail",
+          "passage_id": "98e4c756dd91f5b9397f6ac25051d5630c26c33376846165459329fbc91598b5",
+          "when": "2019-05-27"
+        },
+        {
+          "source": "github",
+          "passage_id": "80f98485057ba50a2e480ee0cec38e669baa9b838ec2d98c3123c6c4885dd15a",
+          "when": "2024-06-12"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md",
+        "ARCHIVE_GEMS.md"
+      ]
+    },
+    {
+      "proposal": "Wallet / node split",
+      "episode_id": "wallet-node-split",
+      "first_proposed": "2017-08-01",
+      "last_activity": "2022-02-11",
+      "stated_reason_for_stall": "",
+      "nack_exists": "unknown",
+      "nack_source": "",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "2a10252ef729ba004dc8cd1eb62dab540a3c32a6482b499285adaba09ec1a19a",
+          "when": "2017-08-01"
+        },
+        {
+          "source": "github",
+          "passage_id": "6760b0bf63931b62aad281510bd179efed6d82809436d63ae098c7db221e4c61",
+          "when": "2022-02-11"
+        }
+      ],
+      "existing_findings": [
+        "STALLED_PROPOSALS_REPORT.md"
+      ]
+    },
+    {
+      "proposal": "Stratum V2 native support",
+      "episode_id": "stratum-v2-native",
+      "first_proposed": "2023-06-11",
+      "last_activity": "2024-10-16",
+      "stated_reason_for_stall": "there's currently little support for directly supporting Stratum v2 in Bitcoin Core, with most contributors favouring the creation of a Mining IPC interface that external applications can use.",
+      "nack_exists": "yes",
+      "nack_source": "dergoegge",
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "15abcfab56cc06518b09074347b11f379cc06542853fe7e7d6e1fafff62539af",
+          "when": "2023-06-11"
+        },
+        {
+          "source": "github",
+          "passage_id": "2f485f64206e3eafffe0cb27588fcd86212b812681115933bb695d8a848be134",
+          "when": "2024-07-03"
+        },
+        {
+          "source": "github",
+          "passage_id": "4d2ca37e18bd137720e0d30afddf292af3ffd10165b68e146dcc1b6c3f0c857f",
+          "when": "2024-10-16"
+        }
+      ],
+      "existing_findings": []
+    }
+  ],
+  "phrases": [
+    {
+      "phrase": "not the right venue",
+      "context_type": "process",
+      "episode_ids": [],
+      "count": null,
+      "corpus_cites": []
+    },
+    {
+      "phrase": "work on Core first",
+      "context_type": "process",
+      "episode_ids": [],
+      "count": null,
+      "corpus_cites": []
+    },
+    {
+      "phrase": "rough consensus",
+      "context_type": "process",
+      "episode_ids": [
+        "blocksize-2015"
+      ],
+      "count": null,
+      "corpus_cites": [
+        {
+          "source": "mail",
+          "passage_id": "ba4d3ca0eeba15f5b30cfb8ae776725f5d6f3e277e675708760e72c7c4c9f9bf",
+          "when": "2015-10-07"
+        }
+      ]
+    },
+    {
+      "phrase": "off-list",
+      "context_type": "process",
+      "episode_ids": [
+        "bip-editor-dashjr"
+      ],
+      "count": null,
+      "corpus_cites": [
+        {
+          "source": "bips",
+          "passage_id": "401eaf732dbd29fc3116749541cc5d22a93d8a73c924b82abfccc81e2c7a7911",
+          "when": "2016-02-03"
+        }
+      ]
+    },
+    {
+      "phrase": "too risky",
+      "context_type": "ambiguous",
+      "episode_ids": [],
+      "count": null,
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "d19cca9d9a69654374089f0d689fddf2c3111c2c666ef703a9016f56db35211a",
+          "when": "2018-11-20"
+        },
+        {
+          "source": "irc",
+          "passage_id": "f50ecd172d1761b38617867820bb780599c119bb237459fe9845b5a5590e80d1",
+          "when": "2017-06-04"
+        }
+      ]
+    },
+    {
+      "phrase": "needs more review",
+      "context_type": "process",
+      "episode_ids": [],
+      "count": null,
+      "corpus_cites": []
+    },
+    {
+      "phrase": "breaks existing behavior",
+      "context_type": "technical",
+      "episode_ids": [],
+      "count": null,
+      "corpus_cites": []
+    }
+  ],
+  "contributors": [
+    {
+      "canonical_key": "sdaftuar",
+      "github_handle": "sdaftuar",
+      "episodes_involved": [
+        "dandelion-pr13947"
+      ],
+      "episode_roles": [
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "ee24474a93a3a82c72028970ab5b9cda8b76c37da670170fbd24b8b703750066",
+          "when": "2018-08-13"
+        }
+      ]
+    },
+    {
+      "canonical_key": "sjors",
+      "github_handle": "Sjors",
+      "episodes_involved": [
+        "dandelion-pr13947"
+      ],
+      "episode_roles": [
+        "reviewer",
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "d7c99966b47748e485ba9efb5c569b9d37e8393c7871f181a8cc673cc92d32ff",
+          "when": "2018-09-02"
+        }
+      ]
+    },
+    {
+      "canonical_key": "ajtowns",
+      "github_handle": "ajtowns",
+      "episodes_involved": [
+        "op-return-2024"
+      ],
+      "episode_roles": [
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "73521ece63aba5a118cf4a4af585e46d9b16a184299534f2666d7a51b3c7a45b",
+          "when": "2025-04-30"
+        }
+      ]
+    },
+    {
+      "canonical_key": "petertodd",
+      "github_handle": "petertodd",
+      "episodes_involved": [
+        "utxo-commitments"
+      ],
+      "episode_roles": [
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "3ec77c6ca322a8075b81313746314f3dbb4b668a9dafccebbc97c7741a033855",
+          "when": "2014-09-23"
+        }
+      ]
+    },
+    {
+      "canonical_key": "l0rinc",
+      "github_handle": "l0rinc",
+      "episodes_involved": [
+        "utxo-commitments"
+      ],
+      "episode_roles": [
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "5074841b738fea4e44bd8331bfcc281a2cc78dcbcfe001a745d2debe9842f431",
+          "when": "2026-05-19"
+        }
+      ]
+    },
+    {
+      "canonical_key": "fanquake",
+      "github_handle": "fanquake",
+      "episodes_involved": [
+        "kernel-extraction"
+      ],
+      "episode_roles": [
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "6e6ebfdecf884e548dbb64a734e036e1f4d0bfb5d080463c7106569b33d001aa",
+          "when": "2023-03-20"
+        }
+      ]
+    },
+    {
+      "canonical_key": "dergoegge",
+      "github_handle": "dergoegge",
+      "episodes_involved": [
+        "stratum-v2-native"
+      ],
+      "episode_roles": [
+        "technical-objector"
+      ],
+      "corpus_cites": [
+        {
+          "source": "github",
+          "passage_id": "2f485f64206e3eafffe0cb27588fcd86212b812681115933bb695d8a848be134",
+          "when": "2024-07-03"
+        }
+      ]
+    }
+  ]
+}

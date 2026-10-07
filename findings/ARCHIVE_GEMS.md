@@ -7,6 +7,8 @@
 
 Seventeen years is not a prompt. It is a mine. The quantitative work is the map.
 
+Quote pack, not episode anatomy. Counts vs anatomy: `STALLED_PROPOSALS_REPORT.md`, `REJECTION_ANATOMY.md`, `STALLED_AGREEMENT_LEDGER.md`.
+
 ---
 
 ## How this integrates

@@ -2,7 +2,7 @@
 
 **25,122 PRs | 8,890 Issues | 51,062 Emails (2 ML lists) | 430,613 IRC | 4,662 Delving | 158,917 Bitcointalk | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-09-20 (informal-channel integration: cryptography ML, Delving, Bitcointalk)
+**Last Updated**: 2026-10-07 (measurement passes below; informal-channel counts unchanged)
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, combined mailing lists, Delving, Bitcointalk), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
@@ -52,9 +52,9 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 **25.5% self-merge rate** (2,501 of 9,793 maintainer-merged PRs).  
 **45.1% of self-merges have zero reviews** (1,129 PRs, 11.6% of all maintainer-merged PRs).  
-**No formal, publicly documented rules** - review requirements vary from 0 to 14+ reviews with no documented standard.
+**Written rule, no numeric minimum.** `CONTRIBUTING.md` puts merge with merge maintainers, who judge contributor consensus and may weigh reviewers by merit. Observed review counts still run from 0 to 14+. Cite 2022+ as the current process bar. Pre-2016 GitHub Review objects are missing from this dump. See `REVEALED_ROUGH_CONSENSUS.md`.
 
-**Security implication**: Maintainers can merge their own code with zero review and no justification required. There's no accountability mechanism, no challenge process, no oversight. This is **arbitrary authority** - decisions based on individual discretion, not rules.
+**Security implication**: A merge-key holder can merge their own code with zero GitHub Review objects. The written rule does not set a minimum. What that judgment looked like is in `REVEALED_ROUGH_CONSENSUS.md`.
 
 **PR type breakdown**: Even "trivial" housekeeping PRs have **36.4% zero-review rate** (928 of 2,547). Critical PRs fare better at 23.2%, but the pattern holds: no minimum review requirements regardless of PR importance.
 
@@ -125,8 +125,8 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 ### 2. Single Points of Failure
 
 **Top 3 control 81.1% of merges** - if compromised, could affect entire network.  
-**No formal accountability mechanism visible** - no recourse if malicious code enters.  
-**No formal, publicly documented rules** - no standard to enforce security.
+**No public recourse procedure is in this corpus** if a key holder merges code others oppose.  
+**The written rule sets no numeric review minimum.** See `REVEALED_ROUGH_CONSENSUS.md`.
 
 ### 3. Trust Minimization Violation
 
@@ -148,9 +148,22 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 **Power Calcification**: Top-10 authorship 42.7% → 47.8%. Authorship Gini 0.851 → 0.834 (still extreme). Self-merge 25.5%. Top-3 merge share stays ~81%. Power is **not distributing**. See `GOVERNANCE_FRAMES.md`.
 
-**No Path Forward**: Non-maintainers: 0% self-merge (not permitted). No formal maintainer selection process (not publicly documented). No accountability mechanism (no challenge process). There's **no path to power** for outsiders. The guild structure is **closed**. This is not sustainable long-term.
+**No path to keys in this corpus**: Non-maintainers: 0% self-merge (not permitted). `CONTRIBUTING.md` governs how a key holder judges consensus. It does not say who receives keys. See `GLOSSARY_AND_CONTEXT.md`.
 
 **Stalled feature-scale work (`STALLED_PROPOSALS_REPORT.md`)**: Dandelion’s Core implementation PR closed unmerged. Full Erlay protocol: **0/7** matched PRs merged (scaffolding/signaling merges ≠ delivery). Package relay shows multi-year lifetimes. Closed-unmerged is often non-engagement (~⅔ of non-maintainer closes have zero reviews) — not interchangeable with “NACK’d” — but the named full-protocol stalls remain.
+
+---
+
+## Later measurements
+
+Fit 2010–2023, confirm 2024–2026. Year is a control. These reports do not refit the rates above.
+
+- **Universal tightening is not supported.** The decided merge-rate slope’s interval covers zero. The newcomer merge slope is negative. `NEWCOMER_BAR.md`
+- **In-group is the time-varying top reviewers, not the merge-key set.** Decided in-group pull requests merge higher and go unanswered less often. The fingerprint is mixed. It is not a diagnosis. `INGROUP_REVIEW_TREATMENT.md`
+- **What merge looked like** under `CONTRIBUTING.md` is ACK/NACK plus observed discussion. A mention is not an ACK. `REVEALED_ROUGH_CONSENSUS.md`
+- **Six attention effects clear on Bitcoin Core.** Comparison dumps lack review objects, so those effects cannot be placed against other repositories’ health. `COMMONS_MECHANISMS.md`
+- **The first-year merge gap is not closed by patch content.** Of 1,740 training leavers, 340 match later entrants on patch content and score lower on social legibility. That set is spread across entry years (STRUCTURAL). Newcomer silence is not explained by a shift into subsystems with fewer reviewers. `FIRST_YEAR_TRAJECTORY.md`, `GAP_CLOSURE.md`
+- **Conflict-resolution score (P6)** is the only positive lag with later health that clears the joint threshold, on 13 years, low power. Sanctions (P5) and organizing rights (P7) are unscored. `GAP_CLOSURE.md`
 
 ---
 
@@ -189,6 +202,12 @@ Bitcoin was designed to eliminate trusted intermediaries. Its reference implemen
 - `MAINTAINER_PREMIUM_REPORT.md` - Identity vs merits (fair controls + quality matching)
 - `MERGE_CONCENTRATION_DEPUTIES_REPORT.md` - Modern merger share / funnels
 - `STALLED_PROPOSALS_REPORT.md` - Dandelion / Erlay / related case dossiers
+- `REVEALED_ROUGH_CONSENSUS.md` - what `CONTRIBUTING.md` judgment looked like
+- `NEWCOMER_BAR.md` - who the merge slope moved against
+- `INGROUP_REVIEW_TREATMENT.md` - top-reviewer treatment gap
+- `COMMONS_MECHANISMS.md` - six attention effects and the shared-indicator rank
+- `FIRST_YEAR_TRAJECTORY.md` - first-year merge gap and the silence slope
+- `GAP_CLOSURE.md` - lagged principle scores, false-negative timeline, subsystem silence
 - `TEMPORAL_ANALYSIS_REPORT.md` - Temporal patterns
 - `NOVEL_INTERPRETATIONS.md` - Novel insights
 - `INTERDISCIPLINARY_ANALYSIS_REPORT.md` - Multi-disciplinary analysis

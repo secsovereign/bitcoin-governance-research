@@ -4,7 +4,7 @@
 **Machine-readable**: `analysis/findings/data/governance_frames.json`  
 **Use this before quoting all-time rates.**
 
-Four frames. Each one changes what you would cite.
+Four frames. Each one changes what you would cite. Section 5 is the later measurement passes.
 
 ---
 
@@ -110,6 +110,18 @@ The process keeps a small continuing set. High merge-rate authors still leave at
 **Do not cite**: 91% exit as “the project is dying.”
 
 Detail: `CONTRIBUTOR_ANALYSIS.md`
+
+---
+
+## 5. Later measurements
+
+These sit beside the four frames. Year is a control in the models. Do not read a year slope as evidence the whole project tightened.
+
+- Cite 2022+ for the current merge bar. Compare before 2016 and 2016+ on observed discussion. Pre-2016 GitHub Review objects are missing. `REVEALED_ROUGH_CONSENSUS.md`
+- The decided merge-rate slope’s interval covers zero. The newcomer slope is negative. `NEWCOMER_BAR.md`
+- In-group is the time-varying top reviewers, not the merge-key set. `INGROUP_REVIEW_TREATMENT.md`
+- Six attention effects clear on Bitcoin Core. Comparison dumps cannot host them. `COMMONS_MECHANISMS.md`
+- Patch content does not close the first-year merge gap. The 340 content-matched leavers are spread across entry years. Newcomer silence is not a shift into quieter subsystems. `FIRST_YEAR_TRAJECTORY.md`, `GAP_CLOSURE.md`
 
 ---
 

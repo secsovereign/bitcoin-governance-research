@@ -1,0 +1,2678 @@
+{
+  "pin": "G1 later entered the rolling 24-month top 20. G2 never entered and authored no PR at or after 24 months. The pass-2 d=0.73 used the cumulative top 20. This pass recomputes the within-cohort merge gap on the rolling groups and decomposes that gap. T2c, the merge rate, is not used as a predictor of itself.",
+  "version": "4.0",
+  "parameters": {
+    "bootstrap": 1000,
+    "seed": 7,
+    "train_years": "2010-2023",
+    "holdout_years": "2024-2026",
+    "rolling_window_days": 730.5,
+    "pass2_reference_d": 0.7338842495815344,
+    "pass2_reference_definition": "cumulative top 20, two-year cohorts, first-year merge rate"
+  },
+  "groups": {
+    "n_ever_in_rolling_top20": 65,
+    "n_ever_with_a_pr": 65,
+    "n_g1": 65,
+    "n_g2": 1823,
+    "n_train": 1800,
+    "n_holdout": 88
+  },
+  "comparison_table": [
+    {
+      "id": "T1a",
+      "predictor": "T1a_median_lines",
+      "block": "T",
+      "g1_mean": 50.71666666666667,
+      "g2_mean": 11025.352011494253,
+      "g1_median": 36.0,
+      "g2_median": 13.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": -0.023091669496091368,
+      "ci95": [
+        -0.06416484685562517,
+        0.009739522224538263
+      ],
+      "p": 0.176,
+      "cohens_d": -0.20942485911200923,
+      "cohens_d_ci95": [
+        -0.2699225426868673,
+        -0.19173573713159675
+      ],
+      "effect_size_flag": "small",
+      "n": 1800,
+      "estimate": -0.023091669496091368,
+      "holdout_estimate": 0.001962966920968865,
+      "holdout_same_sign": false,
+      "q": 0.29609411764705884
+    },
+    {
+      "id": "T1b",
+      "predictor": "T1b_median_files",
+      "block": "T",
+      "g1_mean": 2.7666666666666666,
+      "g2_mean": 55.81867816091954,
+      "g1_median": 2.0,
+      "g2_median": 1.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": -0.20656809720671096,
+      "ci95": [
+        -0.2919937278181571,
+        -0.12699571403585017
+      ],
+      "p": 0.001,
+      "cohens_d": -0.27491479741656316,
+      "cohens_d_ci95": [
+        -0.319048095550325,
+        -0.24209480883700077
+      ],
+      "effect_size_flag": "small",
+      "n": 1800,
+      "estimate": -0.20656809720671096,
+      "holdout_estimate": -0.0984441348322308,
+      "holdout_same_sign": true,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "T1c",
+      "predictor": "T1c_consensus_share",
+      "block": "T",
+      "g1_mean": 0.0969997124229954,
+      "g2_mean": 0.13023049961122765,
+      "g1_median": 0.023529411764705882,
+      "g2_median": 0.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": -0.030105733377632556,
+      "ci95": [
+        -0.1724679923366457,
+        0.14255412186841926
+      ],
+      "p": 0.694,
+      "cohens_d": 0.0030237318094353096,
+      "cohens_d_ci95": [
+        -0.15208122051948111,
+        0.5565363386322042
+      ],
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "n": 1800,
+      "estimate": -0.030105733377632556,
+      "holdout_estimate": -0.13419344182242782,
+      "holdout_same_sign": true,
+      "q": 0.8068455284552845
+    },
+    {
+      "id": "T1d",
+      "predictor": "T1d_test_only_share",
+      "block": "T",
+      "g1_mean": 0.07034093013538119,
+      "g2_mean": 0.06699577375028311,
+      "g1_median": 0.0,
+      "g2_median": 0.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": -0.12232656258085758,
+      "ci95": [
+        -0.2884049230979685,
+        0.05842686513239277
+      ],
+      "p": 0.212,
+      "cohens_d": 0.16871660811547412,
+      "cohens_d_ci95": [
+        0.0037285869370456883,
+        0.7374683373598583
+      ],
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "n": 1800,
+      "estimate": -0.12232656258085758,
+      "holdout_estimate": 0.9878311329713001,
+      "holdout_same_sign": false,
+      "q": 0.3480806777902227
+    },
+    {
+      "id": "T1e",
+      "predictor": "T1e_bugfix_share",
+      "block": "T",
+      "g1_mean": 0.1705500571292625,
+      "g2_mean": 0.16903919713460813,
+      "g1_median": 0.1630280018984338,
+      "g2_median": 0.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": 0.015950069925651702,
+      "ci95": [
+        -0.12619871226939672,
+        0.17775490447404418
+      ],
+      "p": 0.834,
+      "cohens_d": -0.0213947163864435,
+      "cohens_d_ci95": [
+        -0.14225811892233717,
+        0.11618622897839607
+      ],
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "n": 1800,
+      "estimate": 0.015950069925651702,
+      "holdout_estimate": 0.0059111491348562166,
+      "holdout_same_sign": true,
+      "q": 0.9035
+    },
+    {
+      "id": "T2a",
+      "predictor": "T2a_mean_tone",
+      "block": "T",
+      "g1_mean": 0.2134728219155117,
+      "g2_mean": 0.18233321885568365,
+      "g1_median": 0.21176136553428868,
+      "g2_median": 0.09090909090909091,
+      "n_g1": 60,
+      "n_g2": 1344,
+      "standardized_difference": 0.015939460919407147,
+      "ci95": [
+        -0.12788740122584172,
+        0.16031354431223113
+      ],
+      "p": 0.87,
+      "cohens_d": 0.0899971224543302,
+      "cohens_d_ci95": [
+        -0.02715070787549377,
+        0.24970371212032713
+      ],
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "n": 1404,
+      "estimate": 0.015939460919407147,
+      "holdout_estimate": 0.5457305074041381,
+      "holdout_same_sign": true,
+      "q": 0.9107580535036813
+    },
+    {
+      "id": "T2b",
+      "predictor": "T2b_ack_top5_share",
+      "block": "T",
+      "g1_mean": 0.5761981962708224,
+      "g2_mean": 0.2055343497692616,
+      "g1_median": 0.6143867924528301,
+      "g2_median": 0.0,
+      "n_g1": 36,
+      "n_g2": 1226,
+      "standardized_difference": 0.6845943202367731,
+      "ci95": [
+        0.32029534839114676,
+        1.0357045173557218
+      ],
+      "p": 0.004,
+      "cohens_d": 0.9173873757879244,
+      "cohens_d_ci95": [
+        0.6611110627753931,
+        1.1972369994406569
+      ],
+      "effect_size_flag": "large",
+      "n": 1262,
+      "estimate": 0.6845943202367731,
+      "holdout_estimate": 1.3613396010570442,
+      "holdout_same_sign": true,
+      "q": 0.011000000000000001
+    },
+    {
+      "id": "T2c",
+      "predictor": "T2c_merge_rate",
+      "block": "T",
+      "g1_mean": 0.6704813551898748,
+      "g2_mean": 0.311725318885197,
+      "g1_median": 0.6952351485148515,
+      "g2_median": 0.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": 0.5975063281136471,
+      "ci95": [
+        0.3474640085074323,
+        0.822918677786539
+      ],
+      "p": 0.001,
+      "cohens_d": 0.7795388013003549,
+      "cohens_d_ci95": [
+        0.5872175075824171,
+        0.9819664851580684
+      ],
+      "effect_size_flag": "medium",
+      "n": 1800,
+      "estimate": 0.5975063281136471,
+      "holdout_estimate": 1.7139607964135113,
+      "holdout_same_sign": true,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "T2d",
+      "predictor": "T2d_mean_review_cycles",
+      "block": "T",
+      "g1_mean": 5.683068207179317,
+      "g2_mean": 2.870422133173811,
+      "g1_median": 4.1,
+      "g2_median": 1.3333333333333333,
+      "n_g1": 38,
+      "n_g2": 447,
+      "standardized_difference": 0.7781838942634823,
+      "ci95": [
+        0.25723677655239213,
+        1.2968054092598673
+      ],
+      "p": 0.001,
+      "cohens_d": 1.250256972410837,
+      "cohens_d_ci95": [
+        0.7994233617927075,
+        1.993095361175554
+      ],
+      "effect_size_flag": "large",
+      "n": 485,
+      "estimate": 0.7781838942634823,
+      "holdout_estimate": -0.48639220800456734,
+      "holdout_same_sign": false,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "T3a",
+      "predictor": "T3a_n_directories",
+      "block": "T",
+      "g1_mean": 35.233333333333334,
+      "g2_mean": 13.040229885057471,
+      "g1_median": 21.0,
+      "g2_median": 1.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": -0.0300319749741864,
+      "ci95": [
+        -0.2116606342988764,
+        0.13736467750430342
+      ],
+      "p": 0.676,
+      "cohens_d": 1.075026149268991,
+      "cohens_d_ci95": [
+        0.6873929859197244,
+        1.7708448189098784
+      ],
+      "effect_size_flag": "large",
+      "n": 1800,
+      "estimate": -0.0300319749741864,
+      "holdout_estimate": -0.045213703916880316,
+      "holdout_same_sign": true,
+      "q": 0.792360655737705
+    },
+    {
+      "id": "T3b",
+      "predictor": "T3b_n_active_areas",
+      "block": "T",
+      "g1_mean": 32.25,
+      "g2_mean": 11.098275862068965,
+      "g1_median": 21.0,
+      "g2_median": 1.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": -0.03466754199579596,
+      "ci95": [
+        -0.22468757791739022,
+        0.1498647786362827
+      ],
+      "p": 0.702,
+      "cohens_d": 1.205145610198819,
+      "cohens_d_ci95": [
+        0.7666872724202155,
+        1.9674537234859886
+      ],
+      "effect_size_flag": "large",
+      "n": 1800,
+      "estimate": -0.03466754199579596,
+      "holdout_estimate": 0.029995675857272756,
+      "holdout_same_sign": false,
+      "q": 0.8095645161290322
+    },
+    {
+      "id": "S1",
+      "predictor": "S1_irc_linked",
+      "block": "S",
+      "g1_mean": 0.7166666666666667,
+      "g2_mean": 0.710919540229885,
+      "g1_median": 1.0,
+      "g2_median": 1.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": 0.3250342546508734,
+      "ci95": [
+        0.14029900019609906,
+        0.5269483590361662
+      ],
+      "p": 0.002,
+      "cohens_d": 0.5625740846099958,
+      "cohens_d_ci95": [
+        0.2642345952341322,
+        0.896910973373564
+      ],
+      "effect_size_flag": "medium",
+      "n": 1800,
+      "estimate": 0.3250342546508734,
+      "holdout_estimate": 0.046264075449503186,
+      "holdout_same_sign": true,
+      "q": 0.005607843137254902
+    },
+    {
+      "id": "S2",
+      "predictor": "S2_jargon_share",
+      "block": "S",
+      "g1_mean": 0.18943968284025017,
+      "g2_mean": 0.04973777116637655,
+      "g1_median": 0.1776061776061776,
+      "g2_median": 0.0,
+      "n_g1": 59,
+      "n_g2": 1009,
+      "standardized_difference": 0.9306327921990837,
+      "ci95": [
+        0.5528301621155725,
+        1.3255130449612358
+      ],
+      "p": 0.001,
+      "cohens_d": 1.4446605712179756,
+      "cohens_d_ci95": [
+        1.138996170590611,
+        2.6757662584869673
+      ],
+      "effect_size_flag": "large",
+      "n": 1068,
+      "estimate": 0.9306327921990837,
+      "holdout_estimate": 1.9231204567064286,
+      "holdout_same_sign": true,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "S3_count",
+      "predictor": "S3_reviews_before_first",
+      "block": "S",
+      "g1_mean": 3.857142857142857,
+      "g2_mean": 0.20939183987682833,
+      "g1_median": 0.0,
+      "g2_median": 0.0,
+      "n_g1": 35,
+      "n_g2": 1299,
+      "standardized_difference": 1.8747576700945834,
+      "ci95": [
+        0.2067080720306595,
+        3.400582724847685
+      ],
+      "p": 0.01,
+      "cohens_d": 1.88426350849503,
+      "cohens_d_ci95": [
+        0.49814018240255115,
+        5.629349224789109
+      ],
+      "effect_size_flag": "large",
+      "n": 1334,
+      "estimate": 1.8747576700945834,
+      "holdout_estimate": 5.432166995970439,
+      "holdout_same_sign": true,
+      "q": 0.025535714285714283
+    },
+    {
+      "id": "S3_any",
+      "predictor": "S3_any_review_before",
+      "block": "S",
+      "g1_mean": 0.3142857142857143,
+      "g2_mean": 0.04541955350269438,
+      "g1_median": 0.0,
+      "g2_median": 0.0,
+      "n_g1": 35,
+      "n_g2": 1299,
+      "standardized_difference": 1.5272740384704415,
+      "ci95": [
+        0.7283830264943034,
+        2.395206400820759
+      ],
+      "p": 0.001,
+      "cohens_d": 1.3444928946811798,
+      "cohens_d_ci95": [
+        0.4385023967563336,
+        2.569792737395821
+      ],
+      "effect_size_flag": "large",
+      "n": 1334,
+      "estimate": 1.5272740384704415,
+      "holdout_estimate": 3.000671955938566,
+      "holdout_same_sign": true,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "S4",
+      "predictor": "S4_early_reciprocity",
+      "block": "S",
+      "g1_mean": 0.5952380952380952,
+      "g2_mean": 0.02851033499643621,
+      "g1_median": 1.0,
+      "g2_median": 0.0,
+      "n_g1": 42,
+      "n_g2": 1403,
+      "standardized_difference": 1.7243557739265416,
+      "ci95": [
+        0.7948267622260743,
+        2.520291230598898
+      ],
+      "p": 0.001,
+      "cohens_d": 3.3469269969083704,
+      "cohens_d_ci95": [
+        2.3856682126883437,
+        5.019308768733203
+      ],
+      "effect_size_flag": "large",
+      "n": 1445,
+      "estimate": 1.7243557739265416,
+      "holdout_estimate": 3.8690035253820914,
+      "holdout_same_sign": true,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "S5",
+      "predictor": "S5_named_by_top20",
+      "block": "S",
+      "g1_mean": 0.03333333333333333,
+      "g2_mean": 0.013793103448275862,
+      "g1_median": 0.0,
+      "g2_median": 0.0,
+      "n_g1": 60,
+      "n_g2": 1740,
+      "standardized_difference": 0.2848448639724959,
+      "ci95": [
+        -0.17010030572816284,
+        0.8959026354502245
+      ],
+      "p": 0.33,
+      "cohens_d": 0.12015337661335558,
+      "cohens_d_ci95": [
+        -0.07255033901479807,
+        0.440959003087704
+      ],
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "n": 1800,
+      "estimate": 0.2848448639724959,
+      "holdout_estimate": null,
+      "holdout_same_sign": null,
+      "q": 0.4791797131810219
+    }
+  ],
+  "decomposition": {
+    "outcome": "first-year decided-PR merge rate",
+    "d_raw": 0.7795388013003549,
+    "d_after_size_controls": 0.40905883119030945,
+    "d_after_T": 0.022283461515268613,
+    "d_after_S": 0.1692259979174691,
+    "d_after_both": 0.14144595869674562,
+    "d_after_patch_content": 0.43611923546654074,
+    "d_after_review_reception": 0.015432099729697916,
+    "share_of_raw_gap_closed_by_T": 0.9714145575844366,
+    "share_of_raw_gap_closed_by_S": 0.7829152344499314,
+    "share_of_raw_gap_closed_by_both": 0.8185517405152912,
+    "rule": {
+      "verdict": "redundant",
+      "text": "Each block alone closes more than half the gap, and neither adds as much as 0.1 d once the other is controlled. The blocks are redundant on the merge-rate gap. The ordered technical rule also matches, but the technical block contains review reception (tone, a top-5 ACK, review cycles), which is a community response. Use the content-versus-reception split before reading the gap as detection of technical quality.",
+      "t_reduction": 0.7572553397850863,
+      "s_reduction": 0.6103128033828858,
+      "s_added_after_t": -0.119162497181477,
+      "t_added_after_s": 0.027780039220723474,
+      "residual_d": 0.14144595869674562,
+      "technical_rule_matches": true,
+      "social_rule_matches": true
+    },
+    "t_block_excludes": [
+      "T2c_merge_rate"
+    ],
+    "s_model_controls": [
+      "log_lines",
+      "T1b_median_files",
+      "prior_pr_count"
+    ],
+    "ci95": {
+      "d_raw": [
+        0.5933490165069646,
+        0.9724641439507126
+      ],
+      "d_after_T": [
+        -0.23196312266001962,
+        0.28546550637819756
+      ],
+      "d_after_S": [
+        0.010657721775375537,
+        0.32655443730738026
+      ],
+      "d_after_both": [
+        -0.10240988241152425,
+        0.39035940449012335
+      ],
+      "d_after_patch_content": [
+        0.2435695118337871,
+        0.5996196300936706
+      ],
+      "d_after_review_reception": [
+        -0.23401944758224957,
+        0.2858265305878368
+      ]
+    }
+  },
+  "logistic": {
+    "coefficients": {
+      "T2c_merge_rate": {
+        "estimate": 1.0131725047380276,
+        "ci95": [
+          0.2448779772809715,
+          3.283289702359619
+        ],
+        "p": 0.044,
+        "n": 1800,
+        "q": 0.08861971830985915
+      },
+      "prior_pr_count": {
+        "estimate": 3.6244783156700056,
+        "ci95": [
+          3.0647322849317447,
+          23.793717157294758
+        ],
+        "p": 0.002,
+        "n": 1800,
+        "q": null
+      },
+      "log_lines": {
+        "estimate": 1.444774028174166,
+        "ci95": [
+          0.34386650384483985,
+          4.240946708093866
+        ],
+        "p": 0.03,
+        "n": 1800,
+        "q": 0.066
+      },
+      "T1b_median_files": {
+        "estimate": -4.100842859558014,
+        "ci95": [
+          -19.112356617217454,
+          3.370285083739321
+        ],
+        "p": 0.414,
+        "n": 1800,
+        "q": 0.5638285714285715
+      },
+      "T1c_consensus_share": {
+        "estimate": 0.16028104020305678,
+        "ci95": [
+          -2.581077101288261,
+          1.8242696534209355
+        ],
+        "p": 0.848,
+        "n": 1800,
+        "q": 0.904955223880597
+      },
+      "T1d_test_only_share": {
+        "estimate": -1.6117157205003145,
+        "ci95": [
+          -14.145865494266754,
+          -0.1757356961453775
+        ],
+        "p": 0.022,
+        "n": 1800,
+        "q": 0.050741935483870966
+      },
+      "T1e_bugfix_share": {
+        "estimate": 0.0752596433023398,
+        "ci95": [
+          -0.9220544641882281,
+          1.1684007721704723
+        ],
+        "p": 0.834,
+        "n": 1800,
+        "q": 0.9035
+      },
+      "T2a_mean_tone": {
+        "estimate": -0.5260778070686141,
+        "ci95": [
+          -2.6966109449238624,
+          0.28894670150504465
+        ],
+        "p": 0.164,
+        "n": 1800,
+        "q": 0.2791904761904762
+      },
+      "T2a_mean_tone_missing": {
+        "estimate": -6.122737611358343,
+        "ci95": [
+          -10.518341945108524,
+          2.768794051275557
+        ],
+        "p": 0.118,
+        "n": 1800
+      },
+      "T2b_ack_top5_share": {
+        "estimate": 0.06611765880654197,
+        "ci95": [
+          -2.004962600192499,
+          2.4986879086386082
+        ],
+        "p": 0.944,
+        "n": 1800,
+        "q": 0.9573900709219857
+      },
+      "T2b_ack_top5_share_missing": {
+        "estimate": -1.0418734617647172,
+        "ci95": [
+          -13.68336691202302,
+          3.814015095251742
+        ],
+        "p": 0.378,
+        "n": 1800
+      },
+      "T2d_mean_review_cycles": {
+        "estimate": 0.3709228870067578,
+        "ci95": [
+          -0.662331913407589,
+          2.8312536422291825
+        ],
+        "p": 0.28,
+        "n": 1800,
+        "q": 0.4214736842105264
+      },
+      "T2d_mean_review_cycles_missing": {
+        "estimate": 0.2397921188082095,
+        "ci95": [
+          -8.706519091066097,
+          4.370017627725939
+        ],
+        "p": 0.812,
+        "n": 1800
+      },
+      "T3a_n_directories": {
+        "estimate": -5.457147362374169,
+        "ci95": [
+          -52.873176516888826,
+          8.261545206621761
+        ],
+        "p": 0.26,
+        "n": 1800,
+        "q": 0.395531914893617
+      },
+      "T3b_n_active_areas": {
+        "estimate": 3.6547887741148815,
+        "ci95": [
+          -15.234951046757601,
+          36.54011687797143
+        ],
+        "p": 0.396,
+        "n": 1800,
+        "q": 0.5497864077669903
+      },
+      "S1_irc_linked": {
+        "estimate": 4.4749859128321585,
+        "ci95": [
+          3.1461336480045112,
+          8.572012977341943
+        ],
+        "p": 0.018,
+        "n": 1800,
+        "q": 0.0429
+      },
+      "S2_jargon_share": {
+        "estimate": 0.4638222004578669,
+        "ci95": [
+          0.030263581531497243,
+          1.7671294254572798
+        ],
+        "p": 0.04,
+        "n": 1800,
+        "q": 0.08289855072463767
+      },
+      "S2_jargon_share_missing": {
+        "estimate": -0.45162547542854475,
+        "ci95": [
+          -9.647802915363565,
+          2.066516741073407
+        ],
+        "p": 0.838,
+        "n": 1800
+      },
+      "S3_reviews_before_first": {
+        "estimate": 0.3468552079338676,
+        "ci95": [
+          0.15937072013942913,
+          8.030561019765987
+        ],
+        "p": 0.022,
+        "n": 1800,
+        "q": 0.050741935483870966
+      },
+      "S3_reviews_before_first_missing": {
+        "estimate": 4.467074574539137,
+        "ci95": [
+          0.7142331875767325,
+          18.01739130667051
+        ],
+        "p": 0.03,
+        "n": 1800
+      },
+      "S4_early_reciprocity": {
+        "estimate": 0.06193170011977944,
+        "ci95": [
+          -1.0734295334985842,
+          0.9869528921613869
+        ],
+        "p": 0.772,
+        "n": 1800,
+        "q": 0.869259842519685
+      },
+      "S4_early_reciprocity_missing": {
+        "estimate": 5.919192975192795,
+        "ci95": [
+          -2.5609711181466808,
+          16.48137952012694
+        ],
+        "p": 0.156,
+        "n": 1800
+      },
+      "S5_named_by_top20": {
+        "estimate": 0.16251541838618655,
+        "ci95": [
+          -1.3286531923101825,
+          0.7455704924749518
+        ],
+        "p": 0.624,
+        "n": 1800,
+        "q": 0.7436
+      }
+    },
+    "n": 1800,
+    "n_g1": 60,
+    "names": [
+      "T2c_merge_rate",
+      "prior_pr_count",
+      "log_lines",
+      "T1b_median_files",
+      "T1c_consensus_share",
+      "T1d_test_only_share",
+      "T1e_bugfix_share",
+      "T2a_mean_tone",
+      "T2a_mean_tone_missing",
+      "T2b_ack_top5_share",
+      "T2b_ack_top5_share_missing",
+      "T2d_mean_review_cycles",
+      "T2d_mean_review_cycles_missing",
+      "T3a_n_directories",
+      "T3b_n_active_areas",
+      "S1_irc_linked",
+      "S2_jargon_share",
+      "S2_jargon_share_missing",
+      "S3_reviews_before_first",
+      "S3_reviews_before_first_missing",
+      "S4_early_reciprocity",
+      "S4_early_reciprocity_missing",
+      "S5_named_by_top20"
+    ]
+  },
+  "logistic_holdout": {
+    "coefficients": {
+      "T2c_merge_rate": {
+        "estimate": -1.041898377641532,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T2c_merge_rate_missing": {
+        "estimate": 3.559580990709996,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "prior_pr_count": {
+        "estimate": 1.093707887242418,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "log_lines": {
+        "estimate": -0.7565837622816985,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T1b_median_files": {
+        "estimate": 2.713129865616781,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T1c_consensus_share": {
+        "estimate": -0.04390242271602046,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T1d_test_only_share": {
+        "estimate": 1.0044142699045162,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T1e_bugfix_share": {
+        "estimate": 0.7901383924798636,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T2a_mean_tone": {
+        "estimate": 0.599947225272437,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T2a_mean_tone_missing": {
+        "estimate": 1.2029462857562796,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T2b_ack_top5_share": {
+        "estimate": 2.825484307800472,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T2d_mean_review_cycles": {
+        "estimate": -0.11406487510143418,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T2d_mean_review_cycles_missing": {
+        "estimate": 3.926734127812352,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T3a_n_directories": {
+        "estimate": -21.480325322788335,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "T3b_n_active_areas": {
+        "estimate": 20.454274007238105,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "S1_irc_linked": {
+        "estimate": 0.1590377762537407,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "S2_jargon_share": {
+        "estimate": 1.3547091199745718,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "S2_jargon_share_missing": {
+        "estimate": 1.3005987450216732,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "S3_reviews_before_first": {
+        "estimate": 2.0297876629842007,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      },
+      "S4_early_reciprocity": {
+        "estimate": 3.3771921666968248,
+        "ci95": null,
+        "p": null,
+        "n": 88
+      }
+    },
+    "n": 88,
+    "n_g1": 5,
+    "names": [
+      "T2c_merge_rate",
+      "T2c_merge_rate_missing",
+      "prior_pr_count",
+      "log_lines",
+      "T1b_median_files",
+      "T1c_consensus_share",
+      "T1d_test_only_share",
+      "T1e_bugfix_share",
+      "T2a_mean_tone",
+      "T2a_mean_tone_missing",
+      "T2b_ack_top5_share",
+      "T2d_mean_review_cycles",
+      "T2d_mean_review_cycles_missing",
+      "T3a_n_directories",
+      "T3b_n_active_areas",
+      "S1_irc_linked",
+      "S2_jargon_share",
+      "S2_jargon_share_missing",
+      "S3_reviews_before_first",
+      "S4_early_reciprocity"
+    ]
+  },
+  "false_negatives": {
+    "status": "ok",
+    "t_cutoff_g1_top_quartile": 0.34229871523475625,
+    "n_g1": 60,
+    "n_g2": 1740,
+    "n_false_negative": 284,
+    "n_g2_in_g1_top_quartile": 284,
+    "false_negative_share_of_g2": 0.1632183908045977,
+    "s_mean_false_negative": -0.4751060909814477,
+    "s_mean_g1": -0.08534531035833484,
+    "s_difference": -0.3897607806231128,
+    "s_difference_ci": [
+      -0.5522205127704969,
+      -0.23066339440710837
+    ],
+    "cohens_d": -0.7922740294917906,
+    "effect_size_flag": "medium",
+    "p": 0.001,
+    "low_s_relative_to_g1": true,
+    "reading": "Technically strong leavers score lower on the social composite than later top-20 entrants. That is the high false-negative pattern: first-year technical signal in the top quarter of the entrant distribution, without the social signal, and gone by 24 months.",
+    "content_only": {
+      "n_false_negative": 340,
+      "n_g2": 1740,
+      "s_difference": -0.4046238724773483,
+      "cohens_d": -0.8976088292198852,
+      "effect_size_flag": "large",
+      "q": null,
+      "reading": "Technically strong leavers score lower on the social composite than later top-20 entrants. That is the high false-negative pattern: first-year technical signal in the top quarter of the entrant distribution, without the social signal, and gone by 24 months.",
+      "note": "Same quartile rule, using patch-content measures only. Excludes review tone, top-5 ACKs, review cycles, and the merge rate, so a leaver is not counted as technically strong for having already been received well."
+    },
+    "q": 0.0029183673469387757
+  },
+  "capacity": {
+    "status": "ok",
+    "predictors": {
+      "S1_irc_linked": {
+        "estimate": -0.19250910099211055,
+        "ci95": [
+          -0.3686398920649988,
+          -0.00910166371171945
+        ],
+        "p": 0.042,
+        "n": 5214,
+        "n_authors": 1800,
+        "lower_S_when_unanswered": true,
+        "holdout_estimate": -0.17194026430258239,
+        "holdout_same_sign": true,
+        "q": 0.0858
+      },
+      "S2_jargon_share": {
+        "estimate": -0.20134187126980876,
+        "ci95": [
+          -0.46695412647271356,
+          0.01720123924035229
+        ],
+        "p": 0.078,
+        "n": 4372,
+        "n_authors": 1068,
+        "lower_S_when_unanswered": true,
+        "holdout_estimate": -0.20744780672499308,
+        "holdout_same_sign": true,
+        "q": 0.14485714285714285
+      },
+      "S3_reviews_before_first": {
+        "estimate": -1.076479481965222,
+        "ci95": [
+          -2.8336285548629494,
+          -0.4098499129850946
+        ],
+        "p": 0.001,
+        "n": 3496,
+        "n_authors": 1334,
+        "lower_S_when_unanswered": true,
+        "holdout_estimate": -1.1230150887511163,
+        "holdout_same_sign": true,
+        "q": 0.0029183673469387757
+      },
+      "S4_early_reciprocity": {
+        "estimate": -1.0638790851594544,
+        "ci95": [
+          -1.28506070466714,
+          -0.8660102864844293
+        ],
+        "p": 0.001,
+        "n": 3843,
+        "n_authors": 1445,
+        "lower_S_when_unanswered": true,
+        "holdout_estimate": -1.8459337747408997,
+        "holdout_same_sign": true,
+        "q": 0.0029183673469387757
+      },
+      "S5_named_by_top20": {
+        "estimate": -0.007060384045673308,
+        "ci95": [
+          -0.1636123656411033,
+          0.10778618028387063
+        ],
+        "p": 0.87,
+        "n": 5214,
+        "n_authors": 1800,
+        "lower_S_when_unanswered": true,
+        "holdout_estimate": null,
+        "holdout_same_sign": null,
+        "q": 0.9107580535036813
+      }
+    },
+    "silence_tracks_lower_S": true,
+    "predictors_with_uncorrected_p_below_05": [
+      "S1_irc_linked",
+      "S3_reviews_before_first",
+      "S4_early_reciprocity"
+    ],
+    "year_coefficient": {
+      "standardized_year_without_S": 0.013533127179653248,
+      "standardized_year_with_S": 0.038901464534501905,
+      "shrinkage": -0.025368337354848655,
+      "note": "Linear probability of no peer response. Year is standardized the same way in both fits. A smaller coefficient after S is consistent with social legibility carrying part of the time trend. It is not a causal mediation claim."
+    },
+    "reading": "Unanswered newcomer PRs are lower on S3_reviews_before_first, S4_early_reciprocity after technical controls (q<0.05). That is a cross-sectional social-legibility gap. The year slope of newcomer silence does not shrink when the social indicators are added, so this pass does not show that the rise in silence over time operates through social legibility.",
+    "predictors_with_q_below_05": [
+      "S3_reviews_before_first",
+      "S4_early_reciprocity"
+    ]
+  },
+  "hypothesis_tests": [
+    {
+      "id": "T1a",
+      "predictor": "T1a_median_lines",
+      "block": "T",
+      "estimate": -0.023091669496091368,
+      "ci95": [
+        -0.06416484685562517,
+        0.009739522224538263
+      ],
+      "p": 0.176,
+      "n": 1800,
+      "effect_size": -0.20942485911200923,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "small",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.001962966920968865,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "g1_mean": 50.71666666666667,
+      "g2_mean": 11025.352011494253,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.29609411764705884
+    },
+    {
+      "id": "T1b",
+      "predictor": "T1b_median_files",
+      "block": "T",
+      "estimate": -0.20656809720671096,
+      "ci95": [
+        -0.2919937278181571,
+        -0.12699571403585017
+      ],
+      "p": 0.001,
+      "n": 1800,
+      "effect_size": -0.27491479741656316,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "small",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.0984441348322308,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 2.7666666666666666,
+      "g2_mean": 55.81867816091954,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "T1c",
+      "predictor": "T1c_consensus_share",
+      "block": "T",
+      "estimate": -0.030105733377632556,
+      "ci95": [
+        -0.1724679923366457,
+        0.14255412186841926
+      ],
+      "p": 0.694,
+      "n": 1800,
+      "effect_size": 0.0030237318094353096,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.13419344182242782,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.0969997124229954,
+      "g2_mean": 0.13023049961122765,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.8068455284552845
+    },
+    {
+      "id": "T1d",
+      "predictor": "T1d_test_only_share",
+      "block": "T",
+      "estimate": -0.12232656258085758,
+      "ci95": [
+        -0.2884049230979685,
+        0.05842686513239277
+      ],
+      "p": 0.212,
+      "n": 1800,
+      "effect_size": 0.16871660811547412,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.9878311329713001,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "g1_mean": 0.07034093013538119,
+      "g2_mean": 0.06699577375028311,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.3480806777902227
+    },
+    {
+      "id": "T1e",
+      "predictor": "T1e_bugfix_share",
+      "block": "T",
+      "estimate": 0.015950069925651702,
+      "ci95": [
+        -0.12619871226939672,
+        0.17775490447404418
+      ],
+      "p": 0.834,
+      "n": 1800,
+      "effect_size": -0.0213947163864435,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.0059111491348562166,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.1705500571292625,
+      "g2_mean": 0.16903919713460813,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.9035
+    },
+    {
+      "id": "T2a",
+      "predictor": "T2a_mean_tone",
+      "block": "T",
+      "estimate": 0.015939460919407147,
+      "ci95": [
+        -0.12788740122584172,
+        0.16031354431223113
+      ],
+      "p": 0.87,
+      "n": 1404,
+      "effect_size": 0.0899971224543302,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.5457305074041381,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.2134728219155117,
+      "g2_mean": 0.18233321885568365,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.9107580535036813
+    },
+    {
+      "id": "T2b",
+      "predictor": "T2b_ack_top5_share",
+      "block": "T",
+      "estimate": 0.6845943202367731,
+      "ci95": [
+        0.32029534839114676,
+        1.0357045173557218
+      ],
+      "p": 0.004,
+      "n": 1262,
+      "effect_size": 0.9173873757879244,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 1.3613396010570442,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.5761981962708224,
+      "g2_mean": 0.2055343497692616,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.011000000000000001
+    },
+    {
+      "id": "T2c",
+      "predictor": "T2c_merge_rate",
+      "block": "T",
+      "estimate": 0.5975063281136471,
+      "ci95": [
+        0.3474640085074323,
+        0.822918677786539
+      ],
+      "p": 0.001,
+      "n": 1800,
+      "effect_size": 0.7795388013003549,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "medium",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 1.7139607964135113,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.6704813551898748,
+      "g2_mean": 0.311725318885197,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "T2d",
+      "predictor": "T2d_mean_review_cycles",
+      "block": "T",
+      "estimate": 0.7781838942634823,
+      "ci95": [
+        0.25723677655239213,
+        1.2968054092598673
+      ],
+      "p": 0.001,
+      "n": 485,
+      "effect_size": 1.250256972410837,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.48639220800456734,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "g1_mean": 5.683068207179317,
+      "g2_mean": 2.870422133173811,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "T3a",
+      "predictor": "T3a_n_directories",
+      "block": "T",
+      "estimate": -0.0300319749741864,
+      "ci95": [
+        -0.2116606342988764,
+        0.13736467750430342
+      ],
+      "p": 0.676,
+      "n": 1800,
+      "effect_size": 1.075026149268991,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.045213703916880316,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 35.233333333333334,
+      "g2_mean": 13.040229885057471,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.792360655737705
+    },
+    {
+      "id": "T3b",
+      "predictor": "T3b_n_active_areas",
+      "block": "T",
+      "estimate": -0.03466754199579596,
+      "ci95": [
+        -0.22468757791739022,
+        0.1498647786362827
+      ],
+      "p": 0.702,
+      "n": 1800,
+      "effect_size": 1.205145610198819,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.029995675857272756,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "g1_mean": 32.25,
+      "g2_mean": 11.098275862068965,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.8095645161290322
+    },
+    {
+      "id": "S1",
+      "predictor": "S1_irc_linked",
+      "block": "S",
+      "estimate": 0.3250342546508734,
+      "ci95": [
+        0.14029900019609906,
+        0.5269483590361662
+      ],
+      "p": 0.002,
+      "n": 1800,
+      "effect_size": 0.5625740846099958,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "medium",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.046264075449503186,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.7166666666666667,
+      "g2_mean": 0.710919540229885,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.005607843137254902
+    },
+    {
+      "id": "S2",
+      "predictor": "S2_jargon_share",
+      "block": "S",
+      "estimate": 0.9306327921990837,
+      "ci95": [
+        0.5528301621155725,
+        1.3255130449612358
+      ],
+      "p": 0.001,
+      "n": 1068,
+      "effect_size": 1.4446605712179756,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 1.9231204567064286,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.18943968284025017,
+      "g2_mean": 0.04973777116637655,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "S3_count",
+      "predictor": "S3_reviews_before_first",
+      "block": "S",
+      "estimate": 1.8747576700945834,
+      "ci95": [
+        0.2067080720306595,
+        3.400582724847685
+      ],
+      "p": 0.01,
+      "n": 1334,
+      "effect_size": 1.88426350849503,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 5.432166995970439,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 3.857142857142857,
+      "g2_mean": 0.20939183987682833,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.025535714285714283
+    },
+    {
+      "id": "S3_any",
+      "predictor": "S3_any_review_before",
+      "block": "S",
+      "estimate": 1.5272740384704415,
+      "ci95": [
+        0.7283830264943034,
+        2.395206400820759
+      ],
+      "p": 0.001,
+      "n": 1334,
+      "effect_size": 1.3444928946811798,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 3.000671955938566,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.3142857142857143,
+      "g2_mean": 0.04541955350269438,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "S4",
+      "predictor": "S4_early_reciprocity",
+      "block": "S",
+      "estimate": 1.7243557739265416,
+      "ci95": [
+        0.7948267622260743,
+        2.520291230598898
+      ],
+      "p": 0.001,
+      "n": 1445,
+      "effect_size": 3.3469269969083704,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "large",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 3.8690035253820914,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "g1_mean": 0.5952380952380952,
+      "g2_mean": 0.02851033499643621,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "S5",
+      "predictor": "S5_named_by_top20",
+      "block": "S",
+      "estimate": 0.2848448639724959,
+      "ci95": [
+        -0.17010030572816284,
+        0.8959026354502245
+      ],
+      "p": 0.33,
+      "n": 1800,
+      "effect_size": 0.12015337661335558,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": null,
+      "holdout_same_sign": null,
+      "low_observability": true,
+      "g1_mean": 0.03333333333333333,
+      "g2_mean": 0.013793103448275862,
+      "note": "Cohort-year matched. Standardized difference is the cohort-FE group coefficient divided by the outcome SD, with size and prior-PR controls when those are not the outcome.",
+      "q": 0.4791797131810219
+    },
+    {
+      "id": "gap_raw",
+      "block": "decomposition",
+      "estimate": 0.7795388013003549,
+      "ci95": [
+        0.5933490165069646,
+        0.9724641439507126
+      ],
+      "p": null,
+      "n": 1800,
+      "effect_size": 0.7795388013003549,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "medium",
+      "in_bh_family": false,
+      "source": "pass4",
+      "holdout_same_sign": null,
+      "note": "Residual within-cohort d of first-year merge rate. The raw gap is the reference, not a second hypothesis.",
+      "q": null
+    },
+    {
+      "id": "gap_after_T",
+      "block": "decomposition",
+      "estimate": 0.022283461515268613,
+      "ci95": [
+        -0.23196312266001962,
+        0.28546550637819756
+      ],
+      "p": 0.848,
+      "n": 1800,
+      "effect_size": 0.022283461515268613,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_same_sign": null,
+      "note": "Residual within-cohort d of first-year merge rate. The raw gap is the reference, not a second hypothesis.",
+      "q": 0.904955223880597
+    },
+    {
+      "id": "gap_after_S",
+      "block": "decomposition",
+      "estimate": 0.1692259979174691,
+      "ci95": [
+        0.010657721775375537,
+        0.32655443730738026
+      ],
+      "p": 0.034,
+      "n": 1800,
+      "effect_size": 0.1692259979174691,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_same_sign": null,
+      "note": "Residual within-cohort d of first-year merge rate. The raw gap is the reference, not a second hypothesis.",
+      "q": 0.07256716417910448
+    },
+    {
+      "id": "gap_after_both",
+      "block": "decomposition",
+      "estimate": 0.14144595869674562,
+      "ci95": [
+        -0.10240988241152425,
+        0.39035940449012335
+      ],
+      "p": 0.238,
+      "n": 1800,
+      "effect_size": 0.14144595869674562,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "negligible effect size regardless of p-value",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_same_sign": null,
+      "note": "Residual within-cohort d of first-year merge rate. The raw gap is the reference, not a second hypothesis.",
+      "q": 0.3730434782608696
+    },
+    {
+      "id": "logit_T2c_merge_rate",
+      "block": "T",
+      "estimate": 1.0131725047380276,
+      "ci95": [
+        0.2448779772809715,
+        3.283289702359619
+      ],
+      "p": 0.044,
+      "n": 1800,
+      "effect_size": 1.0131725047380276,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -1.041898377641532,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.08861971830985915
+    },
+    {
+      "id": "logit_prior_pr_count",
+      "block": "T",
+      "estimate": 3.6244783156700056,
+      "ci95": [
+        3.0647322849317447,
+        23.793717157294758
+      ],
+      "p": 0.002,
+      "n": 1800,
+      "effect_size": 3.6244783156700056,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": false,
+      "source": "pass4",
+      "holdout_estimate": 1.093707887242418,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": null
+    },
+    {
+      "id": "logit_log_lines",
+      "block": "T",
+      "estimate": 1.444774028174166,
+      "ci95": [
+        0.34386650384483985,
+        4.240946708093866
+      ],
+      "p": 0.03,
+      "n": 1800,
+      "effect_size": 1.444774028174166,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.7565837622816985,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.066
+    },
+    {
+      "id": "logit_T1b_median_files",
+      "block": "T",
+      "estimate": -4.100842859558014,
+      "ci95": [
+        -19.112356617217454,
+        3.370285083739321
+      ],
+      "p": 0.414,
+      "n": 1800,
+      "effect_size": -4.100842859558014,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 2.713129865616781,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.5638285714285715
+    },
+    {
+      "id": "logit_T1c_consensus_share",
+      "block": "T",
+      "estimate": 0.16028104020305678,
+      "ci95": [
+        -2.581077101288261,
+        1.8242696534209355
+      ],
+      "p": 0.848,
+      "n": 1800,
+      "effect_size": 0.16028104020305678,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.04390242271602046,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.904955223880597
+    },
+    {
+      "id": "logit_T1d_test_only_share",
+      "block": "T",
+      "estimate": -1.6117157205003145,
+      "ci95": [
+        -14.145865494266754,
+        -0.1757356961453775
+      ],
+      "p": 0.022,
+      "n": 1800,
+      "effect_size": -1.6117157205003145,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 1.0044142699045162,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.050741935483870966
+    },
+    {
+      "id": "logit_T1e_bugfix_share",
+      "block": "T",
+      "estimate": 0.0752596433023398,
+      "ci95": [
+        -0.9220544641882281,
+        1.1684007721704723
+      ],
+      "p": 0.834,
+      "n": 1800,
+      "effect_size": 0.0752596433023398,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.7901383924798636,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.9035
+    },
+    {
+      "id": "logit_T2a_mean_tone",
+      "block": "T",
+      "estimate": -0.5260778070686141,
+      "ci95": [
+        -2.6966109449238624,
+        0.28894670150504465
+      ],
+      "p": 0.164,
+      "n": 1800,
+      "effect_size": -0.5260778070686141,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.599947225272437,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.2791904761904762
+    },
+    {
+      "id": "logit_T2b_ack_top5_share",
+      "block": "T",
+      "estimate": 0.06611765880654197,
+      "ci95": [
+        -2.004962600192499,
+        2.4986879086386082
+      ],
+      "p": 0.944,
+      "n": 1800,
+      "effect_size": 0.06611765880654197,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 2.825484307800472,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.9573900709219857
+    },
+    {
+      "id": "logit_T2d_mean_review_cycles",
+      "block": "T",
+      "estimate": 0.3709228870067578,
+      "ci95": [
+        -0.662331913407589,
+        2.8312536422291825
+      ],
+      "p": 0.28,
+      "n": 1800,
+      "effect_size": 0.3709228870067578,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.11406487510143418,
+      "holdout_same_sign": false,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.4214736842105264
+    },
+    {
+      "id": "logit_T3a_n_directories",
+      "block": "T",
+      "estimate": -5.457147362374169,
+      "ci95": [
+        -52.873176516888826,
+        8.261545206621761
+      ],
+      "p": 0.26,
+      "n": 1800,
+      "effect_size": -5.457147362374169,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -21.480325322788335,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.395531914893617
+    },
+    {
+      "id": "logit_T3b_n_active_areas",
+      "block": "T",
+      "estimate": 3.6547887741148815,
+      "ci95": [
+        -15.234951046757601,
+        36.54011687797143
+      ],
+      "p": 0.396,
+      "n": 1800,
+      "effect_size": 3.6547887741148815,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 20.454274007238105,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.5497864077669903
+    },
+    {
+      "id": "logit_S1_irc_linked",
+      "block": "S",
+      "estimate": 4.4749859128321585,
+      "ci95": [
+        3.1461336480045112,
+        8.572012977341943
+      ],
+      "p": 0.018,
+      "n": 1800,
+      "effect_size": 4.4749859128321585,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 0.1590377762537407,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.0429
+    },
+    {
+      "id": "logit_S2_jargon_share",
+      "block": "S",
+      "estimate": 0.4638222004578669,
+      "ci95": [
+        0.030263581531497243,
+        1.7671294254572798
+      ],
+      "p": 0.04,
+      "n": 1800,
+      "effect_size": 0.4638222004578669,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 1.3547091199745718,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.08289855072463767
+    },
+    {
+      "id": "logit_S3_reviews_before_first",
+      "block": "S",
+      "estimate": 0.3468552079338676,
+      "ci95": [
+        0.15937072013942913,
+        8.030561019765987
+      ],
+      "p": 0.022,
+      "n": 1800,
+      "effect_size": 0.3468552079338676,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 2.0297876629842007,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.050741935483870966
+    },
+    {
+      "id": "logit_S4_early_reciprocity",
+      "block": "S",
+      "estimate": 0.06193170011977944,
+      "ci95": [
+        -1.0734295334985842,
+        0.9869528921613869
+      ],
+      "p": 0.772,
+      "n": 1800,
+      "effect_size": 0.06193170011977944,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": 3.3771921666968248,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.869259842519685
+    },
+    {
+      "id": "logit_S5_named_by_top20",
+      "block": "S",
+      "estimate": 0.16251541838618655,
+      "ci95": [
+        -1.3286531923101825,
+        0.7455704924749518
+      ],
+      "p": 0.624,
+      "n": 1800,
+      "effect_size": 0.16251541838618655,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": null,
+      "holdout_same_sign": null,
+      "low_observability": true,
+      "note": "Logistic of later top-20 entry. Predictors are standardized. Cohort fixed effects are included. Missing review-object measures use a missingness indicator and are not filled with zero as if they were real zeros.",
+      "q": 0.7436
+    },
+    {
+      "id": "false_negative_S_vs_G1",
+      "block": "S",
+      "estimate": -0.3897607806231128,
+      "ci95": [
+        -0.5522205127704969,
+        -0.23066339440710837
+      ],
+      "p": 0.001,
+      "n": 284,
+      "effect_size": -0.7922740294917906,
+      "effect_size_kind": "cohens_d",
+      "effect_size_flag": "medium",
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_same_sign": null,
+      "note": "S-block composite of technically strong leavers minus the G1 S composite. Negative means those leavers were less socially legible than the people who later entered.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "capacity_S1_irc_linked",
+      "block": "capacity",
+      "estimate": -0.19250910099211055,
+      "ci95": [
+        -0.3686398920649988,
+        -0.00910166371171945
+      ],
+      "p": 0.042,
+      "n": 5214,
+      "effect_size": -0.19250910099211055,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.17194026430258239,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of no peer response on newcomer PRs. Negative means unanswered PRs are lower on this social indicator after consensus/test/bugfix and the shared size and prior-PR controls. Year fixed effects are included.",
+      "q": 0.0858
+    },
+    {
+      "id": "capacity_S2_jargon_share",
+      "block": "capacity",
+      "estimate": -0.20134187126980876,
+      "ci95": [
+        -0.46695412647271356,
+        0.01720123924035229
+      ],
+      "p": 0.078,
+      "n": 4372,
+      "effect_size": -0.20134187126980876,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -0.20744780672499308,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of no peer response on newcomer PRs. Negative means unanswered PRs are lower on this social indicator after consensus/test/bugfix and the shared size and prior-PR controls. Year fixed effects are included.",
+      "q": 0.14485714285714285
+    },
+    {
+      "id": "capacity_S3_reviews_before_first",
+      "block": "capacity",
+      "estimate": -1.076479481965222,
+      "ci95": [
+        -2.8336285548629494,
+        -0.4098499129850946
+      ],
+      "p": 0.001,
+      "n": 3496,
+      "effect_size": -1.076479481965222,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -1.1230150887511163,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of no peer response on newcomer PRs. Negative means unanswered PRs are lower on this social indicator after consensus/test/bugfix and the shared size and prior-PR controls. Year fixed effects are included.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "capacity_S4_early_reciprocity",
+      "block": "capacity",
+      "estimate": -1.0638790851594544,
+      "ci95": [
+        -1.28506070466714,
+        -0.8660102864844293
+      ],
+      "p": 0.001,
+      "n": 3843,
+      "effect_size": -1.0638790851594544,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": -1.8459337747408997,
+      "holdout_same_sign": true,
+      "low_observability": false,
+      "note": "Logistic of no peer response on newcomer PRs. Negative means unanswered PRs are lower on this social indicator after consensus/test/bugfix and the shared size and prior-PR controls. Year fixed effects are included.",
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "capacity_S5_named_by_top20",
+      "block": "capacity",
+      "estimate": -0.007060384045673308,
+      "ci95": [
+        -0.1636123656411033,
+        0.10778618028387063
+      ],
+      "p": 0.87,
+      "n": 5214,
+      "effect_size": -0.007060384045673308,
+      "effect_size_kind": "standardized_log_odds",
+      "effect_size_flag": null,
+      "in_bh_family": true,
+      "source": "pass4",
+      "holdout_estimate": null,
+      "holdout_same_sign": null,
+      "low_observability": true,
+      "note": "Logistic of no peer response on newcomer PRs. Negative means unanswered PRs are lower on this social indicator after consensus/test/bugfix and the shared size and prior-PR controls. Year fixed effects are included.",
+      "q": 0.9107580535036813
+    }
+  ],
+  "prior_tests_in_family": [
+    {
+      "id": "pass1.blocks.A.1_merge_rate.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.A.1b_merge_rate_wherever_defined.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.A.2_mean_sentiment.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.A.2b_any_negative_tone.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.A.3_time_to_first_response_hours.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.9089603130429593,
+      "q": 0.9411832795087358
+    },
+    {
+      "id": "pass1.blocks.A.3b_no_peer_response_rate.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.A.3c_time_to_decision_hours.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 5.0665751594181074e-09,
+      "q": 3.4500964180799494e-08
+    },
+    {
+      "id": "pass1.blocks.A.3d_review_cycles.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 5.3413620193509814e-09,
+      "q": 3.471885312578138e-08
+    },
+    {
+      "id": "pass1.blocks.A.4_justification_vocabulary.total.comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 1.3924106198937025e-05,
+      "q": 7.658258409415364e-05
+    },
+    {
+      "id": "pass1.blocks.B.6_entry_cohort_survival.first_year_sentiment_became_vs_left.difference_in_minus_out",
+      "source": "pass1",
+      "p": 7.460664153136065e-08,
+      "q": 4.638586843036771e-07
+    },
+    {
+      "id": "pass1.blocks.B.6_entry_cohort_survival.first_year_merge_became_vs_left.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.C.7_irc_silence_proxy.silence_rate_ever_ingroup_vs_everyone_else.difference_in_minus_out",
+      "source": "pass1",
+      "p": 3.610282865773584e-06,
+      "q": 2.06508179922249e-05
+    },
+    {
+      "id": "pass1.blocks.C.8_draft_abandonment_snapshot.comparison_abandoned_closed_unreviewed_drafts.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.28972828614457,
+      "q": 0.4315744262361824
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.merge_rate_prefaced_vs_not.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.10898863654956781,
+      "q": 0.19481718783235244
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.hours_to_response_prefaced_vs_not.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.47559764808228433,
+      "q": 0.6239492080345564
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.preface_rate_ingroup_vs_outgroup.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.merge_gap_within_preface.strata[0].comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.merge_gap_within_preface.strata[1].comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.2166376246386701,
+      "q": 0.3480806777902227
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.sentiment_gap_within_preface.strata[0].comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.sentiment_gap_within_preface.strata[1].comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.00044374762012755475,
+      "q": 0.0021598778552697133
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.vocab_gap_within_preface.strata[0].comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0004531212283782615,
+      "q": 0.0021598778552697133
+    },
+    {
+      "id": "pass1.blocks.D.9_irc_presocialization.vocab_gap_within_preface.strata[1].comparison.difference_in_minus_out",
+      "source": "pass1",
+      "p": 0.0650232929782939,
+      "q": 0.12665752056683308
+    },
+    {
+      "id": "pass2.period_trend.merge_rate_slope_per_year",
+      "source": "pass2",
+      "p": 0.6068237465431645,
+      "q": 0.7292083676947271
+    },
+    {
+      "id": "pass2.cohort_control.cohort_fe_merge_rate_two_year",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.year_controlled_group_gap.without_year_fixed_effects.in_group_log_odds",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.year_controlled_group_gap.with_year_fixed_effects.in_group_log_odds",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.drawbridge.interaction[0].interaction_per_year",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.drawbridge.interaction[1].interaction_per_year",
+      "source": "pass2",
+      "p": 4.709566070459914e-11,
+      "q": 3.741488600420932e-10
+    },
+    {
+      "id": "pass2.drawbridge.incumbent_merge_slope.slope_merge_rate_per_year",
+      "source": "pass2",
+      "p": 5.879380737816575e-07,
+      "q": 3.503131022949043e-06
+    },
+    {
+      "id": "pass2.drawbridge.newcomer_merge_slope.slope_merge_rate_per_year",
+      "source": "pass2",
+      "p": 1.9379695626042803e-09,
+      "q": 1.3968307899236976e-08
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.merge_rate_decided_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.mean_tone_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.no_peer_response_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.hours_to_first_response_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 0.41276885983490263,
+      "q": 0.5638285714285715
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.peer_review_object_count_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 0.004672720167262945,
+      "q": 0.012607527998464171
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.justification_hits_per_pr_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 2.283174297557089e-05,
+      "q": 0.00012092367575950508
+    },
+    {
+      "id": "pass2.rolling_ingroup.block_a.any_negative_tone_from_2016.difference_in_minus_out",
+      "source": "pass2",
+      "p": 0.0,
+      "q": 0.0
+    },
+    {
+      "id": "pass2.review_capacity.correlation_prs_per_reviewer_with_newcomer_no_response.pearson_r",
+      "source": "pass2",
+      "p": 1.95360949639678e-09,
+      "q": 1.3968307899236976e-08
+    },
+    {
+      "id": "pass3.E1_prior_merges_response_14d",
+      "source": "pass3",
+      "p": 0.064,
+      "q": 0.12665752056683308
+    },
+    {
+      "id": "pass3.E1_convexity_prior_squared",
+      "source": "pass3",
+      "p": 0.508,
+      "q": 0.6544504504504505
+    },
+    {
+      "id": "pass3.E1_prior_merges_log_hours_to_response",
+      "source": "pass3",
+      "p": 0.034,
+      "q": 0.07256716417910448
+    },
+    {
+      "id": "pass3.E2_reciprocity_excess",
+      "source": "pass3",
+      "p": 0.001996007984031936,
+      "q": 0.005607843137254902
+    },
+    {
+      "id": "pass3.E3_agreement_share_top5_minus_other",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E3_log_hours_to_next_same_direction_top5_minus_other",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E4a_jargon_share_on_first_year_merge_rate",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E4a_jargon_share_on_24m_retention",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E4b_accommodation_toward_mergers_minus_others",
+      "source": "pass3",
+      "p": 0.468,
+      "q": 0.6196666666666667
+    },
+    {
+      "id": "pass3.E5_log_participants_on_log_days",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E7_first_tone_on_merge_given_later_tone",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E8_reply_length_words_leaver_minus_matched_active",
+      "source": "pass3",
+      "p": 0.144,
+      "q": 0.24809638554216865
+    },
+    {
+      "id": "pass3.E8_tone_leaver_minus_matched_active",
+      "source": "pass3",
+      "p": 0.24,
+      "q": 0.3730434782608696
+    },
+    {
+      "id": "pass3.E8_response_gap_seconds_leaver_minus_matched_active",
+      "source": "pass3",
+      "p": 0.222,
+      "q": 0.35273333333333334
+    },
+    {
+      "id": "pass3.E9_listed_on_merge",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E9_listed_on_log_days_to_merge",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E10_participation_after_nack_merged_vs_closed",
+      "source": "pass3",
+      "p": 0.038,
+      "q": 0.07991176470588235
+    },
+    {
+      "id": "pass3.E10_own_merge_rate_after_nack",
+      "source": "pass3",
+      "p": 0.018,
+      "q": 0.0429
+    },
+    {
+      "id": "pass3.E11_followup_on_harsh_comment_by_merger",
+      "source": "pass3",
+      "p": 0.556,
+      "q": 0.6863224054593698
+    },
+    {
+      "id": "pass3.E12_ingroup_on_no_peer_response",
+      "source": "pass3",
+      "p": 0.001,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.E12_ingroup_on_90d_return",
+      "source": "pass3",
+      "p": 0.068,
+      "q": 0.12965333333333334
+    },
+    {
+      "id": "pass3.T1_E1_P1",
+      "source": "pass3",
+      "p": 0.8725444288811492,
+      "q": 0.9107580535036813
+    },
+    {
+      "id": "pass3.T1_E1_P2",
+      "source": "pass3",
+      "p": 0.971577682777073,
+      "q": 0.978419779134658
+    },
+    {
+      "id": "pass3.T1_E2_P2",
+      "source": "pass3",
+      "p": 0.011225245577668616,
+      "q": 0.028161581010642315
+    },
+    {
+      "id": "pass3.T1_E2_P4",
+      "source": "pass3",
+      "p": 0.45491937317003306,
+      "q": 0.6079763585356517
+    },
+    {
+      "id": "pass3.T1_E3_P3",
+      "source": "pass3",
+      "p": 0.5411235235098939,
+      "q": 0.6863224054593698
+    },
+    {
+      "id": "pass3.T1_E3_P4",
+      "source": "pass3",
+      "p": 0.5532950092839335,
+      "q": 0.6863224054593698
+    },
+    {
+      "id": "pass3.T1_E4_P1",
+      "source": "pass3",
+      "p": 0.9867429111949892,
+      "q": 0.9867429111949892
+    },
+    {
+      "id": "pass3.T1_E5_P4",
+      "source": "pass3",
+      "p": 0.830542385756094,
+      "q": 0.9035
+    },
+    {
+      "id": "pass3.T1_E7_P6",
+      "source": "pass3",
+      "p": 0.2014060899610435,
+      "q": 0.33489617284220025
+    },
+    {
+      "id": "pass3.T1_E9_P3",
+      "source": "pass3",
+      "p": 0.9394082054712856,
+      "q": 0.9573900709219857
+    },
+    {
+      "id": "pass3.T1_E9_P1",
+      "source": "pass3",
+      "p": 0.48207203829967776,
+      "q": 0.626693649789581
+    },
+    {
+      "id": "pass3.T1_E10_P3",
+      "source": "pass3",
+      "p": 0.9148564744875124,
+      "q": 0.9411832795087358
+    },
+    {
+      "id": "pass3.T1_E10_P6",
+      "source": "pass3",
+      "p": 0.3440002182586698,
+      "q": 0.49192031210989773
+    },
+    {
+      "id": "pass3.T2_P1_lag1",
+      "source": "pass3",
+      "p": 0.3942840173973614,
+      "q": 0.5497864077669903
+    },
+    {
+      "id": "pass3.T2_P1_lag2",
+      "source": "pass3",
+      "p": 0.7456094809807079,
+      "q": 0.8529772462419298
+    },
+    {
+      "id": "pass3.T2_P2_lag1",
+      "source": "pass3",
+      "p": 0.08991373630263919,
+      "q": 0.16484184988817185
+    },
+    {
+      "id": "pass3.T2_P2_lag2",
+      "source": "pass3",
+      "p": 0.028864598957001903,
+      "q": 0.06449433829455113
+    },
+    {
+      "id": "pass3.T2_P3_lag1",
+      "source": "pass3",
+      "p": 0.10625237175934595,
+      "q": 0.19233024255172748
+    },
+    {
+      "id": "pass3.T2_P3_lag2",
+      "source": "pass3",
+      "p": 0.45003657688882837,
+      "q": 0.6071248159915327
+    },
+    {
+      "id": "pass3.T2_P4_lag1",
+      "source": "pass3",
+      "p": 0.0707490406749638,
+      "q": 0.13311990548052402
+    },
+    {
+      "id": "pass3.T2_P4_lag2",
+      "source": "pass3",
+      "p": 0.3541476412329215,
+      "q": 0.5014169573891858
+    },
+    {
+      "id": "pass3.T2_P6_lag1",
+      "source": "pass3",
+      "p": 0.006088305245824156,
+      "q": 0.015829593639142804
+    },
+    {
+      "id": "pass3.T2_P6_lag2",
+      "source": "pass3",
+      "p": 0.0004181179404149967,
+      "q": 0.0021353880528337333
+    },
+    {
+      "id": "pass3.T2_P8_lag1",
+      "source": "pass3",
+      "p": 0.005814484159461399,
+      "q": 0.015397615459314444
+    },
+    {
+      "id": "pass3.T2_P8_lag2",
+      "source": "pass3",
+      "p": 0.014753104427214942,
+      "q": 0.036374033329167874
+    },
+    {
+      "id": "pass3.T3_E12_lag1",
+      "source": "pass3",
+      "p": 0.21521745567801298,
+      "q": 0.3480806777902227
+    },
+    {
+      "id": "pass3.T3_E12_lag2",
+      "source": "pass3",
+      "p": 0.7871720116618076,
+      "q": 0.8794187317784257
+    },
+    {
+      "id": "pass3.T3_E3_lag1",
+      "source": "pass3",
+      "p": 0.5717012385276553,
+      "q": 0.6928243822835145
+    },
+    {
+      "id": "pass3.T3_E3_lag2",
+      "source": "pass3",
+      "p": 0.12520440713849548,
+      "q": 0.22103987926919574
+    },
+    {
+      "id": "pass3.T3_E7_lag1",
+      "source": "pass3",
+      "p": 0.13094806950717272,
+      "q": 0.2283606577990939
+    },
+    {
+      "id": "pass3.T3_E7_lag2",
+      "source": "pass3",
+      "p": 0.2465595757789701,
+      "q": 0.37911848748809385
+    },
+    {
+      "id": "pass3.T3_E5_lag1",
+      "source": "pass3",
+      "p": 0.5717012385276553,
+      "q": 0.6928243822835145
+    },
+    {
+      "id": "pass3.T3_E5_lag2",
+      "source": "pass3",
+      "p": 0.5554454421055853,
+      "q": 0.6863224054593698
+    },
+    {
+      "id": "pass3.T3_E2_lag1",
+      "source": "pass3",
+      "p": 0.0009687789139250083,
+      "q": 0.0029183673469387757
+    },
+    {
+      "id": "pass3.T3_E2_lag2",
+      "source": "pass3",
+      "p": 0.028319671295760004,
+      "q": 0.06428115865545525
+    },
+    {
+      "id": "pass3.T3_E1_lag1",
+      "source": "pass3",
+      "p": 0.5567370561768314,
+      "q": 0.6863224054593698
+    },
+    {
+      "id": "pass3.T3_E1_lag2",
+      "source": "pass3",
+      "p": 0.06554305260101852,
+      "q": 0.12665752056683308
+    },
+    {
+      "id": "pass3.T3_E10_lag1",
+      "source": "pass3",
+      "p": 0.6646331617926677,
+      "q": 0.78547555484588
+    },
+    {
+      "id": "pass3.T3_E10_lag2",
+      "source": "pass3",
+      "p": 0.7698749998921367,
+      "q": 0.869259842519685
+    },
+    {
+      "id": "pass3.T3_E4_lag1",
+      "source": "pass3",
+      "p": 0.3317398014330152,
+      "q": 0.4791797131810219
+    },
+    {
+      "id": "pass3.T3_E4_lag2",
+      "source": "pass3",
+      "p": 0.8225054302036114,
+      "q": 0.9035
+    },
+    {
+      "id": "pass3.T3_E9_lag1",
+      "source": "pass3",
+      "p": 0.3287230320699708,
+      "q": 0.4791797131810219
+    }
+  ],
+  "data_unavailable": [
+    {
+      "metric": "S5_named_by_top20",
+      "status": "LOW OBSERVABILITY",
+      "reason": "IRC nick resolution is limited, so a speaker who is in the rolling top 20 but did not resolve is not counted. Mentions by unresolved speakers are missed, not treated as absence. Candidate messages in the pre-PR windows: 429840. Unresolved speakers among them: 10403."
+    },
+    {
+      "metric": "S3_pre_review_objects",
+      "reason": "466 grouped contributors opened their first PR before 2016-01-01. Reviews given before that PR are missing, not zero, because GitHub review objects are not in the corpus yet.",
+      "status": "DATA UNAVAILABLE"
+    }
+  ],
+  "plain_text_summary": "First-year signal, pass 4.\nRolling top 20 ever entered: 65. Of those, 65 authored a PR. G1 (ever entered): 65. G2 (never entered, no PR at or after 24 months): 1823.\nPass 2's d=0.73 was the cumulative top-20 merge gap. This pass recomputes the within-cohort merge gap on the rolling groups: d=0.780.\n\nMATCHED PREDICTORS (G1 minus G2, 2010-2023)\n  T1a: G1 mean 50.717 (median 36.000) G2 mean 11025.352 (median 13.000) smd -0.023 d=-0.209 (small) q=0.296 holdout_same_sign=False\n  T1b: G1 mean 2.767 (median 2.000) G2 mean 55.819 (median 1.000) smd -0.207 d=-0.275 (small) q=0.003 holdout_same_sign=True\n  T1c: G1 mean 0.097 (median 0.024) G2 mean 0.130 (median 0.000) smd -0.030 d=0.003 (negligible effect size regardless of p-value) q=0.807 holdout_same_sign=True\n  T1d: G1 mean 0.070 (median 0.000) G2 mean 0.067 (median 0.000) smd -0.122 d=0.169 (negligible effect size regardless of p-value) q=0.348 holdout_same_sign=False\n  T1e: G1 mean 0.171 (median 0.163) G2 mean 0.169 (median 0.000) smd 0.016 d=-0.021 (negligible effect size regardless of p-value) q=0.903 holdout_same_sign=True\n  T2a: G1 mean 0.213 (median 0.212) G2 mean 0.182 (median 0.091) smd 0.016 d=0.090 (negligible effect size regardless of p-value) q=0.911 holdout_same_sign=True\n  T2b: G1 mean 0.576 (median 0.614) G2 mean 0.206 (median 0.000) smd 0.685 d=0.917 (large) q=0.011 holdout_same_sign=True\n  T2c: G1 mean 0.670 (median 0.695) G2 mean 0.312 (median 0.000) smd 0.598 d=0.780 (medium) q=0.003 holdout_same_sign=True\n  T2d: G1 mean 5.683 (median 4.100) G2 mean 2.870 (median 1.333) smd 0.778 d=1.250 (large) q=0.003 holdout_same_sign=False\n  T3a: G1 mean 35.233 (median 21.000) G2 mean 13.040 (median 1.000) smd -0.030 d=1.075 (large) q=0.792 holdout_same_sign=True\n  T3b: G1 mean 32.250 (median 21.000) G2 mean 11.098 (median 1.000) smd -0.035 d=1.205 (large) q=0.810 holdout_same_sign=False\n  S1: G1 mean 0.717 (median 1.000) G2 mean 0.711 (median 1.000) smd 0.325 d=0.563 (medium) q=0.006 holdout_same_sign=True\n  S2: G1 mean 0.189 (median 0.178) G2 mean 0.050 (median 0.000) smd 0.931 d=1.445 (large) q=0.003 holdout_same_sign=True\n  S3_count: G1 mean 3.857 (median 0.000) G2 mean 0.209 (median 0.000) smd 1.875 d=1.884 (large) q=0.026 holdout_same_sign=True\n  S3_any: G1 mean 0.314 (median 0.000) G2 mean 0.045 (median 0.000) smd 1.527 d=1.344 (large) q=0.003 holdout_same_sign=True\n  S4: G1 mean 0.595 (median 1.000) G2 mean 0.029 (median 0.000) smd 1.724 d=3.347 (large) q=0.003 holdout_same_sign=True\n  S5: G1 mean 0.033 (median 0.000) G2 mean 0.014 (median 0.000) smd 0.285 d=0.120 (negligible effect size regardless of p-value) q=0.479 holdout_same_sign=None\n\nDECOMPOSITION OF THE MERGE-RATE GAP\n  raw d=0.780; after size and prior controls d=0.409; after T d=0.022; after S d=0.169; after both d=0.141. Patch content only (no review reception) leaves d=0.436. Review reception only, with size controls, leaves d=0.015.\n  Each block alone closes more than half the gap, and neither adds as much as 0.1 d once the other is controlled. The blocks are redundant on the merge-rate gap. The ordered technical rule also matches, but the technical block contains review reception (tone, a top-5 ACK, review cycles), which is a community response. Use the content-versus-reception split before reading the gap as detection of technical quality.\n\nFALSE NEGATIVES\n  284 of 1740 leavers sit in the top quartile of G1's technical composite. Their social composite minus G1 is -0.390 (d=-0.792, medium).\n  Technically strong leavers score lower on the social composite than later top-20 entrants. That is the high false-negative pattern: first-year technical signal in the top quarter of the entrant distribution, without the social signal, and gone by 24 months.\n  Patch-content quartile only, excluding ACKs, tone, review cycles, and the merge rate: 340 of 1740 leavers. Their social composite minus G1 is -0.405 (d=-0.898, large).\n\nCAPACITY\n  Unanswered newcomer PRs are lower on S3_reviews_before_first, S4_early_reciprocity after technical controls (q<0.05). That is a cross-sectional social-legibility gap. The year slope of newcomer silence does not shrink when the social indicators are added, so this pass does not show that the rise in silence over time operates through social legibility.\n  Newcomer silence year slope, technical controls only: 0.014. After social indicators: 0.039 (shrinkage -0.025).\n\nJOINT LOGISTIC COEFFICIENTS WITH q<0.05\n  S1_irc_linked: 4.475 (q=0.043)\n  T3a and T3b count nearly the same directories, so their separate logistic coefficients are not identified.\n\nWHAT THIS CANNOT PROVE\n  (1) T and S proxies are imperfect measures of technical quality and social legibility.\n  (2) IRC-linked PRs are identified by number matching and miss discussions that never name the PR.\n  (3) G1 has on the order of 65 members and matched cohort cells are small. Treat the results as exploratory until they are replicated on comparison repositories.\n  (4) Social legibility and technical quality are partly correlated in any expert community. Separating them from observational data is inherently limited.\n\nDATA UNAVAILABLE entries: 1.",
+  "what_this_cannot_prove": [
+    "T and S proxies are imperfect measures of technical quality and social legibility.",
+    "IRC-linked PRs are identified by number matching and miss discussions that never name the PR.",
+    "G1 has on the order of 65 members and matched cohort cells are small. Treat the results as exploratory until they are replicated on comparison repositories.",
+    "Social legibility and technical quality are partly correlated in any expert community. Separating them from observational data is inherently limited."
+  ]
+}
