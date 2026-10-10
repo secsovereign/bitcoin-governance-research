@@ -1,0 +1,1 @@
+{"description": "fix check for USE_UPNP in makefile.unix\n\nWhen miniupnpc isn't installed, building fails due to wrong check in makefile.unix.\n", "files": [{"filename": "src/makefile.unix", "patch": "@@ -23,7 +23,7 @@ LIBS= \\\n    -l ssl \\\n    -l crypto\n \n-ifdef USE_UPNP\n+ifneq ($(USE_UPNP),0)\n \tLIBS += -l miniupnpc\n \tDEFS += -DUSE_UPNP=$(USE_UPNP)\n endif"}]}
