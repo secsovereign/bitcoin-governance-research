@@ -63,21 +63,23 @@ def token() -> str:
     raise SystemExit("GITHUB_TOKEN or gh auth token required")
 
 
-def github_json(url: str, tok: str) -> tuple[Any, Dict[str, str]]:
-    req = urllib.request.Request(
-        url,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "btcdecoded-project-repos",
-            "Authorization": f"Bearer {tok}",
-        },
-    )
+def github_json(url: str, tok: str, etag: Optional[str] = None) -> tuple[Any, Dict[str, str]]:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "btcdecoded-project-repos",
+        "Authorization": f"Bearer {tok}",
+    }
+    if etag:
+        headers["If-None-Match"] = etag
+    req = urllib.request.Request(url, headers=headers)
     for attempt in range(6):
         try:
             with urllib.request.urlopen(req, timeout=60) as res:
                 body = json.loads(res.read().decode())
                 return body, {k.lower(): v for k, v in res.headers.items()}
         except urllib.error.HTTPError as err:
+            if err.code == 304:
+                return None, {k.lower(): v for k, v in err.headers.items()}
             if err.code in (403, 429, 502, 503, 504) and attempt < 5:
                 reset = err.headers.get("X-RateLimit-Reset")
                 wait = 30
@@ -241,19 +243,133 @@ def collect_repo(slug: str, tok: str, with_comments: bool, limit: Optional[int])
     print(f"{slug} done new prs={new_prs} issues={new_issues}", flush=True)
 
 
+def normalize_detail(number: int, slug: str, reviews: List[Any], comments: List[Any], review_comments: List[Any], files: List[Any]) -> Dict[str, Any]:
+    """Same nested fields the bitcoin/bitcoin pull-request records store."""
+    def login(item: Dict[str, Any]) -> Optional[str]:
+        user = item.get("user") if isinstance(item.get("user"), dict) else {}
+        return (user or {}).get("login")
+
+    return {
+        "repo": slug,
+        "number": number,
+        "reviews": [
+            {
+                "state": item.get("state"),
+                "body": item.get("body") or "",
+                "author": login(item),
+                "submitted_at": item.get("submitted_at") or item.get("created_at"),
+            }
+            for item in reviews if isinstance(item, dict)
+        ],
+        "review_comments": [
+            {
+                "body": item.get("body") or "",
+                "author": login(item),
+                "created_at": item.get("created_at"),
+                "path": item.get("path"),
+                "line": item.get("line"),
+            }
+            for item in review_comments if isinstance(item, dict)
+        ],
+        "comments": [
+            {
+                "body": item.get("body") or "",
+                "author": login(item),
+                "created_at": item.get("created_at"),
+            }
+            for item in comments if isinstance(item, dict)
+        ],
+        "files": [
+            {
+                "filename": item.get("filename"),
+                "additions": item.get("additions"),
+                "deletions": item.get("deletions"),
+                "changes": item.get("changes"),
+                "status": item.get("status"),
+            }
+            for item in files if isinstance(item, dict)
+        ],
+    }
+
+
+def load_repo_config() -> List[str]:
+    path = Path(__file__).resolve().parent / "comparison_repos.json"
+    if not path.exists():
+        return list(REPOS)
+    data = json.loads(path.read_text())
+    return [row["slug"] for row in data.get("repos") or []]
+
+
+def backfill_detail(slug: str, tok: str, limit: Optional[int]) -> None:
+    owner, repo = slug.split("/", 1)
+    dest = OUT_ROOT / owner / repo
+    prs_path = dest / "prs.jsonl"
+    if not prs_path.exists():
+        print(f"{slug} DATA UNAVAILABLE prs.jsonl is missing, so review objects were not requested", flush=True)
+        return
+    detail_path = dest / "pr_detail.jsonl"
+    have = load_numbers(detail_path)
+    etag_path = dest / "detail_etags.json"
+    etags: Dict[str, str] = json.loads(etag_path.read_text()) if etag_path.exists() else {}
+    done = 0
+    with prs_path.open() as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            number = json.loads(line).get("number")
+            if not isinstance(number, int) or number in have:
+                continue
+            base = f"https://api.github.com/repos/{slug}"
+            key = f"{slug}#{number}"
+            reviews, headers = github_json(f"{base}/pulls/{number}/reviews?per_page=100", tok, etags.get(key + ":reviews"))
+            if reviews is None:
+                reviews = []
+            elif headers.get("etag"):
+                etags[key + ":reviews"] = headers["etag"]
+            comments, headers = github_json(f"{base}/issues/{number}/comments?per_page=100", tok, etags.get(key + ":comments"))
+            if comments is None:
+                comments = []
+            elif headers.get("etag"):
+                etags[key + ":comments"] = headers["etag"]
+            review_comments, headers = github_json(f"{base}/pulls/{number}/comments?per_page=100", tok, etags.get(key + ":review_comments"))
+            if review_comments is None:
+                review_comments = []
+            elif headers.get("etag"):
+                etags[key + ":review_comments"] = headers["etag"]
+            files, headers = github_json(f"{base}/pulls/{number}/files?per_page=100", tok, etags.get(key + ":files"))
+            if files is None:
+                files = []
+            elif headers.get("etag"):
+                etags[key + ":files"] = headers["etag"]
+            append_jsonl(detail_path, normalize_detail(number, slug, reviews or [], comments or [], review_comments or [], files or []))
+            have.add(number)
+            done += 1
+            if done == 1 or done % 25 == 0:
+                etag_path.write_text(json.dumps(etags))
+                print(f"{slug} detail {done} last=#{number}", flush=True)
+            if limit is not None and done >= limit:
+                break
+    etag_path.write_text(json.dumps(etags))
+    print(f"{slug} detail done {done}", flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Collect project-repo pull requests and issues")
     parser.add_argument("--repo", action="append", help="owner/name. Repeatable. Default is the project list.")
     parser.add_argument("--no-comments", action="store_true", help="Store the opening post only")
     parser.add_argument("--limit", type=int, default=None, help="Stop after this many new records per repo")
+    parser.add_argument("--backfill-detail", action="store_true", help="Add review objects, comment authors, and file paths")
     args = parser.parse_args()
-    repos = args.repo or REPOS
+    repos = args.repo or load_repo_config()
     for slug in repos:
         if slug.count("/") != 1 or any(part in ("", ".", "..") for part in slug.split("/")):
             raise SystemExit(f"refusing repo slug {slug}")
     tok = token()
     for slug in repos:
-        collect_repo(slug, tok, with_comments=not args.no_comments, limit=args.limit)
+        if args.backfill_detail:
+            backfill_detail(slug, tok, args.limit)
+        else:
+            collect_repo(slug, tok, with_comments=not args.no_comments, limit=args.limit)
 
 
 if __name__ == "__main__":
