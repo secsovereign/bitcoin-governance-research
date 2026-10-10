@@ -1,0 +1,50 @@
+{
+  "pass": 6,
+  "version": "6.0",
+  "timestamp": "2026-10-10T01:00:09Z",
+  "written_before_estimates": true,
+  "fit": [2010, 2023],
+  "holdout": [2024, 2026],
+  "bootstrap": 1000,
+  "seed": 7,
+  "predictions": {
+    "task1_split3_outgroup_merged_code": {
+      "statement": "If out-group pull requests face a higher acceptance bar, out-group merged code should show an equal or lower fix-forward rate and an equal or lower revert rate than in-group merged code.",
+      "contrast": "out-group minus in-group",
+      "outcomes": ["fix_forward", "revert"],
+      "predicted_sign": "negative_or_zero",
+      "opposite_reading": "If out-group merged code fails more often, the quality explanation gains support."
+    },
+    "task3_core_residual": {
+      "statement": "The bitcoin/bitcoin residual of shared health, after log total pull requests, log distinct active contributors per year, and years of history, is negative.",
+      "predicted_sign": "negative",
+      "low_power": true,
+      "repeats": ["all_repositories", "bolts_excluded", "shared_maintainers_excluded"]
+    },
+    "task4_effect_versus_size_adjusted_residual": {
+      "statement": "Spearman correlation of each effect estimate with the size-adjusted health residual, not the raw health index.",
+      "effects": {
+        "E2_reciprocity_excess": {
+          "predicted_sign": "negative",
+          "reason": "A larger reciprocity excess is the pathology, so the estimate should be higher where the residual is worse."
+        },
+        "E3_log_hours_to_next_same_direction_top5_minus_other": {
+          "predicted_sign": "positive",
+          "reason": "The signed effect is negative when a top-5 first review is followed sooner. A healthier residual should move that gap toward zero."
+        },
+        "E5_log_participants_on_log_days": {
+          "predicted_sign": "negative",
+          "reason": "A larger slowdown per participant is the pathology, so the estimate should be higher where the residual is worse."
+        },
+        "E7_first_tone_on_merge_given_later_tone": {
+          "predicted_sign": "negative",
+          "reason": "A stronger first-tone association with merge is the pathology, so the estimate should be higher where the residual is worse."
+        },
+        "E12_ingroup_on_no_peer_response": {
+          "predicted_sign": "positive",
+          "reason": "The signed effect is negative when in-group authors are unanswered less often. A healthier residual should move that gap toward zero."
+        }
+      }
+    }
+  }
+}
