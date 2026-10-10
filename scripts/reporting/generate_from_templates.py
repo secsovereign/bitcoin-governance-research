@@ -1441,6 +1441,51 @@ def ctx_durability(data: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def ctx_size(data: Dict[str, Any]) -> Dict[str, Any]:
+    def line(sample: Dict[str, Any], label: str) -> str:
+        return (
+            f"{label}. Core residual {_fmt(sample.get('core_residual'), 4)} "
+            f"(interval {_fmt((sample.get('core_ci95') or [None, None])[0])} to "
+            f"{_fmt((sample.get('core_ci95') or [None, None])[1])}). "
+            f"Rank {_fmt(sample.get('core_rank_most_negative'), 0)} of {sample.get('n')}, counting from the most negative. "
+            f"Point sign is {sample.get('core_sign')}. "
+            f"The interval {'covers zero' if sample.get('interval_covers_zero') else 'excludes zero'}. "
+            f"LOW POWER."
+        )
+    samples = data.get("samples") or {}
+    rows = []
+    for row in (samples.get("all_repositories") or {}).get("repositories") or []:
+        flag = " shared maintainers" if row.get("shared_maintainers") else ""
+        rows.append(
+            f"| {row.get('repo')} | {row.get('role')}{flag} | {_fmt(row.get('health'))} | "
+            f"{row.get('n_prs')} | {row.get('years_of_history')} | {_fmt(row.get('residual'))} |"
+        )
+    corr_rows = []
+    for name, fit in (data.get("indicator_volume_spearman") or {}).items():
+        mark = "yes" if fit.get("measures_scale") else "no"
+        corr_rows.append(
+            f"| {name} | {_fmt(fit.get('estimate'))} | "
+            f"{_fmt((fit.get('ci95') or [None, None])[0])} to {_fmt((fit.get('ci95') or [None, None])[1])} | "
+            f"{fit.get('n')} | {mark} |"
+        )
+    scale = data.get("scale_indicators") or []
+    scale_text = ", ".join(scale) if scale else "none"
+    return {
+        "date": date.today().isoformat(),
+        "prediction": (data.get("preregistration") or {}).get("statement", ""),
+        "all_line": line(samples.get("all_repositories") or {}, "All repositories"),
+        "bolts_line": line(samples.get("bolts_excluded") or {}, "Bolts excluded"),
+        "shared_line": line(samples.get("shared_maintainers_excluded") or {}, "Shared-maintainer repositories excluded"),
+        "table": "\n".join(rows),
+        "corr_table": "\n".join(corr_rows),
+        "scale_text": (
+            f"Indicators whose Spearman interval with log pull-request volume excludes zero are {scale_text}. "
+            "Those indicators move with scale. The series is LOW POWER."
+        ),
+        "cannot": [{"sentence": sentence} for sentence in (data.get("what_this_cannot_prove") or [])],
+    }
+
+
 def _write(name: str, text: str, findings: Path) -> Path:
     out = findings / name
     out.write_text(text, encoding="utf-8")
@@ -1674,6 +1719,10 @@ def generate_all() -> List[str]:
     durability = _maybe(findings_data / "merge_durability.json") or _maybe(analysis / "merge_durability.json")
     if durability and durability.get("status") == "ok":
         jobs.append(("MERGE_DURABILITY.md", TEMPLATES / "MERGE_DURABILITY.md.tpl", ctx_durability(durability)))
+
+    sized = _maybe(findings_data / "size_adjusted_health.json") or _maybe(analysis / "size_adjusted_health.json")
+    if sized and sized.get("status") == "ok":
+        jobs.append(("SIZE_ADJUSTED_COMPARISON.md", TEMPLATES / "SIZE_ADJUSTED_COMPARISON.md.tpl", ctx_size(sized)))
 
     revealed = _maybe(findings_data / "revealed_rough_consensus.json") or _maybe(
         analysis / "revealed_rough_consensus.json"
