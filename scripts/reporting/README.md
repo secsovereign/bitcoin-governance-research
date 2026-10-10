@@ -43,6 +43,7 @@ python scripts/reporting/generate_findings_reports.py
 | `COMMONS_MECHANISMS.md.tpl` | `findings/COMMONS_MECHANISMS.md` |
 | `FIRST_YEAR_TRAJECTORY.md.tpl` | `findings/FIRST_YEAR_TRAJECTORY.md` |
 | `GAP_CLOSURE.md.tpl` | `findings/GAP_CLOSURE.md` |
+| `MERGE_DURABILITY.md.tpl` | `findings/MERGE_DURABILITY.md` |
 | `INTERDISCIPLINARY_ANALYSIS_REPORT.md.tpl` | `findings/INTERDISCIPLINARY_ANALYSIS_REPORT.md` |
 | `NOVEL_INTERPRETATIONS.md.tpl` | `findings/NOVEL_INTERPRETATIONS.md` |
 | `GINI_COEFFICIENT_EXPLANATION.md.tpl` | `findings/GINI_COEFFICIENT_EXPLANATION.md` |

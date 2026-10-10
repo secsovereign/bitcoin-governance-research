@@ -1361,6 +1361,86 @@ def ctx_gap(gap: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _fmt(value: Any, digits: int = 3) -> str:
+    if value is None:
+        return "missing"
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return "missing"
+    if number != number:
+        return "missing"
+    return f"{number:.{digits}f}"
+
+
+def _fit_sentence(label: str, fit: Dict[str, Any]) -> str:
+    hold = fit.get("holdout_same_sign")
+    hold_text = "missing" if hold is None else ("yes" if hold else "no")
+    power = " LOW POWER." if fit.get("low_power") else ""
+    gap = fit.get("rate_gap")
+    cite = ""
+    if fit.get("cite_rate_gap") and gap is not None:
+        cite = f" Cohen's d is above 2, so the rate gap {_fmt(gap)} is the figure to cite."
+    return (
+        f"{label} coefficient {_fmt(fit.get('estimate'))} "
+        f"(interval {_fmt((fit.get('ci95') or [None, None])[0])} to {_fmt((fit.get('ci95') or [None, None])[1])}). "
+        f"q={_fmt(fit.get('q'))}. n={fit.get('n')}. "
+        f"Cohen's d {_fmt(fit.get('cohens_d'))}. "
+        f"Rate for the coded group {_fmt(fit.get('rate_group1'))}, "
+        f"rate for the reference group {_fmt(fit.get('rate_group0'))}. "
+        f"Holdout sign matches {hold_text}.{power}{cite}"
+    )
+
+
+def ctx_durability(data: Dict[str, Any]) -> Dict[str, Any]:
+    splits = data.get("splits") or {}
+    blocks = []
+    for months in ("12", "24"):
+        horizon = splits.get(months) or {}
+        for key, title, coded, reference in (
+            ("g1_vs_g2", "G1 versus G2, first-year merged pull requests", "G1", "G2"),
+            ("false_negative_vs_g1", "The 340 patch-content leavers versus G1, first-year merged pull requests", "false negatives", "G1"),
+            ("out_vs_in", "Out-group versus in-group merged pull requests from 2016-09-23", "out-group", "in-group"),
+        ):
+            block = horizon.get(key) or {}
+            if not block:
+                continue
+            blocks.append({
+                "heading": f"{title}, {months} months",
+                "fix": _fit_sentence("Fix-forward", block.get("fix_forward") or {}),
+                "revert": _fit_sentence("Revert", block.get("revert") or {}),
+                "survival": (
+                    f"Secondary survival, share of introduced production lines still present. "
+                    f"{coded} {_fmt(block.get('survival_mean_group1'))}. "
+                    f"{reference} {_fmt(block.get('survival_mean_group0'))}."
+                ),
+            })
+    crossed = data.get("q_crossed_0_05") or []
+    if crossed:
+        crossed_text = " ".join(
+            f"{row.get('id')} moved from q={_fmt(row.get('q_before'))} to q={_fmt(row.get('q_after'))}."
+            for row in crossed
+        )
+    else:
+        crossed_text = "No prior test moved across q=0.05."
+    return {
+        "date": date.today().isoformat(),
+        "problem": (
+            "Do merged patches from later entrants, from the 340 patch-content leavers, "
+            "or from out-group authors fail more often after the merge, when failure is read from the code rather than from a reviewer."
+        ),
+        "prediction": (data.get("preregistration") or {}).get("statement", ""),
+        "reading": data.get("split3_reading") or "",
+        "family": str(data.get("bh_family_size") or ""),
+        "crossed": crossed_text,
+        "fn_authors": str(data.get("n_false_negative_authors") or ""),
+        "traced": str(data.get("n_merges_traced") or ""),
+        "caveat": data.get("selection_caveat") or "",
+        "blocks": blocks,
+        "cannot": [{"sentence": sentence} for sentence in (data.get("what_this_cannot_prove") or [])],
+    }
+
+
 def _write(name: str, text: str, findings: Path) -> Path:
     out = findings / name
     out.write_text(text, encoding="utf-8")
@@ -1590,6 +1670,10 @@ def generate_all() -> List[str]:
         ))
     if p5:
         jobs.append(("GAP_CLOSURE.md", TEMPLATES / "GAP_CLOSURE.md.tpl", ctx_gap(p5)))
+
+    durability = _maybe(findings_data / "merge_durability.json") or _maybe(analysis / "merge_durability.json")
+    if durability and durability.get("status") == "ok":
+        jobs.append(("MERGE_DURABILITY.md", TEMPLATES / "MERGE_DURABILITY.md.tpl", ctx_durability(durability)))
 
     revealed = _maybe(findings_data / "revealed_rough_consensus.json") or _maybe(
         analysis / "revealed_rough_consensus.json"

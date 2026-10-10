@@ -1408,18 +1408,18 @@ def apply_family_q(
     return family
 
 
-def false_negatives(
+def g1_top_quartile_rows(
     rows: Sequence[Dict[str, Any]],
-    rng: np.random.Generator,
-    n_boot: int,
     keys: Optional[Sequence[str]] = None,
 ) -> Dict[str, Any]:
+    """G2 rows whose patch composite is in the top quartile of G1. Same rule as the 340."""
     g1 = [r for r in rows if r["group"] == 1]
     g2 = [r for r in rows if r["group"] == 0]
     if len(g1) < 8 or len(g2) < 8:
-        return {"status": "DATA UNAVAILABLE", "reason": "fewer than 8 people in a group", "n_false_negative": 0}
+        return {"status": "DATA UNAVAILABLE", "reason": "fewer than 8 people in a group", "rows": []}
     wanted = list(keys) if keys is not None else T_GAP_BLOCK + ["T2c_merge_rate"]
-    keys = [k for k in wanted if np.isfinite(column(g1, k)).sum() >= 5]
+    use_keys = [k for k in wanted if np.isfinite(column(g1, k)).sum() >= 5]
+
     def composite(sample: Sequence[Dict[str, Any]], orient_from: Sequence[Dict[str, Any]], variables: Sequence[str]) -> np.ndarray:
         parts = []
         for key in variables:
@@ -1436,14 +1436,55 @@ def false_negatives(
         stacked = np.vstack(parts)
         with np.errstate(all="ignore"):
             return np.nanmean(stacked, axis=0)
-    t_g1 = composite(g1, g1, keys)
-    t_g2 = composite(g2, g1, keys)
+
+    t_g1 = composite(g1, g1, use_keys)
     finite = t_g1[np.isfinite(t_g1)]
     if finite.size < 8:
-        return {"status": "DATA UNAVAILABLE", "reason": "T composite was undefined", "n_false_negative": 0}
+        return {"status": "DATA UNAVAILABLE", "reason": "T composite was undefined", "rows": []}
     cutoff = float(np.quantile(finite, 0.75))
+    t_g2 = composite(g2, g1, use_keys)
     fn_mask = np.isfinite(t_g2) & (t_g2 >= cutoff)
-    fn_rows = [g2[i] for i in np.flatnonzero(fn_mask)]
+    return {
+        "status": "ok",
+        "cutoff": cutoff,
+        "rows": [g2[i] for i in np.flatnonzero(fn_mask)],
+        "g1": g1,
+        "g2": g2,
+        "keys": use_keys,
+    }
+
+
+def false_negatives(
+    rows: Sequence[Dict[str, Any]],
+    rng: np.random.Generator,
+    n_boot: int,
+    keys: Optional[Sequence[str]] = None,
+) -> Dict[str, Any]:
+    picked = g1_top_quartile_rows(rows, keys)
+    if picked["status"] != "ok":
+        return {"status": picked["status"], "reason": picked["reason"], "n_false_negative": 0}
+    g1 = picked["g1"]
+    g2 = picked["g2"]
+    keys = picked["keys"]
+    fn_rows = picked["rows"]
+    cutoff = picked["cutoff"]
+
+    def composite(sample: Sequence[Dict[str, Any]], orient_from: Sequence[Dict[str, Any]], variables: Sequence[str]) -> np.ndarray:
+        parts = []
+        for key in variables:
+            base = column(orient_from, key)
+            base = base[np.isfinite(base)]
+            if base.size < 5 or float(np.std(base)) < 1e-12:
+                continue
+            direction = 1.0 if float(np.nanmean(column(g1, key))) >= float(np.nanmean(column(g2, key))) else -1.0
+            vals = column(sample, key)
+            z = direction * (vals - float(base.mean())) / float(base.std())
+            parts.append(z)
+        if not parts:
+            return np.full(len(sample), np.nan)
+        stacked = np.vstack(parts)
+        with np.errstate(all="ignore"):
+            return np.nanmean(stacked, axis=0)
     s_keys = S_PREDICTORS
     s_g1 = composite(g1, g1, s_keys)
     s_fn = composite(fn_rows, g1, s_keys) if fn_rows else np.array([])
@@ -1476,11 +1517,11 @@ def false_negatives(
         "t_cutoff_g1_top_quartile": cutoff,
         "n_g1": len(g1),
         "n_g2": len(g2),
-        "n_false_negative": int(fn_mask.sum()),
-        "n_g2_in_g1_top_quartile": int(fn_mask.sum()),
+        "n_false_negative": len(fn_rows),
+        "n_g2_in_g1_top_quartile": len(fn_rows),
         "false_negative_entry_years": [int(row["year"]) for row in fn_rows],
         "leaver_entry_years": [int(row["year"]) for row in g2],
-        "false_negative_share_of_g2": float(fn_mask.sum() / len(g2)),
+        "false_negative_share_of_g2": float(len(fn_rows) / len(g2)),
         "s_mean_false_negative": None if not fn_ok.size else float(np.mean(fn_ok)),
         "s_mean_g1": float(np.mean(g1_ok)) if g1_ok.size else None,
         "s_difference": diff,

@@ -171,8 +171,9 @@
 42. **`COMMONS_MECHANISMS.md`** — six confirmed attention effects and the shared-indicator rank
 43. **`FIRST_YEAR_TRAJECTORY.md`** — first-year merge gap, the 340 patch-content leavers, and the silence slope
 44. **`GAP_CLOSURE.md`** — lagged principle scores, the cross-repository limit, the false-negative timeline, and subsystem silence
+45. **`MERGE_DURABILITY.md`** — post-merge fix-forward and revert for G1, the 340, and out-group code
 
-Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`
+Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`, `merge_durability.json`
 
 ---
 
