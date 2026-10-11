@@ -28,5 +28,42 @@
       "newcomer_divergence",
       "newcomer_interaction_versus_size_adjusted_residual"
     ]
-  }
+  },
+  "addenda": [
+    {
+      "timestamp": "2026-10-11T21:48:08Z",
+      "written_before_estimates": true,
+      "written_before": "any self-merge rate and any E3 estimate from comparison merged_by",
+      "items": [
+        {
+          "id": "self_merge_distinct_mergers_control",
+          "statement": "The matched-size self-merge regression adds log mean distinct mergers per year to log total pull requests, log mean distinct active contributors per year, and years of history.",
+          "reason": "In a project with one or two mergers, self-merge is close to mandatory, so the rate falls mechanically as the merger count rises.",
+          "controls": [
+            "log_total_prs",
+            "log_mean_annual_authors",
+            "years_of_history",
+            "log_mean_distinct_mergers_per_year"
+          ],
+          "enters_bh_family": false,
+          "descriptive": true
+        },
+        {
+          "id": "e3_trailing_window_eligibility",
+          "statement": "A repository has an E3 estimate only if at least 5 distinct mergers appear in the trailing window for the pull requests being scored. The record for each repository is the number of distinct mergers per year and the share of pull requests whose window has at least 5. A repository below that bar is DATA UNAVAILABLE. If fewer than 6 repositories have an estimate, the E3 Spearman correlation is DATA UNAVAILABLE and the class stays UNDETERMINED.",
+          "min_distinct_mergers_in_trailing_window": 5,
+          "min_repositories_for_spearman": 6,
+          "do_not_lower_either_minimum": true,
+          "predicted_sign": "positive",
+          "enters_bh_family_when_estimated": true,
+          "family_id": "pass7.E3_spearman_versus_size_adjusted_residual"
+        },
+        {
+          "id": "merged_by_crawl_completeness",
+          "statement": "When the crawl ends, each repository records merged pull requests, how many returned merged_by, how many returned a numeric user id, and how many the endpoint no longer serves. A repository under 95 percent merged_by stops the estimate.",
+          "minimum_merged_by_share": 0.95
+        }
+      ]
+    }
+  ]
 }
