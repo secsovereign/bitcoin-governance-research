@@ -172,8 +172,9 @@
 43. **`FIRST_YEAR_TRAJECTORY.md`** — first-year merge gap, the 340 patch-content leavers, and the silence slope
 44. **`GAP_CLOSURE.md`** — lagged principle scores, the cross-repository limit, the false-negative timeline, and subsystem silence
 45. **`MERGE_DURABILITY.md`** — post-merge fix-forward and revert for G1, the 340, and out-group code
-46. **`SIZE_ADJUSTED_COMPARISON.md`** — shared health after size, with the comparison-repo effects still uncollected
-47. **`AUDIT_RUBRIC.md`** — blinded 1 to 5 scores. The draw is `data/audit_sample.csv` (160 rows, G1 is the full training set of 60). The person key is not in git.
+46. **`SIZE_ADJUSTED_COMPARISON.md`** — shared health after size, and the comparison-repository effects against that residual
+47. **`AUDIT_RUBRIC.md`** — blinded 1 to 5 scores. The draw is `data/audit_sample.csv` (160 rows, G1 is the full training set of 60). The person key is not in git. The sample has not been coded.
+48. **`DISCOURSE_RECALL.md`** — path-link precision. Number matching stays the headline.
 
 Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`, `merge_durability.json`, `size_adjusted_health.json`
 
@@ -196,6 +197,7 @@ Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `h
 2. `NEWCOMER_BAR.md` and `INGROUP_REVIEW_TREATMENT.md`
 3. `COMMONS_MECHANISMS.md` and `FIRST_YEAR_TRAJECTORY.md`
 4. `GAP_CLOSURE.md` for the tables those two close with
+5. `MERGE_DURABILITY.md`, `SIZE_ADJUSTED_COMPARISON.md`, and `DISCOURSE_RECALL.md` for pass 6. The audit sample is drawn and not coded.
 
 **Deep Dive** (2+ hours):
 - Read all Core Reports
@@ -232,5 +234,5 @@ venv/bin/python scripts/reporting/generate_findings_reports.py
 # or: venv/bin/python scripts/run_all_analyses.py --reports
 ```
 
-**Last Updated**: 2026-10-07  
-**Status**: Frames unchanged. Items 35–44 are the episode ledger, revealed consensus, and the five measurement passes.
+**Last Updated**: 2026-10-10  
+**Status**: Frames unchanged. Items 35–48 are the episode ledger, revealed consensus, and the six measurement passes. The blinded audit sample is drawn and not coded.

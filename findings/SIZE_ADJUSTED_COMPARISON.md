@@ -4,7 +4,7 @@
 **Machine-readable:** `findings/data/size_adjusted_health.json`
 **Problem:** After size is held fixed, does bitcoin/bitcoin still sit below the other repositories on the shared health index?
 
-Shared health is the index already published in `COMMONS_MECHANISMS.md`. The regression uses log total pull requests, log mean distinct authors per year, and years of history. The residual is leave-one-out. Review objects are not in these dumps, and `comments_count` is not used.
+Shared health is the index already published in `COMMONS_MECHANISMS.md`. The regression uses log total pull requests, log mean distinct authors per year, and years of history. The residual is leave-one-out. Review objects, comment authors, and file paths do not enter that regression. `comments_count` is not used.
 
 The preregistered prediction is this. The bitcoin/bitcoin residual of shared health, after log total pull requests, log distinct active contributors per year, and years of history, is negative.
 

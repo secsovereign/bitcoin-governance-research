@@ -6,6 +6,10 @@
 
 The pass 6 rule, set before this scan, is this. {{rule}}
 
+{{precision_bar_scope}}
+
+{{label_method}}
+
 ## Result
 
 {{reading}}
@@ -27,6 +31,8 @@ The pass 6 rule, set before this scan, is this. {{rule}}
 {{e12_number}}
 
 {{e12_combined}}
+
+{{published_note}}
 
 ## Family
 

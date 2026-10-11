@@ -28,10 +28,10 @@
     "number_only": {
       "estimate": -0.19250910099211055,
       "ci95": [
-        -0.37801426981093716,
-        -0.0034658428380193833
+        -0.3846658843687562,
+        0.006327307193358205
       ],
-      "p": 0.048,
+      "p": 0.056,
       "n": 5214,
       "n_authors": 1800,
       "lower_S_when_unanswered": true,
@@ -54,8 +54,8 @@
     "s3_reviews_before_first": {
       "estimate": -1.076479481965222,
       "ci95": [
-        -2.8880903737227657,
-        -0.4105922949348662
+        -2.8604112436333438,
+        -0.41010587812979277
       ],
       "p": 0.001,
       "n": 3496,
@@ -85,8 +85,8 @@
       "status": "ok",
       "estimate": -0.49223001859178145,
       "ci95": [
-        -0.5945847380631162,
-        -0.39816340613285384
+        -0.5937092871690826,
+        -0.3971397760876553
       ],
       "p": 0.001,
       "n": 20087,
@@ -97,8 +97,8 @@
       "status": "ok",
       "estimate": -0.45745760003820957,
       "ci95": [
-        -0.5750434826207896,
-        -0.332352594207232
+        -0.5735206387405849,
+        -0.35204731090745767
       ],
       "p": 0.001,
       "n": 20087,
@@ -111,8 +111,38 @@
   "bh_crossed_0_05": [],
   "symbols": "DATA UNAVAILABLE: enriched pull requests store filenames, not patch text, so symbols the pull request touches are not in the bulk scan.",
   "find_discourse": "find_discourse is available. Its hits mix GitHub pull-request text with IRC lines that are already in messages.jsonl. GitHub file lists are not discourse, so the scan uses the local IRC, mail, Delving, and Bitcointalk archives.",
+  "published_comparison": {
+    "s1": {
+      "status": "ok",
+      "id": "capacity_S1_irc_linked",
+      "estimate": -0.19250910099211055,
+      "ci95": [
+        -0.3686398920649988,
+        -0.00910166371171945
+      ],
+      "p": 0.042,
+      "n": 5214
+    },
+    "s1_number_only_point_matches_published": true,
+    "e12": {
+      "status": "ok",
+      "id": "E12_ingroup_on_no_peer_response",
+      "estimate": -0.49293853049851805,
+      "ci95": [
+        -0.5964722833677167,
+        -0.39553414849347923
+      ],
+      "p": 0.001,
+      "n": 20087
+    },
+    "e12_number_only_point_matches_published": false,
+    "note": "The number-only S1 point estimate is the published capacity fit. Its interval in this file is a fresh seed-7 bootstrap, not the draws already consumed by the pass-4 script. The published interval remains the headline. The number-only E12 column is a refit on the first-year frame. The published E12 estimate stays in the pass-3 file."
+  },
+  "label_method": "The 200 labels are one reading of the first 280 characters of each message against the stated rule. They are not a second independent coder. A sentence after those 280 characters can name the change and still be marked false.",
+  "precision_bar_scope": "The 0.7 precision bar is the pass 6 task rule. It is not a row in pass6_preregistration.json, which records the durability signs, the size residual, and the comparison-repository correlations.",
   "what_this_cannot_prove": [
     "A path mention is not proof the speaker had this pull request in mind.",
+    "The 200 labels are one reading of a 280-character snippet, not a second independent coder.",
     "Symbols in the patch are not in the enriched file, so symbol linking was not applied to the bulk scan.",
     "Precision below 0.7 keeps number matching as the headline. The path linker is then a sensitivity check.",
     "Linking discussion does not show that the discussion changed the decision."

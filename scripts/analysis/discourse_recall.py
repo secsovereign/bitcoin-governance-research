@@ -238,7 +238,7 @@ def rerun_s1(frame: Dict[str, Any], extra_prs: Set[int], rng: np.random.Generato
     }
 
 
-def rerun_e12(frame: Dict[str, Any], discourse_prs: Set[int], rng: np.random.Generator, n_boot: int) -> Dict[str, Any]:
+def rerun_e12(frame: Dict[str, Any], discourse_prs: Set[int], seed: int, n_boot: int) -> Dict[str, Any]:
     """Published E12 is GitHub peer silence. The combined outcome also treats a discourse link as a response."""
     from bisect import bisect_left
 
@@ -294,8 +294,8 @@ def rerun_e12(frame: Dict[str, Any], discourse_prs: Set[int], rng: np.random.Gen
     files = prs["files"].astype(float)
     years = prs["year"].astype(float)
     cov = [log_lines, files, tenure, prior, unidentified]
-    base_train, base_hold = fit_split(y_base, ingroup, cov, years, rng, n_boot, True)
-    plus_train, plus_hold = fit_split(y_plus, ingroup, cov, years, rng, n_boot, True)
+    base_train, base_hold = fit_split(y_base, ingroup, cov, years, np.random.default_rng(seed), n_boot, True)
+    plus_train, plus_hold = fit_split(y_plus, ingroup, cov, years, np.random.default_rng(seed), n_boot, True)
 
     def pack(train, hold):
         if train is None:
@@ -360,6 +360,49 @@ def _public_scan(raw: Dict[str, Any]) -> Dict[str, Any]:
     return keep
 
 
+def _published_test(path: Path, test_id: str) -> Dict[str, Any]:
+    if not path.exists():
+        return {"status": "DATA UNAVAILABLE", "reason": f"{path.name} is missing"}
+    payload = json.loads(path.read_text())
+    rows = payload.get("hypothesis_tests") or []
+    for row in rows:
+        if row.get("id") == test_id:
+            return {
+                "status": "ok",
+                "id": test_id,
+                "estimate": row.get("estimate"),
+                "ci95": row.get("ci95"),
+                "p": row.get("p"),
+                "n": row.get("n"),
+            }
+    return {"status": "DATA UNAVAILABLE", "reason": f"{test_id} is not in {path.name}"}
+
+
+def _published_comparison(findings: Path, s1: Dict[str, Any], e12: Dict[str, Any]) -> Dict[str, Any]:
+    published_s1 = _published_test(findings / "data" / "first_year_signal_analysis.json", "capacity_S1_irc_linked")
+    published_e12 = _published_test(findings / "data" / "commons_dynamics_analysis.json", "E12_ingroup_on_no_peer_response")
+    number_s1 = (s1.get("number_only") or {}).get("estimate")
+    number_e12 = (e12.get("number_only_github_silence") or {}).get("estimate")
+
+    def same_point(left, right) -> Optional[bool]:
+        if left is None or right is None:
+            return None
+        return abs(float(left) - float(right)) < 1e-9
+
+    return {
+        "s1": published_s1,
+        "s1_number_only_point_matches_published": same_point(number_s1, published_s1.get("estimate")),
+        "e12": published_e12,
+        "e12_number_only_point_matches_published": same_point(number_e12, published_e12.get("estimate")),
+        "note": (
+            "The number-only S1 point estimate is the published capacity fit. "
+            "Its interval in this file is a fresh seed-7 bootstrap, not the draws already consumed by the pass-4 script. "
+            "The published interval remains the headline. "
+            "The number-only E12 column is a refit on the first-year frame. The published E12 estimate stays in the pass-3 file."
+        ),
+    }
+
+
 def main() -> int:
     import argparse
     parser = argparse.ArgumentParser(description="Path-link discourse recall and the sensitivity reruns")
@@ -410,9 +453,9 @@ def main() -> int:
     print("discussion rates", flush=True)
     rates = discussion_shift(data_dir / "processed" / "enriched_prs.jsonl", number_any, raw["path_prs"])
     print("S1 rerun", flush=True)
-    s1 = rerun_s1(frame, raw["s1_path_prs"], rng, args.bootstrap)
+    s1 = rerun_s1(frame, raw["s1_path_prs"], np.random.default_rng(args.seed), args.bootstrap)
     print("E12 rerun", flush=True)
-    e12 = rerun_e12(frame, raw["path_prs"], rng, args.bootstrap)
+    e12 = rerun_e12(frame, raw["path_prs"], args.seed, args.bootstrap)
     headline = judged["headline"]
     tests = []
     for name, block in (
@@ -465,8 +508,18 @@ def main() -> int:
             "find_discourse is available. Its hits mix GitHub pull-request text with IRC lines that are already in messages.jsonl. "
             "GitHub file lists are not discourse, so the scan uses the local IRC, mail, Delving, and Bitcointalk archives."
         ),
+        "published_comparison": _published_comparison(findings, s1, e12),
+        "label_method": (
+            "The 200 labels are one reading of the first 280 characters of each message against the stated rule. "
+            "They are not a second independent coder. A sentence after those 280 characters can name the change and still be marked false."
+        ),
+        "precision_bar_scope": (
+            "The 0.7 precision bar is the pass 6 task rule. It is not a row in pass6_preregistration.json, "
+            "which records the durability signs, the size residual, and the comparison-repository correlations."
+        ),
         "what_this_cannot_prove": [
             "A path mention is not proof the speaker had this pull request in mind.",
+            "The 200 labels are one reading of a 280-character snippet, not a second independent coder.",
             "Symbols in the patch are not in the enriched file, so symbol linking was not applied to the bulk scan.",
             "Precision below 0.7 keeps number matching as the headline. The path linker is then a sensitivity check.",
             "Linking discussion does not show that the discussion changed the decision.",

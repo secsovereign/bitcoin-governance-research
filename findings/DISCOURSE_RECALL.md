@@ -1,10 +1,14 @@
 # Discourse recall
 
-**Date:** 2026-10-10
+**Date:** 2026-10-11
 **Machine-readable:** `findings/data/discourse_recall.json`
 **Problem:** How many pull requests gain an observed discussion when a message that names a file the pull request touches, inside the open window plus 14 days, is counted as well as a message that names the pull request number.
 
 The pass 6 rule, set before this scan, is this. Hand-label 200 path-only candidate links. If precision is below 0.7, number matching stays the headline and path linking is a sensitivity check.
+
+The 0.7 precision bar is the pass 6 task rule. It is not a row in pass6_preregistration.json, which records the durability signs, the size residual, and the comparison-repository correlations.
+
+The 200 labels are one reading of the first 280 characters of each message against the stated rule. They are not a second independent coder. A sentence after those 280 characters can name the change and still be marked false.
 
 ## Result
 
@@ -16,17 +20,19 @@ Path links touch 5968 pull requests. 576 of those had no number link. That is 0.
 
 Number matching stays the headline for S1, for discussion observed, and for E12. The figures below are the path-link sensitivity. They are not a replacement for the published estimates.
 
-S1 number-only, log odds of silence coefficient -0.193 (interval -0.378 to -0.003). p=0.048. n=5214. Holdout sign matches yes.
+S1 number-only, fresh seed-7 bootstrap, log odds of silence coefficient -0.193 (interval -0.385 to 0.006). p=0.056. n=5214. Holdout sign matches yes.
 
 S1 with path links inside seven days added coefficient -0.116 (interval -0.296 to 0.067). p=0.200. n=5214. Holdout sign matches no.
 
-S3 counts reviews given before the first pull request. It does not read discourse links, so the path linker leaves it unchanged. S3 coefficient -1.076 (interval -2.888 to -0.411). p=0.001. n=3496. Holdout sign matches yes.
+S3 counts reviews given before the first pull request. It does not read discourse links, so the path linker leaves it unchanged. S3 coefficient -1.076 (interval -2.860 to -0.410). p=0.001. n=3496. Holdout sign matches yes.
 
 Discussion observed before 2016 is 0.905 with number links and 0.914 with path links added (gain 0.010, n=4956). From 2016 it is 0.987 with number links and 0.989 with path links added (gain 0.002, n=20166). A path link is not a review. Missing GitHub Review objects before 2016 stay missing.
 
-E12 GitHub peer silence, in-group coefficient -0.492 (interval -0.595 to -0.398). p=0.001. n=20087. Holdout sign matches yes.
+E12 GitHub peer silence, in-group coefficient -0.492 (interval -0.594 to -0.397). p=0.001. n=20087. Holdout sign matches yes.
 
-E12 treating a path link as a response, in-group coefficient -0.457 (interval -0.575 to -0.332). p=0.001. n=20087. Holdout sign matches yes.
+E12 treating a path link as a response, in-group coefficient -0.457 (interval -0.574 to -0.352). p=0.001. n=20087. Holdout sign matches yes.
+
+The number-only S1 point estimate is the published capacity fit. Its interval in this file is a fresh seed-7 bootstrap, not the draws already consumed by the pass-4 script. The published interval remains the headline. The number-only E12 column is a refit on the first-year frame. The published E12 estimate stays in the pass-3 file. Published S1 is -0.193 (interval -0.369 to -0.009). p=0.042. The fresh bootstrap has the same point. Published E12 is -0.493 (interval -0.596 to -0.396). The first-year refit point differs.
 
 ## Family
 
@@ -39,6 +45,7 @@ find_discourse is available. Its hits mix GitHub pull-request text with IRC line
 ## What this cannot prove
 
 - A path mention is not proof the speaker had this pull request in mind.
+- The 200 labels are one reading of a 280-character snippet, not a second independent coder.
 - Symbols in the patch are not in the enriched file, so symbol linking was not applied to the bulk scan.
 - Precision below 0.7 keeps number matching as the headline. The path linker is then a sensitivity check.
 - Linking discussion does not show that the discussion changed the decision.

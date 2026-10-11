@@ -1615,6 +1615,29 @@ def _coef_sentence(label: str, block: Any) -> str:
     )
 
 
+def _published_note(block: Dict[str, Any]) -> str:
+    note = block.get("note") or ""
+    s1 = block.get("s1") or {}
+    e12 = block.get("e12") or {}
+    s1_ci = s1.get("ci95") or [None, None]
+    e12_ci = e12.get("ci95") or [None, None]
+    s1_match = block.get("s1_number_only_point_matches_published")
+    e12_match = block.get("e12_number_only_point_matches_published")
+    s1_same = "The fresh bootstrap has the same point." if s1_match else "The fresh bootstrap point differs."
+    e12_same = "The first-year refit has the same point." if e12_match else "The first-year refit point differs."
+    s1_text = (
+        f"Published S1 is {_fmt(s1.get('estimate'))} "
+        f"(interval {_fmt(s1_ci[0] if s1_ci else None)} to {_fmt(s1_ci[1] if isinstance(s1_ci, (list, tuple)) and len(s1_ci) > 1 else None)}). "
+        f"p={_fmt(s1.get('p'))}. {s1_same}"
+    )
+    e12_text = (
+        f"Published E12 is {_fmt(e12.get('estimate'))} "
+        f"(interval {_fmt(e12_ci[0] if e12_ci else None)} to {_fmt(e12_ci[1] if isinstance(e12_ci, (list, tuple)) and len(e12_ci) > 1 else None)}). "
+        f"{e12_same}"
+    )
+    return " ".join(part for part in (note, s1_text, e12_text) if part)
+
+
 def ctx_discourse(data: Dict[str, Any]) -> Dict[str, Any]:
     scan = data.get("scan") or {}
     prec = data.get("precision") or {}
@@ -1679,7 +1702,10 @@ def ctx_discourse(data: Dict[str, Any]) -> Dict[str, Any]:
             f"Number links already reach {scan.get('n_number_prs')} pull requests."
         ),
         "headline_sentence": headline_sentence,
-        "s1_number": _coef_sentence("S1 number-only, log odds of silence", s1.get("number_only") or {}),
+        "s1_number": _coef_sentence(
+            "S1 number-only, fresh seed-7 bootstrap, log odds of silence",
+            s1.get("number_only") or {},
+        ),
         "s1_combined": _coef_sentence("S1 with path links inside seven days added", s1.get("combined") or {}),
         "s3": (
             "S3 counts reviews given before the first pull request. "
@@ -1701,6 +1727,9 @@ def ctx_discourse(data: Dict[str, Any]) -> Dict[str, Any]:
             e12.get("combined_linker") or {},
         ),
         "family": family_text,
+        "label_method": data.get("label_method") or "",
+        "precision_bar_scope": data.get("precision_bar_scope") or "",
+        "published_note": _published_note(data.get("published_comparison") or {}),
         "symbols": (
             "Symbols the pull request touches are DATA UNAVAILABLE on the bulk scan. "
             "The enriched pull requests store filenames, not patch text."
