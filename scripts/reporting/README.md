@@ -46,6 +46,7 @@ python scripts/reporting/generate_findings_reports.py
 | `MERGE_DURABILITY.md.tpl` | `findings/MERGE_DURABILITY.md` |
 | `SIZE_ADJUSTED_COMPARISON.md.tpl` | `findings/SIZE_ADJUSTED_COMPARISON.md` |
 | `DISCOURSE_RECALL.md.tpl` | `findings/DISCOURSE_RECALL.md` |
+| `NEWCOMER_DIVERGENCE.md.tpl` | `findings/NEWCOMER_DIVERGENCE.md` |
 | `INTERDISCIPLINARY_ANALYSIS_REPORT.md.tpl` | `findings/INTERDISCIPLINARY_ANALYSIS_REPORT.md` |
 | `NOVEL_INTERPRETATIONS.md.tpl` | `findings/NOVEL_INTERPRETATIONS.md` |
 | `GINI_COEFFICIENT_EXPLANATION.md.tpl` | `findings/GINI_COEFFICIENT_EXPLANATION.md` |

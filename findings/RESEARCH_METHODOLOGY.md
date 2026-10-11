@@ -993,12 +993,15 @@ These sit outside the quality-weighted review counts above. Fit 2010–2023, con
 | Size-adjusted health and comparison effects | `scripts/analysis/size_adjusted_health.py`, `scripts/analysis/comparison_effects.py` | `SIZE_ADJUSTED_COMPARISON.md` |
 | Blinded audit draw, not coded | `scripts/analysis/audit_sample.py` | `AUDIT_RUBRIC.md` |
 | Discourse path links | `scripts/analysis/discourse_path_linking.py`, `scripts/analysis/discourse_recall.py` | `DISCOURSE_RECALL.md` |
+| Newcomer divergence follow-up, not in the family | `scripts/analysis/newcomer_divergence.py` | `NEWCOMER_DIVERGENCE.md` |
 
 The joint Benjamini-Hochberg family for passes 1 through 5 is size 159 and lives in `findings/data/gap_closure_analysis.json`. Quoted q-values in the earlier pass reports are the family those reports were written against. They were not rewritten. `scripts/run_all_analyses.py` does not call these scripts.
 
 Pass 6 signs for durability, the Core size residual, and the comparison-repository correlations were written to `findings/data/pass6_preregistration.json` before those estimates. The family is now 228 tests. The new q-values are in `merge_durability.json` and `comparison_effects.json`. No prior test crossed q=0.05 when the family grew. Shared health does not read review objects, so the review backfill does not move that rank. Comparison effects use the size-adjusted residual. E3 is undetermined because comparison dumps do not store `merged_by`, and the merged flag was not substituted. E9 stays on bitcoin/bitcoin.
 
 Path-link precision on 200 snippets is 0.015, so those reruns were not added to the family. Number matching stays the headline. The 0.7 bar is the pass 6 task rule. It is not a field in the preregistration file. The labels are one reading of the first 280 characters, not a second independent coder. The blinded audit sample is drawn and has not been scored.
+
+The newcomer-versus-incumbent merge interaction was refit on the comparison repositories after pass 6, using the pass 2 estimator. It is not in the preregistration file and it is not in the family. The Core point matches the published interaction. The cross-repository classification is in `NEWCOMER_DIVERGENCE.md`. Lists that the first detail pass cut at 100 rows were followed to the last page, and the comparison effects were rerun. The classes did not change. No list in that frame is still cut. Shared health was not refit from those lists.
 
 ---
 

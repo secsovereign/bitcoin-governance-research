@@ -1531,7 +1531,11 @@ def _effect_section(effects: Optional[Dict[str, Any]]) -> str:
         capped += sum(int(v) for v in counts.values())
     if capped:
         lines.append(
-            f"{capped} review, comment, or file lists were cut at 100 rows because the collector stored one page."
+            f"{capped} review, comment, or file lists are still cut at 100 rows. pages_complete is not set on those rows, so the counts are under-stated."
+        )
+    else:
+        lines.append(
+            "Lists that had stopped at 100 rows were followed to the last page. No list in this frame is still cut."
         )
     lines.append("Every cross-repository correlation is LOW POWER.")
     return "\n".join(lines)
@@ -1551,6 +1555,80 @@ def _size_cannot(data: Dict[str, Any], effects: Optional[Dict[str, Any]]) -> Lis
             if sentence not in cannot:
                 cannot.append(str(sentence))
     return cannot
+
+
+def ctx_newcomer_divergence(data: Dict[str, Any]) -> Dict[str, Any]:
+    def pp(value: Any) -> str:
+        if value is None:
+            return "missing"
+        try:
+            number = float(value)
+        except (TypeError, ValueError):
+            return "missing"
+        if number != number:
+            return "missing"
+        return f"{number * 100:.1f}"
+
+    def interval(block: Dict[str, Any]) -> str:
+        ci = block.get("ci95") or [None, None]
+        if not isinstance(ci, (list, tuple)) or len(ci) < 2 or ci[0] is None:
+            return "not defined"
+        return f"{pp(ci[0])} to {pp(ci[1])}"
+
+    core = data.get("core") or {}
+    interaction = core.get("interaction") or {}
+    if data.get("core_reproduces_published_point"):
+        core_sentence = (
+            f"The Core interaction is {pp(interaction.get('estimate'))} percentage points per year "
+            f"(fresh interval {interval(interaction)}). "
+            f"n={interaction.get('n')}. "
+            f"This point matches the published pass 2 estimate of {pp(data.get('published_core_interaction'))} percentage points. "
+            f"The published interval remains the Core headline. "
+            f"The interval here is a fresh seed 7 bootstrap so the repositories can be compared with each other. "
+            f"The newcomer slope is {pp((core.get('newcomer_slope') or {}).get('estimate'))} percentage points per year. "
+            f"The incumbent slope is {pp((core.get('incumbent_slope') or {}).get('estimate'))} percentage points per year."
+        )
+    else:
+        core_sentence = (
+            "The Core interaction does not reproduce the published pass 2 point. "
+            "The classification is UNDETERMINED and the comparison estimates are not interpreted."
+        )
+    classification = data.get("classification") or "UNDETERMINED"
+    negative = ", ".join(data.get("negative_excluding_zero") or []) or "none"
+    positive = ", ".join(data.get("positive_excluding_zero") or []) or "none"
+    class_sentence = (
+        f"The classification is {classification}. "
+        f"{data.get('n_eligible')} seven-year repositories have a usable interaction. "
+        f"Intervals that exclude zero on the negative side are {negative}. "
+        f"Intervals that exclude zero on the positive side are {positive}. "
+        f"Dropping the shared-maintainer repositories leaves the classification {data.get('classification_without_shared_maintainers')}. "
+        "The cross-repository count is LOW POWER."
+    )
+    rows = []
+    for row in data.get("repositories") or []:
+        block = row.get("interaction") or {}
+        if block.get("estimate") is None:
+            inter = "DATA UNAVAILABLE"
+            span = "not defined"
+        else:
+            inter = pp(block.get("estimate"))
+            span = interval(block)
+        new_slope = pp((row.get("newcomer_slope") or {}).get("estimate"))
+        old_slope = pp((row.get("incumbent_slope") or {}).get("estimate"))
+        eligible = "yes" if row.get("eligible") else "no"
+        years = row.get("n_years")
+        year_text = "missing" if years is None else str(years)
+        rows.append(
+            f"| {row.get('slug')} | {year_text} | {eligible} | {inter} | {span} | {new_slope} | {old_slope} |"
+        )
+    return {
+        "date": date.today().isoformat(),
+        "core_sentence": core_sentence,
+        "class_sentence": class_sentence,
+        "rule": data.get("rule") or "",
+        "table": "\n".join(rows),
+        "cannot": [{"sentence": sentence} for sentence in (data.get("what_this_cannot_prove") or [])],
+    }
 
 
 def ctx_size(data: Dict[str, Any], effects: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
@@ -1981,6 +2059,10 @@ def generate_all() -> List[str]:
     discourse = _maybe(findings_data / "discourse_recall.json") or _maybe(analysis / "discourse_recall.json")
     if discourse and discourse.get("status") == "ok":
         jobs.append(("DISCOURSE_RECALL.md", TEMPLATES / "DISCOURSE_RECALL.md.tpl", ctx_discourse(discourse)))
+
+    divergence = _maybe(findings_data / "newcomer_divergence.json") or _maybe(analysis / "newcomer_divergence.json")
+    if divergence and divergence.get("status") in ("ok", "ESTIMATOR_MISMATCH"):
+        jobs.append(("NEWCOMER_DIVERGENCE.md", TEMPLATES / "NEWCOMER_DIVERGENCE.md.tpl", ctx_newcomer_divergence(divergence)))
 
     revealed = _maybe(findings_data / "revealed_rough_consensus.json") or _maybe(
         analysis / "revealed_rough_consensus.json"

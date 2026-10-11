@@ -347,7 +347,7 @@ def write_joined(slug: str, dest: Path) -> Dict[str, Any]:
                 ("review_comments", review_comments),
                 ("files", files),
             ):
-                if isinstance(rows, list) and len(rows) >= 100:
+                if isinstance(rows, list) and len(rows) >= 100 and not extra.get("pages_complete"):
                     capped[key] += 1
             adds = dels = 0
             for item in files:
@@ -593,7 +593,7 @@ def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: in
             "A correlation between an effect and a size-adjusted residual is not a cause of that residual.",
             "Fewer than 20 repositories make every cross-repository correlation LOW POWER.",
             "Pull requests GitHub no longer serves are omitted, not scored as having no review.",
-            "Lists longer than 100 reviews, comments, or files are cut at the first page, so those pull requests are under-counted.",
+            "A list is under-counted only when it still has at least 100 rows and pages_complete is not set.",
             "E3 is not identified outside Core because merged_by was not stored. That absence is not evidence the cascade is Core-specific.",
             "E9 is not applicable outside bitcoin/bitcoin.",
         ],

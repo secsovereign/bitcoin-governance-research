@@ -29,6 +29,13 @@ class DetailShapeTest(unittest.TestCase):
         self.assertEqual(row["files"][0]["filename"], "src/a.rs")
         self.assertNotIn("comments_count", row)
 
+    def test_next_page_reads_the_link_header(self) -> None:
+        from scripts.data_collection.project_repos_collector import next_page
+
+        header = '<https://api.github.com/repos/a/b/pulls/1/comments?page=2>; rel="next", <https://api.github.com/repos/a/b/pulls/1/comments?page=4>; rel="last"'
+        self.assertEqual(next_page(header), "https://api.github.com/repos/a/b/pulls/1/comments?page=2")
+        self.assertIsNone(next_page(""))
+
 
 if __name__ == "__main__":
     unittest.main()

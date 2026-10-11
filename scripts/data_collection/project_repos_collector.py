@@ -112,6 +112,13 @@ def github_json(url: str, tok: str, etag: Optional[str] = None, allow_missing: b
     raise SystemExit(f"GitHub failed {url}")
 
 
+def next_page(link_header: str) -> Optional[str]:
+    for part in (link_header or "").split(","):
+        if 'rel="next"' in part and "<" in part:
+            return part[part.find("<") + 1 : part.find(">")]
+    return None
+
+
 def paginate(url: str, tok: str, params: Dict[str, str]) -> Iterator[Dict[str, Any]]:
     query = urllib.parse.urlencode(params)
     next_url: Optional[str] = f"{url}?{query}"
@@ -120,11 +127,28 @@ def paginate(url: str, tok: str, params: Dict[str, str]) -> Iterator[Dict[str, A
         if not isinstance(payload, list):
             raise SystemExit(f"Unexpected payload from {next_url}")
         yield from payload
-        next_url = None
-        for part in headers.get("link", "").split(","):
-            if 'rel="next"' in part:
-                next_url = part[part.find("<") + 1 : part.find(">")]
-                break
+        next_url = next_page(headers.get("link", "")) if len(payload) >= 100 else None
+
+
+LIST_KEYS = ("reviews", "comments", "review_comments", "files")
+
+
+def list_was_cut(row: Dict[str, Any]) -> bool:
+    if row.get("missing") or row.get("pages_complete"):
+        return False
+    return any(isinstance(row.get(key), list) and len(row[key]) >= 100 for key in LIST_KEYS)
+
+
+def fetch_all_pages(url: str, tok: str) -> List[Dict[str, Any]]:
+    items: List[Dict[str, Any]] = []
+    next_url: Optional[str] = url
+    while next_url:
+        payload, headers = github_json(next_url, tok, allow_missing=True)
+        if not isinstance(payload, list):
+            return items
+        items.extend(item for item in payload if isinstance(item, dict))
+        next_url = next_page(headers.get("link", "")) if len(payload) >= 100 else None
+    return items
 
 
 def load_numbers(path: Path) -> Set[int]:
@@ -388,12 +412,89 @@ def backfill_detail(slug: str, tok: str, limit: Optional[int]) -> None:
     print(f"{slug} detail done {done}", flush=True)
 
 
+def _write_updates(detail_path: Path, updated: Dict[int, Dict[str, Any]]) -> None:
+    if not updated:
+        return
+    tmp = detail_path.with_suffix(".jsonl.tmp")
+    with detail_path.open() as handle, tmp.open("w") as out:
+        for line in handle:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            number = row.get("number")
+            if isinstance(number, int) and number in updated:
+                row = updated[number]
+            out.write(json.dumps(row) + "\n")
+    tmp.replace(detail_path)
+
+
+def extend_truncated(slug: str, tok: str) -> None:
+    """Follow later pages for lists that stopped at 100. Completed rows are skipped."""
+    owner, repo = slug.split("/", 1)
+    dest = OUT_ROOT / owner / repo
+    detail_path = dest / "pr_detail.jsonl"
+    if not detail_path.exists():
+        print(f"{slug} DATA UNAVAILABLE pr_detail.jsonl is missing", flush=True)
+        return
+    pending: List[Dict[str, Any]] = []
+    with detail_path.open() as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            if list_was_cut(row) and isinstance(row.get("number"), int):
+                pending.append(row)
+    if not pending:
+        print(f"{slug} pages already complete", flush=True)
+        return
+    print(f"{slug} extending {len(pending)} pull requests past the first page", flush=True)
+    base = f"https://api.github.com/repos/{slug}"
+    endpoints = {
+        "reviews": "pulls/{number}/reviews?per_page=100",
+        "comments": "issues/{number}/comments?per_page=100",
+        "review_comments": "pulls/{number}/comments?per_page=100",
+        "files": "pulls/{number}/files?per_page=100",
+    }
+    updated: Dict[int, Dict[str, Any]] = {}
+    for i, original in enumerate(pending, start=1):
+        number = int(original["number"])
+        fetched_raw: Dict[str, List[Any]] = {}
+        try:
+            for kind, pattern in endpoints.items():
+                current = original.get(kind)
+                if isinstance(current, list) and len(current) >= 100:
+                    fetched_raw[kind] = fetch_all_pages(f"{base}/{pattern.format(number=number)}", tok)
+        except MissingOnGitHub:
+            print(f"{slug} #{number} DATA UNAVAILABLE GitHub returned 404", flush=True)
+            continue
+        normalized = normalize_detail(
+            number,
+            slug,
+            fetched_raw.get("reviews", []),
+            fetched_raw.get("comments", []),
+            fetched_raw.get("review_comments", []),
+            fetched_raw.get("files", []),
+        )
+        row = dict(original)
+        for kind in fetched_raw:
+            row[kind] = normalized[kind]
+        row["pages_complete"] = True
+        updated[number] = row
+        if i == 1 or i % 10 == 0:
+            print(f"{slug} extended {i}/{len(pending)} last=#{number}", flush=True)
+            _write_updates(detail_path, updated)
+            updated = {}
+    _write_updates(detail_path, updated)
+    print(f"{slug} pages written", flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Collect project-repo pull requests and issues")
     parser.add_argument("--repo", action="append", help="owner/name. Repeatable. Default is the project list.")
     parser.add_argument("--no-comments", action="store_true", help="Store the opening post only")
     parser.add_argument("--limit", type=int, default=None, help="Stop after this many new records per repo")
     parser.add_argument("--backfill-detail", action="store_true", help="Add review objects, comment authors, and file paths")
+    parser.add_argument("--extend-truncated", action="store_true", help="Fetch later pages for lists cut at 100")
     args = parser.parse_args()
     repos = args.repo or load_repo_config()
     for slug in repos:
@@ -401,7 +502,9 @@ def main() -> None:
             raise SystemExit(f"refusing repo slug {slug}")
     tok = token()
     for slug in repos:
-        if args.backfill_detail:
+        if args.extend_truncated:
+            extend_truncated(slug, tok)
+        elif args.backfill_detail:
             backfill_detail(slug, tok, args.limit)
         else:
             collect_repo(slug, tok, with_comments=not args.no_comments, limit=args.limit)

@@ -1,6 +1,6 @@
 # Size-adjusted comparison
 
-**Date:** 2026-10-10
+**Date:** 2026-10-11
 **Machine-readable:** `findings/data/size_adjusted_health.json`
 **Problem:** After size is held fixed, does bitcoin/bitcoin still sit below the other repositories on the shared health index?
 
@@ -61,18 +61,18 @@ TRACKS HEALTH when the Spearman interval of the repository estimate against the 
 
 | Effect | Class | Outside Core | Spearman r | Interval | Predicted sign | Point matches |
 | --- | --- | --- | --- | --- | --- | --- |
-| E2_reciprocity_excess | AMBIENT | yes | 0.191 | -0.342 to 0.655 | negative | no |
+| E2_reciprocity_excess | AMBIENT | yes | 0.231 | -0.321 to 0.678 | negative | no |
 | E3_log_hours_to_next_same_direction_top5_minus_other | UNDETERMINED | no | missing | not defined | positive | not defined |
-| E5_log_participants_on_log_days | AMBIENT | yes | -0.389 | -0.827 to 0.161 | negative | yes |
-| E7_first_tone_on_merge_given_later_tone | AMBIENT | yes | -0.319 | -0.755 to 0.322 | negative | yes |
-| E12_ingroup_on_no_peer_response | AMBIENT | yes | 0.167 | -0.765 to 0.779 | positive | yes |
+| E5_log_participants_on_log_days | AMBIENT | yes | -0.393 | -0.861 to 0.142 | negative | yes |
+| E7_first_tone_on_merge_given_later_tone | AMBIENT | yes | -0.319 | -0.730 to 0.298 | negative | yes |
+| E12_ingroup_on_no_peer_response | AMBIENT | yes | 0.117 | -1.000 to 0.675 | positive | yes |
 
 The Benjamini-Hochberg family is now 228 tests, passes 1 through 6. No prior result crossed q = 0.05.
 H2, H3, H4 merge Gini, H5, and H6 are computed from open and close timestamps, author, and merged state. Review objects, comment authors, and file paths do not enter them. The shared-health rank and the Task 3 residual are not refit.
 E9 stays on bitcoin/bitcoin. No other project in this set has a meeting list.
 ethereum/go-ethereum is DATA UNAVAILABLE because prs.jsonl is missing, so review objects were not requested.
 E3 is UNDETERMINED because pull records do not store merged_by, so the trailing top-5 merger window was not built. The merged flag was not used as a substitute.
-564 review, comment, or file lists were cut at 100 rows because the collector stored one page.
+Lists that had stopped at 100 rows were followed to the last page. No list in this frame is still cut.
 Every cross-repository correlation is LOW POWER.
 
 ## What this cannot prove
@@ -83,7 +83,7 @@ Every cross-repository correlation is LOW POWER.
 - A correlation between an effect and a size-adjusted residual is not a cause of that residual.
 - Fewer than 20 repositories make every cross-repository correlation LOW POWER.
 - Pull requests GitHub no longer serves are omitted, not scored as having no review.
-- Lists longer than 100 reviews, comments, or files are cut at the first page, so those pull requests are under-counted.
+- A list is under-counted only when it still has at least 100 rows and pages_complete is not set.
 - E3 is not identified outside Core because merged_by was not stored. That absence is not evidence the cascade is Core-specific.
 - E9 is not applicable outside bitcoin/bitcoin.
 

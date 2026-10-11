@@ -174,7 +174,8 @@
 45. **`MERGE_DURABILITY.md`** — post-merge fix-forward and revert for G1, the 340, and out-group code
 46. **`SIZE_ADJUSTED_COMPARISON.md`** — shared health after size, and the comparison-repository effects against that residual
 47. **`AUDIT_RUBRIC.md`** — blinded 1 to 5 scores. The draw is `data/audit_sample.csv` (160 rows, G1 is the full training set of 60). The person key is not in git. The sample has not been coded.
-48. **`DISCOURSE_RECALL.md`** — path-link precision. Number matching stays the headline.
+48. **`DISCOURSE_RECALL.md`** — path-link precision. Number matching stays the headline. The labels are one reading of the first 280 characters.
+49. **`NEWCOMER_DIVERGENCE.md`** — pass 2 newcomer merge interaction on the comparison repositories. Specified after pass 6. Not in the Benjamini-Hochberg family.
 
 Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`, `merge_durability.json`, `size_adjusted_health.json`
 
@@ -197,7 +198,7 @@ Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `h
 2. `NEWCOMER_BAR.md` and `INGROUP_REVIEW_TREATMENT.md`
 3. `COMMONS_MECHANISMS.md` and `FIRST_YEAR_TRAJECTORY.md`
 4. `GAP_CLOSURE.md` for the tables those two close with
-5. `MERGE_DURABILITY.md`, `SIZE_ADJUSTED_COMPARISON.md`, and `DISCOURSE_RECALL.md` for pass 6. The audit sample is drawn and not coded.
+5. `MERGE_DURABILITY.md`, `SIZE_ADJUSTED_COMPARISON.md`, and `DISCOURSE_RECALL.md` for pass 6. The audit sample is drawn and not coded. `NEWCOMER_DIVERGENCE.md` is the follow-up on whether the merge divergence is Core-specific.
 
 **Deep Dive** (2+ hours):
 - Read all Core Reports
