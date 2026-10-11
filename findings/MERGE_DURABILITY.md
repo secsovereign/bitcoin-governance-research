@@ -70,6 +70,8 @@ Secondary survival, share of introduced production lines still present. out-grou
 
 Only merged code is observable. Unmerged out-group patches cannot be scored, so the test bounds the bar. It does not measure rejected quality.
 
+The blinded first-pull-request audit is separate from these durability estimates. The rubric is `findings/AUDIT_RUBRIC.md`. The public sample is `findings/data/audit_sample.csv`. Those pull requests have not been coded.
+
 ## What this cannot prove
 
 - Only merged code is observable. Unmerged out-group patches cannot be scored, so a lower failure rate among out-group merges bounds the acceptance bar and does not measure the quality of rejected work.

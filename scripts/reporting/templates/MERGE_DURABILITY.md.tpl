@@ -31,6 +31,8 @@ Coded-group coefficients are log odds. For G1 versus G2 the coded group is G1. F
 
 {{caveat}}
 
+The blinded first-pull-request audit is separate from these durability estimates. The rubric is `findings/AUDIT_RUBRIC.md`. The public sample is `findings/data/audit_sample.csv`. Those pull requests have not been coded.
+
 ## What this cannot prove
 
 {% for item in cannot %}

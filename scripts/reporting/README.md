@@ -45,6 +45,7 @@ python scripts/reporting/generate_findings_reports.py
 | `GAP_CLOSURE.md.tpl` | `findings/GAP_CLOSURE.md` |
 | `MERGE_DURABILITY.md.tpl` | `findings/MERGE_DURABILITY.md` |
 | `SIZE_ADJUSTED_COMPARISON.md.tpl` | `findings/SIZE_ADJUSTED_COMPARISON.md` |
+| `DISCOURSE_RECALL.md.tpl` | `findings/DISCOURSE_RECALL.md` |
 | `INTERDISCIPLINARY_ANALYSIS_REPORT.md.tpl` | `findings/INTERDISCIPLINARY_ANALYSIS_REPORT.md` |
 | `NOVEL_INTERPRETATIONS.md.tpl` | `findings/NOVEL_INTERPRETATIONS.md` |
 | `GINI_COEFFICIENT_EXPLANATION.md.tpl` | `findings/GINI_COEFFICIENT_EXPLANATION.md` |

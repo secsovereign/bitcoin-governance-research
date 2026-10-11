@@ -1599,6 +1599,117 @@ def ctx_size(data: Dict[str, Any], effects: Optional[Dict[str, Any]] = None) -> 
     }
 
 
+def _coef_sentence(label: str, block: Any) -> str:
+    if not isinstance(block, dict) or block.get("estimate") is None:
+        return f"{label} is DATA UNAVAILABLE."
+    ci = block.get("ci95") or [None, None]
+    lo = ci[0] if isinstance(ci, (list, tuple)) and ci else None
+    hi = ci[1] if isinstance(ci, (list, tuple)) and len(ci) > 1 else None
+    hold = block.get("holdout_same_sign")
+    hold_text = "missing" if hold is None else ("yes" if hold else "no")
+    return (
+        f"{label} coefficient {_fmt(block.get('estimate'))} "
+        f"(interval {_fmt(lo)} to {_fmt(hi)}). "
+        f"p={_fmt(block.get('p'))}. n={block.get('n')}. "
+        f"Holdout sign matches {hold_text}."
+    )
+
+
+def ctx_discourse(data: Dict[str, Any]) -> Dict[str, Any]:
+    scan = data.get("scan") or {}
+    prec = data.get("precision") or {}
+    s1 = data.get("s1") or {}
+    e12 = data.get("e12") or {}
+    disc = data.get("discussion_observed") or {}
+    precision = prec.get("precision")
+    headline = data.get("headline") or ""
+    if headline == "number_match":
+        headline_sentence = (
+            "Number matching stays the headline for S1, for discussion observed, and for E12. "
+            "The figures below are the path-link sensitivity. They are not a replacement for the published estimates."
+        )
+    else:
+        headline_sentence = (
+            "Precision is at least 0.7, so the combined linker is the headline for these three reruns."
+        )
+    before = disc.get("before_2016") or {}
+    after = disc.get("from_2016") or {}
+    crossed = data.get("bh_crossed_0_05") or []
+    if crossed:
+        crossed_text = " ".join(
+            f"{row.get('id')} moved from q={_fmt(row.get('q_before'))} to q={_fmt(row.get('q_after'))}."
+            for row in crossed
+        )
+    else:
+        crossed_text = "No prior test moved across q=0.05."
+    n_entered = len(data.get("hypothesis_tests") or [])
+    if n_entered == 0:
+        family_text = (
+            f"The path-link reruns are not entered in the Benjamini-Hochberg family, because precision is below 0.7. "
+            f"The existing family is {data.get('bh_family_size')} tests. {crossed_text}"
+        )
+    else:
+        family_text = (
+            f"The Benjamini-Hochberg family is now {data.get('bh_family_size')} tests. {crossed_text}"
+        )
+    return {
+        "date": date.today().isoformat(),
+        "problem": (
+            "How many pull requests gain an observed discussion when a message that names a file the pull request touches, "
+            "inside the open window plus 14 days, is counted as well as a message that names the pull request number."
+        ),
+        "rule": (
+            "Hand-label 200 path-only candidate links. "
+            "If precision is below 0.7, number matching stays the headline and path linking is a sensitivity check."
+        ),
+        "reading": (
+            f"Precision on the 200 labeled candidates is {_fmt(precision)} "
+            f"({prec.get('n_true')} true of {prec.get('n')}). "
+            + (
+                "Number matching remains the headline."
+                if headline == "number_match"
+                else "The combined linker is the headline for the reruns below."
+            )
+        ),
+        "gain": (
+            f"Path links touch {scan.get('n_path_prs')} pull requests. "
+            f"{scan.get('n_gained_prs')} of those had no number link. "
+            f"That is {_fmt(scan.get('recall_gain_share'), 4)} of {scan.get('n_prs')} pull requests. "
+            f"The candidate population was {scan.get('sample_population')} path-only hits. "
+            f"Number links already reach {scan.get('n_number_prs')} pull requests."
+        ),
+        "headline_sentence": headline_sentence,
+        "s1_number": _coef_sentence("S1 number-only, log odds of silence", s1.get("number_only") or {}),
+        "s1_combined": _coef_sentence("S1 with path links inside seven days added", s1.get("combined") or {}),
+        "s3": (
+            "S3 counts reviews given before the first pull request. "
+            "It does not read discourse links, so the path linker leaves it unchanged. "
+            + _coef_sentence("S3", s1.get("s3_reviews_before_first") or {})
+        ),
+        "discussion": (
+            f"Discussion observed before 2016 is {_fmt(before.get('number_only_share'))} with number links "
+            f"and {_fmt(before.get('combined_share'))} with path links added "
+            f"(gain {_fmt(before.get('gain'))}, n={before.get('n')}). "
+            f"From 2016 it is {_fmt(after.get('number_only_share'))} with number links "
+            f"and {_fmt(after.get('combined_share'))} with path links added "
+            f"(gain {_fmt(after.get('gain'))}, n={after.get('n')}). "
+            "A path link is not a review. Missing GitHub Review objects before 2016 stay missing."
+        ),
+        "e12_number": _coef_sentence("E12 GitHub peer silence, in-group", e12.get("number_only_github_silence") or {}),
+        "e12_combined": _coef_sentence(
+            "E12 treating a path link as a response, in-group",
+            e12.get("combined_linker") or {},
+        ),
+        "family": family_text,
+        "symbols": (
+            "Symbols the pull request touches are DATA UNAVAILABLE on the bulk scan. "
+            "The enriched pull requests store filenames, not patch text."
+        ),
+        "finder": data.get("find_discourse") or "",
+        "cannot": [{"sentence": sentence} for sentence in (data.get("what_this_cannot_prove") or [])],
+    }
+
+
 def _write(name: str, text: str, findings: Path) -> Path:
     out = findings / name
     out.write_text(text, encoding="utf-8")
@@ -1837,6 +1948,10 @@ def generate_all() -> List[str]:
     if sized and sized.get("status") == "ok":
         effects = _maybe(findings_data / "comparison_effects.json") or _maybe(analysis / "comparison_effects.json")
         jobs.append(("SIZE_ADJUSTED_COMPARISON.md", TEMPLATES / "SIZE_ADJUSTED_COMPARISON.md.tpl", ctx_size(sized, effects)))
+
+    discourse = _maybe(findings_data / "discourse_recall.json") or _maybe(analysis / "discourse_recall.json")
+    if discourse and discourse.get("status") == "ok":
+        jobs.append(("DISCOURSE_RECALL.md", TEMPLATES / "DISCOURSE_RECALL.md.tpl", ctx_discourse(discourse)))
 
     revealed = _maybe(findings_data / "revealed_rough_consensus.json") or _maybe(
         analysis / "revealed_rough_consensus.json"

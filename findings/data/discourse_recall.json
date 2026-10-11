@@ -1,0 +1,120 @@
+{
+  "version": "6.0",
+  "task": 5,
+  "status": "ok",
+  "headline": "number_match",
+  "precision_rule": "A sampled path link is true when the message is about that pull request's change. It is false when the path is only a file that several open pull requests share, or the message is about a different change.",
+  "scan": {
+    "status": "ok",
+    "n_prs": 25122,
+    "n_messages": 618999,
+    "n_path_hit_pairs": 36620,
+    "n_number_prs": 19572,
+    "n_path_prs": 5968,
+    "n_gained_prs": 576,
+    "recall_gain_share": 0.022928110819202294,
+    "sample_population": 36620,
+    "data_end": 1787517526.0,
+    "symbols": "DATA UNAVAILABLE: enriched pull requests store filenames, not patch text, so symbols the pull request touches are not in the bulk scan."
+  },
+  "precision": {
+    "status": "ok",
+    "n": 200,
+    "n_true": 3,
+    "precision": 0.015,
+    "headline": "number_match"
+  },
+  "s1": {
+    "number_only": {
+      "estimate": -0.19250910099211055,
+      "ci95": [
+        -0.37801426981093716,
+        -0.0034658428380193833
+      ],
+      "p": 0.048,
+      "n": 5214,
+      "n_authors": 1800,
+      "lower_S_when_unanswered": true,
+      "holdout_estimate": -0.17194026430258239,
+      "holdout_same_sign": true
+    },
+    "combined": {
+      "estimate": -0.11580861420407362,
+      "ci95": [
+        -0.29631089420326145,
+        0.06733210289830571
+      ],
+      "p": 0.2,
+      "n": 5214,
+      "n_authors": 1800,
+      "lower_S_when_unanswered": true,
+      "holdout_estimate": 0.0032748354157119733,
+      "holdout_same_sign": false
+    },
+    "s3_reviews_before_first": {
+      "estimate": -1.076479481965222,
+      "ci95": [
+        -2.8880903737227657,
+        -0.4105922949348662
+      ],
+      "p": 0.001,
+      "n": 3496,
+      "n_authors": 1334,
+      "lower_S_when_unanswered": true,
+      "holdout_estimate": -1.1230150887511163,
+      "holdout_same_sign": true
+    },
+    "s3_note": "S3_reviews_before_first counts reviews given before the first pull request. It does not read discourse links, so the path linker leaves it unchanged."
+  },
+  "discussion_observed": {
+    "before_2016": {
+      "n": 4956,
+      "number_only_share": 0.9045601291364003,
+      "combined_share": 0.9144471347861178,
+      "gain": 0.009887005649717515
+    },
+    "from_2016": {
+      "n": 20166,
+      "number_only_share": 0.987305365466627,
+      "combined_share": 0.9892393136963206,
+      "gain": 0.0019339482296935435
+    }
+  },
+  "e12": {
+    "number_only_github_silence": {
+      "status": "ok",
+      "estimate": -0.49223001859178145,
+      "ci95": [
+        -0.5945847380631162,
+        -0.39816340613285384
+      ],
+      "p": 0.001,
+      "n": 20087,
+      "holdout_estimate": -0.7598085479664364,
+      "holdout_same_sign": true
+    },
+    "combined_linker": {
+      "status": "ok",
+      "estimate": -0.45745760003820957,
+      "ci95": [
+        -0.5750434826207896,
+        -0.332352594207232
+      ],
+      "p": 0.001,
+      "n": 20087,
+      "holdout_estimate": -0.7529239673054986,
+      "holdout_same_sign": true
+    }
+  },
+  "hypothesis_tests": [],
+  "bh_family_size": 228,
+  "bh_crossed_0_05": [],
+  "symbols": "DATA UNAVAILABLE: enriched pull requests store filenames, not patch text, so symbols the pull request touches are not in the bulk scan.",
+  "find_discourse": "find_discourse is available. Its hits mix GitHub pull-request text with IRC lines that are already in messages.jsonl. GitHub file lists are not discourse, so the scan uses the local IRC, mail, Delving, and Bitcointalk archives.",
+  "what_this_cannot_prove": [
+    "A path mention is not proof the speaker had this pull request in mind.",
+    "Symbols in the patch are not in the enriched file, so symbol linking was not applied to the bulk scan.",
+    "Precision below 0.7 keeps number matching as the headline. The path linker is then a sensitivity check.",
+    "Linking discussion does not show that the discussion changed the decision."
+  ]
+}
