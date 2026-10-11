@@ -1,14 +1,22 @@
 {
-  "version": "6.1",
+  "version": "7.0",
   "status": "ok",
   "specified_after_pass6": true,
   "in_bh_family": false,
-  "rule": "A repository shows the divergence when the newcomer-by-year interaction on decided merge rate is negative and its interval excludes zero. CORE-SPECIFIC when Core's interval excludes zero on the negative side and no seven-year comparison repository has an interval that excludes zero on the negative side. AMBIENT when Core's interval excludes zero on the negative side, at least half of those repositories have a negative point, and at least one of those intervals excludes zero on the negative side. UNDETERMINED otherwise. The seven-year minimum is the one already used for the cross-repository table. This test was specified after the pass 6 results were known. It is not in pass6_preregistration.json and it is not in the Benjamini-Hochberg family.",
+  "rule": "A repository shows the divergence when the newcomer-by-year interaction on decided merge rate is negative and its interval excludes zero. A slope needs 3 years. If either group has fewer than 3 years, the interaction is DATA UNAVAILABLE and the repository is left out of the classification. CORE-SPECIFIC when Core's interval excludes zero on the negative side and no seven-year comparison repository has an interval that excludes zero on the negative side. AMBIENT when Core's interval excludes zero on the negative side, at least half of those repositories have a negative point, and at least one of those intervals excludes zero on the negative side. UNDETERMINED otherwise. The seven-year minimum is the one already used for the cross-repository table. This test was specified after the pass 6 results were known. It is not in pass6_preregistration.json and it is not in the Benjamini-Hochberg family.",
   "core_reproduces_published_point": true,
   "published_core_interaction": -0.036617537534312336,
   "published_core_note": "The published pass-2 interval remains the Core headline. The interval in this file is a fresh seed-7 bootstrap of the same point, so it can be compared with the other repositories.",
   "classification": "AMBIENT",
   "classification_without_shared_maintainers": "AMBIENT",
+  "negative_points_before_slope_gate": {
+    "negative": 7,
+    "eligible": 12
+  },
+  "negative_points_after_slope_gate": {
+    "negative": 5,
+    "eligible": 9
+  },
   "negative_excluding_zero": [
     "bitcoin-core/secp256k1",
     "bitcoindevkit/bdk",
@@ -19,6 +27,35 @@
     "rust-bitcoin/rust-bitcoin",
     "rust-bitcoin/rust-miniscript"
   ],
+  "driver_counts": {
+    "INCUMBENT GAIN": 1,
+    "BOTH": 1,
+    "INCUMBENT DECLINE": 2,
+    "UNRESOLVED": 5
+  },
+  "driver_sentence": "Among eligible repositories, the interaction is NEWCOMER DECLINE in 0, INCUMBENT GAIN in 1, BOTH in 1, INCUMBENT DECLINE in 2, and UNRESOLVED in 5.",
+  "logins_collapsed": 0,
+  "people_with_multiple_logins": 0,
+  "identity_unavailable": [
+    "foundation-devices/passport-firmware",
+    "stratum-mining/stratum",
+    "stratum-mining/sv2-spec"
+  ],
+  "health_link": {
+    "status": "ok",
+    "n": 10,
+    "estimate": 0.3696969696969697,
+    "ci95": [
+      -0.39661487236403997,
+      0.9607843137254901
+    ],
+    "p": 0.29305007529282234,
+    "low_power": true,
+    "low_power_flag": "LOW POWER",
+    "exploratory": true,
+    "in_bh_family": false,
+    "label": "Spearman correlation of the newcomer interaction with the size-adjusted residual. Exploratory. Not in the family."
+  },
   "low_power": true,
   "low_power_reason": "Fewer than 20 repositories. Each repository's own interval can still be informative.",
   "core": {
@@ -33,7 +70,9 @@
         -0.0400874422640621,
         -0.033357492131765684
       ],
-      "n": 18956
+      "n": 18956,
+      "slope_gate": "kept",
+      "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 16 years and the incumbent slope uses 13 years. Both slopes meet the 3-year minimum, so the interaction is used."
     },
     "newcomer_slope": {
       "estimate": -0.02733236541984185,
@@ -50,7 +89,17 @@
         0.012785186461809357
       ],
       "n_years": 13
-    }
+    },
+    "interaction_ungated": {
+      "status": "ok",
+      "estimate": -0.03661753753431822,
+      "ci95": [
+        -0.0400874422640621,
+        -0.033357492131765684
+      ],
+      "n": 18956
+    },
+    "driver": "BOTH"
   },
   "repositories": [
     {
@@ -67,7 +116,9 @@
           -0.07860944328767189,
           -0.034846592892539933
         ],
-        "n": 861
+        "n": 861,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 10 years and the incumbent slope uses 7 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.01600918740307952,
@@ -85,11 +136,28 @@
         ],
         "n_years": 7
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.05660195886317614,
+        "ci95": [
+          -0.07860944328767189,
+          -0.034846592892539933
+        ],
+        "n": 861
+      },
+      "driver": "INCUMBENT GAIN",
       "slug": "bitcoin-core/secp256k1",
       "role": "library",
       "shared_maintainers": true,
       "n_years": 13,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 4,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -105,7 +173,9 @@
           -0.2592908651766854,
           -0.01247696647503878
         ],
-        "n": 770
+        "n": 770,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 6 years and the incumbent slope uses 3 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.08147772192144846,
@@ -123,11 +193,28 @@
         ],
         "n_years": 3
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.14659982586635756,
+        "ci95": [
+          -0.2592908651766854,
+          -0.01247696647503878
+        ],
+        "n": 770
+      },
+      "driver": "BOTH",
       "slug": "bitcoindevkit/bdk",
       "role": "library",
       "shared_maintainers": false,
       "n_years": 7,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 1,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -141,7 +228,9 @@
           -0.010330564940532465,
           0.01834343549517786
         ],
-        "n": 2599
+        "n": 2599,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 9 years and the incumbent slope uses 6 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.01769441219895236,
@@ -159,11 +248,28 @@
         ],
         "n_years": 6
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": 0.0034155929285021942,
+        "ci95": [
+          -0.010330564940532465,
+          0.01834343549517786
+        ],
+        "n": 2599
+      },
+      "driver": "INCUMBENT DECLINE",
       "slug": "lightningdevkit/rust-lightning",
       "role": "implementation",
       "shared_maintainers": false,
       "n_years": 9,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -179,7 +285,9 @@
           -0.043817107022547236,
           -0.01756665268066852
         ],
-        "n": 3492
+        "n": 3492,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 10 years and the incumbent slope uses 7 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.012257900546051189,
@@ -197,11 +305,28 @@
         ],
         "n_years": 7
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.03126003993642624,
+        "ci95": [
+          -0.043817107022547236,
+          -0.01756665268066852
+        ],
+        "n": 3492
+      },
+      "driver": "UNRESOLVED",
       "slug": "lightningnetwork/lnd",
       "role": "implementation",
       "shared_maintainers": false,
       "n_years": 11,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -213,10 +338,13 @@
       ],
       "interaction": {
         "status": "DATA UNAVAILABLE",
-        "reason": "fewer than 50 newcomer or incumbent decided pull requests, or only one group",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 1 year and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used.",
         "estimate": null,
         "ci95": null,
-        "n": 49
+        "n": 49,
+        "withheld_estimate": null,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 1 year and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": null,
@@ -228,11 +356,26 @@
         "ci95": null,
         "n_years": 0
       },
+      "interaction_ungated": {
+        "status": "DATA UNAVAILABLE",
+        "reason": "fewer than 50 newcomer or incumbent decided pull requests, or only one group",
+        "estimate": null,
+        "ci95": null,
+        "n": 49
+      },
+      "driver": "UNRESOLVED",
       "slug": "sparrowwallet/sparrow",
       "role": "wallet_hardware",
       "shared_maintainers": false,
       "n_years": 7,
-      "eligible": false
+      "eligible_before_slope_gate": false,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -242,13 +385,14 @@
         2026
       ],
       "interaction": {
-        "status": "ok",
-        "estimate": -0.10184869654946727,
-        "ci95": [
-          -0.22800420655365575,
-          0.016863861844248956
-        ],
-        "n": 405
+        "status": "DATA UNAVAILABLE",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 5 years and the incumbent slope uses 2 years. A slope needs 3 years, so the interaction is not used.",
+        "estimate": null,
+        "ci95": null,
+        "n": 405,
+        "withheld_estimate": -0.10184869654946727,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 5 years and the incumbent slope uses 2 years. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": -0.07691989369432108,
@@ -263,11 +407,28 @@
         "ci95": null,
         "n_years": 2
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.10184869654946727,
+        "ci95": [
+          -0.22800420655365575,
+          0.016863861844248956
+        ],
+        "n": 405
+      },
+      "driver": "UNRESOLVED",
       "slug": "SeedSigner/seedsigner",
       "role": "wallet_hardware",
       "shared_maintainers": false,
       "n_years": 7,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -276,10 +437,13 @@
       "years_right_censored": [],
       "interaction": {
         "status": "DATA UNAVAILABLE",
-        "reason": "fewer than 50 newcomer or incumbent decided pull requests, or only one group",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 1 year and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used.",
         "estimate": null,
         "ci95": null,
-        "n": 60
+        "n": 60,
+        "withheld_estimate": null,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 1 year and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": null,
@@ -291,11 +455,27 @@
         "ci95": null,
         "n_years": 0
       },
+      "interaction_ungated": {
+        "status": "DATA UNAVAILABLE",
+        "reason": "fewer than 50 newcomer or incumbent decided pull requests, or only one group",
+        "estimate": null,
+        "ci95": null,
+        "n": 60
+      },
+      "driver": "UNRESOLVED",
       "slug": "foundation-devices/passport-firmware",
       "role": "other",
       "shared_maintainers": false,
       "n_years": 3,
-      "eligible": false
+      "eligible_before_slope_gate": false,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 63,
+        "identity_status": "DATA UNAVAILABLE",
+        "reason": "author_ids.jsonl is missing, so logins were not merged"
+      }
     },
     {
       "status": "ok",
@@ -303,13 +483,14 @@
       "n_authors": 76,
       "years_right_censored": [],
       "interaction": {
-        "status": "ok",
-        "estimate": -0.020342103752558505,
-        "ci95": [
-          -0.12954799664199756,
-          0.13047463357653666
-        ],
-        "n": 695
+        "status": "DATA UNAVAILABLE",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 6 years and the incumbent slope uses 1 year. A slope needs 3 years, so the interaction is not used.",
+        "estimate": null,
+        "ci95": null,
+        "n": 695,
+        "withheld_estimate": -0.020342103752558505,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 6 years and the incumbent slope uses 1 year. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": -0.008668952001576727,
@@ -324,11 +505,29 @@
         "ci95": null,
         "n_years": 1
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.020342103752558505,
+        "ci95": [
+          -0.12954799664199756,
+          0.13047463357653666
+        ],
+        "n": 695
+      },
+      "driver": "UNRESOLVED",
       "slug": "stratum-mining/stratum",
       "role": "other",
       "shared_maintainers": false,
       "n_years": 6,
-      "eligible": false
+      "eligible_before_slope_gate": false,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 1244,
+        "identity_status": "DATA UNAVAILABLE",
+        "reason": "author_ids.jsonl is missing, so logins were not merged"
+      }
     },
     {
       "status": "ok",
@@ -338,13 +537,14 @@
         2026
       ],
       "interaction": {
-        "status": "ok",
-        "estimate": -0.022325497686200676,
-        "ci95": [
-          -0.10346265709712663,
-          0.03501891672659908
-        ],
-        "n": 92
+        "status": "DATA UNAVAILABLE",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 1 year and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used.",
+        "estimate": null,
+        "ci95": null,
+        "n": 92,
+        "withheld_estimate": -0.022325497686200676,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 1 year and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": null,
@@ -356,11 +556,28 @@
         "ci95": null,
         "n_years": 0
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.022325497686200676,
+        "ci95": [
+          -0.10346265709712663,
+          0.03501891672659908
+        ],
+        "n": 92
+      },
+      "driver": "UNRESOLVED",
       "slug": "bitcoin-core/bitcoin-maintainer-tools",
       "role": "tooling",
       "shared_maintainers": true,
       "n_years": 11,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -376,7 +593,9 @@
           -0.08887613006728229,
           0.019258294237425824
         ],
-        "n": 652
+        "n": 652,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 7 years and the incumbent slope uses 3 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.02381055407883607,
@@ -394,11 +613,28 @@
         ],
         "n_years": 3
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.03375473918415609,
+        "ci95": [
+          -0.08887613006728229,
+          0.019258294237425824
+        ],
+        "n": 652
+      },
+      "driver": "UNRESOLVED",
       "slug": "lightning/bolts",
       "role": "spec",
       "shared_maintainers": false,
       "n_years": 11,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -414,7 +650,9 @@
           -0.00714876282360292,
           0.01253192316250915
         ],
-        "n": 3558
+        "n": 3558,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 10 years and the incumbent slope uses 7 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.010552741769997811,
@@ -432,11 +670,28 @@
         ],
         "n_years": 7
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": 0.002705762883900135,
+        "ci95": [
+          -0.00714876282360292,
+          0.01253192316250915
+        ],
+        "n": 3558
+      },
+      "driver": "INCUMBENT DECLINE",
       "slug": "ElementsProject/lightning",
       "role": "implementation",
       "shared_maintainers": false,
       "n_years": 12,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -446,13 +701,14 @@
         2026
       ],
       "interaction": {
-        "status": "ok",
-        "estimate": 0.022194315567273994,
-        "ci95": [
-          -0.044521068085308715,
-          0.08949520250415595
-        ],
-        "n": 369
+        "status": "DATA UNAVAILABLE",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 5 years and the incumbent slope uses 1 year. A slope needs 3 years, so the interaction is not used.",
+        "estimate": null,
+        "ci95": null,
+        "n": 369,
+        "withheld_estimate": 0.022194315567273994,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 5 years and the incumbent slope uses 1 year. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": -0.07236329974121711,
@@ -467,11 +723,28 @@
         "ci95": null,
         "n_years": 1
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": 0.022194315567273994,
+        "ci95": [
+          -0.044521068085308715,
+          0.08949520250415595
+        ],
+        "n": 369
+      },
+      "driver": "UNRESOLVED",
       "slug": "bitcoin-core/HWI",
       "role": "wallet_hardware",
       "shared_maintainers": true,
       "n_years": 9,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -485,7 +758,9 @@
           0.021604650111181387,
           0.06990529959105662
         ],
-        "n": 3091
+        "n": 3091,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 9 years and the incumbent slope uses 5 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": 0.01410020926384161,
@@ -503,11 +778,28 @@
         ],
         "n_years": 5
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": 0.04567028610191755,
+        "ci95": [
+          0.021604650111181387,
+          0.06990529959105662
+        ],
+        "n": 3091
+      },
+      "driver": "UNRESOLVED",
       "slug": "rust-bitcoin/rust-bitcoin",
       "role": "library",
       "shared_maintainers": false,
       "n_years": 13,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 2,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -521,7 +813,9 @@
           0.0022007683703098462,
           0.09235912357552663
         ],
-        "n": 518
+        "n": 518,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 6 years and the incumbent slope uses 4 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": 0.005248481143570872,
@@ -539,11 +833,28 @@
         ],
         "n_years": 4
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": 0.04795217913669836,
+        "ci95": [
+          0.0022007683703098462,
+          0.09235912357552663
+        ],
+        "n": 518
+      },
+      "driver": "UNRESOLVED",
       "slug": "rust-bitcoin/rust-miniscript",
       "role": "library",
       "shared_maintainers": false,
       "n_years": 9,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "status": "ok",
@@ -552,10 +863,13 @@
       "years_right_censored": [],
       "interaction": {
         "status": "DATA UNAVAILABLE",
-        "reason": "fewer than 50 newcomer or incumbent decided pull requests, or only one group",
+        "reason": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 2 years and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used.",
         "estimate": null,
         "ci95": null,
-        "n": 69
+        "n": 69,
+        "withheld_estimate": null,
+        "slope_gate": "withheld",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 2 years and the incumbent slope uses 0 years. A slope needs 3 years, so the interaction is not used."
       },
       "newcomer_slope": {
         "estimate": null,
@@ -567,11 +881,27 @@
         "ci95": null,
         "n_years": 0
       },
+      "interaction_ungated": {
+        "status": "DATA UNAVAILABLE",
+        "reason": "fewer than 50 newcomer or incumbent decided pull requests, or only one group",
+        "estimate": null,
+        "ci95": null,
+        "n": 69
+      },
+      "driver": "UNRESOLVED",
       "slug": "stratum-mining/sv2-spec",
       "role": "other",
       "shared_maintainers": false,
       "n_years": 5,
-      "eligible": false
+      "eligible_before_slope_gate": false,
+      "eligible": false,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 131,
+        "identity_status": "DATA UNAVAILABLE",
+        "reason": "author_ids.jsonl is missing, so logins were not merged"
+      }
     },
     {
       "status": "ok",
@@ -585,7 +915,9 @@
           -0.04932377336843757,
           -0.009381570332731404
         ],
-        "n": 1585
+        "n": 1585,
+        "slope_gate": "kept",
+        "estimation": "The interaction is the pass 2 linear probability model on decided newcomer and incumbent rows. The newcomer slope uses 7 years and the incumbent slope uses 8 years. Both slopes meet the 3-year minimum, so the interaction is used."
       },
       "newcomer_slope": {
         "estimate": -0.018670549227364892,
@@ -603,11 +935,28 @@
         ],
         "n_years": 8
       },
+      "interaction_ungated": {
+        "status": "ok",
+        "estimate": -0.02882838210187451,
+        "ci95": [
+          -0.04932377336843757,
+          -0.009381570332731404
+        ],
+        "n": 1585
+      },
+      "driver": "UNRESOLVED",
       "slug": "ACINQ/eclair",
       "role": "implementation",
       "shared_maintainers": false,
       "n_years": 11,
-      "eligible": true
+      "eligible_before_slope_gate": true,
+      "eligible": true,
+      "identity": {
+        "people_with_multiple_logins": 0,
+        "logins_collapsed": 0,
+        "prs_without_author_id": 0,
+        "identity_status": "ok"
+      }
     },
     {
       "slug": "ethereum/go-ethereum",
@@ -617,12 +966,12 @@
       "eligible": false
     }
   ],
-  "n_eligible": 12,
+  "n_eligible": 9,
   "what_this_cannot_prove": [
     "A Core-specific divergence is not proof that implementation diversity would remove it.",
     "An ambient divergence is not proof that every reference implementation must treat newcomers this way.",
     "The cross-repository count is below 20, so the classification is LOW POWER.",
-    "Repositories whose interval excludes zero on the positive side are rust-bitcoin/rust-bitcoin, rust-bitcoin/rust-miniscript. The pattern is not universal in this set.",
+    "A positive interaction is not evidence that a repository's practice serves newcomers. The driver column is the description that replaces that reading.",
     "This test was chosen after pass 6 was known. It is a follow-up, not a preregistered result."
   ]
 }

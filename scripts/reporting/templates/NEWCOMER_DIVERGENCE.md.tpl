@@ -6,23 +6,37 @@
 
 This test was specified after the pass 6 results were known. It is not in `pass6_preregistration.json` and it is not in the Benjamini-Hochberg family.
 
-The estimator is the pass 2 linear probability model on decided merge rate. Newcomer means the pull request falls within 12 months of that author's first pull request. Incumbent means the first pull request was at least 3 years earlier. Authors between those ages are in neither series. Open pull requests are excluded. A calendar year is dropped when more than 20 percent of its pull requests are still open. The interaction is newcomer times years since 2010. Comparison authors are raw logins. Core authors use the existing identity index. `comments_count` is not used.
+The estimator is the pass 2 linear probability model on decided merge rate. Newcomer means the pull request falls within 12 months of that author's first pull request. Incumbent means the first pull request was at least 3 years earlier. Authors between those ages are in neither series. Open pull requests are excluded. A calendar year is dropped when more than 20 percent of its pull requests are still open. The interaction is newcomer times years since 2010. Comparison authors are keyed on the numeric GitHub user id. Core authors use the existing identity index. A slope needs 3 years. If either group has fewer, the interaction is DATA UNAVAILABLE and that repository is left out of the classification. `comments_count` is not used.
 
 ## Core check
 
 {{core_sentence}}
 
+## Identity
+
+{{identity_sentence}}
+
 ## Classification
 
 {{class_sentence}}
 
+{{gate_sentence}}
+
 {{rule}}
 
-| Repository | Years | Eligible | Interaction, percentage points per year | Interval | Newcomer slope | Incumbent slope |
-| --- | --- | --- | --- | --- | --- | --- |
+{{driver_sentence}}
+
+| Repository | Years | Eligible | Interaction, percentage points per year | Interval | Newcomer slope | Incumbent slope | Driver |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 {{table}}
 
+{{withheld_sentence}}
+
 Short-history repositories are scored in the table and left out of the classification. ethereum/go-ethereum stays DATA UNAVAILABLE because `prs.jsonl` is missing.
+
+## Exploratory health link
+
+{{health_sentence}}
 
 ## What this cannot prove
 

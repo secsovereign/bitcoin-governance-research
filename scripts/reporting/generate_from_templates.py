@@ -1485,8 +1485,8 @@ def _effect_section(effects: Optional[Dict[str, Any]]) -> str:
         "No Spearman interval excludes zero, so none of those predicted signs is resolved." if len(unresolved) == len(effects.get("classifications") or {}) else "Some Spearman intervals exclude zero. Those are the resolved signs.",
         rule,
         "",
-        "| Effect | Class | Outside Core | Spearman r | Interval | Predicted sign | Point matches |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "| Effect | Class | Repositories | Outside Core | Spearman r | Interval | Degenerate share | Predicted sign | Point matches |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for effect_id, row in (effects.get("classifications") or {}).items():
         ci = row.get("spearman_ci95")
@@ -1498,9 +1498,11 @@ def _effect_section(effects: Optional[Dict[str, Any]]) -> str:
         else:
             match = "yes" if spear.get("point_matches_prediction") else "no"
             interval = f"{_fmt(ci[0])} to {_fmt(ci[1])}" if isinstance(ci, list) and len(ci) == 2 else "not defined"
+        share = row.get("degenerate_share")
+        share_text = "not applicable" if share is None else _fmt(share)
         lines.append(
-            f"| {effect_id} | {row.get('class')} | {outside} | {_fmt(row.get('spearman_r'))} | "
-            f"{interval} | {row.get('predicted_sign')} | {match} |"
+            f"| {effect_id} | {row.get('class')} | {row.get('n_repositories')} | {outside} | {_fmt(row.get('spearman_r'))} | "
+            f"{interval} | {share_text} | {row.get('predicted_sign')} | {match} |"
         )
     lines.append("")
     health = (effects.get("shared_health_rerun") or {}).get("reason") or ""
@@ -1537,6 +1539,12 @@ def _effect_section(effects: Optional[Dict[str, Any]]) -> str:
         lines.append(
             "Lists that had stopped at 100 rows were followed to the last page. No list in this frame is still cut."
         )
+    changes = effects.get("class_changes") or []
+    if changes:
+        changed = ", ".join(f"{row.get('effect')} moved from {row.get('before')} to {row.get('after')}" for row in changes)
+        lines.append(f"Class changes after the repository minimum and the degeneracy count are {changed}.")
+    else:
+        lines.append("No effect changed class after the repository minimum and the degeneracy count.")
     lines.append("Every cross-repository correlation is LOW POWER.")
     return "\n".join(lines)
 
@@ -1618,13 +1626,54 @@ def ctx_newcomer_divergence(data: Dict[str, Any]) -> Dict[str, Any]:
         eligible = "yes" if row.get("eligible") else "no"
         years = row.get("n_years")
         year_text = "missing" if years is None else str(years)
+        driver = row.get("driver") or "UNRESOLVED"
         rows.append(
-            f"| {row.get('slug')} | {year_text} | {eligible} | {inter} | {span} | {new_slope} | {old_slope} |"
+            f"| {row.get('slug')} | {year_text} | {eligible} | {inter} | {span} | {new_slope} | {old_slope} | {driver} |"
         )
+    before = data.get("negative_points_before_slope_gate") or {}
+    after = data.get("negative_points_after_slope_gate") or {}
+    gate_sentence = (
+        f"Before the slope gate, {before.get('negative')} of {before.get('eligible')} eligible interactions were negative. "
+        f"After it, {after.get('negative')} of {after.get('eligible')} were negative."
+    )
+    missing_ids = data.get("identity_unavailable") or []
+    identity_sentence = (
+        f"Numeric GitHub user ids collapsed {data.get('logins_collapsed')} extra logins "
+        f"({data.get('people_with_multiple_logins')} people had more than one stored login). "
+        "Core stays on the existing identity index."
+    )
+    if missing_ids:
+        identity_sentence += (
+            " Author ids are DATA UNAVAILABLE for "
+            + ", ".join(missing_ids)
+            + "."
+        )
+    withheld = []
+    for row in data.get("repositories") or []:
+        block = row.get("interaction") or {}
+        if block.get("slope_gate") == "withheld":
+            withheld.append(f"{row.get('slug')}. {block.get('estimation')}")
+    withheld_sentence = " ".join(withheld) if withheld else "No scored repository had a slope below the 3-year minimum."
+    link = data.get("health_link") or {}
+    link_ci = link.get("ci95") or [None, None]
+    if link.get("estimate") is None:
+        health_sentence = "The exploratory Spearman correlation with the size-adjusted residual is DATA UNAVAILABLE. It is not in the family."
+    else:
+        health_sentence = (
+            f"The exploratory Spearman correlation of the interaction with the size-adjusted residual is {_fmt(link.get('estimate'))} "
+            f"(interval {_fmt(link_ci[0] if link_ci else None)} to {_fmt(link_ci[1] if isinstance(link_ci, (list, tuple)) and len(link_ci) > 1 else None)}). "
+            f"n={link.get('n')}. LOW POWER. This correlation is not in the family."
+        )
+    core_driver = (data.get("core") or {}).get("driver") or "UNRESOLVED"
     return {
         "date": date.today().isoformat(),
-        "core_sentence": core_sentence,
+        "core_sentence": core_sentence + f" The Core driver is {core_driver}.",
         "class_sentence": class_sentence,
+        "gate_sentence": gate_sentence,
+        "identity_sentence": identity_sentence,
+        "driver_sentence": data.get("driver_sentence") or "",
+        "withheld_sentence": withheld_sentence,
+        "health_sentence": health_sentence,
         "rule": data.get("rule") or "",
         "table": "\n".join(rows),
         "cannot": [{"sentence": sentence} for sentence in (data.get("what_this_cannot_prove") or [])],
