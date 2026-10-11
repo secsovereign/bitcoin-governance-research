@@ -488,6 +488,218 @@ def extend_truncated(slug: str, tok: str) -> None:
     print(f"{slug} pages written", flush=True)
 
 
+def merger_from_pull(payload: Dict[str, Any]) -> Dict[str, Any]:
+    """Read merged_by and the author id from one pull-request payload.
+
+    FIELD_ABSENT means the endpoint did not include merged_by. A null merger is a
+    real response and is not a substitute for the field.
+    """
+    if not isinstance(payload, dict) or "merged_by" not in payload:
+        return {"status": "FIELD_ABSENT"}
+    merger = payload.get("merged_by")
+    author = payload.get("user") if isinstance(payload.get("user"), dict) else {}
+    if not isinstance(merger, dict):
+        return {
+            "status": "ok",
+            "merged_by": None,
+            "merged_by_id": None,
+            "author": author.get("login"),
+            "author_id": author.get("id"),
+        }
+    return {
+        "status": "ok",
+        "merged_by": merger.get("login"),
+        "merged_by_id": merger.get("id"),
+        "author": author.get("login"),
+        "author_id": author.get("id"),
+    }
+
+
+def seven_year_slugs(min_years: int = 7) -> List[str]:
+    """Comparison repositories with at least min_years of pull-request history on disk."""
+    chosen = []
+    for slug in load_repo_config():
+        owner, repo = slug.split("/", 1)
+        path = OUT_ROOT / owner / repo / "prs.jsonl"
+        if not path.exists():
+            continue
+        years = set()
+        with path.open(encoding="utf-8", errors="replace") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                created = str(json.loads(line).get("created_at") or "")
+                if len(created) >= 4 and created[:4].isdigit():
+                    years.add(created[:4])
+        if len(years) >= min_years:
+            chosen.append(slug)
+    return chosen
+
+
+def _repo_dir(slug: str) -> Path:
+    owner, repo = slug.split("/", 1)
+    return OUT_ROOT / owner / repo
+
+
+def _read_numbers(path: Path, merged_only: bool = False) -> Dict[int, bool]:
+    found: Dict[int, bool] = {}
+    if not path.exists():
+        return found
+    with path.open(encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            number = row.get("number")
+            if not isinstance(number, int):
+                continue
+            if merged_only and not row.get("merged"):
+                continue
+            found[number] = bool(row.get("merged"))
+    return found
+
+
+def _append_jsonl(path: Path, row: Dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(row) + "\n")
+
+
+def _sleep_if_exhausted(headers: Dict[str, str]) -> None:
+    if headers.get("x-ratelimit-remaining") != "0":
+        return
+    reset = headers.get("x-ratelimit-reset")
+    wait = 60
+    if reset and str(reset).isdigit():
+        wait = max(5, int(reset) - int(time.time()) + 2)
+    wait = min(wait, 3700)
+    print(f"primary rate limit open; sleeping {wait}s", flush=True)
+    time.sleep(wait)
+
+
+def backfill_author_ids(slug: str, tok: str) -> Dict[str, Any]:
+    """Store numeric user ids from the pull list. Renames stay one person."""
+    dest = _repo_dir(slug)
+    prs = dest / "prs.jsonl"
+    out = dest / "author_ids.jsonl"
+    if not prs.exists():
+        print(f"{slug} DATA UNAVAILABLE prs.jsonl is missing", flush=True)
+        return {"slug": slug, "status": "DATA UNAVAILABLE", "reason": "prs.jsonl is missing"}
+    wanted = set(_read_numbers(prs))
+    have: Dict[int, Dict[str, Any]] = {}
+    if out.exists():
+        with out.open(encoding="utf-8", errors="replace") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                row = json.loads(line)
+                if isinstance(row.get("number"), int):
+                    have[row["number"]] = row
+    if wanted and wanted.issubset(have):
+        print(f"{slug} author ids already complete {len(have)}", flush=True)
+        return {"slug": slug, "status": "ok", "n": len(have), "missing_numbers": 0}
+    print(f"{slug} collecting author ids", flush=True)
+    fresh: Dict[int, Dict[str, Any]] = {}
+    for item in paginate(
+        f"https://api.github.com/repos/{slug}/pulls",
+        tok,
+        {"state": "all", "per_page": "100", "sort": "created", "direction": "asc"},
+    ):
+        number = item.get("number")
+        user = item.get("user") if isinstance(item.get("user"), dict) else {}
+        if not isinstance(number, int):
+            continue
+        fresh[number] = {"number": number, "author": user.get("login"), "author_id": user.get("id")}
+    merged = dict(have)
+    merged.update(fresh)
+    tmp = out.with_suffix(".jsonl.tmp")
+    with tmp.open("w", encoding="utf-8") as handle:
+        for number in sorted(merged):
+            handle.write(json.dumps(merged[number]) + "\n")
+    tmp.replace(out)
+    missing = len(wanted - set(merged))
+    print(f"{slug} author ids {len(merged)} missing_from_list {missing}", flush=True)
+    return {"slug": slug, "status": "ok", "n": len(merged), "missing_numbers": missing}
+
+
+def backfill_merged_by(slug: str, tok: str) -> Dict[str, Any]:
+    """Fetch merged_by for merged pull requests. Resumes from the sidecar."""
+    dest = _repo_dir(slug)
+    prs = dest / "prs.jsonl"
+    out = dest / "merged_by.jsonl"
+    etag_path = dest / "merged_by_etags.json"
+    if not prs.exists():
+        print(f"{slug} DATA UNAVAILABLE prs.jsonl is missing", flush=True)
+        return {"slug": slug, "status": "DATA UNAVAILABLE", "reason": "prs.jsonl is missing"}
+    merged_numbers = list(_read_numbers(prs, merged_only=True))
+    done: Dict[int, Dict[str, Any]] = {}
+    if out.exists():
+        with out.open(encoding="utf-8", errors="replace") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                row = json.loads(line)
+                if isinstance(row.get("number"), int):
+                    done[row["number"]] = row
+    etags = json.loads(etag_path.read_text()) if etag_path.exists() else {}
+    pending = [number for number in merged_numbers if number not in done]
+    print(f"{slug} merged {len(merged_numbers)} already stored {len(done)} pending {len(pending)}", flush=True)
+    for i, number in enumerate(pending, start=1):
+        url = f"https://api.github.com/repos/{slug}/pulls/{number}"
+        try:
+            payload, headers = github_json(url, tok, etags.get(str(number)), allow_missing=True)
+        except MissingOnGitHub:
+            row = {"number": number, "missing": True, "status": "ok", "merged_by": None, "merged_by_id": None}
+            _append_jsonl(out, row)
+            done[number] = row
+            continue
+        if payload is None:
+            if number in done:
+                continue
+            payload, headers = github_json(url, tok, None, allow_missing=True)
+        parsed = merger_from_pull(payload)
+        if parsed.get("status") == "FIELD_ABSENT":
+            raise SystemExit(f"{slug} #{number} single-PR endpoint did not return merged_by")
+        row = {"number": number, "missing": False, **parsed}
+        _append_jsonl(out, row)
+        done[number] = row
+        if headers.get("etag"):
+            etags[str(number)] = headers["etag"]
+        if i == 1 or i % 50 == 0:
+            etag_path.write_text(json.dumps(etags))
+            print(f"{slug} merged_by {i}/{len(pending)} last=#{number}", flush=True)
+        _sleep_if_exhausted(headers)
+    if etags:
+        etag_path.write_text(json.dumps(etags))
+    from scripts.analysis.pass7_rules import coverage_from_rows
+
+    summary = coverage_from_rows(merged_numbers, list(done.values()))
+    summary["slug"] = slug
+    summary["status"] = "ok"
+    (_repo_dir(slug) / "merged_by_coverage.json").write_text(json.dumps(summary, indent=2))
+    print(
+        f"{slug} coverage merged_by {summary['with_merged_by']} "
+        f"numeric_id {summary['with_numeric_user_id']} "
+        f"no_longer_served {summary['no_longer_served']} of {summary['merged_prs']}",
+        flush=True,
+    )
+    if summary["below_completeness_bar"]:
+        raise SystemExit(
+            f"{slug} returned merged_by for {summary['merged_by_share']:.1%} of merged pull requests, under 95%"
+        )
+    return summary
+
+
+def backfill_comparison_identities(tok: str) -> None:
+    """Author ids for every pull request, then merged_by for merged ones, on the seven-year set."""
+    slugs = seven_year_slugs()
+    print(f"seven-year repositories {len(slugs)}", flush=True)
+    for slug in slugs:
+        backfill_author_ids(slug, tok)
+    for slug in slugs:
+        backfill_merged_by(slug, tok)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Collect project-repo pull requests and issues")
     parser.add_argument("--repo", action="append", help="owner/name. Repeatable. Default is the project list.")
@@ -495,6 +707,8 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=None, help="Stop after this many new records per repo")
     parser.add_argument("--backfill-detail", action="store_true", help="Add review objects, comment authors, and file paths")
     parser.add_argument("--extend-truncated", action="store_true", help="Fetch later pages for lists cut at 100")
+    parser.add_argument("--author-ids", action="store_true", help="Store numeric author ids from the pull list")
+    parser.add_argument("--merged-by", action="store_true", help="Store merged_by from the single pull endpoint")
     args = parser.parse_args()
     repos = args.repo or load_repo_config()
     for slug in repos:
@@ -502,12 +716,21 @@ def main() -> None:
             raise SystemExit(f"refusing repo slug {slug}")
     tok = token()
     for slug in repos:
+        if args.author_ids or args.merged_by:
+            continue
         if args.extend_truncated:
             extend_truncated(slug, tok)
         elif args.backfill_detail:
             backfill_detail(slug, tok, args.limit)
         else:
             collect_repo(slug, tok, with_comments=not args.no_comments, limit=args.limit)
+    if args.author_ids or args.merged_by:
+        slugs = args.repo or seven_year_slugs()
+        for slug in slugs:
+            if args.author_ids:
+                backfill_author_ids(slug, tok)
+            if args.merged_by:
+                backfill_merged_by(slug, tok)
 
 
 if __name__ == "__main__":
