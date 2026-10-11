@@ -59,13 +59,13 @@ The preregistered prediction is a Spearman correlation of each effect with the s
 No Spearman interval excludes zero, so none of those predicted signs is resolved.
 TRACKS HEALTH when the Spearman interval of the repository estimate against the size-adjusted residual excludes zero. Otherwise CORE-SPECIFIC when Core's interval excludes zero and no seven-year comparison repository has an interval that excludes zero in Core's direction. Otherwise AMBIENT when Core's interval excludes zero, at least half of those repositories share Core's sign, and at least one of those intervals excludes zero. UNDETERMINED in every other case, including a missing estimate. The seven-year minimum is the one already used for the cross-repository table.
 
-| Effect | Class | Outside Core | Spearman r | Interval | Predicted sign | Point matches |
-| --- | --- | --- | --- | --- | --- | --- |
-| E2_reciprocity_excess | AMBIENT | yes | 0.231 | -0.321 to 0.678 | negative | no |
-| E3_log_hours_to_next_same_direction_top5_minus_other | UNDETERMINED | no | missing | not defined | positive | not defined |
-| E5_log_participants_on_log_days | AMBIENT | yes | -0.393 | -0.861 to 0.142 | negative | yes |
-| E7_first_tone_on_merge_given_later_tone | AMBIENT | yes | -0.319 | -0.730 to 0.298 | negative | yes |
-| E12_ingroup_on_no_peer_response | AMBIENT | yes | 0.117 | -1.000 to 0.675 | positive | yes |
+| Effect | Class | Repositories | Outside Core | Spearman r | Interval | Degenerate share | Predicted sign | Point matches |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| E2_reciprocity_excess | AMBIENT | 14 | yes | 0.231 | -0.321 to 0.678 | not applicable | negative | no |
+| E3_log_hours_to_next_same_direction_top5_minus_other | UNDETERMINED | 1 | no | missing | not defined | not applicable | positive | not defined |
+| E5_log_participants_on_log_days | AMBIENT | 14 | yes | -0.393 | -0.861 to 0.142 | not applicable | negative | yes |
+| E7_first_tone_on_merge_given_later_tone | AMBIENT | 13 | yes | -0.319 | -0.730 to 0.298 | not applicable | negative | yes |
+| E12_ingroup_on_no_peer_response | AMBIENT | 9 | yes | 0.117 | -1.000 to 0.675 | 0.005 | positive | yes |
 
 The Benjamini-Hochberg family is now 228 tests, passes 1 through 6. No prior result crossed q = 0.05.
 H2, H3, H4 merge Gini, H5, and H6 are computed from open and close timestamps, author, and merged state. Review objects, comment authors, and file paths do not enter them. The shared-health rank and the Task 3 residual are not refit.
@@ -73,6 +73,7 @@ E9 stays on bitcoin/bitcoin. No other project in this set has a meeting list.
 ethereum/go-ethereum is DATA UNAVAILABLE because prs.jsonl is missing, so review objects were not requested.
 E3 is UNDETERMINED because pull records do not store merged_by, so the trailing top-5 merger window was not built. The merged flag was not used as a substitute.
 Lists that had stopped at 100 rows were followed to the last page. No list in this frame is still cut.
+No effect changed class after the repository minimum and the degeneracy count.
 Every cross-repository correlation is LOW POWER.
 
 ## What this cannot prove
@@ -82,6 +83,7 @@ Every cross-repository correlation is LOW POWER.
 - A negative residual says Core sits below the size line. It does not say why.
 - A correlation between an effect and a size-adjusted residual is not a cause of that residual.
 - Fewer than 20 repositories make every cross-repository correlation LOW POWER.
+- A Spearman correlation with fewer than 6 repository estimates is DATA UNAVAILABLE and is not given an interval.
 - Pull requests GitHub no longer serves are omitted, not scored as having no review.
 - A list is under-counted only when it still has at least 100 rows and pages_complete is not set.
 - E3 is not identified outside Core because merged_by was not stored. That absence is not evidence the cascade is Core-specific.

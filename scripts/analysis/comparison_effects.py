@@ -43,7 +43,7 @@ from scripts.analysis.commons_dynamics_test import (  # noqa: E402
     year_of,
 )
 from scripts.analysis.first_year_signal_test import collect_pass3, unavailable  # noqa: E402
-from scripts.analysis.gap_closure_test import MIN_REPO_YEARS, collect_pass4, spearman_with_ci  # noqa: E402
+from scripts.analysis.gap_closure_test import MIN_REPO_YEARS, collect_pass4  # noqa: E402
 from scripts.analysis.merge_durability import _collect_pass5  # noqa: E402
 from scripts.analysis.rsd_ingroup_test import IdentityIndex  # noqa: E402
 from scripts.analysis.commons_dynamics_test import People, collect_prior_tests  # noqa: E402
@@ -98,6 +98,87 @@ def same_sign(left: Optional[float], right: Optional[float]) -> Optional[bool]:
     if left is None or right is None or left == 0 or right == 0:
         return None
     return bool(np.sign(left) == np.sign(right))
+
+
+MIN_SPEARMAN_REPOS = 6
+
+
+def degenerate_draw(x: np.ndarray, y: np.ndarray) -> bool:
+    """A bootstrap draw is degenerate with fewer than 4 distinct repositories or no variance."""
+    if np.unique(x).size < 4 or np.unique(y).size < 4:
+        return True
+    if float(np.nanstd(x)) == 0 or float(np.nanstd(y)) == 0:
+        return True
+    return False
+
+
+def touches_extreme(ci: Any) -> bool:
+    if not isinstance(ci, (list, tuple)) or len(ci) != 2:
+        return False
+    lo, hi = _finite(ci[0]), _finite(ci[1])
+    if lo is None or hi is None:
+        return False
+    return lo <= -1 + 1e-9 or hi >= 1 - 1e-9
+
+
+def correlation_for_effect(
+    x: np.ndarray,
+    y: np.ndarray,
+    rng: np.random.Generator,
+    n_boot: int,
+) -> Dict[str, Any]:
+    """Spearman correlation. Fewer than 6 repositories is DATA UNAVAILABLE and has no interval."""
+    from scripts.analysis.commons_dynamics_test import ci_from_draws
+    from scripts.analysis.gap_closure_test import _spearman
+
+    n = int(np.asarray(x).size)
+    if n < MIN_SPEARMAN_REPOS:
+        return {
+            "status": "DATA UNAVAILABLE",
+            "reason": f"{n} repositories have an estimate, below the minimum of {MIN_SPEARMAN_REPOS}",
+            "n": n,
+            "estimate": None,
+            "ci95": None,
+            "p": None,
+            "n_degenerate": None,
+            "degenerate_share": None,
+            "bound_touches_extreme": False,
+        }
+    estimate, pvalue = _spearman(x, y)
+    if estimate is None:
+        return {
+            "status": "DATA UNAVAILABLE",
+            "reason": "fewer than 5 paired observations, or one series does not vary",
+            "n": n,
+            "estimate": None,
+            "ci95": None,
+            "p": None,
+            "n_degenerate": None,
+            "degenerate_share": None,
+            "bound_touches_extreme": False,
+        }
+    draws = []
+    degenerate = 0
+    for _ in range(n_boot):
+        take = rng.integers(0, n, n)
+        xs, ys = x[take], y[take]
+        if degenerate_draw(xs, ys):
+            degenerate += 1
+        stat, _p = _spearman(xs, ys)
+        if stat is not None:
+            draws.append(stat)
+    ci = ci_from_draws(np.asarray(draws, dtype=float))
+    return {
+        "status": "ok",
+        "n": n,
+        "estimate": estimate,
+        "ci95": ci,
+        "p": pvalue,
+        "low_power": True,
+        "n_degenerate": degenerate,
+        "degenerate_share": degenerate / n_boot if n_boot else None,
+        "bound_touches_extreme": touches_extreme(ci),
+    }
 
 
 def classify_effect(
@@ -453,6 +534,13 @@ def _family(findings: Path, missing: List[Dict[str, str]], tests: List[Dict[str,
 
 def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: int = SEED) -> Dict[str, Any]:
     findings = get_findings_dir()
+    prior_classes = {}
+    prior_path = findings / "data" / "comparison_effects.json"
+    if prior_path.exists():
+        prior_classes = {
+            key: row.get("class")
+            for key, row in (json.loads(prior_path.read_text()).get("classifications") or {}).items()
+        }
     missing: List[Dict[str, str]] = []
     config_path = project_root / "scripts" / "data_collection" / "comparison_repos.json"
     slugs = [row["slug"] for row in json.loads(config_path.read_text()).get("repos") or []]
@@ -524,9 +612,10 @@ def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: in
                 continue
             pairs_x.append(estimate)
             pairs_y.append(residual)
-        fit = spearman_with_ci(np.asarray(pairs_x, dtype=float), np.asarray(pairs_y, dtype=float), rng, n_boot)
+        fit = correlation_for_effect(np.asarray(pairs_x, dtype=float), np.asarray(pairs_y, dtype=float), rng, n_boot)
         fit["predicted_sign"] = PREDICTED[effect_id]
         fit["low_power"] = True
+        fit["n_repositories"] = int(np.asarray(pairs_x).size)
         if fit.get("status") == "ok" and fit.get("p") is not None:
             tests.append({
                 "id": f"pass6.spearman.{effect_id}",
@@ -540,12 +629,17 @@ def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: in
             })
         else:
             unavailable(missing, f"spearman_{effect_id}", fit.get("reason", "Spearman correlation was not defined"))
+            fit["ci95"] = None
+            fit["estimate"] = None
         point = _finite(fit.get("estimate"))
         predicted = PREDICTED[effect_id]
         fit["point_matches_prediction"] = same_sign(point, -1.0 if predicted == "negative" else 1.0)
         fit["interval_excludes_zero"] = excludes_zero(fit.get("ci95"))
         spearman[effect_id] = fit
-        label = classify_effect(core_est, core.get("ci95"), outside, fit.get("ci95"))
+        if fit.get("status") != "ok":
+            label = "UNDETERMINED"
+        else:
+            label = classify_effect(core_est, core.get("ci95"), outside, fit.get("ci95"))
         present_outside = any(
             excludes_zero(item.get("ci95")) and same_sign(_finite(item.get("estimate")), core_est)
             for item in outside
@@ -559,6 +653,10 @@ def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: in
             "predicted_sign": predicted,
             "spearman_r": point,
             "spearman_ci95": fit.get("ci95"),
+            "n_repositories": fit.get("n_repositories"),
+            "degenerate_share": fit.get("degenerate_share") if fit.get("bound_touches_extreme") else None,
+            "n_degenerate": fit.get("n_degenerate") if fit.get("bound_touches_extreme") else None,
+            "bound_touches_extreme": fit.get("bound_touches_extreme"),
         }
     family, crossed = _family(findings, missing, tests)
     for test in tests:
@@ -585,6 +683,11 @@ def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: in
         "repositories": rows,
         "spearman_versus_size_adjusted_residual": spearman,
         "classifications": classifications,
+        "class_changes": [
+            {"effect": key, "before": prior_classes.get(key), "after": row["class"]}
+            for key, row in classifications.items()
+            if prior_classes.get(key) and prior_classes[key] != row["class"]
+        ],
         "hypothesis_tests": tests,
         "bh_family_size": len(family),
         "bh_crossed_0_05": crossed,
@@ -592,6 +695,7 @@ def analyze(n_boot: int = N_BOOT_DEFAULT, n_perm: int = N_PERM_DEFAULT, seed: in
         "what_this_cannot_prove": [
             "A correlation between an effect and a size-adjusted residual is not a cause of that residual.",
             "Fewer than 20 repositories make every cross-repository correlation LOW POWER.",
+            "A Spearman correlation with fewer than 6 repository estimates is DATA UNAVAILABLE and is not given an interval.",
             "Pull requests GitHub no longer serves are omitted, not scored as having no review.",
             "A list is under-counted only when it still has at least 100 rows and pages_complete is not set.",
             "E3 is not identified outside Core because merged_by was not stored. That absence is not evidence the cascade is Core-specific.",

@@ -1576,20 +1576,27 @@
       ],
       "p": 0.4273358616774502,
       "low_power": true,
-      "low_power_flag": "LOW POWER",
+      "n_degenerate": 0,
+      "degenerate_share": 0.0,
+      "bound_touches_extreme": false,
       "predicted_sign": "negative",
+      "n_repositories": 14,
       "point_matches_prediction": false,
       "interval_excludes_zero": false
     },
     "E3_log_hours_to_next_same_direction_top5_minus_other": {
       "status": "DATA UNAVAILABLE",
-      "reason": "fewer than 5 paired observations, or one series does not vary",
+      "reason": "1 repositories have an estimate, below the minimum of 6",
       "n": 1,
       "estimate": null,
       "ci95": null,
       "p": null,
-      "low_power": true,
+      "n_degenerate": null,
+      "degenerate_share": null,
+      "bound_touches_extreme": false,
       "predicted_sign": "positive",
+      "low_power": true,
+      "n_repositories": 1,
       "point_matches_prediction": null,
       "interval_excludes_zero": false
     },
@@ -1603,8 +1610,11 @@
       ],
       "p": 0.16403157340077776,
       "low_power": true,
-      "low_power_flag": "LOW POWER",
+      "n_degenerate": 0,
+      "degenerate_share": 0.0,
+      "bound_touches_extreme": false,
       "predicted_sign": "negative",
+      "n_repositories": 14,
       "point_matches_prediction": true,
       "interval_excludes_zero": false
     },
@@ -1618,8 +1628,11 @@
       ],
       "p": 0.28858316144472024,
       "low_power": true,
-      "low_power_flag": "LOW POWER",
+      "n_degenerate": 0,
+      "degenerate_share": 0.0,
+      "bound_touches_extreme": false,
       "predicted_sign": "negative",
+      "n_repositories": 13,
       "point_matches_prediction": true,
       "interval_excludes_zero": false
     },
@@ -1633,8 +1646,11 @@
       ],
       "p": 0.765007942926146,
       "low_power": true,
-      "low_power_flag": "LOW POWER",
+      "n_degenerate": 5,
+      "degenerate_share": 0.005,
+      "bound_touches_extreme": true,
       "predicted_sign": "positive",
+      "n_repositories": 9,
       "point_matches_prediction": true,
       "interval_excludes_zero": false
     }
@@ -1654,7 +1670,11 @@
       "spearman_ci95": [
         -0.321461038961039,
         0.6778743660603117
-      ]
+      ],
+      "n_repositories": 14,
+      "degenerate_share": null,
+      "n_degenerate": null,
+      "bound_touches_extreme": false
     },
     "E3_log_hours_to_next_same_direction_top5_minus_other": {
       "class": "UNDETERMINED",
@@ -1667,7 +1687,11 @@
       ],
       "predicted_sign": "positive",
       "spearman_r": null,
-      "spearman_ci95": null
+      "spearman_ci95": null,
+      "n_repositories": 1,
+      "degenerate_share": null,
+      "n_degenerate": null,
+      "bound_touches_extreme": false
     },
     "E5_log_participants_on_log_days": {
       "class": "AMBIENT",
@@ -1683,7 +1707,11 @@
       "spearman_ci95": [
         -0.8606974819422151,
         0.1423399205901321
-      ]
+      ],
+      "n_repositories": 14,
+      "degenerate_share": null,
+      "n_degenerate": null,
+      "bound_touches_extreme": false
     },
     "E7_first_tone_on_merge_given_later_tone": {
       "class": "AMBIENT",
@@ -1699,7 +1727,11 @@
       "spearman_ci95": [
         -0.730488393805737,
         0.2977602422459391
-      ]
+      ],
+      "n_repositories": 13,
+      "degenerate_share": null,
+      "n_degenerate": null,
+      "bound_touches_extreme": false
     },
     "E12_ingroup_on_no_peer_response": {
       "class": "AMBIENT",
@@ -1715,9 +1747,14 @@
       "spearman_ci95": [
         -0.9999999999999998,
         0.6752136752136751
-      ]
+      ],
+      "n_repositories": 9,
+      "degenerate_share": 0.005,
+      "n_degenerate": 5,
+      "bound_touches_extreme": true
     }
   },
+  "class_changes": [],
   "hypothesis_tests": [
     {
       "id": "pass6.E2_reciprocity_excess.bitcoin-core/secp256k1",
@@ -2596,13 +2633,14 @@
     },
     {
       "metric": "spearman_E3_log_hours_to_next_same_direction_top5_minus_other",
-      "reason": "fewer than 5 paired observations, or one series does not vary",
+      "reason": "1 repositories have an estimate, below the minimum of 6",
       "status": "DATA UNAVAILABLE"
     }
   ],
   "what_this_cannot_prove": [
     "A correlation between an effect and a size-adjusted residual is not a cause of that residual.",
     "Fewer than 20 repositories make every cross-repository correlation LOW POWER.",
+    "A Spearman correlation with fewer than 6 repository estimates is DATA UNAVAILABLE and is not given an interval.",
     "Pull requests GitHub no longer serves are omitted, not scored as having no review.",
     "A list is under-counted only when it still has at least 100 rows and pages_complete is not set.",
     "E3 is not identified outside Core because merged_by was not stored. That absence is not evidence the cascade is Core-specific.",

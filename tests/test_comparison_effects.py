@@ -78,6 +78,30 @@ class ComparisonEffectTest(unittest.TestCase):
         e12 = scored["effects"]["E12_ingroup_on_no_peer_response"]
         self.assertNotEqual(e12.get("estimate"), 1)
 
+    def test_fewer_than_six_repositories_has_no_interval(self) -> None:
+        from scripts.analysis.comparison_effects import correlation_for_effect
+
+        fit = correlation_for_effect(
+            np.asarray([0.1, 0.2, 0.3, 0.4, 0.5]),
+            np.asarray([1.0, 2.0, 3.0, 4.0, 5.0]),
+            np.random.default_rng(7),
+            20,
+        )
+        self.assertEqual(fit["status"], "DATA UNAVAILABLE")
+        self.assertIsNone(fit["ci95"])
+        self.assertIsNone(fit["estimate"])
+
+    def test_degenerate_draws_are_counted(self) -> None:
+        from scripts.analysis.comparison_effects import correlation_for_effect, degenerate_draw
+
+        self.assertTrue(degenerate_draw(np.asarray([1.0, 1.0, 2.0, 3.0]), np.asarray([1.0, 2.0, 3.0, 4.0])))
+        x = np.asarray([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+        y = np.asarray([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+        fit = correlation_for_effect(x, y, np.random.default_rng(7), 50)
+        self.assertEqual(fit["status"], "ok")
+        self.assertGreaterEqual(fit["n_degenerate"], 0)
+        self.assertLessEqual(fit["degenerate_share"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
