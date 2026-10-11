@@ -78,7 +78,7 @@ On bitcoin/bitcoin, the conflict-resolution score (P6) in year t has Spearman r=
 
 ## The six effects on other repositories
 
-13 comparison repositories have at least seven years of history. Their pull-request dumps store author, title, body, timestamps, merged state, and comments_count. Review objects, comment authors, file paths, and meeting lists are absent, so E2, E3, E5, E7, E9, and E12 are DATA UNAVAILABLE on every one of them. The Spearman correlation of effect size with health is DATA UNAVAILABLE. Whether those effects are specific to poorly governed repositories or ambient to open source development is not identified. The Bitcoin Core row in the effect list above is the reference.
+13 comparison repositories have at least seven years of history in the earlier table. Review objects, comment authors, and file paths are now on the comparison dumps. E2_reciprocity_excess is AMBIENT. E3_log_hours_to_next_same_direction_top5_minus_other is UNDETERMINED. E5_log_participants_on_log_days is AMBIENT. E7_first_tone_on_merge_given_later_tone is AMBIENT. E12_ingroup_on_no_peer_response is AMBIENT. The correlation is with the size-adjusted residual, not the raw health index. The rule and the intervals are in SIZE_ADJUSTED_COMPARISON.md. E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list.
 
 The principle series and the repository table are in `GAP_CLOSURE.md`.
 

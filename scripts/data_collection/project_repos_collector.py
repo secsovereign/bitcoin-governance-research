@@ -63,7 +63,11 @@ def token() -> str:
     raise SystemExit("GITHUB_TOKEN or gh auth token required")
 
 
-def github_json(url: str, tok: str, etag: Optional[str] = None) -> tuple[Any, Dict[str, str]]:
+class MissingOnGitHub(Exception):
+    """The pull request number is in the local list, but GitHub no longer resolves it."""
+
+
+def github_json(url: str, tok: str, etag: Optional[str] = None, allow_missing: bool = False) -> tuple[Any, Dict[str, str]]:
     headers = {
         "Accept": "application/vnd.github+json",
         "User-Agent": "btcdecoded-project-repos",
@@ -80,16 +84,31 @@ def github_json(url: str, tok: str, etag: Optional[str] = None) -> tuple[Any, Di
         except urllib.error.HTTPError as err:
             if err.code == 304:
                 return None, {k.lower(): v for k, v in err.headers.items()}
+            if err.code == 404 and allow_missing:
+                raise MissingOnGitHub(url)
             if err.code in (403, 429, 502, 503, 504) and attempt < 5:
                 reset = err.headers.get("X-RateLimit-Reset")
+                remaining = err.headers.get("X-RateLimit-Remaining")
                 wait = 30
-                if reset and reset.isdigit():
+                if reset and str(reset).isdigit():
                     wait = max(5, int(reset) - int(time.time()) + 2)
+                # A primary limit needs the whole reset window. Capping at 120s
+                # burns the retries and then exits while the limit is still closed.
+                if remaining == "0":
+                    wait = min(wait, 3700)
+                else:
+                    wait = min(wait, 120)
                 print(f"HTTP {err.code} on {url}; sleeping {wait}s", flush=True)
-                time.sleep(min(wait, 120))
+                time.sleep(wait)
                 continue
             detail = err.read().decode("utf-8", "replace")[:300]
             raise SystemExit(f"GitHub HTTP {err.code} {url} {detail}") from err
+        except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError) as err:
+            if attempt >= 5:
+                raise SystemExit(f"GitHub failed {url} {err}") from err
+            wait = min(60, 5 * (attempt + 1))
+            print(f"network error on {url}; sleeping {wait}s", flush=True)
+            time.sleep(wait)
     raise SystemExit(f"GitHub failed {url}")
 
 
@@ -321,26 +340,42 @@ def backfill_detail(slug: str, tok: str, limit: Optional[int]) -> None:
                 continue
             base = f"https://api.github.com/repos/{slug}"
             key = f"{slug}#{number}"
-            reviews, headers = github_json(f"{base}/pulls/{number}/reviews?per_page=100", tok, etags.get(key + ":reviews"))
-            if reviews is None:
-                reviews = []
-            elif headers.get("etag"):
-                etags[key + ":reviews"] = headers["etag"]
-            comments, headers = github_json(f"{base}/issues/{number}/comments?per_page=100", tok, etags.get(key + ":comments"))
-            if comments is None:
-                comments = []
-            elif headers.get("etag"):
-                etags[key + ":comments"] = headers["etag"]
-            review_comments, headers = github_json(f"{base}/pulls/{number}/comments?per_page=100", tok, etags.get(key + ":review_comments"))
-            if review_comments is None:
-                review_comments = []
-            elif headers.get("etag"):
-                etags[key + ":review_comments"] = headers["etag"]
-            files, headers = github_json(f"{base}/pulls/{number}/files?per_page=100", tok, etags.get(key + ":files"))
-            if files is None:
-                files = []
-            elif headers.get("etag"):
-                etags[key + ":files"] = headers["etag"]
+
+            def one(kind: str, url: str) -> Any:
+                try:
+                    payload, headers = github_json(url, tok, etags.get(key + ":" + kind), allow_missing=True)
+                except MissingOnGitHub:
+                    return "MISSING"
+                if payload is None:
+                    return []
+                if headers.get("etag"):
+                    etags[key + ":" + kind] = headers["etag"]
+                return payload
+
+            reviews = one("reviews", f"{base}/pulls/{number}/reviews?per_page=100")
+            if reviews == "MISSING":
+                row = normalize_detail(number, slug, [], [], [], [])
+                row["missing"] = True
+                append_jsonl(detail_path, row)
+                have.add(number)
+                done += 1
+                print(f"{slug} #{number} DATA UNAVAILABLE GitHub returned 404", flush=True)
+                if limit is not None and done >= limit:
+                    break
+                continue
+            comments = one("comments", f"{base}/issues/{number}/comments?per_page=100")
+            review_comments = one("review_comments", f"{base}/pulls/{number}/comments?per_page=100")
+            files = one("files", f"{base}/pulls/{number}/files?per_page=100")
+            if "MISSING" in (comments, review_comments, files):
+                row = normalize_detail(number, slug, [], [], [], [])
+                row["missing"] = True
+                append_jsonl(detail_path, row)
+                have.add(number)
+                done += 1
+                print(f"{slug} #{number} DATA UNAVAILABLE GitHub returned 404", flush=True)
+                if limit is not None and done >= limit:
+                    break
+                continue
             append_jsonl(detail_path, normalize_detail(number, slug, reviews or [], comments or [], review_comments or [], files or []))
             have.add(number)
             done += 1

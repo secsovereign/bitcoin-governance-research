@@ -1005,14 +1005,31 @@ def _commons_followup(gap: Optional[Dict[str, Any]]) -> Dict[str, str]:
     )
     cross = gap.get("cross_repo") or {}
     n_repos = len(cross.get("rows") or [])
-    cross_repo_text = (
-        f"{n_repos} comparison repositories have at least seven years of history. "
-        "Their pull-request dumps store author, title, body, timestamps, merged state, and comments_count. "
-        "Review objects, comment authors, file paths, and meeting lists are absent, so E2, E3, E5, E7, E9, and E12 "
-        "are DATA UNAVAILABLE on every one of them. The Spearman correlation of effect size with health is "
-        "DATA UNAVAILABLE. Whether those effects are specific to poorly governed repositories or ambient to "
-        "open source development is not identified. The Bitcoin Core row in the effect list above is the reference."
-    )
+    effects = _maybe(get_findings_dir() / "data" / "comparison_effects.json")
+    classes = (effects or {}).get("classifications") or {}
+    if classes:
+        bits = [
+            f"{effect_id} is {row.get('class')}"
+            for effect_id, row in classes.items()
+        ]
+        cross_repo_text = (
+            f"{n_repos} comparison repositories have at least seven years of history in the earlier table. "
+            "Review objects, comment authors, and file paths are now on the comparison dumps. "
+            + ". ".join(bits)
+            + ". The correlation is with the size-adjusted residual, not the raw health index. "
+            "The rule and the intervals are in SIZE_ADJUSTED_COMPARISON.md. "
+            "E9 is not applicable outside bitcoin/bitcoin. "
+            "ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list."
+        )
+    else:
+        cross_repo_text = (
+            f"{n_repos} comparison repositories have at least seven years of history. "
+            "Their pull-request dumps store author, title, body, timestamps, merged state, and comments_count. "
+            "Review objects, comment authors, file paths, and meeting lists are absent, so E2, E3, E5, E7, E9, and E12 "
+            "are DATA UNAVAILABLE on every one of them. The Spearman correlation of effect size with health is "
+            "DATA UNAVAILABLE. Whether those effects are specific to poorly governed repositories or ambient to "
+            "open source development is not identified. The Bitcoin Core row in the effect list above is the reference."
+        )
     return {"lag_text": lag_text, "cross_repo_text": cross_repo_text}
 
 
@@ -1318,9 +1335,20 @@ def ctx_gap(gap: Dict[str, Any]) -> Dict[str, Any]:
         f"({core.get('newcomer_prs')} pull requests, {core.get('active_reviewers')} active reviewers). "
         "The project-wide year slope still widens once reviewer count is held fixed."
     )
+    effects = _maybe(get_findings_dir() / "data" / "comparison_effects.json")
+    classes = (effects or {}).get("classifications") or {}
+    if classes:
+        named = ", ".join(f"{key} {row.get('class')}" for key, row in classes.items())
+        gap2 = (
+            f"Gap 2. The comparison-repository effects are classified against the size-adjusted residual. {named}. "
+            "E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list. "
+            "The intervals are in SIZE_ADJUSTED_COMPARISON.md."
+        )
+    else:
+        gap2 = "Gap 2 stays open. Comparison repositories lack review objects, participant identities, and meeting lists, so the six effects cannot be placed against health."
     closes = [
         f"Gap 1. P6's t+1 correlation with later health is {_fmt(p6.get('estimate'))} (q={_fmt(p6.get('q'))}) on {p6.get('n')} years, marked LOW POWER. P5 and P7 stay unscored.",
-        "Gap 2 stays open. Comparison repositories lack review objects, participant identities, and meeting lists, so the six effects cannot be placed against health.",
+        gap2,
         f"Gap 3. The {fn.get('n_false_negative')} patch-content false negatives are {fn.get('classification')}.",
         f"Gap 4. The silence trend is {sub.get('classification')}. The reviewer coefficient is negative and the year slope widens.",
     ]
@@ -1441,7 +1469,91 @@ def ctx_durability(data: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def ctx_size(data: Dict[str, Any]) -> Dict[str, Any]:
+def _effect_section(effects: Optional[Dict[str, Any]]) -> str:
+    if not effects or effects.get("status") != "ok":
+        return (
+            "E2, E3, E5, E7, and E12 have not been scored on the comparison repositories in this file. "
+            "E9 is not applicable outside bitcoin/bitcoin, because no other project in this set has a meeting list."
+        )
+    rule = effects.get("classification_rule") or ""
+    unresolved = [
+        effect_id for effect_id, row in (effects.get("classifications") or {}).items()
+        if not row.get("tracks_health")
+    ]
+    lines = [
+        "The preregistered prediction is a Spearman correlation of each effect with the size-adjusted residual, not the raw health index.",
+        "No Spearman interval excludes zero, so none of those predicted signs is resolved." if len(unresolved) == len(effects.get("classifications") or {}) else "Some Spearman intervals exclude zero. Those are the resolved signs.",
+        rule,
+        "",
+        "| Effect | Class | Outside Core | Spearman r | Interval | Predicted sign | Point matches |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for effect_id, row in (effects.get("classifications") or {}).items():
+        ci = row.get("spearman_ci95")
+        outside = "yes" if row.get("present_outside_core") else "no"
+        spear = (effects.get("spearman_versus_size_adjusted_residual") or {}).get(effect_id) or {}
+        if spear.get("estimate") is None:
+            match = "not defined"
+            interval = "not defined"
+        else:
+            match = "yes" if spear.get("point_matches_prediction") else "no"
+            interval = f"{_fmt(ci[0])} to {_fmt(ci[1])}" if isinstance(ci, list) and len(ci) == 2 else "not defined"
+        lines.append(
+            f"| {effect_id} | {row.get('class')} | {outside} | {_fmt(row.get('spearman_r'))} | "
+            f"{interval} | {row.get('predicted_sign')} | {match} |"
+        )
+    lines.append("")
+    health = (effects.get("shared_health_rerun") or {}).get("reason") or ""
+    e9 = (effects.get("e9") or {}).get("reason") or "E9 is not applicable outside bitcoin/bitcoin."
+    crossed = effects.get("bh_crossed_0_05") or []
+    if crossed:
+        crossed_text = " Prior results whose q crossed 0.05 are " + ", ".join(str(row.get("id")) for row in crossed) + "."
+    else:
+        crossed_text = " No prior result crossed q = 0.05."
+    lines.append(
+        f"The Benjamini-Hochberg family is now {effects.get('bh_family_size')} tests, passes 1 through 6.{crossed_text}"
+    )
+    lines.append(health)
+    lines.append(e9)
+    go = [row for row in (effects.get("repositories") or []) if row.get("repo") == "ethereum/go-ethereum"]
+    if go:
+        lines.append(
+            "ethereum/go-ethereum is DATA UNAVAILABLE because prs.jsonl is missing, so review objects were not requested."
+        )
+    e3 = (effects.get("classifications") or {}).get("E3_log_hours_to_next_same_direction_top5_minus_other") or {}
+    if e3.get("class") == "UNDETERMINED":
+        lines.append(
+            "E3 is UNDETERMINED because pull records do not store merged_by, so the trailing top-5 merger window was not built. The merged flag was not used as a substitute."
+        )
+    capped = 0
+    for row in effects.get("repositories") or []:
+        counts = row.get("capped_at_100") or {}
+        capped += sum(int(v) for v in counts.values())
+    if capped:
+        lines.append(
+            f"{capped} review, comment, or file lists were cut at 100 rows because the collector stored one page."
+        )
+    lines.append("Every cross-repository correlation is LOW POWER.")
+    return "\n".join(lines)
+
+
+def _size_cannot(data: Dict[str, Any], effects: Optional[Dict[str, Any]]) -> List[str]:
+    cannot = []
+    for sentence in data.get("what_this_cannot_prove") or []:
+        if str(sentence).startswith("Shared health omits review labor"):
+            cannot.append(
+                "Shared health still omits review labor. H2 through H6 do not read review objects, so the backfill does not move the rank."
+            )
+        else:
+            cannot.append(str(sentence))
+    if effects and effects.get("status") == "ok":
+        for sentence in effects.get("what_this_cannot_prove") or []:
+            if sentence not in cannot:
+                cannot.append(str(sentence))
+    return cannot
+
+
+def ctx_size(data: Dict[str, Any], effects: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     def line(sample: Dict[str, Any], label: str) -> str:
         return (
             f"{label}. Core residual {_fmt(sample.get('core_residual'), 4)} "
@@ -1482,7 +1594,8 @@ def ctx_size(data: Dict[str, Any]) -> Dict[str, Any]:
             f"Indicators whose Spearman interval with log pull-request volume excludes zero are {scale_text}. "
             "Those indicators move with scale. The series is LOW POWER."
         ),
-        "cannot": [{"sentence": sentence} for sentence in (data.get("what_this_cannot_prove") or [])],
+        "effect_section": _effect_section(effects),
+        "cannot": [{"sentence": sentence} for sentence in _size_cannot(data, effects)],
     }
 
 
@@ -1722,7 +1835,8 @@ def generate_all() -> List[str]:
 
     sized = _maybe(findings_data / "size_adjusted_health.json") or _maybe(analysis / "size_adjusted_health.json")
     if sized and sized.get("status") == "ok":
-        jobs.append(("SIZE_ADJUSTED_COMPARISON.md", TEMPLATES / "SIZE_ADJUSTED_COMPARISON.md.tpl", ctx_size(sized)))
+        effects = _maybe(findings_data / "comparison_effects.json") or _maybe(analysis / "comparison_effects.json")
+        jobs.append(("SIZE_ADJUSTED_COMPARISON.md", TEMPLATES / "SIZE_ADJUSTED_COMPARISON.md.tpl", ctx_size(sized, effects)))
 
     revealed = _maybe(findings_data / "revealed_rough_consensus.json") or _maybe(
         analysis / "revealed_rough_consensus.json"

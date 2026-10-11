@@ -310,7 +310,7 @@ In 2023, GUI newcomer silence is 90.0% (10 pull requests, 4 active reviewers). C
 ## What this closes
 
 - Gap 1. P6's t+1 correlation with later health is 0.714 (q=0.016) on 13 years, marked LOW POWER. P5 and P7 stay unscored.
-- Gap 2 stays open. Comparison repositories lack review objects, participant identities, and meeting lists, so the six effects cannot be placed against health.
+- Gap 2. The comparison-repository effects are classified against the size-adjusted residual. E2_reciprocity_excess AMBIENT, E3_log_hours_to_next_same_direction_top5_minus_other UNDETERMINED, E5_log_participants_on_log_days AMBIENT, E7_first_tone_on_merge_given_later_tone AMBIENT, E12_ingroup_on_no_peer_response AMBIENT. E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list. The intervals are in SIZE_ADJUSTED_COMPARISON.md.
 - Gap 3. The 340 patch-content false negatives are STRUCTURAL.
 - Gap 4. The silence trend is NOT SUBSYSTEM CAPACITY. The reviewer coefficient is negative and the year slope widens.
 

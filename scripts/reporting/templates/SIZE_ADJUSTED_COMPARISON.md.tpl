@@ -34,7 +34,7 @@ Roles follow the pass 6 list. foundation-devices/passport-firmware, stratum-mini
 
 ## Comparison-repository effects
 
-E2, E3, E5, E7, and E12 are not recomputed here. The comparison dumps still have no review objects, comment authors, or file paths. E9 is not applicable outside bitcoin/bitcoin, because no other project in this set has a meeting list. The backfill that would supply those fields has not been run.
+{{effect_section}}
 
 ## What this cannot prove
 
