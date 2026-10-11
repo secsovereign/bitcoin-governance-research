@@ -1,0 +1,186 @@
+{
+  "version": "7.0",
+  "seed": 7,
+  "bootstrap": 1000,
+  "rule": "FRAGILE when a fresh seed-7 bootstrap disagrees with the published interval on whether zero is excluded, or the published bound is within 0.02 standardized units of zero. A correlation uses the correlation unit. Any other estimate divides the distance to zero by the published interval's standard deviation. Published intervals are not changed.",
+  "estimates": [
+    {
+      "id": "capacity_S1_irc_linked",
+      "kind": "coefficient",
+      "source": "findings/data/first_year_signal_analysis.json",
+      "fresh_source": "discourse_recall.json number_only, seed 7",
+      "published_estimate": -0.19250910099211055,
+      "published_ci95": [
+        -0.3686398920649988,
+        -0.00910166371171945
+      ],
+      "fresh_estimate": -0.19250910099211055,
+      "fresh_ci95": [
+        -0.3846658843687562,
+        0.006327307193358205
+      ],
+      "status": "FRAGILE",
+      "standardized_gap": 0.09923246913725613
+    },
+    {
+      "id": "volume_spearman.H2_open_stock_per_pr_opened",
+      "kind": "correlation",
+      "source": "findings/data/size_adjusted_health.json",
+      "fresh_source": "seed 7 bootstrap of the same repository pairs",
+      "published_estimate": -0.35784313725490197,
+      "published_ci95": [
+        -0.6564039708765397,
+        0.04752368012422358
+      ],
+      "fresh_estimate": -0.35784313725490197,
+      "fresh_ci95": [
+        -0.6753808002420253,
+        0.07848444576618771
+      ],
+      "status": "STABLE",
+      "standardized_gap": 0.0
+    },
+    {
+      "id": "volume_spearman.H2_stale_open_per_pr_opened",
+      "kind": "correlation",
+      "source": "findings/data/size_adjusted_health.json",
+      "fresh_source": "seed 7 bootstrap of the same repository pairs",
+      "published_estimate": -0.002450980392156863,
+      "published_ci95": [
+        -0.5465784036086232,
+        0.5204481158943328
+      ],
+      "fresh_estimate": -0.002450980392156863,
+      "fresh_ci95": [
+        -0.5446604926652361,
+        0.524302053811329
+      ],
+      "status": "STABLE",
+      "standardized_gap": 0.0
+    },
+    {
+      "id": "volume_spearman.H3_cohort_active_24m",
+      "kind": "correlation",
+      "source": "findings/data/size_adjusted_health.json",
+      "fresh_source": "seed 7 bootstrap of the same repository pairs",
+      "published_estimate": 0.006593406593406593,
+      "published_ci95": [
+        -0.696228755922931,
+        0.6227420505503466
+      ],
+      "fresh_estimate": 0.006593406593406593,
+      "fresh_ci95": [
+        -0.671212683681361,
+        0.5985922619047616
+      ],
+      "status": "STABLE",
+      "standardized_gap": 0.0
+    },
+    {
+      "id": "volume_spearman.H4_gini_merges",
+      "kind": "correlation",
+      "source": "findings/data/size_adjusted_health.json",
+      "fresh_source": "seed 7 bootstrap of the same repository pairs",
+      "published_estimate": 0.8602941176470589,
+      "published_ci95": [
+        0.588479222243271,
+        0.9703809572860872
+      ],
+      "fresh_estimate": 0.8602941176470589,
+      "fresh_ci95": [
+        0.5438996513426771,
+        0.9704069050554872
+      ],
+      "status": "STABLE",
+      "standardized_gap": 0.588479222243271
+    },
+    {
+      "id": "volume_spearman.H5_bus_factor",
+      "kind": "correlation",
+      "source": "findings/data/size_adjusted_health.json",
+      "fresh_source": "seed 7 bootstrap of the same repository pairs",
+      "published_estimate": 0.36787254002155784,
+      "published_ci95": [
+        -0.20057865191392424,
+        0.8120571250178653
+      ],
+      "fresh_estimate": 0.36787254002155784,
+      "fresh_ci95": [
+        -0.16396846413095809,
+        0.8236188580038128
+      ],
+      "status": "STABLE",
+      "standardized_gap": 0.0
+    },
+    {
+      "id": "volume_spearman.H6_median_days_to_decision",
+      "kind": "correlation",
+      "source": "findings/data/size_adjusted_health.json",
+      "fresh_source": "seed 7 bootstrap of the same repository pairs",
+      "published_estimate": -0.43137254901960786,
+      "published_ci95": [
+        -0.7425098114956736,
+        -0.002295592462472223
+      ],
+      "fresh_estimate": -0.43137254901960786,
+      "fresh_ci95": [
+        -0.734681198282216,
+        0.04851647463575684
+      ],
+      "status": "FRAGILE",
+      "standardized_gap": 0.002295592462472223
+    },
+    {
+      "id": "newcomer_merge_interaction",
+      "kind": "coefficient",
+      "source": "findings/data/rsd_ingroup_analysis_v2.json",
+      "fresh_source": "newcomer_divergence.json core interaction, seed 7",
+      "published_estimate": -0.036617537534312336,
+      "published_ci95": [
+        -0.04010117540686506,
+        -0.033350140040955656
+      ],
+      "fresh_estimate": -0.03661753753431822,
+      "fresh_ci95": [
+        -0.0400874422640621,
+        -0.033357492131765684
+      ],
+      "status": "STABLE",
+      "standardized_gap": 19.36445887684524
+    }
+  ],
+  "fragile": [
+    "capacity_S1_irc_linked",
+    "volume_spearman.H6_median_days_to_decision"
+  ],
+  "cited_excluding_intervals": [
+    {
+      "file": "NEWCOMER_BAR.md",
+      "published_ci": [
+        -4.0,
+        -3.3
+      ],
+      "claims_exclusion": true
+    },
+    {
+      "file": "NEWCOMER_BAR.md",
+      "published_ci": [
+        0.6,
+        1.0
+      ],
+      "claims_exclusion": true
+    },
+    {
+      "file": "NEWCOMER_BAR.md",
+      "published_ci": [
+        -0.887,
+        -0.469
+      ],
+      "claims_exclusion": true
+    }
+  ],
+  "what_this_cannot_prove": [
+    "A FRAGILE mark is about the interval, not about the point estimate.",
+    "An estimate with no fresh bootstrap stays UNCHECKED unless its published bound is within 0.02 standardized units of zero."
+  ]
+}
