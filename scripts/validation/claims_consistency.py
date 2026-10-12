@@ -187,8 +187,8 @@ def build_claims() -> List[Dict[str, Any]]:
         _claim(
             id="self_merge_residual",
             sentence=(
-                f"Core's matched-size self-merge residual is {merged['self_merge']['core']['residual']:.3f}, "
-                "and the interval covers zero."
+                f"Core's matched-size self-merge residual with the distinct-mergers control is "
+                f"{merged['self_merge']['core']['residual']:.3f}, and the interval covers zero."
             ),
             number=f"{merged['self_merge']['core']['residual']:.3f}",
             source_report="findings/RESEARCH_METHODOLOGY.md",
@@ -333,9 +333,12 @@ def build_claims() -> List[Dict[str, Any]]:
             sentence="last-place shared-health rank survives size adjustment",
             number=None,
             source_report="findings/CLAIMS_LEDGER.md",
-            json_path="findings/data/size_adjusted_health.json samples.all_repositories.core_residual",
+            json_path="findings/data/pass7_merged_by.json size_adjusted_health.core_residual",
             status="RETRACTED",
-            replacement="Core's published residual covers zero, at rank 10 of 17.",
+            replacement=(
+                "After merger Gini replaces author-basis H4, Core's refit residual is -0.070, "
+                "rank 3 of 17, and the interval covers zero."
+            ),
         ),
         _claim(
             id="retract_income",

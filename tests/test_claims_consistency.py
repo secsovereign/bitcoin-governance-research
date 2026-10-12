@@ -56,6 +56,19 @@ class ClaimsConsistencyTests(unittest.TestCase):
         ])
         self.assertEqual(check_text(text, CLAIMS, "fixture.md"), [])
 
+    def test_retraction_cites_the_refit_and_self_merge_names_the_control(self) -> None:
+        from scripts.validation.claims_consistency import build_claims
+
+        by_id = {claim["id"]: claim for claim in build_claims()}
+        replacement = by_id["retract_last_place"]["replacement"]
+        self.assertIn("-0.070", replacement)
+        self.assertIn("rank 3 of 17", replacement)
+        self.assertNotIn("rank 10 of 17", replacement)
+        self.assertIn(
+            "distinct-mergers control",
+            by_id["self_merge_residual"]["sentence"],
+        )
+
     def test_methodology_cites_the_committed_snapshot(self) -> None:
         from scripts.validation.claims_consistency import build_claims
 

@@ -28,7 +28,7 @@ Numbers below are the ledger values, and each one carries its status.
 
 **CONFIRMED.** The Benjamini-Hochberg family is 229 tests. No prior q crossed 0.05.
 
-**EXPLORATORY, NOT IN FAMILY.** Core's matched-size self-merge residual is 0.343, and the interval covers zero.
+**EXPLORATORY, NOT IN FAMILY.** Core's matched-size self-merge residual with the distinct-mergers control is 0.343, and the interval covers zero.
 
 **CONFIRMED.** Out-group merged code fixes forward at 7.0 percent against 8.3 percent for in-group. The coefficient is -0.417, q=0.098. The claim is that out-group code does not fail more.
 
@@ -50,7 +50,7 @@ Numbers below are the ledger values, and each one carries its status.
 
 **RETRACTED.** Core is uniquely sick on the attention effects. The attention effects that have estimates are AMBIENT.
 
-**RETRACTED.** last-place shared-health rank survives size adjustment. Core's published residual covers zero, at rank 10 of 17.
+**RETRACTED.** last-place shared-health rank survives size adjustment. After merger Gini replaces author-basis H4, Core's refit residual is -0.070, rank 3 of 17, and the interval covers zero.
 
 **RETRACTED.** merge Gini of 0.85 is extreme by comparison with income inequality. Author-basis H4 is a volume correlation inside this corpus.
 

@@ -15,7 +15,7 @@ Each row is a headline claim. The number is taken from the committed JSON named 
 | STABLE | Author-basis merge Gini (H4) tracks log pull-request volume at 0.860. | 0.860 | findings/SIZE_ADJUSTED_COMPARISON.md | findings/data/size_adjusted_health.json indicator_volume_spearman.H4_gini_merges | pass 6 |
 | AMBIENT, LOW POWER | E3's Spearman correlation with the refit residual is 0.429, q=0.431. The class is AMBIENT. The interval touches 1, with 2.4 percent degenerate draws. | 0.429 | findings/RESEARCH_METHODOLOGY.md | findings/data/pass7_merged_by.json e3.correlation | pass7.E3_spearman_versus_size_adjusted_residual |
 | CONFIRMED | The Benjamini-Hochberg family is 229 tests. No prior q crossed 0.05. | 229 | findings/RESEARCH_METHODOLOGY.md | findings/data/pass7_merged_by.json bh_family_size | passes 1 through 7 |
-| EXPLORATORY, NOT IN FAMILY | Core's matched-size self-merge residual is 0.343, and the interval covers zero. | 0.343 | findings/RESEARCH_METHODOLOGY.md | findings/data/pass7_merged_by.json self_merge.core.residual | not in family |
+| EXPLORATORY, NOT IN FAMILY | Core's matched-size self-merge residual with the distinct-mergers control is 0.343, and the interval covers zero. | 0.343 | findings/RESEARCH_METHODOLOGY.md | findings/data/pass7_merged_by.json self_merge.core.residual | not in family |
 | LOW POWER | Core's published size-adjusted residual is about -0.0003, rank 10 of 17, and the interval covers zero. | -0.0003 | findings/SIZE_ADJUSTED_COMPARISON.md | findings/data/size_adjusted_health.json samples.all_repositories.core_residual | pass 6 |
 | LOW POWER | After merger Gini replaces author-basis H4, Core's refit residual is -0.070, rank 3 of 17, and the interval covers zero. | -0.070 | findings/RESEARCH_METHODOLOGY.md | findings/data/pass7_merged_by.json size_adjusted_health.core_residual | not a new family test |
 | CONFIRMED | Out-group merged code fixes forward at 7.0 percent against 8.3 percent for in-group. The coefficient is -0.417, q=0.098. The claim is that out-group code does not fail more. | 0.070 and 0.083 | findings/MERGE_DURABILITY.md | findings/data/merge_durability.json out_vs_in.fix_forward | in family |
@@ -27,7 +27,7 @@ Each row is a headline claim. The number is taken from the committed JSON named 
 | RETRACTED | review capacity starvation explains newcomer silence |  | findings/CLAIMS_LEDGER.md | findings/data/first_year_signal_analysis.json |  |
 | RETRACTED | the first-year merge gap detects patch quality |  | findings/CLAIMS_LEDGER.md | findings/data/first_year_signal_analysis.json |  |
 | RETRACTED | Core is uniquely sick on the attention effects |  | findings/CLAIMS_LEDGER.md | findings/data/comparison_effects.json classifications |  |
-| RETRACTED | last-place shared-health rank survives size adjustment |  | findings/CLAIMS_LEDGER.md | findings/data/size_adjusted_health.json samples.all_repositories.core_residual |  |
+| RETRACTED | last-place shared-health rank survives size adjustment |  | findings/CLAIMS_LEDGER.md | findings/data/pass7_merged_by.json size_adjusted_health.core_residual |  |
 | RETRACTED | merge Gini of 0.85 is extreme by comparison with income inequality |  | findings/CLAIMS_LEDGER.md | findings/data/size_adjusted_health.json indicator_volume_spearman.H4_gini_merges |  |
 | RETRACTED | out-group code is worse after merge |  | findings/CLAIMS_LEDGER.md | findings/data/merge_durability.json out_vs_in.fix_forward |  |
 | FRAGILE | Fragile ids are capacity_S1_irc_linked, volume_spearman.H6_median_days_to_decision. |  | findings/data/interval_stability.json | findings/data/interval_stability.json fragile |  |
@@ -39,7 +39,7 @@ Each row is a headline claim. The number is taken from the committed JSON named 
 - RETRACTED. review capacity starvation explains newcomer silence. Replacement: Silence rises while the queue per reviewer falls.
 - RETRACTED. the first-year merge gap detects patch quality. Replacement: Reception, not the patch-content score, lines up with the first-year merge gap.
 - RETRACTED. Core is uniquely sick on the attention effects. Replacement: The attention effects that have estimates are AMBIENT.
-- RETRACTED. last-place shared-health rank survives size adjustment. Replacement: Core's published residual covers zero, at rank 10 of 17.
+- RETRACTED. last-place shared-health rank survives size adjustment. Replacement: After merger Gini replaces author-basis H4, Core's refit residual is -0.070, rank 3 of 17, and the interval covers zero.
 - RETRACTED. merge Gini of 0.85 is extreme by comparison with income inequality. Replacement: Author-basis H4 is a volume correlation inside this corpus.
 - RETRACTED. out-group code is worse after merge. Replacement: Out-group merged code does not fail more on the fix-forward contrast.
 

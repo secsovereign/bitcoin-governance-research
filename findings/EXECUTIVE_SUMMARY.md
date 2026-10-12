@@ -32,7 +32,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 ## The Numbers: What They Mean
 
-### Power Concentration = Single Points of Failure
+### Merge concentration
 
 **Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`). That is 21 humans: `TheCharlatan` and `sedited` are the same person after a GitHub rename. Merge stats in this dump use `sedited` (0 `TheCharlatan` merges).  
 **Merge keys ≠ roster.** Only 23 GitHub logins appear as `merged_by`. Everyone else **cannot merge** — a zero as merger is lack of keys, not unused privilege. Reviewer/ACK is not merge authority. Non-maintainer “merge rate” is author-success (a key holder merged their PR). See `GLOSSARY_AND_CONTEXT.md` and `data/maintainers/merge_capability.json`.  
@@ -42,7 +42,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 **Modern window (2022+):** `fanquake` alone merges **~50.4%**; top-2 **~71%**; top-3 **~83%** (`MERGE_CONCENTRATION_DEPUTIES_REPORT.md`).  
 **Top 10 authorship share: 42.7% historical → 47.8% recent** (authorship concentrating). Merge keys stay tight: top-3 merge share ~81% in both periods (`GINI_COEFFICIENT_EXPLANATION.md`).
 
-**Security implication**: If the top 3 are compromised, they could introduce malicious code affecting the entire Bitcoin network. This is a **single point of failure** in a system designed to have none. The modern picture is thinner still: one lead merger handles about half of recent merges.
+**Concentration is not a health rank.** The last-place shared-health rank does not survive size adjustment. After merger Gini replaces author-basis H4, Core's refit residual is -0.070, rank 3 of 17, and the interval covers zero. The modern window is thinner: one lead merger handles about half of recent merges. See `FINAL_READOUT.md`.
 
 **Gini (say which one):** authorship 0.851 historical / 0.834 recent; merge-authority 0.623 / 0.667. Do not cite 0.851 as the only Gini. Authorship Gini is not an income comparison.
 
@@ -60,13 +60,13 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 **Variation**: laanwj self-merges 77.1% of his PRs. 7 maintainers self-merge 0%. No standard, just discretion.
 
-### Exclusive Privilege = Structural Inequality
+### Self-merge
 
-**Maintainers: 25.5% of their merged PRs are self-merged.**  
-**Non-maintainers: 0% can self-merge** (not permitted).  
-**Maintainer reviews carry 5.5x more weight** than non-maintainer reviews.
+**Maintainers: 25.5% of their merged PRs are self-merged** (2,501 of 9,793).  
+**45.1% of those self-merges have zero GitHub review objects** (1,129 of 2,501).  
+**Non-maintainers: 0% can self-merge** (not permitted).
 
-**Response time inequality: 1.41x** - Non-maintainers wait 41% longer to merge (145.4h vs 93.3h median). First review times are nearly equal (12.3h vs 12.4h), but merge decisions favor maintainers. **Implication**: No bias in initial review, but maintainer privilege in merge decisions.
+The matched-size self-merge residual with the distinct-mergers control is 0.343, and the interval covers zero. That comparison is descriptive. See `RESEARCH_METHODOLOGY.md` and `FINAL_READOUT.md`.
 
 **Identity vs merits (fair reading, July 2026 — `MAINTAINER_PREMIUM_REPORT.md`):**
 - Raw merge rates (~80% maint / ~55% non) are **mostly self-merge privilege**. Peer-merge (self-merge ≠ success): ~59% / ~54% all-time; gap wider since 2022 (~63% / ~51%).
@@ -78,7 +78,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 - **Path risk:** on consensus-sensitive paths, outsider merge drops to **~35%** vs maintainer **~73%** (all-time) — sharper than the average gap. Concept/approach ACK received narrows the gap (~11 pp) but does not erase it.
 - **High-prep closed outsiders (n=100 sample):** ~45% never received a formal review — non-engagement dominates; CI data unavailable on corpus.
 
-**Structural problem**: There's a **power asymmetry**. Some people have exclusive privileges (self-merge, weighted reviews) that others don't. This creates a **hierarchical structure**: Maintainers with exclusive rights, contributors without them, outsiders with uncertain path forward — especially on first PR and large/novel changes.
+**Merge keys are not portable.** Self-merge is permitted for people who appear as GitHub `merged_by`. Activity on BIPs, Delving, or the lists does not confer that authority. See `GOVERNANCE_FRAMES.md`.
 
 **Cross-status reviews**: Only 72% of maintainer PRs receive non-maintainer reviews (recent period). 28% are reviewed only by other maintainers - **segregation**.
 
@@ -97,7 +97,6 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 **Structural persistence**:
 - Self-merge rate: 25.5% (still concentrated privilege) ❌
 - Top 10 authorship: 42.7% → 47.8% (worse) ❌
-- Review weight bias: 5.5:1 (unchanged) ❌
 - Authorship Gini: 0.851 → 0.834 (still extreme) ❌
 - Top-3 merge share ~81% in both historical and recent windows ❌
 
@@ -122,9 +121,9 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 **2,671 conflicts** across 20,166 PRs (13.2%). Average resolution 132.2 days. 2026 days are right-censored (year not complete). Pair-level “blocs” have small n. See `CONFLICT_RESOLUTION_ANALYSIS.md`.
 
-### 2. Single Points of Failure
+### 2. Merge-key concentration
 
-**Top 3 control 81.1% of merges** - if compromised, could affect entire network.  
+**Top 3 control 81.1% of merges.** Concentration is a share of `merged_by`, not a last-place health rank.  
 **No public recourse procedure is in this corpus** if a key holder merges code others oppose.  
 **The written rule sets no numeric review minimum.** See `REVEALED_ROUGH_CONSENSUS.md`.
 
@@ -169,14 +168,11 @@ Fit 2010–2023, confirm 2024–2026. Year is a control. These reports do not re
 
 ## The Bottom Line
 
-**Bitcoin Core improved how decisions get made. Not who makes them.**
+Read `GOVERNANCE_FRAMES.md` before an all-time rate, and `FINAL_READOUT.md` for what still stands.
 
-The oligarchy got more efficient. It's still an oligarchy.
+Merge keys are concentrated. On the 2022+ window, one merger is about half of merges. Self-merge on the September roster snapshot is 25.5 percent (2,501 of 9,793), and 45.1 percent of those self-merges have zero GitHub review objects.
 
-**The question isn't whether the masters do good work.**  
-**The question is why masters exist at all.**
-
-Bitcoin was designed to eliminate trusted intermediaries. Its reference implementation is controlled by them. This is the **fundamental contradiction** at the heart of Bitcoin Core governance.
+The last-place shared-health rank does not survive size adjustment. After merger Gini replaces author-basis H4, Core's refit residual is -0.070, rank 3 of 17, and the interval covers zero. The matched-size self-merge residual with the distinct-mergers control is 0.343, and that interval covers zero. Neither residual is a cause.
 
 ---
 

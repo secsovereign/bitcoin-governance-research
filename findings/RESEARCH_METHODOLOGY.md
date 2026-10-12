@@ -67,7 +67,7 @@ The pass 6 author-basis H4 correlation with log pull-request volume is 0.860, in
 
 E3 is the log-hour gap until the next same-direction review after a top-5 merger speaks first, minus the same gap after anyone else. Eight repositories have an estimate. The Spearman correlation with the refit residual is 0.429, interval -0.519 to 1.000. The interval touches 1, and 2.4 percent of draws are degenerate. The class is AMBIENT. The test is in the family. Its q is 0.431. The preregistered sign is positive, and the point is positive. The interval covers zero. The correlation is LOW POWER.
 
-Core's self-merge rate on the identity index is 15.1 percent of merged pull requests, and 30.3 percent among pull requests authored by Core's own mergers. The size-and-merger residual is 0.343, interval -0.100 to 0.822. The interval covers zero.
+Core's self-merge rate on the identity index is 15.1 percent of merged pull requests, and 30.3 percent among pull requests authored by Core's own mergers. The matched-size self-merge residual with the distinct-mergers control is 0.343, interval -0.100 to 0.822. The interval covers zero.
 
 The `merged_by` crawl covered 22,461 merged pull requests in the 13 seven-year repositories. 22,459 returned a merger login and a numeric user id. secp256k1 pull request 1804 is no longer served. Every repository is above 95 percent.
 
