@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.data_collection.project_repos_collector import normalize_detail  # noqa: E402
+from scripts.data_collection.project_repos_collector import merger_from_pull, normalize_detail  # noqa: E402
 
 
 class DetailShapeTest(unittest.TestCase):
@@ -35,6 +35,19 @@ class DetailShapeTest(unittest.TestCase):
         header = '<https://api.github.com/repos/a/b/pulls/1/comments?page=2>; rel="next", <https://api.github.com/repos/a/b/pulls/1/comments?page=4>; rel="last"'
         self.assertEqual(next_page(header), "https://api.github.com/repos/a/b/pulls/1/comments?page=2")
         self.assertIsNone(next_page(""))
+
+    def test_merged_by_requires_the_field_and_keeps_the_numeric_id(self) -> None:
+        absent = merger_from_pull({"user": {"login": "a", "id": 1}, "merged": True})
+        self.assertEqual(absent["status"], "FIELD_ABSENT")
+        present = merger_from_pull({
+            "merged_by": {"login": "m", "id": 9},
+            "user": {"login": "a", "id": 4},
+        })
+        self.assertEqual(present["merged_by_id"], 9)
+        self.assertEqual(present["author_id"], 4)
+        empty = merger_from_pull({"merged_by": None, "user": {"login": "a", "id": 4}})
+        self.assertIsNone(empty["merged_by_id"])
+        self.assertEqual(empty["status"], "ok")
 
 
 if __name__ == "__main__":

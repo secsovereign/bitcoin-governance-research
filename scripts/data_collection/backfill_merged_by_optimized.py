@@ -247,9 +247,16 @@ def main():
                        help='Dataset file to merge into (for --merge)')
     parser.add_argument('--merge-output', type=Path,
                        help='Output file for merged dataset (for --merge)')
+    parser.add_argument('--comparison', action='store_true',
+                       help='Fetch merged_by for the seven-year comparison repositories')
     
     args = parser.parse_args()
     
+    if args.comparison:
+        from scripts.data_collection.project_repos_collector import backfill_comparison_identities, token as collector_token
+        backfill_comparison_identities(args.token or collector_token())
+        return
+
     if args.merge:
         # Merge mode
         if not args.merge_input or not args.merge_output:
