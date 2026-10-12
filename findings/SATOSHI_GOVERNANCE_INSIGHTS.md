@@ -1,7 +1,7 @@
 # Satoshi Nakamoto: Governance Insights from Historical Communications
 
 **Analysis Date:** 2026-01-07  
-**Source:** Analysis of 549 Satoshi Nakamoto communications (2008-2015)  
+**Source:** Narrative written against an earlier extract of 549 items (2008-2015). The current archive file holds 1,769 rows.  
 **Data Sources:** GitHub Archive (lugaxker/nakamoto-archive), Bitcoin Forum, Mailing Lists
 
 ---
@@ -293,7 +293,7 @@ This analysis provides historical context for evaluating Bitcoin Core's current 
 - **GitHub Archive:** 562 communications from lugaxker/nakamoto-archive
 - **Mailing Lists:** 2 emails from Bitcoin mailing lists
 - **Bitcoin Forum:** 540+ forum posts
-- **Total Analyzed:** 549 Satoshi communications
+- **Total in the narrative extract:** 549 items. The current file is larger. See `RESEARCH_METHODOLOGY.md`.
 
 ### 10.2 Analysis Methods
 

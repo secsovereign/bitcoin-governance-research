@@ -117,7 +117,7 @@ This document compares our comprehensive analysis with external research on Bitc
 
 ### 5. Satoshi Nakamoto Historical Communications Analysis
 
-**Our Analysis**: Analysis of 549 Satoshi Nakamoto communications (2008-2015)  
+**Our Analysis**: The narrative was written against an earlier extract of 549 items (2008-2015). The current archive file holds 1,769 rows.  
 **Focus**: Historical governance context, principle alignment, governance evolution
 
 **Key Findings**:

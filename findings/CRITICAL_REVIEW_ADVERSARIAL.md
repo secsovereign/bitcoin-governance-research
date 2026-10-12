@@ -88,7 +88,7 @@ The research is **methodologically sound**, **data-driven**, and **well-document
 
 **Acknowledgment**: Comparative benchmarks would strengthen analysis but data is unavailable. Internal consistency (historical vs. recent patterns) is valid regardless.
 
-**Impact**: Claims of "extreme" or "problematic" are based on internal patterns and context (e.g., US income inequality Gini = 0.49 vs. Bitcoin Core authorship Gini = 0.851 historical).
+**Impact**: Claims of extreme or problematic concentration are based on internal patterns, such as authorship Gini 0.851 in the historical window. That figure is not compared with income inequality.
 
 ---
 
@@ -170,7 +170,7 @@ The research is **methodologically sound**, **data-driven**, and **well-document
 **Defense**:
 - ⚠️ Acknowledge limitation: No comparative benchmarks (data unavailable)
 - ✅ Internal consistency (historical vs. recent) is valid
-- ✅ Context provided (e.g., US income inequality Gini = 0.49 vs. Bitcoin Core authorship Gini = 0.851 historical)
+- Context for authorship Gini 0.851 is the historical window inside this corpus. It is not an income comparison.
 
 ---
 

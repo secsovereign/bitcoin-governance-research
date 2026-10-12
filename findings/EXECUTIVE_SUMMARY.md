@@ -15,7 +15,7 @@
 
 Bitcoin Core is the reference implementation that most Bitcoin nodes run. Changes to Bitcoin Core can affect the entire Bitcoin network. Yet governance of Bitcoin Core violates Bitcoin's core principles: trust minimization, decentralization, and censorship resistance.
 
-**Historical Context**: Analysis of 549 Satoshi Nakamoto communications (2008-2015) reveals that Satoshi emphasized decentralization and trust minimization, preferred informal consensus mechanisms, and did not establish formal governance structures. Current Bitcoin Core governance diverges from these principles. See `SATOSHI_GOVERNANCE_INSIGHTS.md` for detailed analysis.
+**Historical Context**: `SATOSHI_GOVERNANCE_INSIGHTS.md` was written against an earlier extract of 549 items. The current archive file holds 1,769 rows (1,205 after a path-and-content dedupe). See `RESEARCH_METHODOLOGY.md`.
 
 ---
 
@@ -44,7 +44,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 **Security implication**: If the top 3 are compromised, they could introduce malicious code affecting the entire Bitcoin network. This is a **single point of failure** in a system designed to have none. The modern picture is thinner still: one lead merger handles about half of recent merges.
 
-**Gini (say which one):** authorship 0.851 historical / 0.834 recent; merge-authority 0.623 / 0.667. US income Gini is ~0.49. Do not cite 0.851 as “the” Gini.
+**Gini (say which one):** authorship 0.851 historical / 0.834 recent; merge-authority 0.623 / 0.667. Do not cite 0.851 as the only Gini. Authorship Gini is not an income comparison.
 
 **Voting blocs:** high-cohesion pairs exist but **n is tiny** (often 3–7 joint appearances). Conflict-PR cohesion 77.8% (10 pairs) vs non-conflict 100% (38) — treat as suggestive, not a voting machine. See `CONFLICT_RESOLUTION_ANALYSIS.md`.
 

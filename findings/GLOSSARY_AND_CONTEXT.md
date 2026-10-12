@@ -108,7 +108,7 @@
 
 **In our analysis**: 
 - 25.5% of maintainer-merged PRs are self-merged
-- 46.1% of self-merges have zero reviews (12.2% of all maintainer PRs)
+- 45.1% of self-merges have zero GitHub review objects (1,129 of 2,501, which is 11.5% of roster-authored merges in the 2026-09-10 snapshot)
 - `CONTRIBUTING.md` sets no numeric minimum for when self-merge is appropriate
 - Non-maintainers: 0% self-merge (not permitted)
 

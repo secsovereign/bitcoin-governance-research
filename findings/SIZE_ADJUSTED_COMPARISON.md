@@ -42,7 +42,7 @@ Roles follow the pass 6 list. foundation-devices/passport-firmware, stratum-mini
 
 ## Indicators that move with volume
 
-Indicators whose Spearman interval with log pull-request volume excludes zero are H4_gini_merges, H6_median_days_to_decision. Those indicators move with scale. The series is LOW POWER.
+The indicator whose Spearman interval with log pull-request volume excludes zero is H4_gini_merges. H6_median_days_to_decision is FRAGILE, so a summary does not treat it as excluding zero. The series is LOW POWER.
 
 | Indicator | Spearman r | Interval | n | Interval excludes zero |
 | --- | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ Indicators whose Spearman interval with log pull-request volume excludes zero ar
 | H3_cohort_active_24m | 0.007 | -0.696 to 0.623 | 14 | no |
 | H4_gini_merges | 0.860 | 0.588 to 0.970 | 17 | yes |
 | H5_bus_factor | 0.368 | -0.201 to 0.812 | 17 | no |
-| H6_median_days_to_decision | -0.431 | -0.743 to -0.002 | 17 | yes |
+| H6_median_days_to_decision | -0.431 | -0.743 to -0.002 | 17 | fragile |
 
 ## Comparison-repository effects
 
