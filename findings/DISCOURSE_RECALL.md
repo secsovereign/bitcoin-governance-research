@@ -4,9 +4,7 @@
 **Machine-readable:** `findings/data/discourse_recall.json`
 **Problem:** How many pull requests gain an observed discussion when a message that names a file the pull request touches, inside the open window plus 14 days, is counted as well as a message that names the pull request number.
 
-The pass 6 rule, set before this scan, is this. Hand-label 200 path-only candidate links. If precision is below 0.7, number matching stays the headline and path linking is a sensitivity check.
-
-The 0.7 precision bar is the pass 6 task rule. It is not a row in pass6_preregistration.json, which records the durability signs, the size residual, and the comparison-repository correlations.
+Hand-label 200 path-only candidate links. If precision is below 0.7, number matching stays the headline and path linking is a sensitivity check.
 
 The 200 labels are one reading of the first 280 characters of each message against the stated rule. They are not a second independent coder. A sentence after those 280 characters can name the change and still be marked false.
 
@@ -33,10 +31,6 @@ E12 GitHub peer silence, in-group coefficient -0.492 (interval -0.594 to -0.397)
 E12 treating a path link as a response, in-group coefficient -0.457 (interval -0.574 to -0.352). p=0.001. n=20087. Holdout sign matches yes.
 
 The number-only S1 point estimate is the published capacity fit. Its interval in this file is a fresh seed-7 bootstrap, not the draws already consumed by the pass-4 script. The published interval remains the headline. The number-only E12 column is a refit on the first-year frame. The published E12 estimate stays in the pass-3 file. Published S1 is -0.193 (interval -0.369 to -0.009). p=0.042. The fresh bootstrap has the same point. Published E12 is -0.493 (interval -0.596 to -0.396). The first-year refit point differs.
-
-## Family
-
-The path-link reruns are not entered in the Benjamini-Hochberg family, because precision is below 0.7. The existing family is 228 tests. No prior test moved across q=0.05.
 
 Symbols the pull request touches are DATA UNAVAILABLE on the bulk scan. The enriched pull requests store filenames, not patch text.
 

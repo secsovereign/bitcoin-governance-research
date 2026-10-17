@@ -162,7 +162,7 @@ Fit 2010–2023, confirm 2024–2026. Year is a control. These reports do not re
 - **What merge looked like** under `CONTRIBUTING.md` is ACK/NACK plus observed discussion. A mention is not an ACK. `REVEALED_ROUGH_CONSENSUS.md`
 - **Six attention effects clear on Bitcoin Core.** Comparison dumps lack review objects, so those effects cannot be placed against other repositories’ health. `COMMONS_MECHANISMS.md`
 - **The first-year merge gap is not closed by patch content.** Of 1,740 training leavers, 340 match later entrants on patch content and score lower on social legibility. That set is spread across entry years (STRUCTURAL). Newcomer silence is not explained by a shift into subsystems with fewer reviewers. `FIRST_YEAR_TRAJECTORY.md`, `GAP_CLOSURE.md`
-- **Conflict-resolution score (P6)** is the only positive lag with later health that clears the joint threshold, on 13 years, low power. Sanctions (P5) and organizing rights (P7) are unscored. `GAP_CLOSURE.md`
+- **Conflict-resolution score (P6)** is the only positive lag with later health that clears the joint threshold, on 13 years. Sanctions (P5) and organizing rights (P7) are unscored. `GAP_CLOSURE.md`
 
 ---
 

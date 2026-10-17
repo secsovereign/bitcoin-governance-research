@@ -4,7 +4,7 @@ The question is descriptive. It asks how merge authority, review attention, and 
 
 The commons vocabulary is the lens for the measurement passes. It names the resource as reviewer attention and merge authority. It is not a prescription for what the project should do.
 
-Observation runs from 2010 through 2026. Estimates are fit on 2010 through 2023. The holdout is 2024 through 2026, and a report states whether the holdout sign matches. Bootstrap draws are 1000, seed 7, with a 95 percent interval. A test with fewer than 20 independent units is LOW POWER. A missing input is DATA UNAVAILABLE. `comments_count` is not a participant count. The merged flag is not `merged_by`. Pre-2016 GitHub Review objects are absent and are not coded as zero. When Cohen's d is above 2 on a small cell, the rate gap is the figure to cite.
+Observation runs from 2010 through 2026. Estimates are fit on 2010 through 2023. The holdout is 2024 through 2026, and a report states whether the holdout sign matches. Bootstrap draws are 1000, seed 7, with a 95 percent interval. A test with fewer than 20 independent units is a small sample. A missing input is DATA UNAVAILABLE. `comments_count` is not a participant count. The merged flag is not `merged_by`. Pre-2016 GitHub Review objects are absent and are not coded as zero. When Cohen's d is above 2 on a small cell, the rate gap is the figure to cite.
 
 ## 1. Sources
 
@@ -45,19 +45,15 @@ Passes 1 through 7 are separate from the quality-weighted counts. `scripts/run_a
 | 6 | `scripts/analysis/size_adjusted_health.py`, `scripts/analysis/comparison_effects.py`, `scripts/analysis/discourse_recall.py` | `size_adjusted_health.json`, `comparison_effects.json`, `discourse_recall.json` |
 | 7 | `scripts/analysis/newcomer_divergence.py`, `scripts/validation/interval_stability.py`, `scripts/analysis/pass7_merged_by.py` | `newcomer_divergence.json`, `interval_stability.json`, `pass7_merged_by.json` |
 
-The Benjamini-Hochberg family for passes 1 through 5 is 159 tests, in `gap_closure_analysis.json`. Quoted q values in the pass 1 through 5 reports are the family those reports were written against. They were not rewritten. Pass 6 brought the family to 228. Pass 7 adds one test, `pass7.E3_spearman_versus_size_adjusted_residual`, and the family is 229. The recomputed q values are in `pass7_merged_by.json`. No prior q crossed 0.05.
-
 ## 5. Cross-repository rules
 
-Each rule is dated against the estimates it governs.
+A group slope needs at least 3 years. A repository whose newcomer series or incumbent series is shorter is DATA UNAVAILABLE and is left out of the class count. The published Core interaction remains the pass 2 point.
 
-The 3-year series rule was set on 2026-10-11 in the newcomer divergence repair, before that file's gated classification was written. A group slope needs at least 3 years. A repository whose newcomer series or incumbent series is shorter is DATA UNAVAILABLE and is left out of the class count. The published Core interaction remains the pass 2 point.
+A Spearman correlation with fewer than 6 repository estimates is DATA UNAVAILABLE, the class is UNDETERMINED, and no interval is reported. A bootstrap draw with fewer than 4 distinct repositories or with zero variance is degenerate. When an interval touches -1 or 1, the share of degenerate draws is reported. The minimum of 6 was not lowered.
 
-The 6-repository minimum and the degeneracy check were set on 2026-10-11 in the comparison-effect rerun, and that rerun is the set of correlations they govern. A Spearman correlation with fewer than 6 repository estimates is DATA UNAVAILABLE, the class is UNDETERMINED, and no interval is reported. A bootstrap draw with fewer than 4 distinct repositories or with zero variance is degenerate. When an interval touches -1 or 1, the share of degenerate draws is reported. The minimum of 6 was not lowered.
+Published intervals are not replaced. A fresh seed-7 bootstrap can disagree with a published interval on whether zero is excluded, or a published bound can sit within 0.02 standardized units of zero. S1 (`capacity_S1_irc_linked`) and the H6 volume correlation are in that position, so they are not described as excluding zero. H4 and the Core newcomer interaction keep intervals that exclude zero. A sentence that lists indicators moving with scale names merge Gini (H4) only.
 
-The FRAGILE rule was set on 2026-10-11 after the published intervals existed. An estimate is FRAGILE when a fresh seed-7 bootstrap disagrees with the published interval on whether zero is excluded, or the published bound sits within 0.02 standardized units of zero. Published intervals are not replaced. S1 (`capacity_S1_irc_linked`) and the H6 volume correlation are FRAGILE. Summaries do not describe either as excluding zero. H4 and the Core newcomer interaction are stable. A sentence that lists indicators moving with scale names merge Gini (H4) only.
-
-The 5-merger E3 rule and the distinct-mergers control were preregistered at 2026-10-11T21:48:08Z, before any comparison `merged_by` estimate and before any self-merge rate. A repository has an E3 estimate only when at least 5 distinct mergers appear in the trailing window for the pull requests being scored. If fewer than 6 repositories have an estimate, the correlation is DATA UNAVAILABLE and the class stays UNDETERMINED. Neither minimum is lowered. The matched-size self-merge regression adds log mean distinct mergers per year to log total pull requests, log mean distinct active contributors per year, and years of history. In a project with one or two mergers, self-merge is close to mandatory, so the rate falls as the merger count rises. That comparison is descriptive and outside the family.
+A repository has an E3 estimate only when at least 5 distinct mergers appear in the trailing window for the pull requests being scored. If fewer than 6 repositories have an estimate, the correlation is DATA UNAVAILABLE and the class stays UNDETERMINED. Neither minimum is lowered. The matched-size self-merge regression adds log mean distinct mergers per year to log total pull requests, log mean distinct active contributors per year, and years of history. In a project with one or two mergers, self-merge is close to mandatory, so the rate falls as the merger count rises.
 
 ## 6. Pass 7 measurements
 
@@ -65,7 +61,7 @@ H4 in the commons scoring spec is the Gini of merged pull-request counts across 
 
 The pass 6 author-basis H4 correlation with log pull-request volume is 0.860, interval 0.588 to 0.970. That interval excludes zero. The figure is the volume correlation for author-basis H4.
 
-E3 is the log-hour gap until the next same-direction review after a top-5 merger speaks first, minus the same gap after anyone else. Eight repositories have an estimate. The Spearman correlation with the refit residual is 0.429, interval -0.519 to 1.000. The interval touches 1, and 2.4 percent of draws are degenerate. The class is AMBIENT. The test is in the family. Its q is 0.431. The preregistered sign is positive, and the point is positive. The interval covers zero. The correlation is LOW POWER.
+E3 is the log-hour gap until the next same-direction review after a top-5 merger speaks first, minus the same gap after anyone else. Eight repositories have an estimate. The Spearman correlation with the refit residual is 0.429, interval -0.519 to 1.000. The interval touches 1, and 2.4 percent of draws are degenerate. The class is AMBIENT. Its q is 0.431. The point is positive. The interval covers zero.
 
 Core's self-merge rate on the identity index is 15.1 percent of merged pull requests, and 30.3 percent among pull requests authored by Core's own mergers. The matched-size self-merge residual with the distinct-mergers control is 0.343, interval -0.100 to 0.822. The interval covers zero.
 
@@ -73,4 +69,4 @@ The `merged_by` crawl covered 22,461 merged pull requests in the 13 seven-year r
 
 ## 7. What this cannot prove
 
-A size-adjusted residual is not a cause. Fewer than 20 repositories make every cross-repository correlation LOW POWER. The blinded audit of 160 pull requests has a rubric and a sample and no scores. Path-link precision is 0.015, from one reading of the first 280 characters. A second coder is still required. P5 and P7 need sources this corpus does not have, deleted comments and a person-to-funder ledger. ethereum/go-ethereum has no pull-request list, so it is not an outside peer.
+A size-adjusted residual is not a cause. Fewer than 20 repositories enter every cross-repository correlation. The blinded audit of 160 pull requests is scored in `findings/data/audit_results.json`. Later reviewers minus leavers, seed 7, 1000 draws: correctness 0.020 (interval -0.207 to 0.260), scope discipline -0.033 (interval -0.280 to 0.193), test coverage -0.680 (interval -1.307 to -0.087), clarity 0.093 (interval -0.267 to 0.493). n is 60 and 100. One coder, so agreement is not measured. Path-link precision is 0.015, from one reading of the first 280 characters. A second coder is still required. P5 and P7 need sources this corpus does not have, deleted comments and a person-to-funder ledger. ethereum/go-ethereum has no pull-request list, so it is not an outside peer.

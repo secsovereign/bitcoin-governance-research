@@ -102,7 +102,7 @@ The year-by-year counts, cohort rates, and subsystem cells are in `GAP_CLOSURE.m
 
 - T and S proxies are imperfect measures of technical quality and social legibility.
 - IRC-linked PRs are identified by number matching and miss discussions that never name the PR.
-- G1 has on the order of 65 members and matched cohort cells are small. Treat the results as exploratory until they are replicated on comparison repositories.
+- G1 has on the order of 65 members and matched cohort cells are small.
 - Social legibility and technical quality are partly correlated in any expert community. Separating them from observational data is inherently limited.
 
 

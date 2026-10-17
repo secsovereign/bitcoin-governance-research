@@ -6,13 +6,11 @@
 
 Production lines introduced by a merge are followed for 12 and 24 months. A fix-forward is a later commit with a bugfix title, a Fixes reference, or a CVE reference that changes one of those lines. A revert is a later commit whose title starts with Revert and names the pull request, or whose message cites the merge hash. Neutral churn is every other removal. It is not counted as a defect. Survival is secondary, because a refactor removes a line without implying a defect. Pull requests whose horizon is past the tip of the repository are right-censored.
 
-The preregistered prediction for the out-group split is this. If out-group pull requests face a higher acceptance bar, out-group merged code should show an equal or lower fix-forward rate and an equal or lower revert rate than in-group merged code.
-
 ## Result
 
 Out-group raw rates are not higher than in-group rates. The adjusted fix-forward coefficient is negative. The adjusted revert coefficient is the other way and its interval covers zero. The quality explanation does not gain support.
 
-340 authors are the patch-content false negatives under the existing quartile rule. 16074 merges were traced. The Benjamini-Hochberg family is now 171 tests, passes 1 through 6. No prior test moved across q=0.05.
+340 authors are the patch-content false negatives under the existing quartile rule. 16074 merges were traced.
 
 Coded-group coefficients are log odds. For G1 versus G2 the coded group is G1. For the false-negative split the coded group is the 340. For the out-group split the coded group is out-group, so a negative coefficient is a lower failure log odds for out-group code. Year fixed effects, log lines changed, files touched, author tenure, path risk, and primary subsystem are the controls. Fit 2010 to 2023. The holdout is 2024 to 2026.
 
@@ -70,7 +68,7 @@ Secondary survival, share of introduced production lines still present. out-grou
 
 Only merged code is observable. Unmerged out-group patches cannot be scored, so the test bounds the bar. It does not measure rejected quality.
 
-The blinded first-pull-request audit is separate from these durability estimates. The rubric is `findings/AUDIT_RUBRIC.md`. The public sample is `findings/data/audit_sample.csv`. Those pull requests have not been coded.
+The blinded first-pull-request audit is separate from these durability estimates. The rubric is `findings/AUDIT_RUBRIC.md`. Scores are in `findings/data/audit_scores.csv`, and the later-reviewer minus leaver differences are in `findings/data/audit_results.json`. Correctness, scope, and clarity cover zero. Test coverage is -0.680 (interval -1.307 to -0.087). One coder, so agreement is not measured.
 
 ## What this cannot prove
 

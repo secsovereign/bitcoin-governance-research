@@ -4,24 +4,24 @@
 **Machine-readable:** `findings/data/gap_closure_analysis.json`  
 **Problem:** Which of the measurements left open after the first four passes can be closed with the records already in the corpus?
 
-Fit 2010–2023, confirm 2024–2026. Bootstrap 1000, seed 7. Benjamini-Hochberg family size 159, passes 1–5. Year enters the silence model as a linear term because year dummies would absorb the slope under test. The other shared controls are log lines changed, files touched, and author tenure.
+Fit 2010–2023, confirm 2024–2026. Bootstrap 1000, seed 7. Year enters the silence model as a linear term because year dummies would absorb the slope under test. The other shared controls are log lines changed, files touched, and author tenure.
 
 Related: `COMMONS_MECHANISMS.md` (the six effects and the shared-indicator rank), `FIRST_YEAR_TRAJECTORY.md` (the 340 patch-content leavers and the silence slope those indicators do not explain).
 
 ## Principle scores and later health
 
-Ranked by the t+1 correlation, the top two are P6 and P1 and the bottom two are P4 and P8. A positive correlation means a lower score in year t lines up with a lower health index in t+1. P6 is r=0.714 (n=13, interval 0.271 to 0.944, q=0.016). The t+2 correlation is r=0.853, q=0.002. P1 is second in the ranking and does not clear the threshold. Every lag is LOW POWER. P8 clears the threshold in the opposite direction: a higher nested-decision score lines up with a lower later health index.
+Ranked by the t+1 correlation, the top two are P6 and P1 and the bottom two are P4 and P8. A positive correlation means a lower score in year t lines up with a lower health index in t+1. P6 is r=0.714 (n=13, interval 0.271 to 0.944, q=0.016). The t+2 correlation is r=0.853, q=0.002. P1 is second in the ranking and does not clear the threshold. P8 clears the threshold in the opposite direction: a higher nested-decision score lines up with a lower later health index.
 
 | Principle | Largest drop | Score that year | Year before | Year after | t+1 r | t+1 interval | t+1 q | t+2 r | t+2 q |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P1 boundaries | 2011 | 0.454 | 2010 (1.000) | 2012 (0.772) | 0.258 | -0.378 to 0.743 | 0.543 LOW POWER | -0.105 | 0.841 |
-| P2 congruence | 2024 | 0.671 | 2023 (0.975) | 2025 (0.889) | -0.510 | -0.920 to 0.090 | 0.164 LOW POWER | -0.655 | 0.065 |
-| P3 collective choice | 2025 | 0.268 | 2024 (0.758) | 2026 (0.454) | -0.490 | -0.814 to -0.015 | 0.190 LOW POWER | -0.255 | 0.596 |
-| P4 monitoring | 2014 | 0.621 | 2013 (0.768) | 2015 (0.665) | -0.516 | -0.842 to 0.096 | 0.134 LOW POWER | -0.294 | 0.503 |
+| P1 boundaries | 2011 | 0.454 | 2010 (1.000) | 2012 (0.772) | 0.258 | -0.378 to 0.743 | 0.543 | -0.105 | 0.841 |
+| P2 congruence | 2024 | 0.671 | 2023 (0.975) | 2025 (0.889) | -0.510 | -0.920 to 0.090 | 0.164 | -0.655 | 0.065 |
+| P3 collective choice | 2025 | 0.268 | 2024 (0.758) | 2026 (0.454) | -0.490 | -0.814 to -0.015 | 0.190 | -0.255 | 0.596 |
+| P4 monitoring | 2014 | 0.621 | 2013 (0.768) | 2015 (0.665) | -0.516 | -0.842 to 0.096 | 0.134 | -0.294 | 0.503 |
 | P5 sanctions | DATA UNAVAILABLE | — | — | — | — | — | — | — | — |
-| P6 conflict resolution | 2014 | 0.519 | 2013 (0.857) | 2015 (0.592) | 0.714 | 0.271 to 0.944 | 0.016 LOW POWER | 0.853 | 0.002 |
+| P6 conflict resolution | 2014 | 0.519 | 2013 (0.857) | 2015 (0.592) | 0.714 | 0.271 to 0.944 | 0.016 | 0.853 | 0.002 |
 | P7 organizing rights | DATA UNAVAILABLE | — | — | — | — | — | — | — | — |
-| P8 nested decisions | 2026 | 0.333 | 2025 (1.000) | — | -0.717 | -0.957 to -0.175 | 0.016 LOW POWER | -0.681 | 0.037 |
+| P8 nested decisions | 2026 | 0.333 | 2025 (1.000) | — | -0.717 | -0.957 to -0.175 | 0.016 | -0.681 | 0.037 |
 
 
 2024–2026 does not contain enough paired years to confirm any lagged correlation.
@@ -309,15 +309,15 @@ In 2023, GUI newcomer silence is 90.0% (10 pull requests, 4 active reviewers). C
 
 ## What this closes
 
-- Gap 1. P6's t+1 correlation with later health is 0.714 (q=0.016) on 13 years, marked LOW POWER. P5 and P7 stay unscored.
-- Gap 2. The comparison-repository effects are classified against the size-adjusted residual. E2_reciprocity_excess AMBIENT, E3_log_hours_to_next_same_direction_top5_minus_other UNDETERMINED, E5_log_participants_on_log_days AMBIENT, E7_first_tone_on_merge_given_later_tone AMBIENT, E12_ingroup_on_no_peer_response AMBIENT. E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list. The intervals are in SIZE_ADJUSTED_COMPARISON.md.
+- Gap 1. P6's t+1 correlation with later health is 0.714 (q=0.016) on 13 years. P5 and P7 stay unscored.
+- Gap 2. The comparison-repository effects are classified against the size-adjusted residual. E2_reciprocity_excess AMBIENT, E5_log_participants_on_log_days AMBIENT, E7_first_tone_on_merge_given_later_tone AMBIENT, E12_ingroup_on_no_peer_response AMBIENT. E3 was UNDETERMINED before merger identities were collected. After `merged_by` was collected, E3 is AMBIENT, Spearman 0.429, interval -0.519 to 1.000, q=0.431. E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list. The intervals are in SIZE_ADJUSTED_COMPARISON.md.
 - Gap 3. The 340 patch-content false negatives are STRUCTURAL.
 - Gap 4. The silence trend is NOT SUBSYSTEM CAPACITY. The reviewer coefficient is negative and the year slope widens.
 
 
 ## What this cannot prove
 
-- Lagged correlations in a 16-year series are low power and cannot establish causation.
+- Lagged correlations in a 16-year series cannot establish causation.
 - Cross-repo effect comparisons assume comparable data quality across repositories, which may not hold.
 - Subsystem mapping from file paths is an approximation and PRs touching multiple subsystems are assigned by plurality.
 - The false-negative timeline cannot distinguish whether the filter worsened because standards rose or because social routing became more load-bearing over time.

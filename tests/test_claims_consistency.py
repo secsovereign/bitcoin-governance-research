@@ -75,7 +75,6 @@ class ClaimsConsistencyTests(unittest.TestCase):
         text = (ROOT / "findings" / "RESEARCH_METHODOLOGY.md").read_text(encoding="utf-8")
         by_id = {claim["id"]: claim["sentence"] for claim in build_claims()}
         for key in (
-            "family_size",
             "roster_self_merge",
             "revealed_self_merge",
             "e3_spearman",

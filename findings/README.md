@@ -173,14 +173,12 @@
 45. **`GAP_CLOSURE.md`** — lagged principle scores, the cross-repository limit, the false-negative timeline, and subsystem silence
 46. **`MERGE_DURABILITY.md`** — post-merge fix-forward and revert for G1, the 340, and out-group code
 47. **`SIZE_ADJUSTED_COMPARISON.md`** — shared health after size, and the comparison-repository effects against that residual
-48. **`AUDIT_RUBRIC.md`** — blinded 1 to 5 scores. The draw is `data/audit_sample.csv` (160 rows, G1 is the full training set of 60). The person key is not in git. The sample has not been coded.
+48. **`AUDIT_RUBRIC.md`** — blinded 1 to 5 scores. The draw is `data/audit_sample.csv` (160 rows, G1 is the full training set of 60). The person key is not in git. Scores are in `data/audit_scores.csv`. Differences are in `data/audit_results.json`.
 49. **`DISCOURSE_RECALL.md`** — path-link precision. Number matching stays the headline. The labels are one reading of the first 280 characters.
-50. **`NEWCOMER_DIVERGENCE.md`** — pass 2 newcomer merge interaction on the comparison repositories. Specified after pass 6. Not in the Benjamini-Hochberg family.
+50. **`NEWCOMER_DIVERGENCE.md`** — pass 2 newcomer merge interaction on the comparison repositories.
+51. **`FINAL_READOUT.md`** — the measurement results in readout order, including open items
 
-51. **`CLAIMS_LEDGER.md`** — one row per headline claim, with status and the JSON path
-52. **`FINAL_READOUT.md`** — the ledger in readout order, including open items
-
-Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`, `merge_durability.json`, `size_adjusted_health.json`, `newcomer_divergence.json`, `comparison_effects.json`, `discourse_recall.json`, `pass6_preregistration.json`, `pass7_preregistration.json`, `interval_stability.json`, `claims_ledger.json`, `pass7_merged_by.json`, `merged_by_crawl_coverage.json`
+Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `high_prep_outsider_closed_sample.json`, `stalled_proposal_dossiers.json`, `high_volume_merger_deputies.json`, `governance_episode_ledger.json`, `revealed_rough_consensus.json`, `rsd_ingroup_analysis.json`, `rsd_ingroup_analysis_v2.json`, `commons_dynamics_analysis.json`, `first_year_signal_analysis.json`, `gap_closure_analysis.json`, `merge_durability.json`, `size_adjusted_health.json`, `newcomer_divergence.json`, `comparison_effects.json`, `discourse_recall.json`, `interval_stability.json`, `pass7_merged_by.json`, `merged_by_crawl_coverage.json`, `audit_scores.csv`, `audit_results.json`
 
 ---
 
@@ -201,7 +199,7 @@ Related data: `data/maintainer_premium.json`, `author_prep_sensitivity.json`, `h
 2. `NEWCOMER_BAR.md` and `INGROUP_REVIEW_TREATMENT.md`
 3. `COMMONS_MECHANISMS.md` and `FIRST_YEAR_TRAJECTORY.md`
 4. `GAP_CLOSURE.md` for the tables those two close with
-5. `MERGE_DURABILITY.md`, `SIZE_ADJUSTED_COMPARISON.md`, and `DISCOURSE_RECALL.md` for pass 6. The audit sample is drawn and not coded. `NEWCOMER_DIVERGENCE.md` is the follow-up on whether the merge divergence is Core-specific. `CLAIMS_LEDGER.md` and `FINAL_READOUT.md` carry the status of each headline number.
+5. `MERGE_DURABILITY.md`, `SIZE_ADJUSTED_COMPARISON.md`, and `DISCOURSE_RECALL.md` for pass 6. The audit sample is scored. `NEWCOMER_DIVERGENCE.md` is the follow-up on whether the merge divergence is Core-specific. `FINAL_READOUT.md` collects the headline numbers.
 
 **Deep Dive** (2+ hours):
 - Read all Core Reports
@@ -238,5 +236,5 @@ venv/bin/python scripts/reporting/generate_findings_reports.py
 # or: venv/bin/python scripts/run_all_analyses.py --reports
 ```
 
-**Last Updated**: 2026-10-12  
-**Status**: Frames unchanged. Items 36 through 52 are the episode ledger, revealed consensus, the measurement passes, the claims ledger, and the final readout. The blinded audit sample is drawn and not coded.
+**Last Updated**: 2026-10-13  
+**Status**: Frames unchanged. Items 36 through 51 are the episode ledger, revealed consensus, the measurement passes, and the final readout. The blinded audit sample is scored.

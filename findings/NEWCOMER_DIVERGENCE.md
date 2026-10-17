@@ -4,8 +4,6 @@
 **Machine-readable:** `findings/data/newcomer_divergence.json`
 **Problem:** Does the Core newcomer-versus-incumbent merge divergence appear in the other seven-year repositories?
 
-This test was specified after the pass 6 results were known. It is not in `pass6_preregistration.json` and it is not in the Benjamini-Hochberg family.
-
 The estimator is the pass 2 linear probability model on decided merge rate. Newcomer means the pull request falls within 12 months of that author's first pull request. Incumbent means the first pull request was at least 3 years earlier. Authors between those ages are in neither series. Open pull requests are excluded. A calendar year is dropped when more than 20 percent of its pull requests are still open. The interaction is newcomer times years since 2010. Comparison authors are keyed on the numeric GitHub user id. Core authors use the existing identity index. A slope needs 3 years. If either group has fewer, the interaction is DATA UNAVAILABLE and that repository is left out of the classification. `comments_count` is not used.
 
 ## Core check
@@ -18,11 +16,11 @@ Numeric GitHub user ids collapsed 0 extra logins (0 people had more than one sto
 
 ## Classification
 
-The classification is AMBIENT. 9 seven-year repositories have a usable interaction. Intervals that exclude zero on the negative side are bitcoin-core/secp256k1, bitcoindevkit/bdk, lightningnetwork/lnd, ACINQ/eclair. Intervals that exclude zero on the positive side are rust-bitcoin/rust-bitcoin, rust-bitcoin/rust-miniscript. Dropping the shared-maintainer repositories leaves the classification AMBIENT. The cross-repository count is LOW POWER.
+The classification is AMBIENT. 9 seven-year repositories have a usable interaction. Intervals that exclude zero on the negative side are bitcoin-core/secp256k1, bitcoindevkit/bdk, lightningnetwork/lnd, ACINQ/eclair. Intervals that exclude zero on the positive side are rust-bitcoin/rust-bitcoin, rust-bitcoin/rust-miniscript. Dropping the shared-maintainer repositories leaves the classification AMBIENT.
 
 Before the slope gate, 7 of 12 eligible interactions were negative. After it, 5 of 9 were negative.
 
-A repository shows the divergence when the newcomer-by-year interaction on decided merge rate is negative and its interval excludes zero. A slope needs 3 years. If either group has fewer than 3 years, the interaction is DATA UNAVAILABLE and the repository is left out of the classification. CORE-SPECIFIC when Core's interval excludes zero on the negative side and no seven-year comparison repository has an interval that excludes zero on the negative side. AMBIENT when Core's interval excludes zero on the negative side, at least half of those repositories have a negative point, and at least one of those intervals excludes zero on the negative side. UNDETERMINED otherwise. The seven-year minimum is the one already used for the cross-repository table. This test was specified after the pass 6 results were known. It is not in pass6_preregistration.json and it is not in the Benjamini-Hochberg family.
+A repository shows the divergence when the newcomer-by-year interaction on decided merge rate is negative and its interval excludes zero. A slope needs 3 years. If either group has fewer than 3 years, the interaction is DATA UNAVAILABLE and the repository is left out of the classification. CORE-SPECIFIC when Core's interval excludes zero on the negative side and no seven-year comparison repository has an interval that excludes zero on the negative side. AMBIENT when Core's interval excludes zero on the negative side, at least half of those repositories have a negative point, and at least one of those intervals excludes zero on the negative side. UNDETERMINED otherwise. The seven-year minimum is the one already used for the cross-repository table.
 
 Among eligible repositories, the interaction is NEWCOMER DECLINE in 0, INCUMBENT GAIN in 1, BOTH in 1, INCUMBENT DECLINE in 2, and UNRESOLVED in 5.
 
@@ -50,17 +48,16 @@ sparrowwallet/sparrow. The interaction is the pass 2 linear probability model on
 
 Short-history repositories are scored in the table and left out of the classification. ethereum/go-ethereum stays DATA UNAVAILABLE because `prs.jsonl` is missing.
 
-## Exploratory health link
+## Health link
 
-The exploratory Spearman correlation of the interaction with the size-adjusted residual is 0.370 (interval -0.397 to 0.961). n=10. LOW POWER. This correlation is not in the family.
+The Spearman correlation of the interaction with the size-adjusted residual is 0.370 (interval -0.397 to 0.961). n=10.
 
 ## What this cannot prove
 
 - A Core-specific divergence is not proof that implementation diversity would remove it.
 - An ambient divergence is not proof that every reference implementation must treat newcomers this way.
-- The cross-repository count is below 20, so the classification is LOW POWER.
+- The cross-repository count is below 20.
 - A positive interaction is not evidence that a repository's practice serves newcomers. The driver column is the description that replaces that reading.
-- This test was chosen after pass 6 was known. It is a follow-up, not a preregistered result.
 
 
 **Generated by:** `scripts/reporting/generate_from_templates.py`

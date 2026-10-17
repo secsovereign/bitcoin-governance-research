@@ -45,5 +45,5 @@ Each row is a headline claim. The number is taken from the committed JSON named 
 
 ## What this cannot prove
 
-The ledger records the status of a measurement. It does not turn a LOW POWER interval that covers zero into a cause, and it does not score the blinded audit.
+The ledger records the status of a measurement. It does not turn a LOW POWER interval that covers zero into a cause. The blinded audit is scored in `findings/data/audit_results.json`. Later reviewers minus leavers: correctness 0.020 (interval -0.207 to 0.260), scope discipline -0.033 (interval -0.280 to 0.193), test coverage -0.680 (interval -1.307 to -0.087), clarity 0.093 (interval -0.267 to 0.493). n is 60 and 100. One coder, so agreement is not measured.
 

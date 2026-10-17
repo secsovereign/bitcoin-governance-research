@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
@@ -443,7 +444,7 @@ def render_markdown(claims: List[Dict[str, Any]]) -> str:
         "",
         "## What this cannot prove",
         "",
-        "The ledger records the status of a measurement. It does not turn a LOW POWER interval that covers zero into a cause, and it does not score the blinded audit.",
+        "The ledger records the status of a measurement. It does not turn a LOW POWER interval that covers zero into a cause. The blinded audit is scored in `findings/data/audit_results.json`. Later reviewers minus leavers: correctness 0.020 (interval -0.207 to 0.260), scope discipline -0.033 (interval -0.280 to 0.193), test coverage -0.680 (interval -1.307 to -0.087), clarity 0.093 (interval -0.267 to 0.493). n is 60 and 100. One coder, so agreement is not measured.",
         "",
     ])
     return "\n".join(lines) + "\n"
@@ -497,7 +498,7 @@ def render_readout(claims: List[Dict[str, Any]]) -> str:
     lines.extend([
         "## Open items",
         "",
-        "The blinded audit of 160 pull requests has a rubric and a sample and no scores.",
+        "The blinded audit of 160 pull requests is scored. Later reviewers minus leavers, seed 7, 1000 draws: correctness 0.020 (interval -0.207 to 0.260), scope discipline -0.033 (interval -0.280 to 0.193), test coverage -0.680 (interval -1.307 to -0.087), clarity 0.093 (interval -0.267 to 0.493). n is 60 and 100. One coder, so agreement is not measured.",
         "",
         "Path-link precision is 0.015, from one reading of the first 280 characters. A second independent coder is needed.",
         "",
@@ -528,7 +529,8 @@ def write_outputs() -> List[str]:
 
 def main() -> int:
     claims = build_claims()
-    write_outputs()
+    if "--write" in sys.argv:
+        write_outputs()
     failures = check_findings(claims)
     for failure in failures:
         print(failure)

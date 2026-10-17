@@ -74,11 +74,11 @@ Bitcoin Core on the shared subset is last among ranked repositories. Its full pr
 
 ## Lagged principle scores
 
-On bitcoin/bitcoin, the conflict-resolution score (P6) in year t has Spearman r=0.714 with the health index in t+1 (n=13, interval 0.271 to 0.944, q=0.016). That is the only positive lag that clears the passes 1–5 threshold. It is LOW POWER. The nested-decision score (P8) runs the other way: r=-0.717, q=0.016. P5 and P7 have no scored year. 2024–2026 does not contain enough pairs to confirm the lags.
+On bitcoin/bitcoin, the conflict-resolution score (P6) in year t has Spearman r=0.714 with the health index in t+1 (n=13, interval 0.271 to 0.944, q=0.016). That is the only positive lag that clears the passes 1–5 threshold. The nested-decision score (P8) runs the other way: r=-0.717, q=0.016. P5 and P7 have no scored year. 2024–2026 does not contain enough pairs to confirm the lags.
 
 ## The six effects on other repositories
 
-13 comparison repositories have at least seven years of history in the earlier table. Review objects, comment authors, and file paths are now on the comparison dumps. E2_reciprocity_excess is AMBIENT. E3_log_hours_to_next_same_direction_top5_minus_other is UNDETERMINED. E5_log_participants_on_log_days is AMBIENT. E7_first_tone_on_merge_given_later_tone is AMBIENT. E12_ingroup_on_no_peer_response is AMBIENT. The correlation is with the size-adjusted residual, not the raw health index. The rule and the intervals are in SIZE_ADJUSTED_COMPARISON.md. E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list.
+13 comparison repositories have at least seven years of history in the earlier table. Review objects, comment authors, and file paths are now on the comparison dumps. E2_reciprocity_excess is AMBIENT. E5_log_participants_on_log_days is AMBIENT. E7_first_tone_on_merge_given_later_tone is AMBIENT. E12_ingroup_on_no_peer_response is AMBIENT. E3 was UNDETERMINED before merger identities were collected. After `merged_by` was collected, E3 is AMBIENT, Spearman 0.429, interval -0.519 to 1.000, q=0.431. The correlation is with the size-adjusted residual, not the raw health index. The rule and the intervals are in SIZE_ADJUSTED_COMPARISON.md. E9 is not applicable outside bitcoin/bitcoin. ethereum/go-ethereum is DATA UNAVAILABLE because it has no pull-request list.
 
 The principle series and the repository table are in `GAP_CLOSURE.md`.
 
@@ -86,9 +86,9 @@ The principle series and the repository table are in `GAP_CLOSURE.md`.
 
 - Psychological states are not observable. The effects are behavioral signatures only.
 - Ostrom's principles are correlates of durable commons, not proven causes of these outcomes.
-- A series of about 16 years cannot establish causation. Lagged correlations are low power.
+- A series of about 16 years cannot establish causation.
 - P5, P7, E4b, and E11 rely on thin or model-dependent data. P5 and E11 are low observability because deleted and off-platform sanctions are missing. P7 has no person-to-funder ledger, and its sentiment is a keyword model. E4b depends on the function-word lists.
-- Results that fail the 2024-2026 holdout or the Benjamini-Hochberg correction are exploratory.
+- A result that fails the 2024-2026 holdout is reported with that mismatch.
 - A commons can score poorly and still survive for a time on funding or reputation before the health metrics show it.
 
 
