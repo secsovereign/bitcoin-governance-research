@@ -10,6 +10,8 @@ Observation runs from 2010 through 2026. Estimates are fit on 2010 through 2023.
 
 GitHub pull requests, reviews, and issues for bitcoin/bitcoin are in `data/github/prs_raw.jsonl` and `data/processed/enriched_prs.jsonl`. Comparison repositories are under `data/github/repos/`. Informal channels are the two mailing lists, IRC, Delving Bitcoin, and Bitcointalk. Bitcointalk citations use the stored post count of 158,917. The topic `n_posts` field over-counts.
 
+`enriched_prs.jsonl` has 25,122 pull requests. Reports that cite 25,122 are using that file. On 2026-10-31 `prs_raw.jsonl` has 25,506 lines. Delving citations of 4,662 posts are the 2026-09-06 collection. The local Delving file collected 2026-10-12 has 4,817 posts and 625 topics, and those reports were not refit. The deduped mailing-list count in the reports is 51,062. A 2026-10-12 refresh added 38 bitcoin-dev messages (24,682) and 16 cryptography messages (26,436). That total was not re-deduped.
+
 The Satoshi file is `data/satoshi_archive/satoshi_communications.jsonl`. It holds 1,769 rows. Hashing the stored path together with a content prefix leaves 1,205 distinct rows. Sources are github_archive 1,174, nakamoto_institute 590, mailing_list 4, and p2p_research 1. The stored `type` field is unknown for 1,156 rows and missing for 595, so it does not support the older content-type split into 14 emails and 22 code releases. The figure 549 does not describe this file.
 
 ## 2. Identity and merge keys

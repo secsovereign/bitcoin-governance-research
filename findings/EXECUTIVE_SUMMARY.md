@@ -2,7 +2,7 @@
 
 **25,122 PRs | 8,890 Issues | 51,062 Emails (2 ML lists) | 430,613 IRC | 4,662 Delving | 158,917 Bitcointalk | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-10-07 (measurement passes below; informal-channel counts unchanged)
+**Last Updated**: 2026-10-31. The banner counts are the analysis snapshot. `enriched_prs.jsonl` is still 25,122 pull requests. On 2026-10-31 the local raw file has 25,506 lines. Delving citations of 4,662 posts are the 2026-09-06 collection. The local Delving file has 4,817 posts and 625 topics, collected 2026-10-12, and was not refit. A 2026-10-12 list refresh added 38 bitcoin-dev messages (24,682) and 16 cryptography messages (26,436). The deduped email total of 51,062 was not recomputed. Roster self-merge rates stay on the 2026-09-10 artifact. See `RESEARCH_METHODOLOGY.md`.
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, combined mailing lists, Delving, Bitcointalk), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
@@ -34,7 +34,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 
 ### Merge concentration
 
-**Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`). That is 21 humans: `TheCharlatan` and `sedited` are the same person after a GitHub rename. Merge stats in this dump use `sedited` (0 `TheCharlatan` merges).  
+**Canonical roster**: 22 GitHub logins (`data/maintainers/canonical_maintainers.json`). `TheCharlatan` and `sedited` stay distinct in the maintainer login set and in the identity index. Informal nick joins may treat the rename as one person. Merge stats in this dump use `sedited` (0 `TheCharlatan` merges).  
 **Merge keys ≠ roster.** Only 23 GitHub logins appear as `merged_by`. Everyone else **cannot merge** — a zero as merger is lack of keys, not unused privilege. Reviewer/ACK is not merge authority. Non-maintainer “merge rate” is author-success (a key holder merged their PR). See `GLOSSARY_AND_CONTEXT.md` and `data/maintainers/merge_capability.json`.  
 **Current merge-key users** (merged since 2023): fanquake, achow101, sedited, glozow, ryanofsky, hebasto, maflcko.  
 **Historical**: laanwj, sipa, maflcko, and others with no recent merges. See `MAINTAINER_LIST_SOURCE.md`.  
@@ -51,7 +51,7 @@ All-time rates mix eras and channels. Read `GOVERNANCE_FRAMES.md` before quoting
 ### Arbitrary Authority = No Accountability
 
 **25.5% self-merge rate** (2,501 of 9,793 maintainer-merged PRs).  
-**45.1% of self-merges have zero reviews** (1,129 PRs, 11.6% of all maintainer-merged PRs).  
+**45.1% of self-merges have zero reviews** (1,129 PRs, 11.5% of all maintainer-merged PRs).  
 **Written rule, no numeric minimum.** `CONTRIBUTING.md` puts merge with merge maintainers, who judge contributor consensus and may weigh reviewers by merit. Observed review counts still run from 0 to 14+. Cite 2022+ as the current process bar. Pre-2016 GitHub Review objects are missing from this dump. See `REVEALED_ROUGH_CONSENSUS.md`.
 
 **Security implication**: A merge-key holder can merge their own code with zero GitHub Review objects. The written rule does not set a minimum. What that judgment looked like is in `REVEALED_ROUGH_CONSENSUS.md`.
@@ -85,7 +85,7 @@ The matched-size self-merge residual with the distinct-mergers control is 0.343,
 ### Process vs Structure: The Efficiency Trap
 
 **Process improvements** (2012-2020 → 2021-2025):
-- Zero-review merges: 30.3% → 3.3% (89.1% reduction) ✅
+- Zero-review is not one series. The unsplit 0.3 rule on 2012 through 2020 is 30.3% (2,885 of 9,537). Recent MAX, 2021 through 2025, is 3.3% (205 of 6,216). See `RESEARCH_METHODOLOGY.md`.
 - Response time: 30.6 → 8.1 hours (73% faster) ✅
 - Cross-status reviews: 50% → 72% (more integration) ✅
 
@@ -117,7 +117,7 @@ The matched-size self-merge residual with the distinct-mergers control is 0.343,
 - Implement censorship mechanisms
 - Create network splits
 
-**11.6% of maintainer-merged PRs are zero-review self-merges** — potential security risk. No review means no detection of malicious code.
+**11.5% of maintainer-merged PRs are zero-review self-merges** (1,129 of 9,793). No review means no detection of malicious code.
 
 **2,671 conflicts** across 20,166 PRs (13.2%). Average resolution 132.2 days. 2026 days are right-censored (year not complete). Pair-level “blocs” have small n. See `CONFLICT_RESOLUTION_ANALYSIS.md`.
 
@@ -160,7 +160,8 @@ Fit 2010–2023, confirm 2024–2026. Year is a control. These reports do not re
 - **Universal tightening is not supported.** The decided merge-rate slope’s interval covers zero. The newcomer merge slope is negative. `NEWCOMER_BAR.md`
 - **In-group is the time-varying top reviewers, not the merge-key set.** Decided in-group pull requests merge higher and go unanswered less often. The fingerprint is mixed. It is not a diagnosis. `INGROUP_REVIEW_TREATMENT.md`
 - **What merge looked like** under `CONTRIBUTING.md` is ACK/NACK plus observed discussion. A mention is not an ACK. `REVEALED_ROUGH_CONSENSUS.md`
-- **Six attention effects clear on Bitcoin Core.** Comparison dumps lack review objects, so those effects cannot be placed against other repositories’ health. `COMMONS_MECHANISMS.md`
+- **Six attention effects clear on Bitcoin Core.** On the comparison repositories, E2, E5, E7, and E12 are AMBIENT. After `merged_by` was collected, E3 is AMBIENT, Spearman 0.429, interval -0.519 to 1.000, q=0.431. E9 does not apply outside bitcoin/bitcoin. `COMMONS_MECHANISMS.md`
+- **The blinded audit of 160 pull requests is scored.** Later reviewers minus leavers, seed 7, 1000 draws: correctness 0.020 (interval -0.207 to 0.260), scope discipline -0.033 (interval -0.280 to 0.193), test coverage -0.680 (interval -1.307 to -0.087), clarity 0.093 (interval -0.267 to 0.493). n is 60 and 100. One coder, so agreement is not measured. `FINAL_READOUT.md`
 - **The first-year merge gap is not closed by patch content.** Of 1,740 training leavers, 340 match later entrants on patch content and score lower on social legibility. That set is spread across entry years (STRUCTURAL). Newcomer silence is not explained by a shift into subsystems with fewer reviewers. `FIRST_YEAR_TRAJECTORY.md`, `GAP_CLOSURE.md`
 - **Conflict-resolution score (P6)** is the only positive lag with later health that clears the joint threshold, on 13 years. Sanctions (P5) and organizing rights (P7) are unscored. `GAP_CLOSURE.md`
 

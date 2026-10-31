@@ -141,7 +141,7 @@ The research is **methodologically sound**, **data-driven**, and **well-document
 - Shows scientific rigor
 
 ### Balanced Presentation
-- Shows improvements (30.3% → 3.3% zero-review using MAX with 0.3/0.5 thresholds)
+- Names two zero-review procedures separately. The unsplit 0.3 rule on 2012 through 2020 is 30.3% (2,885 of 9,537). Recent MAX, 2021 through 2025, is 3.3% (205 of 6,216). Those are not one before-and-after series.
 - Shows persistence (25.5% self-merge stable)
 - Both sides presented
 

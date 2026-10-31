@@ -236,5 +236,5 @@ venv/bin/python scripts/reporting/generate_findings_reports.py
 # or: venv/bin/python scripts/run_all_analyses.py --reports
 ```
 
-**Last Updated**: 2026-10-13  
+**Last Updated**: 2026-10-31  
 **Status**: Frames unchanged. Items 36 through 51 are the episode ledger, revealed consensus, the measurement passes, and the final readout. The blinded audit sample is scored.

@@ -7,7 +7,7 @@
 
 ## Maintainer List
 
-**Total Maintainers Identified**: 22 GitHub logins (21 humans). `TheCharlatan` renamed to `sedited`; keep both logins in the roster, do not double-count them as people.
+**Total Maintainers Identified**: 22 GitHub logins. `TheCharlatan` and `sedited` stay distinct in the maintainer login set and in the identity index. Informal nick joins may treat the rename as one person. Do not collapse them in merge stats.
 
 **List**:
 1. laanwj
@@ -62,7 +62,7 @@
 
 3. **External Research Cross-Reference**
    - Stanford JBLP (2024): Reports "13 maintainers over the past decade"
-   - Our analysis: 22 GitHub logins (21 humans) on the canonical roster; 23 unique `merged_by` logins have merge keys
+   - Our analysis: 22 GitHub logins on the canonical roster, with `TheCharlatan` and `sedited` kept distinct; 23 unique `merged_by` logins have merge keys
    - Difference: roster includes logins with no observed keys; merge keys include historical holders not on the current roster. These are different sets.
 
 ### Validation Attempts
@@ -103,7 +103,7 @@
 | Role | Meaning | In this dump |
 |------|---------|--------------|
 | **Merge keys** | Login appears as `merged_by` | 23 unique mergers |
-| **Roster maintainer** | Canonical `github_logins` | 22 logins / 21 humans |
+| **Roster maintainer** | Canonical `github_logins` | 22 logins, kept distinct |
 | **Roster without keys** | On roster, never `merged_by` | 8 logins |
 | **Cannot merge** | Everyone else | Reviewers, authors, commenters |
 

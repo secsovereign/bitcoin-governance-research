@@ -1345,7 +1345,7 @@ def ctx_gap(gap: Dict[str, Any]) -> Dict[str, Any]:
             "The intervals are in SIZE_ADJUSTED_COMPARISON.md."
         )
     else:
-        gap2 = "Gap 2 stays open. Comparison repositories lack review objects, participant identities, and meeting lists, so the six effects cannot be placed against health."
+        gap2 = "Gap 2. Comparison classifications are missing from comparison_effects.json, so this sentence is not an estimate."
     closes = [
         f"Gap 1. P6's t+1 correlation with later health is {_fmt(p6.get('estimate'))} (q={_fmt(p6.get('q'))}) on {p6.get('n')} years, marked LOW POWER. P5 and P7 stay unscored.",
         gap2,
