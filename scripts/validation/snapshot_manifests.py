@@ -37,3 +37,24 @@ def check_citations(root: Path | None = None) -> List[str]:
             if row["text"] not in text:
                 failures.append(f"{rel} is missing {row['text']!r}")
     return failures
+
+
+def check_publication_ids(root: Path | None = None) -> List[str]:
+    """An S-id in the claims ledger must be a manifest. Publication batches list real files."""
+    root = root or ROOT
+    failures: List[str] = []
+    ledger = (root / "findings" / "CLAIMS_LEDGER.md").read_text(encoding="utf-8")
+    for line in ledger.splitlines():
+        if not line.startswith("| ") or line.startswith("| Status") or line.startswith("| ---"):
+            continue
+        cell = line.rstrip().rstrip("|").split("|")[-1].strip()
+        if cell.startswith("S") and not (root / "findings" / "snapshots" / f"{cell}.json").exists():
+            failures.append(f"ledger snapshot {cell} has no manifest")
+    for snapshot_id in ("S0920", "S0923"):
+        manifest = json.loads((root / "findings" / "snapshots" / f"{snapshot_id}.json").read_text(encoding="utf-8"))
+        if manifest.get("counts"):
+            failures.append(f"{snapshot_id} invented counts")
+        for name in manifest["files"]:
+            if not (root / "findings" / name).exists():
+                failures.append(f"{snapshot_id} lists missing {name}")
+    return failures

@@ -1,8 +1,8 @@
 # Bitcoin Core Governance Analysis
 
-**25,122 enriched PRs (S0910) | 25,506 raw PR lines (S1031) | 8,890 enriched issues (S0910) | 9,240 raw issue lines (S1109) | 51,062 deduped emails (S0910, not recomputed) | 447,349 IRC messages (S1109) | 430,613 IRC messages (S0910) | 4,817 Delving posts (S1012) | 4,662 Delving posts (S0906) | 159,092 Bitcointalk posts (S1109) | 158,917 Bitcointalk posts (S0910) | 339 Releases | 2010-2026**
+**25,122 enriched PRs (S0910) | 25,506 raw PR lines (S1031) | 8,890 enriched issues (S0910) | 9,240 raw issue lines (S1109) | 51,078 deduped emails (S1109) | 51,062 deduped emails (S0910) | 447,349 IRC messages (S1109) | 430,613 IRC messages (S0910) | 4,817 Delving posts (S1012) | 4,662 Delving posts (S0906) | 159,092 Bitcointalk posts (S1109) | 158,917 Bitcointalk posts (S0910) | 339 Releases | 2010-2026**
 
-**Last Updated**: 2026-11-09. The newest file counts are S1109. S0910 keeps the older cited IRC and Bitcointalk figures, which were not recomputed from a retained dump. S1031 is the 25,506 raw PR lines. S1012 is the October 12 Delving file (4,817). S0906 is the committed September Delving count (4,662). The deduped email total was not recomputed. Roster self-merge rates stay on the 2026-09-10 artifact. Manifests: `findings/snapshots/`. See `RESEARCH_METHODOLOGY.md`.
+**Last Updated**: 2026-11-09. The newest file counts are S1109. S0910 keeps the older cited IRC and Bitcointalk figures, which were not recomputed from a retained dump. S1031 is the 25,506 raw PR lines. S1012 is the October 12 Delving file (4,817). S0906 is the committed September Delving count (4,662). The deduped email total on S0910 is the September formula. S1109 recomputed it as 51,078. Roster self-merge rates stay on the 2026-09-10 artifact. Manifests: `findings/snapshots/`. See `RESEARCH_METHODOLOGY.md`.
 **Methodology**: Quality-weighted review counting (GitHub, ACK, IRC, combined mailing lists, Delving, Bitcointalk), cross-platform integrated, PR importance classification, timeline-aware ACK handling, MAX per reviewer. July 2026 addendum: repaired maintainer tags, fair identity-vs-merits controls, stalled-proposal dossiers (see below).
 
 **External Research**: This analysis extends and quantifies findings from BitMEX Research (2018), Angela Walch (2015-2021), Stanford JBLP (2024), and academic governance studies. See `EXTERNAL_RESEARCH_COMPARISON.md` for detailed comparison. Some analyses apply frameworks from [BCAP (Bitcoin Consensus Analysis Project)](https://github.com/bitcoin-cap/bcap) - see `BCAP_INTEGRATION_REPORT.md` for details.
@@ -181,10 +181,10 @@ The last-place shared-health rank does not survive size adjustment. After merger
 
 **25,122 PRs** (GitHub) - Formal decisions, review patterns, merge authority  
 **8,890 Issues** (GitHub) - Discussions, problem-solving, coordination  
-**51,062 Emails** (bitcoin-dev + cryptography ML, deduped) - Consensus-building, rationale  
-**430,613 IRC Messages** - Real-time coordination, informal decision-making  
+**51,062 deduped emails (S0910)** (bitcoin-dev + cryptography ML) - Consensus-building, rationale  
+**430,613 IRC messages (S0910)** - Real-time coordination, informal decision-making  
 **4,662 Delving posts** - Modern spec/governance forum (2023+)  
-**158,917 Bitcointalk posts** (board 6) - Historical public forum discourse  
+**158,917 Bitcointalk posts (S0910)** (board 6) - Historical public forum discourse  
 **339 Releases** - Protocol evolution, release signing authority
 
 **Total**: 1+ million GitHub/informal data points across 16+ years, synthesized to reveal governance patterns.

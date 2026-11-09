@@ -4,7 +4,7 @@
 **Sources**: GitHub PRs plus combined mailing lists, IRC, Delving, Bitcointalk  
 **Machine-readable**: `analysis/findings/data/language_evolution.json`
 
-Corpus: 25,122 PRs, 51,062 emails, 430,613 IRC, 4,662 Delving, 158,917 Bitcointalk.
+Corpus: 25,122 PRs (S0910), 51,062 deduped emails (S0910), 430,613 IRC messages (S0910), 4,662 Delving posts (S0906), 158,917 Bitcointalk posts (S0910).
 
 ---
 

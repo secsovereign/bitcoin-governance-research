@@ -18,6 +18,8 @@
 | Delving | 844 | 4,662 | 18.1% |
 | Bitcointalk | 19,746 | 158,917 | 12.4% |
 
+The denominators were not refit. Email uses 51,062 deduped emails (S0910). Bitcointalk uses 158,917 Bitcointalk posts (S0910).
+
 ---
 
 ## 2. Temporal PR Funding Mentions (recent years)

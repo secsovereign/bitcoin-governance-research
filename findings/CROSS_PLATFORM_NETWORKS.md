@@ -1,7 +1,7 @@
 # Cross-Platform Influence Networks Report
 
 **Analysis Date**: 2026-09-20  
-**Data Sources**: GitHub PRs (25,122), IRC (2,534 actors / 51,064 ML messages deduped to 51,062), Delving (4,662 posts), Bitcointalk (158,917 posts)  
+**Data Sources**: GitHub PRs (25,122), IRC (2,534 actors / 51,064 ML messages deduped to 51,062 deduped emails (S0910)), Delving (4,662 posts), Bitcointalk (158,917 Bitcointalk posts (S0910))  
 **Purpose**: Build comprehensive influence networks across platforms and identify hidden influencers
 
 ---

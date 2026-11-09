@@ -1,7 +1,7 @@
 # Informal Communication Sentiment Analysis Report
 
 **Analysis Date**: 2026-09-20  
-**Data Sources**: IRC (430,613), combined mailing lists (51,062), cryptography ML (26,418), Delving (4,650), Bitcointalk (158,917)  
+**Data Sources**: IRC (430,613 IRC messages (S0910)), combined mailing lists (51,062 deduped emails (S0910)), cryptography ML (26,418), Delving (4,650), Bitcointalk (158,917 Bitcointalk posts (S0910))  
 **Purpose**: Analyze sentiment and BCAP State of Mind (SOM) across informal channels
 
 ---
@@ -16,7 +16,7 @@ This report analyzes sentiment and engagement patterns across IRC, mailing lists
 
 ### 1. IRC Sentiment
 
-**Total messages**: 430,613
+**Total messages**: 430,613 IRC messages (S0910)
 
 | Sentiment | Percentage | Count |
 |-----------|------------|-------|
@@ -26,7 +26,7 @@ This report analyzes sentiment and engagement patterns across IRC, mailing lists
 
 ### 2. Combined Email Sentiment (bitcoin-dev + cryptography, deduped)
 
-**Total messages**: 51,062
+**Total messages**: 51,062 deduped emails (S0910)
 
 | Sentiment | Percentage | Count |
 |-----------|------------|-------|
@@ -56,7 +56,7 @@ This report analyzes sentiment and engagement patterns across IRC, mailing lists
 
 ### 5. Bitcointalk Sentiment
 
-**Total messages**: 158,917
+**Total messages**: 158,917 Bitcointalk posts (S0910)
 
 | Sentiment | Percentage | Count |
 |-----------|------------|-------|

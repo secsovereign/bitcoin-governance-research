@@ -35,11 +35,11 @@
 **Dedupe**: 2 `message_id` overlaps with bitcoin-dev when analyses combine lists  
 **Local cache**: pipermail `.txt.gz` under `data/mailing_lists/cryptography_raw/` is gitignored (re-downloadable). Do not commit `*.bak` (e.g. Bitcointalk pre-reindex backup).
 
-**IRC Channels**: `scripts/data_collection/irc_collector.py` → `430,613` messages in `data/irc/messages.jsonl`
+**IRC Channels**: `scripts/data_collection/irc_collector.py` → 430,613 IRC messages (S0910) in the analysis input. The file on disk is larger; that recount is S1109.
 
 **Delving Bitcoin**: `scripts/data_collection/delving_collector.py` → `4,662` posts
 
-**Bitcointalk (board 6)**: `scripts/data_collection/bitcointalk_collector.py` → `158,917` posts  
+**Bitcointalk (board 6)**: `scripts/data_collection/bitcointalk_collector.py` → 158,917 Bitcointalk posts (S0910)  
 **Gap**: topic `n_posts` exceeds stored posts by ~18k. That is a parser ceiling (unrecoverable by refetch), not a missing-download. Do not treat board totals as a completeness check.
 
 **Satoshi Archive**: `scripts/data_collection/satoshi_archive_collector.py` (549 communications, separate from board scrape)

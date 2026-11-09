@@ -411,24 +411,37 @@ def check_findings(claims: List[Dict[str, Any]]) -> List[str]:
     return failures
 
 
+def publication_snapshot(source_report: str) -> str:
+    """Publication id for a finding header date. Empty when that date has no manifest."""
+    return {
+        "findings/MERGE_PATTERN_BREAKDOWN.md": "S0920",
+        "findings/REVEALED_ROUGH_CONSENSUS.md": "S0923",
+        "findings/NEWCOMER_DIVERGENCE.md": "2026-10-11",
+        "findings/SIZE_ADJUSTED_COMPARISON.md": "2026-10-11",
+        "findings/DISCOURSE_RECALL.md": "2026-10-11",
+        "findings/MERGE_DURABILITY.md": "2026-10-09",
+    }.get(source_report, "")
+
+
 def render_markdown(claims: List[Dict[str, Any]]) -> str:
     lines = [
         "# Claims ledger",
         "",
         "Each row is a headline claim. The number is taken from the committed JSON named in the row. Older reports keep the q they were written against. The pass 7 family is 229, and those recomputed q values are in `pass7_merged_by.json`.",
         "",
-        "| Status | Claim | Number | Source | JSON | Family |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| Status | Claim | Number | Source | JSON | Family | Snapshot |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for claim in claims:
         lines.append(
-            "| {status} | {sentence} | {number} | {source} | {json_path} | {family} |".format(
+            "| {status} | {sentence} | {number} | {source} | {json_path} | {family} | {snapshot} |".format(
                 status=claim.get("status") or "",
                 sentence=claim["sentence"].replace("|", "/"),
                 number=claim.get("number") or "",
                 source=claim.get("source_report") or "",
                 json_path=claim.get("json_path") or "",
                 family=claim.get("family") or "",
+                snapshot=publication_snapshot(claim.get("source_report") or ""),
             )
         )
     lines.extend([

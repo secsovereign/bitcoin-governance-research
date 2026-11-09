@@ -101,6 +101,42 @@ class CorpusSnapshotTests(unittest.TestCase):
         method = (ROOT / "findings/RESEARCH_METHODOLOGY.md").read_text(encoding="utf-8")
         self.assertIn("right-censored", method)
 
+    def test_publication_batches_list_files_and_invent_no_counts(self) -> None:
+        from scripts.validation.snapshot_manifests import check_publication_ids
+
+        self.assertEqual(check_publication_ids(), [])
+        ledger = (ROOT / "findings/CLAIMS_LEDGER.md").read_text(encoding="utf-8")
+        self.assertIn("| S0920 |", ledger)
+        self.assertIn("| S0923 |", ledger)
+
+    def test_recomputed_email_total_keeps_the_old_formula(self) -> None:
+        old = json.loads((ROOT / "findings/snapshots/S0910.json").read_text(encoding="utf-8"))
+        new = json.loads((ROOT / "findings/snapshots/S1109.json").read_text(encoding="utf-8"))
+        self.assertEqual(old["counts"]["emails_deduped_cited"], 51062)
+        self.assertEqual(old["emails_deduped_formula"], "24644 + 26420 - 2 = 51062")
+        self.assertEqual(new["counts"]["emails_deduped"], 51078)
+
+    def test_outside_rebuild_is_not_adopted(self) -> None:
+        data = json.loads((ROOT / "findings/data/outside_rebuild_comparison.json").read_text(encoding="utf-8"))
+        self.assertFalse(data["matched"])
+        self.assertEqual(data["deltas"]["prs_lines"]["delta"], 2)
+
+    def test_dossier_sample_records_misses_without_changing_erlay(self) -> None:
+        data = json.loads((ROOT / "findings/data/dossier_label_sample.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["stored_rows"], 160)
+        self.assertEqual(data["hits"] + data["misses"], 160)
+        erlay = [row for row in data["rows"] if row["number"] == 30233][0]
+        self.assertEqual(erlay["label"], "miss")
+        self.assertIn("not recomputed", data["published_figures_unchanged"])
+
+    def test_mechanic_stays_a_thin_allegation(self) -> None:
+        data = json.loads((ROOT / "findings/data/applied_consequences.json").read_text(encoding="utf-8"))
+        mechanic = data["allegations"][0]
+        self.assertTrue(mechanic["thin"])
+        self.assertEqual(mechanic["evidence_tier"], "allegation")
+        self.assertIn("argument-map", mechanic["source"])
+        self.assertFalse(mechanic["dossier_in_corpus"])
+
     def test_external_references_are_not_filled(self) -> None:
         data = json.loads((ROOT / "data/reference/external_records.json").read_text(encoding="utf-8"))
         self.assertTrue(all(row["ingested"] is False for row in data["records"]))

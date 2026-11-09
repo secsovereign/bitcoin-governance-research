@@ -3,13 +3,13 @@
   "measured_at": "2026-09-10",
   "script_commit": null,
   "kind": "collection_manifest",
-  "note": "Analysis snapshot the banners were written against. Enriched PR and issue counts still match the files. IRC 430613 and Bitcointalk 158917 are cited figures; the current files are larger and those two cited figures were not recomputed from a retained dump.",
+  "note": "Analysis snapshot the 2026-09-10 roster and the September banners were written against. Enriched PR and issue counts still match the files. 51062 emails is 24644 + 26420 - 2 from the 2026-09-06 manifests. 430613 IRC and 158917 Bitcointalk posts are frozen cited figures, not a recount of the current files.",
   "filters": {
     "github_prs_enriched": "cleaned rows with an author; raw rows added after the last clean/enrich are absent",
     "github_issues_enriched": "same author requirement and same staleness",
     "irc": "#bitcoin-core-dev HTML logs only; join/quit info lines skipped; timestamps taken from the archive Z or unix field",
     "bitcointalk": "board 6 printpage posts that parsed an author or a body",
-    "mail_deduped": "bitcoin-dev plus cryptography, message-id overlap removed; 51062 was not recomputed on 2026-11-09"
+    "mail_deduped": "bitcoin-dev 24644 (gnusha manifest 2026-09-06) plus cryptography 26420 (manifest 2026-09-06) minus 2 shared message ids"
   },
   "counts": {
     "github_prs_enriched": 25122,
@@ -22,8 +22,10 @@
   "status": {
     "github_prs_enriched": "recomputed_still_matches",
     "github_issues_enriched": "recomputed_still_matches",
-    "emails_deduped_cited": "cited_not_recomputed",
-    "irc_messages_cited": "cited_not_recomputed",
+    "emails_deduped_cited": "formula_from_2026-09-06_manifests",
+    "irc_messages_cited": "frozen_analysis_input",
     "bitcointalk_posts_cited": "cited_not_recomputed"
-  }
+  },
+  "emails_deduped_formula": "24644 + 26420 - 2 = 51062",
+  "irc_messages_cited_provenance": "Frozen analysis input. scripts/reporting/patch_project_docs.py replaced 441931 and 433048 with 430613. The same figure is stored in findings/data/informal_sentiment.json, language_evolution.json, bcap_power_shift.json, and bcap_som_analysis.json. The current messages.jsonl is larger and was not used to regenerate it."
 }
