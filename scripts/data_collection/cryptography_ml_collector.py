@@ -167,6 +167,12 @@ class CryptographyMLCollector:
             sort_key=lambda e: (e.get("date") or "", e.get("message_id") or ""),
         )
         dates = [e.get("date") for e in existing.values() if e.get("date")]
+        import sys
+        from pathlib import Path as _Path
+
+        sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+        from src.utils.coverage import prehistory_coverage
+
         manifest = {
             "source": PIPERMAIL,
             "collected_at": datetime.now(timezone.utc).isoformat(),
@@ -180,6 +186,7 @@ class CryptographyMLCollector:
             "new_this_run": new_count,
             "date_min": min(dates) if dates else prior.get("date_min"),
             "date_max": max(dates) if dates else prior.get("date_max"),
+            "prehistory": prehistory_coverage(path.name for path in self.raw_dir.glob("*.txt.gz")),
         }
         self.manifest_file.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
         logger.info("Cryptography update: %s total emails (+%s new)", len(existing), new_count)

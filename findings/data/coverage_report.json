@@ -1,0 +1,79 @@
+{
+  "measured_at": "2026-11-09",
+  "sources": {
+    "cryptography": {
+      "window": "2008-01/2011-12",
+      "expected": 48,
+      "ingested": 32,
+      "missing": [
+        "2009-December.txt.gz",
+        "2010-January.txt.gz",
+        "2010-February.txt.gz",
+        "2010-November.txt.gz",
+        "2010-December.txt.gz",
+        "2011-January.txt.gz",
+        "2011-February.txt.gz",
+        "2011-March.txt.gz",
+        "2011-April.txt.gz",
+        "2011-May.txt.gz",
+        "2011-June.txt.gz",
+        "2011-July.txt.gz",
+        "2011-September.txt.gz",
+        "2011-October.txt.gz",
+        "2011-November.txt.gz",
+        "2011-December.txt.gz"
+      ],
+      "upstream": "Months checked on 2026-11-09 returned HTTP 404 from metzdowd pipermail.",
+      "emails_in_file": 26436,
+      "raw_month_files": 193,
+      "fixable": false,
+      "reason": "The 16 missing months are not on the upstream pipermail index (HTTP 404). The incremental manifest overwrites the full-window fields; the coverage record keeps them."
+    },
+    "irc": {
+      "expected_channels": [
+        "bitcoin-core-dev",
+        "bitcoin-dev",
+        "bitcoin-core"
+      ],
+      "ingested_channels": [
+        "bitcoin-core-dev"
+      ],
+      "messages": 447349,
+      "timezone": "html timestamps are Z or unix and the archive page says UTC",
+      "plaintext_timezone": "unverified; the plain-text parser stamps +00:00 and the current file does not use it",
+      "other_channels": {
+        "bitcoin-dev": {
+          "days": 6495,
+          "days_saying_no_messages": 6494
+        },
+        "bitcoin-core": {
+          "days": 6495,
+          "days_saying_no_messages": 6494
+        }
+      },
+      "fixable": false,
+      "reason": "Chaincode does not record those two channels. One day on each did not contain the empty-archive sentence; those days were not parsed into messages.jsonl."
+    },
+    "bitcointalk": {
+      "posts_stored": 159092,
+      "topics": 14147,
+      "n_posts_sum": 177036,
+      "missing_vs_n_posts": 17944,
+      "null_dates": 0,
+      "non_iso_dates": 0,
+      "date_min": "2009-12-09",
+      "date_max": "2026-10-01",
+      "missing_months_2010_through_2026_10": [],
+      "timezone": "naive forum times are labeled UTC without a source timezone",
+      "fixable": false,
+      "reason": "The post gap is the parser ceiling already described in the repair manifest. Dates are not missing; their timezone is."
+    },
+    "bip_discussions": {
+      "collect_all_flag": "--skip-discussions when bips.jsonl is absent",
+      "files_present": true,
+      "bips_prs_max_updated": "2026-07-11",
+      "bips_issues_max_updated": "2025-12-08",
+      "fixable": "the flag is removed so a clean collect fetches discussions; the stale files were not refreshed in this pass"
+    }
+  }
+}

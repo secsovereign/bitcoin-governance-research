@@ -1,0 +1,38 @@
+{
+  "conflict_detection": {
+    "method": "keyword",
+    "definition": "A review or comment is a NACK when the body matches \\bNACK\\b and not 'not a nack', or when the GitHub review state is CHANGES_REQUESTED.",
+    "sample": "convenience sample of the first 10 hits walking enriched_prs.jsonl, 2026-11-09. Not a random sample.",
+    "sample_result": "3 of 10 are DrahtBot templates quoting another person's NACK. 6 of 10 are CHANGES_REQUESTED notes without the word NACK. 1 of 10 is a reply that quotes a NACK. Zero of the 10 are an unquoted NACK by the commenter.",
+    "published_precision": null,
+    "reason": "n=10 and the walk is not random, so no precision rate is published."
+  },
+  "resolution_times_2026": {
+    "right_censored": true,
+    "reason": "Open pull requests have no decision time and are excluded. 2026 is not a completed year."
+  },
+  "contributor_dossiers": {
+    "method": "keyword",
+    "limit": "A dossier hit is a keyword match, not a reviewed identity."
+  },
+  "closed_unmerged": {
+    "n": 7907,
+    "draft": 683,
+    "not_draft": 7224,
+    "withdrawn": null,
+    "rejected": null,
+    "reason": "The dump has a draft boolean and no GitHub state_reason, so withdrawn and rejected are not separated. The remainder is not labeled rejected."
+  },
+  "funding_mentions": {
+    "floor": true,
+    "reason": "Most funding is never named in a pull request."
+  },
+  "review_counts": {
+    "method": "github_review_objects",
+    "misses": [
+      "review in comments",
+      "IRC",
+      "offline"
+    ]
+  }
+}

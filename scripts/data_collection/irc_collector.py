@@ -493,6 +493,8 @@ class IRCCollector:
                 }
         
         # Pattern 1: [YYYY-MM-DD HH:MM:SS] <nickname> message
+        # The plain-text clock has no zone. +00:00 below is unverified. The HTML
+        # path uses the archive's Z or unix timestamp, which the page calls UTC.
         pattern1 = r'\[(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2}:\d{2})\]\s+<([^>]+)>\s+(.+)'
         match = re.match(pattern1, line)
         if match:

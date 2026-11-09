@@ -4,7 +4,7 @@
 
 **What uses which data:** GitHub merge/review reports (merge pattern, contributor retention, review-body quality, Gini, temporal) are **GitHub-only**. Informal channels (IRC, both mailing lists, Delving, Bitcointalk) are in `CROSS_PLATFORM_NETWORKS.md`, `INFORMAL_SENTIMENT_ANALYSIS.md`, `LANGUAGE_EVOLUTION.md`, `REVIEW_QUALITY_ENHANCED_ANALYSIS.md` (mention counts only), and the era table in `GOVERNANCE_FRAMES.md`. Do not treat a GitHub exit rate as “the whole community left.”
 
-**Cite stored Bitcointalk posts (158,917), not topic `n_posts`.** The metadata field over-counts by ~18k (parser ceiling). Satoshi / architectural-divergence / technical-debt markdown files are separate dated analyses, not this report pipeline.
+**Cite stored Bitcointalk posts: 159,092 Bitcointalk posts (S1109). The older cited figure is 158,917 Bitcointalk posts (S0910).** Do not cite topic `n_posts`. That field sums to 177,036 on S1109 and over-counts stored posts. Satoshi / architectural-divergence / technical-debt markdown files are separate dated analyses, not this report pipeline.
 
 ---
 

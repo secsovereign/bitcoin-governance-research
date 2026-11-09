@@ -44,7 +44,7 @@
 | Merge rate | 56.5% | 67.2% |
 | Avg reviews | 7.7 | 5.1 |
 
-**Note**: Correlation ≠ causation. Most actual funding is never mentioned publicly.
+**Note**: Correlation ≠ causation. Funding mentions are a floor. Most actual funding is never mentioned publicly.
 
 ---
 

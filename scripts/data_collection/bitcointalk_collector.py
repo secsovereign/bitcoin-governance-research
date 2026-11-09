@@ -614,6 +614,7 @@ def _parse_printpage(html: str, topic_id: int) -> Tuple[List[Dict[str, Any]], st
 
 
 def _parse_forum_date(value: str) -> Optional[str]:
+    """Forum times have no timezone. They are labeled UTC, and that label is unverified."""
     value = (value or "").strip()
     if not value:
         return None

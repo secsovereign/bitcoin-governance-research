@@ -69,13 +69,14 @@ python scripts/reporting/generate_findings_reports.py   # reports only
 
 ## Data sources (public)
 
-| Channel | Approx. size |
+| Channel | Count |
 |---------|-------------:|
-| GitHub `bitcoin/bitcoin` PRs / issues | 25,122 / 8,890 |
-| bitcoin-dev + cryptography ML (deduped) | 51,062 emails |
-| IRC `#bitcoin-core-dev` and related | 430,613 messages |
-| Delving Bitcoin | 4,662 posts |
-| Bitcointalk board 6 | 158,917 posts |
+| GitHub `bitcoin/bitcoin` enriched PRs / issues | 25,122 enriched PRs (S0910) / 8,890 enriched issues (S0910) |
+| GitHub raw PR lines / raw issue lines | 25,506 raw PR lines (S1031) / 9,240 raw issue lines (S1109) |
+| bitcoin-dev + cryptography ML (deduped) | 51,062 deduped emails (S0910, not recomputed) |
+| IRC `#bitcoin-core-dev` | 447,349 IRC messages (S1109); 430,613 IRC messages (S0910) |
+| Delving Bitcoin | 4,817 Delving posts (S1012); 4,662 Delving posts (S0906) |
+| Bitcointalk board 6 | 159,092 Bitcointalk posts (S1109); 158,917 Bitcointalk posts (S0910) |
 
 ## Related
 

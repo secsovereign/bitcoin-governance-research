@@ -140,7 +140,7 @@ def main() -> int:
     if _present(bips, 10_000):
         print("BIPs: dump already present (run bips_collector.py to refresh)")
     else:
-        if run("scripts/data_collection/bips_collector.py", "--skip-discussions") != 0:
+        if run("scripts/data_collection/bips_collector.py") != 0:
             failed.append("bips")
 
     if args.process and (data / "github" / "prs_raw.jsonl").exists():
