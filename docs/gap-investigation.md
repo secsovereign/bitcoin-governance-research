@@ -45,7 +45,7 @@ The newest recomputed file counts are S1109 (measured 2026-11-09, not a new netw
 
 `findings/snapshots/banner_citations.json` lists each banner string, the snapshot, and the field. `scripts/validation/snapshot_manifests.py` fails when the string is missing or the number disagrees. This pass tags the corpus-size banners only. Tagging every number in every finding is larger than the symptom and was not done.
 
-`get_snapshot` on an `S####` id returns that manifest. A 64-character id is unchanged.
+`get_snapshot` on an `S####` id returns that manifest. A 64-character id is unchanged. An untracked input validator in the intelligence working tree (`src/lib/tool-input.ts`, restored from the prior WIP and not part of the gap-closure commit) now accepts `S####` as well as a 64-character id. That edit stays unstaged with the rest of that WIP.
 
 Old values that the banners used to print alone, and the values that replace them as the current citation:
 
