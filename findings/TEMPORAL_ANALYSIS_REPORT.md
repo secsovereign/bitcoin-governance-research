@@ -32,6 +32,10 @@ Self-merge rates stay in a moderate band while **zero-review self-merges collaps
 - First-year vs latest-year zero-review self-merge: 83.9% → 4.0%
 - Review depth: 1.0 → 7.8
 
+Note dated 2026-11-11. The 2016 row stays because it is the computed first year in this table. It is not the baseline for the review series. 2016 is the first year GitHub review objects exist in this dump, so a zero-review rate that year mixes a missing instrument with the later practice. The baseline is 2017. Zero-review self-merges fell from 42.2 percent in 2017 to 4.0 percent in 2026, and 2026 is a partial year. The self-merge fall may reflect a maintainer norm, tooling, or how review is recorded. Which of those it is remains an open question.
+
+The same script records zero-review merges of other authors' pull requests. Those are maintainer-authored pull requests merged by someone else. That rate is 32.4 percent in 2017 and 8.8 percent in 2026. The stored field is `zero_review_other_merge_rate` in `analysis/findings/data/temporal_analysis.json`. The script is `scripts/analysis/temporal_analysis.py`. This note does not replace the 2016 row.
+
 ---
 
 ## 2. Maintainer Era Patterns
