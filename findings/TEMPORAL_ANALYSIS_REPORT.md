@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-Self-merge rates stay in a moderate band while **zero-review self-merges collapse** after 2016. Newer maintainer cohorts review more and self-merge less. Merge authority remains highly concentrated in every period.
+Self-merge rates stay in a moderate band while **zero-review self-merges collapse** after 2016. The baseline for that series is 2017, not 2016. The reason is in the note under the yearly table. Newer maintainer cohorts review more and self-merge less. Merge authority remains highly concentrated in every period.
 
 ---
 
